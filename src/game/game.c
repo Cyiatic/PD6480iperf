@@ -1,4 +1,6 @@
-#include <ultra64.h>
+#include "ultra64.h"
+#include "src/include/constants.h"
+#include "src/include/gvars.h"
 
 GLOBAL_ASM(
 glabel func0f000000
@@ -87881,16 +87883,11 @@ glabel func0f04dbfc
 /**
  * @cmd 0002
  */
-GLOBAL_ASM(
-glabel func0f04dc3c
-/*  f04dc3c:	3c03800a */ 	lui	$v1,0x800a
-/*  f04dc40:	24639fc0 */ 	addiu	$v1,$v1,-24640
-/*  f04dc44:	8c6e0438 */ 	lw	$t6,0x438($v1)
-/*  f04dc48:	00001025 */ 	or	$v0,$zero,$zero
-/*  f04dc4c:	25cf0003 */ 	addiu	$t7,$t6,0x3
-/*  f04dc50:	03e00008 */ 	jr	$ra
-/*  f04dc54:	ac6f0438 */ 	sw	$t7,0x438($v1)
-);
+bool aiLabel(void)
+{
+	g_Vars.aioffset += 3;
+	return false;
+}
 
 /**
  * @cmd 0003
