@@ -1,6 +1,7 @@
 #include "ultra64.h"
 #include "src/include/constants.h"
 #include "src/include/gvars.h"
+#include "src/include/game.h"
 
 GLOBAL_ASM(
 glabel func0f000000
