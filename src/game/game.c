@@ -88200,20 +88200,13 @@ glabel ai0008
 /**
  * @cmd 0004
  */
-GLOBAL_ASM(
-glabel ai0004
-/*  f04e0a8:	27bdffe0 */ 	addiu	$sp,$sp,-32
-/*  f04e0ac:	afbf0014 */ 	sw	$ra,0x14($sp)
-/*  f04e0b0:	3c04800a */ 	lui	$a0,0x800a
-/*  f04e0b4:	8c84a3f4 */ 	lw	$a0,-0x5c0c($a0)
-/*  f04e0b8:	0fc13558 */ 	jal	func0f04d560
-/*  f04e0bc:	27a50018 */ 	addiu	$a1,$sp,0x18
-/*  f04e0c0:	8fbf0014 */ 	lw	$ra,0x14($sp)
-/*  f04e0c4:	27bd0020 */ 	addiu	$sp,$sp,0x20
-/*  f04e0c8:	24020001 */ 	addiu	$v0,$zero,0x1
-/*  f04e0cc:	03e00008 */ 	jr	$ra
-/*  f04e0d0:	00000000 */ 	sll	$zero,$zero,0x0
-);
+bool aiEndList(void)
+{
+	u64 unk;
+	func0f04d560(g_Vars.ailist, &unk);
+
+	return true;
+}
 
 /**
  * @cmd 0009
