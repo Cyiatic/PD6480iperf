@@ -87839,24 +87839,12 @@ glabel func0f04db40
 /**
  * @cmd 0000
  */
-GLOBAL_ASM(
-glabel ai0000
-/*  f04dbc0:	3c03800a */ 	lui	$v1,0x800a
-/*  f04dbc4:	24639fc0 */ 	addiu	$v1,$v1,-24640
-/*  f04dbc8:	8c640434 */ 	lw	$a0,0x434($v1)
-/*  f04dbcc:	8c650438 */ 	lw	$a1,0x438($v1)
-/*  f04dbd0:	27bdffe8 */ 	addiu	$sp,$sp,-24
-/*  f04dbd4:	afbf0014 */ 	sw	$ra,0x14($sp)
-/*  f04dbd8:	00851021 */ 	addu	$v0,$a0,$a1
-/*  f04dbdc:	0fc13583 */ 	jal	chraiGoToLabel
-/*  f04dbe0:	90460002 */ 	lbu	$a2,0x2($v0)
-/*  f04dbe4:	8fbf0014 */ 	lw	$ra,0x14($sp)
-/*  f04dbe8:	3c01800a */ 	lui	$at,0x800a
-/*  f04dbec:	ac22a3f8 */ 	sw	$v0,-0x5c08($at)
-/*  f04dbf0:	00001025 */ 	or	$v0,$zero,$zero
-/*  f04dbf4:	03e00008 */ 	jr	$ra
-/*  f04dbf8:	27bd0018 */ 	addiu	$sp,$sp,0x18
-);
+bool aiGoToNext(void)
+{
+	u8 *buffer = g_Vars.ailist + g_Vars.aioffset;
+	g_Vars.aioffset = chraiGoToLabel(g_Vars.ailist, g_Vars.aioffset, buffer[2]);
+	return false;
+}
 
 /**
  * @cmd 0001
