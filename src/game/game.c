@@ -88119,7 +88119,7 @@ bool aiSetPlayerDeadList(void)
  * @cmd 0008
  */
 GLOBAL_ASM(
-glabel ai0008
+glabel aiReturn
 /*  f04dff4:	3c05800a */ 	lui	$a1,0x800a
 /*  f04dff8:	24a59fc0 */ 	addiu	$a1,$a1,-24640
 /*  f04dffc:	8ca20424 */ 	lw	$v0,0x424($a1)
@@ -88171,6 +88171,31 @@ glabel ai0008
 /*  f04e0a0:	03e00008 */ 	jr	$ra
 /*  f04e0a4:	00001025 */ 	or	$v0,$zero,$zero
 );
+
+/**
+ * Commented because ld is refusing to link to the library binary, making the
+ * call to func000184d0 unresolvable. Matches otherwise.
+ * Assumes func000184d0 is defined as u8 *func000184d0(s16 ailistid);
+ */
+//bool aiReturn(void)
+//{
+//	u8 *ailist = NULL;
+//
+//	if (g_Vars.chrdata) {
+//		ailist = func000184d0(g_Vars.chrdata->aireturnlist);
+//	} else if (g_Vars.objdata) {
+//		ailist = func000184d0(g_Vars.objdata->aireturnlist);
+//	} else if (g_Vars.aicdata) {
+//		ailist = func000184d0(g_Vars.aicdata->aireturnlist);
+//	} else if (g_Vars.aiddata) {
+//		ailist = func000184d0(g_Vars.aiddata->aireturnlist);
+//	}
+//
+//	g_Vars.ailist = ailist;
+//	g_Vars.aioffset = 0;
+//
+//	return false;
+//}
 
 /**
  * @cmd 0004
