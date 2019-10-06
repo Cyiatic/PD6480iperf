@@ -88033,6 +88033,20 @@ glabel ai0007
 /*  f04ded0:	acca0438 */ 	sw	$t2,0x438($a2)
 );
 
+//bool ai0007(void)
+//{
+//	u8 *cmd = g_Vars.ailist + g_Vars.aioffset;
+//	u16 ailistid = cmd[3] | (cmd[2] << 8);
+//
+//	if (g_Vars.chrdata) {
+//		g_Vars.chrdata->aishotlist = ailistid;
+//	}
+//
+//	g_Vars.aioffset += 4;
+//
+//	return false;
+//}
+
 /**
  * @cmd 01c1
  */
