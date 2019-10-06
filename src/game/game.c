@@ -88101,28 +88101,19 @@ bool aiSetDarkRoomList(void)
 /**
  * @cmd 01c4
  */
-GLOBAL_ASM(
-glabel ai01c4
-/*  f04dfac:	3c06800a */ 	lui	$a2,0x800a
-/*  f04dfb0:	24c69fc0 */ 	addiu	$a2,$a2,-24640
-/*  f04dfb4:	8cc30438 */ 	lw	$v1,0x438($a2)
-/*  f04dfb8:	8cce0434 */ 	lw	$t6,0x434($a2)
-/*  f04dfbc:	8cc50424 */ 	lw	$a1,0x424($a2)
-/*  f04dfc0:	01c31021 */ 	addu	$v0,$t6,$v1
-/*  f04dfc4:	904f0002 */ 	lbu	$t7,0x2($v0)
-/*  f04dfc8:	90590003 */ 	lbu	$t9,0x3($v0)
-/*  f04dfcc:	00001025 */ 	or	$v0,$zero,$zero
-/*  f04dfd0:	000fc200 */ 	sll	$t8,$t7,0x8
-/*  f04dfd4:	03192025 */ 	or	$a0,$t8,$t9
-/*  f04dfd8:	10a00003 */ 	beqz	$a1,.L0f04dfe8
-/*  f04dfdc:	3088ffff */ 	andi	$t0,$a0,0xffff
-/*  f04dfe0:	a4a8035c */ 	sh	$t0,0x35c($a1)
-/*  f04dfe4:	8cc30438 */ 	lw	$v1,0x438($a2)
-.L0f04dfe8:
-/*  f04dfe8:	24690004 */ 	addiu	$t1,$v1,0x4
-/*  f04dfec:	03e00008 */ 	jr	$ra
-/*  f04dff0:	acc90438 */ 	sw	$t1,0x438($a2)
-);
+bool aiSetPlayerDeadList(void)
+{
+	u8 *cmd = g_Vars.ailist + g_Vars.aioffset;
+	u16 ailistid = cmd[3] | (cmd[2] << 8);
+
+	if (g_Vars.chrdata) {
+		g_Vars.chrdata->aiplayerdeadlist = ailistid;
+	}
+
+	g_Vars.aioffset += 4;
+
+	return false;
+}
 
 /**
  * @cmd 0008
