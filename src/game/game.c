@@ -87894,7 +87894,7 @@ bool aiYield(void)
  * @cmd 0005
  */
 GLOBAL_ASM(
-glabel aiSetAilist
+glabel aiSetList
 /*  f04dd08:	3c06800a */ 	lui	$a2,0x800a
 /*  f04dd0c:	24c69fc0 */ 	addiu	$a2,$a2,-24640
 /*  f04dd10:	8cce0434 */ 	lw	$t6,0x434($a2)
@@ -87948,7 +87948,7 @@ glabel aiSetAilist
  * call to func000184d0 unresolvable. Matches otherwise.
  * Assumes func000184d0 is defined as u8 *func000184d0(u16 ailistid);
  */
-//bool aiSetAilist(void)
+//bool aiSetList(void)
 //{
 //	u8 *cmd = g_Vars.ailist + g_Vars.aioffset;
 //	u32 ailistid = cmd[4] | (cmd[3] << 8);
@@ -87977,69 +87977,34 @@ glabel aiSetAilist
 /**
  * @cmd 0006
  */
-GLOBAL_ASM(
-glabel ai0006
-/*  f04ddb4:	3c07800a */ 	lui	$a3,0x800a
-/*  f04ddb8:	24e79fc0 */ 	addiu	$a3,$a3,-24640
-/*  f04ddbc:	8ce30438 */ 	lw	$v1,0x438($a3)
-/*  f04ddc0:	8cee0434 */ 	lw	$t6,0x434($a3)
-/*  f04ddc4:	27bdffe0 */ 	addiu	$sp,$sp,-32
-/*  f04ddc8:	afbf0014 */ 	sw	$ra,0x14($sp)
-/*  f04ddcc:	01c31021 */ 	addu	$v0,$t6,$v1
-/*  f04ddd0:	904f0003 */ 	lbu	$t7,0x3($v0)
-/*  f04ddd4:	90590004 */ 	lbu	$t9,0x4($v0)
-/*  f04ddd8:	8ce40424 */ 	lw	$a0,0x424($a3)
-/*  f04dddc:	000fc200 */ 	sll	$t8,$t7,0x8
-/*  f04dde0:	03193025 */ 	or	$a2,$t8,$t9
-/*  f04dde4:	30c8ffff */ 	andi	$t0,$a2,0xffff
-/*  f04dde8:	10800010 */ 	beqz	$a0,.L0f04de2c
-/*  f04ddec:	01003025 */ 	or	$a2,$t0,$zero
-/*  f04ddf0:	90450002 */ 	lbu	$a1,0x2($v0)
-/*  f04ddf4:	240100fd */ 	addiu	$at,$zero,0xfd
-/*  f04ddf8:	14a10003 */ 	bne	$a1,$at,.L0f04de08
-/*  f04ddfc:	00000000 */ 	sll	$zero,$zero,0x0
-/*  f04de00:	10000008 */ 	beqz	$zero,.L0f04de24
-/*  f04de04:	a488010e */ 	sh	$t0,0x10e($a0)
-.L0f04de08:
-/*  f04de08:	0fc126d1 */ 	jal	chrFindById
-/*  f04de0c:	a7a6001a */ 	sh	$a2,0x1a($sp)
-/*  f04de10:	3c07800a */ 	lui	$a3,0x800a
-/*  f04de14:	24e79fc0 */ 	addiu	$a3,$a3,-24640
-/*  f04de18:	10400002 */ 	beqz	$v0,.L0f04de24
-/*  f04de1c:	97a6001a */ 	lhu	$a2,0x1a($sp)
-/*  f04de20:	a446010e */ 	sh	$a2,0x10e($v0)
-.L0f04de24:
-/*  f04de24:	10000012 */ 	beqz	$zero,.L0f04de70
-/*  f04de28:	8ce30438 */ 	lw	$v1,0x438($a3)
-.L0f04de2c:
-/*  f04de2c:	8ce20428 */ 	lw	$v0,0x428($a3)
-/*  f04de30:	50400005 */ 	beqzl	$v0,.L0f04de48
-/*  f04de34:	8ce2042c */ 	lw	$v0,0x42c($a3)
-/*  f04de38:	a4460062 */ 	sh	$a2,0x62($v0)
-/*  f04de3c:	1000000c */ 	beqz	$zero,.L0f04de70
-/*  f04de40:	8ce30438 */ 	lw	$v1,0x438($a3)
-/*  f04de44:	8ce2042c */ 	lw	$v0,0x42c($a3)
-.L0f04de48:
-/*  f04de48:	50400005 */ 	beqzl	$v0,.L0f04de60
-/*  f04de4c:	8ce20430 */ 	lw	$v0,0x430($a3)
-/*  f04de50:	a4460062 */ 	sh	$a2,0x62($v0)
-/*  f04de54:	10000006 */ 	beqz	$zero,.L0f04de70
-/*  f04de58:	8ce30438 */ 	lw	$v1,0x438($a3)
-/*  f04de5c:	8ce20430 */ 	lw	$v0,0x430($a3)
-.L0f04de60:
-/*  f04de60:	50400004 */ 	beqzl	$v0,.L0f04de74
-/*  f04de64:	8fbf0014 */ 	lw	$ra,0x14($sp)
-/*  f04de68:	a4460062 */ 	sh	$a2,0x62($v0)
-/*  f04de6c:	8ce30438 */ 	lw	$v1,0x438($a3)
-.L0f04de70:
-/*  f04de70:	8fbf0014 */ 	lw	$ra,0x14($sp)
-.L0f04de74:
-/*  f04de74:	24690005 */ 	addiu	$t1,$v1,0x5
-/*  f04de78:	ace90438 */ 	sw	$t1,0x438($a3)
-/*  f04de7c:	27bd0020 */ 	addiu	$sp,$sp,0x20
-/*  f04de80:	03e00008 */ 	jr	$ra
-/*  f04de84:	00001025 */ 	or	$v0,$zero,$zero
-);
+bool aiSetReturnList(void)
+{
+	u8 *cmd = g_Vars.ailist + g_Vars.aioffset;
+	u16 ailistid = cmd[4] | (cmd[3] << 8);
+	struct chrdata *chr;
+
+	if (g_Vars.chrdata) {
+		if (cmd[2] == CHR_SELF) {
+			g_Vars.chrdata->aireturnlist = ailistid;
+		} else {
+			chr = chrFindById(g_Vars.chrdata, cmd[2]);
+
+			if (chr) {
+				chr->aireturnlist = ailistid;
+			}
+		}
+	} else if (g_Vars.objdata) {
+		g_Vars.objdata->aireturnlist = ailistid;
+	} else if (g_Vars.aicdata) {
+		g_Vars.aicdata->aireturnlist = ailistid;
+	} else if (g_Vars.aiddata) {
+		g_Vars.aiddata->aireturnlist = ailistid;
+	}
+
+	g_Vars.aioffset += 5;
+
+	return false;
+}
 
 /**
  * @cmd 0007
