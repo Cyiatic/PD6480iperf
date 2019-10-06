@@ -88067,28 +88067,19 @@ bool aiSetPunchDodgeList(void)
 /**
  * @cmd 01c2
  */
-GLOBAL_ASM(
-glabel ai01c2
-/*  f04df1c:	3c06800a */ 	lui	$a2,0x800a
-/*  f04df20:	24c69fc0 */ 	addiu	$a2,$a2,-24640
-/*  f04df24:	8cc30438 */ 	lw	$v1,0x438($a2)
-/*  f04df28:	8cce0434 */ 	lw	$t6,0x434($a2)
-/*  f04df2c:	8cc50424 */ 	lw	$a1,0x424($a2)
-/*  f04df30:	01c31021 */ 	addu	$v0,$t6,$v1
-/*  f04df34:	904f0002 */ 	lbu	$t7,0x2($v0)
-/*  f04df38:	90590003 */ 	lbu	$t9,0x3($v0)
-/*  f04df3c:	00001025 */ 	or	$v0,$zero,$zero
-/*  f04df40:	000fc200 */ 	sll	$t8,$t7,0x8
-/*  f04df44:	03192025 */ 	or	$a0,$t8,$t9
-/*  f04df48:	10a00003 */ 	beqz	$a1,.L0f04df58
-/*  f04df4c:	3088ffff */ 	andi	$t0,$a0,0xffff
-/*  f04df50:	a4a80356 */ 	sh	$t0,0x356($a1)
-/*  f04df54:	8cc30438 */ 	lw	$v1,0x438($a2)
-.L0f04df58:
-/*  f04df58:	24690004 */ 	addiu	$t1,$v1,0x4
-/*  f04df5c:	03e00008 */ 	jr	$ra
-/*  f04df60:	acc90438 */ 	sw	$t1,0x438($a2)
-);
+bool aiSetShootingAtMeList(void)
+{
+	u8 *cmd = g_Vars.ailist + g_Vars.aioffset;
+	u16 ailistid = cmd[3] | (cmd[2] << 8);
+
+	if (g_Vars.chrdata) {
+		g_Vars.chrdata->aishootingatmelist = ailistid;
+	}
+
+	g_Vars.aioffset += 4;
+
+	return false;
+}
 
 /**
  * @cmd 01c3
