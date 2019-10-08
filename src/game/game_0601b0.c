@@ -3,6 +3,7 @@
 #include "gvars/gvars.h"
 #include "game/game_0601b0.h"
 #include "library/library.h"
+#include "setup/setup_000000.h"
 
 GLOBAL_ASM(
 glabel func0f0601b0
@@ -27595,7 +27596,7 @@ glabel func0f0782ac
 /*  f0786c0:	5420000f */ 	bnezl	$at,.L0f078700
 /*  f0786c4:	c46e00a4 */ 	lwc1	$f14,0xa4($v1)
 /*  f0786c8:	afa3003c */ 	sw	$v1,0x3c($sp)
-/*  f0786cc:	0fc240ec */ 	jal	func0f0903b0
+/*  f0786cc:	0fc240ec */ 	jal	alarmActivate
 /*  f0786d0:	e7b20034 */ 	swc1	$f18,0x34($sp)
 /*  f0786d4:	8fa3003c */ 	lw	$v1,0x3c($sp)
 /*  f0786d8:	3c09800a */ 	lui	$t1,0x800a
@@ -44037,7 +44038,7 @@ glabel func0f086f40
 /*  f0871f8:	10000064 */ 	beqz	$zero,.L0f08738c
 /*  f0871fc:	00000000 */ 	sll	$zero,$zero,0x0
 .L0f087200:
-/*  f087200:	0fc240ec */ 	jal	func0f0903b0
+/*  f087200:	0fc240ec */ 	jal	alarmActivate
 /*  f087204:	00000000 */ 	sll	$zero,$zero,0x0
 /*  f087208:	10000060 */ 	beqz	$zero,.L0f08738c
 /*  f08720c:	00000000 */ 	sll	$zero,$zero,0x0
@@ -54534,19 +54535,12 @@ glabel func0f09018c
 /*  f0903ac:	00001025 */ 	or	$v0,$zero,$zero
 );
 
-GLOBAL_ASM(
-glabel func0f0903b0
-/*  f0903b0:	3c028007 */ 	lui	$v0,0x8007
-/*  f0903b4:	244298d4 */ 	addiu	$v0,$v0,-26412
-/*  f0903b8:	8c4e0000 */ 	lw	$t6,0x0($v0)
-/*  f0903bc:	240f0001 */ 	addiu	$t7,$zero,0x1
-/*  f0903c0:	1dc00002 */ 	bgtz	$t6,.L0f0903cc
-/*  f0903c4:	00000000 */ 	sll	$zero,$zero,0x0
-/*  f0903c8:	ac4f0000 */ 	sw	$t7,0x0($v0)
-.L0f0903cc:
-/*  f0903cc:	03e00008 */ 	jr	$ra
-/*  f0903d0:	00000000 */ 	sll	$zero,$zero,0x0
-);
+void alarmActivate(void)
+{
+	if (g_AlarmActive < 1) {
+		g_AlarmActive = 1;
+	}
+}
 
 GLOBAL_ASM(
 glabel func0f0903d4
