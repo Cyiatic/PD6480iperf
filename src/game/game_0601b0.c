@@ -5,6 +5,7 @@
 #include "game/game_0601b0.h"
 #include "library/library.h"
 #include "setup/setup_000000.h"
+#include "setup/setup_020df0.h"
 
 GLOBAL_ASM(
 glabel func0f0601b0
@@ -60937,7 +60938,7 @@ glabel func0f095b64
 .L0f095b88:
 /*  f095b88:	0fc25594 */ 	jal	func0f095650
 /*  f095b8c:	02002025 */ 	or	$a0,$s0,$zero
-/*  f095b90:	0fc5b367 */ 	jal	func0f16cd9c
+/*  f095b90:	0fc5b367 */ 	jal	getDifficulty
 /*  f095b94:	00408825 */ 	or	$s1,$v0,$zero
 /*  f095b98:	240e0001 */ 	addiu	$t6,$zero,0x1
 /*  f095b9c:	004e7804 */ 	sllv	$t7,$t6,$v0
@@ -61131,7 +61132,7 @@ glabel func0f095d64
 /*  f095e24:	00000000 */ 	sll	$zero,$zero,0x0
 /*  f095e28:	0fc25594 */ 	jal	func0f095650
 /*  f095e2c:	ae820000 */ 	sw	$v0,0x0($s4)
-/*  f095e30:	0fc5b367 */ 	jal	func0f16cd9c
+/*  f095e30:	0fc5b367 */ 	jal	getDifficulty
 /*  f095e34:	00408025 */ 	or	$s0,$v0,$zero
 /*  f095e38:	240c0001 */ 	addiu	$t4,$zero,0x1
 /*  f095e3c:	004c6804 */ 	sllv	$t5,$t4,$v0
@@ -61184,7 +61185,7 @@ glabel func0f095d64
 .L0f095ef0:
 /*  f095ef0:	0fc25594 */ 	jal	func0f095650
 /*  f095ef4:	02602025 */ 	or	$a0,$s3,$zero
-/*  f095ef8:	0fc5b367 */ 	jal	func0f16cd9c
+/*  f095ef8:	0fc5b367 */ 	jal	getDifficulty
 /*  f095efc:	00408025 */ 	or	$s0,$v0,$zero
 /*  f095f00:	240f0001 */ 	addiu	$t7,$zero,0x1
 /*  f095f04:	004fc804 */ 	sllv	$t9,$t7,$v0
@@ -100459,7 +100460,7 @@ glabel func0f0b872c
 /*  f0b88e8:	8c6b0284 */ 	lw	$t3,0x284($v1)
 /*  f0b88ec:	afa50018 */ 	sw	$a1,0x18($sp)
 /*  f0b88f0:	afa70024 */ 	sw	$a3,0x24($sp)
-/*  f0b88f4:	0fc5b367 */ 	jal	func0f16cd9c
+/*  f0b88f4:	0fc5b367 */ 	jal	getDifficulty
 /*  f0b88f8:	afa8001c */ 	sw	$t0,0x1c($sp)
 /*  f0b88fc:	3c03800a */ 	lui	$v1,0x800a
 /*  f0b8900:	28410002 */ 	slti	$at,$v0,0x2
@@ -155648,7 +155649,7 @@ glabel func0f0ea290
 /*  f0ea2e4:	968e0002 */ 	lhu	$t6,0x2($s4)
 /*  f0ea2e8:	51c0002b */ 	beqzl	$t6,.L0f0ea398
 /*  f0ea2ec:	26730001 */ 	addiu	$s3,$s3,0x1
-/*  f0ea2f0:	0fc5b367 */ 	jal	func0f16cd9c
+/*  f0ea2f0:	0fc5b367 */ 	jal	getDifficulty
 /*  f0ea2f4:	00000000 */ 	sll	$zero,$zero,0x0
 /*  f0ea2f8:	9699000e */ 	lhu	$t9,0xe($s4)
 /*  f0ea2fc:	240f0001 */ 	addiu	$t7,$zero,0x1
@@ -164047,7 +164048,7 @@ glabel func0f0f1618
 /*  f0f1c08:	11a0000d */ 	beqz	$t5,.L0f0f1c40
 /*  f0f1c0c:	00000000 */ 	sll	$zero,$zero,0x0
 /*  f0f1c10:	afa30034 */ 	sw	$v1,0x34($sp)
-/*  f0f1c14:	0fc5b367 */ 	jal	func0f16cd9c
+/*  f0f1c14:	0fc5b367 */ 	jal	getDifficulty
 /*  f0f1c18:	afa40038 */ 	sw	$a0,0x38($sp)
 /*  f0f1c1c:	8fa30034 */ 	lw	$v1,0x34($sp)
 /*  f0f1c20:	240e0001 */ 	addiu	$t6,$zero,0x1
@@ -186995,7 +186996,7 @@ glabel func0f105e80
 /*  f105f14:	24010034 */ 	addiu	$at,$zero,0x34
 /*  f105f18:	15e10039 */ 	bne	$t7,$at,.L0f106000
 /*  f105f1c:	00000000 */ 	sll	$zero,$zero,0x0
-/*  f105f20:	0fc5b367 */ 	jal	func0f16cd9c
+/*  f105f20:	0fc5b367 */ 	jal	getDifficulty
 /*  f105f24:	afa5004c */ 	sw	$a1,0x4c($sp)
 /*  f105f28:	28410002 */ 	slti	$at,$v0,0x2
 /*  f105f2c:	14200034 */ 	bnez	$at,.L0f106000
@@ -187349,13 +187350,13 @@ glabel menudialog001063e4
 /*  f106408:	afa60030 */ 	sw	$a2,0x30($sp)
 /*  f10640c:	3c10800a */ 	lui	$s0,0x800a
 /*  f106410:	8e10d0b4 */ 	lw	$s0,-0x2f4c($s0)
-/*  f106414:	0fc5b367 */ 	jal	func0f16cd9c
+/*  f106414:	0fc5b367 */ 	jal	getDifficulty
 /*  f106418:	24110001 */ 	addiu	$s1,$zero,0x1
 /*  f10641c:	14400002 */ 	bnez	$v0,.L0f106428
 /*  f106420:	00000000 */ 	sll	$zero,$zero,0x0
 /*  f106424:	24110003 */ 	addiu	$s1,$zero,0x3
 .L0f106428:
-/*  f106428:	0fc5b367 */ 	jal	func0f16cd9c
+/*  f106428:	0fc5b367 */ 	jal	getDifficulty
 /*  f10642c:	00000000 */ 	sll	$zero,$zero,0x0
 /*  f106430:	24010001 */ 	addiu	$at,$zero,0x1
 /*  f106434:	14410002 */ 	bne	$v0,$at,.L0f106440
@@ -302781,12 +302782,10 @@ glabel func0f16cd90
 /*  f16cd98:	8c424014 */ 	lw	$v0,0x4014($v0)
 );
 
-GLOBAL_ASM(
-glabel func0f16cd9c
-/*  f16cd9c:	3c028008 */ 	lui	$v0,0x8008
-/*  f16cda0:	03e00008 */ 	jr	$ra
-/*  f16cda4:	8c424020 */ 	lw	$v0,0x4020($v0)
-);
+u32 getDifficulty(void)
+{
+	return g_Difficulty;
+}
 
 GLOBAL_ASM(
 glabel func0f16cda8
