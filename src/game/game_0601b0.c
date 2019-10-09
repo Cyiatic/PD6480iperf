@@ -44035,7 +44035,7 @@ glabel func0f086f40
 /*  f0871e4:	00000000 */ 	sll	$zero,$zero,0x0
 /*  f0871e8:	10400005 */ 	beqz	$v0,.L0f087200
 /*  f0871ec:	00000000 */ 	sll	$zero,$zero,0x0
-/*  f0871f0:	0fc24105 */ 	jal	func0f090414
+/*  f0871f0:	0fc24105 */ 	jal	alarmDeactivate
 /*  f0871f4:	00000000 */ 	sll	$zero,$zero,0x0
 /*  f0871f8:	10000064 */ 	beqz	$zero,.L0f08738c
 /*  f0871fc:	00000000 */ 	sll	$zero,$zero,0x0
@@ -54566,18 +54566,11 @@ glabel func0f0903d4
 /*  f090410:	00000000 */ 	sll	$zero,$zero,0x0
 );
 
-GLOBAL_ASM(
-glabel func0f090414
-/*  f090414:	27bdffe8 */ 	addiu	$sp,$sp,-24
-/*  f090418:	afbf0014 */ 	sw	$ra,0x14($sp)
-/*  f09041c:	3c018007 */ 	lui	$at,0x8007
-/*  f090420:	0fc240f5 */ 	jal	func0f0903d4
-/*  f090424:	ac2098d4 */ 	sw	$zero,-0x672c($at)
-/*  f090428:	8fbf0014 */ 	lw	$ra,0x14($sp)
-/*  f09042c:	27bd0018 */ 	addiu	$sp,$sp,0x18
-/*  f090430:	03e00008 */ 	jr	$ra
-/*  f090434:	00000000 */ 	sll	$zero,$zero,0x0
-);
+void alarmDeactivate(void)
+{
+	g_AlarmActive = 0;
+	func0f0903d4();
+}
 
 GLOBAL_ASM(
 glabel func0f090438
@@ -55434,7 +55427,7 @@ glabel func0f090db4
 /*  f090ff4:	14410003 */ 	bne	$v0,$at,.L0f091004
 /*  f090ff8:	00000000 */ 	sll	$zero,$zero,0x0
 .L0f090ffc:
-/*  f090ffc:	0fc24105 */ 	jal	func0f090414
+/*  f090ffc:	0fc24105 */ 	jal	alarmDeactivate
 /*  f091000:	00000000 */ 	sll	$zero,$zero,0x0
 .L0f091004:
 /*  f091004:	0fc24153 */ 	jal	func0f09054c
