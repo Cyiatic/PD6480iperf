@@ -60434,24 +60434,16 @@ glabel func0f0953cc
 /*  f095524:	00000000 */ 	sll	$zero,$zero,0x0
 );
 
-GLOBAL_ASM(
-glabel func0f095528
-/*  f095528:	0480000b */ 	bltz	$a0,.L0f095558
-/*  f09552c:	00001825 */ 	or	$v1,$zero,$zero
-/*  f095530:	3c0e800a */ 	lui	$t6,0x800a
-/*  f095534:	8dced0c4 */ 	lw	$t6,-0x2f3c($t6)
-/*  f095538:	3c0f800a */ 	lui	$t7,0x800a
-/*  f09553c:	008e082a */ 	slt	$at,$a0,$t6
-/*  f095540:	10200005 */ 	beqz	$at,.L0f095558
-/*  f095544:	00000000 */ 	sll	$zero,$zero,0x0
-/*  f095548:	8defd0c8 */ 	lw	$t7,-0x2f38($t7)
-/*  f09554c:	0004c080 */ 	sll	$t8,$a0,0x2
-/*  f095550:	01f8c821 */ 	addu	$t9,$t7,$t8
-/*  f095554:	8f230000 */ 	lw	$v1,0x0($t9)
-.L0f095558:
-/*  f095558:	03e00008 */ 	jr	$ra
-/*  f09555c:	00601025 */ 	or	$v0,$v1,$zero
-);
+struct tag *tagFindById(s32 tag_id)
+{
+	struct tag *tag = NULL;
+
+	if (tag_id >= 0 && tag_id < g_NumTags) {
+		tag = g_TagPtrs[tag_id];
+	}
+
+	return tag;
+}
 
 GLOBAL_ASM(
 glabel func0f095560
@@ -60485,7 +60477,7 @@ GLOBAL_ASM(
 glabel func0f0955b0
 /*  f0955b0:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f0955b4:	afbf0014 */ 	sw	$ra,0x14($sp)
-/*  f0955b8:	0fc2554a */ 	jal	func0f095528
+/*  f0955b8:	0fc2554a */ 	jal	tagFindById
 /*  f0955bc:	00000000 */ 	sll	$zero,$zero,0x0
 /*  f0955c0:	10400002 */ 	beqz	$v0,.L0f0955cc
 /*  f0955c4:	00001825 */ 	or	$v1,$zero,$zero
