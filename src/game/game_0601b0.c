@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include "constants.h"
 #include "gvars/gvars.h"
+#include "game/chr/chrai.h"
 #include "game/game_0601b0.h"
 #include "library/library.h"
 #include "setup/setup_000000.h"
@@ -32142,7 +32143,7 @@ glabel func0f07c7b0
 /*  f07c7cc:	02002025 */ 	or	$a0,$s0,$zero
 /*  f07c7d0:	e7a4003c */ 	swc1	$f4,0x3c($sp)
 /*  f07c7d4:	c6060080 */ 	lwc1	$f6,0x80($s0)
-/*  f07c7d8:	0fc135ad */ 	jal	func0f04d6b4
+/*  f07c7d8:	0fc135ad */ 	jal	chraiExecute
 /*  f07c7dc:	e7a60038 */ 	swc1	$f6,0x38($sp)
 /*  f07c7e0:	3c18800a */ 	lui	$t8,0x800a
 /*  f07c7e4:	8f189ff8 */ 	lw	$t8,-0x6008($t8)
@@ -32179,7 +32180,7 @@ glabel func0f07c830
 /*  f07c850:	02002025 */ 	or	$a0,$s0,$zero
 /*  f07c854:	e7a400a4 */ 	swc1	$f4,0xa4($sp)
 /*  f07c858:	c6060080 */ 	lwc1	$f6,0x80($s0)
-/*  f07c85c:	0fc135ad */ 	jal	func0f04d6b4
+/*  f07c85c:	0fc135ad */ 	jal	chraiExecute
 /*  f07c860:	e7a600a0 */ 	swc1	$f6,0xa0($sp)
 /*  f07c864:	3c03800a */ 	lui	$v1,0x800a
 /*  f07c868:	24639fc0 */ 	addiu	$v1,$v1,-24640
@@ -32371,7 +32372,7 @@ glabel func0f07cacc
 /*  f07cb1c:	afa5005c */ 	sw	$a1,0x5c($sp)
 /*  f07cb20:	e7a00158 */ 	swc1	$f0,0x158($sp)
 /*  f07cb24:	02602025 */ 	or	$a0,$s3,$zero
-/*  f07cb28:	0fc135ad */ 	jal	func0f04d6b4
+/*  f07cb28:	0fc135ad */ 	jal	chraiExecute
 /*  f07cb2c:	24050001 */ 	addiu	$a1,$zero,0x1
 /*  f07cb30:	3c18800a */ 	lui	$t8,0x800a
 /*  f07cb34:	8f189ff8 */ 	lw	$t8,-0x6008($t8)
@@ -33027,7 +33028,7 @@ glabel func0f07d1e4
 /*  f07d4b4:	100002ab */ 	beqz	$zero,.L0f07df64
 /*  f07d4b8:	8fbf004c */ 	lw	$ra,0x4c($sp)
 .L0f07d4bc:
-/*  f07d4bc:	0fc135ad */ 	jal	func0f04d6b4
+/*  f07d4bc:	0fc135ad */ 	jal	chraiExecute
 /*  f07d4c0:	afa201f8 */ 	sw	$v0,0x1f8($sp)
 /*  f07d4c4:	afa00274 */ 	sw	$zero,0x274($sp)
 /*  f07d4c8:	8e020088 */ 	lw	$v0,0x88($s0)
