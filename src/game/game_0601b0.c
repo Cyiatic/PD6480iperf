@@ -54888,7 +54888,7 @@ glabel func0f090864
 );
 
 GLOBAL_ASM(
-glabel func0f090870
+glabel countdownTimerSetRunning
 /*  f090870:	3c018007 */ 	lui	$at,0x8007
 /*  f090874:	03e00008 */ 	jr	$ra
 /*  f090878:	ac249908 */ 	sw	$a0,-0x66f8($at)
