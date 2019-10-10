@@ -54845,7 +54845,7 @@ glabel func0f09054c
 );
 
 GLOBAL_ASM(
-glabel func0f090808
+glabel countdownTimerSetVisible
 /*  f090808:	10a00008 */ 	beqz	$a1,.L0f09082c
 /*  f09080c:	3c028007 */ 	lui	$v0,0x8007
 /*  f090810:	3c028007 */ 	lui	$v0,0x8007
