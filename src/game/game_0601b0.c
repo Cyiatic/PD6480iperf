@@ -188076,7 +188076,7 @@ glabel func0f106d40
 .L0f106e34:
 /*  f106e34:	11400006 */ 	beqz	$t2,.L0f106e50
 /*  f106e38:	24040023 */ 	addiu	$a0,$zero,0x23
-/*  f106e3c:	0fc43c63 */ 	jal	func0f10f18c
+/*  f106e3c:	0fc43c63 */ 	jal	eepromGet
 /*  f106e40:	afa50020 */ 	sw	$a1,0x20($sp)
 /*  f106e44:	10400002 */ 	beqz	$v0,.L0f106e50
 /*  f106e48:	8fa50020 */ 	lw	$a1,0x20($sp)
@@ -197552,17 +197552,13 @@ glabel func0f10f164
 /*  f10f188:	00000000 */ 	sll	$zero,$zero,0x0
 );
 
+u32 eepromGet(u32 mask)
+{
+	return func0f11e584(mask, &g_EepromFlags);
+}
+
 GLOBAL_ASM(
-glabel func0f10f18c
-/*  f10f18c:	27bdffe8 */ 	addiu	$sp,$sp,-24
-/*  f10f190:	afbf0014 */ 	sw	$ra,0x14($sp)
-/*  f10f194:	3c05800a */ 	lui	$a1,0x800a
-/*  f10f198:	0fc47961 */ 	jal	func0f11e584
-/*  f10f19c:	24a52214 */ 	addiu	$a1,$a1,0x2214
-/*  f10f1a0:	8fbf0014 */ 	lw	$ra,0x14($sp)
-/*  f10f1a4:	27bd0018 */ 	addiu	$sp,$sp,0x18
-/*  f10f1a8:	03e00008 */ 	jr	$ra
-/*  f10f1ac:	00000000 */ 	sll	$zero,$zero,0x0
+glabel func0f10f1b0
 /*  f10f1b0:	27bdffd8 */ 	addiu	$sp,$sp,-40
 /*  f10f1b4:	afb1001c */ 	sw	$s1,0x1c($sp)
 /*  f10f1b8:	afb20020 */ 	sw	$s2,0x20($sp)
@@ -358095,7 +358091,7 @@ GLOBAL_ASM(
 glabel func0f19c990
 /*  f19c990:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f19c994:	afbf0014 */ 	sw	$ra,0x14($sp)
-/*  f19c998:	0fc43c63 */ 	jal	func0f10f18c
+/*  f19c998:	0fc43c63 */ 	jal	eepromGet
 /*  f19c99c:	24040024 */ 	addiu	$a0,$zero,0x24
 /*  f19c9a0:	8fbf0014 */ 	lw	$ra,0x14($sp)
 /*  f19c9a4:	27bd0018 */ 	addiu	$sp,$sp,0x18
@@ -364110,7 +364106,7 @@ glabel func0f1a1c98
 .L0f1a1cdc:
 /*  f1a1cdc:	04a00005 */ 	bltz	$a1,.L0f1a1cf4
 /*  f1a1ce0:	00454021 */ 	addu	$t0,$v0,$a1
-/*  f1a1ce4:	0fc43c63 */ 	jal	func0f10f18c
+/*  f1a1ce4:	0fc43c63 */ 	jal	eepromGet
 /*  f1a1ce8:	91040000 */ 	lbu	$a0,0x0($t0)
 /*  f1a1cec:	50400004 */ 	beqzl	$v0,.L0f1a1d00
 /*  f1a1cf0:	00001025 */ 	or	$v0,$zero,$zero
