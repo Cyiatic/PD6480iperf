@@ -188944,7 +188944,7 @@ glabel menudialog00107990
 /*  f1079b8:	00000000 */ 	sll	$zero,$zero,0x0
 /*  f1079bc:	10400003 */ 	beqz	$v0,.L0f1079cc
 /*  f1079c0:	00000000 */ 	sll	$zero,$zero,0x0
-/*  f1079c4:	0fc43c4f */ 	jal	func0f10f13c
+/*  f1079c4:	0fc43c4f */ 	jal	eepromSet
 /*  f1079c8:	24040023 */ 	addiu	$a0,$zero,0x23
 .L0f1079cc:
 /*  f1079cc:	3c067000 */ 	lui	$a2,0x7000
@@ -188985,7 +188985,7 @@ glabel menudialog00107990
 /*  f107a48:	00000000 */ 	sll	$zero,$zero,0x0
 /*  f107a4c:	10400003 */ 	beqz	$v0,.L0f107a5c
 /*  f107a50:	00000000 */ 	sll	$zero,$zero,0x0
-/*  f107a54:	0fc43c4f */ 	jal	func0f10f13c
+/*  f107a54:	0fc43c4f */ 	jal	eepromSet
 /*  f107a58:	24040023 */ 	addiu	$a0,$zero,0x23
 .L0f107a5c:
 /*  f107a5c:	0fc52958 */ 	jal	func0f14a560
@@ -197524,28 +197524,19 @@ glabel func0f10ef10
 /*  f10f138:	24422214 */ 	addiu	$v0,$v0,0x2214
 );
 
-GLOBAL_ASM(
-glabel func0f10f13c
-/*  f10f13c:	27bdffe8 */ 	addiu	$sp,$sp,-24
-/*  f10f140:	afbf0014 */ 	sw	$ra,0x14($sp)
-/*  f10f144:	3c05800a */ 	lui	$a1,0x800a
-/*  f10f148:	24a52214 */ 	addiu	$a1,$a1,0x2214
-/*  f10f14c:	0fc4794c */ 	jal	func0f11e530
-/*  f10f150:	24060001 */ 	addiu	$a2,$zero,0x1
-/*  f10f154:	8fbf0014 */ 	lw	$ra,0x14($sp)
-/*  f10f158:	27bd0018 */ 	addiu	$sp,$sp,0x18
-/*  f10f15c:	03e00008 */ 	jr	$ra
-/*  f10f160:	00000000 */ 	sll	$zero,$zero,0x0
-);
-
-void eepromUnset(u32 mask)
+void eepromSet(u32 value)
 {
-	func0f11e530(mask, &g_EepromFlags, false);
+	func0f11e530(value, &g_EepromFlags, true);
 }
 
-u32 eepromGet(u32 mask)
+void eepromUnset(u32 value)
 {
-	return func0f11e584(mask, &g_EepromFlags);
+	func0f11e530(value, &g_EepromFlags, false);
+}
+
+u32 eepromGet(u32 value)
+{
+	return func0f11e584(value, &g_EepromFlags);
 }
 
 GLOBAL_ASM(
