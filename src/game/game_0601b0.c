@@ -197538,19 +197538,10 @@ glabel func0f10f13c
 /*  f10f160:	00000000 */ 	sll	$zero,$zero,0x0
 );
 
-GLOBAL_ASM(
-glabel func0f10f164
-/*  f10f164:	27bdffe8 */ 	addiu	$sp,$sp,-24
-/*  f10f168:	afbf0014 */ 	sw	$ra,0x14($sp)
-/*  f10f16c:	3c05800a */ 	lui	$a1,0x800a
-/*  f10f170:	24a52214 */ 	addiu	$a1,$a1,0x2214
-/*  f10f174:	0fc4794c */ 	jal	func0f11e530
-/*  f10f178:	00003025 */ 	or	$a2,$zero,$zero
-/*  f10f17c:	8fbf0014 */ 	lw	$ra,0x14($sp)
-/*  f10f180:	27bd0018 */ 	addiu	$sp,$sp,0x18
-/*  f10f184:	03e00008 */ 	jr	$ra
-/*  f10f188:	00000000 */ 	sll	$zero,$zero,0x0
-);
+void eepromUnset(u32 mask)
+{
+	func0f11e530(mask, &g_EepromFlags, false);
+}
 
 u32 eepromGet(u32 mask)
 {
