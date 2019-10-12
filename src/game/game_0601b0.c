@@ -58910,7 +58910,7 @@ glabel func0f0939f8
 );
 
 GLOBAL_ASM(
-glabel func0f094040
+glabel audioPlayFromWorldPosition
 /*  f094040:	27bdffa0 */ 	addiu	$sp,$sp,-96
 /*  f094044:	87ae0072 */ 	lh	$t6,0x72($sp)
 /*  f094048:	afb00048 */ 	sw	$s0,0x48($sp)
