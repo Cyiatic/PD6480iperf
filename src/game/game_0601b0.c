@@ -302738,7 +302738,7 @@ glabel func0f16cd90
 /*  f16cd98:	8c424014 */ 	lw	$v0,0x4014($v0)
 );
 
-u32 getDifficulty(void)
+s32 getDifficulty(void)
 {
 	return g_Difficulty;
 }
