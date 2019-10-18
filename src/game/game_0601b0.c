@@ -2,10 +2,12 @@
 #include "constants.h"
 #include "gvars/gvars.h"
 #include "game/chr/chrai.h"
+#include "game/game_000000.h"
 #include "game/game_0601b0.h"
 #include "library/library.h"
 #include "setup/setup_000000.h"
 #include "setup/setup_020df0.h"
+#include "types.h"
 
 GLOBAL_ASM(
 glabel func0f0601b0
@@ -370599,12710 +370601,11579 @@ glabel func0f1a7844
 /*  f1a78bc:	00000000 */ 	sll	$zero,$zero,0x0
 );
 
-u32 var001a78c0 = 0x40c907a9;
-u32 var001a78c4 = 0x38c907a9;
-u32 var001a78c8 = 0x3dccccce;
-u32 var001a78cc = 0x00000000;
-u32 var001a78d0 = 0x3dcccccd;
-u32 var001a78d4 = 0x3e4ccccd;
-u32 var001a78d8 = 0x00000000;
-u32 var001a78dc = 0x00000000;
+const u32 var001a93e0[] = {
+	0x3f4ccccd,
+	0x40c907a9,
+	0x3fc907a9,
+	0x4096c5bf,
+	0x404907a9,
+	0x3fc907a9,
+	0x4096c5bf,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x3f4907a9,
+	0xc7c35000,
+	0x40c907a9,
+	0xc7c35000,
+	0xc7c35000,
+	0x3f4907a9,
+	0x411ffffe,
+	0x40c907a9,
+	0x40c907a9,
+	0x3c8ef461,
+	0x40c907a9,
+	0x40490fdb,
+	0x439d8000,
+	0x40490fdb,
+	0x3fc90fdb,
+	0x3fc90fdb,
+	0x3f19999a,
+	0x00000000,
+};
 
-char var001a78e0[] = "LIGHTS : Hit occured on light %d in room %d\n";
-char var001a7910[] = "L2(%d) -> ";
-char var001a791c[] = "L2 -> BUILD LIGHTS TRANSFER TABLE - Starting\n";
-char var001a794c[] = "L2(%d) -> ";
-char var001a7958[] = "L2_BuildTransferTables -> Found %d portals\n";
-char var001a7984[] = "L2(%d) -> ";
-char var001a7990[] = "L2_BuildTransferTables -> Found %d rooms\n";
-char var001a79bc[] = "L2(%d) -> ";
-char var001a79c8[] = "L2_BuildTransferTables -> Alloc %u bytes of free memory\n";
-char var001a7a04[] = "L2(%d) -> ";
-char var001a7a10[] = "L2_BuildTransferTables -> Alloc %u bytes for scratch\n";
-char var001a7a48[] = "L2(%d) -> ";
-char var001a7a54[] = "L2 -> Building room based light transmission table\n";
-char var001a7a88[] = "L2(%d) -> ";
-char var001a7a94[] = "L2 -> Finished\n";
-char var001a7aa4[] = "L2(%d) -> ";
-char var001a7ab0[] = "L2 -> Generating room parameters from BG data\n";
-char var001a7ae0[] = "L2(%d) -> ";
-char var001a7aec[] = "L2 -> Light2_ProcessBgParams room %d does not have a 3D bounding box => Room Volume is bodged!\n";
-char var001a7b4c[] = "L2(%d) -> ";
-char var001a7b58[] = "%s%sL2 -> Surface area bodged for room %d - using %f\n";
-u32 var001a7b90 = 0x00000000;
-u32 var001a7b94 = 0x00000000;
-char var001a7b98[] = "L2(%d) -> ";
-char var001a7ba4[] = "L2 -> Finished\n";
-char var001a7bb4[] = "dlights.c";
-char var001a7bc0[] = "dlights.c";
-char var001a7bcc[] = "L2 - g_bfGlobalLightRebuild = %d";
-char var001a7bf0[] = "Acoustic Shadowing is %s";
-char var001a7c0c[] = "Enabled";
-char var001a7c14[] = "Disabled";
-char var001a7c20[] = "L2 - Fading Rm%d - Mode=%d%%";
-char var001a7c40[] = "RWI : Re-light all affected char props : g_bfGlobalLightRebuild";
-char var001a7c80[] = "L2 - %d Rooms have been processed";
-char var001a7ca4[] = "L2 - %d Chars need lighting";
-char var001a7cc0[] = "L2(%d) -> ";
-char var001a7ccc[] = "L2 -> Building portal range table (Num Portals = %d)\n";
-char var001a7d04[] = "L2(%d) -> ";
-char var001a7d10[] = "L2 -> Allocated %uK for the compressed acoustic shadow table\n";
-char var001a7d50[] = "L2(%d) -> ";
-char var001a7d5c[] = "L2 -> Finished building portal range table\n";
-u32 var001a7d88 = 0x3b808081;
-u32 var001a7d8c = 0x3f169697;
-u32 var001a7d90 = 0x4b989680;
-u32 var001a7d94 = 0x3dcccccd;
-u32 var001a7d98 = 0x7f002cc0;
-u32 var001a7d9c = 0x7f002cf8;
-u32 var001a7da0 = 0x7f002d9c;
-u32 var001a7da4 = 0x7f002e44;
-u32 var001a7da8 = 0x7f002ee8;
-u32 var001a7dac = 0x3c23d70a;
-u32 var001a7db0 = 0x3c23d70a;
-u32 var001a7db4 = 0x3c23d70a;
-u32 var001a7db8 = 0x3c23d70a;
-u32 var001a7dbc = 0x7f0038e0;
-u32 var001a7dc0 = 0x7f003940;
-u32 var001a7dc4 = 0x7f003a24;
-u32 var001a7dc8 = 0x7f003ad4;
-u32 var001a7dcc = 0x7f003bbc;
-u32 var001a7dd0 = 0x40c90fdb;
-u32 var001a7dd4 = 0x3b808081;
-u32 var001a7dd8 = 0x3b808081;
-u32 var001a7ddc = 0x3b808081;
-u32 var001a7de0 = 0x46fffe00;
-u32 var001a7de4 = 0x46fffe00;
-u32 var001a7de8 = 0x00000000;
-u32 var001a7dec = 0x00000000;
-u32 var001a7df0 = 0x7f006060;
-u32 var001a7df4 = 0x7f006060;
-u32 var001a7df8 = 0x7f006060;
-u32 var001a7dfc = 0x7f006060;
-u32 var001a7e00 = 0x7f006060;
-u32 var001a7e04 = 0x7f006060;
-u32 var001a7e08 = 0x7f006068;
-u32 var001a7e0c = 0x7f006068;
-u32 var001a7e10 = 0x7f006060;
-u32 var001a7e14 = 0x7f006060;
-u32 var001a7e18 = 0x7f006060;
-u32 var001a7e1c = 0x7f006068;
-u32 var001a7e20 = 0x7f006068;
-u32 var001a7e24 = 0x7f006068;
-u32 var001a7e28 = 0x7f006068;
-u32 var001a7e2c = 0x7f006068;
-u32 var001a7e30 = 0x7f006068;
-u32 var001a7e34 = 0x7f006068;
-u32 var001a7e38 = 0x7f006068;
-u32 var001a7e3c = 0x7f006068;
-u32 var001a7e40 = 0x7f006068;
-u32 var001a7e44 = 0x7f006068;
-u32 var001a7e48 = 0x7f006068;
-u32 var001a7e4c = 0x7f006068;
-u32 var001a7e50 = 0x7f006068;
-u32 var001a7e54 = 0x7f006060;
-u32 var001a7e58 = 0x7f006060;
-u32 var001a7e5c = 0x7f006060;
-u32 var001a7e60 = 0x7f006060;
-u32 var001a7e64 = 0x7f006068;
-u32 var001a7e68 = 0x7f006060;
-u32 var001a7e6c = 0x4a371b00;
-u32 var001a7e70 = 0x40490fdb;
-u32 var001a7e74 = 0x40490fdb;
-u32 var001a7e78 = 0x00000000;
-u32 var001a7e7c = 0x00000000;
-u32 var001a7e80 = 0x00000092;
-u32 var001a7e84 = 0x00000093;
-u32 var001a7e88 = 0x00000094;
-u32 var001a7e8c = 0x00000095;
-u32 var001a7e90 = 0x00000096;
-u32 var001a7e94 = 0x00000097;
-u32 var001a7e98 = 0x00000098;
-u32 var001a7e9c = 0x00000099;
-u32 var001a7ea0 = 0x0000009a;
-u32 var001a7ea4 = 0x00000091;
-u32 var001a7ea8 = 0x0000008f;
-u32 var001a7eac = 0x00000090;
-u32 var001a7eb0 = 0x40c90fdb;
-u32 var001a7eb4 = 0x40c90fdb;
-u32 var001a7eb8 = 0x40c90fdb;
-u32 var001a7ebc = 0x40c90fdb;
-u32 var001a7ec0 = 0x40c90fdb;
-u32 var001a7ec4 = 0x40c90fdb;
-u32 var001a7ec8 = 0x40c90fdb;
-u32 var001a7ecc = 0x40c90fdb;
-u32 var001a7ed0 = 0x40c90fdb;
-u32 var001a7ed4 = 0x40c90fdb;
-u32 var001a7ed8 = 0x40c90fdb;
-u32 var001a7edc = 0x40c90fdb;
-u32 var001a7ee0 = 0x40c90fdb;
-u32 var001a7ee4 = 0x40c90fdb;
-u32 var001a7ee8 = 0x40c90fdb;
-u32 var001a7eec = 0x40c90fdb;
-u32 var001a7ef0 = 0x40c90fdb;
-u32 var001a7ef4 = 0x40c90fdb;
-u32 var001a7ef8 = 0x40c90fdb;
-u32 var001a7efc = 0x40c90fdb;
-u32 var001a7f00 = 0x40c90fdb;
-u32 var001a7f04 = 0x40c90fdb;
-u32 var001a7f08 = 0x40c90fdb;
-u32 var001a7f0c = 0x40c90fdb;
-u32 var001a7f10 = 0x40c90fdb;
-u32 var001a7f14 = 0x40c90fdb;
-u32 var001a7f18 = 0x40c90fdb;
-u32 var001a7f1c = 0x40c90fdb;
-u32 var001a7f20 = 0x3c23d70a;
-u32 var001a7f24 = 0x3d565b7b;
-u32 var001a7f28 = 0x3d4ccccd;
-u32 var001a7f2c = 0x3d565b7b;
-u32 var001a7f30 = 0x3ca3d70a;
-u32 var001a7f34 = 0x3ecccccd;
-u32 var001a7f38 = 0x46fffe00;
-u32 var001a7f3c = 0x3ecccccd;
-u32 var001a7f40 = 0x3ecccccd;
-u32 var001a7f44 = 0xc6557000;
-u32 var001a7f48 = 0xc4b82000;
-u32 var001a7f4c = 0x3e4ccccd;
-u32 var001a7f50 = 0x40c907a9;
-u32 var001a7f54 = 0x453b8000;
-u32 var001a7f58 = 0x00000000;
-u32 var001a7f5c = 0x00000000;
-char var001a7f60[] = "-nochr";
-char var001a7f68[] = "-noprop";
-char var001a7f70[] = "-noobj";
-char var001a7f78[] = "-noprop";
-u32 var001a7f80 = 0x358637bd;
-u32 var001a7f84 = 0x7f00d754;
-u32 var001a7f88 = 0x7f00d754;
-u32 var001a7f8c = 0x7f00d754;
-u32 var001a7f90 = 0x7f00d754;
-u32 var001a7f94 = 0x7f00d754;
-u32 var001a7f98 = 0x7f00d754;
-u32 var001a7f9c = 0x7f00d754;
-u32 var001a7fa0 = 0x7f00d754;
-u32 var001a7fa4 = 0x7f00d754;
-u32 var001a7fa8 = 0x7f00d754;
-u32 var001a7fac = 0x7f00d754;
-u32 var001a7fb0 = 0x7f00d754;
-u32 var001a7fb4 = 0x7f00d754;
-u32 var001a7fb8 = 0x7f00d754;
-u32 var001a7fbc = 0x7f00d770;
-u32 var001a7fc0 = 0x7f00d754;
-u32 var001a7fc4 = 0x7f00d754;
-u32 var001a7fc8 = 0x7f00d754;
-u32 var001a7fcc = 0x7f00d754;
-u32 var001a7fd0 = 0x7f00d754;
-u32 var001a7fd4 = 0x7f00d754;
-u32 var001a7fd8 = 0x7f00d754;
-u32 var001a7fdc = 0x7f00d754;
-u32 var001a7fe0 = 0x7f00d754;
-u32 var001a7fe4 = 0x7f00d754;
-u32 var001a7fe8 = 0x7f00d754;
-u32 var001a7fec = 0x7f00d754;
-u32 var001a7ff0 = 0x7f00d7b4;
-u32 var001a7ff4 = 0x7f00d754;
-u32 var001a7ff8 = 0x7f00d754;
-u32 var001a7ffc = 0x7f00d754;
-u32 var001a8000 = 0x7f00d754;
-u32 var001a8004 = 0x7f00d754;
-u32 var001a8008 = 0x7f00d820;
-u32 var001a800c = 0x7f00d820;
-u32 var001a8010 = 0x7f00d820;
-u32 var001a8014 = 0x7f00d820;
-u32 var001a8018 = 0x7f00d820;
-u32 var001a801c = 0x7f00d820;
-u32 var001a8020 = 0x7f00d820;
-u32 var001a8024 = 0x7f00d820;
-u32 var001a8028 = 0x7f00d820;
-u32 var001a802c = 0x7f00d820;
-u32 var001a8030 = 0x7f00d820;
-u32 var001a8034 = 0x7f00d820;
-u32 var001a8038 = 0x7f00d820;
-u32 var001a803c = 0x7f00d820;
-u32 var001a8040 = 0x7f00d820;
-u32 var001a8044 = 0x7f00d820;
-u32 var001a8048 = 0x40c907a9;
-u32 var001a804c = 0x40c907a9;
-u32 var001a8050 = 0x40c907a9;
-u32 var001a8054 = 0xbfc907a9;
-u32 var001a8058 = 0x3ebba0c0;
-u32 var001a805c = 0x3fc907a9;
-u32 var001a8060 = 0x3fc907a9;
-u32 var001a8064 = 0x358637bd;
-u32 var001a8068 = 0x7f00f668;
-u32 var001a806c = 0x7f00f694;
-u32 var001a8070 = 0x7f00fc90;
-u32 var001a8074 = 0x7f00f6e4;
-u32 var001a8078 = 0x7f00fc90;
-u32 var001a807c = 0x7f00f744;
-u32 var001a8080 = 0x7f00fc90;
-u32 var001a8084 = 0x7f00f6b4;
-u32 var001a8088 = 0x7f00f644;
-u32 var001a808c = 0x7f00f7c8;
-u32 var001a8090 = 0x7f00f7f4;
-u32 var001a8094 = 0x7f00f79c;
-u32 var001a8098 = 0x7f00f770;
-u32 var001a809c = 0x7f010290;
-u32 var001a80a0 = 0x7f00fc90;
-u32 var001a80a4 = 0x7f010290;
-u32 var001a80a8 = 0x7f00f714;
-u32 var001a80ac = 0x7f00f610;
-u32 var001a80b0 = 0x7f010290;
-u32 var001a80b4 = 0x7f00fcbc;
-u32 var001a80b8 = 0x7f00f820;
-u32 var001a80bc = 0x7f0100ac;
-u32 var001a80c0 = 0x7f0101d0;
-u32 var001a80c4 = 0x7f010290;
-u32 var001a80c8 = 0x7f010290;
-u32 var001a80cc = 0x7f010290;
-u32 var001a80d0 = 0x7f010290;
-u32 var001a80d4 = 0x7f010290;
-u32 var001a80d8 = 0x7f010290;
-u32 var001a80dc = 0x7f010234;
-u32 var001a80e0 = 0x7f010290;
-u32 var001a80e4 = 0x7f010214;
-u32 var001a80e8 = 0x7f010224;
-u32 var001a80ec = 0x7f010290;
-u32 var001a80f0 = 0x7f01010c;
-u32 var001a80f4 = 0x7f00fc90;
-u32 var001a80f8 = 0x7f0100dc;
-u32 var001a80fc = 0x7f010290;
-u32 var001a8100 = 0x7f00fd94;
-u32 var001a8104 = 0x7f01003c;
-u32 var001a8108 = 0x7f00fc90;
-u32 var001a810c = 0x7f00fb74;
-u32 var001a8110 = 0x7f00fc90;
-u32 var001a8114 = 0x7f010290;
-u32 var001a8118 = 0x7f010290;
-u32 var001a811c = 0x7f010160;
-u32 var001a8120 = 0x7f00f87c;
-u32 var001a8124 = 0x7f00f8dc;
-u32 var001a8128 = 0x7f010290;
-u32 var001a812c = 0x7f010290;
-u32 var001a8130 = 0x7f00faac;
-u32 var001a8134 = 0x7f010290;
-u32 var001a8138 = 0x7f00fa74;
-u32 var001a813c = 0x7f00fb1c;
-u32 var001a8140 = 0x7f00fe3c;
-u32 var001a8144 = 0x7f010244;
-u32 var001a8148 = 0x7f00fef4;
-u32 var001a814c = 0x7f01026c;
-u32 var001a8150 = 0x7f00fbbc;
-u32 var001a8154 = 0x4096c5bf;
-u32 var001a8158 = 0x404907a9;
-u32 var001a815c = 0x3d4ccccd;
-u32 var001a8160 = 0x3f59999a;
-u32 var001a8164 = 0x3e4ccccd;
-u32 var001a8168 = 0x7f010460;
-u32 var001a816c = 0x7f010460;
-u32 var001a8170 = 0x7f010850;
-u32 var001a8174 = 0x7f010850;
-u32 var001a8178 = 0x7f010460;
-u32 var001a817c = 0x7f010460;
-u32 var001a8180 = 0x7f010850;
-u32 var001a8184 = 0x7f010460;
-u32 var001a8188 = 0x7f010850;
-u32 var001a818c = 0x7f010850;
-u32 var001a8190 = 0x7f010850;
-u32 var001a8194 = 0x7f0104cc;
-u32 var001a8198 = 0x7f010460;
-u32 var001a819c = 0x7f010850;
-u32 var001a81a0 = 0x7f010850;
-u32 var001a81a4 = 0x7f010850;
-u32 var001a81a8 = 0x7f010520;
-u32 var001a81ac = 0x7f010460;
-u32 var001a81b0 = 0x7f010460;
-u32 var001a81b4 = 0x7f010850;
-u32 var001a81b8 = 0x7f010850;
-u32 var001a81bc = 0x7f010850;
-u32 var001a81c0 = 0x7f010850;
-u32 var001a81c4 = 0x7f010850;
-u32 var001a81c8 = 0x7f010850;
-u32 var001a81cc = 0x7f010850;
-u32 var001a81d0 = 0x7f010850;
-u32 var001a81d4 = 0x7f010850;
-u32 var001a81d8 = 0x7f010850;
-u32 var001a81dc = 0x7f010850;
-u32 var001a81e0 = 0x7f010850;
-u32 var001a81e4 = 0x7f010850;
-u32 var001a81e8 = 0x7f010850;
-u32 var001a81ec = 0x7f010460;
-u32 var001a81f0 = 0x7f010850;
-u32 var001a81f4 = 0x7f01064c;
-u32 var001a81f8 = 0x7f010850;
-u32 var001a81fc = 0x7f010850;
-u32 var001a8200 = 0x7f010460;
-u32 var001a8204 = 0x7f010460;
-u32 var001a8208 = 0x7f010460;
-u32 var001a820c = 0x7f010588;
-u32 var001a8210 = 0x7f010850;
-u32 var001a8214 = 0x7f010850;
-u32 var001a8218 = 0x7f010460;
-u32 var001a821c = 0x7f010850;
-u32 var001a8220 = 0x7f0106c0;
-u32 var001a8224 = 0x7f010804;
-u32 var001a8228 = 0x00000000;
-u32 var001a822c = 0x00000000;
-u32 var001a8230 = 0x3f666666;
-u32 var001a8234 = 0xc0490fdb;
-u32 var001a8238 = 0x00000000;
-u32 var001a823c = 0x00000000;
-u32 var001a8240 = 0x7f011a44;
-u32 var001a8244 = 0x7f011a90;
-u32 var001a8248 = 0x7f011b38;
-u32 var001a824c = 0x7f011b68;
-u32 var001a8250 = 0x7f011b70;
-u32 var001a8254 = 0x7f011b78;
-u32 var001a8258 = 0x7f011b8c;
-u32 var001a825c = 0x7f011b94;
-u32 var001a8260 = 0x7f011c30;
-u32 var001a8264 = 0x7f011a80;
-u32 var001a8268 = 0x7f011a80;
-u32 var001a826c = 0x7f011a88;
-u32 var001a8270 = 0x40c907a9;
-u32 var001a8274 = 0x40c907a9;
-u32 var001a8278 = 0x40c907a9;
-u32 var001a827c = 0x40c907a9;
-u32 var001a8280 = 0x3dccccce;
-u32 var001a8284 = 0x4164924b;
-u32 var001a8288 = 0x3f6e147b;
-u32 var001a828c = 0x00000000;
-u32 var001a8290 = 0x3e99999a;
-u32 var001a8294 = 0x3ecccccd;
-u32 var001a8298 = 0x00000000;
-u32 var001a829c = 0x00000000;
-u32 var001a82a0 = 0x7f014b38;
-u32 var001a82a4 = 0x7f014b40;
-u32 var001a82a8 = 0x7f014b4c;
-u32 var001a82ac = 0x7f014b58;
-u32 var001a82b0 = 0x7f014b64;
-u32 var001a82b4 = 0x7f014b70;
-u32 var001a82b8 = 0x00000000;
-u32 var001a82bc = 0x00000000;
-u32 var001a82c0 = 0x7f01505c;
-u32 var001a82c4 = 0x7f015068;
-u32 var001a82c8 = 0x7f01505c;
-u32 var001a82cc = 0x7f01505c;
-u32 var001a82d0 = 0x7f01505c;
-u32 var001a82d4 = 0x7f01505c;
-u32 var001a82d8 = 0x7f01505c;
-u32 var001a82dc = 0x7f01505c;
-u32 var001a82e0 = 0x7f015068;
-u32 var001a82e4 = 0x7f01505c;
-u32 var001a82e8 = 0x7f01505c;
-u32 var001a82ec = 0x7f01505c;
-u32 var001a82f0 = 0x7f01505c;
-u32 var001a82f4 = 0x7f015068;
-u32 var001a82f8 = 0x7f015068;
-u32 var001a82fc = 0x7f015068;
-u32 var001a8300 = 0x7f01505c;
-u32 var001a8304 = 0x7f015068;
-u32 var001a8308 = 0x7f015068;
-u32 var001a830c = 0x7f01505c;
-u32 var001a8310 = 0x7f01505c;
-u32 var001a8314 = 0x7f015068;
-u32 var001a8318 = 0x7f015068;
-u32 var001a831c = 0x7f015068;
-u32 var001a8320 = 0x7f015068;
-u32 var001a8324 = 0x7f015068;
-u32 var001a8328 = 0x7f015068;
-u32 var001a832c = 0x7f015068;
-u32 var001a8330 = 0x7f015068;
-u32 var001a8334 = 0x7f015068;
-u32 var001a8338 = 0x7f015068;
-u32 var001a833c = 0x7f015068;
-u32 var001a8340 = 0x7f015068;
-u32 var001a8344 = 0x7f015068;
-u32 var001a8348 = 0x7f015068;
-u32 var001a834c = 0x7f01505c;
-u32 var001a8350 = 0x7f015068;
-u32 var001a8354 = 0x7f015068;
-u32 var001a8358 = 0x7f01505c;
-u32 var001a835c = 0x7f01505c;
-u32 var001a8360 = 0x7f01505c;
-u32 var001a8364 = 0x7f01505c;
-u32 var001a8368 = 0x7f01505c;
-u32 var001a836c = 0x7f015068;
-u32 var001a8370 = 0x7f01505c;
-u32 var001a8374 = 0x7f015068;
-u32 var001a8378 = 0x7f01505c;
-u32 var001a837c = 0x7f01505c;
-u32 var001a8380 = 0x7f015068;
-u32 var001a8384 = 0x7f015068;
-u32 var001a8388 = 0x7f01505c;
-u32 var001a838c = 0x7f015068;
-u32 var001a8390 = 0x7f01505c;
-u32 var001a8394 = 0x7f01505c;
-u32 var001a8398 = 0x7f01505c;
-u32 var001a839c = 0x7f015068;
-u32 var001a83a0 = 0x7f01505c;
-u32 var001a83a4 = 0x7f015068;
-u32 var001a83a8 = 0x7f01505c;
-u32 var001a83ac = 0x00000000;
-u32 var001a83b0 = 0x459c4000;
-u32 var001a83b4 = 0x00000000;
-u32 var001a83b8 = 0x00000000;
-u32 var001a83bc = 0x00000000;
-u32 var001a83c0 = 0x3faaaaab;
-u32 var001a83c4 = 0x461c4000;
-u32 var001a83c8 = 0x461c4000;
-u32 var001a83cc = 0x7f0167d8;
-u32 var001a83d0 = 0x7f0167e8;
-u32 var001a83d4 = 0x7f0167fc;
-u32 var001a83d8 = 0x7f01686c;
-u32 var001a83dc = 0x7f01686c;
-u32 var001a83e0 = 0x7f016808;
-u32 var001a83e4 = 0x7f016858;
-u32 var001a83e8 = 0x3faaaaab;
-u32 var001a83ec = 0x461c4000;
-u32 var001a83f0 = 0x3eb33333;
-u32 var001a83f4 = 0x3f2147ae;
-u32 var001a83f8 = 0x3fd27a74;
-u32 var001a83fc = 0x3e4c8b44;
-u32 var001a8400 = 0x458ca000;
-u32 var001a8404 = 0x3dcccccd;
-u32 var001a8408 = 0x4087b1f9;
-u32 var001a840c = 0x3c9a6417;
-u32 var001a8410 = 0x3ef13c64;
-u32 var001a8414 = 0x3eb33333;
-u32 var001a8418 = 0x3fc907a9;
-u32 var001a841c = 0x39459ed6;
-u32 var001a8420 = 0x3c9a6417;
-u32 var001a8424 = 0x40c907a9;
-u32 var001a8428 = 0x40c907a9;
-u32 var001a842c = 0x40c907a9;
-u32 var001a8430 = 0x40c907a9;
-u32 var001a8434 = 0x3b83126f;
-u32 var001a8438 = 0x3f4ccccd;
-u32 var001a843c = 0x38ed2501;
-u32 var001a8440 = 0x3c3944e9;
-u32 var001a8444 = 0x40c907a9;
-u32 var001a8448 = 0x3bf5c28f;
-u32 var001a844c = 0x3ccccccd;
-u32 var001a8450 = 0x3db851ec;
-u32 var001a8454 = 0x3dcccccd;
-u32 var001a8458 = 0x3bcddaca;
-u32 var001a845c = 0x3c8b4396;
-u32 var001a8460 = 0x40490fdb;
-u32 var001a8464 = 0x3e19999a;
-u32 var001a8468 = 0x3e9db22d;
-u32 var001a846c = 0x3faaaaab;
-u32 var001a8470 = 0x461c4000;
-u32 var001a8474 = 0x3faaaaab;
-u32 var001a8478 = 0x461c4000;
-u32 var001a847c = 0x40490fdb;
-u32 var001a8480 = 0x3dcccccd;
-u32 var001a8484 = 0x3f666666;
-u32 var001a8488 = 0x3ecccccd;
-u32 var001a848c = 0x3ecccccd;
-u32 var001a8490 = 0x40490fdb;
-u32 var001a8494 = 0x3fc90fdb;
-u32 var001a8498 = 0x40490fdb;
-u32 var001a849c = 0x3eb33333;
-u32 var001a84a0 = 0x3e4ccccd;
-u32 var001a84a4 = 0x3faaaaab;
-u32 var001a84a8 = 0x461c4000;
-u32 var001a84ac = 0x40490fdb;
-u32 var001a84b0 = 0x3fc90fdb;
-u32 var001a84b4 = 0x3dcccccd;
-u32 var001a84b8 = 0x3e4ccccd;
-u32 var001a84bc = 0x3fc90fdb;
-u32 var001a84c0 = 0x3fba2e8c;
-u32 var001a84c4 = 0x3faaaaab;
-u32 var001a84c8 = 0x461c4000;
-u32 var001a84cc = 0x7f01a8e0;
-u32 var001a84d0 = 0x7f01a8fc;
-u32 var001a84d4 = 0x7f01a918;
-u32 var001a84d8 = 0x7f01a934;
-u32 var001a84dc = 0x7f01a950;
-u32 var001a84e0 = 0x7f01a984;
-u32 var001a84e4 = 0x7f01a96c;
-u32 var001a84e8 = 0x7f01aa48;
-u32 var001a84ec = 0x7f01aa5c;
-u32 var001a84f0 = 0x7f01aa70;
-u32 var001a84f4 = 0x7f01aa84;
-u32 var001a84f8 = 0x7f01aa98;
-u32 var001a84fc = 0x7f01aaac;
-u32 var001a8500 = 0x7f01aac0;
-u32 var001a8504 = 0x7f01ab14;
-u32 var001a8508 = 0x7f01ab24;
-u32 var001a850c = 0x7f01ab34;
-u32 var001a8510 = 0x7f01ab44;
-u32 var001a8514 = 0x7f01ab54;
-u32 var001a8518 = 0x7f01ab74;
-u32 var001a851c = 0x7f01ab64;
-u32 var001a8520 = 0x7f01ac20;
-u32 var001a8524 = 0x7f01ac30;
-u32 var001a8528 = 0x7f01ac40;
-u32 var001a852c = 0x7f01ac50;
-u32 var001a8530 = 0x7f01ac60;
-u32 var001a8534 = 0x7f01ac88;
-u32 var001a8538 = 0x7f01ac70;
-u32 var001a853c = 0x7f01ac80;
-u32 var001a8540 = 0x7f01ac80;
-u32 var001a8544 = 0x7f01acd4;
-u32 var001a8548 = 0x7f01acec;
-u32 var001a854c = 0x7f01ad1c;
-u32 var001a8550 = 0x7f01ad04;
-u32 var001a8554 = 0x7f01ad34;
-u32 var001a8558 = 0x7f01ae88;
-u32 var001a855c = 0x7f01ae98;
-u32 var001a8560 = 0x7f01aea8;
-u32 var001a8564 = 0x7f01aeb8;
-u32 var001a8568 = 0x7f01aed8;
-u32 var001a856c = 0x7f01aee0;
-u32 var001a8570 = 0x7f01aee0;
-u32 var001a8574 = 0x7f01aec8;
-u32 var001a8578 = 0x7f01aec8;
-u32 var001a857c = 0x7f01af34;
-u32 var001a8580 = 0x7f01af44;
-u32 var001a8584 = 0x7f01af54;
-u32 var001a8588 = 0x7f01af64;
-u32 var001a858c = 0x7f01af84;
-u32 var001a8590 = 0x7f01afa0;
-u32 var001a8594 = 0x7f01af94;
-u32 var001a8598 = 0x7f01af74;
-u32 var001a859c = 0x7f01af74;
-u32 var001a85a0 = 0x00000000;
-u32 var001a85a4 = 0x3e89374c;
-u32 var001a85a8 = 0x4196cbe4;
-u32 var001a85ac = 0x4196cbe4;
-char var001a85b0[] = "lvup: %d\n";
-char var001a85bc[] = "file id %x-%x";
-char var001a85cc[] = " ticking: ";
-u32 var001a85d8 = 0x31000000;
-u32 var001a85dc = 0x30000000;
-char var001a85e0[] = "Live: %d\n";
-char var001a85ec[] = "current:";
-char var001a85f8[] = " numactive %d ";
-u32 var001a8608 = 0x3ca3d70a;
-u32 var001a860c = 0x7f01d5b4;
-u32 var001a8610 = 0x7f01d5b4;
-u32 var001a8614 = 0x7f01d5b4;
-u32 var001a8618 = 0x7f01d5e8;
-u32 var001a861c = 0x7f01d5b4;
-u32 var001a8620 = 0x7f01d5b4;
-u32 var001a8624 = 0x7f01d5b4;
-u32 var001a8628 = 0x7f01d5e8;
-u32 var001a862c = 0x7f01d5e8;
-u32 var001a8630 = 0x7f01d5b4;
-u32 var001a8634 = 0x7f01d5b4;
-u32 var001a8638 = 0x7f01d5e8;
-u32 var001a863c = 0x7f01d5b4;
-char var001a8640[] = "wettick";
-char var001a8648[] = "windspeed";
-u32 var001a8654 = 0x00000000;
-u32 var001a8658 = 0x00000000;
-u32 var001a865c = 0x00000000;
-u32 var001a8660 = 0x3e8e38e4;
-u32 var001a8664 = 0x3f7ae148;
-u32 var001a8668 = 0x00000000;
-u32 var001a866c = 0x00000000;
-u32 var001a8670 = 0x46ea6000;
-u32 var001a8674 = 0xc6ea6000;
-u32 var001a8678 = 0x3dcccccd;
-u32 var001a867c = 0x00000000;
-u32 var001a8680 = 0xb8d1b717;
-u32 var001a8684 = 0x00000000;
-u32 var001a8688 = 0x00000000;
-u32 var001a868c = 0x00000000;
-char var001a8690[] = "chr/chr.c";
-char var001a869c[] = "selectanimnum";
-u32 var001a86ac = 0xc9742400;
-u32 var001a86b0 = 0x411ffffe;
-u32 var001a86b4 = 0x3f8ccccd;
-u32 var001a86b8 = 0x3f8ccccd;
-u32 var001a86bc = 0x3f666666;
-u32 var001a86c0 = 0x3f666666;
-u32 var001a86c4 = 0x3dcccccd;
-u32 var001a86c8 = 0x3f666666;
-u32 var001a86cc = 0x3f666666;
-u32 var001a86d0 = 0x3f666666;
-u32 var001a86d4 = 0x3f666666;
-u32 var001a86d8 = 0x3f666666;
-u32 var001a86dc = 0x411ffffe;
-u32 var001a86e0 = 0x411ffffe;
-u32 var001a86e4 = 0x3f666666;
-u32 var001a86e8 = 0x3f666666;
-u32 var001a86ec = 0x3f666666;
-u32 var001a86f0 = 0x3f666666;
-u32 var001a86f4 = 0xc7c35000;
-u32 var001a86f8 = 0x3f666666;
-u32 var001a86fc = 0x3f666666;
-u32 var001a8700 = 0xc7c35000;
-u32 var001a8704 = 0x411ffffe;
-u32 var001a8708 = 0xc6ea6000;
-u32 var001a870c = 0x411ffffe;
-u32 var001a8710 = 0x3dccccd0;
-u32 var001a8714 = 0x411ffffe;
-u32 var001a8718 = 0x3dcccccd;
-u32 var001a871c = 0xbdcccccd;
-u32 var001a8720 = 0x3dcccccd;
-u32 var001a8724 = 0x411ffffe;
-u32 var001a8728 = 0x3ec907a9;
-u32 var001a872c = 0x40c907a9;
-u32 var001a8730 = 0x3fc907a9;
-u32 var001a8734 = 0x3d776be4;
-u32 var001a8738 = 0x3fc907a9;
-u32 var001a873c = 0x3da0d2ee;
-u32 var001a8740 = 0x40c907a9;
-u32 var001a8744 = 0x40c907a9;
-u32 var001a8748 = 0x3fc90fdb;
-u32 var001a874c = 0x40c907a9;
-u32 var001a8750 = 0x40c907a9;
-u32 var001a8754 = 0x40c907a9;
-u32 var001a8758 = 0x40c907a9;
-u32 var001a875c = 0x3f86051b;
-u32 var001a8760 = 0xbf5f5dd8;
-u32 var001a8764 = 0x3f5f5dd8;
-u32 var001a8768 = 0x3f86051b;
-u32 var001a876c = 0xbf5f5dd8;
-u32 var001a8770 = 0x40c907a9;
-u32 var001a8774 = 0x40c907a9;
-u32 var001a8778 = 0x40c907a9;
-u32 var001a877c = 0x40c907a9;
-u32 var001a8780 = 0x3e86051b;
-u32 var001a8784 = 0x40c907a9;
-u32 var001a8788 = 0x3e86051b;
-u32 var001a878c = 0x3e32b17a;
-u32 var001a8790 = 0x3e32b17a;
-u32 var001a8794 = 0x40c907a9;
-u32 var001a8798 = 0x40c907a9;
-u32 var001a879c = 0x40c907a9;
-u32 var001a87a0 = 0x3fa8dd79;
-u32 var001a87a4 = 0x3fc907a9;
-u32 var001a87a8 = 0x404907a9;
-u32 var001a87ac = 0x3ecccccd;
-u32 var001a87b0 = 0x40490fdb;
-u32 var001a87b4 = 0x40490fdb;
-u32 var001a87b8 = 0x3a83126f;
-u32 var001a87bc = 0x40c907a9;
-u32 var001a87c0 = 0x3d333333;
-u32 var001a87c4 = 0x3d333333;
-u32 var001a87c8 = 0x4a742400;
-u32 var001a87cc = 0x48ef4200;
-u32 var001a87d0 = 0x4a742400;
-u32 var001a87d4 = 0x48ef4200;
-u32 var001a87d8 = 0x41aa6666;
-u32 var001a87dc = 0x7f024dd0;
-u32 var001a87e0 = 0x7f024dec;
-u32 var001a87e4 = 0x7f024e08;
-u32 var001a87e8 = 0x7f024e24;
-u32 var001a87ec = 0x7f024e40;
-u32 var001a87f0 = 0x7f024e5c;
-u32 var001a87f4 = 0x7f024e78;
-u32 var001a87f8 = 0x7f024e94;
-u32 var001a87fc = 0x7f025174;
-u32 var001a8800 = 0x7f025240;
-u32 var001a8804 = 0x7f025240;
-u32 var001a8808 = 0x7f025240;
-u32 var001a880c = 0x7f0251f8;
-u32 var001a8810 = 0x7f0251f8;
-u32 var001a8814 = 0x7f025240;
-u32 var001a8818 = 0x7f025240;
-u32 var001a881c = 0x7f025240;
-u32 var001a8820 = 0x7f025240;
-u32 var001a8824 = 0x7f025240;
-u32 var001a8828 = 0x7f025240;
-u32 var001a882c = 0x7f025240;
-u32 var001a8830 = 0x7f025240;
-u32 var001a8834 = 0x7f025240;
-u32 var001a8838 = 0x7f025240;
-u32 var001a883c = 0x7f025174;
-u32 var001a8840 = 0x7f025240;
-u32 var001a8844 = 0x7f025240;
-u32 var001a8848 = 0x7f025240;
-u32 var001a884c = 0x7f0251b8;
-u32 var001a8850 = 0x7f0251b8;
-u32 var001a8854 = 0x7f025240;
-u32 var001a8858 = 0x7f025240;
-u32 var001a885c = 0x7f025240;
-u32 var001a8860 = 0x7f025240;
-u32 var001a8864 = 0x7f025240;
-u32 var001a8868 = 0x7f025240;
-u32 var001a886c = 0x7f025240;
-u32 var001a8870 = 0x7f025240;
-u32 var001a8874 = 0x7f025240;
-u32 var001a8878 = 0x7f0251b8;
-u32 var001a887c = 0x7f025240;
-u32 var001a8880 = 0x7f025240;
-u32 var001a8884 = 0x7f025240;
-u32 var001a8888 = 0x7f025240;
-u32 var001a888c = 0x7f0251f8;
-u32 var001a8890 = 0x7f025240;
-u32 var001a8894 = 0x7f025240;
-u32 var001a8898 = 0x7f025240;
-u32 var001a889c = 0x7f025240;
-u32 var001a88a0 = 0x7f025240;
-u32 var001a88a4 = 0x7f025240;
-u32 var001a88a8 = 0x7f025240;
-u32 var001a88ac = 0x7f025240;
-u32 var001a88b0 = 0x7f025240;
-u32 var001a88b4 = 0x7f025240;
-u32 var001a88b8 = 0x7f025240;
-u32 var001a88bc = 0x7f025240;
-u32 var001a88c0 = 0x7f025240;
-u32 var001a88c4 = 0x7f025240;
-u32 var001a88c8 = 0x7f025240;
-u32 var001a88cc = 0x7f025240;
-u32 var001a88d0 = 0x7f025240;
-u32 var001a88d4 = 0x7f025240;
-u32 var001a88d8 = 0x7f025240;
-u32 var001a88dc = 0x7f025240;
-u32 var001a88e0 = 0x7f025240;
-u32 var001a88e4 = 0x7f025240;
-u32 var001a88e8 = 0x7f025240;
-u32 var001a88ec = 0x7f0251f8;
-u32 var001a88f0 = 0x7f025174;
-u32 var001a88f4 = 0x3c088889;
-u32 var001a88f8 = 0x3b808081;
-u32 var001a88fc = 0x3b83126f;
-u32 var001a8900 = 0x3ecccccd;
-u32 var001a8904 = 0x7f027034;
-u32 var001a8908 = 0x7f027078;
-u32 var001a890c = 0x7f026ce0;
-u32 var001a8910 = 0x7f027078;
-u32 var001a8914 = 0x7f027078;
-u32 var001a8918 = 0x7f027078;
-u32 var001a891c = 0x7f027078;
-u32 var001a8920 = 0x7f027078;
-u32 var001a8924 = 0x7f027078;
-u32 var001a8928 = 0x7f027078;
-u32 var001a892c = 0x7f02704c;
-u32 var001a8930 = 0x7f027078;
-u32 var001a8934 = 0x7f027078;
-u32 var001a8938 = 0x7f027078;
-u32 var001a893c = 0x7f027078;
-u32 var001a8940 = 0x7f027064;
-u32 var001a8944 = 0x7f026d40;
-u32 var001a8948 = 0x3d99999a;
-u32 var001a894c = 0x3c40c0c1;
-u32 var001a8950 = 0x3c40c0c1;
-u32 var001a8954 = 0x3bab8ba8;
-u32 var001a8958 = 0x3bab8ba8;
-u32 var001a895c = 0x3f169697;
-u32 var001a8960 = 0x3ea0a0a1;
-u32 var001a8964 = 0x3e70f0f1;
-u32 var001a8968 = 0x3e20a0a1;
-u32 var001a896c = 0x3c9309fe;
-u32 var001a8970 = 0x40aaaaab;
-u32 var001a8974 = 0x3b808081;
-u32 var001a8978 = 0x3b808081;
-u32 var001a897c = 0x3b808081;
-u32 var001a8980 = 0x3b808081;
-u32 var001a8984 = 0x3c4ccccd;
-u32 var001a8988 = 0x00000000;
-u32 var001a898c = 0x00000000;
-u32 var001a8990 = 0x7f02ce04;
-u32 var001a8994 = 0x7f02ce24;
-u32 var001a8998 = 0x7f02ce24;
-u32 var001a899c = 0x7f02ce24;
-u32 var001a89a0 = 0x7f02ce24;
-u32 var001a89a4 = 0x7f02ce24;
-u32 var001a89a8 = 0x7f02ce24;
-u32 var001a89ac = 0x7f02ce24;
-u32 var001a89b0 = 0x7f02ce24;
-u32 var001a89b4 = 0x7f02ce24;
-u32 var001a89b8 = 0x7f02ce24;
-u32 var001a89bc = 0x7f02ce24;
-u32 var001a89c0 = 0x7f02ce24;
-u32 var001a89c4 = 0x7f02ce24;
-u32 var001a89c8 = 0x7f02ce24;
-u32 var001a89cc = 0x7f02ce0c;
-u32 var001a89d0 = 0x7f02ce14;
-u32 var001a89d4 = 0x7f02ce24;
-u32 var001a89d8 = 0x7f02ce24;
-u32 var001a89dc = 0x7f02ce24;
-u32 var001a89e0 = 0x7f02ce24;
-u32 var001a89e4 = 0x7f02ce24;
-u32 var001a89e8 = 0x7f02ce24;
-u32 var001a89ec = 0x7f02ce24;
-u32 var001a89f0 = 0x7f02ce24;
-u32 var001a89f4 = 0x7f02ce24;
-u32 var001a89f8 = 0x7f02ce1c;
-u32 var001a89fc = 0x7f02ce24;
-u32 var001a8a00 = 0x7f02ce24;
-u32 var001a8a04 = 0x7f02ce24;
-u32 var001a8a08 = 0x7f02ce24;
-u32 var001a8a0c = 0x7f02ce04;
-u32 var001a8a10 = 0x7f02ce24;
-u32 var001a8a14 = 0x7f02ce24;
-u32 var001a8a18 = 0x7f02ce24;
-u32 var001a8a1c = 0x7f02ce24;
-u32 var001a8a20 = 0x7f02ce24;
-u32 var001a8a24 = 0x7f02ce24;
-u32 var001a8a28 = 0x7f02ce24;
-u32 var001a8a2c = 0x7f02ce24;
-u32 var001a8a30 = 0x7f02ce24;
-u32 var001a8a34 = 0x7f02ce24;
-u32 var001a8a38 = 0x7f02ce24;
-u32 var001a8a3c = 0x7f02ce24;
-u32 var001a8a40 = 0x7f02ce24;
-u32 var001a8a44 = 0x7f02ce24;
-u32 var001a8a48 = 0x7f02ce24;
-u32 var001a8a4c = 0x7f02ce24;
-u32 var001a8a50 = 0x7f02ce24;
-u32 var001a8a54 = 0x7f02ce24;
-u32 var001a8a58 = 0x7f02ce24;
-u32 var001a8a5c = 0x7f02ce24;
-u32 var001a8a60 = 0x7f02ce24;
-u32 var001a8a64 = 0x7f02ce24;
-u32 var001a8a68 = 0x7f02ce24;
-u32 var001a8a6c = 0x7f02ce04;
-u32 var001a8a70 = 0x3dccccce;
-u32 var001a8a74 = 0x3f4ccccd;
-u32 var001a8a78 = 0x3d4ccccd;
-u32 var001a8a7c = 0x3ecccccd;
-u32 var001a8a80 = 0x3ecccccd;
-u32 var001a8a84 = 0x3dcccccd;
-u32 var001a8a88 = 0x7f02de50;
-u32 var001a8a8c = 0x7f02de40;
-u32 var001a8a90 = 0x7f02de68;
-u32 var001a8a94 = 0x7f02de48;
-u32 var001a8a98 = 0x7f02de60;
-u32 var001a8a9c = 0x7f02de58;
-u32 var001a8aa0 = 0x7f02de94;
-u32 var001a8aa4 = 0x7f02dea8;
-u32 var001a8aa8 = 0x7f02dea4;
-u32 var001a8aac = 0x7f02de8c;
-u32 var001a8ab0 = 0x7f02de9c;
-u32 var001a8ab4 = 0x7f02dea8;
-u32 var001a8ab8 = 0x00000000;
-u32 var001a8abc = 0x00000000;
-char var001a8ac0[] = "chraction.c";
-char var001a8acc[] = "chraction.c";
-char var001a8ad8[] = "chraction.c";
-char var001a8ae4[] = "aimadjust=%d";
-char var001a8af4[] = "chraction.c";
-char var001a8b00[] = "firing(%d) %d, beam(%d) %s";
-u32 var001a8b1c = 0x6f6e0000;
-u32 var001a8b20 = 0x6f666600;
-char var001a8b24[] = "firecount(%d) = %d";
-char var001a8b38[] = "numshots(%d) = %d";
-char var001a8b4c[] = "Current dangerous items:";
-char var001a8b68[] = "    Grenade %x";
-char var001a8b78[] = "    Explosion %x";
-char var001a8b8c[] = "misc dangerous prop";
-char var001a8ba0[] = "chraction.c";
-char var001a8bac[] = "chraction.c";
-char var001a8bb8[] = "chraction.c";
-char var001a8bc4[] = "chraction.c";
-char var001a8bd0[] = "chraction.c";
-char var001a8bdc[] = "chraction.c";
-char var001a8be8[] = "CHARS -> FRAMETIMESCALEI(240)  = %d";
-char var001a8c0c[] = "CHARS -> numseenbond1      \t= %d/%d";
-char var001a8c30[] = "CHARS -> numseenbond2      \t= %d/%d";
-char var001a8c54[] = "CHARS -> numseenbond3      \t= %d/%d";
-char var001a8c78[] = "CHARS -> numseenbond       \t= %d/%d";
-char var001a8c9c[] = "CHARS -> DEAD = %d/%d";
-char var001a8cb4[] = "chrdisttopad : %x -> %d : Dist=%f";
-char var001a8cd8[] = "chraction.c";
-char var001a8ce4[] = "chraction.c";
-u32 var001a8cf0 = 0x3c23d70a;
-u32 var001a8cf4 = 0x3c23d70a;
-u32 var001a8cf8 = 0x38c907a9;
-u32 var001a8cfc = 0x40c907a9;
-u32 var001a8d00 = 0x46230028;
-u32 var001a8d04 = 0x3f19999a;
-u32 var001a8d08 = 0x3e32b17a;
-u32 var001a8d0c = 0x40c3721d;
-u32 var001a8d10 = 0x40c907a9;
-u32 var001a8d14 = 0x40a30028;
-u32 var001a8d18 = 0x40a30028;
-u32 var001a8d1c = 0x3c23d70a;
-u32 var001a8d20 = 0x3c23d70a;
-u32 var001a8d24 = 0x3fc907a9;
-u32 var001a8d28 = 0x4096c5bf;
-u32 var001a8d2c = 0x40c907a9;
-u32 var001a8d30 = 0x405432c1;
-u32 var001a8d34 = 0x403ddc91;
-u32 var001a8d38 = 0x4016c5bf;
-u32 var001a8d3c = 0x407b4993;
-u32 var001a8d40 = 0x4016c5bf;
-u32 var001a8d44 = 0x407b4993;
-u32 var001a8d48 = 0x4016c5bf;
-u32 var001a8d4c = 0x407b4993;
-u32 var001a8d50 = 0x40c907a9;
-u32 var001a8d54 = 0x3fa30028;
-u32 var001a8d58 = 0x3c23d70a;
-u32 var001a8d5c = 0x3c23d70a;
-u32 var001a8d60 = 0x471c4000;
-u32 var001a8d64 = 0x481c4000;
-u32 var001a8d68 = 0x491c4000;
-u32 var001a8d6c = 0x4a1c4000;
-u32 var001a8d70 = 0x4006051b;
-u32 var001a8d74 = 0x4086051c;
-u32 var001a8d78 = 0x3f86051b;
-u32 var001a8d7c = 0x40a78662;
-u32 var001a8d80 = 0x3ecccccd;
-u32 var001a8d84 = 0x4006051b;
-u32 var001a8d88 = 0x4086051c;
-u32 var001a8d8c = 0x3f333333;
-u32 var001a8d90 = 0x3dcccccd;
-u32 var001a8d94 = 0x3dcccccd;
-u32 var001a8d98 = 0x3dcccccd;
-u32 var001a8d9c = 0x3f99999a;
-u32 var001a8da0 = 0x3f99999a;
-u32 var001a8da4 = 0x411fffff;
-u32 var001a8da8 = 0x3a83126f;
-u32 var001a8dac = 0x411ffffe;
-u32 var001a8db0 = 0x3ecccccd;
-u32 var001a8db4 = 0x3ecccccd;
-u32 var001a8db8 = 0x3f266666;
-u32 var001a8dbc = 0x3ecccccd;
-u32 var001a8dc0 = 0x3ecccccd;
-u32 var001a8dc4 = 0x3ecccccd;
-u32 var001a8dc8 = 0x3ecccccd;
-u32 var001a8dcc = 0x3f266666;
-u32 var001a8dd0 = 0x3f99999a;
-u32 var001a8dd4 = 0x40c907a9;
-u32 var001a8dd8 = 0x3fdf5dd8;
-u32 var001a8ddc = 0x40913033;
-u32 var001a8de0 = 0x40c907a9;
-u32 var001a8de4 = 0x461c4000;
-u32 var001a8de8 = 0x3ff5b407;
-u32 var001a8dec = 0x408b9aa7;
-u32 var001a8df0 = 0x471c4000;
-u32 var001a8df4 = 0x3ff5b407;
-u32 var001a8df8 = 0x408b9aa7;
-u32 var001a8dfc = 0x3f4907a9;
-u32 var001a8e00 = 0x3af5c28f;
-u32 var001a8e04 = 0x40afe6b4;
-u32 var001a8e08 = 0x40490fdb;
-u32 var001a8e0c = 0x40c907a9;
-u32 var001a8e10 = 0x4074803c;
-u32 var001a8e14 = 0x7f039a54;
-u32 var001a8e18 = 0x7f039a54;
-u32 var001a8e1c = 0x7f039a5c;
-u32 var001a8e20 = 0x7f039a54;
-u32 var001a8e24 = 0x7f039a88;
-u32 var001a8e28 = 0x7f039a88;
-u32 var001a8e2c = 0x7f039a88;
-u32 var001a8e30 = 0x7f039a88;
-u32 var001a8e34 = 0x7f039a88;
-u32 var001a8e38 = 0x7f039a88;
-u32 var001a8e3c = 0x7f039a88;
-u32 var001a8e40 = 0x7f039a88;
-u32 var001a8e44 = 0x7f039a88;
-u32 var001a8e48 = 0x7f039a88;
-u32 var001a8e4c = 0x7f039a88;
-u32 var001a8e50 = 0x7f039a88;
-u32 var001a8e54 = 0x7f039a88;
-u32 var001a8e58 = 0x7f039a88;
-u32 var001a8e5c = 0x7f039a88;
-u32 var001a8e60 = 0x7f039a88;
-u32 var001a8e64 = 0x7f039a88;
-u32 var001a8e68 = 0x7f039a88;
-u32 var001a8e6c = 0x7f039a88;
-u32 var001a8e70 = 0x7f039a88;
-u32 var001a8e74 = 0x7f039a88;
-u32 var001a8e78 = 0x7f039a88;
-u32 var001a8e7c = 0x7f039a54;
-u32 var001a8e80 = 0x7f039a54;
-u32 var001a8e84 = 0x7f039a54;
-u32 var001a8e88 = 0x7f039a88;
-u32 var001a8e8c = 0x7f039a74;
-u32 var001a8e90 = 0x40c907a9;
-u32 var001a8e94 = 0x3f4907a9;
-u32 var001a8e98 = 0x40afe6b4;
-u32 var001a8e9c = 0x4016c5bf;
-u32 var001a8ea0 = 0x407b4993;
-u32 var001a8ea4 = 0x40c907a9;
-u32 var001a8ea8 = 0x3f4907a9;
-u32 var001a8eac = 0x40afe6b4;
-u32 var001a8eb0 = 0x4016c5bf;
-u32 var001a8eb4 = 0x407b4993;
-u32 var001a8eb8 = 0x49742400;
-u32 var001a8ebc = 0x49742400;
-u32 var001a8ec0 = 0x471c4000;
-u32 var001a8ec4 = 0x3c23d70a;
-u32 var001a8ec8 = 0x461c4000;
-u32 var001a8ecc = 0x3ecccccd;
-u32 var001a8ed0 = 0x3f666666;
-u32 var001a8ed4 = 0x44bb8000;
-u32 var001a8ed8 = 0x3f59999a;
-u32 var001a8edc = 0x3eb2b17a;
-u32 var001a8ee0 = 0x40bddc91;
-u32 var001a8ee4 = 0x3e32b17a;
-u32 var001a8ee8 = 0x40c3721d;
-u32 var001a8eec = 0x40c907a9;
-u32 var001a8ef0 = 0x3f4907a9;
-u32 var001a8ef4 = 0x40c907a9;
-u32 var001a8ef8 = 0x40c907a9;
-u32 var001a8efc = 0x40c907a9;
-u32 var001a8f00 = 0x40c907a9;
-u32 var001a8f04 = 0x3f4907a9;
-u32 var001a8f08 = 0x46230028;
-u32 var001a8f0c = 0x4a742400;
-u32 var001a8f10 = 0x3c23d70a;
-u32 var001a8f14 = 0x3c23d70a;
-u32 var001a8f18 = 0x3c23d70a;
-u32 var001a8f1c = 0x3e99999a;
-u32 var001a8f20 = 0x40c907a9;
-u32 var001a8f24 = 0x3c8ef461;
-u32 var001a8f28 = 0x40c907a9;
-u32 var001a8f2c = 0x40c907a9;
-u32 var001a8f30 = 0x40c907a9;
-u32 var001a8f34 = 0x3d80a8be;
-u32 var001a8f38 = 0x40c907a9;
-u32 var001a8f3c = 0x40c907a9;
-u32 var001a8f40 = 0x40490fdb;
-u32 var001a8f44 = 0x3d4ccccd;
-u32 var001a8f48 = 0x3ecccccd;
-u32 var001a8f4c = 0x481c4000;
-u32 var001a8f50 = 0x3dcccccd;
-u32 var001a8f54 = 0x3f0ccccd;
-u32 var001a8f58 = 0x3dcccccd;
-u32 var001a8f5c = 0x3e19999a;
-u32 var001a8f60 = 0x3dcccccd;
-u32 var001a8f64 = 0x3d4ccccd;
-u32 var001a8f68 = 0x3ccccccd;
-u32 var001a8f6c = 0x49742400;
-u32 var001a8f70 = 0x3dcccccd;
-u32 var001a8f74 = 0x3d4ccccd;
-u32 var001a8f78 = 0x3f0ccccd;
-u32 var001a8f7c = 0x3d4ccccd;
-u32 var001a8f80 = 0x3dcccccd;
-u32 var001a8f84 = 0x3f0ccccd;
-u32 var001a8f88 = 0x3dcccccd;
-u32 var001a8f8c = 0x3e19999a;
-u32 var001a8f90 = 0x3dcccccd;
-u32 var001a8f94 = 0x3d4ccccd;
-u32 var001a8f98 = 0x40490fdb;
-u32 var001a8f9c = 0x40c907a9;
-u32 var001a8fa0 = 0x49742400;
-u32 var001a8fa4 = 0x40c907a9;
-u32 var001a8fa8 = 0x40c907a9;
-u32 var001a8fac = 0x40c907a9;
-u32 var001a8fb0 = 0x40c907a9;
-u32 var001a8fb4 = 0x3dd66e92;
-u32 var001a8fb8 = 0x40c907a9;
-u32 var001a8fbc = 0x40c907a9;
-u32 var001a8fc0 = 0x40c907a9;
-u32 var001a8fc4 = 0x40490fdb;
-u32 var001a8fc8 = 0x40c907a9;
-u32 var001a8fcc = 0x4a1c4000;
-u32 var001a8fd0 = 0x3c999f74;
-u32 var001a8fd4 = 0x491c4000;
-u32 var001a8fd8 = 0x3d1a1533;
-u32 var001a8fdc = 0x481c4000;
-u32 var001a8fe0 = 0x3d992a68;
-u32 var001a8fe4 = 0x471c4000;
-u32 var001a8fe8 = 0x3e192a68;
-u32 var001a8fec = 0x3e80a8be;
-u32 var001a8ff0 = 0x40c907a9;
-u32 var001a8ff4 = 0x40c907a9;
-u32 var001a8ff8 = 0x7f03fc18;
-u32 var001a8ffc = 0x7f03fc18;
-u32 var001a9000 = 0x7f03fbf8;
-u32 var001a9004 = 0x7f03fbf8;
-u32 var001a9008 = 0x7f03fc18;
-u32 var001a900c = 0x7f03fc18;
-u32 var001a9010 = 0x7f03fc18;
-u32 var001a9014 = 0x7f03fc18;
-u32 var001a9018 = 0x7f03fc18;
-u32 var001a901c = 0x7f03fc18;
-u32 var001a9020 = 0x7f03fc18;
-u32 var001a9024 = 0x7f03fc18;
-u32 var001a9028 = 0x7f03fc18;
-u32 var001a902c = 0x7f03fc18;
-u32 var001a9030 = 0x7f03fc18;
-u32 var001a9034 = 0x7f03fc18;
-u32 var001a9038 = 0x7f03fc18;
-u32 var001a903c = 0x7f03fc18;
-u32 var001a9040 = 0x7f03fc18;
-u32 var001a9044 = 0x7f03fc08;
-u32 var001a9048 = 0x7f03fc08;
-u32 var001a904c = 0x7f03fc18;
-u32 var001a9050 = 0x7f03fc18;
-u32 var001a9054 = 0x7f03fc18;
-u32 var001a9058 = 0x7f03fc18;
-u32 var001a905c = 0x7f03fc18;
-u32 var001a9060 = 0x7f03fc18;
-u32 var001a9064 = 0x7f03fc18;
-u32 var001a9068 = 0x7f03fc18;
-u32 var001a906c = 0x7f03fc18;
-u32 var001a9070 = 0x7f03fc18;
-u32 var001a9074 = 0x7f03fc18;
-u32 var001a9078 = 0x7f03fc18;
-u32 var001a907c = 0x7f03fc18;
-u32 var001a9080 = 0x7f03fc18;
-u32 var001a9084 = 0x7f03fc18;
-u32 var001a9088 = 0x7f03fc18;
-u32 var001a908c = 0x7f03fc18;
-u32 var001a9090 = 0x7f03fc18;
-u32 var001a9094 = 0x7f03fc18;
-u32 var001a9098 = 0x7f03fc18;
-u32 var001a909c = 0x7f03fc18;
-u32 var001a90a0 = 0x7f03fc18;
-u32 var001a90a4 = 0x3e23d70a;
-u32 var001a90a8 = 0x3dcccccd;
-u32 var001a90ac = 0x3c23d70a;
-u32 var001a90b0 = 0x41200419;
-u32 var001a90b4 = 0x3f8ccccd;
-u32 var001a90b8 = 0x7f7fffff;
-u32 var001a90bc = 0x3c23d70a;
-u32 var001a90c0 = 0x3f199999;
-u32 var001a90c4 = 0x411cf5c3;
-u32 var001a90c8 = 0x3d638e39;
-u32 var001a90cc = 0x481c4000;
-u32 var001a90d0 = 0x3fd55555;
-u32 var001a90d4 = 0x3fd55555;
-u32 var001a90d8 = 0x3fd55555;
-u32 var001a90dc = 0x461c4000;
-u32 var001a90e0 = 0x7f0419b0;
-u32 var001a90e4 = 0x7f0419b0;
-u32 var001a90e8 = 0x7f0419b0;
-u32 var001a90ec = 0x7f0419b0;
-u32 var001a90f0 = 0x7f0419b0;
-u32 var001a90f4 = 0x7f0419b0;
-u32 var001a90f8 = 0x7f0419b0;
-u32 var001a90fc = 0x7f0419b0;
-u32 var001a9100 = 0x7f0419b0;
-u32 var001a9104 = 0x7f0419b0;
-u32 var001a9108 = 0x7f0419b0;
-u32 var001a910c = 0x7f0419b0;
-u32 var001a9110 = 0x7f0419b0;
-u32 var001a9114 = 0x7f0419b0;
-u32 var001a9118 = 0x7f0419b0;
-u32 var001a911c = 0x7f0419b0;
-u32 var001a9120 = 0x7f0419b0;
-u32 var001a9124 = 0x7f0419bc;
-u32 var001a9128 = 0x7f0419b0;
-u32 var001a912c = 0x7f0419b0;
-u32 var001a9130 = 0x7f0419b0;
-u32 var001a9134 = 0x7f0419bc;
-u32 var001a9138 = 0x7f0419bc;
-u32 var001a913c = 0x7f0419bc;
-u32 var001a9140 = 0x7f0419bc;
-u32 var001a9144 = 0x7f0419bc;
-u32 var001a9148 = 0x7f0419b0;
-u32 var001a914c = 0x7f0419b0;
-u32 var001a9150 = 0x7f0419bc;
-u32 var001a9154 = 0x7f0419bc;
-u32 var001a9158 = 0x7f0419bc;
-u32 var001a915c = 0x7f0419bc;
-u32 var001a9160 = 0x7f0419bc;
-u32 var001a9164 = 0x7f0419bc;
-u32 var001a9168 = 0x7f0419b0;
-u32 var001a916c = 0x7f0419b0;
-u32 var001a9170 = 0x7f0419b0;
-u32 var001a9174 = 0x7f0419b0;
-u32 var001a9178 = 0x7f0419b0;
-u32 var001a917c = 0x7f0419b0;
-u32 var001a9180 = 0x7f0419b0;
-u32 var001a9184 = 0x7f0419b0;
-u32 var001a9188 = 0x3d2aaaab;
-u32 var001a918c = 0x40c907a9;
-u32 var001a9190 = 0x3e4ccccd;
-u32 var001a9194 = 0x3f59999a;
-u32 var001a9198 = 0x3e4ccccd;
-u32 var001a919c = 0x3f59999a;
-u32 var001a91a0 = 0x3e4ccccd;
-u32 var001a91a4 = 0x40c907a9;
-u32 var001a91a8 = 0x3cf5c28f;
-u32 var001a91ac = 0x3cf5c28f;
-u32 var001a91b0 = 0x3cf5c28f;
-u32 var001a91b4 = 0x3cf5c28f;
-u32 var001a91b8 = 0x404907a9;
-u32 var001a91bc = 0xbf0624dd;
-u32 var001a91c0 = 0x3f0624dd;
-u32 var001a91c4 = 0x404907a9;
-u32 var001a91c8 = 0xbf0624dd;
-u32 var001a91cc = 0xbf0624dd;
-u32 var001a91d0 = 0x3f0624dd;
-u32 var001a91d4 = 0x3f0624dd;
-u32 var001a91d8 = 0x3e19999a;
-u32 var001a91dc = 0x3e19999a;
-u32 var001a91e0 = 0x3e4ccccd;
-u32 var001a91e4 = 0x40c907a9;
-u32 var001a91e8 = 0x40c907a9;
-u32 var001a91ec = 0x3bab8ba8;
-u32 var001a91f0 = 0x40c907a9;
-u32 var001a91f4 = 0x39a4af08;
-u32 var001a91f8 = 0x404907a9;
-u32 var001a91fc = 0x3e992a68;
-u32 var001a9200 = 0x3c7510a7;
-u32 var001a9204 = 0x3ec907a9;
-u32 var001a9208 = 0x3ca0d2ee;
-u32 var001a920c = 0x3fa0d2ee;
-u32 var001a9210 = 0x3dc907a9;
-u32 var001a9214 = 0x3e4907a9;
-u32 var001a9218 = 0x3c7510a7;
-u32 var001a921c = 0x3ec907a9;
-u32 var001a9220 = 0x3c20d2ee;
-u32 var001a9224 = 0x3fa0d2ee;
-u32 var001a9228 = 0x3d4907a9;
-u32 var001a922c = 0x3e00a8be;
-u32 var001a9230 = 0x3c20d2ee;
-u32 var001a9234 = 0x3c23d70a;
-u32 var001a9238 = 0x3f733333;
-u32 var001a923c = 0x3f733333;
-u32 var001a9240 = 0x3f99999a;
-u32 var001a9244 = 0x3f99999a;
-u32 var001a9248 = 0x3f733333;
-u32 var001a924c = 0x3f733333;
-u32 var001a9250 = 0x3f99999a;
-u32 var001a9254 = 0x3f99999a;
-u32 var001a9258 = 0x3f4907a9;
-u32 var001a925c = 0x40c907a9;
-u32 var001a9260 = 0x471c4000;
-u32 var001a9264 = 0x404907a9;
-u32 var001a9268 = 0x40c907a9;
-u32 var001a926c = 0x3fa147ae;
-u32 var001a9270 = 0x3fa147ae;
-u32 var001a9274 = 0x3fa147ae;
-u32 var001a9278 = 0x3f8ccccd;
-u32 var001a927c = 0x3f8ccccd;
-u32 var001a9280 = 0x3f99999a;
-u32 var001a9284 = 0x3f4907a9;
-u32 var001a9288 = 0x40afe6b4;
-u32 var001a928c = 0x3f99999a;
-u32 var001a9290 = 0x3f99999a;
-u32 var001a9294 = 0x44098000;
-u32 var001a9298 = 0x40490fdb;
-u32 var001a929c = 0x7f0480d0;
-u32 var001a92a0 = 0x7f0480e0;
-u32 var001a92a4 = 0x7f0480f0;
-u32 var001a92a8 = 0x7f048100;
-u32 var001a92ac = 0x7f048150;
-u32 var001a92b0 = 0x7f048110;
-u32 var001a92b4 = 0x7f048120;
-u32 var001a92b8 = 0x7f048160;
-u32 var001a92bc = 0x7f048170;
-u32 var001a92c0 = 0x7f048180;
-u32 var001a92c4 = 0x7f048130;
-u32 var001a92c8 = 0x7f048140;
-u32 var001a92cc = 0x7f048190;
-u32 var001a92d0 = 0x7f0481a0;
-u32 var001a92d4 = 0x7f0481b0;
-u32 var001a92d8 = 0x7f0481c0;
-u32 var001a92dc = 0x7f048278;
-u32 var001a92e0 = 0x7f0481e0;
-u32 var001a92e4 = 0x7f0481f0;
-u32 var001a92e8 = 0x7f048200;
-u32 var001a92ec = 0x7f048278;
-u32 var001a92f0 = 0x7f0481d0;
-u32 var001a92f4 = 0x7f048278;
-u32 var001a92f8 = 0x7f048210;
-u32 var001a92fc = 0x7f048278;
-u32 var001a9300 = 0x7f048278;
-u32 var001a9304 = 0x7f048278;
-u32 var001a9308 = 0x7f048278;
-u32 var001a930c = 0x7f048278;
-u32 var001a9310 = 0x7f048230;
-u32 var001a9314 = 0x7f048240;
-u32 var001a9318 = 0x7f048220;
-u32 var001a931c = 0x7f048250;
-u32 var001a9320 = 0x7f048260;
-u32 var001a9324 = 0x7f048270;
-u32 var001a9328 = 0x3c8ef461;
-u32 var001a932c = 0x40c907a9;
-u32 var001a9330 = 0x40c907a9;
-u32 var001a9334 = 0x40c907a9;
-u32 var001a9338 = 0x40c907a9;
-u32 var001a933c = 0x3cc907a9;
-u32 var001a9340 = 0x40490fdb;
-u32 var001a9344 = 0x40c907a9;
-u32 var001a9348 = 0x40490fdb;
-u32 var001a934c = 0x3cc907a9;
-u32 var001a9350 = 0x40490fdb;
-u32 var001a9354 = 0x40c907a9;
-u32 var001a9358 = 0x40490fdb;
-u32 var001a935c = 0x40490fdb;
-u32 var001a9360 = 0x40c907a9;
-u32 var001a9364 = 0x3cc907a9;
-u32 var001a9368 = 0x40490fdb;
-u32 var001a936c = 0x40c907a9;
-u32 var001a9370 = 0x40490fdb;
-u32 var001a9374 = 0x3cc907a9;
-u32 var001a9378 = 0x40490fdb;
-u32 var001a937c = 0x40c907a9;
-u32 var001a9380 = 0x40490fdb;
-u32 var001a9384 = 0x4cbebc20;
-u32 var001a9388 = 0x7f049960;
-u32 var001a938c = 0x7f049904;
-u32 var001a9390 = 0x7f049b30;
-u32 var001a9394 = 0x7f0498d0;
-u32 var001a9398 = 0x7f04989c;
-u32 var001a939c = 0x7f0499b8;
-u32 var001a93a0 = 0x7f049b30;
-u32 var001a93a4 = 0x7f049868;
-u32 var001a93a8 = 0x7f049860;
-u32 var001a93ac = 0x7f049840;
-u32 var001a93b0 = 0x7f049848;
-u32 var001a93b4 = 0x7f049850;
-u32 var001a93b8 = 0x7f049858;
-u32 var001a93bc = 0x7f049af0;
-u32 var001a93c0 = 0x7f049ab0;
-u32 var001a93c4 = 0x7f049b30;
-u32 var001a93c8 = 0x7f049a7c;
-u32 var001a93cc = 0x7f049a48;
-u32 var001a93d0 = 0x7f049b30;
-u32 var001a93d4 = 0x7f049b30;
-u32 var001a93d8 = 0x7f049a14;
-u32 var001a93dc = 0x3c888889;
-u32 var001a93e0 = 0x3f4ccccd;
-u32 var001a93e4 = 0x40c907a9;
-u32 var001a93e8 = 0x3fc907a9;
-u32 var001a93ec = 0x4096c5bf;
-u32 var001a93f0 = 0x404907a9;
-u32 var001a93f4 = 0x3fc907a9;
-u32 var001a93f8 = 0x4096c5bf;
-u32 var001a93fc = 0x40c907a9;
-u32 var001a9400 = 0x40c907a9;
-u32 var001a9404 = 0x40c907a9;
-u32 var001a9408 = 0x3f4907a9;
-u32 var001a940c = 0xc7c35000;
-u32 var001a9410 = 0x40c907a9;
-u32 var001a9414 = 0xc7c35000;
-u32 var001a9418 = 0xc7c35000;
-u32 var001a941c = 0x3f4907a9;
-u32 var001a9420 = 0x411ffffe;
-u32 var001a9424 = 0x40c907a9;
-u32 var001a9428 = 0x40c907a9;
-u32 var001a942c = 0x3c8ef461;
-u32 var001a9430 = 0x40c907a9;
-u32 var001a9434 = 0x40490fdb;
-u32 var001a9438 = 0x439d8000;
-u32 var001a943c = 0x40490fdb;
-u32 var001a9440 = 0x3fc90fdb;
-u32 var001a9444 = 0x3fc90fdb;
-u32 var001a9448 = 0x3f19999a;
-u32 var001a944c = 0x00000000;
-char var001a9450[] = " (%d)\n";
-char var001a9458[] = " (%d)\n";
-char var001a9460[] = "set shot list(void) doesn't work for g_Vars.CommandInfo.truck!\n";
-char var001a94a0[] = "set shot list(void) doesn't work for g_Vars.CommandInfo.heli!\n";
-char var001a94e0[] = "set shot list(void) doesn't work for g_Vars.CommandInfo.hovercar!\n";
-char var001a9524[] = "BOND IN ROOM \n";
-char var001a9534[] = "bond not in room \n";
-char var001a9548[] = "aTimer%s%s: %f\n";
-u32 var001a9558 = 0x00000000;
-u32 var001a955c = 0x00000000;
-char var001a9560[] = "bTimer:%s%s %f\n";
-u32 var001a9570 = 0x00000000;
-u32 var001a9574 = 0x00000000;
-char var001a9578[] = "ai_ifbondintank: tank code has been removed.\n";
-char var001a95a8[] = "AI_BONDENABLECONTROL\n";
-char var001a95c0[] = "ai(void) enery tune on (%d, %d, %d)\n";
-char var001a95e8[] = "ai(void) enery tune off (%d)\n";
-char var001a9608[] = "%s%sAI_PRINT(void) height = %f ptop =  %f \n\n";
-u32 var001a9638 = 0x00000000;
-u32 var001a963c = 0x00000000;
-char var001a9640[] = "Preset character = %d, my target = %d \n";
-char var001a9668[] = "characters target is %d \n";
-char var001a9684[] = "(DGD)chrai.c(void) aiIfChrsTargetIsChr does not support CHR_BOND as chr1!\n";
-char var001a96d0[] = "(DGD)chrai.c(void) aiIfChrsTargetIsChr does not support CHR_BOND as chr1!\n";
-char var001a971c[] = "DGD(void) (chrai.c) WARNING! attempt to use invalid CHR_PRESET1 - defaulting to JO\n";
-char var001a9770[] = "RISK CHECK = %d \n";
-char var001a9784[] = "aiIfOpportunityFireJumpF() called with no botdata!\n";
-char var001a97b8[] = "TARGET %d PASSED THE DISTANCE 2 TESTS \n";
-char var001a97e0[] = "%d I NOTICE THE TARGET %d\n";
-char var001a97fc[] = "%d I NOTICE THE TARGET %d\n";
-char var001a9818[] = "%d OPPORTUNITY FIRE A CHARACTER = %d \n";
-char var001a9840[] = "%d  CANNOT OPPORTUNITY FIRE A TARGET \n";
-char var001a9868[] = " RISK CHECK = %d \n";
-char var001a987c[] = "dist = %d \n";
-char var001a9888[] = "USING VOICE NUMBER %d \n";
-char var001a98a0[] = "SETORDERS COMMAND  \n";
-char var001a98b8[] = "SQUADRON MEMBER CHR NUMBER = %d \n";
-char var001a98dc[] = "DOING DIST CHECK \n";
-char var001a98f0[] = "%d SYNCHED WITH A CHARACTER %d \n";
-char var001a9914[] = "synched = %d \n";
-char var001a9924[] = "LEADER'S GOING TO COVER \n";
-char var001a9940[] = "LEADER IS BREAKING COVER \n";
-char var001a995c[] = " I AM SAFE TO BREAK COVER \n";
-char var001a9978[] = "not safe to break cover \n";
-char var001a9994[] = "LEADER IS COVER SEEN \n";
-char var001a99ac[] = "LEADER IS FLANKING LEFT \n";
-char var001a99c8[] = "LEADER IS FLANKING RIGHT \n";
-char var001a99e4[] = "LEADER IS DODGING \n";
-char var001a99f8[] = "LEADER IS THROWING GRENADE \n";
-char var001a9a18[] = "LEADER HAS SEEN FROM WAIT \n";
-char var001a9a34[] = "UNKNOWN LEADER ACTION \n";
-char var001a9a4c[] = "ORDERS CARRIED OUT  ";
-char var001a9a64[] = "WITHDRAWING!!!!!!!!!!!\n";
-char var001a9a7c[] = "CHECKING MY ORDERS  ";
-char var001a9a94[] = "ACTING ON MY ORDERS  ";
-char var001a9aac[] = "DOING DIST CHECK VS CHAR %d\n";
-char var001a9acc[] = "I'm just carrying out my ORDERS \n";
-char var001a9af0[] = "SQUAD IS DOING THAT ACTION\n";
-char var001a9b0c[] = "SQUAD NOT DOING ACTION\n";
-char var001a9b24[] = "g_Vars.CommandInfo.chrdata ->soundtimer = %d, g_Vars.CommandInfo.chrdata->talkgap = %d , soundgap = %d\n";
-char var001a9b8c[] = "RESETTING THE LISTENING \n";
-char var001a9ba8[] = "couldn't go to cover from danger !\n";
-char var001a9bcc[] = "couldn't find cover from danger !\n";
-char var001a9bf0[] = "Randnum = %d,    Alarmrandnum = %d \n";
-char var001a9c18[] = "IVE FOUND MY PAD %d \n";
-u32 var001a9c30 = 0x40c907a9;
-u32 var001a9c34 = 0x40c907a9;
-u32 var001a9c38 = 0x3dcccccd;
-u32 var001a9c3c = 0x3dcccccd;
-u32 var001a9c40 = 0x3dcccccd;
-u32 var001a9c44 = 0x3dcccccd;
-u32 var001a9c48 = 0x3dcccccd;
-u32 var001a9c4c = 0x3dcccccd;
-u32 var001a9c50 = 0x3dcccccd;
-u32 var001a9c54 = 0x7f05592c;
-u32 var001a9c58 = 0x7f05592c;
-u32 var001a9c5c = 0x7f05592c;
-u32 var001a9c60 = 0x7f05592c;
-u32 var001a9c64 = 0x7f05592c;
-u32 var001a9c68 = 0x7f05592c;
-u32 var001a9c6c = 0x7f05592c;
-u32 var001a9c70 = 0x7f05592c;
-u32 var001a9c74 = 0x7f05592c;
-u32 var001a9c78 = 0x7f05592c;
-u32 var001a9c7c = 0x7f05592c;
-u32 var001a9c80 = 0x7f05592c;
-u32 var001a9c84 = 0x7f05592c;
-u32 var001a9c88 = 0x7f05592c;
-u32 var001a9c8c = 0x7f055948;
-u32 var001a9c90 = 0x7f05592c;
-u32 var001a9c94 = 0x7f05592c;
-u32 var001a9c98 = 0x7f05592c;
-u32 var001a9c9c = 0x7f05592c;
-u32 var001a9ca0 = 0x7f05592c;
-u32 var001a9ca4 = 0x7f05592c;
-u32 var001a9ca8 = 0x7f05592c;
-u32 var001a9cac = 0x7f05592c;
-u32 var001a9cb0 = 0x7f05592c;
-u32 var001a9cb4 = 0x7f05592c;
-u32 var001a9cb8 = 0x7f05592c;
-u32 var001a9cbc = 0x7f05592c;
-u32 var001a9cc0 = 0x7f0559ac;
-u32 var001a9cc4 = 0x7f05592c;
-u32 var001a9cc8 = 0x7f05592c;
-u32 var001a9ccc = 0x7f05592c;
-u32 var001a9cd0 = 0x7f05592c;
-u32 var001a9cd4 = 0x7f05592c;
-u32 var001a9cd8 = 0x3d4ccccd;
-u32 var001a9cdc = 0x40c907a9;
-u32 var001a9ce0 = 0x40c907a9;
-u32 var001a9ce4 = 0x7f0593bc;
-u32 var001a9ce8 = 0x7f0593bc;
-u32 var001a9cec = 0x7f0593bc;
-u32 var001a9cf0 = 0x7f0593bc;
-u32 var001a9cf4 = 0x7f0593bc;
-u32 var001a9cf8 = 0x7f0593bc;
-u32 var001a9cfc = 0x7f0593bc;
-u32 var001a9d00 = 0x7f0593bc;
-u32 var001a9d04 = 0x7f059390;
-u32 var001a9d08 = 0x7f059390;
-u32 var001a9d0c = 0x7f059390;
-u32 var001a9d10 = 0x7f059390;
-u32 var001a9d14 = 0x7f059390;
-u32 var001a9d18 = 0x7f059390;
-u32 var001a9d1c = 0x7f059390;
-u32 var001a9d20 = 0x7f059390;
-u32 var001a9d24 = 0x7f059390;
-u32 var001a9d28 = 0x7f059390;
-u32 var001a9d2c = 0x7f0593a0;
-u32 var001a9d30 = 0x7f059390;
-u32 var001a9d34 = 0x7f0593a0;
-u32 var001a9d38 = 0x7f0593a0;
-u32 var001a9d3c = 0x7f0593a0;
-u32 var001a9d40 = 0x7f0593a0;
-u32 var001a9d44 = 0x7f0593b0;
-u32 var001a9d48 = 0x7f0593bc;
-u32 var001a9d4c = 0x455ac000;
-u32 var001a9d50 = 0x461c3f9a;
-u32 var001a9d54 = 0x44bb8000;
-u32 var001a9d58 = 0x461c3c00;
-u32 var001a9d5c = 0x4b189680;
-u32 var001a9d60 = 0x455ac000;
-u32 var001a9d64 = 0x45dac000;
-u32 var001a9d68 = 0x455ac000;
-u32 var001a9d6c = 0x7f05afec;
-u32 var001a9d70 = 0x7f05b008;
-u32 var001a9d74 = 0x7f05b028;
-u32 var001a9d78 = 0x7f05b054;
-u32 var001a9d7c = 0x7f05b088;
-u32 var001a9d80 = 0x7f05b0bc;
-u32 var001a9d84 = 0x7f05b100;
-u32 var001a9d88 = 0x7f05b140;
-u32 var001a9d8c = 0x7f05b184;
-u32 var001a9d90 = 0x461c4000;
-u32 var001a9d94 = 0x455ac000;
-u32 var001a9d98 = 0x46f22fcd;
-u32 var001a9d9c = 0x453b8000;
-u32 var001a9da0 = 0x453b8000;
-u32 var001a9da4 = 0x3dcccccd;
-u32 var001a9da8 = 0x3ecccccd;
-u32 var001a9dac = 0x3ecccccd;
-u32 var001a9db0 = 0x7f05f104;
-u32 var001a9db4 = 0x7f05f104;
-u32 var001a9db8 = 0x7f05f104;
-u32 var001a9dbc = 0x7f05f104;
-u32 var001a9dc0 = 0x7f05f104;
-u32 var001a9dc4 = 0x7f05f104;
-u32 var001a9dc8 = 0x7f05f104;
-u32 var001a9dcc = 0x7f05f104;
-u32 var001a9dd0 = 0x7f05f104;
-u32 var001a9dd4 = 0x7f05fa1c;
-u32 var001a9dd8 = 0x7f05fa28;
-u32 var001a9ddc = 0x7f05fa34;
-u32 var001a9de0 = 0x7f05fa40;
-u32 var001a9de4 = 0x7f05fa4c;
-u32 var001a9de8 = 0x7f05fa58;
-u32 var001a9dec = 0x7f05faa8;
-u32 var001a9df0 = 0x7f05faf8;
-u32 var001a9df4 = 0x7f05fb38;
-u32 var001a9df8 = 0x7f05fb68;
-u32 var001a9dfc = 0x7f05fbdc;
-u32 var001a9e00 = 0x7f05fbf4;
-u32 var001a9e04 = 0x7f05fc0c;
-u32 var001a9e08 = 0x7f05fc24;
-u32 var001a9e0c = 0x7f05fc3c;
-u32 var001a9e10 = 0x7f05fc54;
-u32 var001a9e14 = 0x00000000;
-u32 var001a9e18 = 0x00000000;
-u32 var001a9e1c = 0x00000000;
-u32 var001a9e20 = 0x7f0607b4;
-u32 var001a9e24 = 0x7f060754;
-u32 var001a9e28 = 0x7f060754;
-u32 var001a9e2c = 0x7f060768;
-u32 var001a9e30 = 0x7f060754;
-u32 var001a9e34 = 0x7f0607b4;
-u32 var001a9e38 = 0x7f06077c;
-u32 var001a9e3c = 0x7f060790;
-u32 var001a9e40 = 0x7f0607a4;
-u32 var001a9e44 = 0x4031eb85;
-u32 var001a9e48 = 0x3e4ccccd;
-u32 var001a9e4c = 0x3f866666;
-u32 var001a9e50 = 0x3e4ccccd;
-u32 var001a9e54 = 0x3dcccccd;
-u32 var001a9e58 = 0x4031eb85;
-u32 var001a9e5c = 0x3dcccccd;
-u32 var001a9e60 = 0x7f061ae4;
-u32 var001a9e64 = 0x7f061ae4;
-u32 var001a9e68 = 0x7f061af0;
-u32 var001a9e6c = 0x7f061af0;
-u32 var001a9e70 = 0x7f061af0;
-u32 var001a9e74 = 0x7f061adc;
-u32 var001a9e78 = 0x7f061ae4;
-u32 var001a9e7c = 0x7f061af0;
-u32 var001a9e80 = 0x7f061af0;
-u32 var001a9e84 = 0x7f061af0;
-u32 var001a9e88 = 0x7f061af0;
-u32 var001a9e8c = 0x7f061af0;
-u32 var001a9e90 = 0x7f061af0;
-u32 var001a9e94 = 0x7f061af0;
-u32 var001a9e98 = 0x7f061ae4;
-u32 var001a9e9c = 0x7f061af0;
-u32 var001a9ea0 = 0x7f061ad4;
-u32 var001a9ea4 = 0x7f061af0;
-u32 var001a9ea8 = 0x7f061af0;
-u32 var001a9eac = 0x7f061af0;
-u32 var001a9eb0 = 0x7f061af0;
-u32 var001a9eb4 = 0x7f061af0;
-u32 var001a9eb8 = 0x7f061aec;
-u32 var001a9ebc = 0x4f7ffe00;
-u32 var001a9ec0 = 0x4f7ffe00;
-u32 var001a9ec4 = 0x3e2aaaab;
-u32 var001a9ec8 = 0x7f0628d8;
-u32 var001a9ecc = 0x7f062a88;
-u32 var001a9ed0 = 0x7f062acc;
-u32 var001a9ed4 = 0x7f062a00;
-u32 var001a9ed8 = 0x7f062a44;
-u32 var001a9edc = 0x7f062a68;
-u32 var001a9ee0 = 0x7f062a78;
-u32 var001a9ee4 = 0x7f062a98;
-u32 var001a9ee8 = 0x7f062ae0;
-u32 var001a9eec = 0x7f062a2c;
-u32 var001a9ef0 = 0x7f062b18;
-u32 var001a9ef4 = 0x7f062a58;
-u32 var001a9ef8 = 0x7f062eb8;
-u32 var001a9efc = 0x7f062ec8;
-u32 var001a9f00 = 0x7f062ed4;
-u32 var001a9f04 = 0x7f062eb8;
-u32 var001a9f08 = 0x7f062ed4;
-u32 var001a9f0c = 0x7f062ed4;
-u32 var001a9f10 = 0x7f062ed4;
-u32 var001a9f14 = 0x7f062ed4;
-u32 var001a9f18 = 0x7f063e74;
-u32 var001a9f1c = 0x7f064130;
-u32 var001a9f20 = 0x7f0640c8;
-u32 var001a9f24 = 0x7f063e74;
-u32 var001a9f28 = 0x7f0640c8;
-u32 var001a9f2c = 0x7f0640a0;
-u32 var001a9f30 = 0x7f064338;
-u32 var001a9f34 = 0x7f064354;
-u32 var001a9f38 = 0x7f064354;
-u32 var001a9f3c = 0x7f064348;
-u32 var001a9f40 = 0x7f064354;
-u32 var001a9f44 = 0x7f064354;
-u32 var001a9f48 = 0x7f064354;
-u32 var001a9f4c = 0x7f064354;
-u32 var001a9f50 = 0x3e333333;
-u32 var001a9f54 = 0x3f533333;
-u32 var001a9f58 = 0x00000000;
-u32 var001a9f5c = 0x00000000;
-char var001a9f60[] = "debugdoors";
-char var001a9f6c[] = "scol";
-char var001a9f74[] = "salp";
-char var001a9f7c[] = "propobj.c";
-char var001a9f88[] = "propobj.c";
-char var001a9f94[] = "propobj.c";
-char var001a9fa0[] = "propobj.c";
-char var001a9fac[] = "propobj.c";
-char var001a9fb8[] = "propobj.c";
-char var001a9fc4[] = "propobj.c";
-u32 var001a9fd0 = 0x6b6b6700;
-u32 var001a9fd4 = 0x6b6b6400;
-u32 var001a9fd8 = 0x6b6b7000;
-char var001a9fdc[] = "debugdoor";
-char var001a9fe8[] = "************** RWI : Door Stuck Mate -> Sort it out\n";
-char var001aa020[] = "propobj.c";
-char var001aa02c[] = "propobj.c";
-char var001aa038[] = "propobj.c";
-char var001aa044[] = "propobj.c";
-char var001aa050[] = "HC: %x - visible\n";
-u32 var001aa064 = 0x0a000000;
-u32 var001aa068 = 0x2e0a0000;
-u32 var001aa06c = 0x00000000;
-u32 var001aa070 = 0x00000000;
-u32 var001aa074 = 0x00000000;
-u32 var001aa078 = 0x00000000;
-u32 var001aa07c = 0x00000000;
-u32 var001aa080 = 0x00000000;
-u32 var001aa084 = 0x00000000;
-u32 var001aa088 = 0x00000000;
-u32 var001aa08c = 0x00000000;
-u32 var001aa090 = 0x00000000;
-u32 var001aa094 = 0x00000000;
-u32 var001aa098 = 0x00000000;
-u32 var001aa09c = 0x00000000;
-u32 var001aa0a0 = 0x00000000;
-u32 var001aa0a4 = 0x00000000;
-u32 var001aa0a8 = 0x00000000;
-u32 var001aa0ac = 0x00000000;
-u32 var001aa0b0 = 0x00000000;
-u32 var001aa0b4 = 0x00000000;
-u32 var001aa0b8 = 0x00000000;
-u32 var001aa0bc = 0x00000000;
-u32 var001aa0c0 = 0x00000000;
-u32 var001aa0c4 = 0x00000000;
-u32 var001aa0c8 = 0x00000000;
-u32 var001aa0cc = 0x00000000;
-u32 var001aa0d0 = 0x73000000;
-u32 var001aa0d4 = 0x0a000000;
-u32 var001aa0d8 = 0x2e0a0000;
-u32 var001aa0dc = 0x00000000;
-u32 var001aa0e0 = 0x00000000;
-u32 var001aa0e4 = 0x00000000;
-u32 var001aa0e8 = 0x00000000;
-u32 var001aa0ec = 0x00000000;
-u32 var001aa0f0 = 0x00000000;
-u32 var001aa0f4 = 0x00000000;
-u32 var001aa0f8 = 0x00000000;
-u32 var001aa0fc = 0x00000000;
-u32 var001aa100 = 0x00000000;
-u32 var001aa104 = 0x00000000;
-u32 var001aa108 = 0x00000000;
-u32 var001aa10c = 0x00000000;
-u32 var001aa110 = 0x00000000;
-u32 var001aa114 = 0x00000000;
-u32 var001aa118 = 0x00000000;
-u32 var001aa11c = 0x00000000;
-u32 var001aa120 = 0x00000000;
-u32 var001aa124 = 0x00000000;
-u32 var001aa128 = 0x00000000;
-u32 var001aa12c = 0x00000000;
-u32 var001aa130 = 0x00000000;
-u32 var001aa134 = 0x00000000;
-u32 var001aa138 = 0x00000000;
-u32 var001aa13c = 0x00000000;
-char var001aa140[] = "autodoorcanclose:      blocking door\n\n";
-u32 var001aa168 = 0x3a0a0000;
-char var001aa16c[] = "ALARM : PAN 1 = %d (%s%f)";
-u32 var001aa188 = 0x00000000;
-char var001aa18c[] = "ALARM : DIR 1 = %d";
-char var001aa1a0[] = "ALARM : ADD 1 = %d (%s%f)";
-u32 var001aa1bc = 0x00000000;
-char var001aa1c0[] = "propobj.c";
-u32 var001aa1cc = 0x3a83126f;
-u32 var001aa1d0 = 0x3d4ccccd;
-u32 var001aa1d4 = 0x39cd9a67;
-u32 var001aa1d8 = 0x3f666666;
-u32 var001aa1dc = 0x40555555;
-u32 var001aa1e0 = 0x40d55555;
-u32 var001aa1e4 = 0x40555555;
-u32 var001aa1e8 = 0x3d4907a9;
-u32 var001aa1ec = 0x3cc907a9;
-u32 var001aa1f0 = 0x3d4907a9;
-u32 var001aa1f4 = 0x3cc907a9;
-u32 var001aa1f8 = 0x3d4907a9;
-u32 var001aa1fc = 0x3cc907a9;
-u32 var001aa200 = 0x404907a9;
-u32 var001aa204 = 0x4096c5bf;
-u32 var001aa208 = 0x404907a9;
-u32 var001aa20c = 0x46fffe00;
-u32 var001aa210 = 0x7f7fffff;
-u32 var001aa214 = 0x7f06c0ec;
-u32 var001aa218 = 0x7f06c15c;
-u32 var001aa21c = 0x7f06c15c;
-u32 var001aa220 = 0x7f06c15c;
-u32 var001aa224 = 0x7f06c128;
-u32 var001aa228 = 0x7f06c15c;
-u32 var001aa22c = 0x7f06bfa4;
-u32 var001aa230 = 0x7f06c15c;
-u32 var001aa234 = 0x7f06c15c;
-u32 var001aa238 = 0x7f06c15c;
-u32 var001aa23c = 0x7f06c15c;
-u32 var001aa240 = 0x7f06c15c;
-u32 var001aa244 = 0x7f06c15c;
-u32 var001aa248 = 0x7f06c15c;
-u32 var001aa24c = 0x7f06c13c;
-u32 var001aa250 = 0x7f06c15c;
-u32 var001aa254 = 0x7f06c15c;
-u32 var001aa258 = 0x7f06c15c;
-u32 var001aa25c = 0x7f06c15c;
-u32 var001aa260 = 0x7f06c150;
-u32 var001aa264 = 0x7f06c088;
-u32 var001aa268 = 0x3dcccccd;
-u32 var001aa26c = 0x3f7d70a4;
-u32 var001aa270 = 0xc0490fdb;
-u32 var001aa274 = 0x40c907a9;
-u32 var001aa278 = 0x40490fdb;
-u32 var001aa27c = 0x40c907a9;
-u32 var001aa280 = 0x40c907a9;
-u32 var001aa284 = 0x3d4ccccd;
-u32 var001aa288 = 0x3f230028;
-u32 var001aa28c = 0x3d4ccccd;
-u32 var001aa290 = 0x3f230028;
-u32 var001aa294 = 0x3cf5c28f;
-u32 var001aa298 = 0x3e19999a;
-u32 var001aa29c = 0xbfc907a9;
-u32 var001aa2a0 = 0xbfc907a9;
-u32 var001aa2a4 = 0x3f4ccccd;
-u32 var001aa2a8 = 0x3ecccccd;
-u32 var001aa2ac = 0x3f4ccccd;
-u32 var001aa2b0 = 0x3ecccccd;
-u32 var001aa2b4 = 0x3f4ccccd;
-u32 var001aa2b8 = 0x3ecccccd;
-u32 var001aa2bc = 0xbfc907a9;
-u32 var001aa2c0 = 0x47742400;
-u32 var001aa2c4 = 0x3cd67750;
-u32 var001aa2c8 = 0xc6ea6000;
-u32 var001aa2cc = 0x3f666666;
-u32 var001aa2d0 = 0x3f666666;
-u32 var001aa2d4 = 0xc6ea6000;
-u32 var001aa2d8 = 0x40490fdb;
-u32 var001aa2dc = 0x40c907a9;
-u32 var001aa2e0 = 0x40490fdb;
-u32 var001aa2e4 = 0x40c907a9;
-u32 var001aa2e8 = 0x40490fdb;
-u32 var001aa2ec = 0x40c907a9;
-u32 var001aa2f0 = 0x40490fdb;
-u32 var001aa2f4 = 0x40c907a9;
-u32 var001aa2f8 = 0x40490fdb;
-u32 var001aa2fc = 0x40c907a9;
-u32 var001aa300 = 0x3dae147b;
-u32 var001aa304 = 0x3d99999a;
-u32 var001aa308 = 0x3e4ccccd;
-u32 var001aa30c = 0x40c907a9;
-u32 var001aa310 = 0x40c907a9;
-u32 var001aa314 = 0x40c907a9;
-u32 var001aa318 = 0x40c907a9;
-u32 var001aa31c = 0x40c907a9;
-u32 var001aa320 = 0x3dcccccd;
-u32 var001aa324 = 0x3d32b179;
-u32 var001aa328 = 0x3d99999a;
-u32 var001aa32c = 0x3dcccccd;
-u32 var001aa330 = 0x3e99999a;
-u32 var001aa334 = 0x3dcccccd;
-u32 var001aa338 = 0x3e99999a;
-u32 var001aa33c = 0x3f6e147b;
-u32 var001aa340 = 0x3e99999a;
-u32 var001aa344 = 0x3f333333;
-u32 var001aa348 = 0x3e99999a;
-u32 var001aa34c = 0x3d23d70a;
-u32 var001aa350 = 0x40c907a9;
-u32 var001aa354 = 0x3dcccccd;
-u32 var001aa358 = 0x3e99999a;
-u32 var001aa35c = 0x3dcccccd;
-u32 var001aa360 = 0x3e99999a;
-u32 var001aa364 = 0x3ecccccd;
-u32 var001aa368 = 0x3e80a8be;
-u32 var001aa36c = 0x3f8a3d71;
-u32 var001aa370 = 0x3f3851ec;
-u32 var001aa374 = 0x3f8a3d71;
-u32 var001aa378 = 0x3f3851ec;
-u32 var001aa37c = 0x3f7851ec;
-u32 var001aa380 = 0x3d23d70a;
-u32 var001aa384 = 0x3e19999a;
-u32 var001aa388 = 0x3f7d70a4;
-u32 var001aa38c = 0x3f4ccccd;
-u32 var001aa390 = 0xbdcccccd;
-u32 var001aa394 = 0x459c4000;
-u32 var001aa398 = 0x4a127c00;
-u32 var001aa39c = 0x3dcccccd;
-u32 var001aa3a0 = 0x3dcccccd;
-u32 var001aa3a4 = 0x3a83126f;
-u32 var001aa3a8 = 0x3dcccccd;
-u32 var001aa3ac = 0xbdcccccd;
-u32 var001aa3b0 = 0xbdcccccd;
-u32 var001aa3b4 = 0xba83126f;
-u32 var001aa3b8 = 0xbdcccccd;
-u32 var001aa3bc = 0x461c4000;
-u32 var001aa3c0 = 0x40c907a9;
-u32 var001aa3c4 = 0x3dcccccd;
-u32 var001aa3c8 = 0x3aebedfa;
-u32 var001aa3cc = 0x461c4000;
-u32 var001aa3d0 = 0x47742400;
-u32 var001aa3d4 = 0x3c23d70a;
-u32 var001aa3d8 = 0x3c23d70a;
-u32 var001aa3dc = 0x38d1b717;
-u32 var001aa3e0 = 0x3c23d70a;
-u32 var001aa3e4 = 0x3c23d70a;
-u32 var001aa3e8 = 0x3c23d70a;
-u32 var001aa3ec = 0xc6ea6000;
-u32 var001aa3f0 = 0xc69c4000;
-u32 var001aa3f4 = 0x3e8e38e4;
-u32 var001aa3f8 = 0x3c360b61;
-u32 var001aa3fc = 0x3d8f5c29;
-u32 var001aa400 = 0x3e8e38e4;
-u32 var001aa404 = 0x3a83126f;
-u32 var001aa408 = 0xba83126f;
-u32 var001aa40c = 0x3e8e38e4;
-u32 var001aa410 = 0x3e0e38e4;
-u32 var001aa414 = 0x400e38e4;
-u32 var001aa418 = 0x46d9038c;
-u32 var001aa41c = 0x3dcccccd;
-u32 var001aa420 = 0xbdcccccd;
-u32 var001aa424 = 0xbdcccccd;
-u32 var001aa428 = 0x3f8ccccd;
-u32 var001aa42c = 0x3f666666;
-u32 var001aa430 = 0x3f666666;
-u32 var001aa434 = 0x3dcccccd;
-u32 var001aa438 = 0xbdcccccd;
-u32 var001aa43c = 0x3e99999a;
-u32 var001aa440 = 0x3c8ef461;
-u32 var001aa444 = 0x40c907a9;
-u32 var001aa448 = 0x3c8ef461;
-u32 var001aa44c = 0x3e99999a;
-u32 var001aa450 = 0x3d3a5e30;
-u32 var001aa454 = 0x411ffffe;
-u32 var001aa458 = 0x40c907a9;
-u32 var001aa45c = 0x40c907a9;
-u32 var001aa460 = 0x404907a9;
-u32 var001aa464 = 0x404907a9;
-u32 var001aa468 = 0x3f4907a9;
-u32 var001aa46c = 0xbf4907a9;
-u32 var001aa470 = 0x40c907a9;
-u32 var001aa474 = 0x40c907a9;
-u32 var001aa478 = 0x40c907a9;
-u32 var001aa47c = 0x404907a9;
-u32 var001aa480 = 0x3f4907a9;
-u32 var001aa484 = 0xbf4907a9;
-u32 var001aa488 = 0x443f042f;
-u32 var001aa48c = 0x3a2b8ba8;
-u32 var001aa490 = 0x3a2b8ba8;
-u32 var001aa494 = 0x443f042f;
-u32 var001aa498 = 0x443f042f;
-u32 var001aa49c = 0x3a2b8ba8;
-u32 var001aa4a0 = 0x3a2b8ba8;
-u32 var001aa4a4 = 0x443f042f;
-u32 var001aa4a8 = 0x40c907a9;
-u32 var001aa4ac = 0x40c907a9;
-u32 var001aa4b0 = 0x3e4ccccd;
-u32 var001aa4b4 = 0x3c23d70a;
-u32 var001aa4b8 = 0x3fc907a9;
-u32 var001aa4bc = 0x40c907a9;
-u32 var001aa4c0 = 0x3c8ef461;
-u32 var001aa4c4 = 0x40c907a9;
-u32 var001aa4c8 = 0x37432e42;
-u32 var001aa4cc = 0x3a36fb5e;
-u32 var001aa4d0 = 0x36c32e42;
-u32 var001aa4d4 = 0x39b6fb5e;
-u32 var001aa4d8 = 0x40c907a9;
-u32 var001aa4dc = 0x37432e42;
-u32 var001aa4e0 = 0x40c907a9;
-u32 var001aa4e4 = 0x3a36fb5e;
-u32 var001aa4e8 = 0x36c32e42;
-u32 var001aa4ec = 0x40c907a9;
-u32 var001aa4f0 = 0x39b6fb5e;
-u32 var001aa4f4 = 0x40c907a9;
-u32 var001aa4f8 = 0x40c907a9;
-u32 var001aa4fc = 0x3ccddaca;
-u32 var001aa500 = 0x358637bd;
-u32 var001aa504 = 0x3c23606f;
-u32 var001aa508 = 0x40c907a9;
-u32 var001aa50c = 0x40c907a9;
-u32 var001aa510 = 0x40c907a9;
-u32 var001aa514 = 0x404907a9;
-u32 var001aa518 = 0x3f9c5b4b;
-u32 var001aa51c = 0xbf9c5b4b;
-u32 var001aa520 = 0xc0490fdb;
-u32 var001aa524 = 0x40490fdb;
-u32 var001aa528 = 0x40c907a9;
-u32 var001aa52c = 0x40c907a9;
-u32 var001aa530 = 0x40c907a9;
-u32 var001aa534 = 0x40c907a9;
-u32 var001aa538 = 0x40c907a9;
-u32 var001aa53c = 0x40c907a9;
-u32 var001aa540 = 0x40c907a9;
-u32 var001aa544 = 0x40c907a9;
-u32 var001aa548 = 0x40c907a9;
-u32 var001aa54c = 0x3d566e92;
-u32 var001aa550 = 0x40c907a9;
-u32 var001aa554 = 0x3f4ccccd;
-u32 var001aa558 = 0xc0490fdb;
-u32 var001aa55c = 0x40490fdb;
-u32 var001aa560 = 0x3a64ba35;
-u32 var001aa564 = 0x3a64ba35;
-u32 var001aa568 = 0x40c907a9;
-u32 var001aa56c = 0x40c907a9;
-u32 var001aa570 = 0x404907a9;
-u32 var001aa574 = 0x3f192a68;
-u32 var001aa578 = 0x3c23606f;
-u32 var001aa57c = 0x3f7d70a4;
-u32 var001aa580 = 0x38d1b717;
-u32 var001aa584 = 0x40c907a9;
-u32 var001aa588 = 0x3fc907a9;
-u32 var001aa58c = 0x3e23d70a;
-u32 var001aa590 = 0x461c4000;
-u32 var001aa594 = 0x453b8000;
-u32 var001aa598 = 0x3f19999a;
-u32 var001aa59c = 0x3e99999a;
-u32 var001aa5a0 = 0xbdcccccd;
-u32 var001aa5a4 = 0x453b8000;
-u32 var001aa5a8 = 0x3e4ccccd;
-u32 var001aa5ac = 0x40c907a9;
-u32 var001aa5b0 = 0x3fc90fdb;
-u32 var001aa5b4 = 0x40c907a9;
-u32 var001aa5b8 = 0x3cc907a9;
-u32 var001aa5bc = 0x40490fdb;
-u32 var001aa5c0 = 0x40c907a9;
-u32 var001aa5c4 = 0x40490fdb;
-u32 var001aa5c8 = 0x3c888889;
-u32 var001aa5cc = 0xc43c8000;
-u32 var001aa5d0 = 0x443c8000;
-u32 var001aa5d4 = 0x3dcccccd;
-u32 var001aa5d8 = 0x40c907a9;
-u32 var001aa5dc = 0x40c907a9;
-u32 var001aa5e0 = 0x40490fdb;
-u32 var001aa5e4 = 0xc0490fdb;
-u32 var001aa5e8 = 0x40c907a9;
-u32 var001aa5ec = 0x40c907a9;
-u32 var001aa5f0 = 0x40490fdb;
-u32 var001aa5f4 = 0x3eb2b8c2;
-u32 var001aa5f8 = 0x3c8efa35;
-u32 var001aa5fc = 0x3c8efa35;
-u32 var001aa600 = 0x3b187c24;
-u32 var001aa604 = 0x3b987c24;
-u32 var001aa608 = 0x3e0ef461;
-u32 var001aa60c = 0xbb987c24;
-u32 var001aa610 = 0xbb987c24;
-u32 var001aa614 = 0x406ccccd;
-u32 var001aa618 = 0x3cfc9630;
-u32 var001aa61c = 0x3d567664;
-u32 var001aa620 = 0x40c907a9;
-u32 var001aa624 = 0x3c23d70a;
-u32 var001aa628 = 0x3e19999a;
-u32 var001aa62c = 0x3f7ae148;
-u32 var001aa630 = 0x40490fdb;
-u32 var001aa634 = 0x40b9999a;
-u32 var001aa638 = 0x39e4ba35;
-u32 var001aa63c = 0x3c566e92;
-u32 var001aa640 = 0x39e4ba35;
-u32 var001aa644 = 0xb9e4ba35;
-u32 var001aa648 = 0x39e4ba35;
-u32 var001aa64c = 0x3c566e92;
-u32 var001aa650 = 0x39e4ba35;
-u32 var001aa654 = 0xb9e4ba35;
-u32 var001aa658 = 0x3dcccccd;
-u32 var001aa65c = 0x40c907a9;
-u32 var001aa660 = 0x40c907a9;
-u32 var001aa664 = 0x3ee66666;
-u32 var001aa668 = 0x3e32b021;
-u32 var001aa66c = 0xbf333333;
-u32 var001aa670 = 0x3c1374bc;
-u32 var001aa674 = 0xc6ea6000;
-u32 var001aa678 = 0x40490fdb;
-u32 var001aa67c = 0xc0490fdb;
-u32 var001aa680 = 0x3f7ae148;
-u32 var001aa684 = 0x3d567664;
-u32 var001aa688 = 0x40c907a9;
-u32 var001aa68c = 0x3c23d70a;
-u32 var001aa690 = 0x3e19999a;
-u32 var001aa694 = 0x40490fdb;
-u32 var001aa698 = 0xc0490fdb;
-u32 var001aa69c = 0x49f42400;
-u32 var001aa6a0 = 0x48c35000;
-u32 var001aa6a4 = 0x461c4000;
-u32 var001aa6a8 = 0x451c4000;
-u32 var001aa6ac = 0x471c4000;
-u32 var001aa6b0 = 0x47148900;
-u32 var001aa6b4 = 0x3d2aaaab;
-u32 var001aa6b8 = 0x3dcccccd;
-u32 var001aa6bc = 0x3d2aaaab;
-u32 var001aa6c0 = 0x3e555555;
-u32 var001aa6c4 = 0x3964ba35;
-u32 var001aa6c8 = 0x3c566e92;
-u32 var001aa6cc = 0x3964ba35;
-u32 var001aa6d0 = 0x3c566e92;
-u32 var001aa6d4 = 0x3964ba35;
-u32 var001aa6d8 = 0x3dcccccd;
-u32 var001aa6dc = 0x40c907a9;
-u32 var001aa6e0 = 0x40c907a9;
-u32 var001aa6e4 = 0xc7c35000;
-u32 var001aa6e8 = 0x3dcccccd;
-u32 var001aa6ec = 0x3dcccccd;
-u32 var001aa6f0 = 0x7f07fbd8;
-u32 var001aa6f4 = 0x7f07f954;
-u32 var001aa6f8 = 0x7f07f960;
-u32 var001aa6fc = 0x7f07f96c;
-u32 var001aa700 = 0x7f07f978;
-u32 var001aa704 = 0x7f07f984;
-u32 var001aa708 = 0x7f07f990;
-u32 var001aa70c = 0x7f07f99c;
-u32 var001aa710 = 0x7f07f9a8;
-u32 var001aa714 = 0x7f07f9b4;
-u32 var001aa718 = 0x7f07f9c0;
-u32 var001aa71c = 0x7f07f9cc;
-u32 var001aa720 = 0x7f07f9d8;
-u32 var001aa724 = 0x7f07f9e4;
-u32 var001aa728 = 0x7f07f9f0;
-u32 var001aa72c = 0x7f07f9fc;
-u32 var001aa730 = 0x7f07fa08;
-u32 var001aa734 = 0x7f07fa14;
-u32 var001aa738 = 0x7f07fa20;
-u32 var001aa73c = 0x7f07fa2c;
-u32 var001aa740 = 0x7f07fa38;
-u32 var001aa744 = 0x7f07fa44;
-u32 var001aa748 = 0x7f07fa50;
-u32 var001aa74c = 0x7f07fa5c;
-u32 var001aa750 = 0x7f07fa68;
-u32 var001aa754 = 0x7f07fa74;
-u32 var001aa758 = 0x7f07fa80;
-u32 var001aa75c = 0x7f07fa8c;
-u32 var001aa760 = 0x7f07fa98;
-u32 var001aa764 = 0x7f07faa4;
-u32 var001aa768 = 0x7f07fabc;
-u32 var001aa76c = 0x7f07fac8;
-u32 var001aa770 = 0x7f07fad4;
-u32 var001aa774 = 0x7f07fae0;
-u32 var001aa778 = 0x7f07faec;
-u32 var001aa77c = 0x7f07faf8;
-u32 var001aa780 = 0x7f07fab0;
-u32 var001aa784 = 0x7f07fb04;
-u32 var001aa788 = 0x7f07fb10;
-u32 var001aa78c = 0x7f07fb1c;
-u32 var001aa790 = 0x7f07fb28;
-u32 var001aa794 = 0x7f07fb34;
-u32 var001aa798 = 0x7f07fb40;
-u32 var001aa79c = 0x7f07fb4c;
-u32 var001aa7a0 = 0x7f07fb58;
-u32 var001aa7a4 = 0x7f07fb64;
-u32 var001aa7a8 = 0x7f07fb70;
-u32 var001aa7ac = 0x7f07fb7c;
-u32 var001aa7b0 = 0x7f07fb88;
-u32 var001aa7b4 = 0x7f07fb94;
-u32 var001aa7b8 = 0x7f07fba0;
-u32 var001aa7bc = 0x7f07fbac;
-u32 var001aa7c0 = 0x7f07fbb8;
-u32 var001aa7c4 = 0x7f07fbc4;
-u32 var001aa7c8 = 0x7f07fbd0;
-u32 var001aa7cc = 0x40c907a9;
-u32 var001aa7d0 = 0x38c907a9;
-u32 var001aa7d4 = 0x7f07fce4;
-u32 var001aa7d8 = 0x7f07fcf8;
-u32 var001aa7dc = 0x7f07fd68;
-u32 var001aa7e0 = 0x7f07fdd8;
-u32 var001aa7e4 = 0x7f07fe44;
-u32 var001aa7e8 = 0x7f07feb0;
-u32 var001aa7ec = 0x7f07ff1c;
-u32 var001aa7f0 = 0x7f07ff88;
-u32 var001aa7f4 = 0x7f07ffb4;
-u32 var001aa7f8 = 0x7f080000;
-u32 var001aa7fc = 0x7f080020;
-u32 var001aa800 = 0x7f080074;
-u32 var001aa804 = 0x7f08007c;
-u32 var001aa808 = 0x7f080084;
-u32 var001aa80c = 0x7f08011c;
-u32 var001aa810 = 0x7f080140;
-u32 var001aa814 = 0x38c907a9;
-u32 var001aa818 = 0x38c907a9;
-u32 var001aa81c = 0x38c907a9;
-u32 var001aa820 = 0x3fc907a9;
-u32 var001aa824 = 0x3fb50481;
-u32 var001aa828 = 0x3c888889;
-u32 var001aa82c = 0x3c888889;
-u32 var001aa830 = 0x47c34f80;
-u32 var001aa834 = 0xc7c34f80;
-u32 var001aa838 = 0x3f666666;
-u32 var001aa83c = 0x40555555;
-u32 var001aa840 = 0x40d55555;
-u32 var001aa844 = 0x40d55555;
-u32 var001aa848 = 0x3cc907a9;
-u32 var001aa84c = 0x3c4907a9;
-u32 var001aa850 = 0x3cc907a9;
-u32 var001aa854 = 0x3c4907a9;
-u32 var001aa858 = 0x3cc907a9;
-u32 var001aa85c = 0x3c4907a9;
-u32 var001aa860 = 0x3f4ccccd;
-u32 var001aa864 = 0x3b360b61;
-u32 var001aa868 = 0x382fa9a2;
-u32 var001aa86c = 0x3f795810;
-u32 var001aa870 = 0x3da0d2ee;
-u32 var001aa874 = 0x40d55555;
-u32 var001aa878 = 0x3c638e39;
-u32 var001aa87c = 0x395b940a;
-u32 var001aa880 = 0x3f760419;
-u32 var001aa884 = 0x3da0d2ee;
-u32 var001aa888 = 0x40d55555;
-u32 var001aa88c = 0x3dcccccd;
-u32 var001aa890 = 0x3d638e39;
-u32 var001aa894 = 0x3a5b940a;
-u32 var001aa898 = 0x3f760419;
-u32 var001aa89c = 0x3c20d2ee;
-u32 var001aa8a0 = 0x3f555555;
-u32 var001aa8a4 = 0x3dcccccd;
-u32 var001aa8a8 = 0x3d638e39;
-u32 var001aa8ac = 0x3a5b940a;
-u32 var001aa8b0 = 0x3f760419;
-u32 var001aa8b4 = 0x3ca0d2ee;
-u32 var001aa8b8 = 0x3f555555;
-u32 var001aa8bc = 0x3dcccccd;
-u32 var001aa8c0 = 0x3d638e39;
-u32 var001aa8c4 = 0x39db940a;
-u32 var001aa8c8 = 0x3f760419;
-u32 var001aa8cc = 0x3da0d2ee;
-u32 var001aa8d0 = 0x3fd55555;
-u32 var001aa8d4 = 0x3e4ccccd;
-u32 var001aa8d8 = 0x3e4ccccd;
-u32 var001aa8dc = 0x38d1b717;
-u32 var001aa8e0 = 0x41555555;
-u32 var001aa8e4 = 0x40c907a9;
-u32 var001aa8e8 = 0x3f4907a9;
-u32 var001aa8ec = 0x3ec907a9;
-u32 var001aa8f0 = 0x3fd55555;
-u32 var001aa8f4 = 0x3f555555;
-u32 var001aa8f8 = 0x3fd55555;
-u32 var001aa8fc = 0x3c4907a9;
-u32 var001aa900 = 0x3bc907a9;
-u32 var001aa904 = 0x3c4907a9;
-u32 var001aa908 = 0x3bc907a9;
-u32 var001aa90c = 0x3c4907a9;
-u32 var001aa910 = 0x3bc907a9;
-u32 var001aa914 = 0x41555555;
-u32 var001aa918 = 0x40d55555;
-u32 var001aa91c = 0x41555555;
-u32 var001aa920 = 0x3c4907a9;
-u32 var001aa924 = 0x3bc907a9;
-u32 var001aa928 = 0x3c4907a9;
-u32 var001aa92c = 0x3bc907a9;
-u32 var001aa930 = 0x3c4907a9;
-u32 var001aa934 = 0x3bc907a9;
-u32 var001aa938 = 0x40555555;
-u32 var001aa93c = 0x40555555;
-u32 var001aa940 = 0x40555555;
-u32 var001aa944 = 0x3d4907a9;
-u32 var001aa948 = 0x3cc907a9;
-u32 var001aa94c = 0x3d4907a9;
-u32 var001aa950 = 0x3cc907a9;
-u32 var001aa954 = 0x3d4907a9;
-u32 var001aa958 = 0x3cc907a9;
-u32 var001aa95c = 0x3fd55555;
-u32 var001aa960 = 0x3fd55555;
-u32 var001aa964 = 0x3d4907a9;
-u32 var001aa968 = 0x3cc907a9;
-u32 var001aa96c = 0x3d4907a9;
-u32 var001aa970 = 0x3cc907a9;
-u32 var001aa974 = 0x3d4907a9;
-u32 var001aa978 = 0x3cc907a9;
-u32 var001aa97c = 0x3fd55555;
-u32 var001aa980 = 0x3f555555;
-u32 var001aa984 = 0x40555555;
-u32 var001aa988 = 0x3fd55555;
-u32 var001aa98c = 0x3fd55555;
-u32 var001aa990 = 0x3f555555;
-u32 var001aa994 = 0x3ba0d2ee;
-u32 var001aa998 = 0x3b20d2ee;
-u32 var001aa99c = 0x3ba0d2ee;
-u32 var001aa9a0 = 0x3b20d2ee;
-u32 var001aa9a4 = 0x3ba0d2ee;
-u32 var001aa9a8 = 0x3b20d2ee;
-u32 var001aa9ac = 0x46fffe00;
-u32 var001aa9b0 = 0x7f084ad0;
-u32 var001aa9b4 = 0x7f084b38;
-u32 var001aa9b8 = 0x7f084b38;
-u32 var001aa9bc = 0x7f084b38;
-u32 var001aa9c0 = 0x7f084b04;
-u32 var001aa9c4 = 0x7f084b38;
-u32 var001aa9c8 = 0x7f084b38;
-u32 var001aa9cc = 0x7f084b38;
-u32 var001aa9d0 = 0x7f084b38;
-u32 var001aa9d4 = 0x7f084b38;
-u32 var001aa9d8 = 0x7f084b38;
-u32 var001aa9dc = 0x7f084b38;
-u32 var001aa9e0 = 0x7f084b38;
-u32 var001aa9e4 = 0x7f084b38;
-u32 var001aa9e8 = 0x7f084b18;
-u32 var001aa9ec = 0x7f084b38;
-u32 var001aa9f0 = 0x7f084b38;
-u32 var001aa9f4 = 0x7f084b38;
-u32 var001aa9f8 = 0x7f084b38;
-u32 var001aa9fc = 0x7f084b2c;
-u32 var001aaa00 = 0x7f084a74;
-u32 var001aaa04 = 0x7f085180;
-u32 var001aaa08 = 0x7f085188;
-u32 var001aaa0c = 0x7f085180;
-u32 var001aaa10 = 0x7f085188;
-u32 var001aaa14 = 0x7f085180;
-u32 var001aaa18 = 0x7f085180;
-u32 var001aaa1c = 0x7f085188;
-u32 var001aaa20 = 0x7f085188;
-u32 var001aaa24 = 0x7f085188;
-u32 var001aaa28 = 0x7f085180;
-u32 var001aaa2c = 0x7f085180;
-u32 var001aaa30 = 0x7f085180;
-u32 var001aaa34 = 0x7f085180;
-u32 var001aaa38 = 0x7f085188;
-u32 var001aaa3c = 0x7f085180;
-u32 var001aaa40 = 0x7f085188;
-u32 var001aaa44 = 0x7f085188;
-u32 var001aaa48 = 0x7f085188;
-u32 var001aaa4c = 0x7f085188;
-u32 var001aaa50 = 0x7f085188;
-u32 var001aaa54 = 0x7f085188;
-u32 var001aaa58 = 0x7f085188;
-u32 var001aaa5c = 0x7f085188;
-u32 var001aaa60 = 0x7f085188;
-u32 var001aaa64 = 0x7f085188;
-u32 var001aaa68 = 0x7f085188;
-u32 var001aaa6c = 0x7f085188;
-u32 var001aaa70 = 0x7f085188;
-u32 var001aaa74 = 0x7f085188;
-u32 var001aaa78 = 0x7f085188;
-u32 var001aaa7c = 0x7f085188;
-u32 var001aaa80 = 0x7f085188;
-u32 var001aaa84 = 0x7f085188;
-u32 var001aaa88 = 0x7f085188;
-u32 var001aaa8c = 0x7f085188;
-u32 var001aaa90 = 0x7f085180;
-u32 var001aaa94 = 0x7f085188;
-u32 var001aaa98 = 0x7f085188;
-u32 var001aaa9c = 0x7f085188;
-u32 var001aaaa0 = 0x7f085188;
-u32 var001aaaa4 = 0x7f085180;
-u32 var001aaaa8 = 0x7f085180;
-u32 var001aaaac = 0x7f085180;
-u32 var001aaab0 = 0x7f085188;
-u32 var001aaab4 = 0x7f085188;
-u32 var001aaab8 = 0x7f085188;
-u32 var001aaabc = 0x7f085180;
-u32 var001aaac0 = 0x7f085180;
-u32 var001aaac4 = 0x7f085188;
-u32 var001aaac8 = 0x7f085188;
-u32 var001aaacc = 0x7f085180;
-u32 var001aaad0 = 0x7f085188;
-u32 var001aaad4 = 0x7f085180;
-u32 var001aaad8 = 0x7f085180;
-u32 var001aaadc = 0x7f085180;
-u32 var001aaae0 = 0x7f085188;
-u32 var001aaae4 = 0x7f085180;
-u32 var001aaae8 = 0x7f0851d8;
-u32 var001aaaec = 0x7f0851e0;
-u32 var001aaaf0 = 0x7f0851e0;
-u32 var001aaaf4 = 0x7f0851d8;
-u32 var001aaaf8 = 0x7f0851d8;
-u32 var001aaafc = 0x7f0851e0;
-u32 var001aab00 = 0x7f0851e0;
-u32 var001aab04 = 0x7f0851e0;
-u32 var001aab08 = 0x7f0851e0;
-u32 var001aab0c = 0x7f0851e0;
-u32 var001aab10 = 0x7f0851e0;
-u32 var001aab14 = 0x7f0851e0;
-u32 var001aab18 = 0x7f0851e0;
-u32 var001aab1c = 0x7f0851d8;
-u32 var001aab20 = 0x7f0851e0;
-u32 var001aab24 = 0x7f0851e0;
-u32 var001aab28 = 0x7f0851d8;
-u32 var001aab2c = 0x7f0851d8;
-u32 var001aab30 = 0x46fffe00;
-u32 var001aab34 = 0x40c907a9;
-u32 var001aab38 = 0x404907a9;
-u32 var001aab3c = 0x3ec907a9;
-u32 var001aab40 = 0x40c907a9;
-u32 var001aab44 = 0x3ec907a9;
-u32 var001aab48 = 0x4016c5bf;
-u32 var001aab4c = 0x40bc772e;
-u32 var001aab50 = 0x407b4993;
-u32 var001aab54 = 0x7f087784;
-u32 var001aab58 = 0x7f087784;
-u32 var001aab5c = 0x7f087790;
-u32 var001aab60 = 0x7f087784;
-u32 var001aab64 = 0x7f087790;
-u32 var001aab68 = 0x7f0877b0;
-u32 var001aab6c = 0x7f087790;
-u32 var001aab70 = 0x7f087790;
-u32 var001aab74 = 0x7f087790;
-u32 var001aab78 = 0x7f087790;
-u32 var001aab7c = 0x7f087790;
-u32 var001aab80 = 0x7f087790;
-u32 var001aab84 = 0x7f087790;
-u32 var001aab88 = 0x7f087790;
-u32 var001aab8c = 0x7f087790;
-u32 var001aab90 = 0x7f087790;
-u32 var001aab94 = 0x7f087790;
-u32 var001aab98 = 0x7f0877b0;
-u32 var001aab9c = 0x7f087784;
-u32 var001aaba0 = 0x7f08777c;
-u32 var001aaba4 = 0x7f087790;
-u32 var001aaba8 = 0x7f087784;
-u32 var001aabac = 0x7f0877f4;
-u32 var001aabb0 = 0x7f087790;
-u32 var001aabb4 = 0x7f087790;
-u32 var001aabb8 = 0x7f087784;
-u32 var001aabbc = 0x7f0877f4;
-u32 var001aabc0 = 0x7f0877f4;
-u32 var001aabc4 = 0x7f0877f4;
-u32 var001aabc8 = 0x7f0877d4;
-u32 var001aabcc = 0x7f0877f4;
-u32 var001aabd0 = 0x7f0877b0;
-u32 var001aabd4 = 0x7f0879f4;
-u32 var001aabd8 = 0x7f087aa0;
-u32 var001aabdc = 0x7f0879fc;
-u32 var001aabe0 = 0x7f087a04;
-u32 var001aabe4 = 0x7f087a0c;
-u32 var001aabe8 = 0x7f087a14;
-u32 var001aabec = 0x7f087aa0;
-u32 var001aabf0 = 0x7f087a1c;
-u32 var001aabf4 = 0x7f087a24;
-u32 var001aabf8 = 0x7f087a2c;
-u32 var001aabfc = 0x7f087a34;
-u32 var001aac00 = 0x7f087a3c;
-u32 var001aac04 = 0x7f087a44;
-u32 var001aac08 = 0x7f087a4c;
-u32 var001aac0c = 0x7f087a54;
-u32 var001aac10 = 0x7f087a5c;
-u32 var001aac14 = 0x7f087a64;
-u32 var001aac18 = 0x7f087a94;
-u32 var001aac1c = 0x7f087a9c;
-u32 var001aac20 = 0x7f087a6c;
-u32 var001aac24 = 0x7f087aa0;
-u32 var001aac28 = 0x7f087a74;
-u32 var001aac2c = 0x7f087a7c;
-u32 var001aac30 = 0x7f087a8c;
-u32 var001aac34 = 0x7f087aa0;
-u32 var001aac38 = 0x7f087aa0;
-u32 var001aac3c = 0x7f087aa0;
-u32 var001aac40 = 0x7f087a84;
-u32 var001aac44 = 0x7f087b38;
-u32 var001aac48 = 0x7f087b38;
-u32 var001aac4c = 0x7f087bfc;
-u32 var001aac50 = 0x7f087b38;
-u32 var001aac54 = 0x7f087b38;
-u32 var001aac58 = 0x7f087bfc;
-u32 var001aac5c = 0x7f087b38;
-u32 var001aac60 = 0x7f087b38;
-u32 var001aac64 = 0x7f087bc0;
-u32 var001aac68 = 0x7f087b38;
-u32 var001aac6c = 0x7f087b38;
-u32 var001aac70 = 0x7f087b7c;
-u32 var001aac74 = 0x7f087b7c;
-u32 var001aac78 = 0x7f087b7c;
-u32 var001aac7c = 0x7f087b38;
-u32 var001aac80 = 0x7f087b38;
-u32 var001aac84 = 0x7f087b38;
-u32 var001aac88 = 0x7f087b38;
-u32 var001aac8c = 0x7f087b38;
-u32 var001aac90 = 0x7f087b38;
-u32 var001aac94 = 0x7f087b38;
-u32 var001aac98 = 0x7f087bfc;
-u32 var001aac9c = 0x7f087bfc;
-u32 var001aaca0 = 0x7f087b7c;
-u32 var001aaca4 = 0x7f087b7c;
-u32 var001aaca8 = 0x7f087b7c;
-u32 var001aacac = 0x7f087bfc;
-u32 var001aacb0 = 0x7f087bfc;
-u32 var001aacb4 = 0x7f087bfc;
-u32 var001aacb8 = 0x7f087b38;
-u32 var001aacbc = 0x7f087bfc;
-u32 var001aacc0 = 0x7f087b7c;
-u32 var001aacc4 = 0x7f0881c8;
-u32 var001aacc8 = 0x7f0881d0;
-u32 var001aaccc = 0x7f0881d8;
-u32 var001aacd0 = 0x7f0881e0;
-u32 var001aacd4 = 0x7f0881e8;
-u32 var001aacd8 = 0x7f088214;
-u32 var001aacdc = 0x7f088214;
-u32 var001aace0 = 0x7f088214;
-u32 var001aace4 = 0x7f088214;
-u32 var001aace8 = 0x7f0881f0;
-u32 var001aacec = 0x7f088214;
-u32 var001aacf0 = 0x7f088214;
-u32 var001aacf4 = 0x7f088214;
-u32 var001aacf8 = 0x7f088214;
-u32 var001aacfc = 0x7f0881f8;
-u32 var001aad00 = 0x7f088214;
-u32 var001aad04 = 0x7f088200;
-u32 var001aad08 = 0x7f088214;
-u32 var001aad0c = 0x7f088210;
-u32 var001aad10 = 0x7f088208;
-u32 var001aad14 = 0x7f088214;
-u32 var001aad18 = 0x7f0882fc;
-u32 var001aad1c = 0x7f088304;
-u32 var001aad20 = 0x7f08830c;
-u32 var001aad24 = 0x7f088314;
-u32 var001aad28 = 0x7f08831c;
-u32 var001aad2c = 0x7f088324;
-u32 var001aad30 = 0x7f088408;
-u32 var001aad34 = 0x7f088408;
-u32 var001aad38 = 0x7f088408;
-u32 var001aad3c = 0x7f08832c;
-u32 var001aad40 = 0x7f088334;
-u32 var001aad44 = 0x7f088408;
-u32 var001aad48 = 0x7f088408;
-u32 var001aad4c = 0x7f088408;
-u32 var001aad50 = 0x7f08833c;
-u32 var001aad54 = 0x7f088408;
-u32 var001aad58 = 0x7f088344;
-u32 var001aad5c = 0x7f088408;
-u32 var001aad60 = 0x7f088354;
-u32 var001aad64 = 0x7f08834c;
-u32 var001aad68 = 0x7f088408;
-u32 var001aad6c = 0x7f088378;
-u32 var001aad70 = 0x7f088380;
-u32 var001aad74 = 0x7f088388;
-u32 var001aad78 = 0x7f088390;
-u32 var001aad7c = 0x7f088398;
-u32 var001aad80 = 0x7f0883a0;
-u32 var001aad84 = 0x7f0883dc;
-u32 var001aad88 = 0x7f0883dc;
-u32 var001aad8c = 0x7f0883dc;
-u32 var001aad90 = 0x7f0883a8;
-u32 var001aad94 = 0x7f0883b0;
-u32 var001aad98 = 0x7f0883dc;
-u32 var001aad9c = 0x7f0883dc;
-u32 var001aada0 = 0x7f0883dc;
-u32 var001aada4 = 0x7f0883b8;
-u32 var001aada8 = 0x7f0883dc;
-u32 var001aadac = 0x7f0883c0;
-u32 var001aadb0 = 0x7f0883dc;
-u32 var001aadb4 = 0x7f0883d8;
-u32 var001aadb8 = 0x7f0883c8;
-u32 var001aadbc = 0x7f0883d0;
-u32 var001aadc0 = 0x7f088f20;
-u32 var001aadc4 = 0x7f0888b4;
-u32 var001aadc8 = 0x7f088f20;
-u32 var001aadcc = 0x7f088f20;
-u32 var001aadd0 = 0x7f088934;
-u32 var001aadd4 = 0x7f088a34;
-u32 var001aadd8 = 0x7f088f20;
-u32 var001aaddc = 0x7f088f20;
-u32 var001aade0 = 0x7f088f20;
-u32 var001aade4 = 0x7f088f20;
-u32 var001aade8 = 0x7f088f20;
-u32 var001aadec = 0x7f088f20;
-u32 var001aadf0 = 0x7f088f20;
-u32 var001aadf4 = 0x7f088f20;
-u32 var001aadf8 = 0x7f088f20;
-u32 var001aadfc = 0x7f088f20;
-u32 var001aae00 = 0x7f088f20;
-u32 var001aae04 = 0x7f088974;
-u32 var001aae08 = 0x7f088dd0;
-u32 var001aae0c = 0x7f088f20;
-u32 var001aae10 = 0x7f088f20;
-u32 var001aae14 = 0x7f088f20;
-u32 var001aae18 = 0x7f088f20;
-u32 var001aae1c = 0x7f088f20;
-u32 var001aae20 = 0x7f088f20;
-u32 var001aae24 = 0x7f088f20;
-u32 var001aae28 = 0x7f088f20;
-u32 var001aae2c = 0x7f088f20;
-u32 var001aae30 = 0x7f088f20;
-u32 var001aae34 = 0x7f088f20;
-u32 var001aae38 = 0x7f088f20;
-u32 var001aae3c = 0x7f088f20;
-u32 var001aae40 = 0x7f088f20;
-u32 var001aae44 = 0x7f088f20;
-u32 var001aae48 = 0x7f088f20;
-u32 var001aae4c = 0x7f088f20;
-u32 var001aae50 = 0x7f088f20;
-u32 var001aae54 = 0x7f088f20;
-u32 var001aae58 = 0x7f088f20;
-u32 var001aae5c = 0x7f088f20;
-u32 var001aae60 = 0x7f088f20;
-u32 var001aae64 = 0x7f088f20;
-u32 var001aae68 = 0x7f088f20;
-u32 var001aae6c = 0x7f088f20;
-u32 var001aae70 = 0x7f088f20;
-u32 var001aae74 = 0x40c907a9;
-u32 var001aae78 = 0xbf4907a9;
-u32 var001aae7c = 0x47ef4200;
-u32 var001aae80 = 0x471c4000;
-u32 var001aae84 = 0x461c4000;
-u32 var001aae88 = 0x47742400;
-u32 var001aae8c = 0x459c4000;
-u32 var001aae90 = 0x4148f5c3;
-u32 var001aae94 = 0xc148f5c3;
-u32 var001aae98 = 0x3d8ebee0;
-u32 var001aae9c = 0x7f08b7cc;
-u32 var001aaea0 = 0x7f08b7cc;
-u32 var001aaea4 = 0x7f08b7cc;
-u32 var001aaea8 = 0x7f08b7cc;
-u32 var001aaeac = 0x7f08b7cc;
-u32 var001aaeb0 = 0x7f08b7cc;
-u32 var001aaeb4 = 0x7f08b7cc;
-u32 var001aaeb8 = 0x7f08b7cc;
-u32 var001aaebc = 0x7f08b7cc;
-u32 var001aaec0 = 0x7f08b7cc;
-u32 var001aaec4 = 0x7f08b7cc;
-u32 var001aaec8 = 0x7f08b7cc;
-u32 var001aaecc = 0x7f08b7cc;
-u32 var001aaed0 = 0x7f08b7cc;
-u32 var001aaed4 = 0x7f08b7cc;
-u32 var001aaed8 = 0x7f08b7cc;
-u32 var001aaedc = 0x7f08b7cc;
-u32 var001aaee0 = 0x7f08b7cc;
-u32 var001aaee4 = 0x7f08b7cc;
-u32 var001aaee8 = 0x7f08b7cc;
-u32 var001aaeec = 0x7f08b7cc;
-u32 var001aaef0 = 0x7f08b7cc;
-u32 var001aaef4 = 0x7f08b7cc;
-u32 var001aaef8 = 0x7f08b7cc;
-u32 var001aaefc = 0x7f08b7cc;
-u32 var001aaf00 = 0x7f08b7cc;
-u32 var001aaf04 = 0x7f08b7cc;
-u32 var001aaf08 = 0x7f08b7cc;
-u32 var001aaf0c = 0x7f08b7cc;
-u32 var001aaf10 = 0x7f08b7cc;
-u32 var001aaf14 = 0x7f08b7cc;
-u32 var001aaf18 = 0x7f08b7cc;
-u32 var001aaf1c = 0x7f08b7cc;
-u32 var001aaf20 = 0x7f08b7cc;
-u32 var001aaf24 = 0x7f08b7cc;
-u32 var001aaf28 = 0x3c8ef461;
-u32 var001aaf2c = 0x40c907a9;
-u32 var001aaf30 = 0x3c8ef461;
-u32 var001aaf34 = 0x3c8ef461;
-u32 var001aaf38 = 0x40c907a9;
-u32 var001aaf3c = 0x3c8ef461;
-u32 var001aaf40 = 0x461c4000;
-u32 var001aaf44 = 0x3ecccccd;
-u32 var001aaf48 = 0x3ecccccd;
-u32 var001aaf4c = 0x7f08d598;
-u32 var001aaf50 = 0x7f08d598;
-u32 var001aaf54 = 0x7f08d598;
-u32 var001aaf58 = 0x7f08d598;
-u32 var001aaf5c = 0x7f08d598;
-u32 var001aaf60 = 0x7f08d5a4;
-u32 var001aaf64 = 0x7f08d5a4;
-u32 var001aaf68 = 0x7f08d5a4;
-u32 var001aaf6c = 0x7f08d598;
-u32 var001aaf70 = 0x7f08d5a4;
-u32 var001aaf74 = 0x7f08d5a4;
-u32 var001aaf78 = 0x7f08d598;
-u32 var001aaf7c = 0x7f08d828;
-u32 var001aaf80 = 0x7f08d840;
-u32 var001aaf84 = 0x7f08d84c;
-u32 var001aaf88 = 0x7f08d858;
-u32 var001aaf8c = 0x7f08d864;
-u32 var001aaf90 = 0x7f08d86c;
-u32 var001aaf94 = 0x7f08d874;
-u32 var001aaf98 = 0x7f08d87c;
-u32 var001aaf9c = 0x7f08d888;
-u32 var001aafa0 = 0x7f08d894;
-u32 var001aafa4 = 0x7f08d89c;
-u32 var001aafa8 = 0x7f08d8a4;
-u32 var001aafac = 0x7f08d8ac;
-u32 var001aafb0 = 0x7f08d8c0;
-u32 var001aafb4 = 0x7f08d8cc;
-u32 var001aafb8 = 0x7f08d8dc;
-u32 var001aafbc = 0x7f08d8e4;
-u32 var001aafc0 = 0x7f08d8ec;
-u32 var001aafc4 = 0x7f08d900;
-u32 var001aafc8 = 0x7f08d918;
-u32 var001aafcc = 0x7f08d924;
-u32 var001aafd0 = 0x7f08d948;
-u32 var001aafd4 = 0x7f08d954;
-u32 var001aafd8 = 0x7f08d960;
-u32 var001aafdc = 0x7f08d8d4;
-u32 var001aafe0 = 0x7f08d90c;
-u32 var001aafe4 = 0x7f08d96c;
-u32 var001aafe8 = 0x7f08d820;
-u32 var001aafec = 0x7f08d834;
-u32 var001aaff0 = 0x7f08d8b4;
-u32 var001aaff4 = 0x7f08d93c;
-u32 var001aaff8 = 0x7f08d930;
-u32 var001aaffc = 0x7f08db4c;
-u32 var001ab000 = 0x7f08db64;
-u32 var001ab004 = 0x7f08db70;
-u32 var001ab008 = 0x7f08db7c;
-u32 var001ab00c = 0x7f08db88;
-u32 var001ab010 = 0x7f08dc10;
-u32 var001ab014 = 0x7f08dc10;
-u32 var001ab018 = 0x7f08db90;
-u32 var001ab01c = 0x7f08db9c;
-u32 var001ab020 = 0x7f08dba8;
-u32 var001ab024 = 0x7f08dc10;
-u32 var001ab028 = 0x7f08dc10;
-u32 var001ab02c = 0x7f08dc10;
-u32 var001ab030 = 0x7f08dbbc;
-u32 var001ab034 = 0x7f08dbc8;
-u32 var001ab038 = 0x7f08dbd8;
-u32 var001ab03c = 0x7f08dbe0;
-u32 var001ab040 = 0x7f08dbe8;
-u32 var001ab044 = 0x7f08dc10;
-u32 var001ab048 = 0x7f08dc10;
-u32 var001ab04c = 0x7f08dc10;
-u32 var001ab050 = 0x7f08dc10;
-u32 var001ab054 = 0x7f08dbfc;
-u32 var001ab058 = 0x7f08dc08;
-u32 var001ab05c = 0x7f08dbd0;
-u32 var001ab060 = 0x7f08dc10;
-u32 var001ab064 = 0x7f08dc10;
-u32 var001ab068 = 0x7f08db44;
-u32 var001ab06c = 0x7f08db58;
-u32 var001ab070 = 0x7f08dbb0;
-u32 var001ab074 = 0x7f08ddd4;
-u32 var001ab078 = 0x7f08dde4;
-u32 var001ab07c = 0x7f08ddec;
-u32 var001ab080 = 0x7f08ddf4;
-u32 var001ab084 = 0x7f08ddfc;
-u32 var001ab088 = 0x7f08dea0;
-u32 var001ab08c = 0x7f08dea0;
-u32 var001ab090 = 0x7f08de04;
-u32 var001ab094 = 0x7f08de0c;
-u32 var001ab098 = 0x7f08de14;
-u32 var001ab09c = 0x7f08dea0;
-u32 var001ab0a0 = 0x7f08dea0;
-u32 var001ab0a4 = 0x7f08dea0;
-u32 var001ab0a8 = 0x7f08de24;
-u32 var001ab0ac = 0x7f08de2c;
-u32 var001ab0b0 = 0x7f08de3c;
-u32 var001ab0b4 = 0x7f08de44;
-u32 var001ab0b8 = 0x7f08de4c;
-u32 var001ab0bc = 0x7f08de5c;
-u32 var001ab0c0 = 0x7f08de64;
-u32 var001ab0c4 = 0x7f08de6c;
-u32 var001ab0c8 = 0x7f08de84;
-u32 var001ab0cc = 0x7f08de8c;
-u32 var001ab0d0 = 0x7f08de94;
-u32 var001ab0d4 = 0x7f08de34;
-u32 var001ab0d8 = 0x7f08de54;
-u32 var001ab0dc = 0x7f08de9c;
-u32 var001ab0e0 = 0x7f08ddcc;
-u32 var001ab0e4 = 0x7f08dddc;
-u32 var001ab0e8 = 0x7f08de1c;
-u32 var001ab0ec = 0x7f08de7c;
-u32 var001ab0f0 = 0x7f08de74;
-u32 var001ab0f4 = 0x7f08dfa0;
-u32 var001ab0f8 = 0x7f08dfb0;
-u32 var001ab0fc = 0x7f08dfb8;
-u32 var001ab100 = 0x7f08dfc0;
-u32 var001ab104 = 0x7f08dfc8;
-u32 var001ab108 = 0x7f08dfd0;
-u32 var001ab10c = 0x7f08dfd8;
-u32 var001ab110 = 0x7f08dfe0;
-u32 var001ab114 = 0x7f08dfe8;
-u32 var001ab118 = 0x7f08dff0;
-u32 var001ab11c = 0x7f08dff8;
-u32 var001ab120 = 0x7f08e000;
-u32 var001ab124 = 0x7f08e008;
-u32 var001ab128 = 0x7f08e018;
-u32 var001ab12c = 0x7f08e020;
-u32 var001ab130 = 0x7f08e030;
-u32 var001ab134 = 0x7f08e038;
-u32 var001ab138 = 0x7f08e040;
-u32 var001ab13c = 0x7f08e054;
-u32 var001ab140 = 0x7f08e054;
-u32 var001ab144 = 0x7f08e054;
-u32 var001ab148 = 0x7f08e054;
-u32 var001ab14c = 0x7f08e048;
-u32 var001ab150 = 0x7f08e050;
-u32 var001ab154 = 0x7f08e028;
-u32 var001ab158 = 0x7f08e054;
-u32 var001ab15c = 0x7f08e054;
-u32 var001ab160 = 0x7f08df98;
-u32 var001ab164 = 0x7f08dfa8;
-u32 var001ab168 = 0x7f08e010;
-u32 var001ab16c = 0x4e742400;
-u32 var001ab170 = 0x4e742400;
-u32 var001ab174 = 0x40c907a9;
-u32 var001ab178 = 0x40c907a9;
-u32 var001ab17c = 0x404907a9;
-u32 var001ab180 = 0x3c8ef461;
-u32 var001ab184 = 0x40c907a9;
-u32 var001ab188 = 0x3eb2b17a;
-u32 var001ab18c = 0x404907a9;
-u32 var001ab190 = 0x3eb2b17a;
-u32 var001ab194 = 0x404907a9;
-u32 var001ab198 = 0x471c4000;
-u32 var001ab19c = 0x453b8000;
-u32 var001ab1a0 = 0x3991a2b4;
-u32 var001ab1a4 = 0x3c888889;
-u32 var001ab1a8 = 0x3fd55555;
-u32 var001ab1ac = 0x7f090df4;
-u32 var001ab1b0 = 0x7f090dfc;
-u32 var001ab1b4 = 0x7f090e24;
-u32 var001ab1b8 = 0x7f090e24;
-u32 var001ab1bc = 0x7f090e0c;
-u32 var001ab1c0 = 0x7f090e24;
-u32 var001ab1c4 = 0x7f090e24;
-u32 var001ab1c8 = 0x7f090e24;
-u32 var001ab1cc = 0x7f090e24;
-u32 var001ab1d0 = 0x7f090e24;
-u32 var001ab1d4 = 0x7f090e04;
-u32 var001ab1d8 = 0x7f090e24;
-u32 var001ab1dc = 0x7f090e24;
-u32 var001ab1e0 = 0x7f090e24;
-u32 var001ab1e4 = 0x7f090e24;
-u32 var001ab1e8 = 0x7f090e24;
-u32 var001ab1ec = 0x7f090e24;
-u32 var001ab1f0 = 0x7f090e24;
-u32 var001ab1f4 = 0x7f090e1c;
-u32 var001ab1f8 = 0x7f090e24;
-u32 var001ab1fc = 0x7f090e24;
-u32 var001ab200 = 0x7f090e24;
-u32 var001ab204 = 0x7f090e24;
-u32 var001ab208 = 0x7f090e14;
-u32 var001ab20c = 0x481c4000;
-u32 var001ab210 = 0x3e8e38e3;
-u32 var001ab214 = 0x3e23d70a;
-u32 var001ab218 = 0x00000000;
-u32 var001ab21c = 0x00000000;
-u32 var001ab220 = 0x7f091e40;
-u32 var001ab224 = 0x7f091e48;
-u32 var001ab228 = 0x7f091e50;
-u32 var001ab22c = 0x7f091e80;
-u32 var001ab230 = 0x7f091e88;
-u32 var001ab234 = 0x7f091e90;
-u32 var001ab238 = 0x7f091e98;
-u32 var001ab23c = 0x7f091ea0;
-u32 var001ab240 = 0x7f091e38;
-u32 var001ab244 = 0x7f091ea8;
-u32 var001ab248 = 0x7f091eb0;
-u32 var001ab24c = 0x7f091eb8;
-u32 var001ab250 = 0x7f091ec0;
-u32 var001ab254 = 0x7f091ec8;
-u32 var001ab258 = 0x7f091e58;
-u32 var001ab25c = 0x7f091ff8;
-u32 var001ab260 = 0x7f091ed0;
-u32 var001ab264 = 0x7f091ed8;
-u32 var001ab268 = 0x7f091ee0;
-u32 var001ab26c = 0x7f091ef0;
-u32 var001ab270 = 0x7f091ef8;
-u32 var001ab274 = 0x7f091f00;
-u32 var001ab278 = 0x7f091f10;
-u32 var001ab27c = 0x7f091f18;
-u32 var001ab280 = 0x7f091f20;
-u32 var001ab284 = 0x7f091f28;
-u32 var001ab288 = 0x7f091f30;
-u32 var001ab28c = 0x7f091f38;
-u32 var001ab290 = 0x7f091f40;
-u32 var001ab294 = 0x7f091f48;
-u32 var001ab298 = 0x7f091f50;
-u32 var001ab29c = 0x7f091f58;
-u32 var001ab2a0 = 0x7f091f60;
-u32 var001ab2a4 = 0x7f091f68;
-u32 var001ab2a8 = 0x7f091f70;
-u32 var001ab2ac = 0x7f091e78;
-u32 var001ab2b0 = 0x7f091f08;
-u32 var001ab2b4 = 0x7f091f78;
-u32 var001ab2b8 = 0x7f091f80;
-u32 var001ab2bc = 0x7f091f88;
-u32 var001ab2c0 = 0x7f091ff8;
-u32 var001ab2c4 = 0x7f091e60;
-u32 var001ab2c8 = 0x7f091e70;
-u32 var001ab2cc = 0x7f091ee8;
-u32 var001ab2d0 = 0x7f091f90;
-u32 var001ab2d4 = 0x7f091f98;
-u32 var001ab2d8 = 0x7f091e68;
-u32 var001ab2dc = 0x7f091fa0;
-u32 var001ab2e0 = 0x7f091fa8;
-u32 var001ab2e4 = 0x7f091fb0;
-u32 var001ab2e8 = 0x7f091fb8;
-u32 var001ab2ec = 0x7f091ff8;
-u32 var001ab2f0 = 0x7f091fc0;
-u32 var001ab2f4 = 0x7f091fc8;
-u32 var001ab2f8 = 0x7f091fd0;
-u32 var001ab2fc = 0x7f091fe0;
-u32 var001ab300 = 0x7f091fd8;
-u32 var001ab304 = 0x7f091fe8;
-u32 var001ab308 = 0x7f091ff0;
-u32 var001ab30c = 0x7f092460;
-u32 var001ab310 = 0x7f092468;
-u32 var001ab314 = 0x7f092460;
-u32 var001ab318 = 0x7f092460;
-u32 var001ab31c = 0x7f092460;
-u32 var001ab320 = 0x7f092460;
-u32 var001ab324 = 0x7f092460;
-u32 var001ab328 = 0x7f092460;
-u32 var001ab32c = 0x7f092468;
-u32 var001ab330 = 0x7f092460;
-u32 var001ab334 = 0x7f092460;
-u32 var001ab338 = 0x7f092460;
-u32 var001ab33c = 0x7f092460;
-u32 var001ab340 = 0x7f092468;
-u32 var001ab344 = 0x7f092460;
-u32 var001ab348 = 0x7f092470;
-u32 var001ab34c = 0x7f092460;
-u32 var001ab350 = 0x7f092468;
-u32 var001ab354 = 0x7f092468;
-u32 var001ab358 = 0x7f092460;
-u32 var001ab35c = 0x7f092460;
-u32 var001ab360 = 0x7f092468;
-u32 var001ab364 = 0x7f092468;
-u32 var001ab368 = 0x7f092468;
-u32 var001ab36c = 0x7f092468;
-u32 var001ab370 = 0x7f092468;
-u32 var001ab374 = 0x7f092468;
-u32 var001ab378 = 0x7f092468;
-u32 var001ab37c = 0x7f092468;
-u32 var001ab380 = 0x7f092468;
-u32 var001ab384 = 0x7f092468;
-u32 var001ab388 = 0x7f092468;
-u32 var001ab38c = 0x7f092468;
-u32 var001ab390 = 0x7f092468;
-u32 var001ab394 = 0x7f092468;
-u32 var001ab398 = 0x7f092460;
-u32 var001ab39c = 0x7f092468;
-u32 var001ab3a0 = 0x7f092468;
-u32 var001ab3a4 = 0x7f092460;
-u32 var001ab3a8 = 0x7f092460;
-u32 var001ab3ac = 0x7f092460;
-u32 var001ab3b0 = 0x7f092460;
-u32 var001ab3b4 = 0x7f092460;
-u32 var001ab3b8 = 0x7f092468;
-u32 var001ab3bc = 0x7f092460;
-u32 var001ab3c0 = 0x7f092468;
-u32 var001ab3c4 = 0x7f092460;
-u32 var001ab3c8 = 0x7f092460;
-u32 var001ab3cc = 0x7f092468;
-u32 var001ab3d0 = 0x7f092468;
-u32 var001ab3d4 = 0x7f092460;
-u32 var001ab3d8 = 0x7f092470;
-u32 var001ab3dc = 0x7f092460;
-u32 var001ab3e0 = 0x7f092460;
-u32 var001ab3e4 = 0x7f092460;
-u32 var001ab3e8 = 0x7f092468;
-u32 var001ab3ec = 0x7f092460;
-u32 var001ab3f0 = 0x7f092470;
-u32 var001ab3f4 = 0x7f092460;
-u32 var001ab3f8 = 0x00000000;
-u32 var001ab3fc = 0x00000000;
-char var001ab400[] = "Propsnd : USING TIME 60\n";
-char var001ab41c[] = "PS_AUTO : Un-Pausing %d\n";
-char var001ab438[] = "Propsnd : Using %d of %d (Peek = %d of %d)";
-char var001ab464[] = "AISOUND: aisoundnewtypeflags - Channel %d -> Playing sound number id=%d(%x)\n";
-char var001ab4b4[] = "AISOUND: PSTYPE_MARKER - Channel %d -> Playing sound number id=%d(%x)\n";
-char var001ab4fc[] = "AISOUND: PSTYPE_MARKER - Channel %d -> Playing sound number id=%d(%x)\n";
-char var001ab544[] = "AISOUND: CUTSCENE -> Playing sound number id=%d(%x))\n";
-char var001ab57c[] = "AISOUND: Channel %d -> Playing sound number id=%d(%x), Prop=%x, Flags=%x, Type=%d, Zero=%d\n";
-char var001ab5d8[] = "AISOUND: Channel %d -> Playing sound number id=%d(%x), Prop=%x, Flags=%x, Type=%d\n";
-char var001ab62c[] = "AISOUND: CUTSCENE -> Stopping all cutscene sounds\n";
-char var001ab660[] = "AISOUND: Stop sound channel %d\n";
-char var001ab680[] = "AISOUND: Channel %d -> Setting params : Vol=%d, Pad=%d, Prop=%x, Time=%d, Far=%d, Silence=%d, Flags=%u\n";
-char var001ab6e8[] = "AISOUND : This channel has a marker -> Shall start and use ID = %d(%x)\n";
-u32 var001ab730 = 0x45abe800;
-u32 var001ab734 = 0x45b54800;
-u32 var001ab738 = 0x45bb8000;
-u32 var001ab73c = 0x392ec33e;
-u32 var001ab740 = 0x3c23d70a;
-u32 var001ab744 = 0x451c4000;
-u32 var001ab748 = 0x453b8000;
-u32 var001ab74c = 0x3f2aaaab;
-u32 var001ab750 = 0x3f333333;
-u32 var001ab754 = 0x3f333333;
-u32 var001ab758 = 0x40490fdb;
-u32 var001ab75c = 0x3c8efa35;
-u32 var001ab760 = 0x40490fdb;
-u32 var001ab764 = 0x40490fdb;
-u32 var001ab768 = 0x42652ee0;
-u32 var001ab76c = 0x451c4000;
-u32 var001ab770 = 0x453b8000;
-u32 var001ab774 = 0x45abe800;
-u32 var001ab778 = 0x45b54800;
-u32 var001ab77c = 0x451c4000;
-u32 var001ab780 = 0x453b8000;
-u32 var001ab784 = 0x4b18967f;
-u32 var001ab788 = 0x4b18967f;
-u32 var001ab78c = 0x00000000;
-u32 var001ab790 = 0x00000000;
-u32 var001ab794 = 0x00000000;
-u32 var001ab798 = 0x00000000;
-u32 var001ab79c = 0x00000000;
-u32 var001ab7a0 = 0x00000000;
-u32 var001ab7a4 = 0x00000000;
-u32 var001ab7a8 = 0x00000000;
-u32 var001ab7ac = 0x00000000;
-u32 var001ab7b0 = 0x00000000;
-u32 var001ab7b4 = 0x00000000;
-u32 var001ab7b8 = 0x00000000;
-u32 var001ab7bc = 0x00000000;
-u32 var001ab7c0 = 0x00000000;
-char var001ab7c4[] = "%s %d: ";
-u32 var001ab7cc = 0x7f095ad8;
-u32 var001ab7d0 = 0x7f095ad8;
-u32 var001ab7d4 = 0x7f09571c;
-u32 var001ab7d8 = 0x7f095750;
-u32 var001ab7dc = 0x7f09576c;
-u32 var001ab7e0 = 0x7f095788;
-u32 var001ab7e4 = 0x7f09590c;
-u32 var001ab7e8 = 0x7f095a68;
-u32 var001ab7ec = 0x7f095ad8;
-u32 var001ab7f0 = 0x7f095ab4;
-u32 var001ab7f4 = 0x7f095ac8;
-u32 var001ab7f8 = 0x00000000;
-u32 var001ab7fc = 0x00000000;
-u32 var001ab800 = 0x40c907a9;
-u32 var001ab804 = 0x3cc907a9;
-u32 var001ab808 = 0x40c907a9;
-u32 var001ab80c = 0x3cc907a9;
-u32 var001ab810 = 0x40c907a9;
-u32 var001ab814 = 0x3cc907a9;
-u32 var001ab818 = 0x3fd55555;
-u32 var001ab81c = 0x40555555;
-u32 var001ab820 = 0x3fd55555;
-u32 var001ab824 = 0x3fd55555;
-u32 var001ab828 = 0x40555555;
-u32 var001ab82c = 0x3e8e38e4;
-u32 var001ab830 = 0x40490fdb;
-u32 var001ab834 = 0x3fc90fdb;
-u32 var001ab838 = 0x4096cbe4;
-u32 var001ab83c = 0x40c90fdb;
-u32 var001ab840 = 0x3fc90fdb;
-u32 var001ab844 = 0x40490fdb;
-u32 var001ab848 = 0x40c90fdb;
-u32 var001ab84c = 0x00000000;
-u32 var001ab850 = 0x46fffe00;
-u32 var001ab854 = 0x40490fdb;
-u32 var001ab858 = 0x477fff00;
-u32 var001ab85c = 0x46fffe00;
-u32 var001ab860 = 0x40490fdb;
-u32 var001ab864 = 0x477fff00;
-u32 var001ab868 = 0x00000000;
-u32 var001ab86c = 0x00000000;
-u32 var001ab870 = 0x3c23d70a;
-u32 var001ab874 = 0xbf7fff58;
-u32 var001ab878 = 0x3f7fff58;
-u32 var001ab87c = 0xbf7fff58;
-u32 var001ab880 = 0x3f7fff58;
-u32 var001ab884 = 0x00000000;
-u32 var001ab888 = 0x00000000;
-u32 var001ab88c = 0x00000000;
-char var001ab890[] = "rontime";
-char var001ab898[] = "rofftime";
-u32 var001ab8a4 = 0x676b6566;
-u32 var001ab8a8 = 0x00000000;
-char var001ab8ac[] = "changegunmem type %d CurrentPlayer->gunctrl.gunmemtype %d\n";
-char var001ab8e8[] = "LockTimer: %d\n";
-char var001ab8f8[] = "BriGun: Releasing gunmem - current gunmemtype %d gunmemnew %d\n";
-char var001ab938[] = "GiveMem: %d\n";
-char var001ab948[] = "BriGun:  BriGunLoadTick process GUN_LOADSTATE_LOAD_OBJ\n";
-char var001ab980[] = "BriGun:  Loading - %s, pMem 0x%08x Size %d\n";
-char var001ab9ac[] = "BriGun:  Warning: LoadSize > MemSize, clamping decomp. buffer from %d to %d (%d Bytes)\n";
-char var001aba04[] = "BriGun:  obLoadto at 0x%08x, size %d\n";
-char var001aba2c[] = "BriGun:  Used size %d (Ob Size %d)\n";
-char var001aba50[] = "BriGun:  block len %d usedsize %d\n";
-char var001aba74[] = "BriGun:  obln ram_len %d block_len %d\n";
-char var001aba9c[] = "BriGun:  new used size %d\n";
-char var001abab8[] = "BriGun:  Texture Block at 0x%08x size %d, endp 0x%08x\n";
-char var001abaf0[] = "BriGun:  Set Load State: GUN_LOADSTATE_DECOMPRESS_TEXTURES\n";
-char var001abb2c[] = "BriGun:  BriGunLoadTick process GUN_LOADSTATE_DECOMPRESS_TEXTURES\n";
-char var001abb70[] = "BriGun:  at texture %d\n";
-char var001abb88[] = "BriGun:  Uncompress %d of %d\n";
-char var001abba8[] = "BriGun:  Set Load State: GUN_LOADSTATE_DECOMPRESS_DLS\n";
-char var001abbe0[] = "BriGun:  BriGunLoadTick process GUN_LOADSTATE_DECOMPRESS_DLS\n";
-char var001abc20[] = "BriGun:  propgfx_decompress 0x%08x\n";
-char var001abc44[] = "BriGun:  DL waste space %d from %d (Used %d, Ramlen %d, ObSize %d)\n";
-char var001abc88[] = "Increase GUNSAVESIZE to %d!!!\n";
-char var001abca8[] = "BriGun:  Set Load State: GUN_LOADSTATE_LOADED\n";
-char var001abcd8[] = "need a new gun loading (lock %d gunmemnew %d)\n";
-char var001abd08[] = "loading gun file: %d type: %d\n";
-char var001abd28[] = "BriGun: Process MASTER_GUN_LOADSTATE_FLUX\n";
-char var001abd54[] = "BriGun: Set Master State: MASTER_GUN_LOADSTATE_HANDS\n";
-char var001abd8c[] = "BriGun: Process MASTER_GUN_LOADSTATE_HANDS\n";
-char var001abdb8[] = "BriGun: Setup Hand Load\n";
-char var001abdd4[] = "Hand  : Using cached hands\n";
-char var001abdf0[] = "Hand  : Look ma no hands!\n";
-char var001abe0c[] = "BriGun: Set Master State: MASTER_GUN_LOADSTATE_GUN\n";
-char var001abe40[] = "BriGun: Process MASTER_GUN_LOADSTATE_GUN\n";
-char var001abe6c[] = "BriGun: Setup Gun Load\n";
-char var001abe84[] = "BriGun: Set Master State: MASTER_GUN_LOADSTATE_CARTS\n";
-char var001abebc[] = "BriGun: Process MASTER_GUN_LOADSTATE_CARTS\n";
-char var001abee8[] = "BriGun: Cart Loaded setting GUN_LOADSTATE_FLUX\n";
-char var001abf18[] = "BriGun: Cart loading - looking for carts\n";
-char var001abf44[] = "BriGun: Loading cart %d\n";
-char var001abf60[] = "BriGun: Request for cart %d ignored - cart already loaded\n";
-char var001abf9c[] = "BriGun: Compile Hand 0x%08x Gun 0x%0x8\n";
-char var001abfc4[] = "Gun   : Compiled Gun 0x%08x\n";
-char var001abfe4[] = "Gun   : Compiled Size %d\n";
-char var001ac000[] = "Hand  : Compiled Hand 0x%08x\n";
-char var001ac020[] = "Hand  : Compiled Size %d\n";
-char var001ac03c[] = "Gun   : Compile overhead %d bytes\n";
-char var001ac060[] = "Hand  : Hand Obj 0x%08x Gun Obj 0x%08x \n";
-char var001ac08c[] = "Gun   : After Comp : Base 0x%08x Free %d\n";
-char var001ac0b8[] = "Gun   : After Cached Setup : Base 0x%08x Free %d\n";
-char var001ac0ec[] = "Gun   : TotalUsed %d, Free %d\n";
-char var001ac10c[] = "BriGun: Set Master State: MASTER_GUN_LOADSTATE_LOADED\n";
-char var001ac144[] = "GunLockTimer: %d\n";
-char var001ac158[] = "** error\n";
-char var001ac164[] = "** error\n";
-char var001ac170[] = "wantedfn %d tiggle %d\n";
-u32 var001ac188 = 0x25640a00;
-char var001ac18c[] = "%02d:%02d:%02d\n";
-char var001ac19c[] = "%02d:%02d\n";
-u32 var001ac1a8 = 0x461c4000;
-u32 var001ac1ac = 0x3f451eb8;
-u32 var001ac1b0 = 0x3f333333;
-u32 var001ac1b4 = 0x3f5f5dd8;
-u32 var001ac1b8 = 0x3f5f5dd8;
-u32 var001ac1bc = 0x7f09a1b8;
-u32 var001ac1c0 = 0x7f09a1b8;
-u32 var001ac1c4 = 0x7f09a17c;
-u32 var001ac1c8 = 0x7f09a17c;
-u32 var001ac1cc = 0x7f09a17c;
-u32 var001ac1d0 = 0x7f09a17c;
-u32 var001ac1d4 = 0x7f09a17c;
-u32 var001ac1d8 = 0x7f09a17c;
-u32 var001ac1dc = 0x7f09a17c;
-u32 var001ac1e0 = 0x7f09a17c;
-u32 var001ac1e4 = 0x7f09a17c;
-u32 var001ac1e8 = 0x7f09a17c;
-u32 var001ac1ec = 0x7f09a17c;
-u32 var001ac1f0 = 0x7f09a17c;
-u32 var001ac1f4 = 0x7f09a17c;
-u32 var001ac1f8 = 0x7f09a17c;
-u32 var001ac1fc = 0x7f09a17c;
-u32 var001ac200 = 0x7f09a17c;
-u32 var001ac204 = 0x7f09a17c;
-u32 var001ac208 = 0x7f09a17c;
-u32 var001ac20c = 0x7f09a17c;
-u32 var001ac210 = 0x7f09a17c;
-u32 var001ac214 = 0x7f09a17c;
-u32 var001ac218 = 0x7f09a17c;
-u32 var001ac21c = 0x7f09a17c;
-u32 var001ac220 = 0x7f09a17c;
-u32 var001ac224 = 0x7f09a1b8;
-u32 var001ac228 = 0x7f09a17c;
-u32 var001ac22c = 0x7f09a17c;
-u32 var001ac230 = 0x7f09a1b8;
-u32 var001ac234 = 0x7f09a1b8;
-u32 var001ac238 = 0x7f09a17c;
-u32 var001ac23c = 0x7f09a1b8;
-u32 var001ac240 = 0x7f09a1b8;
-u32 var001ac244 = 0x7f09a1b8;
-u32 var001ac248 = 0x7f09a17c;
-u32 var001ac24c = 0x7f09a17c;
-u32 var001ac250 = 0x7f09a17c;
-u32 var001ac254 = 0x7f09a17c;
-u32 var001ac258 = 0x7f09a17c;
-u32 var001ac25c = 0x7f09a17c;
-u32 var001ac260 = 0x7f09a17c;
-u32 var001ac264 = 0x7f09a17c;
-u32 var001ac268 = 0x7f09a17c;
-u32 var001ac26c = 0x7f09a17c;
-u32 var001ac270 = 0x7f09a17c;
-u32 var001ac274 = 0x7f09a17c;
-u32 var001ac278 = 0x7f09a17c;
-u32 var001ac27c = 0x7f09a17c;
-u32 var001ac280 = 0x7f09a17c;
-u32 var001ac284 = 0x7f09a17c;
-u32 var001ac288 = 0x7f09a17c;
-u32 var001ac28c = 0x7f09a17c;
-u32 var001ac290 = 0x7f09a1b8;
-u32 var001ac294 = 0x7f09a17c;
-u32 var001ac298 = 0x7f09a17c;
-u32 var001ac29c = 0x7f09a17c;
-u32 var001ac2a0 = 0x7f09a17c;
-u32 var001ac2a4 = 0x7f09a17c;
-u32 var001ac2a8 = 0x7f09a17c;
-u32 var001ac2ac = 0x7f09a17c;
-u32 var001ac2b0 = 0x7f09a1b8;
-u32 var001ac2b4 = 0x7f09a1b8;
-u32 var001ac2b8 = 0x7f09a1b8;
-u32 var001ac2bc = 0x7f09a17c;
-u32 var001ac2c0 = 0x7f09a17c;
-u32 var001ac2c4 = 0x7f09a17c;
-u32 var001ac2c8 = 0x7f09a17c;
-u32 var001ac2cc = 0x7f09a17c;
-u32 var001ac2d0 = 0x7f09a17c;
-u32 var001ac2d4 = 0x7f09a17c;
-u32 var001ac2d8 = 0x7f09a17c;
-u32 var001ac2dc = 0x7f09a17c;
-u32 var001ac2e0 = 0x7f09a17c;
-u32 var001ac2e4 = 0x7f09a17c;
-u32 var001ac2e8 = 0x7f09a17c;
-u32 var001ac2ec = 0x7f09a17c;
-u32 var001ac2f0 = 0x7f09a17c;
-u32 var001ac2f4 = 0x7f09a17c;
-u32 var001ac2f8 = 0x7f09a17c;
-u32 var001ac2fc = 0x7f09a17c;
-u32 var001ac300 = 0x7f09a17c;
-u32 var001ac304 = 0x7f09a17c;
-u32 var001ac308 = 0x7f09a17c;
-u32 var001ac30c = 0x7f09a17c;
-u32 var001ac310 = 0x7f09a17c;
-u32 var001ac314 = 0x7f09a17c;
-u32 var001ac318 = 0x7f09a1b8;
-u32 var001ac31c = 0x3f5f5dd8;
-u32 var001ac320 = 0x3ecccccd;
-u32 var001ac324 = 0x3fc90fdb;
-u32 var001ac328 = 0x40c907a9;
-u32 var001ac32c = 0x3fc90fdb;
-u32 var001ac330 = 0x40490fdb;
-u32 var001ac334 = 0x3ecccccd;
-u32 var001ac338 = 0x3dcccccd;
-u32 var001ac33c = 0x3c23d70a;
-u32 var001ac340 = 0x7f09b928;
-u32 var001ac344 = 0x7f09b928;
-u32 var001ac348 = 0x7f09b928;
-u32 var001ac34c = 0x7f09b928;
-u32 var001ac350 = 0x7f09b928;
-u32 var001ac354 = 0x7f09b928;
-u32 var001ac358 = 0x7f09b928;
-u32 var001ac35c = 0x7f09b928;
-u32 var001ac360 = 0x7f09b928;
-u32 var001ac364 = 0x7f09b928;
-u32 var001ac368 = 0x7f09b928;
-u32 var001ac36c = 0x7f09b928;
-u32 var001ac370 = 0x7f09b928;
-u32 var001ac374 = 0x7f09b9f8;
-u32 var001ac378 = 0x7f09b9f8;
-u32 var001ac37c = 0x7f09b9f8;
-u32 var001ac380 = 0x7f09b9f8;
-u32 var001ac384 = 0x7f09b9f8;
-u32 var001ac388 = 0x7f09b928;
-u32 var001ac38c = 0x7f09b9f8;
-u32 var001ac390 = 0x7f09b9f8;
-u32 var001ac394 = 0x7f09b9f8;
-u32 var001ac398 = 0x7f09b9f8;
-u32 var001ac39c = 0x7f09b9f8;
-u32 var001ac3a0 = 0x7f09b9f8;
-u32 var001ac3a4 = 0x7f09b9f8;
-u32 var001ac3a8 = 0x7f09b928;
-u32 var001ac3ac = 0x7f09b9f8;
-u32 var001ac3b0 = 0x7f09b9f8;
-u32 var001ac3b4 = 0x7f09b9f8;
-u32 var001ac3b8 = 0x7f09b9f8;
-u32 var001ac3bc = 0x7f09b9f8;
-u32 var001ac3c0 = 0x7f09b9f8;
-u32 var001ac3c4 = 0x7f09b9f8;
-u32 var001ac3c8 = 0x7f09b928;
-u32 var001ac3cc = 0x7f09b928;
-u32 var001ac3d0 = 0x7f09bbd8;
-u32 var001ac3d4 = 0x7f09bb9c;
-u32 var001ac3d8 = 0x7f09bb9c;
-u32 var001ac3dc = 0x7f09bb9c;
-u32 var001ac3e0 = 0x7f09bb9c;
-u32 var001ac3e4 = 0x7f09bb9c;
-u32 var001ac3e8 = 0x7f09ba7c;
-u32 var001ac3ec = 0x7f09bb9c;
-u32 var001ac3f0 = 0x7f09bb9c;
-u32 var001ac3f4 = 0x7f09bb9c;
-u32 var001ac3f8 = 0x7f09bb9c;
-u32 var001ac3fc = 0x7f09ba7c;
-u32 var001ac400 = 0x7f09bb9c;
-u32 var001ac404 = 0x7f09bb9c;
-u32 var001ac408 = 0x7f09bb9c;
-u32 var001ac40c = 0x7f09bb9c;
-u32 var001ac410 = 0x7f09bb9c;
-u32 var001ac414 = 0x7f09bb9c;
-u32 var001ac418 = 0x7f09bb9c;
-u32 var001ac41c = 0x7f09bb9c;
-u32 var001ac420 = 0x7f09bb9c;
-u32 var001ac424 = 0x7f09ba7c;
-u32 var001ac428 = 0x7f09bb9c;
-u32 var001ac42c = 0x7f09bb9c;
-u32 var001ac430 = 0x7f09bb9c;
-u32 var001ac434 = 0x7f09bbd8;
-u32 var001ac438 = 0x7f09bb9c;
-u32 var001ac43c = 0x7f09bb08;
-u32 var001ac440 = 0x7f09bb9c;
-u32 var001ac444 = 0x7f09bbd8;
-u32 var001ac448 = 0x7f09bbd8;
-u32 var001ac44c = 0x7f09bbd8;
-u32 var001ac450 = 0x7f09bbd8;
-u32 var001ac454 = 0x7f09bbd8;
-u32 var001ac458 = 0x7f09bbd8;
-u32 var001ac45c = 0x7f09bb9c;
-u32 var001ac460 = 0x7f09bb9c;
-u32 var001ac464 = 0x7f09bb9c;
-u32 var001ac468 = 0x7f09bb9c;
-u32 var001ac46c = 0x7f09bb9c;
-u32 var001ac470 = 0x7f09bb9c;
-u32 var001ac474 = 0x7f09bb9c;
-u32 var001ac478 = 0x7f09bb9c;
-u32 var001ac47c = 0x7f09bb08;
-u32 var001ac480 = 0x40047ae1;
-u32 var001ac484 = 0x3f5f5dd8;
-u32 var001ac488 = 0x7f09c9ec;
-u32 var001ac48c = 0x7f09c9ec;
-u32 var001ac490 = 0x7f09c9b0;
-u32 var001ac494 = 0x7f09c9b0;
-u32 var001ac498 = 0x7f09c9b0;
-u32 var001ac49c = 0x7f09c9b0;
-u32 var001ac4a0 = 0x7f09c9b0;
-u32 var001ac4a4 = 0x7f09c9b0;
-u32 var001ac4a8 = 0x7f09c9b0;
-u32 var001ac4ac = 0x7f09c9b0;
-u32 var001ac4b0 = 0x7f09c9b0;
-u32 var001ac4b4 = 0x7f09c9b0;
-u32 var001ac4b8 = 0x7f09c9b0;
-u32 var001ac4bc = 0x7f09c9b0;
-u32 var001ac4c0 = 0x7f09c9ec;
-u32 var001ac4c4 = 0x7f09c9b0;
-u32 var001ac4c8 = 0x7f09c9b0;
-u32 var001ac4cc = 0x7f09c9b0;
-u32 var001ac4d0 = 0x7f09c9b0;
-u32 var001ac4d4 = 0x7f09c9b0;
-u32 var001ac4d8 = 0x7f09c91c;
-u32 var001ac4dc = 0x7f09c9b0;
-u32 var001ac4e0 = 0x7f09c9b0;
-u32 var001ac4e4 = 0x7f09c9b0;
-u32 var001ac4e8 = 0x7f09c9b0;
-u32 var001ac4ec = 0x7f09c9b0;
-u32 var001ac4f0 = 0x7f09c7b4;
-u32 var001ac4f4 = 0x7f09c9ec;
-u32 var001ac4f8 = 0x7f09c888;
-u32 var001ac4fc = 0x7f09c770;
-u32 var001ac500 = 0x7f09c9ec;
-u32 var001ac504 = 0x7f09c9ec;
-u32 var001ac508 = 0x7f09c844;
-u32 var001ac50c = 0x7f09c844;
-u32 var001ac510 = 0x7f09c7f8;
-u32 var001ac514 = 0x7f09c9ec;
-u32 var001ac518 = 0x7f09c9b0;
-u32 var001ac51c = 0x7f09c9b0;
-u32 var001ac520 = 0x7f09c9b0;
-u32 var001ac524 = 0x7f09c9b0;
-u32 var001ac528 = 0x7f09c9b0;
-u32 var001ac52c = 0x7f09c9b0;
-u32 var001ac530 = 0x7f09c9b0;
-u32 var001ac534 = 0x7f09c9b0;
-u32 var001ac538 = 0x7f09c888;
-u32 var001ac53c = 0x7f09c9b0;
-u32 var001ac540 = 0x7f09c9b0;
-u32 var001ac544 = 0x7f09c9b0;
-u32 var001ac548 = 0x7f09c9b0;
-u32 var001ac54c = 0x7f09c9ec;
-u32 var001ac550 = 0x7f09c6dc;
-u32 var001ac554 = 0x7f09c9b0;
-u32 var001ac558 = 0x7f09c9b0;
-u32 var001ac55c = 0x7f09c844;
-u32 var001ac560 = 0x7f09c844;
-u32 var001ac564 = 0x7f09c844;
-u32 var001ac568 = 0x7f09c844;
-u32 var001ac56c = 0x7f09c844;
-u32 var001ac570 = 0x7f09c844;
-u32 var001ac574 = 0x7f09c9ec;
-u32 var001ac578 = 0x7f09c9ec;
-u32 var001ac57c = 0x7f09c844;
-u32 var001ac580 = 0x7f09c844;
-u32 var001ac584 = 0x7f09c844;
-u32 var001ac588 = 0x7f09c9ec;
-u32 var001ac58c = 0x7f09c9ec;
-u32 var001ac590 = 0x7f09c9ec;
-u32 var001ac594 = 0x7f09c9ec;
-u32 var001ac598 = 0x7f09c9ec;
-u32 var001ac59c = 0x7f09c9ec;
-u32 var001ac5a0 = 0x7f09c9ec;
-u32 var001ac5a4 = 0x7f09c9ec;
-u32 var001ac5a8 = 0x7f09c9ec;
-u32 var001ac5ac = 0x7f09c9ec;
-u32 var001ac5b0 = 0x7f09c9ec;
-u32 var001ac5b4 = 0x7f09c9ec;
-u32 var001ac5b8 = 0x7f09c9ec;
-u32 var001ac5bc = 0x7f09c9ec;
-u32 var001ac5c0 = 0x7f09c9ec;
-u32 var001ac5c4 = 0x7f09c9b0;
-u32 var001ac5c8 = 0x7f09c9ec;
-u32 var001ac5cc = 0x7f09c9b0;
-u32 var001ac5d0 = 0x7f09c9b0;
-u32 var001ac5d4 = 0x7f09c9b0;
-u32 var001ac5d8 = 0x7f09c9b0;
-u32 var001ac5dc = 0x7f09c9b0;
-u32 var001ac5e0 = 0x7f09c9b0;
-u32 var001ac5e4 = 0x7f09c9ec;
-u32 var001ac5e8 = 0x3f59999a;
-u32 var001ac5ec = 0x3f5f5dd8;
-u32 var001ac5f0 = 0x7f09cc10;
-u32 var001ac5f4 = 0x7f09cc28;
-u32 var001ac5f8 = 0x7f09cc58;
-u32 var001ac5fc = 0x7f09cc88;
-u32 var001ac600 = 0x7f09cc40;
-u32 var001ac604 = 0x7f09cc70;
-u32 var001ac608 = 0x7f09cccc;
-u32 var001ac60c = 0x7f09ccb8;
-u32 var001ac610 = 0x7f09cca0;
-u32 var001ac614 = 0x3da3d70a;
-u32 var001ac618 = 0x3dcccccd;
-u32 var001ac61c = 0x3dcccccd;
-u32 var001ac620 = 0x3dcccccd;
-u32 var001ac624 = 0x3f7cb924;
-u32 var001ac628 = 0x3c51b700;
-u32 var001ac62c = 0x3f4ccccd;
-u32 var001ac630 = 0x3dcccccd;
-u32 var001ac634 = 0x3dcccccd;
-u32 var001ac638 = 0x40c907a9;
-u32 var001ac63c = 0x40333333;
-u32 var001ac640 = 0x3f4ccccd;
-u32 var001ac644 = 0x3e4ccccd;
-u32 var001ac648 = 0x3dcccccd;
-u32 var001ac64c = 0x3e99999a;
-u32 var001ac650 = 0x3f7cb924;
-u32 var001ac654 = 0x3f7cb924;
-u32 var001ac658 = 0x3c51b700;
-u32 var001ac65c = 0x3c888889;
-u32 var001ac660 = 0x3e4ccccd;
-u32 var001ac664 = 0x3dcccccd;
-u32 var001ac668 = 0xbdcccccd;
-u32 var001ac66c = 0xbf4ccccd;
-u32 var001ac670 = 0x7f09df30;
-u32 var001ac674 = 0x7f09df40;
-u32 var001ac678 = 0x7f09df40;
-u32 var001ac67c = 0x7f09df40;
-u32 var001ac680 = 0x7f09df40;
-u32 var001ac684 = 0x7f09df40;
-u32 var001ac688 = 0x7f09df40;
-u32 var001ac68c = 0x7f09df40;
-u32 var001ac690 = 0x7f09df40;
-u32 var001ac694 = 0x7f09df40;
-u32 var001ac698 = 0x7f09df30;
-u32 var001ac69c = 0x7f09df40;
-u32 var001ac6a0 = 0x7f09df40;
-u32 var001ac6a4 = 0x7f09df40;
-u32 var001ac6a8 = 0x7f09df40;
-u32 var001ac6ac = 0x7f09df30;
-u32 var001ac6b0 = 0x7f09df40;
-u32 var001ac6b4 = 0x7f09df40;
-u32 var001ac6b8 = 0x7f09df40;
-u32 var001ac6bc = 0x7f09df40;
-u32 var001ac6c0 = 0x7f09df30;
-u32 var001ac6c4 = 0x7f09df40;
-u32 var001ac6c8 = 0x7f09df40;
-u32 var001ac6cc = 0x7f09df30;
-u32 var001ac6d0 = 0x7f09e080;
-u32 var001ac6d4 = 0x7f09e11c;
-u32 var001ac6d8 = 0x7f09e0b8;
-u32 var001ac6dc = 0x7f09e110;
-u32 var001ac6e0 = 0x7f09e11c;
-u32 var001ac6e4 = 0x7f09e11c;
-u32 var001ac6e8 = 0x7f09e11c;
-u32 var001ac6ec = 0x7f09e11c;
-u32 var001ac6f0 = 0x7f09e11c;
-u32 var001ac6f4 = 0x7f09e11c;
-u32 var001ac6f8 = 0x7f09e118;
-u32 var001ac6fc = 0x7f09e118;
-u32 var001ac700 = 0x4141999a;
-u32 var001ac704 = 0x3dcccccd;
-u32 var001ac708 = 0x4096c5bf;
-u32 var001ac70c = 0x404907a9;
-u32 var001ac710 = 0x3fd55555;
-u32 var001ac714 = 0x3eb2b179;
-u32 var001ac718 = 0xbeb2b179;
-u32 var001ac71c = 0x3eb2b179;
-u32 var001ac720 = 0x41ad5555;
-u32 var001ac724 = 0x41855555;
-u32 var001ac728 = 0x3fd55555;
-u32 var001ac72c = 0x3dcccccd;
-u32 var001ac730 = 0x3fd55555;
-u32 var001ac734 = 0x3e32b179;
-u32 var001ac738 = 0xbe32b179;
-u32 var001ac73c = 0x3e32b179;
-u32 var001ac740 = 0x3fd55555;
-u32 var001ac744 = 0x3e99999a;
-u32 var001ac748 = 0x3dcccccd;
-u32 var001ac74c = 0x3e99999a;
-u32 var001ac750 = 0x3dcccccd;
-u32 var001ac754 = 0xb3d6bf95;
-u32 var001ac758 = 0x33d6bf95;
-u32 var001ac75c = 0xc5bb8000;
-u32 var001ac760 = 0x3f6d4de3;
-u32 var001ac764 = 0x3d9590e8;
-u32 var001ac768 = 0x3e2aaaab;
-u32 var001ac76c = 0x7f0a2de0;
-u32 var001ac770 = 0x7f0a2e00;
-u32 var001ac774 = 0x7f0a2e20;
-u32 var001ac778 = 0x7f0a2e38;
-u32 var001ac77c = 0x7f0a2e4c;
-u32 var001ac780 = 0x7f0a2e60;
-u32 var001ac784 = 0x7f0a2f10;
-u32 var001ac788 = 0x7f0a3070;
-u32 var001ac78c = 0x7f0a3070;
-u32 var001ac790 = 0x7f0a2fb4;
-u32 var001ac794 = 0x7f0a2fdc;
-u32 var001ac798 = 0x7f0a3070;
-u32 var001ac79c = 0x7f0a3070;
-u32 var001ac7a0 = 0x7f0a3070;
-u32 var001ac7a4 = 0x7f0a3070;
-u32 var001ac7a8 = 0x7f0a3070;
-u32 var001ac7ac = 0x7f0a2f4c;
-u32 var001ac7b0 = 0x7f0a3070;
-u32 var001ac7b4 = 0x7f0a3070;
-u32 var001ac7b8 = 0x7f0a3070;
-u32 var001ac7bc = 0x7f0a3070;
-u32 var001ac7c0 = 0x7f0a2f88;
-u32 var001ac7c4 = 0x7f0a3004;
-u32 var001ac7c8 = 0x40490fdb;
-u32 var001ac7cc = 0x42853333;
-u32 var001ac7d0 = 0x3c8efa35;
-u32 var001ac7d4 = 0x3f19999a;
-u32 var001ac7d8 = 0x3e4ccccd;
-u32 var001ac7dc = 0x7f0a35ac;
-u32 var001ac7e0 = 0x7f0a36dc;
-u32 var001ac7e4 = 0x7f0a35ac;
-u32 var001ac7e8 = 0x7f0a35dc;
-u32 var001ac7ec = 0x7f0a35dc;
-u32 var001ac7f0 = 0x7f0a36dc;
-u32 var001ac7f4 = 0x7f0a360c;
-u32 var001ac7f8 = 0x7f0a360c;
-u32 var001ac7fc = 0x7f0a363c;
-u32 var001ac800 = 0x7f0a3664;
-u32 var001ac804 = 0x7f0a36dc;
-u32 var001ac808 = 0x7f0a3690;
-u32 var001ac80c = 0x7f0a3664;
-u32 var001ac810 = 0x7f0a363c;
-u32 var001ac814 = 0x7f0a363c;
-u32 var001ac818 = 0x7f0a363c;
-u32 var001ac81c = 0x7f0a363c;
-u32 var001ac820 = 0x7f0a36c4;
-u32 var001ac824 = 0x7f0a36b8;
-u32 var001ac828 = 0x3f28f5c3;
-u32 var001ac82c = 0x3f666666;
-u32 var001ac830 = 0x7f0a372c;
-u32 var001ac834 = 0x7f0a3740;
-u32 var001ac838 = 0x7f0a372c;
-u32 var001ac83c = 0x7f0a372c;
-u32 var001ac840 = 0x7f0a372c;
-u32 var001ac844 = 0x7f0a3740;
-u32 var001ac848 = 0x7f0a372c;
-u32 var001ac84c = 0x7f0a372c;
-u32 var001ac850 = 0x7f0a3740;
-u32 var001ac854 = 0x7f0a3740;
-u32 var001ac858 = 0x7f0a3740;
-u32 var001ac85c = 0x7f0a3740;
-u32 var001ac860 = 0x7f0a3740;
-u32 var001ac864 = 0x7f0a3740;
-u32 var001ac868 = 0x7f0a3740;
-u32 var001ac86c = 0x7f0a3740;
-u32 var001ac870 = 0x7f0a3740;
-u32 var001ac874 = 0x7f0a373c;
-u32 var001ac878 = 0x7f0a3734;
-u32 var001ac87c = 0x3c23d70a;
-u32 var001ac880 = 0x3f747ae1;
-u32 var001ac884 = 0x47ae147b;
-u32 var001ac888 = 0x33d6bf95;
-u32 var001ac88c = 0xbe0f5c29;
-u32 var001ac890 = 0x3e19999a;
-u32 var001ac894 = 0x40490fdb;
-u32 var001ac898 = 0x3e4ccccd;
-u32 var001ac89c = 0x40490fdb;
-u32 var001ac8a0 = 0x3e4ccccd;
-u32 var001ac8a4 = 0x40c90fd0;
-u32 var001ac8a8 = 0x3dcccccd;
-u32 var001ac8ac = 0x3dcccccd;
-u32 var001ac8b0 = 0x3ecccccd;
-u32 var001ac8b4 = 0x3f19999a;
-u32 var001ac8b8 = 0x46fffe00;
-u32 var001ac8bc = 0x3c23d70a;
-u32 var001ac8c0 = 0x3fd16873;
-u32 var001ac8c4 = 0x3c23d70a;
-u32 var001ac8c8 = 0x411fffff;
-u32 var001ac8cc = 0x3f088888;
-u32 var001ac8d0 = 0x40c907a9;
-u32 var001ac8d4 = 0x3d0bd8cf;
-u32 var001ac8d8 = 0x40c907a9;
-u32 var001ac8dc = 0x3d0bd8cf;
-u32 var001ac8e0 = 0x40c907a9;
-u32 var001ac8e4 = 0x3d0bd8cf;
-u32 var001ac8e8 = 0x3f088888;
-u32 var001ac8ec = 0x40c907a9;
-u32 var001ac8f0 = 0x40c907a9;
-u32 var001ac8f4 = 0x3c3d3463;
-u32 var001ac8f8 = 0x40c907a9;
-u32 var001ac8fc = 0x3c3d3463;
-u32 var001ac900 = 0x40c907a9;
-u32 var001ac904 = 0x40c907a9;
-u32 var001ac908 = 0x3bda10fd;
-u32 var001ac90c = 0x40c907a9;
-u32 var001ac910 = 0x3bda10fd;
-u32 var001ac914 = 0x3e99999a;
-u32 var001ac918 = 0x3e8e38e4;
-u32 var001ac91c = 0x40c907a9;
-u32 var001ac920 = 0x3fd33333;
-u32 var001ac924 = 0x33333333;
-u32 var001ac928 = 0x3fc33333;
-u32 var001ac92c = 0x33333333;
-u32 var001ac930 = 0x3dccccce;
-u32 var001ac934 = 0x40c907a9;
-u32 var001ac938 = 0x411fffff;
-u32 var001ac93c = 0x7f0a550c;
-u32 var001ac940 = 0x7f0a550c;
-u32 var001ac944 = 0x7f0a550c;
-u32 var001ac948 = 0x7f0a550c;
-u32 var001ac94c = 0x7f0a550c;
-u32 var001ac950 = 0x7f0a550c;
-u32 var001ac954 = 0x7f0a550c;
-u32 var001ac958 = 0x7f0a550c;
-u32 var001ac95c = 0x7f0a550c;
-u32 var001ac960 = 0x7f0a550c;
-u32 var001ac964 = 0x7f0a550c;
-u32 var001ac968 = 0x7f0a550c;
-u32 var001ac96c = 0x7f0a550c;
-u32 var001ac970 = 0x7f0a550c;
-u32 var001ac974 = 0x7f0a550c;
-u32 var001ac978 = 0x7f0a550c;
-u32 var001ac97c = 0x7f0a550c;
-u32 var001ac980 = 0x7f0a5540;
-u32 var001ac984 = 0x7f0a550c;
-u32 var001ac988 = 0x7f0a550c;
-u32 var001ac98c = 0x7f0a550c;
-u32 var001ac990 = 0x7f0a5540;
-u32 var001ac994 = 0x7f0a5540;
-u32 var001ac998 = 0x7f0a5540;
-u32 var001ac99c = 0x7f0a5540;
-u32 var001ac9a0 = 0x7f0a5540;
-u32 var001ac9a4 = 0x7f0a550c;
-u32 var001ac9a8 = 0x7f0a5528;
-u32 var001ac9ac = 0x7f0a5540;
-u32 var001ac9b0 = 0x7f0a5540;
-u32 var001ac9b4 = 0x7f0a5540;
-u32 var001ac9b8 = 0x7f0a5540;
-u32 var001ac9bc = 0x7f0a5540;
-u32 var001ac9c0 = 0x7f0a5540;
-u32 var001ac9c4 = 0x7f0a550c;
-u32 var001ac9c8 = 0x7f0a550c;
-u32 var001ac9cc = 0x7f0a550c;
-u32 var001ac9d0 = 0x7f0a550c;
-u32 var001ac9d4 = 0x7f0a550c;
-u32 var001ac9d8 = 0x7f0a550c;
-u32 var001ac9dc = 0x7f0a550c;
-u32 var001ac9e0 = 0x7f0a550c;
-u32 var001ac9e4 = 0x40490fdb;
-u32 var001ac9e8 = 0x3dccccce;
-u32 var001ac9ec = 0x7f0a61f4;
-u32 var001ac9f0 = 0x7f0a6254;
-u32 var001ac9f4 = 0x7f0a6254;
-u32 var001ac9f8 = 0x7f0a6254;
-u32 var001ac9fc = 0x7f0a6254;
-u32 var001aca00 = 0x7f0a6254;
-u32 var001aca04 = 0x7f0a61fc;
-u32 var001aca08 = 0x7f0a6254;
-u32 var001aca0c = 0x7f0a6254;
-u32 var001aca10 = 0x7f0a6254;
-u32 var001aca14 = 0x7f0a6210;
-u32 var001aca18 = 0x7f0a6210;
-u32 var001aca1c = 0x7f0a6210;
-u32 var001aca20 = 0x7f0a6210;
-u32 var001aca24 = 0x7f0a6210;
-u32 var001aca28 = 0x7f0a6254;
-u32 var001aca2c = 0x7f0a6254;
-u32 var001aca30 = 0x7f0a6254;
-u32 var001aca34 = 0x7f0a6254;
-u32 var001aca38 = 0x7f0a6254;
-u32 var001aca3c = 0x7f0a6254;
-u32 var001aca40 = 0x7f0a6254;
-u32 var001aca44 = 0x7f0a6254;
-u32 var001aca48 = 0x7f0a6254;
-u32 var001aca4c = 0x7f0a6254;
-u32 var001aca50 = 0x7f0a6254;
-u32 var001aca54 = 0x7f0a6254;
-u32 var001aca58 = 0x7f0a6254;
-u32 var001aca5c = 0x7f0a6254;
-u32 var001aca60 = 0x7f0a6254;
-u32 var001aca64 = 0x7f0a6254;
-u32 var001aca68 = 0x7f0a6254;
-u32 var001aca6c = 0x7f0a6254;
-u32 var001aca70 = 0x7f0a6210;
-u32 var001aca74 = 0x40490fdb;
-u32 var001aca78 = 0x3dcccccd;
-u32 var001aca7c = 0x3d4ccccd;
-u32 var001aca80 = 0x3ba3d70a;
-u32 var001aca84 = 0x3cf5c28f;
-u32 var001aca88 = 0x3ecccccd;
-u32 var001aca8c = 0x3faaaaab;
-u32 var001aca90 = 0x3f3ebebf;
-u32 var001aca94 = 0x453b8000;
-u32 var001aca98 = 0x453b8000;
-u32 var001aca9c = 0x453b8000;
-u32 var001acaa0 = 0x453b8000;
-u32 var001acaa4 = 0x7f0a8a60;
-u32 var001acaa8 = 0x7f0a8b50;
-u32 var001acaac = 0x7f0a8b50;
-u32 var001acab0 = 0x7f0a8b50;
-u32 var001acab4 = 0x7f0a8a60;
-u32 var001acab8 = 0x7f0a8b50;
-u32 var001acabc = 0x7f0a8b50;
-u32 var001acac0 = 0x7f0a8a0c;
-u32 var001acac4 = 0x7f0a8a0c;
-u32 var001acac8 = 0x7f0a8a0c;
-u32 var001acacc = 0x7f0a8a60;
-u32 var001acad0 = 0x7f0a8a60;
-u32 var001acad4 = 0x7f0a8b50;
-u32 var001acad8 = 0x7f0a8b50;
-u32 var001acadc = 0x7f0a8b50;
-u32 var001acae0 = 0x7f0a89a0;
-u32 var001acae4 = 0x7f0a8a60;
-u32 var001acae8 = 0x7f0a8b50;
-u32 var001acaec = 0x7f0a8b50;
-u32 var001acaf0 = 0x7f0a8b50;
-u32 var001acaf4 = 0x7f0a8b50;
-u32 var001acaf8 = 0x7f0a8b50;
-u32 var001acafc = 0x7f0a8b50;
-u32 var001acb00 = 0x7f0a8b50;
-u32 var001acb04 = 0x7f0a8b50;
-u32 var001acb08 = 0x7f0a8b50;
-u32 var001acb0c = 0x7f0a8a60;
-u32 var001acb10 = 0x7f0a8b50;
-u32 var001acb14 = 0x7f0a8a0c;
-u32 var001acb18 = 0x7f0a8e6c;
-u32 var001acb1c = 0x7f0a8ee8;
-u32 var001acb20 = 0x7f0a8ee8;
-u32 var001acb24 = 0x7f0a8ee8;
-u32 var001acb28 = 0x7f0a8e6c;
-u32 var001acb2c = 0x7f0a8e6c;
-u32 var001acb30 = 0x7f0a8ee8;
-u32 var001acb34 = 0x7f0a8ee8;
-u32 var001acb38 = 0x7f0a8ee8;
-u32 var001acb3c = 0x7f0a8e6c;
-u32 var001acb40 = 0x7f0a8ee8;
-u32 var001acb44 = 0x7f0a8ee8;
-u32 var001acb48 = 0x7f0a8ee8;
-u32 var001acb4c = 0x7f0a8ee8;
-u32 var001acb50 = 0x7f0a8ee8;
-u32 var001acb54 = 0x7f0a8ee8;
-u32 var001acb58 = 0x7f0a8ee8;
-u32 var001acb5c = 0x7f0a8ee8;
-u32 var001acb60 = 0x7f0a8ee8;
-u32 var001acb64 = 0x7f0a8ee8;
-u32 var001acb68 = 0x7f0a8ee8;
-u32 var001acb6c = 0x7f0a8ee8;
-u32 var001acb70 = 0x7f0a8ee8;
-u32 var001acb74 = 0x7f0a8e6c;
-u32 var001acb78 = 0x7f0a8ee8;
-u32 var001acb7c = 0x7f0a8ee8;
-u32 var001acb80 = 0x7f0a8ee8;
-u32 var001acb84 = 0x7f0a8e6c;
-u32 var001acb88 = 0x7f0a8ee8;
-u32 var001acb8c = 0x7f0a8ee8;
-u32 var001acb90 = 0x7f0a8ee8;
-u32 var001acb94 = 0x7f0a8ee8;
-u32 var001acb98 = 0x7f0a8ee8;
-u32 var001acb9c = 0x7f0a8ee8;
-u32 var001acba0 = 0x7f0a8ee8;
-u32 var001acba4 = 0x7f0a8e6c;
-u32 var001acba8 = 0x7f0a8e6c;
-u32 var001acbac = 0x7f0a8e6c;
-u32 var001acbb0 = 0xc7c35000;
-u32 var001acbb4 = 0x47c35000;
-u32 var001acbb8 = 0x7f0a9934;
-u32 var001acbbc = 0x7f0a9974;
-u32 var001acbc0 = 0x7f0a9950;
-u32 var001acbc4 = 0x7f0a9974;
-u32 var001acbc8 = 0x7f0a9974;
-u32 var001acbcc = 0x7f0a9974;
-u32 var001acbd0 = 0x7f0a9974;
-u32 var001acbd4 = 0x7f0a9974;
-u32 var001acbd8 = 0x7f0a9974;
-u32 var001acbdc = 0x7f0a9974;
-u32 var001acbe0 = 0x7f0a996c;
-u32 var001acbe4 = 0x7f0a996c;
-u32 var001acbe8 = 0x7f0a996c;
-u32 var001acbec = 0x7f0a996c;
-u32 var001acbf0 = 0x7f0a996c;
-u32 var001acbf4 = 0x7f0a996c;
-u32 var001acbf8 = 0x7f0a996c;
-u32 var001acbfc = 0x7f0a996c;
-u32 var001acc00 = 0x7f0a996c;
-u32 var001acc04 = 0x7f0a996c;
-u32 var001acc08 = 0x7f0a996c;
-u32 var001acc0c = 0x00000000;
-u32 var001acc10 = 0x73703100;
-u32 var001acc14 = 0x73703200;
-u32 var001acc18 = 0x73703300;
-u32 var001acc1c = 0x73706200;
-u32 var001acc20 = 0x73706900;
-u32 var001acc24 = 0x461c4000;
-u32 var001acc28 = 0x453b8000;
-u32 var001acc2c = 0x453b8000;
-u32 var001acc30 = 0x3f19999a;
-u32 var001acc34 = 0x3e99999a;
-u32 var001acc38 = 0xbdcccccd;
-u32 var001acc3c = 0x453b8000;
-u32 var001acc40 = 0x453b8000;
-u32 var001acc44 = 0x3e4ccccd;
-u32 var001acc48 = 0x3db2b17a;
-u32 var001acc4c = 0x3727c5ac;
-u32 var001acc50 = 0xb727c5ac;
-u32 var001acc54 = 0x461c4000;
-u32 var001acc58 = 0xc61c4000;
-u32 var001acc5c = 0x461c4000;
-u32 var001acc60 = 0xc61c4000;
-u32 var001acc64 = 0x461c4000;
-u32 var001acc68 = 0xc61c4000;
-u32 var001acc6c = 0x3fb50481;
-u32 var001acc70 = 0x7f0accc0;
-u32 var001acc74 = 0x7f0accc0;
-u32 var001acc78 = 0x7f0acccc;
-u32 var001acc7c = 0x7f0acccc;
-u32 var001acc80 = 0x7f0acccc;
-u32 var001acc84 = 0x7f0acca0;
-u32 var001acc88 = 0x7f0accc0;
-u32 var001acc8c = 0x7f0acccc;
-u32 var001acc90 = 0x7f0acccc;
-u32 var001acc94 = 0x7f0acccc;
-u32 var001acc98 = 0x7f0acccc;
-u32 var001acc9c = 0x7f0acccc;
-u32 var001acca0 = 0x7f0acccc;
-u32 var001acca4 = 0x7f0acccc;
-u32 var001acca8 = 0x7f0accc0;
-u32 var001accac = 0x7f0acccc;
-u32 var001accb0 = 0x7f0accc0;
-u32 var001accb4 = 0x7f0acccc;
-u32 var001accb8 = 0x7f0acccc;
-u32 var001accbc = 0x7f0acccc;
-u32 var001accc0 = 0x7f0acccc;
-u32 var001accc4 = 0x7f0acccc;
-u32 var001accc8 = 0x7f0accb0;
-u32 var001acccc = 0x3dcccccd;
-u32 var001accd0 = 0xc6ea6000;
-u32 var001accd4 = 0x46ea6000;
-u32 var001accd8 = 0x3f666666;
-u32 var001accdc = 0x3f666666;
-u32 var001acce0 = 0x3f666666;
-u32 var001acce4 = 0x3f666666;
-u32 var001acce8 = 0x3f666666;
-u32 var001accec = 0x3f666666;
-u32 var001accf0 = 0x3fb50481;
-u32 var001accf4 = 0x3f666666;
-u32 var001accf8 = 0x3f088888;
-u32 var001accfc = 0x40c907a9;
-u32 var001acd00 = 0x3ec907a9;
-u32 var001acd04 = 0x40c907a9;
-u32 var001acd08 = 0x3ec907a9;
-u32 var001acd0c = 0x40c907a9;
-u32 var001acd10 = 0x3ec907a9;
-u32 var001acd14 = 0x493ebc20;
-u32 var001acd18 = 0x3e8e38e4;
-u32 var001acd1c = 0x3ed55555;
-u32 var001acd20 = 0x40555555;
-u32 var001acd24 = 0x3fb55555;
-u32 var001acd28 = 0x3fd55555;
-u32 var001acd2c = 0x40c907a9;
-u32 var001acd30 = 0x3dc907a9;
-u32 var001acd34 = 0x40c907a9;
-u32 var001acd38 = 0x3dc907a9;
-u32 var001acd3c = 0x40c907a9;
-u32 var001acd40 = 0x3dc907a9;
-u32 var001acd44 = 0x40c907a9;
-u32 var001acd48 = 0x3dc907a9;
-u32 var001acd4c = 0x40c907a9;
-u32 var001acd50 = 0x3dc907a9;
-u32 var001acd54 = 0x40c907a9;
-u32 var001acd58 = 0x3dc907a9;
-u32 var001acd5c = 0x493ebc20;
-u32 var001acd60 = 0x3e8e38e4;
-u32 var001acd64 = 0x3dccccce;
-u32 var001acd68 = 0xc6ea6000;
-u32 var001acd6c = 0x46ea6000;
-u32 var001acd70 = 0x3e4ccccd;
-u32 var001acd74 = 0xb58637bd;
-u32 var001acd78 = 0x33d6bf95;
-u32 var001acd7c = 0x3dcccccd;
-u32 var001acd80 = 0xb58637bd;
-u32 var001acd84 = 0x33d6bf95;
-u32 var001acd88 = 0xb58637bd;
-u32 var001acd8c = 0x33d6bf95;
-u32 var001acd90 = 0x3e4ccccd;
-u32 var001acd94 = 0x00000000;
-u32 var001acd98 = 0x00000000;
-u32 var001acd9c = 0x00000000;
-char var001acda0[] = "%s: %d\n";
-char var001acda8[] = "%s %d %s\n";
-char var001acdb4[] = "%s: %d\n";
-char var001acdbc[] = "%s %s";
-char var001acdc4[] = "%s %s";
-u32 var001acdcc = 0x00000000;
-u32 var001acdd0 = 0x3dcccccd;
-u32 var001acdd4 = 0x3dcccccd;
-u32 var001acdd8 = 0x7f0b1fe0;
-u32 var001acddc = 0x7f0b1fe0;
-u32 var001acde0 = 0x7f0b1fe0;
-u32 var001acde4 = 0x7f0b1fe0;
-u32 var001acde8 = 0x7f0b1fe8;
-u32 var001acdec = 0x7f0b1fe8;
-u32 var001acdf0 = 0x7f0b1ff0;
-u32 var001acdf4 = 0x7f0b1ff8;
-u32 var001acdf8 = 0x7f0b1fe0;
-u32 var001acdfc = 0x7f0b1fe0;
-u32 var001ace00 = 0x7f0b1fe0;
-u32 var001ace04 = 0x7f0b1fe0;
-u32 var001ace08 = 0x7f0b1ff8;
-u32 var001ace0c = 0x7f0b1fe0;
-u32 var001ace10 = 0x7f0b1fe8;
-u32 var001ace14 = 0x7f0b1fe8;
-u32 var001ace18 = 0x7f0b1fe8;
-u32 var001ace1c = 0x7f0b1fe8;
-u32 var001ace20 = 0x7f0b1fe8;
-u32 var001ace24 = 0x7f0b1fe0;
-u32 var001ace28 = 0x7f0b1ff0;
-u32 var001ace2c = 0x7f0b1fe8;
-u32 var001ace30 = 0x7f0b1ff8;
-u32 var001ace34 = 0x7f0b1fe0;
-u32 var001ace38 = 0x7f0b1fe0;
-u32 var001ace3c = 0x7f0b1fe0;
-u32 var001ace40 = 0x7f0b1fe0;
-u32 var001ace44 = 0x7f0b1fe0;
-u32 var001ace48 = 0x7f0b1fe0;
-u32 var001ace4c = 0x7f0b1fe0;
-u32 var001ace50 = 0x7f0b1fe0;
-u32 var001ace54 = 0x7f0b1fe0;
-u32 var001ace58 = 0x7f0b1fe0;
-u32 var001ace5c = 0x7f0b1fe0;
-u32 var001ace60 = 0x7f0b1fe0;
-u32 var001ace64 = 0x7f0b2008;
-u32 var001ace68 = 0x7f0b2000;
-u32 var001ace6c = 0x7f0b2000;
-u32 var001ace70 = 0x7f0b2000;
-u32 var001ace74 = 0x7f0b2000;
-u32 var001ace78 = 0x7f0b2000;
-u32 var001ace7c = 0x7f0b2000;
-u32 var001ace80 = 0x7f0b2000;
-u32 var001ace84 = 0x7f0b2000;
-u32 var001ace88 = 0x7f0b2008;
-u32 var001ace8c = 0x7f0b2008;
-u32 var001ace90 = 0x7f0b2008;
-u32 var001ace94 = 0x7f0b2008;
-u32 var001ace98 = 0x7f0b2008;
-u32 var001ace9c = 0x7f0b2008;
-u32 var001acea0 = 0x7f0b1fd8;
-u32 var001acea4 = 0x7f0b2008;
-u32 var001acea8 = 0x7f0b2008;
-u32 var001aceac = 0x7f0b1fe0;
-char var001aceb0[] = "MOT : Type 1  = %d/%d (%d)";
-char var001acecc[] = "MOT : Type 2  = %d/%d (%d)";
-char var001acee8[] = "MOT : Type 3  = %d/%d (%d)";
-char var001acf04[] = "MOT : Type OI = %d/%d/%d/%d";
-char var001acf20[] = "MOT : Type OA = %d/%d/%d/%d";
-char var001acf3c[] = "MOT : g_ObjCount = %d";
-char var001acf54[] = "MOT : g_AnimCount = %d";
-char var001acf6c[] = "Allocating %d bytes for objinst structure\n";
-char var001acf98[] = "MotInst: Using cache entry type 1 %d (0x%08x) - Bytes=%d\n";
-char var001acfd4[] = "MotInst: Using cache entry type 2 %d (0x%08x) - Bytes=%d\n";
-char var001ad010[] = "MotInst: Using cache entry type 3 %d (0x%08x) - Bytes=%d\n";
-char var001ad04c[] = "***************************************\n";
-char var001ad078[] = "***************************************\n";
-char var001ad0a4[] = "\nMotInst: Freeing type 2 cache entry %d (0x%08x)\n\n";
-char var001ad0d8[] = "\nMotInst: Freeing type 3 cache entry %d (0x%08x)\n\n";
-char var001ad10c[] = "MotInst -> Attempt to free item not in cache\n";
-u32 var001ad13c = 0x00000000;
-u32 var001ad140 = 0x42e52ee0;
-u32 var001ad144 = 0x3c0efa35;
-u32 var001ad148 = 0x3f060a92;
-u32 var001ad14c = 0x3f060a92;
-u32 var001ad150 = 0xe0ad78ec;
-u32 var001ad154 = 0x3c0efa35;
-u32 var001ad158 = 0x00000000;
-u32 var001ad15c = 0x00000000;
-char var001ad160[] = "ACOUSTIC -> Allocating %d bytes for %d portal AV structures\n";
-char var001ad1a0[] = "ACOUSTIC -> DGD WARNING: portalAVInit no portals!\n";
-char var001ad1d4[] = "ACOUSTIC -> portalAVReset: checking propobj type %d\n";
-char var001ad20c[] = "ACOUSTIC -> portalAVReset: found PROPDEF_WINDOWFADE for portal %d\n";
-char var001ad250[] = "ACOUSTIC -> portalAVReset: found PROPDEF_WINDOW for portal %d\n";
-char var001ad290[] = "ACOUSTIC -> Portal %3d - A=%.2f, V=%.2f\n";
-char var001ad2bc[] = "ACOUSTIC -> DGD WARNING: portalAVReset no portals!\n";
-char var001ad2f0[] = "Acoustic Reset -> Allocating %d bytes for %d roomacousticdata structures\n";
-char var001ad33c[] = "ACOUSTIC ->    room %d bb %f %f\n";
-char var001ad360[] = "ACOUSTIC -> DGD: acousticReset room %d does not have a 3D bounding box => radata[room].roomvolume is bodged!\n";
-char var001ad3d0[] = "%s%sL2 -> Surface area bodged for room %d - using %f\n";
-u32 var001ad408 = 0x00000000;
-u32 var001ad40c = 0x00000000;
-u32 var001ad410 = 0x3b808081;
-u32 var001ad414 = 0x3d888889;
-u32 var001ad418 = 0x4b989680;
-u32 var001ad41c = 0x00000000;
-char var001ad420[] = "Gunmem: 0x%08x\n";
-char var001ad430[] = "Gunmem: bondsub 0x%08x\n";
-char var001ad448[] = "Gunmem: bondsub->anim 0x%08x\n";
-char var001ad468[] = "Gunmem: savedata 0x%08x\n";
-char var001ad484[] = "Gunmem: wo 0x%08x\n";
-char var001ad498[] = "Jo using %d bytes gunmem (gunmemsize %d)\n";
-char var001ad4c4[] = "Gunmem: bondmeml 0x%08x size 0x%08x\n";
-char var001ad4ec[] = "Gunmem: tex block free 0x%08x\n";
-char var001ad50c[] = "Gunmem: Free at end %d\n";
-u32 var001ad524 = 0x74707300;
-u32 var001ad528 = 0x49742400;
-u32 var001ad52c = 0x49742400;
-u32 var001ad530 = 0x471c4000;
-u32 var001ad534 = 0x40c907a9;
-u32 var001ad538 = 0x40c907a9;
-u32 var001ad53c = 0x7f0b7650;
-u32 var001ad540 = 0x7f0b7668;
-u32 var001ad544 = 0x7f0b76a0;
-u32 var001ad548 = 0x7f0b76c0;
-u32 var001ad54c = 0x7f0b76c8;
-u32 var001ad550 = 0x7f0b76d0;
-u32 var001ad554 = 0x7f0b76d8;
-u32 var001ad558 = 0x7f0b76e0;
-u32 var001ad55c = 0x7f0b76e0;
-u32 var001ad560 = 0x7f0b7658;
-u32 var001ad564 = 0x7f0b7658;
-u32 var001ad568 = 0x7f0b7660;
-u32 var001ad56c = 0x3c23d70a;
-u32 var001ad570 = 0x3f7a9fbe;
-u32 var001ad574 = 0x49742400;
-u32 var001ad578 = 0x7f0b8978;
-u32 var001ad57c = 0x7f0b899c;
-u32 var001ad580 = 0x7f0b89c0;
-u32 var001ad584 = 0x7f0b89e4;
-u32 var001ad588 = 0x7f0b8a08;
-u32 var001ad58c = 0x7f0b8a2c;
-u32 var001ad590 = 0x7f0b8a50;
-u32 var001ad594 = 0x7f0b8a74;
-u32 var001ad598 = 0x7f0b8a98;
-u32 var001ad59c = 0x7f0b8abc;
-u32 var001ad5a0 = 0x7f0b8ae0;
-u32 var001ad5a4 = 0x7f0b8b04;
-u32 var001ad5a8 = 0x7f0b8b4c;
-u32 var001ad5ac = 0x7f0b8b70;
-u32 var001ad5b0 = 0x7f0b8b28;
-u32 var001ad5b4 = 0x40c907a9;
-u32 var001ad5b8 = 0x3c75c28f;
-u32 var001ad5bc = 0x43338000;
-u32 var001ad5c0 = 0x3dcccccd;
-u32 var001ad5c4 = 0x40490fdb;
-u32 var001ad5c8 = 0x3da3d70a;
-u32 var001ad5cc = 0x40c907a9;
-u32 var001ad5d0 = 0x40c907a9;
-u32 var001ad5d4 = 0x42653838;
-u32 var001ad5d8 = 0x3c8ef461;
-u32 var001ad5dc = 0x3fc907a9;
-u32 var001ad5e0 = 0x40490fdb;
-u32 var001ad5e4 = 0x3db33333;
-u32 var001ad5e8 = 0x3e99999a;
-u32 var001ad5ec = 0x3d088889;
-u32 var001ad5f0 = 0x3e4ccccd;
-u32 var001ad5f4 = 0x3d4ccccd;
-u32 var001ad5f8 = 0x3dcccccd;
-u32 var001ad5fc = 0x3dcccccd;
-u32 var001ad600 = 0x3f8e38e4;
-u32 var001ad604 = 0x7f0bade0;
-u32 var001ad608 = 0x7f0bae00;
-u32 var001ad60c = 0x7f0bae04;
-u32 var001ad610 = 0x7f0bae04;
-u32 var001ad614 = 0x7f0badf0;
-u32 var001ad618 = 0x7f0bae04;
-u32 var001ad61c = 0x7f0bae04;
-u32 var001ad620 = 0x7f0bae04;
-u32 var001ad624 = 0x7f0bae04;
-u32 var001ad628 = 0x7f0bae00;
-u32 var001ad62c = 0x7f0bae04;
-u32 var001ad630 = 0x7f0bade0;
-u32 var001ad634 = 0x7f0bb6d4;
-u32 var001ad638 = 0x7f0bb740;
-u32 var001ad63c = 0x7f0bb740;
-u32 var001ad640 = 0x7f0bb6fc;
-u32 var001ad644 = 0x7f0bb6fc;
-u32 var001ad648 = 0x7f0bb71c;
-u32 var001ad64c = 0x7f0bb760;
-u32 var001ad650 = 0x7f0bb804;
-u32 var001ad654 = 0x7f0bb804;
-u32 var001ad658 = 0x7f0bb778;
-u32 var001ad65c = 0x7f0bb778;
-u32 var001ad660 = 0x7f0bb7b4;
-u32 var001ad664 = 0x7f0bbaf0;
-u32 var001ad668 = 0x7f0bbb64;
-u32 var001ad66c = 0x7f0bbbf4;
-u32 var001ad670 = 0x7f0bbd50;
-u32 var001ad674 = 0x7f0bbe54;
-u32 var001ad678 = 0x40490fdb;
-u32 var001ad67c = 0x40490fdb;
-u32 var001ad680 = 0x3faaaaab;
-u32 var001ad684 = 0x3983126f;
-u32 var001ad688 = 0x3d4ccccd;
-u32 var001ad68c = 0x3d4ccccd;
-u32 var001ad690 = 0x3c8ef461;
-u32 var001ad694 = 0x40c907a9;
-u32 var001ad698 = 0x40490fdb;
-u32 var001ad69c = 0xc0490fdb;
-u32 var001ad6a0 = 0xbdb851ec;
-u32 var001ad6a4 = 0x3db851ec;
-u32 var001ad6a8 = 0xbe4ccccd;
-u32 var001ad6ac = 0x3e4ccccd;
-u32 var001ad6b0 = 0x40c907a9;
-u32 var001ad6b4 = 0x40490fdb;
-u32 var001ad6b8 = 0x40c907a9;
-u32 var001ad6bc = 0x40490fdb;
-u32 var001ad6c0 = 0x3c888889;
-u32 var001ad6c4 = 0x3f4ccccd;
-u32 var001ad6c8 = 0x40c907a9;
-u32 var001ad6cc = 0x3b03126f;
-u32 var001ad6d0 = 0x3e4ccccd;
-u32 var001ad6d4 = 0x3c888889;
-u32 var001ad6d8 = 0x3b03126f;
-u32 var001ad6dc = 0x3e4ccccd;
-u32 var001ad6e0 = 0x3c888889;
-u32 var001ad6e4 = 0x3c088889;
-u32 var001ad6e8 = 0x3c088889;
-u32 var001ad6ec = 0x3c888889;
-u32 var001ad6f0 = 0x3f733333;
-u32 var001ad6f4 = 0x3df5c28f;
-u32 var001ad6f8 = 0x3df5c28f;
-u32 var001ad6fc = 0x40490fdb;
-u32 var001ad700 = 0x40c907a9;
-u32 var001ad704 = 0x40c907a9;
-u32 var001ad708 = 0x40c907a9;
-u32 var001ad70c = 0x3c8ef461;
-u32 var001ad710 = 0x411ffffe;
-u32 var001ad714 = 0x3d4ccccd;
-u32 var001ad718 = 0x404907a9;
-u32 var001ad71c = 0x40c907a9;
-u32 var001ad720 = 0x3f99999a;
-u32 var001ad724 = 0x4036db6e;
-u32 var001ad728 = 0x3f99999a;
-u32 var001ad72c = 0x3ecccccd;
-u32 var001ad730 = 0x404907a9;
-u32 var001ad734 = 0x3f99999a;
-u32 var001ad738 = 0x3f99999a;
-u32 var001ad73c = 0xbfd11234;
-u32 var001ad740 = 0x3fd11234;
-u32 var001ad744 = 0x3dd66e92;
-u32 var001ad748 = 0x00000000;
-u32 var001ad74c = 0x00000000;
-char var001ad750[] = "bondwalk.c";
-char var001ad75c[] = "bondwalk.c";
-char var001ad768[] = "bondwalk.c";
-char var001ad774[] = "bondwalk.c";
-u32 var001ad780 = 0xb8d1b717;
-u32 var001ad784 = 0x3dcccccd;
-u32 var001ad788 = 0x40c907a9;
-u32 var001ad78c = 0x3f99999a;
-u32 var001ad790 = 0x3f8ccccd;
-u32 var001ad794 = 0xc6ea6000;
-u32 var001ad798 = 0xc6ea6000;
-u32 var001ad79c = 0x3d3a5e30;
-u32 var001ad7a0 = 0x3d3a5e30;
-u32 var001ad7a4 = 0x3f745a1d;
-u32 var001ad7a8 = 0x3d3a5e30;
-u32 var001ad7ac = 0x3fb1c71d;
-u32 var001ad7b0 = 0x3e8e38e4;
-u32 var001ad7b4 = 0x3e8e38e4;
-u32 var001ad7b8 = 0xc6ea6000;
-u32 var001ad7bc = 0xc6ea6000;
-u32 var001ad7c0 = 0xc1555555;
-u32 var001ad7c4 = 0x41055555;
-u32 var001ad7c8 = 0x3f7212d7;
-u32 var001ad7cc = 0x3d5ed290;
-u32 var001ad7d0 = 0x3bce168a;
-u32 var001ad7d4 = 0x3eb33333;
-u32 var001ad7d8 = 0x3bce168a;
-u32 var001ad7dc = 0x3c8ef461;
-u32 var001ad7e0 = 0x3e4ccccd;
-u32 var001ad7e4 = 0x3e4ccccd;
-u32 var001ad7e8 = 0x3e4ccccd;
-u32 var001ad7ec = 0x3c6a0ea1;
-u32 var001ad7f0 = 0x3e4ccccd;
-u32 var001ad7f4 = 0x3c6a0ea1;
-u32 var001ad7f8 = 0x3f8a3d71;
-u32 var001ad7fc = 0xc27e6668;
-u32 var001ad800 = 0x43b0aaaa;
-u32 var001ad804 = 0x3ecccccd;
-u32 var001ad808 = 0x3c888889;
-u32 var001ad80c = 0x404907a9;
-u32 var001ad810 = 0x3eb33333;
-u32 var001ad814 = 0x3eb33333;
-u32 var001ad818 = 0x3dcccccd;
-u32 var001ad81c = 0x3dcccccd;
-u32 var001ad820 = 0x3eb33333;
-u32 var001ad824 = 0x3f4ccccd;
-u32 var001ad828 = 0x3f4ccccd;
-u32 var001ad82c = 0x3f4ccccd;
-u32 var001ad830 = 0x4528c000;
-u32 var001ad834 = 0x3ecccccd;
-u32 var001ad838 = 0x3ecccccd;
-u32 var001ad83c = 0x3e99999a;
-u32 var001ad840 = 0x3f8ccccd;
-u32 var001ad844 = 0x3e99999a;
-u32 var001ad848 = 0x3e99999a;
-u32 var001ad84c = 0x3f333333;
-u32 var001ad850 = 0x3f99999a;
-u32 var001ad854 = 0x3c8ef461;
-u32 var001ad858 = 0x00000000;
-u32 var001ad85c = 0x00000000;
-char var001ad860[] = "bondmove.c";
-u32 var001ad86c = 0xbf333333;
-u32 var001ad870 = 0x3f333333;
-u32 var001ad874 = 0x3d4ccccd;
-u32 var001ad878 = 0x3c4ccccd;
-u32 var001ad87c = 0x3d4ccccd;
-u32 var001ad880 = 0x3c4ccccd;
-u32 var001ad884 = 0x3d4ccccd;
-u32 var001ad888 = 0x3d4ccccd;
-u32 var001ad88c = 0xbf333333;
-u32 var001ad890 = 0x3f333333;
-u32 var001ad894 = 0x3d4ccccd;
-u32 var001ad898 = 0x3c4ccccd;
-u32 var001ad89c = 0x3d4ccccd;
-u32 var001ad8a0 = 0x3c4ccccd;
-u32 var001ad8a4 = 0x3d4ccccd;
-u32 var001ad8a8 = 0x3d4ccccd;
-u32 var001ad8ac = 0x3e4ccccd;
-u32 var001ad8b0 = 0x40c907a9;
-u32 var001ad8b4 = 0x3f5dddde;
-u32 var001ad8b8 = 0x3c23d70a;
-u32 var001ad8bc = 0x3c23d70a;
-u32 var001ad8c0 = 0x3d4ccccd;
-u32 var001ad8c4 = 0x3f76872b;
-u32 var001ad8c8 = 0x39a7c599;
-u32 var001ad8cc = 0x3f6a3d71;
-u32 var001ad8d0 = 0x3f7a9fbe;
-u32 var001ad8d4 = 0x39a7c599;
-u32 var001ad8d8 = 0x3f76872b;
-u32 var001ad8dc = 0x3e99999a;
-u32 var001ad8e0 = 0x3dcccccd;
-u32 var001ad8e4 = 0x3f266666;
-u32 var001ad8e8 = 0x38d1b717;
-u32 var001ad8ec = 0x3d088889;
-u32 var001ad8f0 = 0x3a83126f;
-u32 var001ad8f4 = 0xba83126f;
-u32 var001ad8f8 = 0x3f666666;
-u32 var001ad8fc = 0x3a83126f;
-u32 var001ad900 = 0xba83126f;
-u32 var001ad904 = 0x3f666666;
-u32 var001ad908 = 0x3c8ef461;
-u32 var001ad90c = 0x3c8ef461;
-u32 var001ad910 = 0x3c8ef461;
-u32 var001ad914 = 0x3c8ef461;
-u32 var001ad918 = 0x3c8ef461;
-u32 var001ad91c = 0x3f19999a;
-u32 var001ad920 = 0x3ecccccd;
-u32 var001ad924 = 0x3f19999a;
-u32 var001ad928 = 0x3ecccccd;
-u32 var001ad92c = 0x3ecccccd;
-u32 var001ad930 = 0x3ecccccd;
-u32 var001ad934 = 0x3c8ef461;
-u32 var001ad938 = 0x3c8ef461;
-u32 var001ad93c = 0x00000000;
-char var001ad940[] = "bondgrab.c";
-char var001ad94c[] = "bondgrab.c";
-char var001ad958[] = "bondgrab.c";
-char var001ad964[] = "bondgrab.c";
-u32 var001ad970 = 0x40c907a9;
-u32 var001ad974 = 0x40c907a9;
-u32 var001ad978 = 0x40c907a9;
-u32 var001ad97c = 0x3e4ccccd;
-u32 var001ad980 = 0x40c907a9;
-u32 var001ad984 = 0x40c907a9;
-u32 var001ad988 = 0xc0490fdb;
-u32 var001ad98c = 0x40490fdb;
-u32 var001ad990 = 0x3dcccccd;
-u32 var001ad994 = 0x3dcccccd;
-u32 var001ad998 = 0x3c8ef461;
-u32 var001ad99c = 0x3f7cbfb1;
-u32 var001ad9a0 = 0x3c5013c0;
-u32 var001ad9a4 = 0x40490fdb;
-u32 var001ad9a8 = 0x40c907a9;
-u32 var001ad9ac = 0xc0490fdb;
-u32 var001ad9b0 = 0x40c907a9;
-u32 var001ad9b4 = 0x40c907a9;
-u32 var001ad9b8 = 0x40c907a9;
-u32 var001ad9bc = 0x40c907a9;
-u32 var001ad9c0 = 0x40c907a9;
-u32 var001ad9c4 = 0x40c907a9;
-u32 var001ad9c8 = 0x3f8147ae;
-u32 var001ad9cc = 0x3c8ef461;
-u32 var001ad9d0 = 0xc6ea6000;
-u32 var001ad9d4 = 0x3d3a5e30;
-u32 var001ad9d8 = 0x3d3a5e30;
-u32 var001ad9dc = 0x3f745a1d;
-u32 var001ad9e0 = 0x3d3a5e30;
-u32 var001ad9e4 = 0x3d888889;
-u32 var001ad9e8 = 0x3d888889;
-u32 var001ad9ec = 0x3d888889;
-u32 var001ad9f0 = 0x3c6a0ea1;
-u32 var001ad9f4 = 0x3d888889;
-u32 var001ad9f8 = 0x3d888889;
-u32 var001ad9fc = 0x3d888889;
-u32 var001ada00 = 0x3d888889;
-u32 var001ada04 = 0x3c6a0ea1;
-u32 var001ada08 = 0x3d888889;
-u32 var001ada0c = 0x3f8a3d71;
-u32 var001ada10 = 0x3f7c154d;
-u32 var001ada14 = 0x3c7aacc0;
-u32 var001ada18 = 0x3f4ccccd;
-u32 var001ada1c = 0x4528c000;
-u32 var001ada20 = 0x3ecccccd;
-u32 var001ada24 = 0x3f333333;
-u32 var001ada28 = 0x3f99999a;
-u32 var001ada2c = 0x3c8ef461;
-u32 var001ada30 = 0xc6ea6000;
-u32 var001ada34 = 0x00000000;
-u32 var001ada38 = 0x00000000;
-u32 var001ada3c = 0x00000000;
-char var001ada40[] = "bondeyespy.c";
-char var001ada50[] = "bondeyespy.c";
-char var001ada60[] = "bondeyespy.c";
-u32 var001ada70 = 0x67000000;
-u32 var001ada74 = 0x6c000000;
-char var001ada78[] = "%s%s";
-u32 var001ada80 = 0xc6ea6000;
-u32 var001ada84 = 0x3dcccccd;
-u32 var001ada88 = 0x3f847ae1;
-u32 var001ada8c = 0x47ae147b;
-u32 var001ada90 = 0x3c23d70a;
-u32 var001ada94 = 0x411ffffe;
-u32 var001ada98 = 0x3c8efa35;
-u32 var001ada9c = 0x3c8efa35;
-u32 var001adaa0 = 0x3f75c28f;
-u32 var001adaa4 = 0x3e99999a;
-u32 var001adaa8 = 0x3c4ccccd;
-u32 var001adaac = 0x3c4ccccd;
-u32 var001adab0 = 0x3f75c28f;
-u32 var001adab4 = 0x3c8efa35;
-u32 var001adab8 = 0x3c8efa35;
-u32 var001adabc = 0x3c8efa35;
-u32 var001adac0 = 0x3c8efa35;
-u32 var001adac4 = 0x3d23d70a;
-u32 var001adac8 = 0x3d23d70a;
-u32 var001adacc = 0x3c8efa35;
-u32 var001adad0 = 0x3c8efa35;
-u32 var001adad4 = 0x3e19999a;
-u32 var001adad8 = 0x3e19999a;
-u32 var001adadc = 0x42b48000;
-u32 var001adae0 = 0x3dcccccd;
-u32 var001adae4 = 0x3ccccccd;
-u32 var001adae8 = 0x7f0d1aac;
-u32 var001adaec = 0x7f0d1ba8;
-u32 var001adaf0 = 0x7f0d1b54;
-u32 var001adaf4 = 0x7f0d1bfc;
-u32 var001adaf8 = 0x7f0d1b00;
-u32 var001adafc = 0x40c907a9;
-u32 var001adb00 = 0x461c4000;
-u32 var001adb04 = 0x00000000;
-u32 var001adb08 = 0x00000000;
-u32 var001adb0c = 0x00000000;
-char var001adb10[] = "bondbike.c";
-char var001adb1c[] = "bondbike.c";
-char var001adb28[] = "bondbike.c";
-u32 var001adb34 = 0x40c907a9;
-u32 var001adb38 = 0x3fc907a9;
-u32 var001adb3c = 0x4096c5bf;
-u32 var001adb40 = 0x3f4907a9;
-u32 var001adb44 = 0x40afe6b4;
-u32 var001adb48 = 0x4016c5bf;
-u32 var001adb4c = 0x407b4993;
-u32 var001adb50 = 0x404907a9;
-u32 var001adb54 = 0x3dcccccd;
-u32 var001adb58 = 0xbdcccccd;
-u32 var001adb5c = 0xbdcccccd;
-u32 var001adb60 = 0x3dcccccd;
-u32 var001adb64 = 0x40490fdb;
-u32 var001adb68 = 0x3f4ccccd;
-u32 var001adb6c = 0x40c907a9;
-u32 var001adb70 = 0x40c907a9;
-u32 var001adb74 = 0x3f4ccccd;
-u32 var001adb78 = 0x3dcccccd;
-u32 var001adb7c = 0x40c907a9;
-u32 var001adb80 = 0x40c907a9;
-u32 var001adb84 = 0xc6ea6000;
-u32 var001adb88 = 0x4528c000;
-u32 var001adb8c = 0x3b23d70a;
-u32 var001adb90 = 0x3c8ef461;
-u32 var001adb94 = 0x40c907a9;
-u32 var001adb98 = 0x3f333333;
-u32 var001adb9c = 0x3c8ef461;
-u32 var001adba0 = 0x74786d75;
-u32 var001adba4 = 0x6c000000;
-char var001adba8[] = "depthsub";
-char var001adbb4[] = "rsub";
-char var001adbbc[] = ":%02d";
-u32 var001adbc4 = 0x25640000;
-u32 var001adbc8 = 0xc31fc000;
-u32 var001adbcc = 0x42f08000;
-u32 var001adbd0 = 0x3dcccccd;
-u32 var001adbd4 = 0x3dcccccd;
-u32 var001adbd8 = 0x461c4000;
-u32 var001adbdc = 0x3dcccccd;
-u32 var001adbe0 = 0x3dcccccd;
-u32 var001adbe4 = 0x00000000;
-u32 var001adbe8 = 0x00000000;
-u32 var001adbec = 0x00000000;
-char var001adbf0[] = "radmax";
-char var001adbf8[] = "radmed";
-char var001adc00[] = "radmin";
-char var001adc08[] = "len1";
-char var001adc10[] = "len2";
-char var001adc18[] = "len3";
-char var001adc20[] = "offx";
-char var001adc28[] = "offy";
-char var001adc30[] = "shieldcol";
-char var001adc3c[] = "armourcol";
-char var001adc48[] = "traumacol";
-char var001adc54[] = "bgcol";
-char var001adc5c[] = "shieldfade";
-char var001adc68[] = "armourfade";
-char var001adc74[] = "traumafade";
-char var001adc80[] = "shielddir";
-char var001adc8c[] = "underleft";
-char var001adc98[] = "undertop";
-char var001adca4[] = "underright";
-char var001adcb0[] = "underbottom";
-char var001adcbc[] = "undercol";
-u32 var001adcc8 = 0x3f8a3d71;
-u32 var001adccc = 0x3f6c8b44;
-u32 var001adcd0 = 0x3f851eb8;
-u32 var001adcd4 = 0x3ec41893;
-u32 var001adcd8 = 0x3f6c8b44;
-u32 var001adcdc = 0x3ec41893;
-u32 var001adce0 = 0x3d4ccccd;
-u32 var001adce4 = 0x3f34fdf4;
-u32 var001adce8 = 0x3f828f5c;
-u32 var001adcec = 0x3f34fdf4;
-u32 var001adcf0 = 0x3f34fdf4;
-u32 var001adcf4 = 0x3f34fdf4;
-u32 var001adcf8 = 0x3dcccccd;
-u32 var001adcfc = 0x3ec41893;
-u32 var001add00 = 0x3f6c8b44;
-u32 var001add04 = 0x3ec41893;
-u32 var001add08 = 0x3f6c8b44;
-u32 var001add0c = 0x3e19999a;
-u32 var001add10 = 0x3e4ccccd;
-u32 var001add14 = 0x3f4ccccd;
-u32 var001add18 = 0x3f59999a;
-u32 var001add1c = 0x3f666666;
-u32 var001add20 = 0x3f733333;
-u32 var001add24 = 0x3f666666;
-u32 var001add28 = 0x3eaf1aa0;
-u32 var001add2c = 0x3f70a3d7;
-u32 var001add30 = 0x3f70a3d7;
-u32 var001add34 = 0x3f70a3d7;
-u32 var001add38 = 0x3f249ba6;
-u32 var001add3c = 0x3f441893;
-u32 var001add40 = 0x3f441893;
-u32 var001add44 = 0x3f7851ec;
-u32 var001add48 = 0x3f5db22d;
-u32 var001add4c = 0x3f7d70a4;
-u32 var001add50 = 0x3f7c28f6;
-u32 var001add54 = 0x3e322d0e;
-u32 var001add58 = 0x3e322d0e;
-u32 var001add5c = 0x3f4ccccd;
-u32 var001add60 = 0x3ec41893;
-u32 var001add64 = 0x3f6c8b44;
-u32 var001add68 = 0x3f6c8b44;
-u32 var001add6c = 0x3f59999a;
-u32 var001add70 = 0x3f34fdf4;
-u32 var001add74 = 0x3f34fdf4;
-u32 var001add78 = 0x3f34fdf4;
-u32 var001add7c = 0x3f666666;
-u32 var001add80 = 0x3f6c8b44;
-u32 var001add84 = 0x3ec41893;
-u32 var001add88 = 0x3ec41893;
-u32 var001add8c = 0x3f733333;
-u32 var001add90 = 0x3a83126f;
-u32 var001add94 = 0x3a83126f;
-u32 var001add98 = 0x3a83126f;
-u32 var001add9c = 0x00000000;
-char var001adda0[] = "sight";
-char var001adda8[] = "sout";
-u32 var001addb0 = 0x73696e00;
-u32 var001addb4 = 0x7f0d7514;
-u32 var001addb8 = 0x7f0d7514;
-u32 var001addbc = 0x7f0d7514;
-u32 var001addc0 = 0x7f0d7514;
-u32 var001addc4 = 0x7f0d7514;
-u32 var001addc8 = 0x7f0d7880;
-u32 var001addcc = 0x7f0d75e8;
-u32 var001addd0 = 0x7f0d75e8;
-u32 var001addd4 = 0x7f0d76ac;
-u32 var001addd8 = 0x7f0d7798;
-u32 var001adddc = 0x7f0d7880;
-u32 var001adde0 = 0x3d4ccccd;
-u32 var001adde4 = 0xbd4ccccd;
-u32 var001adde8 = 0xbd4ccccd;
-u32 var001addec = 0x7f0d9034;
-u32 var001addf0 = 0x7f0d906c;
-u32 var001addf4 = 0x7f0d913c;
-u32 var001addf8 = 0x7f0d9288;
-u32 var001addfc = 0x7f0d9350;
-u32 var001ade00 = 0x7f0d9350;
-u32 var001ade04 = 0x7f0d9450;
-u32 var001ade08 = 0x7f0d9460;
-u32 var001ade0c = 0x7f0d9460;
-u32 var001ade10 = 0x7f0d9460;
-u32 var001ade14 = 0x7f0d9460;
-u32 var001ade18 = 0x7f0d9460;
-u32 var001ade1c = 0x7f0d9460;
-u32 var001ade20 = 0x7f0d9460;
-u32 var001ade24 = 0x7f0d9460;
-u32 var001ade28 = 0x7f0d9460;
-u32 var001ade2c = 0x7f0d9460;
-u32 var001ade30 = 0x7f0d9460;
-u32 var001ade34 = 0x7f0d9460;
-u32 var001ade38 = 0x7f0d9460;
-u32 var001ade3c = 0x7f0d9460;
-u32 var001ade40 = 0x7f0d9400;
-u32 var001ade44 = 0x7f0d941c;
-u32 var001ade48 = 0x7f0d9438;
-u32 var001ade4c = 0x7f0d9440;
-u32 var001ade50 = 0x7f0d9448;
-u32 var001ade54 = 0x3e4ccccd;
-u32 var001ade58 = 0x7f0dcb84;
-u32 var001ade5c = 0x7f0dcbb8;
-u32 var001ade60 = 0x7f0dcbec;
-u32 var001ade64 = 0x7f0dcc20;
-u32 var001ade68 = 0x7f0dcc54;
-u32 var001ade6c = 0x7f0dcc88;
-u32 var001ade70 = 0x7f0dccbc;
-u32 var001ade74 = 0x7f0dcd14;
-u32 var001ade78 = 0x00000000;
-u32 var001ade7c = 0x00000000;
-char var001ade80[] = "%s%s%4.2fX";
-u32 var001ade8c = 0x00000000;
-u32 var001ade90 = 0x00000000;
-u32 var001ade94 = 0x2f000000;
-char var001ade98[] = "%s%s%4.2fX";
-u32 var001adea4 = 0x00000000;
-u32 var001adea8 = 0x00000000;
-u32 var001adeac = 0x40490fdb;
-u32 var001adeb0 = 0x7f0dec8c;
-u32 var001adeb4 = 0x7f0dec94;
-u32 var001adeb8 = 0x7f0deca8;
-u32 var001adebc = 0x7f0dee44;
-u32 var001adec0 = 0x7f0dee74;
-u32 var001adec4 = 0x7f0df9e4;
-u32 var001adec8 = 0x7f0df548;
-u32 var001adecc = 0x7f0df700;
-u32 var001aded0 = 0x7f0df740;
-u32 var001aded4 = 0x7f0df8c8;
-u32 var001aded8 = 0x7f0df968;
-u32 var001adedc = 0x40490fdb;
-u32 var001adee0 = 0x7f0e0504;
-u32 var001adee4 = 0x7f0e0504;
-u32 var001adee8 = 0x7f0e0504;
-u32 var001adeec = 0x7f0dfebc;
-u32 var001adef0 = 0x7f0e0114;
-u32 var001adef4 = 0x7f0e0298;
-u32 var001adef8 = 0x00000000;
-u32 var001adefc = 0x00000000;
-u32 var001adf00 = 0x63636363;
-u32 var001adf04 = 0x00000000;
-u32 var001adf08 = 0x40c907a9;
-u32 var001adf0c = 0x3e4ccccd;
-u32 var001adf10 = 0x3f666666;
-u32 var001adf14 = 0x3dcccccd;
-u32 var001adf18 = 0x3dcccccd;
-u32 var001adf1c = 0x40c90fdb;
-u32 var001adf20 = 0x40490fdb;
-u32 var001adf24 = 0x3f060a92;
-u32 var001adf28 = 0x3f060a92;
-u32 var001adf2c = 0x3e32b8c3;
-u32 var001adf30 = 0x3dcc40de;
-u32 var001adf34 = 0x40490fdb;
-u32 var001adf38 = 0x3e32b8c3;
-u32 var001adf3c = 0x3dcc40de;
-u32 var001adf40 = 0x40c90fdb;
-u32 var001adf44 = 0x3f490fdb;
-u32 var001adf48 = 0x40490fdb;
-u32 var001adf4c = 0x40c90fdb;
-u32 var001adf50 = 0x40c90fdb;
-u32 var001adf54 = 0x40490fdb;
-u32 var001adf58 = 0x3f060a92;
-u32 var001adf5c = 0x3f060a92;
-u32 var001adf60 = 0x3e32b8c3;
-u32 var001adf64 = 0x3dcc40de;
-u32 var001adf68 = 0x40490fdb;
-u32 var001adf6c = 0x3e32b8c3;
-u32 var001adf70 = 0x3dcc40de;
-u32 var001adf74 = 0x459c4000;
-u32 var001adf78 = 0x461c4000;
-u32 var001adf7c = 0x461c4000;
-u32 var001adf80 = 0x459c4000;
-u32 var001adf84 = 0x40c907a9;
-u32 var001adf88 = 0xc5ce4000;
-u32 var001adf8c = 0x40c907a9;
-u32 var001adf90 = 0x45ce4000;
-u32 var001adf94 = 0x00000000;
-u32 var001adf98 = 0x00000000;
-u32 var001adf9c = 0x00000000;
-char var001adfa0[] = "brcol";
-char var001adfa8[] = "%d: ";
-u32 var001adfb0 = 0x25730000;
-u32 var001adfb4 = 0x00000000;
-u32 var001adfb8 = 0x00000000;
-u32 var001adfbc = 0x00000000;
-u32 var001adfc0 = 0x25640a00;
-u32 var001adfc4 = 0x00000000;
-u32 var001adfc8 = 0x00000000;
-u32 var001adfcc = 0x00000000;
-u32 var001adfd0 = 0x00000000;
-u32 var001adfd4 = 0x00000000;
-u32 var001adfd8 = 0x00000000;
-u32 var001adfdc = 0x00000000;
-u32 var001adfe0 = 0x00000000;
-u32 var001adfe4 = 0x00000000;
-u32 var001adfe8 = 0x00000000;
-u32 var001adfec = 0x00000000;
-u32 var001adff0 = 0x00000000;
-u32 var001adff4 = 0x00000000;
-u32 var001adff8 = 0x00000000;
-u32 var001adffc = 0x00000000;
-u32 var001ae000 = 0x00000000;
-u32 var001ae004 = 0x00000000;
-u32 var001ae008 = 0x00000000;
-u32 var001ae00c = 0x00000000;
-u32 var001ae010 = 0x00000000;
-u32 var001ae014 = 0x00000000;
-u32 var001ae018 = 0x00000000;
-u32 var001ae01c = 0x00000000;
-u32 var001ae020 = 0x00000000;
-u32 var001ae024 = 0x00000000;
-u32 var001ae028 = 0x00000000;
-u32 var001ae02c = 0x00000000;
-u32 var001ae030 = 0x00000000;
-u32 var001ae034 = 0x00000000;
-u32 var001ae038 = 0x00000000;
-u32 var001ae03c = 0x00000000;
-u32 var001ae040 = 0x00000000;
-u32 var001ae044 = 0x00000000;
-u32 var001ae048 = 0x00000000;
-u32 var001ae04c = 0x00000000;
-u32 var001ae050 = 0x00000000;
-u32 var001ae054 = 0x00000000;
-u32 var001ae058 = 0x00000000;
-u32 var001ae05c = 0x00000000;
-u32 var001ae060 = 0x00000000;
-u32 var001ae064 = 0x00000000;
-u32 var001ae068 = 0x00000000;
-u32 var001ae06c = 0x00000000;
-u32 var001ae070 = 0x00000000;
-u32 var001ae074 = 0x00000000;
-u32 var001ae078 = 0x00000000;
-u32 var001ae07c = 0x00000000;
-u32 var001ae080 = 0x00000000;
-u32 var001ae084 = 0x00000000;
-u32 var001ae088 = 0x00000000;
-u32 var001ae08c = 0x00000000;
-u32 var001ae090 = 0x00000000;
-u32 var001ae094 = 0x00000000;
-u32 var001ae098 = 0x00000000;
-u32 var001ae09c = 0x00000000;
-u32 var001ae0a0 = 0x00000000;
-u32 var001ae0a4 = 0x00000000;
-u32 var001ae0a8 = 0x00000000;
-u32 var001ae0ac = 0x00000000;
-u32 var001ae0b0 = 0x00000000;
-u32 var001ae0b4 = 0x00000000;
-u32 var001ae0b8 = 0x00000000;
-u32 var001ae0bc = 0x00000000;
-u32 var001ae0c0 = 0x00000000;
-u32 var001ae0c4 = 0x00000000;
-u32 var001ae0c8 = 0x00000000;
-u32 var001ae0cc = 0x00000000;
-u32 var001ae0d0 = 0x00000000;
-u32 var001ae0d4 = 0x00000000;
-u32 var001ae0d8 = 0x00000000;
-u32 var001ae0dc = 0x00000000;
-u32 var001ae0e0 = 0x00000000;
-u32 var001ae0e4 = 0x00000000;
-u32 var001ae0e8 = 0x00000000;
-u32 var001ae0ec = 0x00000000;
-u32 var001ae0f0 = 0x00000000;
-u32 var001ae0f4 = 0x00000000;
-u32 var001ae0f8 = 0x00000000;
-u32 var001ae0fc = 0x00000000;
-u32 var001ae100 = 0x00000000;
-u32 var001ae104 = 0x00000000;
-u32 var001ae108 = 0x00000000;
-u32 var001ae10c = 0x00000000;
-u32 var001ae110 = 0x00000000;
-u32 var001ae114 = 0x00000000;
-u32 var001ae118 = 0x00000000;
-u32 var001ae11c = 0x00000000;
-u32 var001ae120 = 0x00000000;
-u32 var001ae124 = 0x00000000;
-u32 var001ae128 = 0x00000000;
-u32 var001ae12c = 0x00000000;
-u32 var001ae130 = 0x00000000;
-u32 var001ae134 = 0x00000000;
-u32 var001ae138 = 0x00000000;
-u32 var001ae13c = 0x00000000;
-u32 var001ae140 = 0x00000000;
-u32 var001ae144 = 0x00000000;
-u32 var001ae148 = 0x00000000;
-u32 var001ae14c = 0x00000000;
-u32 var001ae150 = 0x00000000;
-u32 var001ae154 = 0x00000000;
-u32 var001ae158 = 0x00000000;
-u32 var001ae15c = 0x00000000;
-u32 var001ae160 = 0x00000000;
-u32 var001ae164 = 0x00000000;
-u32 var001ae168 = 0x00000000;
-u32 var001ae16c = 0x00000000;
-u32 var001ae170 = 0x00000000;
-u32 var001ae174 = 0x00000000;
-u32 var001ae178 = 0x00000000;
-u32 var001ae17c = 0x00000000;
-u32 var001ae180 = 0x00000000;
-u32 var001ae184 = 0x00000000;
-u32 var001ae188 = 0x00000000;
-u32 var001ae18c = 0x00000000;
-u32 var001ae190 = 0x00000000;
-u32 var001ae194 = 0x00000000;
-u32 var001ae198 = 0x00000000;
-u32 var001ae19c = 0x00000000;
-u32 var001ae1a0 = 0x00000000;
-u32 var001ae1a4 = 0x00000000;
-u32 var001ae1a8 = 0x00000000;
-u32 var001ae1ac = 0x00000000;
-u32 var001ae1b0 = 0x00000000;
-u32 var001ae1b4 = 0x00000000;
-u32 var001ae1b8 = 0x00000000;
-u32 var001ae1bc = 0x00000000;
-u32 var001ae1c0 = 0x00000000;
-u32 var001ae1c4 = 0x00000000;
-u32 var001ae1c8 = 0x00000000;
-u32 var001ae1cc = 0x00000000;
-u32 var001ae1d0 = 0x00000000;
-u32 var001ae1d4 = 0x00000000;
-u32 var001ae1d8 = 0x00000000;
-u32 var001ae1dc = 0x00000000;
-u32 var001ae1e0 = 0x00000000;
-u32 var001ae1e4 = 0x00000000;
-u32 var001ae1e8 = 0x00000000;
-u32 var001ae1ec = 0x00000000;
-u32 var001ae1f0 = 0x00000000;
-u32 var001ae1f4 = 0x00000000;
-u32 var001ae1f8 = 0x00000000;
-u32 var001ae1fc = 0x00000000;
-u32 var001ae200 = 0x00000000;
-u32 var001ae204 = 0x00000000;
-u32 var001ae208 = 0x00000000;
-u32 var001ae20c = 0x00000000;
-u32 var001ae210 = 0x00000000;
-u32 var001ae214 = 0x00000000;
-u32 var001ae218 = 0x00000000;
-u32 var001ae21c = 0x00000000;
-u32 var001ae220 = 0x00000000;
-u32 var001ae224 = 0x00000000;
-u32 var001ae228 = 0x00000000;
-u32 var001ae22c = 0x00000000;
-u32 var001ae230 = 0x00000000;
-u32 var001ae234 = 0x00000000;
-u32 var001ae238 = 0x00000000;
-u32 var001ae23c = 0x00000000;
-u32 var001ae240 = 0x00000000;
-u32 var001ae244 = 0x00000000;
-u32 var001ae248 = 0x00000000;
-u32 var001ae24c = 0x00000000;
-u32 var001ae250 = 0x00000000;
-u32 var001ae254 = 0x00000000;
-u32 var001ae258 = 0x00000000;
-u32 var001ae25c = 0x00000000;
-u32 var001ae260 = 0x00000000;
-u32 var001ae264 = 0x00000000;
-u32 var001ae268 = 0x00000000;
-u32 var001ae26c = 0x00000000;
-u32 var001ae270 = 0x00000000;
-u32 var001ae274 = 0x00000000;
-u32 var001ae278 = 0x00000000;
-u32 var001ae27c = 0x00000000;
-u32 var001ae280 = 0x00000000;
-u32 var001ae284 = 0x00000000;
-u32 var001ae288 = 0x00000000;
-u32 var001ae28c = 0x00000000;
-u32 var001ae290 = 0x00000000;
-u32 var001ae294 = 0x00000000;
-u32 var001ae298 = 0x00000000;
-u32 var001ae29c = 0x00000000;
-u32 var001ae2a0 = 0x00000000;
-u32 var001ae2a4 = 0x00000000;
-u32 var001ae2a8 = 0x00000000;
-u32 var001ae2ac = 0x00000000;
-u32 var001ae2b0 = 0x00000000;
-u32 var001ae2b4 = 0x00000000;
-u32 var001ae2b8 = 0x00000000;
-u32 var001ae2bc = 0x00000000;
-u32 var001ae2c0 = 0x00000000;
-u32 var001ae2c4 = 0x00000000;
-u32 var001ae2c8 = 0x00000000;
-u32 var001ae2cc = 0x00000000;
-u32 var001ae2d0 = 0x00000000;
-u32 var001ae2d4 = 0x00000000;
-u32 var001ae2d8 = 0x00000000;
-u32 var001ae2dc = 0x00000000;
-u32 var001ae2e0 = 0x00000000;
-u32 var001ae2e4 = 0x00000000;
-u32 var001ae2e8 = 0x00000000;
-u32 var001ae2ec = 0x00000000;
-u32 var001ae2f0 = 0x00000000;
-u32 var001ae2f4 = 0x00000000;
-u32 var001ae2f8 = 0x00000000;
-u32 var001ae2fc = 0x00000000;
-u32 var001ae300 = 0x00000000;
-u32 var001ae304 = 0x00000000;
-u32 var001ae308 = 0x00000000;
-u32 var001ae30c = 0x00000000;
-u32 var001ae310 = 0x00000000;
-u32 var001ae314 = 0x00000000;
-u32 var001ae318 = 0x00000000;
-u32 var001ae31c = 0x00000000;
-u32 var001ae320 = 0x00000000;
-u32 var001ae324 = 0x00000000;
-u32 var001ae328 = 0x00000000;
-u32 var001ae32c = 0x00000000;
-u32 var001ae330 = 0x00000000;
-u32 var001ae334 = 0x00000000;
-u32 var001ae338 = 0x00000000;
-u32 var001ae33c = 0x00000000;
-u32 var001ae340 = 0x00000000;
-u32 var001ae344 = 0x00000000;
-u32 var001ae348 = 0x00000000;
-u32 var001ae34c = 0x00000000;
-u32 var001ae350 = 0x00000000;
-u32 var001ae354 = 0x00000000;
-u32 var001ae358 = 0x00000000;
-u32 var001ae35c = 0x00000000;
-u32 var001ae360 = 0x00000000;
-u32 var001ae364 = 0x00000000;
-u32 var001ae368 = 0x00000000;
-u32 var001ae36c = 0x00000000;
-u32 var001ae370 = 0x00000000;
-u32 var001ae374 = 0x00000000;
-u32 var001ae378 = 0x00000000;
-u32 var001ae37c = 0x00000000;
-u32 var001ae380 = 0x00000000;
-u32 var001ae384 = 0x00000000;
-u32 var001ae388 = 0x00000000;
-u32 var001ae38c = 0x00000000;
-u32 var001ae390 = 0x00000000;
-u32 var001ae394 = 0x00000000;
-u32 var001ae398 = 0x00000000;
-u32 var001ae39c = 0x00000000;
-u32 var001ae3a0 = 0x00000000;
-u32 var001ae3a4 = 0x00000000;
-u32 var001ae3a8 = 0x00000000;
-u32 var001ae3ac = 0x00000000;
-u32 var001ae3b0 = 0x00000000;
-u32 var001ae3b4 = 0x00000000;
-u32 var001ae3b8 = 0x00000000;
-u32 var001ae3bc = 0x00000000;
-u32 var001ae3c0 = 0x00000000;
-u32 var001ae3c4 = 0x00000000;
-u32 var001ae3c8 = 0x00000000;
-u32 var001ae3cc = 0x00000000;
-u32 var001ae3d0 = 0x00000000;
-u32 var001ae3d4 = 0x00000000;
-u32 var001ae3d8 = 0x00000000;
-u32 var001ae3dc = 0x00000000;
-u32 var001ae3e0 = 0x00000000;
-u32 var001ae3e4 = 0x00000000;
-u32 var001ae3e8 = 0x00000000;
-u32 var001ae3ec = 0x00000000;
-u32 var001ae3f0 = 0x00000000;
-u32 var001ae3f4 = 0x00000000;
-u32 var001ae3f8 = 0x00000000;
-u32 var001ae3fc = 0x00000000;
-u32 var001ae400 = 0x00000000;
-u32 var001ae404 = 0x00000000;
-u32 var001ae408 = 0x00000000;
-u32 var001ae40c = 0x00000000;
-u32 var001ae410 = 0x00000000;
-u32 var001ae414 = 0x00000000;
-u32 var001ae418 = 0x00000000;
-u32 var001ae41c = 0x00000000;
-u32 var001ae420 = 0x00000000;
-u32 var001ae424 = 0x00000000;
-u32 var001ae428 = 0x00000000;
-u32 var001ae42c = 0x00000000;
-u32 var001ae430 = 0x00000000;
-u32 var001ae434 = 0x00000000;
-u32 var001ae438 = 0x00000000;
-u32 var001ae43c = 0x00000000;
-u32 var001ae440 = 0x00000000;
-u32 var001ae444 = 0x00000000;
-u32 var001ae448 = 0x00000000;
-u32 var001ae44c = 0x00000000;
-u32 var001ae450 = 0x00000000;
-u32 var001ae454 = 0x00000000;
-u32 var001ae458 = 0x00000000;
-u32 var001ae45c = 0x00000000;
-u32 var001ae460 = 0x00000000;
-u32 var001ae464 = 0x00000000;
-u32 var001ae468 = 0x00000000;
-u32 var001ae46c = 0x00000000;
-u32 var001ae470 = 0x00000000;
-u32 var001ae474 = 0x00000000;
-u32 var001ae478 = 0x00000000;
-u32 var001ae47c = 0x00000000;
-u32 var001ae480 = 0x00000000;
-u32 var001ae484 = 0x00000000;
-u32 var001ae488 = 0x00000000;
-u32 var001ae48c = 0x00000000;
-u32 var001ae490 = 0x00000000;
-u32 var001ae494 = 0x00000000;
-u32 var001ae498 = 0x00000000;
-u32 var001ae49c = 0x00000000;
-u32 var001ae4a0 = 0x00000000;
-u32 var001ae4a4 = 0x00000000;
-u32 var001ae4a8 = 0x00000000;
-u32 var001ae4ac = 0x00000000;
-u32 var001ae4b0 = 0x00000000;
-u32 var001ae4b4 = 0x00000000;
-u32 var001ae4b8 = 0x00000000;
-u32 var001ae4bc = 0x00000000;
-u32 var001ae4c0 = 0x00000000;
-u32 var001ae4c4 = 0x00000000;
-u32 var001ae4c8 = 0x00000000;
-u32 var001ae4cc = 0x00000000;
-u32 var001ae4d0 = 0x00000000;
-u32 var001ae4d4 = 0x00000000;
-u32 var001ae4d8 = 0x00000000;
-u32 var001ae4dc = 0x00000000;
-u32 var001ae4e0 = 0x00000000;
-u32 var001ae4e4 = 0x00000000;
-u32 var001ae4e8 = 0x00000000;
-u32 var001ae4ec = 0x00000000;
-u32 var001ae4f0 = 0x00000000;
-u32 var001ae4f4 = 0x00000000;
-u32 var001ae4f8 = 0x00000000;
-u32 var001ae4fc = 0x00000000;
-u32 var001ae500 = 0x00000000;
-u32 var001ae504 = 0x00000000;
-u32 var001ae508 = 0x00000000;
-u32 var001ae50c = 0x00000000;
-u32 var001ae510 = 0x00000000;
-u32 var001ae514 = 0x00000000;
-u32 var001ae518 = 0x00000000;
-u32 var001ae51c = 0x00000000;
-u32 var001ae520 = 0x00000000;
-u32 var001ae524 = 0x00000000;
-u32 var001ae528 = 0x00000000;
-u32 var001ae52c = 0x00000000;
-u32 var001ae530 = 0x00000000;
-u32 var001ae534 = 0x00000000;
-u32 var001ae538 = 0x00000000;
-u32 var001ae53c = 0x00000000;
-u32 var001ae540 = 0x00000000;
-u32 var001ae544 = 0x00000000;
-u32 var001ae548 = 0x00000000;
-u32 var001ae54c = 0x00000000;
-u32 var001ae550 = 0x00000000;
-u32 var001ae554 = 0x00000000;
-u32 var001ae558 = 0x00000000;
-u32 var001ae55c = 0x00000000;
-u32 var001ae560 = 0x00000000;
-u32 var001ae564 = 0x00000000;
-u32 var001ae568 = 0x00000000;
-u32 var001ae56c = 0x00000000;
-u32 var001ae570 = 0x00000000;
-u32 var001ae574 = 0x00000000;
-u32 var001ae578 = 0x00000000;
-u32 var001ae57c = 0x00000000;
-u32 var001ae580 = 0x00000000;
-u32 var001ae584 = 0x00000000;
-u32 var001ae588 = 0x00000000;
-u32 var001ae58c = 0x00000000;
-u32 var001ae590 = 0x00000000;
-u32 var001ae594 = 0x00000000;
-u32 var001ae598 = 0x00000000;
-u32 var001ae59c = 0x00000000;
-u32 var001ae5a0 = 0x00000000;
-u32 var001ae5a4 = 0x00000000;
-u32 var001ae5a8 = 0x00000000;
-u32 var001ae5ac = 0x00000000;
-u32 var001ae5b0 = 0x00000000;
-u32 var001ae5b4 = 0x00000000;
-u32 var001ae5b8 = 0x00000000;
-u32 var001ae5bc = 0x00000000;
-u32 var001ae5c0 = 0x00000000;
-u32 var001ae5c4 = 0x00000000;
-u32 var001ae5c8 = 0x00000000;
-u32 var001ae5cc = 0x00000000;
-u32 var001ae5d0 = 0x00000000;
-u32 var001ae5d4 = 0x00000000;
-u32 var001ae5d8 = 0x00000000;
-u32 var001ae5dc = 0x00000000;
-u32 var001ae5e0 = 0x00000000;
-u32 var001ae5e4 = 0x00000000;
-u32 var001ae5e8 = 0x00000000;
-u32 var001ae5ec = 0x00000000;
-u32 var001ae5f0 = 0x00000000;
-u32 var001ae5f4 = 0x00000000;
-u32 var001ae5f8 = 0x00000000;
-u32 var001ae5fc = 0x00000000;
-u32 var001ae600 = 0x00000000;
-u32 var001ae604 = 0x00000000;
-u32 var001ae608 = 0x00000000;
-u32 var001ae60c = 0x00000000;
-u32 var001ae610 = 0x00000000;
-u32 var001ae614 = 0x00000000;
-u32 var001ae618 = 0x00000000;
-u32 var001ae61c = 0x00000000;
-u32 var001ae620 = 0x00000000;
-u32 var001ae624 = 0x00000000;
-u32 var001ae628 = 0x00000000;
-u32 var001ae62c = 0x00000000;
-u32 var001ae630 = 0x00000000;
-u32 var001ae634 = 0x00000000;
-u32 var001ae638 = 0x00000000;
-u32 var001ae63c = 0x00000000;
-u32 var001ae640 = 0x00000000;
-u32 var001ae644 = 0x00000000;
-u32 var001ae648 = 0x00000000;
-u32 var001ae64c = 0x00000000;
-u32 var001ae650 = 0x00000000;
-u32 var001ae654 = 0x00000000;
-u32 var001ae658 = 0x00000000;
-u32 var001ae65c = 0x00000000;
-u32 var001ae660 = 0x00000000;
-u32 var001ae664 = 0x00000000;
-u32 var001ae668 = 0x00000000;
-u32 var001ae66c = 0x00000000;
-u32 var001ae670 = 0x00000000;
-u32 var001ae674 = 0x00000000;
-u32 var001ae678 = 0x00000000;
-u32 var001ae67c = 0x00000000;
-u32 var001ae680 = 0x00000000;
-u32 var001ae684 = 0x00000000;
-u32 var001ae688 = 0x00000000;
-u32 var001ae68c = 0x00000000;
-u32 var001ae690 = 0x00000000;
-u32 var001ae694 = 0x00000000;
-u32 var001ae698 = 0x00000000;
-u32 var001ae69c = 0x00000000;
-u32 var001ae6a0 = 0x00000000;
-u32 var001ae6a4 = 0x00000000;
-u32 var001ae6a8 = 0x00000000;
-u32 var001ae6ac = 0x00000000;
-u32 var001ae6b0 = 0x00000000;
-u32 var001ae6b4 = 0x00000000;
-u32 var001ae6b8 = 0x00000000;
-u32 var001ae6bc = 0x00000000;
-u32 var001ae6c0 = 0x00000000;
-u32 var001ae6c4 = 0x00000000;
-u32 var001ae6c8 = 0x00000000;
-u32 var001ae6cc = 0x00000000;
-u32 var001ae6d0 = 0x00000000;
-u32 var001ae6d4 = 0x00000000;
-u32 var001ae6d8 = 0x00000000;
-u32 var001ae6dc = 0x00000000;
-u32 var001ae6e0 = 0x00000000;
-u32 var001ae6e4 = 0x00000000;
-u32 var001ae6e8 = 0x00000000;
-u32 var001ae6ec = 0x00000000;
-u32 var001ae6f0 = 0x00000000;
-u32 var001ae6f4 = 0x00000000;
-u32 var001ae6f8 = 0x00000000;
-u32 var001ae6fc = 0x00000000;
-u32 var001ae700 = 0x00000000;
-u32 var001ae704 = 0x00000000;
-u32 var001ae708 = 0x00000000;
-u32 var001ae70c = 0x00000000;
-u32 var001ae710 = 0x00000000;
-u32 var001ae714 = 0x00000000;
-u32 var001ae718 = 0x00000000;
-u32 var001ae71c = 0x00000000;
-u32 var001ae720 = 0x00000000;
-u32 var001ae724 = 0x00000000;
-u32 var001ae728 = 0x00000000;
-u32 var001ae72c = 0x00000000;
-u32 var001ae730 = 0x00000000;
-u32 var001ae734 = 0x00000000;
-u32 var001ae738 = 0x00000000;
-u32 var001ae73c = 0x00000000;
-u32 var001ae740 = 0x00000000;
-u32 var001ae744 = 0x00000000;
-u32 var001ae748 = 0x00000000;
-u32 var001ae74c = 0x00000000;
-u32 var001ae750 = 0x00000000;
-u32 var001ae754 = 0x00000000;
-u32 var001ae758 = 0x00000000;
-u32 var001ae75c = 0x00000000;
-u32 var001ae760 = 0x00000000;
-u32 var001ae764 = 0x00000000;
-u32 var001ae768 = 0x00000000;
-u32 var001ae76c = 0x00000000;
-u32 var001ae770 = 0x00000000;
-u32 var001ae774 = 0x00000000;
-u32 var001ae778 = 0x00000000;
-u32 var001ae77c = 0x00000000;
-u32 var001ae780 = 0x00000000;
-u32 var001ae784 = 0x00000000;
-u32 var001ae788 = 0x00000000;
-u32 var001ae78c = 0x00000000;
-u32 var001ae790 = 0x00000000;
-u32 var001ae794 = 0x00000000;
-u32 var001ae798 = 0x00000000;
-u32 var001ae79c = 0x00000000;
-u32 var001ae7a0 = 0x00000000;
-u32 var001ae7a4 = 0x00000000;
-u32 var001ae7a8 = 0x00000000;
-u32 var001ae7ac = 0x00000000;
-u32 var001ae7b0 = 0x00000000;
-u32 var001ae7b4 = 0x00000000;
-u32 var001ae7b8 = 0x00000000;
-u32 var001ae7bc = 0x00000000;
-u32 var001ae7c0 = 0x00000000;
-u32 var001ae7c4 = 0x00000000;
-u32 var001ae7c8 = 0x00000000;
-u32 var001ae7cc = 0x00000000;
-u32 var001ae7d0 = 0x00000000;
-u32 var001ae7d4 = 0x00000000;
-u32 var001ae7d8 = 0x00000000;
-u32 var001ae7dc = 0x00000000;
-u32 var001ae7e0 = 0x00000000;
-u32 var001ae7e4 = 0x00000000;
-u32 var001ae7e8 = 0x00000000;
-u32 var001ae7ec = 0x00000000;
-u32 var001ae7f0 = 0x00000000;
-u32 var001ae7f4 = 0x00000000;
-u32 var001ae7f8 = 0x00000000;
-u32 var001ae7fc = 0x00000000;
-u32 var001ae800 = 0x00000000;
-u32 var001ae804 = 0x00000000;
-u32 var001ae808 = 0x00000000;
-u32 var001ae80c = 0x00000000;
-u32 var001ae810 = 0x00000000;
-u32 var001ae814 = 0x00000000;
-u32 var001ae818 = 0x00000000;
-u32 var001ae81c = 0x00000000;
-u32 var001ae820 = 0x00000000;
-u32 var001ae824 = 0x00000000;
-u32 var001ae828 = 0x00000000;
-u32 var001ae82c = 0x00000000;
-u32 var001ae830 = 0x00000000;
-u32 var001ae834 = 0x00000000;
-u32 var001ae838 = 0x00000000;
-u32 var001ae83c = 0x00000000;
-u32 var001ae840 = 0x00000000;
-u32 var001ae844 = 0x00000000;
-u32 var001ae848 = 0x00000000;
-u32 var001ae84c = 0x00000000;
-u32 var001ae850 = 0x00000000;
-u32 var001ae854 = 0x00000000;
-u32 var001ae858 = 0x00000000;
-u32 var001ae85c = 0x00000000;
-u32 var001ae860 = 0x00000000;
-u32 var001ae864 = 0x00000000;
-u32 var001ae868 = 0x00000000;
-u32 var001ae86c = 0x00000000;
-u32 var001ae870 = 0x00000000;
-u32 var001ae874 = 0x00000000;
-u32 var001ae878 = 0x00000000;
-u32 var001ae87c = 0x00000000;
-u32 var001ae880 = 0x00000000;
-u32 var001ae884 = 0x00000000;
-u32 var001ae888 = 0x00000000;
-u32 var001ae88c = 0x00000000;
-u32 var001ae890 = 0x00000000;
-u32 var001ae894 = 0x00000000;
-u32 var001ae898 = 0x00000000;
-u32 var001ae89c = 0x00000000;
-u32 var001ae8a0 = 0x00000000;
-u32 var001ae8a4 = 0x00000000;
-u32 var001ae8a8 = 0x00000000;
-u32 var001ae8ac = 0x00000000;
-u32 var001ae8b0 = 0x00000000;
-u32 var001ae8b4 = 0x00000000;
-u32 var001ae8b8 = 0x00000000;
-u32 var001ae8bc = 0x00000000;
-u32 var001ae8c0 = 0x00000000;
-u32 var001ae8c4 = 0x00000000;
-u32 var001ae8c8 = 0x00000000;
-u32 var001ae8cc = 0x00000000;
-u32 var001ae8d0 = 0x00000000;
-u32 var001ae8d4 = 0x00000000;
-u32 var001ae8d8 = 0x00000000;
-u32 var001ae8dc = 0x00000000;
-u32 var001ae8e0 = 0x00000000;
-u32 var001ae8e4 = 0x00000000;
-u32 var001ae8e8 = 0x00000000;
-u32 var001ae8ec = 0x00000000;
-u32 var001ae8f0 = 0x00000000;
-u32 var001ae8f4 = 0x00000000;
-u32 var001ae8f8 = 0x00000000;
-u32 var001ae8fc = 0x00000000;
-u32 var001ae900 = 0x00000000;
-u32 var001ae904 = 0x00000000;
-u32 var001ae908 = 0x00000000;
-u32 var001ae90c = 0x00000000;
-u32 var001ae910 = 0x00000000;
-u32 var001ae914 = 0x00000000;
-u32 var001ae918 = 0x00000000;
-u32 var001ae91c = 0x00000000;
-u32 var001ae920 = 0x00000000;
-u32 var001ae924 = 0x00000000;
-u32 var001ae928 = 0x00000000;
-u32 var001ae92c = 0x00000000;
-u32 var001ae930 = 0x00000000;
-u32 var001ae934 = 0x00000000;
-u32 var001ae938 = 0x00000000;
-u32 var001ae93c = 0x00000000;
-u32 var001ae940 = 0x00000000;
-u32 var001ae944 = 0x00000000;
-u32 var001ae948 = 0x00000000;
-u32 var001ae94c = 0x00000000;
-u32 var001ae950 = 0x00000000;
-u32 var001ae954 = 0x00000000;
-u32 var001ae958 = 0x00000000;
-u32 var001ae95c = 0x00000000;
-u32 var001ae960 = 0x00000000;
-u32 var001ae964 = 0x00000000;
-u32 var001ae968 = 0x00000000;
-u32 var001ae96c = 0x00000000;
-u32 var001ae970 = 0x00000000;
-u32 var001ae974 = 0x00000000;
-u32 var001ae978 = 0x00000000;
-u32 var001ae97c = 0x00000000;
-u32 var001ae980 = 0x00000000;
-u32 var001ae984 = 0x00000000;
-u32 var001ae988 = 0x00000000;
-u32 var001ae98c = 0x00000000;
-u32 var001ae990 = 0x00000000;
-u32 var001ae994 = 0x00000000;
-u32 var001ae998 = 0x00000000;
-u32 var001ae99c = 0x00000000;
-u32 var001ae9a0 = 0x00000000;
-u32 var001ae9a4 = 0x00000000;
-u32 var001ae9a8 = 0x00000000;
-u32 var001ae9ac = 0x00000000;
-u32 var001ae9b0 = 0x00000000;
-u32 var001ae9b4 = 0x00000000;
-u32 var001ae9b8 = 0x00000000;
-u32 var001ae9bc = 0x00000000;
-u32 var001ae9c0 = 0x00000000;
-u32 var001ae9c4 = 0x00000000;
-u32 var001ae9c8 = 0x00000000;
-u32 var001ae9cc = 0x00000000;
-u32 var001ae9d0 = 0x00000000;
-u32 var001ae9d4 = 0x00000000;
-u32 var001ae9d8 = 0x00000000;
-u32 var001ae9dc = 0x00000000;
-u32 var001ae9e0 = 0x00000000;
-u32 var001ae9e4 = 0x00000000;
-u32 var001ae9e8 = 0x00000000;
-u32 var001ae9ec = 0x00000000;
-u32 var001ae9f0 = 0x00000000;
-u32 var001ae9f4 = 0x00000000;
-u32 var001ae9f8 = 0x00000000;
-u32 var001ae9fc = 0x00000000;
-u32 var001aea00 = 0x00000000;
-u32 var001aea04 = 0x00000000;
-u32 var001aea08 = 0x00000000;
-u32 var001aea0c = 0x00000000;
-u32 var001aea10 = 0x00000000;
-u32 var001aea14 = 0x00000000;
-u32 var001aea18 = 0x00000000;
-u32 var001aea1c = 0x00000000;
-u32 var001aea20 = 0x00000000;
-u32 var001aea24 = 0x00000000;
-u32 var001aea28 = 0x00000000;
-u32 var001aea2c = 0x00000000;
-u32 var001aea30 = 0x00000000;
-u32 var001aea34 = 0x00000000;
-u32 var001aea38 = 0x00000000;
-u32 var001aea3c = 0x00000000;
-u32 var001aea40 = 0x00000000;
-u32 var001aea44 = 0x00000000;
-u32 var001aea48 = 0x00000000;
-u32 var001aea4c = 0x00000000;
-u32 var001aea50 = 0x00000000;
-u32 var001aea54 = 0x00000000;
-u32 var001aea58 = 0x00000000;
-u32 var001aea5c = 0x00000000;
-u32 var001aea60 = 0x00000000;
-u32 var001aea64 = 0x00000000;
-u32 var001aea68 = 0x00000000;
-u32 var001aea6c = 0x00000000;
-u32 var001aea70 = 0x00000000;
-u32 var001aea74 = 0x00000000;
-u32 var001aea78 = 0x00000000;
-u32 var001aea7c = 0x00000000;
-u32 var001aea80 = 0x00000000;
-u32 var001aea84 = 0x00000000;
-u32 var001aea88 = 0x00000000;
-u32 var001aea8c = 0x00000000;
-u32 var001aea90 = 0x00000000;
-u32 var001aea94 = 0x00000000;
-u32 var001aea98 = 0x00000000;
-u32 var001aea9c = 0x00000000;
-u32 var001aeaa0 = 0x00000000;
-u32 var001aeaa4 = 0x00000000;
-u32 var001aeaa8 = 0x00000000;
-u32 var001aeaac = 0x00000000;
-u32 var001aeab0 = 0x00000000;
-u32 var001aeab4 = 0x00000000;
-u32 var001aeab8 = 0x00000000;
-u32 var001aeabc = 0x00000000;
-u32 var001aeac0 = 0x00000000;
-u32 var001aeac4 = 0x00000000;
-u32 var001aeac8 = 0x00000000;
-u32 var001aeacc = 0x00000000;
-u32 var001aead0 = 0x00000000;
-u32 var001aead4 = 0x00000000;
-u32 var001aead8 = 0x00000000;
-u32 var001aeadc = 0x00000000;
-u32 var001aeae0 = 0x00000000;
-u32 var001aeae4 = 0x00000000;
-u32 var001aeae8 = 0x00000000;
-u32 var001aeaec = 0x00000000;
-u32 var001aeaf0 = 0x00000000;
-u32 var001aeaf4 = 0x00000000;
-u32 var001aeaf8 = 0x00000000;
-u32 var001aeafc = 0x00000000;
-u32 var001aeb00 = 0x00000000;
-u32 var001aeb04 = 0x00000000;
-u32 var001aeb08 = 0x00000000;
-u32 var001aeb0c = 0x00000000;
-u32 var001aeb10 = 0x00000000;
-u32 var001aeb14 = 0x00000000;
-u32 var001aeb18 = 0x00000000;
-u32 var001aeb1c = 0x00000000;
-u32 var001aeb20 = 0x00000000;
-u32 var001aeb24 = 0x00000000;
-u32 var001aeb28 = 0x00000000;
-u32 var001aeb2c = 0x00000000;
-u32 var001aeb30 = 0x00000000;
-u32 var001aeb34 = 0x00000000;
-u32 var001aeb38 = 0x00000000;
-u32 var001aeb3c = 0x00000000;
-u32 var001aeb40 = 0x00000000;
-u32 var001aeb44 = 0x00000000;
-u32 var001aeb48 = 0x00000000;
-u32 var001aeb4c = 0x00000000;
-u32 var001aeb50 = 0x00000000;
-u32 var001aeb54 = 0x00000000;
-u32 var001aeb58 = 0x00000000;
-u32 var001aeb5c = 0x00000000;
-u32 var001aeb60 = 0x00000000;
-u32 var001aeb64 = 0x00000000;
-u32 var001aeb68 = 0x00000000;
-u32 var001aeb6c = 0x00000000;
-u32 var001aeb70 = 0x00000000;
-u32 var001aeb74 = 0x00000000;
-u32 var001aeb78 = 0x00000000;
-u32 var001aeb7c = 0x00000000;
-u32 var001aeb80 = 0x00000000;
-u32 var001aeb84 = 0x00000000;
-u32 var001aeb88 = 0x00000000;
-u32 var001aeb8c = 0x00000000;
-u32 var001aeb90 = 0x00000000;
-u32 var001aeb94 = 0x00000000;
-u32 var001aeb98 = 0x00000000;
-u32 var001aeb9c = 0x00000000;
-u32 var001aeba0 = 0x00000000;
-u32 var001aeba4 = 0x00000000;
-u32 var001aeba8 = 0x00000000;
-u32 var001aebac = 0x00000000;
-u32 var001aebb0 = 0x00000000;
-u32 var001aebb4 = 0x00000000;
-u32 var001aebb8 = 0x00000000;
-u32 var001aebbc = 0x00000000;
-u32 var001aebc0 = 0x00000000;
-u32 var001aebc4 = 0x00000000;
-u32 var001aebc8 = 0x00000000;
-u32 var001aebcc = 0x00000000;
-u32 var001aebd0 = 0x00000000;
-u32 var001aebd4 = 0x00000000;
-u32 var001aebd8 = 0x00000000;
-u32 var001aebdc = 0x00000000;
-u32 var001aebe0 = 0x00000000;
-u32 var001aebe4 = 0x00000000;
-u32 var001aebe8 = 0x00000000;
-u32 var001aebec = 0x00000000;
-u32 var001aebf0 = 0x00000000;
-u32 var001aebf4 = 0x00000000;
-u32 var001aebf8 = 0x00000000;
-u32 var001aebfc = 0x00000000;
-u32 var001aec00 = 0x00000000;
-u32 var001aec04 = 0x00000000;
-u32 var001aec08 = 0x00000000;
-u32 var001aec0c = 0x00000000;
-u32 var001aec10 = 0x00000000;
-u32 var001aec14 = 0x00000000;
-u32 var001aec18 = 0x00000000;
-u32 var001aec1c = 0x00000000;
-u32 var001aec20 = 0x00000000;
-u32 var001aec24 = 0x00000000;
-u32 var001aec28 = 0x00000000;
-u32 var001aec2c = 0x00000000;
-u32 var001aec30 = 0x00000000;
-u32 var001aec34 = 0x00000000;
-u32 var001aec38 = 0x00000000;
-u32 var001aec3c = 0x00000000;
-u32 var001aec40 = 0x00000000;
-u32 var001aec44 = 0x00000000;
-u32 var001aec48 = 0x00000000;
-u32 var001aec4c = 0x00000000;
-u32 var001aec50 = 0x00000000;
-u32 var001aec54 = 0x00000000;
-u32 var001aec58 = 0x00000000;
-u32 var001aec5c = 0x00000000;
-u32 var001aec60 = 0x00000000;
-u32 var001aec64 = 0x00000000;
-u32 var001aec68 = 0x00000000;
-u32 var001aec6c = 0x00000000;
-u32 var001aec70 = 0x00000000;
-u32 var001aec74 = 0x00000000;
-u32 var001aec78 = 0x00000000;
-u32 var001aec7c = 0x00000000;
-u32 var001aec80 = 0x00000000;
-u32 var001aec84 = 0x00000000;
-u32 var001aec88 = 0x00000000;
-u32 var001aec8c = 0x00000000;
-u32 var001aec90 = 0x00000000;
-u32 var001aec94 = 0x00000000;
-u32 var001aec98 = 0x00000000;
-u32 var001aec9c = 0x00000000;
-u32 var001aeca0 = 0x00000000;
-u32 var001aeca4 = 0x00000000;
-u32 var001aeca8 = 0x00000000;
-u32 var001aecac = 0x00000000;
-u32 var001aecb0 = 0x00000000;
-u32 var001aecb4 = 0x00000000;
-u32 var001aecb8 = 0x00000000;
-u32 var001aecbc = 0x00000000;
-u32 var001aecc0 = 0x00000000;
-u32 var001aecc4 = 0x00000000;
-u32 var001aecc8 = 0x00000000;
-u32 var001aeccc = 0x00000000;
-u32 var001aecd0 = 0x00000000;
-u32 var001aecd4 = 0x00000000;
-u32 var001aecd8 = 0x00000000;
-u32 var001aecdc = 0x00000000;
-u32 var001aece0 = 0x00000000;
-u32 var001aece4 = 0x00000000;
-u32 var001aece8 = 0x00000000;
-u32 var001aecec = 0x00000000;
-u32 var001aecf0 = 0x00000000;
-u32 var001aecf4 = 0x00000000;
-u32 var001aecf8 = 0x00000000;
-u32 var001aecfc = 0x00000000;
-u32 var001aed00 = 0x00000000;
-u32 var001aed04 = 0x00000000;
-u32 var001aed08 = 0x00000000;
-u32 var001aed0c = 0x00000000;
-u32 var001aed10 = 0x00000000;
-u32 var001aed14 = 0x00000000;
-u32 var001aed18 = 0x00000000;
-u32 var001aed1c = 0x00000000;
-u32 var001aed20 = 0x00000000;
-u32 var001aed24 = 0x00000000;
-u32 var001aed28 = 0x00000000;
-u32 var001aed2c = 0x00000000;
-u32 var001aed30 = 0x00000000;
-u32 var001aed34 = 0x00000000;
-u32 var001aed38 = 0x00000000;
-u32 var001aed3c = 0x00000000;
-u32 var001aed40 = 0x00000000;
-u32 var001aed44 = 0x00000000;
-u32 var001aed48 = 0x00000000;
-u32 var001aed4c = 0x00000000;
-u32 var001aed50 = 0x00000000;
-u32 var001aed54 = 0x00000000;
-u32 var001aed58 = 0x00000000;
-u32 var001aed5c = 0x00000000;
-u32 var001aed60 = 0x00000000;
-u32 var001aed64 = 0x00000000;
-u32 var001aed68 = 0x00000000;
-u32 var001aed6c = 0x00000000;
-u32 var001aed70 = 0x00000000;
-u32 var001aed74 = 0x00000000;
-u32 var001aed78 = 0x00000000;
-u32 var001aed7c = 0x00000000;
-u32 var001aed80 = 0x00000000;
-u32 var001aed84 = 0x00000000;
-u32 var001aed88 = 0x00000000;
-u32 var001aed8c = 0x00000000;
-u32 var001aed90 = 0x00000000;
-u32 var001aed94 = 0x00000000;
-u32 var001aed98 = 0x00000000;
-u32 var001aed9c = 0x00000000;
-u32 var001aeda0 = 0x00000000;
-u32 var001aeda4 = 0x00000000;
-u32 var001aeda8 = 0x00000000;
-u32 var001aedac = 0x00000000;
-u32 var001aedb0 = 0x00000000;
-u32 var001aedb4 = 0x00000000;
-u32 var001aedb8 = 0x00000000;
-u32 var001aedbc = 0x00000000;
-u32 var001aedc0 = 0x00000000;
-u32 var001aedc4 = 0x00000000;
-u32 var001aedc8 = 0x00000000;
-u32 var001aedcc = 0x00000000;
-u32 var001aedd0 = 0x00000000;
-u32 var001aedd4 = 0x00000000;
-u32 var001aedd8 = 0x00000000;
-u32 var001aeddc = 0x00000000;
-u32 var001aede0 = 0x00000000;
-u32 var001aede4 = 0x00000000;
-u32 var001aede8 = 0x00000000;
-u32 var001aedec = 0x00000000;
-u32 var001aedf0 = 0x00000000;
-u32 var001aedf4 = 0x00000000;
-u32 var001aedf8 = 0x00000000;
-u32 var001aedfc = 0x00000000;
-u32 var001aee00 = 0x00000000;
-u32 var001aee04 = 0x00000000;
-u32 var001aee08 = 0x00000000;
-u32 var001aee0c = 0x00000000;
-u32 var001aee10 = 0x00000000;
-u32 var001aee14 = 0x00000000;
-u32 var001aee18 = 0x00000000;
-u32 var001aee1c = 0x00000000;
-u32 var001aee20 = 0x00000000;
-u32 var001aee24 = 0x00000000;
-u32 var001aee28 = 0x00000000;
-u32 var001aee2c = 0x00000000;
-u32 var001aee30 = 0x00000000;
-u32 var001aee34 = 0x00000000;
-u32 var001aee38 = 0x00000000;
-u32 var001aee3c = 0x00000000;
-u32 var001aee40 = 0x00000000;
-u32 var001aee44 = 0x00000000;
-u32 var001aee48 = 0x00000000;
-u32 var001aee4c = 0x00000000;
-u32 var001aee50 = 0x00000000;
-u32 var001aee54 = 0x00000000;
-u32 var001aee58 = 0x00000000;
-u32 var001aee5c = 0x00000000;
-u32 var001aee60 = 0x00000000;
-u32 var001aee64 = 0x00000000;
-u32 var001aee68 = 0x00000000;
-u32 var001aee6c = 0x00000000;
-u32 var001aee70 = 0x00000000;
-u32 var001aee74 = 0x00000000;
-u32 var001aee78 = 0x00000000;
-u32 var001aee7c = 0x00000000;
-u32 var001aee80 = 0x00000000;
-u32 var001aee84 = 0x00000000;
-u32 var001aee88 = 0x00000000;
-u32 var001aee8c = 0x00000000;
-u32 var001aee90 = 0x00000000;
-u32 var001aee94 = 0x00000000;
-u32 var001aee98 = 0x00000000;
-u32 var001aee9c = 0x00000000;
-u32 var001aeea0 = 0x00000000;
-u32 var001aeea4 = 0x00000000;
-u32 var001aeea8 = 0x00000000;
-u32 var001aeeac = 0x00000000;
-u32 var001aeeb0 = 0x00000000;
-u32 var001aeeb4 = 0x00000000;
-u32 var001aeeb8 = 0x00000000;
-u32 var001aeebc = 0x00000000;
-u32 var001aeec0 = 0x00000000;
-u32 var001aeec4 = 0x00000000;
-u32 var001aeec8 = 0x00000000;
-u32 var001aeecc = 0x00000000;
-u32 var001aeed0 = 0x00000000;
-u32 var001aeed4 = 0x00000000;
-u32 var001aeed8 = 0x00000000;
-u32 var001aeedc = 0x00000000;
-u32 var001aeee0 = 0x00000000;
-u32 var001aeee4 = 0x00000000;
-u32 var001aeee8 = 0x00000000;
-u32 var001aeeec = 0x00000000;
-u32 var001aeef0 = 0x00000000;
-u32 var001aeef4 = 0x00000000;
-u32 var001aeef8 = 0x00000000;
-u32 var001aeefc = 0x00000000;
-u32 var001aef00 = 0x00000000;
-u32 var001aef04 = 0x00000000;
-u32 var001aef08 = 0x00000000;
-u32 var001aef0c = 0x00000000;
-u32 var001aef10 = 0x00000000;
-u32 var001aef14 = 0x00000000;
-u32 var001aef18 = 0x00000000;
-u32 var001aef1c = 0x00000000;
-u32 var001aef20 = 0x00000000;
-u32 var001aef24 = 0x00000000;
-u32 var001aef28 = 0x00000000;
-u32 var001aef2c = 0x00000000;
-u32 var001aef30 = 0x00000000;
-u32 var001aef34 = 0x00000000;
-u32 var001aef38 = 0x00000000;
-u32 var001aef3c = 0x00000000;
-u32 var001aef40 = 0x00000000;
-u32 var001aef44 = 0x00000000;
-u32 var001aef48 = 0x00000000;
-u32 var001aef4c = 0x00000000;
-u32 var001aef50 = 0x00000000;
-u32 var001aef54 = 0x00000000;
-u32 var001aef58 = 0x00000000;
-u32 var001aef5c = 0x00000000;
-u32 var001aef60 = 0x00000000;
-u32 var001aef64 = 0x00000000;
-u32 var001aef68 = 0x00000000;
-u32 var001aef6c = 0x00000000;
-u32 var001aef70 = 0x00000000;
-u32 var001aef74 = 0x00000000;
-u32 var001aef78 = 0x00000000;
-u32 var001aef7c = 0x00000000;
-u32 var001aef80 = 0x00000000;
-u32 var001aef84 = 0x00000000;
-u32 var001aef88 = 0x00000000;
-u32 var001aef8c = 0x00000000;
-u32 var001aef90 = 0x00000000;
-u32 var001aef94 = 0x00000000;
-u32 var001aef98 = 0x00000000;
-u32 var001aef9c = 0x00000000;
-u32 var001aefa0 = 0x00000000;
-u32 var001aefa4 = 0x00000000;
-u32 var001aefa8 = 0x00000000;
-u32 var001aefac = 0x00000000;
-u32 var001aefb0 = 0x00000000;
-u32 var001aefb4 = 0x00000000;
-u32 var001aefb8 = 0x00000000;
-u32 var001aefbc = 0x00000000;
-u32 var001aefc0 = 0x00000000;
-u32 var001aefc4 = 0x00000000;
-u32 var001aefc8 = 0x00000000;
-u32 var001aefcc = 0x00000000;
-u32 var001aefd0 = 0x00000000;
-u32 var001aefd4 = 0x00000000;
-u32 var001aefd8 = 0x00000000;
-u32 var001aefdc = 0x00000000;
-u32 var001aefe0 = 0x00000000;
-u32 var001aefe4 = 0x00000000;
-u32 var001aefe8 = 0x00000000;
-u32 var001aefec = 0x00000000;
-u32 var001aeff0 = 0x00000000;
-u32 var001aeff4 = 0x00000000;
-u32 var001aeff8 = 0x00000000;
-u32 var001aeffc = 0x00000000;
-u32 var001af000 = 0x00000000;
-u32 var001af004 = 0x00000000;
-u32 var001af008 = 0x00000000;
-u32 var001af00c = 0x00000000;
-u32 var001af010 = 0x00000000;
-u32 var001af014 = 0x00000000;
-u32 var001af018 = 0x00000000;
-u32 var001af01c = 0x00000000;
-u32 var001af020 = 0x00000000;
-u32 var001af024 = 0x00000000;
-u32 var001af028 = 0x00000000;
-u32 var001af02c = 0x00000000;
-u32 var001af030 = 0x00000000;
-u32 var001af034 = 0x00000000;
-u32 var001af038 = 0x00000000;
-u32 var001af03c = 0x00000000;
-u32 var001af040 = 0x00000000;
-u32 var001af044 = 0x00000000;
-u32 var001af048 = 0x00000000;
-u32 var001af04c = 0x00000000;
-u32 var001af050 = 0x00000000;
-u32 var001af054 = 0x00000000;
-u32 var001af058 = 0x00000000;
-u32 var001af05c = 0x00000000;
-u32 var001af060 = 0x00000000;
-u32 var001af064 = 0x00000000;
-u32 var001af068 = 0x00000000;
-u32 var001af06c = 0x00000000;
-u32 var001af070 = 0x00000000;
-u32 var001af074 = 0x00000000;
-u32 var001af078 = 0x00000000;
-u32 var001af07c = 0x00000000;
-u32 var001af080 = 0x00000000;
-u32 var001af084 = 0x00000000;
-u32 var001af088 = 0x00000000;
-u32 var001af08c = 0x00000000;
-u32 var001af090 = 0x00000000;
-u32 var001af094 = 0x00000000;
-u32 var001af098 = 0x00000000;
-u32 var001af09c = 0x00000000;
-u32 var001af0a0 = 0x00000000;
-u32 var001af0a4 = 0x00000000;
-u32 var001af0a8 = 0x00000000;
-u32 var001af0ac = 0x00000000;
-u32 var001af0b0 = 0x00000000;
-u32 var001af0b4 = 0x00000000;
-u32 var001af0b8 = 0x00000000;
-u32 var001af0bc = 0x00000000;
-u32 var001af0c0 = 0x00000000;
-u32 var001af0c4 = 0x00000000;
-u32 var001af0c8 = 0x00000000;
-u32 var001af0cc = 0x00000000;
-u32 var001af0d0 = 0x00000000;
-u32 var001af0d4 = 0x00000000;
-u32 var001af0d8 = 0x00000000;
-u32 var001af0dc = 0x00000000;
-u32 var001af0e0 = 0x00000000;
-u32 var001af0e4 = 0x00000000;
-u32 var001af0e8 = 0x00000000;
-u32 var001af0ec = 0x00000000;
-u32 var001af0f0 = 0x00000000;
-u32 var001af0f4 = 0x00000000;
-u32 var001af0f8 = 0x00000000;
-u32 var001af0fc = 0x00000000;
-u32 var001af100 = 0x00000000;
-u32 var001af104 = 0x00000000;
-u32 var001af108 = 0x00000000;
-u32 var001af10c = 0x00000000;
-u32 var001af110 = 0x00000000;
-u32 var001af114 = 0x00000000;
-u32 var001af118 = 0x00000000;
-u32 var001af11c = 0x00000000;
-u32 var001af120 = 0x00000000;
-u32 var001af124 = 0x00000000;
-u32 var001af128 = 0x00000000;
-u32 var001af12c = 0x00000000;
-u32 var001af130 = 0x00000000;
-u32 var001af134 = 0x00000000;
-u32 var001af138 = 0x00000000;
-u32 var001af13c = 0x00000000;
-u32 var001af140 = 0x00000000;
-u32 var001af144 = 0x00000000;
-u32 var001af148 = 0x00000000;
-u32 var001af14c = 0x00000000;
-u32 var001af150 = 0x00000000;
-u32 var001af154 = 0x00000000;
-u32 var001af158 = 0x00000000;
-u32 var001af15c = 0x00000000;
-u32 var001af160 = 0x00000000;
-u32 var001af164 = 0x00000000;
-u32 var001af168 = 0x00000000;
-u32 var001af16c = 0x00000000;
-u32 var001af170 = 0x00000000;
-u32 var001af174 = 0x00000000;
-u32 var001af178 = 0x00000000;
-u32 var001af17c = 0x00000000;
-u32 var001af180 = 0x00000000;
-u32 var001af184 = 0x00000000;
-u32 var001af188 = 0x00000000;
-u32 var001af18c = 0x00000000;
-u32 var001af190 = 0x00000000;
-u32 var001af194 = 0x00000000;
-u32 var001af198 = 0x00000000;
-u32 var001af19c = 0x00000000;
-u32 var001af1a0 = 0x00000000;
-u32 var001af1a4 = 0x00000000;
-u32 var001af1a8 = 0x00000000;
-u32 var001af1ac = 0x00000000;
-u32 var001af1b0 = 0x00000000;
-u32 var001af1b4 = 0x00000000;
-u32 var001af1b8 = 0x00000000;
-u32 var001af1bc = 0x00000000;
-u32 var001af1c0 = 0x00000000;
-u32 var001af1c4 = 0x00000000;
-u32 var001af1c8 = 0x00000000;
-u32 var001af1cc = 0x00000000;
-u32 var001af1d0 = 0x00000000;
-u32 var001af1d4 = 0x00000000;
-u32 var001af1d8 = 0x00000000;
-u32 var001af1dc = 0x00000000;
-u32 var001af1e0 = 0x00000000;
-u32 var001af1e4 = 0x00000000;
-u32 var001af1e8 = 0x00000000;
-u32 var001af1ec = 0x00000000;
-u32 var001af1f0 = 0x00000000;
-u32 var001af1f4 = 0x00000000;
-u32 var001af1f8 = 0x00000000;
-u32 var001af1fc = 0x00000000;
-u32 var001af200 = 0x00000000;
-u32 var001af204 = 0x00000000;
-u32 var001af208 = 0x00000000;
-u32 var001af20c = 0x00000000;
-u32 var001af210 = 0x00000000;
-u32 var001af214 = 0x00000000;
-u32 var001af218 = 0x00000000;
-u32 var001af21c = 0x00000000;
-u32 var001af220 = 0x00000000;
-u32 var001af224 = 0x00000000;
-u32 var001af228 = 0x00000000;
-u32 var001af22c = 0x00000000;
-u32 var001af230 = 0x00000000;
-u32 var001af234 = 0x00000000;
-u32 var001af238 = 0x00000000;
-u32 var001af23c = 0x00000000;
-u32 var001af240 = 0x00000000;
-u32 var001af244 = 0x00000000;
-u32 var001af248 = 0x00000000;
-u32 var001af24c = 0x00000000;
-u32 var001af250 = 0x00000000;
-u32 var001af254 = 0x00000000;
-u32 var001af258 = 0x00000000;
-u32 var001af25c = 0x00000000;
-u32 var001af260 = 0x00000000;
-u32 var001af264 = 0x00000000;
-u32 var001af268 = 0x00000000;
-u32 var001af26c = 0x00000000;
-u32 var001af270 = 0x00000000;
-u32 var001af274 = 0x00000000;
-u32 var001af278 = 0x00000000;
-u32 var001af27c = 0x00000000;
-u32 var001af280 = 0x00000000;
-u32 var001af284 = 0x00000000;
-u32 var001af288 = 0x00000000;
-u32 var001af28c = 0x00000000;
-u32 var001af290 = 0x00000000;
-u32 var001af294 = 0x00000000;
-u32 var001af298 = 0x00000000;
-u32 var001af29c = 0x00000000;
-u32 var001af2a0 = 0x00000000;
-u32 var001af2a4 = 0x00000000;
-u32 var001af2a8 = 0x00000000;
-u32 var001af2ac = 0x00000000;
-u32 var001af2b0 = 0x00000000;
-u32 var001af2b4 = 0x00000000;
-u32 var001af2b8 = 0x00000000;
-u32 var001af2bc = 0x00000000;
-u32 var001af2c0 = 0x00000000;
-u32 var001af2c4 = 0x00000000;
-u32 var001af2c8 = 0x00000000;
-u32 var001af2cc = 0x00000000;
-u32 var001af2d0 = 0x00000000;
-u32 var001af2d4 = 0x00000000;
-u32 var001af2d8 = 0x00000000;
-u32 var001af2dc = 0x00000000;
-u32 var001af2e0 = 0x00000000;
-u32 var001af2e4 = 0x00000000;
-u32 var001af2e8 = 0x00000000;
-u32 var001af2ec = 0x00000000;
-u32 var001af2f0 = 0x00000000;
-u32 var001af2f4 = 0x00000000;
-u32 var001af2f8 = 0x00000000;
-u32 var001af2fc = 0x00000000;
-u32 var001af300 = 0x00000000;
-u32 var001af304 = 0x00000000;
-u32 var001af308 = 0x00000000;
-u32 var001af30c = 0x00000000;
-u32 var001af310 = 0x00000000;
-u32 var001af314 = 0x00000000;
-u32 var001af318 = 0x00000000;
-u32 var001af31c = 0x00000000;
-u32 var001af320 = 0x00000000;
-u32 var001af324 = 0x00000000;
-u32 var001af328 = 0x00000000;
-u32 var001af32c = 0x00000000;
-u32 var001af330 = 0x00000000;
-u32 var001af334 = 0x00000000;
-u32 var001af338 = 0x00000000;
-u32 var001af33c = 0x00000000;
-u32 var001af340 = 0x00000000;
-u32 var001af344 = 0x00000000;
-u32 var001af348 = 0x00000000;
-u32 var001af34c = 0x00000000;
-u32 var001af350 = 0x00000000;
-u32 var001af354 = 0x00000000;
-u32 var001af358 = 0x00000000;
-u32 var001af35c = 0x00000000;
-u32 var001af360 = 0x00000000;
-u32 var001af364 = 0x00000000;
-u32 var001af368 = 0x00000000;
-u32 var001af36c = 0x00000000;
-u32 var001af370 = 0x00000000;
-u32 var001af374 = 0x00000000;
-u32 var001af378 = 0x00000000;
-u32 var001af37c = 0x00000000;
-u32 var001af380 = 0x00000000;
-u32 var001af384 = 0x00000000;
-u32 var001af388 = 0x00000000;
-u32 var001af38c = 0x00000000;
-u32 var001af390 = 0x00000000;
-u32 var001af394 = 0x00000000;
-u32 var001af398 = 0x00000000;
-u32 var001af39c = 0x00000000;
-u32 var001af3a0 = 0x00000000;
-u32 var001af3a4 = 0x00000000;
-u32 var001af3a8 = 0x00000000;
-u32 var001af3ac = 0x00000000;
-u32 var001af3b0 = 0x00000000;
-u32 var001af3b4 = 0x00000000;
-u32 var001af3b8 = 0x00000000;
-u32 var001af3bc = 0x00000000;
-u32 var001af3c0 = 0x00000000;
-u32 var001af3c4 = 0x00000000;
-u32 var001af3c8 = 0x00000000;
-u32 var001af3cc = 0x00000000;
-u32 var001af3d0 = 0x00000000;
-u32 var001af3d4 = 0x00000000;
-u32 var001af3d8 = 0x00000000;
-u32 var001af3dc = 0x00000000;
-u32 var001af3e0 = 0x00000000;
-u32 var001af3e4 = 0x00000000;
-u32 var001af3e8 = 0x00000000;
-u32 var001af3ec = 0x00000000;
-u32 var001af3f0 = 0x00000000;
-u32 var001af3f4 = 0x00000000;
-u32 var001af3f8 = 0x00000000;
-u32 var001af3fc = 0x00000000;
-u32 var001af400 = 0x00000000;
-u32 var001af404 = 0x00000000;
-u32 var001af408 = 0x00000000;
-u32 var001af40c = 0x00000000;
-u32 var001af410 = 0x00000000;
-u32 var001af414 = 0x00000000;
-u32 var001af418 = 0x00000000;
-u32 var001af41c = 0x00000000;
-u32 var001af420 = 0x00000000;
-u32 var001af424 = 0x00000000;
-u32 var001af428 = 0x00000000;
-u32 var001af42c = 0x00000000;
-u32 var001af430 = 0x00000000;
-u32 var001af434 = 0x00000000;
-u32 var001af438 = 0x00000000;
-u32 var001af43c = 0x00000000;
-u32 var001af440 = 0x00000000;
-u32 var001af444 = 0x00000000;
-u32 var001af448 = 0x00000000;
-u32 var001af44c = 0x00000000;
-u32 var001af450 = 0x00000000;
-u32 var001af454 = 0x00000000;
-u32 var001af458 = 0x00000000;
-u32 var001af45c = 0x00000000;
-u32 var001af460 = 0x00000000;
-u32 var001af464 = 0x00000000;
-u32 var001af468 = 0x00000000;
-u32 var001af46c = 0x00000000;
-u32 var001af470 = 0x00000000;
-u32 var001af474 = 0x00000000;
-u32 var001af478 = 0x00000000;
-u32 var001af47c = 0x00000000;
-u32 var001af480 = 0x00000000;
-u32 var001af484 = 0x00000000;
-u32 var001af488 = 0x00000000;
-u32 var001af48c = 0x00000000;
-u32 var001af490 = 0x00000000;
-u32 var001af494 = 0x00000000;
-u32 var001af498 = 0x00000000;
-u32 var001af49c = 0x00000000;
-u32 var001af4a0 = 0x00000000;
-u32 var001af4a4 = 0x00000000;
-u32 var001af4a8 = 0x00000000;
-u32 var001af4ac = 0x00000000;
-u32 var001af4b0 = 0x00000000;
-u32 var001af4b4 = 0x00000000;
-u32 var001af4b8 = 0x00000000;
-u32 var001af4bc = 0x00000000;
-u32 var001af4c0 = 0x00000000;
-u32 var001af4c4 = 0x00000000;
-u32 var001af4c8 = 0x00000000;
-u32 var001af4cc = 0x00000000;
-u32 var001af4d0 = 0x00000000;
-u32 var001af4d4 = 0x00000000;
-u32 var001af4d8 = 0x00000000;
-u32 var001af4dc = 0x00000000;
-u32 var001af4e0 = 0x00000000;
-u32 var001af4e4 = 0x00000000;
-u32 var001af4e8 = 0x00000000;
-u32 var001af4ec = 0x00000000;
-u32 var001af4f0 = 0x00000000;
-u32 var001af4f4 = 0x00000000;
-u32 var001af4f8 = 0x00000000;
-u32 var001af4fc = 0x00000000;
-u32 var001af500 = 0x00000000;
-u32 var001af504 = 0x00000000;
-u32 var001af508 = 0x00000000;
-u32 var001af50c = 0x00000000;
-u32 var001af510 = 0x00000000;
-u32 var001af514 = 0x00000000;
-u32 var001af518 = 0x00000000;
-u32 var001af51c = 0x00000000;
-u32 var001af520 = 0x00000000;
-u32 var001af524 = 0x00000000;
-u32 var001af528 = 0x00000000;
-u32 var001af52c = 0x00000000;
-u32 var001af530 = 0x00000000;
-u32 var001af534 = 0x00000000;
-u32 var001af538 = 0x00000000;
-u32 var001af53c = 0x00000000;
-u32 var001af540 = 0x00000000;
-u32 var001af544 = 0x00000000;
-u32 var001af548 = 0x00000000;
-u32 var001af54c = 0x00000000;
-u32 var001af550 = 0x00000000;
-u32 var001af554 = 0x00000000;
-u32 var001af558 = 0x00000000;
-u32 var001af55c = 0x00000000;
-u32 var001af560 = 0x00000000;
-u32 var001af564 = 0x00000000;
-u32 var001af568 = 0x00000000;
-u32 var001af56c = 0x00000000;
-u32 var001af570 = 0x00000000;
-u32 var001af574 = 0x00000000;
-u32 var001af578 = 0x00000000;
-u32 var001af57c = 0x00000000;
-u32 var001af580 = 0x00000000;
-u32 var001af584 = 0x00000000;
-u32 var001af588 = 0x00000000;
-u32 var001af58c = 0x00000000;
-u32 var001af590 = 0x00000000;
-u32 var001af594 = 0x00000000;
-u32 var001af598 = 0x00000000;
-u32 var001af59c = 0x00000000;
-u32 var001af5a0 = 0x00000000;
-u32 var001af5a4 = 0x00000000;
-u32 var001af5a8 = 0x00000000;
-u32 var001af5ac = 0x00000000;
-u32 var001af5b0 = 0x00000000;
-u32 var001af5b4 = 0x00000000;
-u32 var001af5b8 = 0x00000000;
-u32 var001af5bc = 0x00000000;
-u32 var001af5c0 = 0x00000000;
-u32 var001af5c4 = 0x00000000;
-u32 var001af5c8 = 0x00000000;
-u32 var001af5cc = 0x00000000;
-u32 var001af5d0 = 0x00000000;
-u32 var001af5d4 = 0x00000000;
-u32 var001af5d8 = 0x00000000;
-u32 var001af5dc = 0x00000000;
-u32 var001af5e0 = 0x00000000;
-u32 var001af5e4 = 0x00000000;
-u32 var001af5e8 = 0x00000000;
-u32 var001af5ec = 0x00000000;
-u32 var001af5f0 = 0x00000000;
-u32 var001af5f4 = 0x00000000;
-u32 var001af5f8 = 0x00000000;
-u32 var001af5fc = 0x00000000;
-u32 var001af600 = 0x00000000;
-u32 var001af604 = 0x00000000;
-u32 var001af608 = 0x00000000;
-u32 var001af60c = 0x00000000;
-u32 var001af610 = 0x00000000;
-u32 var001af614 = 0x00000000;
-u32 var001af618 = 0x00000000;
-u32 var001af61c = 0x00000000;
-u32 var001af620 = 0x00000000;
-u32 var001af624 = 0x00000000;
-u32 var001af628 = 0x00000000;
-u32 var001af62c = 0x00000000;
-u32 var001af630 = 0x00000000;
-u32 var001af634 = 0x00000000;
-u32 var001af638 = 0x00000000;
-u32 var001af63c = 0x00000000;
-u32 var001af640 = 0x00000000;
-u32 var001af644 = 0x00000000;
-u32 var001af648 = 0x00000000;
-u32 var001af64c = 0x00000000;
-u32 var001af650 = 0x00000000;
-u32 var001af654 = 0x00000000;
-u32 var001af658 = 0x00000000;
-u32 var001af65c = 0x00000000;
-u32 var001af660 = 0x00000000;
-u32 var001af664 = 0x00000000;
-u32 var001af668 = 0x00000000;
-u32 var001af66c = 0x00000000;
-u32 var001af670 = 0x00000000;
-u32 var001af674 = 0x00000000;
-u32 var001af678 = 0x00000000;
-u32 var001af67c = 0x00000000;
-u32 var001af680 = 0x00000000;
-u32 var001af684 = 0x00000000;
-u32 var001af688 = 0x00000000;
-u32 var001af68c = 0x00000000;
-u32 var001af690 = 0x00000000;
-u32 var001af694 = 0x00000000;
-u32 var001af698 = 0x00000000;
-u32 var001af69c = 0x00000000;
-u32 var001af6a0 = 0x00000000;
-u32 var001af6a4 = 0x00000000;
-u32 var001af6a8 = 0x00000000;
-u32 var001af6ac = 0x00000000;
-u32 var001af6b0 = 0x00000000;
-u32 var001af6b4 = 0x00000000;
-u32 var001af6b8 = 0x00000000;
-u32 var001af6bc = 0x00000000;
-u32 var001af6c0 = 0x00000000;
-u32 var001af6c4 = 0x00000000;
-u32 var001af6c8 = 0x00000000;
-u32 var001af6cc = 0x00000000;
-u32 var001af6d0 = 0x00000000;
-u32 var001af6d4 = 0x00000000;
-u32 var001af6d8 = 0x00000000;
-u32 var001af6dc = 0x00000000;
-u32 var001af6e0 = 0x00000000;
-u32 var001af6e4 = 0x00000000;
-u32 var001af6e8 = 0x00000000;
-u32 var001af6ec = 0x00000000;
-u32 var001af6f0 = 0x00000000;
-u32 var001af6f4 = 0x00000000;
-u32 var001af6f8 = 0x00000000;
-u32 var001af6fc = 0x00000000;
-u32 var001af700 = 0x00000000;
-u32 var001af704 = 0x00000000;
-u32 var001af708 = 0x00000000;
-u32 var001af70c = 0x00000000;
-u32 var001af710 = 0x00000000;
-u32 var001af714 = 0x00000000;
-u32 var001af718 = 0x00000000;
-u32 var001af71c = 0x00000000;
-u32 var001af720 = 0x00000000;
-u32 var001af724 = 0x00000000;
-u32 var001af728 = 0x00000000;
-u32 var001af72c = 0x00000000;
-u32 var001af730 = 0x00000000;
-u32 var001af734 = 0x00000000;
-u32 var001af738 = 0x00000000;
-u32 var001af73c = 0x00000000;
-u32 var001af740 = 0x00000000;
-u32 var001af744 = 0x00000000;
-u32 var001af748 = 0x00000000;
-u32 var001af74c = 0x00000000;
-u32 var001af750 = 0x00000000;
-u32 var001af754 = 0x00000000;
-u32 var001af758 = 0x00000000;
-u32 var001af75c = 0x00000000;
-u32 var001af760 = 0x00000000;
-u32 var001af764 = 0x00000000;
-u32 var001af768 = 0x00000000;
-u32 var001af76c = 0x00000000;
-u32 var001af770 = 0x00000000;
-u32 var001af774 = 0x00000000;
-u32 var001af778 = 0x00000000;
-u32 var001af77c = 0x00000000;
-u32 var001af780 = 0x00000000;
-u32 var001af784 = 0x00000000;
-u32 var001af788 = 0x00000000;
-u32 var001af78c = 0x00000000;
-u32 var001af790 = 0x00000000;
-u32 var001af794 = 0x00000000;
-u32 var001af798 = 0x00000000;
-u32 var001af79c = 0x00000000;
-u32 var001af7a0 = 0x00000000;
-u32 var001af7a4 = 0x00000000;
-u32 var001af7a8 = 0x00000000;
-u32 var001af7ac = 0x00000000;
-u32 var001af7b0 = 0x00000000;
-u32 var001af7b4 = 0x00000000;
-u32 var001af7b8 = 0x00000000;
-u32 var001af7bc = 0x00000000;
-u32 var001af7c0 = 0x00000000;
-u32 var001af7c4 = 0x00000000;
-u32 var001af7c8 = 0x00000000;
-u32 var001af7cc = 0x00000000;
-u32 var001af7d0 = 0x00000000;
-u32 var001af7d4 = 0x00000000;
-u32 var001af7d8 = 0x00000000;
-u32 var001af7dc = 0x00000000;
-u32 var001af7e0 = 0x00000000;
-u32 var001af7e4 = 0x00000000;
-u32 var001af7e8 = 0x00000000;
-u32 var001af7ec = 0x00000000;
-u32 var001af7f0 = 0x00000000;
-u32 var001af7f4 = 0x00000000;
-u32 var001af7f8 = 0x00000000;
-u32 var001af7fc = 0x00000000;
-u32 var001af800 = 0x00000000;
-u32 var001af804 = 0x00000000;
-u32 var001af808 = 0x00000000;
-u32 var001af80c = 0x00000000;
-u32 var001af810 = 0x00000000;
-u32 var001af814 = 0x00000000;
-u32 var001af818 = 0x00000000;
-u32 var001af81c = 0x00000000;
-u32 var001af820 = 0x00000000;
-u32 var001af824 = 0x00000000;
-u32 var001af828 = 0x00000000;
-u32 var001af82c = 0x00000000;
-u32 var001af830 = 0x00000000;
-u32 var001af834 = 0x00000000;
-u32 var001af838 = 0x00000000;
-u32 var001af83c = 0x00000000;
-u32 var001af840 = 0x00000000;
-u32 var001af844 = 0x00000000;
-u32 var001af848 = 0x00000000;
-u32 var001af84c = 0x00000000;
-u32 var001af850 = 0x00000000;
-u32 var001af854 = 0x00000000;
-u32 var001af858 = 0x00000000;
-u32 var001af85c = 0x00000000;
-u32 var001af860 = 0x00000000;
-u32 var001af864 = 0x00000000;
-u32 var001af868 = 0x00000000;
-u32 var001af86c = 0x00000000;
-u32 var001af870 = 0x00000000;
-u32 var001af874 = 0x00000000;
-u32 var001af878 = 0x00000000;
-u32 var001af87c = 0x00000000;
-u32 var001af880 = 0x00000000;
-u32 var001af884 = 0x00000000;
-u32 var001af888 = 0x00000000;
-u32 var001af88c = 0x00000000;
-u32 var001af890 = 0x00000000;
-u32 var001af894 = 0x00000000;
-u32 var001af898 = 0x00000000;
-u32 var001af89c = 0x00000000;
-u32 var001af8a0 = 0x00000000;
-u32 var001af8a4 = 0x00000000;
-u32 var001af8a8 = 0x00000000;
-u32 var001af8ac = 0x00000000;
-u32 var001af8b0 = 0x00000000;
-u32 var001af8b4 = 0x00000000;
-u32 var001af8b8 = 0x00000000;
-u32 var001af8bc = 0x00000000;
-u32 var001af8c0 = 0x00000000;
-u32 var001af8c4 = 0x00000000;
-u32 var001af8c8 = 0x00000000;
-u32 var001af8cc = 0x00000000;
-u32 var001af8d0 = 0x00000000;
-u32 var001af8d4 = 0x00000000;
-u32 var001af8d8 = 0x00000000;
-u32 var001af8dc = 0x00000000;
-u32 var001af8e0 = 0x00000000;
-u32 var001af8e4 = 0x00000000;
-u32 var001af8e8 = 0x00000000;
-u32 var001af8ec = 0x00000000;
-u32 var001af8f0 = 0x00000000;
-u32 var001af8f4 = 0x00000000;
-u32 var001af8f8 = 0x00000000;
-u32 var001af8fc = 0x00000000;
-u32 var001af900 = 0x00000000;
-u32 var001af904 = 0x00000000;
-u32 var001af908 = 0x00000000;
-u32 var001af90c = 0x00000000;
-u32 var001af910 = 0x00000000;
-u32 var001af914 = 0x00000000;
-u32 var001af918 = 0x00000000;
-u32 var001af91c = 0x00000000;
-u32 var001af920 = 0x00000000;
-u32 var001af924 = 0x00000000;
-u32 var001af928 = 0x00000000;
-u32 var001af92c = 0x00000000;
-u32 var001af930 = 0x00000000;
-u32 var001af934 = 0x00000000;
-u32 var001af938 = 0x00000000;
-u32 var001af93c = 0x00000000;
-u32 var001af940 = 0x00000000;
-u32 var001af944 = 0x00000000;
-u32 var001af948 = 0x00000000;
-u32 var001af94c = 0x00000000;
-u32 var001af950 = 0x00000000;
-u32 var001af954 = 0x00000000;
-u32 var001af958 = 0x00000000;
-u32 var001af95c = 0x00000000;
-u32 var001af960 = 0x00000000;
-u32 var001af964 = 0x00000000;
-u32 var001af968 = 0x00000000;
-u32 var001af96c = 0x00000000;
-u32 var001af970 = 0x00000000;
-u32 var001af974 = 0x00000000;
-u32 var001af978 = 0x00000000;
-u32 var001af97c = 0x00000000;
-u32 var001af980 = 0x00000000;
-u32 var001af984 = 0x00000000;
-u32 var001af988 = 0x00000000;
-u32 var001af98c = 0x00000000;
-u32 var001af990 = 0x00000000;
-u32 var001af994 = 0x00000000;
-u32 var001af998 = 0x00000000;
-u32 var001af99c = 0x00000000;
-u32 var001af9a0 = 0x00000000;
-u32 var001af9a4 = 0x00000000;
-u32 var001af9a8 = 0x00000000;
-u32 var001af9ac = 0x00000000;
-u32 var001af9b0 = 0x00000000;
-u32 var001af9b4 = 0x00000000;
-u32 var001af9b8 = 0x00000000;
-u32 var001af9bc = 0x00000000;
-u32 var001af9c0 = 0x00000000;
-u32 var001af9c4 = 0x00000000;
-u32 var001af9c8 = 0x00000000;
-u32 var001af9cc = 0x00000000;
-u32 var001af9d0 = 0x00000000;
-u32 var001af9d4 = 0x00000000;
-u32 var001af9d8 = 0x00000000;
-u32 var001af9dc = 0x00000000;
-u32 var001af9e0 = 0x00000000;
-u32 var001af9e4 = 0x00000000;
-u32 var001af9e8 = 0x00000000;
-u32 var001af9ec = 0x00000000;
-u32 var001af9f0 = 0x00000000;
-u32 var001af9f4 = 0x00000000;
-u32 var001af9f8 = 0x00000000;
-u32 var001af9fc = 0x00000000;
-u32 var001afa00 = 0x00000000;
-u32 var001afa04 = 0x00000000;
-u32 var001afa08 = 0x00000000;
-u32 var001afa0c = 0x00000000;
-u32 var001afa10 = 0x00000000;
-u32 var001afa14 = 0x00000000;
-u32 var001afa18 = 0x00000000;
-u32 var001afa1c = 0x00000000;
-u32 var001afa20 = 0x00000000;
-u32 var001afa24 = 0x00000000;
-u32 var001afa28 = 0x00000000;
-u32 var001afa2c = 0x00000000;
-u32 var001afa30 = 0x00000000;
-u32 var001afa34 = 0x00000000;
-u32 var001afa38 = 0x00000000;
-u32 var001afa3c = 0x00000000;
-u32 var001afa40 = 0x00000000;
-u32 var001afa44 = 0x00000000;
-u32 var001afa48 = 0x00000000;
-u32 var001afa4c = 0x00000000;
-u32 var001afa50 = 0x00000000;
-u32 var001afa54 = 0x00000000;
-u32 var001afa58 = 0x00000000;
-u32 var001afa5c = 0x00000000;
-u32 var001afa60 = 0x00000000;
-u32 var001afa64 = 0x00000000;
-u32 var001afa68 = 0x00000000;
-u32 var001afa6c = 0x00000000;
-u32 var001afa70 = 0x00000000;
-u32 var001afa74 = 0x00000000;
-u32 var001afa78 = 0x00000000;
-u32 var001afa7c = 0x00000000;
-u32 var001afa80 = 0x00000000;
-u32 var001afa84 = 0x00000000;
-u32 var001afa88 = 0x00000000;
-u32 var001afa8c = 0x00000000;
-u32 var001afa90 = 0x00000000;
-u32 var001afa94 = 0x00000000;
-u32 var001afa98 = 0x00000000;
-u32 var001afa9c = 0x00000000;
-u32 var001afaa0 = 0x00000000;
-u32 var001afaa4 = 0x00000000;
-u32 var001afaa8 = 0x00000000;
-u32 var001afaac = 0x00000000;
-u32 var001afab0 = 0x00000000;
-u32 var001afab4 = 0x00000000;
-u32 var001afab8 = 0x00000000;
-u32 var001afabc = 0x00000000;
-u32 var001afac0 = 0x00000000;
-u32 var001afac4 = 0x00000000;
-u32 var001afac8 = 0x00000000;
-u32 var001afacc = 0x00000000;
-u32 var001afad0 = 0x00000000;
-u32 var001afad4 = 0x00000000;
-u32 var001afad8 = 0x00000000;
-u32 var001afadc = 0x00000000;
-u32 var001afae0 = 0x00000000;
-u32 var001afae4 = 0x00000000;
-u32 var001afae8 = 0x00000000;
-u32 var001afaec = 0x00000000;
-u32 var001afaf0 = 0x00000000;
-u32 var001afaf4 = 0x00000000;
-u32 var001afaf8 = 0x00000000;
-u32 var001afafc = 0x00000000;
-u32 var001afb00 = 0x00000000;
-u32 var001afb04 = 0x00000000;
-u32 var001afb08 = 0x00000000;
-u32 var001afb0c = 0x00000000;
-u32 var001afb10 = 0x00000000;
-u32 var001afb14 = 0x00000000;
-u32 var001afb18 = 0x00000000;
-u32 var001afb1c = 0x00000000;
-u32 var001afb20 = 0x00000000;
-u32 var001afb24 = 0x00000000;
-u32 var001afb28 = 0x00000000;
-u32 var001afb2c = 0x00000000;
-u32 var001afb30 = 0x00000000;
-u32 var001afb34 = 0x00000000;
-u32 var001afb38 = 0x00000000;
-u32 var001afb3c = 0x00000000;
-u32 var001afb40 = 0x00000000;
-u32 var001afb44 = 0x00000000;
-u32 var001afb48 = 0x00000000;
-u32 var001afb4c = 0x00000000;
-u32 var001afb50 = 0x00000000;
-u32 var001afb54 = 0x00000000;
-u32 var001afb58 = 0x00000000;
-u32 var001afb5c = 0x00000000;
-u32 var001afb60 = 0x00000000;
-u32 var001afb64 = 0x00000000;
-u32 var001afb68 = 0x00000000;
-u32 var001afb6c = 0x00000000;
-u32 var001afb70 = 0x00000000;
-u32 var001afb74 = 0x00000000;
-u32 var001afb78 = 0x00000000;
-u32 var001afb7c = 0x00000000;
-u32 var001afb80 = 0x00000000;
-u32 var001afb84 = 0x00000000;
-u32 var001afb88 = 0x00000000;
-u32 var001afb8c = 0x00000000;
-u32 var001afb90 = 0x00000000;
-u32 var001afb94 = 0x00000000;
-u32 var001afb98 = 0x00000000;
-u32 var001afb9c = 0x00000000;
-u32 var001afba0 = 0x00000000;
-u32 var001afba4 = 0x00000000;
-u32 var001afba8 = 0x00000000;
-u32 var001afbac = 0x00000000;
-u32 var001afbb0 = 0x00000000;
-u32 var001afbb4 = 0x00000000;
-u32 var001afbb8 = 0x00000000;
-u32 var001afbbc = 0x00000000;
-u32 var001afbc0 = 0x00000000;
-u32 var001afbc4 = 0x00000000;
-u32 var001afbc8 = 0x00000000;
-u32 var001afbcc = 0x00000000;
-u32 var001afbd0 = 0x00000000;
-u32 var001afbd4 = 0x00000000;
-u32 var001afbd8 = 0x00000000;
-u32 var001afbdc = 0x00000000;
-u32 var001afbe0 = 0x00000000;
-u32 var001afbe4 = 0x00000000;
-u32 var001afbe8 = 0x00000000;
-u32 var001afbec = 0x00000000;
-u32 var001afbf0 = 0x00000000;
-u32 var001afbf4 = 0x00000000;
-u32 var001afbf8 = 0x00000000;
-u32 var001afbfc = 0x00000000;
-u32 var001afc00 = 0x00000000;
-u32 var001afc04 = 0x00000000;
-u32 var001afc08 = 0x00000000;
-u32 var001afc0c = 0x00000000;
-u32 var001afc10 = 0x00000000;
-u32 var001afc14 = 0x00000000;
-u32 var001afc18 = 0x00000000;
-u32 var001afc1c = 0x00000000;
-u32 var001afc20 = 0x00000000;
-u32 var001afc24 = 0x00000000;
-u32 var001afc28 = 0x00000000;
-u32 var001afc2c = 0x00000000;
-u32 var001afc30 = 0x00000000;
-u32 var001afc34 = 0x00000000;
-u32 var001afc38 = 0x00000000;
-u32 var001afc3c = 0x00000000;
-u32 var001afc40 = 0x00000000;
-u32 var001afc44 = 0x00000000;
-u32 var001afc48 = 0x00000000;
-u32 var001afc4c = 0x00000000;
-u32 var001afc50 = 0x00000000;
-u32 var001afc54 = 0x00000000;
-u32 var001afc58 = 0x00000000;
-u32 var001afc5c = 0x00000000;
-u32 var001afc60 = 0x00000000;
-u32 var001afc64 = 0x00000000;
-u32 var001afc68 = 0x00000000;
-u32 var001afc6c = 0x00000000;
-u32 var001afc70 = 0x00000000;
-u32 var001afc74 = 0x00000000;
-u32 var001afc78 = 0x00000000;
-u32 var001afc7c = 0x00000000;
-u32 var001afc80 = 0x00000000;
-u32 var001afc84 = 0x00000000;
-u32 var001afc88 = 0x00000000;
-u32 var001afc8c = 0x00000000;
-u32 var001afc90 = 0x00000000;
-u32 var001afc94 = 0x00000000;
-u32 var001afc98 = 0x00000000;
-u32 var001afc9c = 0x00000000;
-u32 var001afca0 = 0x00000000;
-u32 var001afca4 = 0x00000000;
-u32 var001afca8 = 0x00000000;
-u32 var001afcac = 0x00000000;
-u32 var001afcb0 = 0x00000000;
-u32 var001afcb4 = 0x00000000;
-u32 var001afcb8 = 0x00000000;
-u32 var001afcbc = 0x00000000;
-u32 var001afcc0 = 0x00000000;
-u32 var001afcc4 = 0x00000000;
-u32 var001afcc8 = 0x00000000;
-u32 var001afccc = 0x00000000;
-u32 var001afcd0 = 0x00000000;
-u32 var001afcd4 = 0x00000000;
-u32 var001afcd8 = 0x00000000;
-u32 var001afcdc = 0x00000000;
-u32 var001afce0 = 0x00000000;
-u32 var001afce4 = 0x00000000;
-u32 var001afce8 = 0x00000000;
-u32 var001afcec = 0x00000000;
-u32 var001afcf0 = 0x00000000;
-u32 var001afcf4 = 0x00000000;
-u32 var001afcf8 = 0x00000000;
-u32 var001afcfc = 0x00000000;
-u32 var001afd00 = 0x00000000;
-u32 var001afd04 = 0x00000000;
-u32 var001afd08 = 0x00000000;
-u32 var001afd0c = 0x00000000;
-u32 var001afd10 = 0x00000000;
-u32 var001afd14 = 0x00000000;
-u32 var001afd18 = 0x00000000;
-u32 var001afd1c = 0x00000000;
-u32 var001afd20 = 0x00000000;
-u32 var001afd24 = 0x00000000;
-u32 var001afd28 = 0x00000000;
-u32 var001afd2c = 0x00000000;
-u32 var001afd30 = 0x00000000;
-u32 var001afd34 = 0x00000000;
-u32 var001afd38 = 0x00000000;
-u32 var001afd3c = 0x00000000;
-u32 var001afd40 = 0x00000000;
-u32 var001afd44 = 0x00000000;
-u32 var001afd48 = 0x00000000;
-u32 var001afd4c = 0x00000000;
-u32 var001afd50 = 0x00000000;
-u32 var001afd54 = 0x00000000;
-u32 var001afd58 = 0x00000000;
-u32 var001afd5c = 0x00000000;
-u32 var001afd60 = 0x00000000;
-u32 var001afd64 = 0x00000000;
-u32 var001afd68 = 0x00000000;
-u32 var001afd6c = 0x00000000;
-u32 var001afd70 = 0x00000000;
-u32 var001afd74 = 0x00000000;
-u32 var001afd78 = 0x00000000;
-u32 var001afd7c = 0x00000000;
-u32 var001afd80 = 0x00000000;
-u32 var001afd84 = 0x00000000;
-u32 var001afd88 = 0x00000000;
-u32 var001afd8c = 0x00000000;
-u32 var001afd90 = 0x00000000;
-u32 var001afd94 = 0x00000000;
-u32 var001afd98 = 0x00000000;
-u32 var001afd9c = 0x00000000;
-u32 var001afda0 = 0x00000000;
-u32 var001afda4 = 0x00000000;
-u32 var001afda8 = 0x00000000;
-u32 var001afdac = 0x00000000;
-u32 var001afdb0 = 0x00000000;
-u32 var001afdb4 = 0x00000000;
-u32 var001afdb8 = 0x00000000;
-u32 var001afdbc = 0x00000000;
-u32 var001afdc0 = 0x00000000;
-u32 var001afdc4 = 0x00000000;
-u32 var001afdc8 = 0x00000000;
-u32 var001afdcc = 0x00000000;
-u32 var001afdd0 = 0x00000000;
-u32 var001afdd4 = 0x00000000;
-u32 var001afdd8 = 0x00000000;
-u32 var001afddc = 0x00000000;
-u32 var001afde0 = 0x00000000;
-u32 var001afde4 = 0x00000000;
-u32 var001afde8 = 0x00000000;
-u32 var001afdec = 0x00000000;
-u32 var001afdf0 = 0x00000000;
-u32 var001afdf4 = 0x00000000;
-u32 var001afdf8 = 0x00000000;
-u32 var001afdfc = 0x00000000;
-u32 var001afe00 = 0x00000000;
-u32 var001afe04 = 0x00000000;
-u32 var001afe08 = 0x00000000;
-u32 var001afe0c = 0x00000000;
-u32 var001afe10 = 0x00000000;
-u32 var001afe14 = 0x00000000;
-u32 var001afe18 = 0x00000000;
-u32 var001afe1c = 0x00000000;
-u32 var001afe20 = 0x00000000;
-u32 var001afe24 = 0x00000000;
-u32 var001afe28 = 0x00000000;
-u32 var001afe2c = 0x00000000;
-u32 var001afe30 = 0x00000000;
-u32 var001afe34 = 0x00000000;
-u32 var001afe38 = 0x00000000;
-u32 var001afe3c = 0x00000000;
-u32 var001afe40 = 0x00000000;
-u32 var001afe44 = 0x00000000;
-u32 var001afe48 = 0x00000000;
-u32 var001afe4c = 0x00000000;
-u32 var001afe50 = 0x00000000;
-u32 var001afe54 = 0x00000000;
-u32 var001afe58 = 0x00000000;
-u32 var001afe5c = 0x00000000;
-u32 var001afe60 = 0x00000000;
-u32 var001afe64 = 0x00000000;
-u32 var001afe68 = 0x00000000;
-u32 var001afe6c = 0x00000000;
-u32 var001afe70 = 0x00000000;
-u32 var001afe74 = 0x00000000;
-u32 var001afe78 = 0x00000000;
-u32 var001afe7c = 0x00000000;
-u32 var001afe80 = 0x00000000;
-u32 var001afe84 = 0x00000000;
-u32 var001afe88 = 0x00000000;
-u32 var001afe8c = 0x00000000;
-u32 var001afe90 = 0x00000000;
-u32 var001afe94 = 0x00000000;
-u32 var001afe98 = 0x00000000;
-u32 var001afe9c = 0x00000000;
-u32 var001afea0 = 0x00000000;
-u32 var001afea4 = 0x00000000;
-u32 var001afea8 = 0x00000000;
-u32 var001afeac = 0x00000000;
-u32 var001afeb0 = 0x00000000;
-u32 var001afeb4 = 0x00000000;
-u32 var001afeb8 = 0x00000000;
-u32 var001afebc = 0x00000000;
-u32 var001afec0 = 0x00000000;
-u32 var001afec4 = 0x00000000;
-u32 var001afec8 = 0x00000000;
-u32 var001afecc = 0x00000000;
-u32 var001afed0 = 0x00000000;
-u32 var001afed4 = 0x00000000;
-u32 var001afed8 = 0x00000000;
-u32 var001afedc = 0x00000000;
-u32 var001afee0 = 0x00000000;
-u32 var001afee4 = 0x00000000;
-u32 var001afee8 = 0x00000000;
-u32 var001afeec = 0x00000000;
-u32 var001afef0 = 0x00000000;
-u32 var001afef4 = 0x00000000;
-u32 var001afef8 = 0x00000000;
-u32 var001afefc = 0x00000000;
-u32 var001aff00 = 0x00000000;
-u32 var001aff04 = 0x00000000;
-u32 var001aff08 = 0x00000000;
-u32 var001aff0c = 0x00000000;
-u32 var001aff10 = 0x00000000;
-u32 var001aff14 = 0x00000000;
-u32 var001aff18 = 0x00000000;
-u32 var001aff1c = 0x00000000;
-u32 var001aff20 = 0x00000000;
-u32 var001aff24 = 0x00000000;
-u32 var001aff28 = 0x00000000;
-u32 var001aff2c = 0x00000000;
-u32 var001aff30 = 0x00000000;
-u32 var001aff34 = 0x00000000;
-u32 var001aff38 = 0x00000000;
-u32 var001aff3c = 0x00000000;
-u32 var001aff40 = 0x00000000;
-u32 var001aff44 = 0x00000000;
-u32 var001aff48 = 0x00000000;
-u32 var001aff4c = 0x00000000;
-u32 var001aff50 = 0x00000000;
-u32 var001aff54 = 0x00000000;
-u32 var001aff58 = 0x00000000;
-u32 var001aff5c = 0x00000000;
-u32 var001aff60 = 0x00000000;
-u32 var001aff64 = 0x00000000;
-u32 var001aff68 = 0x00000000;
-u32 var001aff6c = 0x00000000;
-u32 var001aff70 = 0x00000000;
-u32 var001aff74 = 0x00000000;
-u32 var001aff78 = 0x00000000;
-u32 var001aff7c = 0x00000000;
-u32 var001aff80 = 0x00000000;
-u32 var001aff84 = 0x00000000;
-u32 var001aff88 = 0x00000000;
-u32 var001aff8c = 0x00000000;
-u32 var001aff90 = 0x00000000;
-u32 var001aff94 = 0x00000000;
-u32 var001aff98 = 0x00000000;
-u32 var001aff9c = 0x00000000;
-u32 var001affa0 = 0x00000000;
-u32 var001affa4 = 0x00000000;
-u32 var001affa8 = 0x00000000;
-u32 var001affac = 0x00000000;
-u32 var001affb0 = 0x00000000;
-u32 var001affb4 = 0x00000000;
-u32 var001affb8 = 0x00000000;
-u32 var001affbc = 0x00000000;
-u32 var001affc0 = 0x00000000;
-u32 var001affc4 = 0x00000000;
-u32 var001affc8 = 0x00000000;
-u32 var001affcc = 0x00000000;
-u32 var001affd0 = 0x00000000;
-u32 var001affd4 = 0x00000000;
-u32 var001affd8 = 0x00000000;
-u32 var001affdc = 0x00000000;
-u32 var001affe0 = 0x00000000;
-u32 var001affe4 = 0x00000000;
-u32 var001affe8 = 0x00000000;
-u32 var001affec = 0x00000000;
-u32 var001afff0 = 0x00000000;
-u32 var001afff4 = 0x00000000;
-u32 var001afff8 = 0x00000000;
-u32 var001afffc = 0x00000000;
-u32 var001b0000 = 0x00000000;
-u32 var001b0004 = 0x00000000;
-u32 var001b0008 = 0x00000000;
-u32 var001b000c = 0x00000000;
-u32 var001b0010 = 0x00000000;
-u32 var001b0014 = 0x00000000;
-u32 var001b0018 = 0x00000000;
-u32 var001b001c = 0x00000000;
-u32 var001b0020 = 0x00000000;
-u32 var001b0024 = 0x00000000;
-u32 var001b0028 = 0x00000000;
-u32 var001b002c = 0x00000000;
-u32 var001b0030 = 0x00000000;
-u32 var001b0034 = 0x00000000;
-u32 var001b0038 = 0x00000000;
-u32 var001b003c = 0x00000000;
-u32 var001b0040 = 0x00000000;
-u32 var001b0044 = 0x00000000;
-u32 var001b0048 = 0x00000000;
-u32 var001b004c = 0x00000000;
-u32 var001b0050 = 0x00000000;
-u32 var001b0054 = 0x00000000;
-u32 var001b0058 = 0x00000000;
-u32 var001b005c = 0x00000000;
-u32 var001b0060 = 0x00000000;
-u32 var001b0064 = 0x00000000;
-u32 var001b0068 = 0x00000000;
-u32 var001b006c = 0x00000000;
-u32 var001b0070 = 0x00000000;
-u32 var001b0074 = 0x00000000;
-u32 var001b0078 = 0x00000000;
-u32 var001b007c = 0x00000000;
-u32 var001b0080 = 0x00000000;
-u32 var001b0084 = 0x00000000;
-u32 var001b0088 = 0x00000000;
-u32 var001b008c = 0x00000000;
-u32 var001b0090 = 0x00000000;
-u32 var001b0094 = 0x00000000;
-u32 var001b0098 = 0x00000000;
-u32 var001b009c = 0x00000000;
-u32 var001b00a0 = 0x00000000;
-u32 var001b00a4 = 0x00000000;
-u32 var001b00a8 = 0x00000000;
-u32 var001b00ac = 0x00000000;
-u32 var001b00b0 = 0x00000000;
-u32 var001b00b4 = 0x00000000;
-u32 var001b00b8 = 0x00000000;
-u32 var001b00bc = 0x00000000;
-u32 var001b00c0 = 0x00000000;
-u32 var001b00c4 = 0x00000000;
-u32 var001b00c8 = 0x00000000;
-u32 var001b00cc = 0x00000000;
-u32 var001b00d0 = 0x00000000;
-u32 var001b00d4 = 0x00000000;
-u32 var001b00d8 = 0x00000000;
-u32 var001b00dc = 0x00000000;
-u32 var001b00e0 = 0x00000000;
-u32 var001b00e4 = 0x00000000;
-u32 var001b00e8 = 0x00000000;
-u32 var001b00ec = 0x00000000;
-u32 var001b00f0 = 0x00000000;
-u32 var001b00f4 = 0x00000000;
-u32 var001b00f8 = 0x00000000;
-u32 var001b00fc = 0x00000000;
-u32 var001b0100 = 0x00000000;
-u32 var001b0104 = 0x00000000;
-u32 var001b0108 = 0x00000000;
-u32 var001b010c = 0x00000000;
-u32 var001b0110 = 0x00000000;
-u32 var001b0114 = 0x00000000;
-u32 var001b0118 = 0x00000000;
-u32 var001b011c = 0x00000000;
-u32 var001b0120 = 0x00000000;
-u32 var001b0124 = 0x00000000;
-u32 var001b0128 = 0x00000000;
-u32 var001b012c = 0x00000000;
-u32 var001b0130 = 0x00000000;
-u32 var001b0134 = 0x00000000;
-u32 var001b0138 = 0x00000000;
-u32 var001b013c = 0x00000000;
-u32 var001b0140 = 0x00000000;
-u32 var001b0144 = 0x00000000;
-u32 var001b0148 = 0x00000000;
-u32 var001b014c = 0x00000000;
-u32 var001b0150 = 0x00000000;
-u32 var001b0154 = 0x00000000;
-u32 var001b0158 = 0x00000000;
-u32 var001b015c = 0x00000000;
-u32 var001b0160 = 0x00000000;
-u32 var001b0164 = 0x00000000;
-u32 var001b0168 = 0x00000000;
-u32 var001b016c = 0x00000000;
-u32 var001b0170 = 0x00000000;
-u32 var001b0174 = 0x00000000;
-u32 var001b0178 = 0x00000000;
-u32 var001b017c = 0x00000000;
-u32 var001b0180 = 0x00000000;
-u32 var001b0184 = 0x00000000;
-u32 var001b0188 = 0x00000000;
-u32 var001b018c = 0x00000000;
-u32 var001b0190 = 0x00000000;
-u32 var001b0194 = 0x00000000;
-u32 var001b0198 = 0x00000000;
-u32 var001b019c = 0x00000000;
-u32 var001b01a0 = 0x00000000;
-u32 var001b01a4 = 0x00000000;
-u32 var001b01a8 = 0x00000000;
-u32 var001b01ac = 0x00000000;
-u32 var001b01b0 = 0x00000000;
-u32 var001b01b4 = 0x00000000;
-u32 var001b01b8 = 0x00000000;
-u32 var001b01bc = 0x00000000;
-u32 var001b01c0 = 0x00000000;
-u32 var001b01c4 = 0x00000000;
-u32 var001b01c8 = 0x00000000;
-u32 var001b01cc = 0x00000000;
-u32 var001b01d0 = 0x00000000;
-u32 var001b01d4 = 0x00000000;
-u32 var001b01d8 = 0x00000000;
-u32 var001b01dc = 0x00000000;
-u32 var001b01e0 = 0x00000000;
-u32 var001b01e4 = 0x00000000;
-u32 var001b01e8 = 0x00000000;
-u32 var001b01ec = 0x00000000;
-u32 var001b01f0 = 0x00000000;
-u32 var001b01f4 = 0x00000000;
-u32 var001b01f8 = 0x00000000;
-u32 var001b01fc = 0x00000000;
-u32 var001b0200 = 0x00000000;
-u32 var001b0204 = 0x00000000;
-u32 var001b0208 = 0x00000000;
-u32 var001b020c = 0x00000000;
-u32 var001b0210 = 0x00000000;
-u32 var001b0214 = 0x00000000;
-u32 var001b0218 = 0x00000000;
-u32 var001b021c = 0x00000000;
-u32 var001b0220 = 0x00000000;
-u32 var001b0224 = 0x00000000;
-u32 var001b0228 = 0x00000000;
-u32 var001b022c = 0x00000000;
-u32 var001b0230 = 0x00000000;
-u32 var001b0234 = 0x00000000;
-u32 var001b0238 = 0x00000000;
-u32 var001b023c = 0x00000000;
-u32 var001b0240 = 0x00000000;
-u32 var001b0244 = 0x00000000;
-u32 var001b0248 = 0x00000000;
-u32 var001b024c = 0x00000000;
-u32 var001b0250 = 0x00000000;
-u32 var001b0254 = 0x00000000;
-u32 var001b0258 = 0x00000000;
-u32 var001b025c = 0x00000000;
-u32 var001b0260 = 0x00000000;
-u32 var001b0264 = 0x00000000;
-u32 var001b0268 = 0x00000000;
-u32 var001b026c = 0x00000000;
-u32 var001b0270 = 0x00000000;
-u32 var001b0274 = 0x00000000;
-u32 var001b0278 = 0x00000000;
-u32 var001b027c = 0x00000000;
-u32 var001b0280 = 0x00000000;
-u32 var001b0284 = 0x00000000;
-u32 var001b0288 = 0x00000000;
-u32 var001b028c = 0x00000000;
-u32 var001b0290 = 0x00000000;
-u32 var001b0294 = 0x00000000;
-u32 var001b0298 = 0x00000000;
-u32 var001b029c = 0x00000000;
-u32 var001b02a0 = 0x00000000;
-u32 var001b02a4 = 0x00000000;
-u32 var001b02a8 = 0x00000000;
-u32 var001b02ac = 0x00000000;
-u32 var001b02b0 = 0x00000000;
-u32 var001b02b4 = 0x00000000;
-u32 var001b02b8 = 0x00000000;
-u32 var001b02bc = 0x00000000;
-u32 var001b02c0 = 0x00000000;
-u32 var001b02c4 = 0x00000000;
-u32 var001b02c8 = 0x00000000;
-u32 var001b02cc = 0x00000000;
-u32 var001b02d0 = 0x00000000;
-u32 var001b02d4 = 0x00000000;
-u32 var001b02d8 = 0x00000000;
-u32 var001b02dc = 0x00000000;
-u32 var001b02e0 = 0x00000000;
-u32 var001b02e4 = 0x00000000;
-u32 var001b02e8 = 0x00000000;
-u32 var001b02ec = 0x00000000;
-u32 var001b02f0 = 0x00000000;
-u32 var001b02f4 = 0x00000000;
-u32 var001b02f8 = 0x00000000;
-u32 var001b02fc = 0x00000000;
-u32 var001b0300 = 0x00000000;
-u32 var001b0304 = 0x00000000;
-u32 var001b0308 = 0x00000000;
-u32 var001b030c = 0x00000000;
-u32 var001b0310 = 0x00000000;
-u32 var001b0314 = 0x00000000;
-u32 var001b0318 = 0x00000000;
-u32 var001b031c = 0x00000000;
-u32 var001b0320 = 0x00000000;
-u32 var001b0324 = 0x00000000;
-u32 var001b0328 = 0x00000000;
-u32 var001b032c = 0x00000000;
-u32 var001b0330 = 0x00000000;
-u32 var001b0334 = 0x00000000;
-u32 var001b0338 = 0x00000000;
-u32 var001b033c = 0x00000000;
-u32 var001b0340 = 0x00000000;
-u32 var001b0344 = 0x00000000;
-u32 var001b0348 = 0x00000000;
-u32 var001b034c = 0x00000000;
-u32 var001b0350 = 0x00000000;
-u32 var001b0354 = 0x00000000;
-u32 var001b0358 = 0x00000000;
-u32 var001b035c = 0x00000000;
-u32 var001b0360 = 0x00000000;
-u32 var001b0364 = 0x00000000;
-u32 var001b0368 = 0x00000000;
-u32 var001b036c = 0x00000000;
-u32 var001b0370 = 0x00000000;
-u32 var001b0374 = 0x00000000;
-u32 var001b0378 = 0x00000000;
-u32 var001b037c = 0x00000000;
-u32 var001b0380 = 0x00000000;
-u32 var001b0384 = 0x00000000;
-u32 var001b0388 = 0x00000000;
-u32 var001b038c = 0x00000000;
-u32 var001b0390 = 0x00000000;
-u32 var001b0394 = 0x00000000;
-u32 var001b0398 = 0x00000000;
-u32 var001b039c = 0x00000000;
-u32 var001b03a0 = 0x00000000;
-u32 var001b03a4 = 0x00000000;
-u32 var001b03a8 = 0x00000000;
-u32 var001b03ac = 0x00000000;
-u32 var001b03b0 = 0x00000000;
-u32 var001b03b4 = 0x00000000;
-u32 var001b03b8 = 0x00000000;
-u32 var001b03bc = 0x00000000;
-u32 var001b03c0 = 0x00000000;
-u32 var001b03c4 = 0x00000000;
-u32 var001b03c8 = 0x00000000;
-u32 var001b03cc = 0x00000000;
-u32 var001b03d0 = 0x00000000;
-u32 var001b03d4 = 0x00000000;
-u32 var001b03d8 = 0x00000000;
-u32 var001b03dc = 0x00000000;
-u32 var001b03e0 = 0x00000000;
-u32 var001b03e4 = 0x00000000;
-u32 var001b03e8 = 0x00000000;
-u32 var001b03ec = 0x00000000;
-u32 var001b03f0 = 0x00000000;
-u32 var001b03f4 = 0x00000000;
-u32 var001b03f8 = 0x00000000;
-u32 var001b03fc = 0x00000000;
-u32 var001b0400 = 0x00000000;
-u32 var001b0404 = 0x00000000;
-u32 var001b0408 = 0x00000000;
-u32 var001b040c = 0x00000000;
-u32 var001b0410 = 0x00000000;
-u32 var001b0414 = 0x00000000;
-u32 var001b0418 = 0x00000000;
-u32 var001b041c = 0x00000000;
-u32 var001b0420 = 0x00000000;
-u32 var001b0424 = 0x00000000;
-u32 var001b0428 = 0x00000000;
-u32 var001b042c = 0x00000000;
-u32 var001b0430 = 0x00000000;
-u32 var001b0434 = 0x00000000;
-u32 var001b0438 = 0x00000000;
-u32 var001b043c = 0x00000000;
-u32 var001b0440 = 0x00000000;
-u32 var001b0444 = 0x00000000;
-u32 var001b0448 = 0x00000000;
-u32 var001b044c = 0x00000000;
-u32 var001b0450 = 0x00000000;
-u32 var001b0454 = 0x00000000;
-u32 var001b0458 = 0x00000000;
-u32 var001b045c = 0x00000000;
-u32 var001b0460 = 0x00000000;
-u32 var001b0464 = 0x00000000;
-u32 var001b0468 = 0x00000000;
-u32 var001b046c = 0x00000000;
-u32 var001b0470 = 0x00000000;
-u32 var001b0474 = 0x00000000;
-u32 var001b0478 = 0x00000000;
-u32 var001b047c = 0x00000000;
-u32 var001b0480 = 0x00000000;
-u32 var001b0484 = 0x00000000;
-u32 var001b0488 = 0x00000000;
-u32 var001b048c = 0x00000000;
-u32 var001b0490 = 0x00000000;
-u32 var001b0494 = 0x00000000;
-u32 var001b0498 = 0x00000000;
-u32 var001b049c = 0x00000000;
-u32 var001b04a0 = 0x00000000;
-u32 var001b04a4 = 0x00000000;
-u32 var001b04a8 = 0x00000000;
-u32 var001b04ac = 0x00000000;
-u32 var001b04b0 = 0x00000000;
-u32 var001b04b4 = 0x00000000;
-u32 var001b04b8 = 0x00000000;
-u32 var001b04bc = 0x00000000;
-u32 var001b04c0 = 0x00000000;
-u32 var001b04c4 = 0x00000000;
-u32 var001b04c8 = 0x00000000;
-u32 var001b04cc = 0x00000000;
-u32 var001b04d0 = 0x00000000;
-u32 var001b04d4 = 0x00000000;
-u32 var001b04d8 = 0x00000000;
-u32 var001b04dc = 0x00000000;
-u32 var001b04e0 = 0x00000000;
-u32 var001b04e4 = 0x00000000;
-u32 var001b04e8 = 0x00000000;
-u32 var001b04ec = 0x00000000;
-u32 var001b04f0 = 0x00000000;
-u32 var001b04f4 = 0x00000000;
-u32 var001b04f8 = 0x00000000;
-u32 var001b04fc = 0x00000000;
-u32 var001b0500 = 0x00000000;
-u32 var001b0504 = 0x00000000;
-u32 var001b0508 = 0x00000000;
-u32 var001b050c = 0x00000000;
-u32 var001b0510 = 0x00000000;
-u32 var001b0514 = 0x00000000;
-u32 var001b0518 = 0x00000000;
-u32 var001b051c = 0x00000000;
-u32 var001b0520 = 0x00000000;
-u32 var001b0524 = 0x00000000;
-u32 var001b0528 = 0x00000000;
-u32 var001b052c = 0x00000000;
-u32 var001b0530 = 0x00000000;
-u32 var001b0534 = 0x00000000;
-u32 var001b0538 = 0x00000000;
-u32 var001b053c = 0x00000000;
-u32 var001b0540 = 0x00000000;
-u32 var001b0544 = 0x00000000;
-u32 var001b0548 = 0x00000000;
-u32 var001b054c = 0x00000000;
-u32 var001b0550 = 0x00000000;
-u32 var001b0554 = 0x00000000;
-u32 var001b0558 = 0x00000000;
-u32 var001b055c = 0x00000000;
-u32 var001b0560 = 0x00000000;
-u32 var001b0564 = 0x00000000;
-u32 var001b0568 = 0x00000000;
-u32 var001b056c = 0x00000000;
-u32 var001b0570 = 0x00000000;
-u32 var001b0574 = 0x00000000;
-u32 var001b0578 = 0x00000000;
-u32 var001b057c = 0x00000000;
-u32 var001b0580 = 0x00000000;
-u32 var001b0584 = 0x00000000;
-u32 var001b0588 = 0x00000000;
-u32 var001b058c = 0x00000000;
-u32 var001b0590 = 0x00000000;
-u32 var001b0594 = 0x00000000;
-u32 var001b0598 = 0x00000000;
-u32 var001b059c = 0x00000000;
-u32 var001b05a0 = 0x00000000;
-u32 var001b05a4 = 0x00000000;
-u32 var001b05a8 = 0x00000000;
-u32 var001b05ac = 0x00000000;
-u32 var001b05b0 = 0x00000000;
-u32 var001b05b4 = 0x00000000;
-u32 var001b05b8 = 0x00000000;
-u32 var001b05bc = 0x00000000;
-u32 var001b05c0 = 0x00000000;
-u32 var001b05c4 = 0x00000000;
-u32 var001b05c8 = 0x00000000;
-u32 var001b05cc = 0x00000000;
-u32 var001b05d0 = 0x00000000;
-u32 var001b05d4 = 0x00000000;
-u32 var001b05d8 = 0x00000000;
-u32 var001b05dc = 0x00000000;
-u32 var001b05e0 = 0x00000000;
-u32 var001b05e4 = 0x00000000;
-u32 var001b05e8 = 0x00000000;
-u32 var001b05ec = 0x00000000;
-u32 var001b05f0 = 0x00000000;
-u32 var001b05f4 = 0x00000000;
-u32 var001b05f8 = 0x00000000;
-u32 var001b05fc = 0x00000000;
-u32 var001b0600 = 0x00000000;
-u32 var001b0604 = 0x00000000;
-u32 var001b0608 = 0x00000000;
-u32 var001b060c = 0x00000000;
-u32 var001b0610 = 0x00000000;
-u32 var001b0614 = 0x00000000;
-u32 var001b0618 = 0x00000000;
-u32 var001b061c = 0x00000000;
-u32 var001b0620 = 0x00000000;
-u32 var001b0624 = 0x00000000;
-u32 var001b0628 = 0x00000000;
-u32 var001b062c = 0x00000000;
-u32 var001b0630 = 0x00000000;
-u32 var001b0634 = 0x00000000;
-u32 var001b0638 = 0x00000000;
-u32 var001b063c = 0x00000000;
-u32 var001b0640 = 0x00000000;
-u32 var001b0644 = 0x00000000;
-u32 var001b0648 = 0x00000000;
-u32 var001b064c = 0x00000000;
-u32 var001b0650 = 0x00000000;
-u32 var001b0654 = 0x00000000;
-u32 var001b0658 = 0x00000000;
-u32 var001b065c = 0x00000000;
-u32 var001b0660 = 0x00000000;
-u32 var001b0664 = 0x00000000;
-u32 var001b0668 = 0x00000000;
-u32 var001b066c = 0x00000000;
-u32 var001b0670 = 0x00000000;
-u32 var001b0674 = 0x00000000;
-u32 var001b0678 = 0x00000000;
-u32 var001b067c = 0x00000000;
-u32 var001b0680 = 0x00000000;
-u32 var001b0684 = 0x00000000;
-u32 var001b0688 = 0x00000000;
-u32 var001b068c = 0x00000000;
-u32 var001b0690 = 0x00000000;
-u32 var001b0694 = 0x00000000;
-u32 var001b0698 = 0x00000000;
-u32 var001b069c = 0x00000000;
-u32 var001b06a0 = 0x00000000;
-u32 var001b06a4 = 0x00000000;
-u32 var001b06a8 = 0x00000000;
-u32 var001b06ac = 0x00000000;
-u32 var001b06b0 = 0x00000000;
-u32 var001b06b4 = 0x00000000;
-u32 var001b06b8 = 0x00000000;
-u32 var001b06bc = 0x00000000;
-u32 var001b06c0 = 0x00000000;
-u32 var001b06c4 = 0x00000000;
-u32 var001b06c8 = 0x00000000;
-u32 var001b06cc = 0x00000000;
-u32 var001b06d0 = 0x00000000;
-u32 var001b06d4 = 0x00000000;
-u32 var001b06d8 = 0x00000000;
-u32 var001b06dc = 0x00000000;
-u32 var001b06e0 = 0x00000000;
-u32 var001b06e4 = 0x00000000;
-u32 var001b06e8 = 0x00000000;
-u32 var001b06ec = 0x00000000;
-u32 var001b06f0 = 0x00000000;
-u32 var001b06f4 = 0x00000000;
-u32 var001b06f8 = 0x00000000;
-u32 var001b06fc = 0x00000000;
-u32 var001b0700 = 0x00000000;
-u32 var001b0704 = 0x00000000;
-u32 var001b0708 = 0x00000000;
-u32 var001b070c = 0x00000000;
-u32 var001b0710 = 0x00000000;
-u32 var001b0714 = 0x00000000;
-u32 var001b0718 = 0x00000000;
-u32 var001b071c = 0x00000000;
-u32 var001b0720 = 0x00000000;
-u32 var001b0724 = 0x00000000;
-u32 var001b0728 = 0x00000000;
-u32 var001b072c = 0x00000000;
-u32 var001b0730 = 0x00000000;
-u32 var001b0734 = 0x00000000;
-u32 var001b0738 = 0x00000000;
-u32 var001b073c = 0x00000000;
-u32 var001b0740 = 0x00000000;
-u32 var001b0744 = 0x00000000;
-u32 var001b0748 = 0x00000000;
-u32 var001b074c = 0x00000000;
-u32 var001b0750 = 0x00000000;
-u32 var001b0754 = 0x00000000;
-u32 var001b0758 = 0x00000000;
-u32 var001b075c = 0x00000000;
-u32 var001b0760 = 0x00000000;
-u32 var001b0764 = 0x00000000;
-u32 var001b0768 = 0x00000000;
-u32 var001b076c = 0x00000000;
-u32 var001b0770 = 0x00000000;
-u32 var001b0774 = 0x00000000;
-u32 var001b0778 = 0x00000000;
-u32 var001b077c = 0x00000000;
-u32 var001b0780 = 0x00000000;
-u32 var001b0784 = 0x00000000;
-u32 var001b0788 = 0x00000000;
-u32 var001b078c = 0x00000000;
-u32 var001b0790 = 0x00000000;
-u32 var001b0794 = 0x00000000;
-u32 var001b0798 = 0x00000000;
-u32 var001b079c = 0x00000000;
-u32 var001b07a0 = 0x00000000;
-u32 var001b07a4 = 0x00000000;
-u32 var001b07a8 = 0x00000000;
-u32 var001b07ac = 0x00000000;
-u32 var001b07b0 = 0x00000000;
-u32 var001b07b4 = 0x00000000;
-u32 var001b07b8 = 0x00000000;
-u32 var001b07bc = 0x00000000;
-u32 var001b07c0 = 0x00000000;
-u32 var001b07c4 = 0x00000000;
-u32 var001b07c8 = 0x00000000;
-u32 var001b07cc = 0x00000000;
-u32 var001b07d0 = 0x00000000;
-u32 var001b07d4 = 0x00000000;
-u32 var001b07d8 = 0x00000000;
-u32 var001b07dc = 0x00000000;
-u32 var001b07e0 = 0x00000000;
-u32 var001b07e4 = 0x00000000;
-u32 var001b07e8 = 0x00000000;
-u32 var001b07ec = 0x00000000;
-u32 var001b07f0 = 0x00000000;
-u32 var001b07f4 = 0x00000000;
-u32 var001b07f8 = 0x00000000;
-u32 var001b07fc = 0x00000000;
-u32 var001b0800 = 0x00000000;
-u32 var001b0804 = 0x00000000;
-u32 var001b0808 = 0x00000000;
-u32 var001b080c = 0x00000000;
-u32 var001b0810 = 0x00000000;
-u32 var001b0814 = 0x00000000;
-u32 var001b0818 = 0x00000000;
-u32 var001b081c = 0x00000000;
-u32 var001b0820 = 0x00000000;
-u32 var001b0824 = 0x00000000;
-u32 var001b0828 = 0x00000000;
-u32 var001b082c = 0x00000000;
-u32 var001b0830 = 0x00000000;
-u32 var001b0834 = 0x00000000;
-u32 var001b0838 = 0x00000000;
-u32 var001b083c = 0x00000000;
-u32 var001b0840 = 0x00000000;
-u32 var001b0844 = 0x00000000;
-u32 var001b0848 = 0x00000000;
-u32 var001b084c = 0x00000000;
-u32 var001b0850 = 0x00000000;
-u32 var001b0854 = 0x00000000;
-u32 var001b0858 = 0x00000000;
-u32 var001b085c = 0x00000000;
-u32 var001b0860 = 0x00000000;
-u32 var001b0864 = 0x00000000;
-u32 var001b0868 = 0x00000000;
-u32 var001b086c = 0x00000000;
-u32 var001b0870 = 0x00000000;
-u32 var001b0874 = 0x00000000;
-u32 var001b0878 = 0x00000000;
-u32 var001b087c = 0x00000000;
-u32 var001b0880 = 0x00000000;
-u32 var001b0884 = 0x00000000;
-u32 var001b0888 = 0x00000000;
-u32 var001b088c = 0x00000000;
-u32 var001b0890 = 0x00000000;
-u32 var001b0894 = 0x00000000;
-u32 var001b0898 = 0x00000000;
-u32 var001b089c = 0x00000000;
-u32 var001b08a0 = 0x00000000;
-u32 var001b08a4 = 0x00000000;
-u32 var001b08a8 = 0x00000000;
-u32 var001b08ac = 0x00000000;
-u32 var001b08b0 = 0x00000000;
-u32 var001b08b4 = 0x00000000;
-u32 var001b08b8 = 0x00000000;
-u32 var001b08bc = 0x00000000;
-u32 var001b08c0 = 0x00000000;
-u32 var001b08c4 = 0x00000000;
-u32 var001b08c8 = 0x00000000;
-u32 var001b08cc = 0x00000000;
-u32 var001b08d0 = 0x00000000;
-u32 var001b08d4 = 0x00000000;
-u32 var001b08d8 = 0x00000000;
-u32 var001b08dc = 0x00000000;
-u32 var001b08e0 = 0x00000000;
-u32 var001b08e4 = 0x00000000;
-u32 var001b08e8 = 0x00000000;
-u32 var001b08ec = 0x00000000;
-u32 var001b08f0 = 0x00000000;
-u32 var001b08f4 = 0x00000000;
-u32 var001b08f8 = 0x00000000;
-u32 var001b08fc = 0x00000000;
-u32 var001b0900 = 0x00000000;
-u32 var001b0904 = 0x00000000;
-u32 var001b0908 = 0x00000000;
-u32 var001b090c = 0x00000000;
-u32 var001b0910 = 0x00000000;
-u32 var001b0914 = 0x00000000;
-u32 var001b0918 = 0x00000000;
-u32 var001b091c = 0x00000000;
-u32 var001b0920 = 0x00000000;
-u32 var001b0924 = 0x00000000;
-u32 var001b0928 = 0x00000000;
-u32 var001b092c = 0x00000000;
-u32 var001b0930 = 0x00000000;
-u32 var001b0934 = 0x00000000;
-u32 var001b0938 = 0x00000000;
-u32 var001b093c = 0x00000000;
-u32 var001b0940 = 0x00000000;
-u32 var001b0944 = 0x00000000;
-u32 var001b0948 = 0x00000000;
-u32 var001b094c = 0x00000000;
-u32 var001b0950 = 0x00000000;
-u32 var001b0954 = 0x00000000;
-u32 var001b0958 = 0x00000000;
-u32 var001b095c = 0x00000000;
-u32 var001b0960 = 0x00000000;
-u32 var001b0964 = 0x00000000;
-u32 var001b0968 = 0x00000000;
-u32 var001b096c = 0x00000000;
-u32 var001b0970 = 0x00000000;
-u32 var001b0974 = 0x00000000;
-u32 var001b0978 = 0x00000000;
-u32 var001b097c = 0x00000000;
-u32 var001b0980 = 0x00000000;
-u32 var001b0984 = 0x00000000;
-u32 var001b0988 = 0x00000000;
-u32 var001b098c = 0x00000000;
-u32 var001b0990 = 0x00000000;
-u32 var001b0994 = 0x00000000;
-u32 var001b0998 = 0x00000000;
-u32 var001b099c = 0x00000000;
-u32 var001b09a0 = 0x00000000;
-u32 var001b09a4 = 0x00000000;
-u32 var001b09a8 = 0x00000000;
-u32 var001b09ac = 0x00000000;
-u32 var001b09b0 = 0x00000000;
-u32 var001b09b4 = 0x00000000;
-u32 var001b09b8 = 0x00000000;
-u32 var001b09bc = 0x00000000;
-u32 var001b09c0 = 0x00000000;
-u32 var001b09c4 = 0x00000000;
-u32 var001b09c8 = 0x00000000;
-u32 var001b09cc = 0x00000000;
-u32 var001b09d0 = 0x00000000;
-u32 var001b09d4 = 0x00000000;
-u32 var001b09d8 = 0x00000000;
-u32 var001b09dc = 0x00000000;
-u32 var001b09e0 = 0x00000000;
-u32 var001b09e4 = 0x00000000;
-u32 var001b09e8 = 0x00000000;
-u32 var001b09ec = 0x00000000;
-u32 var001b09f0 = 0x00000000;
-u32 var001b09f4 = 0x00000000;
-u32 var001b09f8 = 0x00000000;
-u32 var001b09fc = 0x00000000;
-u32 var001b0a00 = 0x00000000;
-u32 var001b0a04 = 0x00000000;
-u32 var001b0a08 = 0x00000000;
-u32 var001b0a0c = 0x00000000;
-u32 var001b0a10 = 0x00000000;
-u32 var001b0a14 = 0x00000000;
-u32 var001b0a18 = 0x00000000;
-u32 var001b0a1c = 0x00000000;
-u32 var001b0a20 = 0x00000000;
-u32 var001b0a24 = 0x00000000;
-u32 var001b0a28 = 0x00000000;
-u32 var001b0a2c = 0x00000000;
-u32 var001b0a30 = 0x00000000;
-u32 var001b0a34 = 0x00000000;
-u32 var001b0a38 = 0x00000000;
-u32 var001b0a3c = 0x00000000;
-u32 var001b0a40 = 0x00000000;
-u32 var001b0a44 = 0x00000000;
-u32 var001b0a48 = 0x00000000;
-u32 var001b0a4c = 0x00000000;
-u32 var001b0a50 = 0x00000000;
-u32 var001b0a54 = 0x00000000;
-u32 var001b0a58 = 0x00000000;
-u32 var001b0a5c = 0x00000000;
-u32 var001b0a60 = 0x00000000;
-u32 var001b0a64 = 0x00000000;
-u32 var001b0a68 = 0x00000000;
-u32 var001b0a6c = 0x00000000;
-u32 var001b0a70 = 0x00000000;
-u32 var001b0a74 = 0x00000000;
-u32 var001b0a78 = 0x00000000;
-u32 var001b0a7c = 0x00000000;
-u32 var001b0a80 = 0x00000000;
-u32 var001b0a84 = 0x00000000;
-u32 var001b0a88 = 0x00000000;
-u32 var001b0a8c = 0x00000000;
-u32 var001b0a90 = 0x00000000;
-u32 var001b0a94 = 0x00000000;
-u32 var001b0a98 = 0x00000000;
-u32 var001b0a9c = 0x00000000;
-u32 var001b0aa0 = 0x00000000;
-u32 var001b0aa4 = 0x00000000;
-u32 var001b0aa8 = 0x00000000;
-u32 var001b0aac = 0x00000000;
-u32 var001b0ab0 = 0x00000000;
-u32 var001b0ab4 = 0x00000000;
-u32 var001b0ab8 = 0x00000000;
-u32 var001b0abc = 0x00000000;
-u32 var001b0ac0 = 0x00000000;
-u32 var001b0ac4 = 0x00000000;
-u32 var001b0ac8 = 0x00000000;
-u32 var001b0acc = 0x00000000;
-u32 var001b0ad0 = 0x00000000;
-u32 var001b0ad4 = 0x00000000;
-u32 var001b0ad8 = 0x00000000;
-u32 var001b0adc = 0x00000000;
-u32 var001b0ae0 = 0x00000000;
-u32 var001b0ae4 = 0x00000000;
-u32 var001b0ae8 = 0x00000000;
-u32 var001b0aec = 0x00000000;
-u32 var001b0af0 = 0x00000000;
-u32 var001b0af4 = 0x00000000;
-u32 var001b0af8 = 0x00000000;
-u32 var001b0afc = 0x00000000;
-u32 var001b0b00 = 0x00000000;
-u32 var001b0b04 = 0x00000000;
-u32 var001b0b08 = 0x00000000;
-u32 var001b0b0c = 0x00000000;
-u32 var001b0b10 = 0x00000000;
-u32 var001b0b14 = 0x00000000;
-u32 var001b0b18 = 0x00000000;
-u32 var001b0b1c = 0x00000000;
-u32 var001b0b20 = 0x00000000;
-u32 var001b0b24 = 0x00000000;
-u32 var001b0b28 = 0x00000000;
-u32 var001b0b2c = 0x00000000;
-u32 var001b0b30 = 0x00000000;
-u32 var001b0b34 = 0x00000000;
-u32 var001b0b38 = 0x00000000;
-u32 var001b0b3c = 0x00000000;
-u32 var001b0b40 = 0x00000000;
-u32 var001b0b44 = 0x00000000;
-u32 var001b0b48 = 0x00000000;
-u32 var001b0b4c = 0x00000000;
-u32 var001b0b50 = 0x00000000;
-u32 var001b0b54 = 0x00000000;
-u32 var001b0b58 = 0x00000000;
-u32 var001b0b5c = 0x00000000;
-u32 var001b0b60 = 0x00000000;
-u32 var001b0b64 = 0x00000000;
-u32 var001b0b68 = 0x00000000;
-u32 var001b0b6c = 0x00000000;
-u32 var001b0b70 = 0x00000000;
-u32 var001b0b74 = 0x00000000;
-u32 var001b0b78 = 0x00000000;
-u32 var001b0b7c = 0x00000000;
-u32 var001b0b80 = 0x00000000;
-u32 var001b0b84 = 0x00000000;
-u32 var001b0b88 = 0x00000000;
-u32 var001b0b8c = 0x00000000;
-u32 var001b0b90 = 0x00000000;
-u32 var001b0b94 = 0x00000000;
-u32 var001b0b98 = 0x00000000;
-u32 var001b0b9c = 0x00000000;
-u32 var001b0ba0 = 0x00000000;
-u32 var001b0ba4 = 0x00000000;
-u32 var001b0ba8 = 0x00000000;
-u32 var001b0bac = 0x00000000;
-u32 var001b0bb0 = 0x00000000;
-u32 var001b0bb4 = 0x00000000;
-u32 var001b0bb8 = 0x00000000;
-u32 var001b0bbc = 0x00000000;
-u32 var001b0bc0 = 0x00000000;
-u32 var001b0bc4 = 0x00000000;
-u32 var001b0bc8 = 0x00000000;
-u32 var001b0bcc = 0x00000000;
-u32 var001b0bd0 = 0x00000000;
-u32 var001b0bd4 = 0x00000000;
-u32 var001b0bd8 = 0x00000000;
-u32 var001b0bdc = 0x00000000;
-u32 var001b0be0 = 0x00000000;
-u32 var001b0be4 = 0x00000000;
-u32 var001b0be8 = 0x00000000;
-u32 var001b0bec = 0x00000000;
-u32 var001b0bf0 = 0x00000000;
-u32 var001b0bf4 = 0x00000000;
-u32 var001b0bf8 = 0x00000000;
-u32 var001b0bfc = 0x00000000;
-u32 var001b0c00 = 0x00000000;
-u32 var001b0c04 = 0x00000000;
-u32 var001b0c08 = 0x00000000;
-u32 var001b0c0c = 0x00000000;
-u32 var001b0c10 = 0x00000000;
-u32 var001b0c14 = 0x00000000;
-u32 var001b0c18 = 0x00000000;
-u32 var001b0c1c = 0x00000000;
-u32 var001b0c20 = 0x00000000;
-u32 var001b0c24 = 0x00000000;
-u32 var001b0c28 = 0x00000000;
-u32 var001b0c2c = 0x00000000;
-u32 var001b0c30 = 0x00000000;
-u32 var001b0c34 = 0x00000000;
-u32 var001b0c38 = 0x00000000;
-u32 var001b0c3c = 0x00000000;
-u32 var001b0c40 = 0x00000000;
-u32 var001b0c44 = 0x00000000;
-u32 var001b0c48 = 0x00000000;
-u32 var001b0c4c = 0x00000000;
-u32 var001b0c50 = 0x00000000;
-u32 var001b0c54 = 0x00000000;
-u32 var001b0c58 = 0x00000000;
-u32 var001b0c5c = 0x00000000;
-u32 var001b0c60 = 0x00000000;
-u32 var001b0c64 = 0x00000000;
-u32 var001b0c68 = 0x00000000;
-u32 var001b0c6c = 0x00000000;
-u32 var001b0c70 = 0x00000000;
-u32 var001b0c74 = 0x00000000;
-u32 var001b0c78 = 0x00000000;
-u32 var001b0c7c = 0x00000000;
-u32 var001b0c80 = 0x00000000;
-u32 var001b0c84 = 0x00000000;
-u32 var001b0c88 = 0x00000000;
-u32 var001b0c8c = 0x00000000;
-u32 var001b0c90 = 0x00000000;
-u32 var001b0c94 = 0x00000000;
-u32 var001b0c98 = 0x00000000;
-u32 var001b0c9c = 0x00000000;
-u32 var001b0ca0 = 0x00000000;
-u32 var001b0ca4 = 0x00000000;
-u32 var001b0ca8 = 0x00000000;
-u32 var001b0cac = 0x00000000;
-u32 var001b0cb0 = 0x00000000;
-u32 var001b0cb4 = 0x00000000;
-u32 var001b0cb8 = 0x00000000;
-u32 var001b0cbc = 0x00000000;
-u32 var001b0cc0 = 0x00000000;
-u32 var001b0cc4 = 0x00000000;
-u32 var001b0cc8 = 0x00000000;
-u32 var001b0ccc = 0x00000000;
-u32 var001b0cd0 = 0x00000000;
-u32 var001b0cd4 = 0x00000000;
-u32 var001b0cd8 = 0x00000000;
-u32 var001b0cdc = 0x00000000;
-u32 var001b0ce0 = 0x00000000;
-u32 var001b0ce4 = 0x00000000;
-u32 var001b0ce8 = 0x00000000;
-u32 var001b0cec = 0x00000000;
-u32 var001b0cf0 = 0x00000000;
-u32 var001b0cf4 = 0x00000000;
-u32 var001b0cf8 = 0x00000000;
-u32 var001b0cfc = 0x00000000;
-u32 var001b0d00 = 0x00000000;
-u32 var001b0d04 = 0x00000000;
-u32 var001b0d08 = 0x00000000;
-u32 var001b0d0c = 0x00000000;
-u32 var001b0d10 = 0x00000000;
-u32 var001b0d14 = 0x00000000;
-u32 var001b0d18 = 0x00000000;
-u32 var001b0d1c = 0x00000000;
-u32 var001b0d20 = 0x00000000;
-u32 var001b0d24 = 0x00000000;
-u32 var001b0d28 = 0x00000000;
-u32 var001b0d2c = 0x00000000;
-u32 var001b0d30 = 0x00000000;
-u32 var001b0d34 = 0x00000000;
-u32 var001b0d38 = 0x00000000;
-u32 var001b0d3c = 0x00000000;
-u32 var001b0d40 = 0x00000000;
-u32 var001b0d44 = 0x00000000;
-u32 var001b0d48 = 0x00000000;
-u32 var001b0d4c = 0x00000000;
-u32 var001b0d50 = 0x00000000;
-u32 var001b0d54 = 0x00000000;
-u32 var001b0d58 = 0x00000000;
-u32 var001b0d5c = 0x00000000;
-u32 var001b0d60 = 0x00000000;
-u32 var001b0d64 = 0x00000000;
-u32 var001b0d68 = 0x00000000;
-u32 var001b0d6c = 0x00000000;
-u32 var001b0d70 = 0x00000000;
-u32 var001b0d74 = 0x00000000;
-u32 var001b0d78 = 0x00000000;
-u32 var001b0d7c = 0x00000000;
-u32 var001b0d80 = 0x00000000;
-u32 var001b0d84 = 0x00000000;
-u32 var001b0d88 = 0x00000000;
-u32 var001b0d8c = 0x00000000;
-u32 var001b0d90 = 0x00000000;
-u32 var001b0d94 = 0x00000000;
-u32 var001b0d98 = 0x00000000;
-u32 var001b0d9c = 0x00000000;
-u32 var001b0da0 = 0x00000000;
-u32 var001b0da4 = 0x00000000;
-u32 var001b0da8 = 0x00000000;
-u32 var001b0dac = 0x00000000;
-u32 var001b0db0 = 0x00000000;
-u32 var001b0db4 = 0x00000000;
-u32 var001b0db8 = 0x00000000;
-u32 var001b0dbc = 0x00000000;
-u32 var001b0dc0 = 0x00000000;
-u32 var001b0dc4 = 0x00000000;
-u32 var001b0dc8 = 0x00000000;
-u32 var001b0dcc = 0x00000000;
-u32 var001b0dd0 = 0x00000000;
-u32 var001b0dd4 = 0x00000000;
-u32 var001b0dd8 = 0x00000000;
-u32 var001b0ddc = 0x00000000;
-u32 var001b0de0 = 0x00000000;
-u32 var001b0de4 = 0x00000000;
-u32 var001b0de8 = 0x00000000;
-u32 var001b0dec = 0x00000000;
-u32 var001b0df0 = 0x00000000;
-u32 var001b0df4 = 0x00000000;
-u32 var001b0df8 = 0x00000000;
-u32 var001b0dfc = 0x00000000;
-u32 var001b0e00 = 0x00000000;
-u32 var001b0e04 = 0x00000000;
-u32 var001b0e08 = 0x00000000;
-u32 var001b0e0c = 0x00000000;
-u32 var001b0e10 = 0x00000000;
-u32 var001b0e14 = 0x00000000;
-u32 var001b0e18 = 0x00000000;
-u32 var001b0e1c = 0x00000000;
-u32 var001b0e20 = 0x00000000;
-u32 var001b0e24 = 0x00000000;
-u32 var001b0e28 = 0x00000000;
-u32 var001b0e2c = 0x00000000;
-u32 var001b0e30 = 0x00000000;
-u32 var001b0e34 = 0x00000000;
-u32 var001b0e38 = 0x00000000;
-u32 var001b0e3c = 0x00000000;
-u32 var001b0e40 = 0x00000000;
-u32 var001b0e44 = 0x00000000;
-u32 var001b0e48 = 0x00000000;
-u32 var001b0e4c = 0x00000000;
-u32 var001b0e50 = 0x00000000;
-u32 var001b0e54 = 0x00000000;
-u32 var001b0e58 = 0x00000000;
-u32 var001b0e5c = 0x00000000;
-u32 var001b0e60 = 0x00000000;
-u32 var001b0e64 = 0x00000000;
-u32 var001b0e68 = 0x00000000;
-u32 var001b0e6c = 0x00000000;
-u32 var001b0e70 = 0x00000000;
-u32 var001b0e74 = 0x00000000;
-u32 var001b0e78 = 0x00000000;
-u32 var001b0e7c = 0x00000000;
-u32 var001b0e80 = 0x00000000;
-u32 var001b0e84 = 0x00000000;
-u32 var001b0e88 = 0x00000000;
-u32 var001b0e8c = 0x00000000;
-u32 var001b0e90 = 0x00000000;
-u32 var001b0e94 = 0x00000000;
-u32 var001b0e98 = 0x00000000;
-u32 var001b0e9c = 0x00000000;
-u32 var001b0ea0 = 0x00000000;
-u32 var001b0ea4 = 0x00000000;
-u32 var001b0ea8 = 0x00000000;
-u32 var001b0eac = 0x00000000;
-u32 var001b0eb0 = 0x00000000;
-u32 var001b0eb4 = 0x00000000;
-u32 var001b0eb8 = 0x00000000;
-u32 var001b0ebc = 0x00000000;
-u32 var001b0ec0 = 0x00000000;
-u32 var001b0ec4 = 0x00000000;
-u32 var001b0ec8 = 0x00000000;
-u32 var001b0ecc = 0x00000000;
-u32 var001b0ed0 = 0x00000000;
-u32 var001b0ed4 = 0x00000000;
-u32 var001b0ed8 = 0x00000000;
-u32 var001b0edc = 0x00000000;
-u32 var001b0ee0 = 0x00000000;
-u32 var001b0ee4 = 0x00000000;
-u32 var001b0ee8 = 0x00000000;
-u32 var001b0eec = 0x00000000;
-u32 var001b0ef0 = 0x00000000;
-u32 var001b0ef4 = 0x00000000;
-u32 var001b0ef8 = 0x00000000;
-u32 var001b0efc = 0x00000000;
-u32 var001b0f00 = 0x00000000;
-u32 var001b0f04 = 0x00000000;
-u32 var001b0f08 = 0x00000000;
-u32 var001b0f0c = 0x00000000;
-u32 var001b0f10 = 0x00000000;
-u32 var001b0f14 = 0x00000000;
-u32 var001b0f18 = 0x00000000;
-u32 var001b0f1c = 0x00000000;
-u32 var001b0f20 = 0x00000000;
-u32 var001b0f24 = 0x00000000;
-u32 var001b0f28 = 0x00000000;
-u32 var001b0f2c = 0x00000000;
-u32 var001b0f30 = 0x00000000;
-u32 var001b0f34 = 0x00000000;
-u32 var001b0f38 = 0x00000000;
-u32 var001b0f3c = 0x00000000;
-u32 var001b0f40 = 0x00000000;
-u32 var001b0f44 = 0x00000000;
-u32 var001b0f48 = 0x00000000;
-u32 var001b0f4c = 0x00000000;
-u32 var001b0f50 = 0x00000000;
-u32 var001b0f54 = 0x00000000;
-u32 var001b0f58 = 0x00000000;
-u32 var001b0f5c = 0x00000000;
-u32 var001b0f60 = 0x00000000;
-u32 var001b0f64 = 0x00000000;
-u32 var001b0f68 = 0x00000000;
-u32 var001b0f6c = 0x00000000;
-u32 var001b0f70 = 0x00000000;
-u32 var001b0f74 = 0x00000000;
-u32 var001b0f78 = 0x00000000;
-u32 var001b0f7c = 0x00000000;
-u32 var001b0f80 = 0x00000000;
-u32 var001b0f84 = 0x00000000;
-u32 var001b0f88 = 0x00000000;
-u32 var001b0f8c = 0x00000000;
-u32 var001b0f90 = 0x00000000;
-u32 var001b0f94 = 0x00000000;
-u32 var001b0f98 = 0x00000000;
-u32 var001b0f9c = 0x00000000;
-u32 var001b0fa0 = 0x00000000;
-u32 var001b0fa4 = 0x00000000;
-u32 var001b0fa8 = 0x00000000;
-u32 var001b0fac = 0x00000000;
-u32 var001b0fb0 = 0x00000000;
-u32 var001b0fb4 = 0x00000000;
-u32 var001b0fb8 = 0x00000000;
-u32 var001b0fbc = 0x00000000;
-u32 var001b0fc0 = 0x00000000;
-u32 var001b0fc4 = 0x00000000;
-u32 var001b0fc8 = 0x00000000;
-u32 var001b0fcc = 0x00000000;
-u32 var001b0fd0 = 0x00000000;
-u32 var001b0fd4 = 0x00000000;
-u32 var001b0fd8 = 0x00000000;
-u32 var001b0fdc = 0x00000000;
-u32 var001b0fe0 = 0x00000000;
-u32 var001b0fe4 = 0x00000000;
-u32 var001b0fe8 = 0x00000000;
-u32 var001b0fec = 0x00000000;
-u32 var001b0ff0 = 0x00000000;
-u32 var001b0ff4 = 0x00000000;
-u32 var001b0ff8 = 0x00000000;
-u32 var001b0ffc = 0x00000000;
-u32 var001b1000 = 0x00000000;
-u32 var001b1004 = 0x00000000;
-u32 var001b1008 = 0x00000000;
-u32 var001b100c = 0x00000000;
-u32 var001b1010 = 0x00000000;
-u32 var001b1014 = 0x00000000;
-u32 var001b1018 = 0x00000000;
-u32 var001b101c = 0x00000000;
-u32 var001b1020 = 0x00000000;
-u32 var001b1024 = 0x00000000;
-u32 var001b1028 = 0x00000000;
-u32 var001b102c = 0x00000000;
-u32 var001b1030 = 0x00000000;
-u32 var001b1034 = 0x00000000;
-u32 var001b1038 = 0x00000000;
-u32 var001b103c = 0x00000000;
-u32 var001b1040 = 0x00000000;
-u32 var001b1044 = 0x00000000;
-u32 var001b1048 = 0x00000000;
-u32 var001b104c = 0x00000000;
-u32 var001b1050 = 0x00000000;
-u32 var001b1054 = 0x00000000;
-u32 var001b1058 = 0x00000000;
-u32 var001b105c = 0x00000000;
-u32 var001b1060 = 0x00000000;
-u32 var001b1064 = 0x00000000;
-u32 var001b1068 = 0x00000000;
-u32 var001b106c = 0x00000000;
-u32 var001b1070 = 0x00000000;
-u32 var001b1074 = 0x00000000;
-u32 var001b1078 = 0x00000000;
-u32 var001b107c = 0x00000000;
-u32 var001b1080 = 0x00000000;
-u32 var001b1084 = 0x00000000;
-u32 var001b1088 = 0x00000000;
-u32 var001b108c = 0x00000000;
-u32 var001b1090 = 0x00000000;
-u32 var001b1094 = 0x00000000;
-u32 var001b1098 = 0x00000000;
-u32 var001b109c = 0x00000000;
-u32 var001b10a0 = 0x00000000;
-u32 var001b10a4 = 0x00000000;
-u32 var001b10a8 = 0x00000000;
-u32 var001b10ac = 0x00000000;
-u32 var001b10b0 = 0x00000000;
-u32 var001b10b4 = 0x00000000;
-u32 var001b10b8 = 0x00000000;
-u32 var001b10bc = 0x00000000;
-u32 var001b10c0 = 0x00000000;
-u32 var001b10c4 = 0x00000000;
-u32 var001b10c8 = 0x00000000;
-u32 var001b10cc = 0x00000000;
-u32 var001b10d0 = 0x00000000;
-u32 var001b10d4 = 0x00000000;
-u32 var001b10d8 = 0x00000000;
-u32 var001b10dc = 0x00000000;
-u32 var001b10e0 = 0x00000000;
-u32 var001b10e4 = 0x00000000;
-u32 var001b10e8 = 0x00000000;
-u32 var001b10ec = 0x00000000;
-u32 var001b10f0 = 0x00000000;
-u32 var001b10f4 = 0x00000000;
-u32 var001b10f8 = 0x00000000;
-u32 var001b10fc = 0x00000000;
-u32 var001b1100 = 0x00000000;
-u32 var001b1104 = 0x00000000;
-u32 var001b1108 = 0x00000000;
-u32 var001b110c = 0x00000000;
-u32 var001b1110 = 0x00000000;
-u32 var001b1114 = 0x00000000;
-u32 var001b1118 = 0x00000000;
-u32 var001b111c = 0x00000000;
-u32 var001b1120 = 0x00000000;
-u32 var001b1124 = 0x00000000;
-u32 var001b1128 = 0x00000000;
-u32 var001b112c = 0x00000000;
-u32 var001b1130 = 0x00000000;
-u32 var001b1134 = 0x00000000;
-u32 var001b1138 = 0x00000000;
-u32 var001b113c = 0x00000000;
-u32 var001b1140 = 0x00000000;
-u32 var001b1144 = 0x00000000;
-u32 var001b1148 = 0x00000000;
-u32 var001b114c = 0x00000000;
-u32 var001b1150 = 0x00000000;
-u32 var001b1154 = 0x00000000;
-u32 var001b1158 = 0x00000000;
-u32 var001b115c = 0x00000000;
-u32 var001b1160 = 0x00000000;
-u32 var001b1164 = 0x00000000;
-u32 var001b1168 = 0x00000000;
-u32 var001b116c = 0x00000000;
-u32 var001b1170 = 0x00000000;
-u32 var001b1174 = 0x00000000;
-u32 var001b1178 = 0x00000000;
-u32 var001b117c = 0x00000000;
-u32 var001b1180 = 0x00000000;
-u32 var001b1184 = 0x00000000;
-u32 var001b1188 = 0x00000000;
-u32 var001b118c = 0x00000000;
-u32 var001b1190 = 0x00000000;
-u32 var001b1194 = 0x00000000;
-u32 var001b1198 = 0x00000000;
-u32 var001b119c = 0x00000000;
-u32 var001b11a0 = 0x00000000;
-u32 var001b11a4 = 0x00000000;
-u32 var001b11a8 = 0x00000000;
-u32 var001b11ac = 0x00000000;
-u32 var001b11b0 = 0x00000000;
-u32 var001b11b4 = 0x00000000;
-u32 var001b11b8 = 0x00000000;
-u32 var001b11bc = 0x00000000;
-u32 var001b11c0 = 0x00000000;
-u32 var001b11c4 = 0x00000000;
-u32 var001b11c8 = 0x00000000;
-u32 var001b11cc = 0x00000000;
-u32 var001b11d0 = 0x00000000;
-u32 var001b11d4 = 0x00000000;
-u32 var001b11d8 = 0x00000000;
-u32 var001b11dc = 0x00000000;
-u32 var001b11e0 = 0x00000000;
-u32 var001b11e4 = 0x00000000;
-u32 var001b11e8 = 0x00000000;
-u32 var001b11ec = 0x00000000;
-u32 var001b11f0 = 0x00000000;
-u32 var001b11f4 = 0x00000000;
-u32 var001b11f8 = 0x00000000;
-u32 var001b11fc = 0x00000000;
-u32 var001b1200 = 0x00000000;
-u32 var001b1204 = 0x00000000;
-u32 var001b1208 = 0x00000000;
-u32 var001b120c = 0x00000000;
-u32 var001b1210 = 0x00000000;
-u32 var001b1214 = 0x00000000;
-u32 var001b1218 = 0x00000000;
-u32 var001b121c = 0x00000000;
-u32 var001b1220 = 0x00000000;
-u32 var001b1224 = 0x00000000;
-u32 var001b1228 = 0x00000000;
-u32 var001b122c = 0x00000000;
-u32 var001b1230 = 0x00000000;
-u32 var001b1234 = 0x00000000;
-u32 var001b1238 = 0x00000000;
-u32 var001b123c = 0x00000000;
-u32 var001b1240 = 0x00000000;
-u32 var001b1244 = 0x00000000;
-u32 var001b1248 = 0x00000000;
-u32 var001b124c = 0x00000000;
-u32 var001b1250 = 0x00000000;
-u32 var001b1254 = 0x00000000;
-u32 var001b1258 = 0x00000000;
-u32 var001b125c = 0x00000000;
-u32 var001b1260 = 0x00000000;
-u32 var001b1264 = 0x00000000;
-u32 var001b1268 = 0x00000000;
-u32 var001b126c = 0x00000000;
-u32 var001b1270 = 0x00000000;
-u32 var001b1274 = 0x00000000;
-u32 var001b1278 = 0x00000000;
-u32 var001b127c = 0x00000000;
-u32 var001b1280 = 0x00000000;
-u32 var001b1284 = 0x00000000;
-u32 var001b1288 = 0x00000000;
-u32 var001b128c = 0x00000000;
-u32 var001b1290 = 0x00000000;
-u32 var001b1294 = 0x00000000;
-u32 var001b1298 = 0x00000000;
-u32 var001b129c = 0x00000000;
-u32 var001b12a0 = 0x00000000;
-u32 var001b12a4 = 0x00000000;
-u32 var001b12a8 = 0x00000000;
-u32 var001b12ac = 0x00000000;
-u32 var001b12b0 = 0x00000000;
-u32 var001b12b4 = 0x00000000;
-u32 var001b12b8 = 0x00000000;
-u32 var001b12bc = 0x00000000;
-u32 var001b12c0 = 0x00000000;
-u32 var001b12c4 = 0x00000000;
-u32 var001b12c8 = 0x00000000;
-u32 var001b12cc = 0x00000000;
-u32 var001b12d0 = 0x00000000;
-u32 var001b12d4 = 0x00000000;
-u32 var001b12d8 = 0x00000000;
-u32 var001b12dc = 0x00000000;
-u32 var001b12e0 = 0x00000000;
-u32 var001b12e4 = 0x00000000;
-u32 var001b12e8 = 0x00000000;
-u32 var001b12ec = 0x00000000;
-u32 var001b12f0 = 0x00000000;
-u32 var001b12f4 = 0x00000000;
-u32 var001b12f8 = 0x00000000;
-u32 var001b12fc = 0x00000000;
-u32 var001b1300 = 0x00000000;
-u32 var001b1304 = 0x00000000;
-u32 var001b1308 = 0x00000000;
-u32 var001b130c = 0x00000000;
-u32 var001b1310 = 0x00000000;
-u32 var001b1314 = 0x00000000;
-u32 var001b1318 = 0x00000000;
-u32 var001b131c = 0x00000000;
-u32 var001b1320 = 0x00000000;
-u32 var001b1324 = 0x00000000;
-u32 var001b1328 = 0x00000000;
-u32 var001b132c = 0x00000000;
-u32 var001b1330 = 0x00000000;
-u32 var001b1334 = 0x00000000;
-u32 var001b1338 = 0x00000000;
-u32 var001b133c = 0x00000000;
-u32 var001b1340 = 0x00000000;
-u32 var001b1344 = 0x00000000;
-u32 var001b1348 = 0x00000000;
-u32 var001b134c = 0x00000000;
-u32 var001b1350 = 0x00000000;
-u32 var001b1354 = 0x00000000;
-u32 var001b1358 = 0x00000000;
-u32 var001b135c = 0x00000000;
-u32 var001b1360 = 0x00000000;
-u32 var001b1364 = 0x00000000;
-u32 var001b1368 = 0x00000000;
-u32 var001b136c = 0x00000000;
-u32 var001b1370 = 0x00000000;
-u32 var001b1374 = 0x00000000;
-u32 var001b1378 = 0x00000000;
-u32 var001b137c = 0x00000000;
-u32 var001b1380 = 0x00000000;
-u32 var001b1384 = 0x00000000;
-u32 var001b1388 = 0x00000000;
-u32 var001b138c = 0x00000000;
-u32 var001b1390 = 0x00000000;
-u32 var001b1394 = 0x00000000;
-u32 var001b1398 = 0x00000000;
-u32 var001b139c = 0x00000000;
-u32 var001b13a0 = 0x00000000;
-u32 var001b13a4 = 0x00000000;
-u32 var001b13a8 = 0x00000000;
-u32 var001b13ac = 0x00000000;
-u32 var001b13b0 = 0x00000000;
-u32 var001b13b4 = 0x00000000;
-u32 var001b13b8 = 0x00000000;
-u32 var001b13bc = 0x00000000;
-u32 var001b13c0 = 0x00000000;
-u32 var001b13c4 = 0x00000000;
-u32 var001b13c8 = 0x00000000;
-u32 var001b13cc = 0x00000000;
-u32 var001b13d0 = 0x00000000;
-u32 var001b13d4 = 0x00000000;
-u32 var001b13d8 = 0x00000000;
-u32 var001b13dc = 0x00000000;
-u32 var001b13e0 = 0x00000000;
-u32 var001b13e4 = 0x00000000;
-u32 var001b13e8 = 0x00000000;
-u32 var001b13ec = 0x00000000;
-u32 var001b13f0 = 0x00000000;
-u32 var001b13f4 = 0x00000000;
-u32 var001b13f8 = 0x00000000;
-u32 var001b13fc = 0x00000000;
-u32 var001b1400 = 0x00000000;
-u32 var001b1404 = 0x00000000;
-u32 var001b1408 = 0x00000000;
-u32 var001b140c = 0x00000000;
-u32 var001b1410 = 0x00000000;
-u32 var001b1414 = 0x00000000;
-u32 var001b1418 = 0x00000000;
-u32 var001b141c = 0x00000000;
-u32 var001b1420 = 0x00000000;
-u32 var001b1424 = 0x00000000;
-u32 var001b1428 = 0x00000000;
-u32 var001b142c = 0x00000000;
-u32 var001b1430 = 0x00000000;
-u32 var001b1434 = 0x00000000;
-u32 var001b1438 = 0x00000000;
-u32 var001b143c = 0x00000000;
-u32 var001b1440 = 0x00000000;
-u32 var001b1444 = 0x00000000;
-u32 var001b1448 = 0x00000000;
-u32 var001b144c = 0x00000000;
-u32 var001b1450 = 0x00000000;
-u32 var001b1454 = 0x00000000;
-u32 var001b1458 = 0x00000000;
-u32 var001b145c = 0x00000000;
-u32 var001b1460 = 0x00000000;
-u32 var001b1464 = 0x00000000;
-u32 var001b1468 = 0x00000000;
-u32 var001b146c = 0x00000000;
-u32 var001b1470 = 0x00000000;
-u32 var001b1474 = 0x00000000;
-u32 var001b1478 = 0x00000000;
-u32 var001b147c = 0x00000000;
-u32 var001b1480 = 0x00000000;
-u32 var001b1484 = 0x00000000;
-u32 var001b1488 = 0x00000000;
-u32 var001b148c = 0x00000000;
-u32 var001b1490 = 0x00000000;
-u32 var001b1494 = 0x00000000;
-u32 var001b1498 = 0x00000000;
-u32 var001b149c = 0x00000000;
-u32 var001b14a0 = 0x00000000;
-u32 var001b14a4 = 0x00000000;
-u32 var001b14a8 = 0x00000000;
-u32 var001b14ac = 0x00000000;
-u32 var001b14b0 = 0x00000000;
-u32 var001b14b4 = 0x00000000;
-u32 var001b14b8 = 0x00000000;
-u32 var001b14bc = 0x00000000;
-u32 var001b14c0 = 0x00000000;
-u32 var001b14c4 = 0x00000000;
-u32 var001b14c8 = 0x00000000;
-u32 var001b14cc = 0x00000000;
-u32 var001b14d0 = 0x00000000;
-u32 var001b14d4 = 0x00000000;
-u32 var001b14d8 = 0x00000000;
-u32 var001b14dc = 0x00000000;
-u32 var001b14e0 = 0x00000000;
-u32 var001b14e4 = 0x00000000;
-u32 var001b14e8 = 0x00000000;
-u32 var001b14ec = 0x00000000;
-u32 var001b14f0 = 0x00000000;
-u32 var001b14f4 = 0x00000000;
-u32 var001b14f8 = 0x00000000;
-u32 var001b14fc = 0x00000000;
-u32 var001b1500 = 0x00000000;
-u32 var001b1504 = 0x00000000;
-u32 var001b1508 = 0x00000000;
-u32 var001b150c = 0x00000000;
-u32 var001b1510 = 0x00000000;
-u32 var001b1514 = 0x00000000;
-u32 var001b1518 = 0x00000000;
-u32 var001b151c = 0x00000000;
-u32 var001b1520 = 0x00000000;
-u32 var001b1524 = 0x00000000;
-u32 var001b1528 = 0x00000000;
-u32 var001b152c = 0x00000000;
-u32 var001b1530 = 0x00000000;
-u32 var001b1534 = 0x00000000;
-u32 var001b1538 = 0x00000000;
-u32 var001b153c = 0x00000000;
-u32 var001b1540 = 0x00000000;
-u32 var001b1544 = 0x00000000;
-u32 var001b1548 = 0x00000000;
-u32 var001b154c = 0x00000000;
-u32 var001b1550 = 0x00000000;
-u32 var001b1554 = 0x00000000;
-u32 var001b1558 = 0x00000000;
-u32 var001b155c = 0x00000000;
-u32 var001b1560 = 0x00000000;
-u32 var001b1564 = 0x00000000;
-u32 var001b1568 = 0x00000000;
-u32 var001b156c = 0x00000000;
-u32 var001b1570 = 0x00000000;
-u32 var001b1574 = 0x00000000;
-u32 var001b1578 = 0x00000000;
-u32 var001b157c = 0x00000000;
-u32 var001b1580 = 0x00000000;
-u32 var001b1584 = 0x00000000;
-u32 var001b1588 = 0x00000000;
-u32 var001b158c = 0x00000000;
-u32 var001b1590 = 0x00000000;
-u32 var001b1594 = 0x00000000;
-u32 var001b1598 = 0x00000000;
-u32 var001b159c = 0x00000000;
-u32 var001b15a0 = 0x00000000;
-u32 var001b15a4 = 0x00000000;
-u32 var001b15a8 = 0x00000000;
-u32 var001b15ac = 0x00000000;
-u32 var001b15b0 = 0x00000000;
-u32 var001b15b4 = 0x00000000;
-u32 var001b15b8 = 0x00000000;
-u32 var001b15bc = 0x00000000;
-u32 var001b15c0 = 0x00000000;
-u32 var001b15c4 = 0x00000000;
-u32 var001b15c8 = 0x00000000;
-u32 var001b15cc = 0x00000000;
-u32 var001b15d0 = 0x00000000;
-u32 var001b15d4 = 0x00000000;
-u32 var001b15d8 = 0x00000000;
-u32 var001b15dc = 0x00000000;
-u32 var001b15e0 = 0x00000000;
-u32 var001b15e4 = 0x00000000;
-u32 var001b15e8 = 0x00000000;
-u32 var001b15ec = 0x00000000;
-u32 var001b15f0 = 0x00000000;
-u32 var001b15f4 = 0x00000000;
-u32 var001b15f8 = 0x00000000;
-u32 var001b15fc = 0x00000000;
-u32 var001b1600 = 0x00000000;
-u32 var001b1604 = 0x00000000;
-u32 var001b1608 = 0x00000000;
-u32 var001b160c = 0x00000000;
-u32 var001b1610 = 0x00000000;
-u32 var001b1614 = 0x00000000;
-u32 var001b1618 = 0x00000000;
-u32 var001b161c = 0x00000000;
-u32 var001b1620 = 0x00000000;
-u32 var001b1624 = 0x00000000;
-u32 var001b1628 = 0x00000000;
-u32 var001b162c = 0x00000000;
-u32 var001b1630 = 0x00000000;
-u32 var001b1634 = 0x00000000;
-u32 var001b1638 = 0x00000000;
-u32 var001b163c = 0x00000000;
-u32 var001b1640 = 0x00000000;
-u32 var001b1644 = 0x00000000;
-u32 var001b1648 = 0x00000000;
-u32 var001b164c = 0x00000000;
-u32 var001b1650 = 0x00000000;
-u32 var001b1654 = 0x00000000;
-u32 var001b1658 = 0x00000000;
-u32 var001b165c = 0x00000000;
-u32 var001b1660 = 0x00000000;
-u32 var001b1664 = 0x00000000;
-u32 var001b1668 = 0x00000000;
-u32 var001b166c = 0x00000000;
-u32 var001b1670 = 0x00000000;
-u32 var001b1674 = 0x00000000;
-u32 var001b1678 = 0x00000000;
-u32 var001b167c = 0x00000000;
-u32 var001b1680 = 0x00000000;
-u32 var001b1684 = 0x00000000;
-u32 var001b1688 = 0x00000000;
-u32 var001b168c = 0x00000000;
-u32 var001b1690 = 0x00000000;
-u32 var001b1694 = 0x00000000;
-u32 var001b1698 = 0x00000000;
-u32 var001b169c = 0x00000000;
-u32 var001b16a0 = 0x00000000;
-u32 var001b16a4 = 0x00000000;
-u32 var001b16a8 = 0x00000000;
-u32 var001b16ac = 0x00000000;
-u32 var001b16b0 = 0x00000000;
-u32 var001b16b4 = 0x00000000;
-u32 var001b16b8 = 0x00000000;
-u32 var001b16bc = 0x00000000;
-u32 var001b16c0 = 0x00000000;
-u32 var001b16c4 = 0x00000000;
-u32 var001b16c8 = 0x00000000;
-u32 var001b16cc = 0x00000000;
-u32 var001b16d0 = 0x00000000;
-u32 var001b16d4 = 0x00000000;
-u32 var001b16d8 = 0x00000000;
-u32 var001b16dc = 0x00000000;
-u32 var001b16e0 = 0x00000000;
-u32 var001b16e4 = 0x00000000;
-u32 var001b16e8 = 0x00000000;
-u32 var001b16ec = 0x00000000;
-u32 var001b16f0 = 0x00000000;
-u32 var001b16f4 = 0x00000000;
-u32 var001b16f8 = 0x00000000;
-u32 var001b16fc = 0x00000000;
-u32 var001b1700 = 0x00000000;
-u32 var001b1704 = 0x00000000;
-u32 var001b1708 = 0x00000000;
-u32 var001b170c = 0x00000000;
-u32 var001b1710 = 0x00000000;
-u32 var001b1714 = 0x00000000;
-u32 var001b1718 = 0x00000000;
-u32 var001b171c = 0x00000000;
-u32 var001b1720 = 0x00000000;
-u32 var001b1724 = 0x00000000;
-u32 var001b1728 = 0x00000000;
-u32 var001b172c = 0x00000000;
-u32 var001b1730 = 0x00000000;
-u32 var001b1734 = 0x00000000;
-u32 var001b1738 = 0x00000000;
-u32 var001b173c = 0x00000000;
-u32 var001b1740 = 0x00000000;
-u32 var001b1744 = 0x00000000;
-u32 var001b1748 = 0x00000000;
-u32 var001b174c = 0x00000000;
-u32 var001b1750 = 0x00000000;
-u32 var001b1754 = 0x00000000;
-u32 var001b1758 = 0x00000000;
-u32 var001b175c = 0x00000000;
-u32 var001b1760 = 0x00000000;
-u32 var001b1764 = 0x00000000;
-u32 var001b1768 = 0x00000000;
-u32 var001b176c = 0x00000000;
-u32 var001b1770 = 0x00000000;
-u32 var001b1774 = 0x00000000;
-u32 var001b1778 = 0x00000000;
-u32 var001b177c = 0x00000000;
-u32 var001b1780 = 0x00000000;
-u32 var001b1784 = 0x00000000;
-u32 var001b1788 = 0x00000000;
-u32 var001b178c = 0x00000000;
-u32 var001b1790 = 0x00000000;
-u32 var001b1794 = 0x00000000;
-u32 var001b1798 = 0x00000000;
-u32 var001b179c = 0x00000000;
-u32 var001b17a0 = 0x00000000;
-u32 var001b17a4 = 0x00000000;
-u32 var001b17a8 = 0x00000000;
-u32 var001b17ac = 0x00000000;
-u32 var001b17b0 = 0x00000000;
-u32 var001b17b4 = 0x00000000;
-u32 var001b17b8 = 0x00000000;
-u32 var001b17bc = 0x00000000;
-u32 var001b17c0 = 0x00000000;
-u32 var001b17c4 = 0x00000000;
-u32 var001b17c8 = 0x00000000;
-u32 var001b17cc = 0x00000000;
-u32 var001b17d0 = 0x00000000;
-u32 var001b17d4 = 0x00000000;
-u32 var001b17d8 = 0x00000000;
-u32 var001b17dc = 0x00000000;
-u32 var001b17e0 = 0x00000000;
-u32 var001b17e4 = 0x00000000;
-u32 var001b17e8 = 0x00000000;
-u32 var001b17ec = 0x00000000;
-u32 var001b17f0 = 0x00000000;
-u32 var001b17f4 = 0x00000000;
-u32 var001b17f8 = 0x00000000;
-u32 var001b17fc = 0x00000000;
-u32 var001b1800 = 0x00000000;
-u32 var001b1804 = 0x00000000;
-u32 var001b1808 = 0x00000000;
-u32 var001b180c = 0x00000000;
-u32 var001b1810 = 0x00000000;
-u32 var001b1814 = 0x00000000;
-u32 var001b1818 = 0x00000000;
-u32 var001b181c = 0x00000000;
-u32 var001b1820 = 0x00000000;
-u32 var001b1824 = 0x00000000;
-u32 var001b1828 = 0x00000000;
-u32 var001b182c = 0x00000000;
-u32 var001b1830 = 0x00000000;
-u32 var001b1834 = 0x00000000;
-u32 var001b1838 = 0x00000000;
-u32 var001b183c = 0x00000000;
-u32 var001b1840 = 0x00000000;
-u32 var001b1844 = 0x00000000;
-u32 var001b1848 = 0x00000000;
-u32 var001b184c = 0x00000000;
-u32 var001b1850 = 0x00000000;
-u32 var001b1854 = 0x00000000;
-u32 var001b1858 = 0x00000000;
-u32 var001b185c = 0x00000000;
-u32 var001b1860 = 0x00000000;
-u32 var001b1864 = 0x00000000;
-u32 var001b1868 = 0x00000000;
-u32 var001b186c = 0x00000000;
-u32 var001b1870 = 0x00000000;
-u32 var001b1874 = 0x00000000;
-u32 var001b1878 = 0x00000000;
-u32 var001b187c = 0x00000000;
-u32 var001b1880 = 0x00000000;
-u32 var001b1884 = 0x00000000;
-u32 var001b1888 = 0x00000000;
-u32 var001b188c = 0x00000000;
-u32 var001b1890 = 0x00000000;
-u32 var001b1894 = 0x00000000;
-u32 var001b1898 = 0x00000000;
-u32 var001b189c = 0x00000000;
-u32 var001b18a0 = 0x00000000;
-u32 var001b18a4 = 0x00000000;
-u32 var001b18a8 = 0x00000000;
-u32 var001b18ac = 0x00000000;
-u32 var001b18b0 = 0x00000000;
-u32 var001b18b4 = 0x00000000;
-u32 var001b18b8 = 0x00000000;
-u32 var001b18bc = 0x00000000;
-u32 var001b18c0 = 0x00000000;
-u32 var001b18c4 = 0x00000000;
-u32 var001b18c8 = 0x00000000;
-u32 var001b18cc = 0x00000000;
-u32 var001b18d0 = 0x00000000;
-u32 var001b18d4 = 0x00000000;
-u32 var001b18d8 = 0x00000000;
-u32 var001b18dc = 0x00000000;
-u32 var001b18e0 = 0x00000000;
-u32 var001b18e4 = 0x00000000;
-u32 var001b18e8 = 0x00000000;
-u32 var001b18ec = 0x00000000;
-u32 var001b18f0 = 0x00000000;
-u32 var001b18f4 = 0x00000000;
-u32 var001b18f8 = 0x00000000;
-u32 var001b18fc = 0x00000000;
-u32 var001b1900 = 0x00000000;
-u32 var001b1904 = 0x00000000;
-u32 var001b1908 = 0x00000000;
-u32 var001b190c = 0x00000000;
-u32 var001b1910 = 0x00000000;
-u32 var001b1914 = 0x00000000;
-u32 var001b1918 = 0x00000000;
-u32 var001b191c = 0x00000000;
-u32 var001b1920 = 0x00000000;
-u32 var001b1924 = 0x00000000;
-u32 var001b1928 = 0x00000000;
-u32 var001b192c = 0x00000000;
-u32 var001b1930 = 0x00000000;
-u32 var001b1934 = 0x00000000;
-u32 var001b1938 = 0x00000000;
-u32 var001b193c = 0x00000000;
-u32 var001b1940 = 0x00000000;
-u32 var001b1944 = 0x00000000;
-u32 var001b1948 = 0x00000000;
-u32 var001b194c = 0x00000000;
-u32 var001b1950 = 0x00000000;
-u32 var001b1954 = 0x00000000;
-u32 var001b1958 = 0x00000000;
-u32 var001b195c = 0x00000000;
-u32 var001b1960 = 0x00000000;
-u32 var001b1964 = 0x00000000;
-u32 var001b1968 = 0x00000000;
-u32 var001b196c = 0x00000000;
-u32 var001b1970 = 0x00000000;
-u32 var001b1974 = 0x00000000;
-u32 var001b1978 = 0x00000000;
-u32 var001b197c = 0x00000000;
-u32 var001b1980 = 0x00000000;
-u32 var001b1984 = 0x00000000;
-u32 var001b1988 = 0x00000000;
-u32 var001b198c = 0x00000000;
-u32 var001b1990 = 0x00000000;
-u32 var001b1994 = 0x00000000;
-u32 var001b1998 = 0x00000000;
-u32 var001b199c = 0x00000000;
-u32 var001b19a0 = 0x00000000;
-u32 var001b19a4 = 0x00000000;
-u32 var001b19a8 = 0x00000000;
-u32 var001b19ac = 0x00000000;
-u32 var001b19b0 = 0x00000000;
-u32 var001b19b4 = 0x00000000;
-u32 var001b19b8 = 0x00000000;
-u32 var001b19bc = 0x00000000;
-u32 var001b19c0 = 0x00000000;
-u32 var001b19c4 = 0x00000000;
-u32 var001b19c8 = 0x00000000;
-u32 var001b19cc = 0x00000000;
-u32 var001b19d0 = 0x00000000;
-u32 var001b19d4 = 0x00000000;
-u32 var001b19d8 = 0x00000000;
-u32 var001b19dc = 0x00000000;
-u32 var001b19e0 = 0x00000000;
-u32 var001b19e4 = 0x00000000;
-u32 var001b19e8 = 0x00000000;
-u32 var001b19ec = 0x00000000;
-u32 var001b19f0 = 0x00000000;
-u32 var001b19f4 = 0x00000000;
-u32 var001b19f8 = 0x00000000;
-u32 var001b19fc = 0x00000000;
-u32 var001b1a00 = 0x00000000;
-u32 var001b1a04 = 0x00000000;
-u32 var001b1a08 = 0x00000000;
-u32 var001b1a0c = 0x00000000;
-u32 var001b1a10 = 0x00000000;
-u32 var001b1a14 = 0x00000000;
-u32 var001b1a18 = 0x00000000;
-u32 var001b1a1c = 0x00000000;
-u32 var001b1a20 = 0x00000000;
-u32 var001b1a24 = 0x00000000;
-u32 var001b1a28 = 0x00000000;
-u32 var001b1a2c = 0x00000000;
-u32 var001b1a30 = 0x00000000;
-u32 var001b1a34 = 0x00000000;
-u32 var001b1a38 = 0x00000000;
-u32 var001b1a3c = 0x00000000;
-u32 var001b1a40 = 0x00000000;
-u32 var001b1a44 = 0x00000000;
-u32 var001b1a48 = 0x00000000;
-u32 var001b1a4c = 0x00000000;
-u32 var001b1a50 = 0x00000000;
-u32 var001b1a54 = 0x00000000;
-u32 var001b1a58 = 0x00000000;
-u32 var001b1a5c = 0x00000000;
-u32 var001b1a60 = 0x00000000;
-u32 var001b1a64 = 0x00000000;
-u32 var001b1a68 = 0x00000000;
-u32 var001b1a6c = 0x00000000;
-u32 var001b1a70 = 0x00000000;
-u32 var001b1a74 = 0x00000000;
-u32 var001b1a78 = 0x00000000;
-u32 var001b1a7c = 0x00000000;
-u32 var001b1a80 = 0x00000000;
-u32 var001b1a84 = 0x00000000;
-u32 var001b1a88 = 0x00000000;
-u32 var001b1a8c = 0x00000000;
-u32 var001b1a90 = 0x00000000;
-u32 var001b1a94 = 0x00000000;
-u32 var001b1a98 = 0x00000000;
-u32 var001b1a9c = 0x00000000;
-u32 var001b1aa0 = 0x00000000;
-u32 var001b1aa4 = 0x00000000;
-u32 var001b1aa8 = 0x00000000;
-u32 var001b1aac = 0x00000000;
-u32 var001b1ab0 = 0x00000000;
-u32 var001b1ab4 = 0x00000000;
-u32 var001b1ab8 = 0x00000000;
-u32 var001b1abc = 0x00000000;
-u32 var001b1ac0 = 0x00000000;
-u32 var001b1ac4 = 0x00000000;
-u32 var001b1ac8 = 0x00000000;
-u32 var001b1acc = 0x00000000;
-u32 var001b1ad0 = 0x00000000;
-u32 var001b1ad4 = 0x00000000;
-u32 var001b1ad8 = 0x00000000;
-u32 var001b1adc = 0x00000000;
-u32 var001b1ae0 = 0x00000000;
-u32 var001b1ae4 = 0x00000000;
-u32 var001b1ae8 = 0x00000000;
-u32 var001b1aec = 0x00000000;
-u32 var001b1af0 = 0x00000000;
-u32 var001b1af4 = 0x00000000;
-u32 var001b1af8 = 0x00000000;
-u32 var001b1afc = 0x00000000;
-u32 var001b1b00 = 0x00000000;
-u32 var001b1b04 = 0x00000000;
-u32 var001b1b08 = 0x00000000;
-u32 var001b1b0c = 0x00000000;
-u32 var001b1b10 = 0x00000000;
-u32 var001b1b14 = 0x00000000;
-u32 var001b1b18 = 0x00000000;
-u32 var001b1b1c = 0x00000000;
-u32 var001b1b20 = 0x00000000;
-u32 var001b1b24 = 0x00000000;
-u32 var001b1b28 = 0x00000000;
-u32 var001b1b2c = 0x00000000;
-u32 var001b1b30 = 0x00000000;
-u32 var001b1b34 = 0x00000000;
-u32 var001b1b38 = 0x00000000;
-u32 var001b1b3c = 0x00000000;
-u32 var001b1b40 = 0x00000000;
-u32 var001b1b44 = 0x00000000;
-u32 var001b1b48 = 0x00000000;
-u32 var001b1b4c = 0x00000000;
-u32 var001b1b50 = 0x00000000;
-u32 var001b1b54 = 0x00000000;
-u32 var001b1b58 = 0x00000000;
-u32 var001b1b5c = 0x00000000;
-u32 var001b1b60 = 0x00000000;
-u32 var001b1b64 = 0x00000000;
-u32 var001b1b68 = 0x00000000;
-u32 var001b1b6c = 0x00000000;
-u32 var001b1b70 = 0x00000000;
-u32 var001b1b74 = 0x00000000;
-u32 var001b1b78 = 0x00000000;
-u32 var001b1b7c = 0x00000000;
-u32 var001b1b80 = 0x00000000;
-u32 var001b1b84 = 0x00000000;
-u32 var001b1b88 = 0x00000000;
-u32 var001b1b8c = 0x00000000;
-u32 var001b1b90 = 0x00000000;
-u32 var001b1b94 = 0x00000000;
-u32 var001b1b98 = 0x00000000;
-u32 var001b1b9c = 0x00000000;
-u32 var001b1ba0 = 0x00000000;
-u32 var001b1ba4 = 0x00000000;
-u32 var001b1ba8 = 0x00000000;
-u32 var001b1bac = 0x00000000;
-u32 var001b1bb0 = 0x00000000;
-u32 var001b1bb4 = 0x00000000;
-u32 var001b1bb8 = 0x00000000;
-u32 var001b1bbc = 0x00000000;
-u32 var001b1bc0 = 0x00000000;
-u32 var001b1bc4 = 0x00000000;
-u32 var001b1bc8 = 0x00000000;
-u32 var001b1bcc = 0x00000000;
-u32 var001b1bd0 = 0x00000000;
-u32 var001b1bd4 = 0x00000000;
-u32 var001b1bd8 = 0x00000000;
-u32 var001b1bdc = 0x00000000;
-u32 var001b1be0 = 0x00000000;
-u32 var001b1be4 = 0x00000000;
-u32 var001b1be8 = 0x00000000;
-u32 var001b1bec = 0x00000000;
-u32 var001b1bf0 = 0x00000000;
-u32 var001b1bf4 = 0x00000000;
-u32 var001b1bf8 = 0x00000000;
-u32 var001b1bfc = 0x00000000;
-u32 var001b1c00 = 0x00000000;
-u32 var001b1c04 = 0x00000000;
-u32 var001b1c08 = 0x00000000;
-u32 var001b1c0c = 0x00000000;
-u32 var001b1c10 = 0x00000000;
-u32 var001b1c14 = 0x00000000;
-u32 var001b1c18 = 0x00000000;
-u32 var001b1c1c = 0x00000000;
-u32 var001b1c20 = 0x00000000;
-u32 var001b1c24 = 0x00000000;
-u32 var001b1c28 = 0x00000000;
-u32 var001b1c2c = 0x00000000;
-u32 var001b1c30 = 0x00000000;
-u32 var001b1c34 = 0x00000000;
-u32 var001b1c38 = 0x00000000;
-u32 var001b1c3c = 0x00000000;
-u32 var001b1c40 = 0x00000000;
-u32 var001b1c44 = 0x00000000;
-u32 var001b1c48 = 0x00000000;
-u32 var001b1c4c = 0x00000000;
-u32 var001b1c50 = 0x00000000;
-u32 var001b1c54 = 0x00000000;
-u32 var001b1c58 = 0x00000000;
-u32 var001b1c5c = 0x00000000;
-u32 var001b1c60 = 0x00000000;
-u32 var001b1c64 = 0x00000000;
-u32 var001b1c68 = 0x00000000;
-u32 var001b1c6c = 0x00000000;
-u32 var001b1c70 = 0x00000000;
-u32 var001b1c74 = 0x00000000;
-u32 var001b1c78 = 0x00000000;
-u32 var001b1c7c = 0x00000000;
-u32 var001b1c80 = 0x00000000;
-u32 var001b1c84 = 0x00000000;
-u32 var001b1c88 = 0x00000000;
-u32 var001b1c8c = 0x00000000;
-u32 var001b1c90 = 0x00000000;
-u32 var001b1c94 = 0x00000000;
-u32 var001b1c98 = 0x00000000;
-u32 var001b1c9c = 0x00000000;
-u32 var001b1ca0 = 0x00000000;
-u32 var001b1ca4 = 0x00000000;
-u32 var001b1ca8 = 0x00000000;
-u32 var001b1cac = 0x00000000;
-u32 var001b1cb0 = 0x00000000;
-u32 var001b1cb4 = 0x00000000;
-u32 var001b1cb8 = 0x00000000;
-u32 var001b1cbc = 0x00000000;
-u32 var001b1cc0 = 0x00000000;
-u32 var001b1cc4 = 0x00000000;
-u32 var001b1cc8 = 0x00000000;
-u32 var001b1ccc = 0x00000000;
-u32 var001b1cd0 = 0x00000000;
-u32 var001b1cd4 = 0x00000000;
-u32 var001b1cd8 = 0x00000000;
-u32 var001b1cdc = 0x00000000;
-u32 var001b1ce0 = 0x00000000;
-u32 var001b1ce4 = 0x00000000;
-u32 var001b1ce8 = 0x00000000;
-u32 var001b1cec = 0x00000000;
-u32 var001b1cf0 = 0x00000000;
-u32 var001b1cf4 = 0x00000000;
-u32 var001b1cf8 = 0x00000000;
-u32 var001b1cfc = 0x00000000;
-u32 var001b1d00 = 0x00000000;
-u32 var001b1d04 = 0x00000000;
-u32 var001b1d08 = 0x00000000;
-u32 var001b1d0c = 0x00000000;
-u32 var001b1d10 = 0x00000000;
-u32 var001b1d14 = 0x00000000;
-u32 var001b1d18 = 0x00000000;
-u32 var001b1d1c = 0x00000000;
-u32 var001b1d20 = 0x00000000;
-u32 var001b1d24 = 0x00000000;
-u32 var001b1d28 = 0x00000000;
-u32 var001b1d2c = 0x00000000;
-u32 var001b1d30 = 0x00000000;
-u32 var001b1d34 = 0x00000000;
-u32 var001b1d38 = 0x00000000;
-u32 var001b1d3c = 0x00000000;
-u32 var001b1d40 = 0x00000000;
-u32 var001b1d44 = 0x00000000;
-u32 var001b1d48 = 0x00000000;
-u32 var001b1d4c = 0x00000000;
-u32 var001b1d50 = 0x00000000;
-u32 var001b1d54 = 0x00000000;
-u32 var001b1d58 = 0x00000000;
-u32 var001b1d5c = 0x00000000;
-u32 var001b1d60 = 0x00000000;
-u32 var001b1d64 = 0x00000000;
-u32 var001b1d68 = 0x00000000;
-u32 var001b1d6c = 0x00000000;
-u32 var001b1d70 = 0x00000000;
-u32 var001b1d74 = 0x00000000;
-u32 var001b1d78 = 0x00000000;
-u32 var001b1d7c = 0x00000000;
-u32 var001b1d80 = 0x00000000;
-u32 var001b1d84 = 0x00000000;
-u32 var001b1d88 = 0x00000000;
-u32 var001b1d8c = 0x00000000;
-u32 var001b1d90 = 0x00000000;
-u32 var001b1d94 = 0x00000000;
-u32 var001b1d98 = 0x00000000;
-u32 var001b1d9c = 0x00000000;
-u32 var001b1da0 = 0x00000000;
-u32 var001b1da4 = 0x00000000;
-u32 var001b1da8 = 0x00000000;
-u32 var001b1dac = 0x00000000;
-u32 var001b1db0 = 0x00000000;
-u32 var001b1db4 = 0x00000000;
-u32 var001b1db8 = 0x00000000;
-u32 var001b1dbc = 0x00000000;
-u32 var001b1dc0 = 0x00000000;
-u32 var001b1dc4 = 0x00000000;
-u32 var001b1dc8 = 0x00000000;
-u32 var001b1dcc = 0x00000000;
-u32 var001b1dd0 = 0x00000000;
-u32 var001b1dd4 = 0x00000000;
-u32 var001b1dd8 = 0x00000000;
-u32 var001b1ddc = 0x00000000;
-u32 var001b1de0 = 0x00000000;
-u32 var001b1de4 = 0x00000000;
-u32 var001b1de8 = 0x00000000;
-u32 var001b1dec = 0x00000000;
-u32 var001b1df0 = 0x00000000;
-u32 var001b1df4 = 0x00000000;
-u32 var001b1df8 = 0x00000000;
-u32 var001b1dfc = 0x00000000;
-u32 var001b1e00 = 0x00000000;
-u32 var001b1e04 = 0x00000000;
-u32 var001b1e08 = 0x00000000;
-u32 var001b1e0c = 0x00000000;
-u32 var001b1e10 = 0x00000000;
-u32 var001b1e14 = 0x00000000;
-u32 var001b1e18 = 0x00000000;
-u32 var001b1e1c = 0x00000000;
-u32 var001b1e20 = 0x00000000;
-u32 var001b1e24 = 0x00000000;
-u32 var001b1e28 = 0x00000000;
-u32 var001b1e2c = 0x00000000;
-u32 var001b1e30 = 0x00000000;
-u32 var001b1e34 = 0x00000000;
-u32 var001b1e38 = 0x00000000;
-u32 var001b1e3c = 0x00000000;
-u32 var001b1e40 = 0x00000000;
-u32 var001b1e44 = 0x25640a00;
-u32 var001b1e48 = 0x25640a00;
-u32 var001b1e4c = 0x25640a00;
-u32 var001b1e50 = 0x25640a00;
-u32 var001b1e54 = 0x25640a00;
-u32 var001b1e58 = 0x3eb33333;
-u32 var001b1e5c = 0x3f266666;
-u32 var001b1e60 = 0x7f0eccc4;
-u32 var001b1e64 = 0x7f0ecd00;
-u32 var001b1e68 = 0x7f0ecd64;
-u32 var001b1e6c = 0x7f0ecd74;
-u32 var001b1e70 = 0x7f0ecd84;
-u32 var001b1e74 = 0x7f0ecd94;
-u32 var001b1e78 = 0x7f0ecda4;
-u32 var001b1e7c = 0x7f0ecdb4;
-u32 var001b1e80 = 0x7f0ecdc4;
-u32 var001b1e84 = 0x7f0ecdd4;
-u32 var001b1e88 = 0x7f0ecde4;
-u32 var001b1e8c = 0x7f0ecdf4;
-u32 var001b1e90 = 0x7f0f0630;
-u32 var001b1e94 = 0x7f0f05d0;
-u32 var001b1e98 = 0x7f0f06f0;
-u32 var001b1e9c = 0x7f0f05e0;
-u32 var001b1ea0 = 0x7f0f0610;
-u32 var001b1ea4 = 0x7f0f0660;
-u32 var001b1ea8 = 0x7f0f0670;
-u32 var001b1eac = 0x7f0f05f0;
-u32 var001b1eb0 = 0x7f0f0600;
-u32 var001b1eb4 = 0x7f0f06f0;
-u32 var001b1eb8 = 0x7f0f0650;
-u32 var001b1ebc = 0x7f0f0680;
-u32 var001b1ec0 = 0x7f0f0690;
-u32 var001b1ec4 = 0x7f0f06a0;
-u32 var001b1ec8 = 0x7f0f06b0;
-u32 var001b1ecc = 0x7f0f06f0;
-u32 var001b1ed0 = 0x7f0f06c0;
-u32 var001b1ed4 = 0x7f0f06d0;
-u32 var001b1ed8 = 0x7f0f06f0;
-u32 var001b1edc = 0x7f0f06f0;
-u32 var001b1ee0 = 0x7f0f0640;
-u32 var001b1ee4 = 0x7f0f06f0;
-u32 var001b1ee8 = 0x7f0f0620;
-u32 var001b1eec = 0x7f0f06f0;
-u32 var001b1ef0 = 0x7f0f06e0;
-u32 var001b1ef4 = 0x7f0f0744;
-u32 var001b1ef8 = 0x7f0f0848;
-u32 var001b1efc = 0x7f0f075c;
-u32 var001b1f00 = 0x7f0f07a0;
-u32 var001b1f04 = 0x7f0f0848;
-u32 var001b1f08 = 0x7f0f0848;
-u32 var001b1f0c = 0x7f0f0770;
-u32 var001b1f10 = 0x7f0f078c;
-u32 var001b1f14 = 0x7f0f0848;
-u32 var001b1f18 = 0x7f0f0848;
-u32 var001b1f1c = 0x7f0f07e4;
-u32 var001b1f20 = 0x7f0f0800;
-u32 var001b1f24 = 0x7f0f07cc;
-u32 var001b1f28 = 0x7f0f082c;
-u32 var001b1f2c = 0x7f0f0848;
-u32 var001b1f30 = 0x7f0f0818;
-u32 var001b1f34 = 0x7f0f0848;
-u32 var001b1f38 = 0x7f0f0848;
-u32 var001b1f3c = 0x7f0f0848;
-u32 var001b1f40 = 0x7f0f0848;
-u32 var001b1f44 = 0x7f0f0848;
-u32 var001b1f48 = 0x7f0f07bc;
-u32 var001b1f4c = 0x7f0f0890;
-u32 var001b1f50 = 0x7f0f0908;
-u32 var001b1f54 = 0x7f0f0908;
-u32 var001b1f58 = 0x7f0f08a0;
-u32 var001b1f5c = 0x7f0f0908;
-u32 var001b1f60 = 0x7f0f0908;
-u32 var001b1f64 = 0x7f0f08d0;
-u32 var001b1f68 = 0x7f0f0908;
-u32 var001b1f6c = 0x7f0f0908;
-u32 var001b1f70 = 0x7f0f0908;
-u32 var001b1f74 = 0x7f0f0890;
-u32 var001b1f78 = 0x7f0f08f0;
-u32 var001b1f7c = 0x7f0f08c0;
-u32 var001b1f80 = 0x7f0f08e0;
-u32 var001b1f84 = 0x7f0f0908;
-u32 var001b1f88 = 0x7f0f0908;
-u32 var001b1f8c = 0x7f0f0908;
-u32 var001b1f90 = 0x7f0f0908;
-u32 var001b1f94 = 0x7f0f0908;
-u32 var001b1f98 = 0x7f0f0908;
-u32 var001b1f9c = 0x7f0f0908;
-u32 var001b1fa0 = 0x7f0f08b0;
-u32 var001b1fa4 = 0x7f0f0908;
-u32 var001b1fa8 = 0x7f0f0900;
-u32 var001b1fac = 0x00000000;
-u32 var001b1fb0 = 0x20202000;
-u32 var001b1fb4 = 0x20202000;
-u32 var001b1fb8 = 0x20202000;
-u32 var001b1fbc = 0x4f4f4f00;
-u32 var001b1fc0 = 0x00000000;
-u32 var001b1fc4 = 0x00000000;
-u32 var001b1fc8 = 0x4f4f4f00;
-u32 var001b1fcc = 0x4f4f4f00;
-u32 var001b1fd0 = 0x4f4f4f00;
-u32 var001b1fd4 = 0x4f4f4f00;
-u32 var001b1fd8 = 0x00000000;
-u32 var001b1fdc = 0x00000000;
-u32 var001b1fe0 = 0x4f4f4f00;
-u32 var001b1fe4 = 0x00000000;
-u32 var001b1fe8 = 0x00000000;
-u32 var001b1fec = 0x0060bf7f;
-u32 var001b1ff0 = 0x0000507f;
-u32 var001b1ff4 = 0x00f0ff7f;
-u32 var001b1ff8 = 0xffffffff;
-u32 var001b1ffc = 0x00002f7f;
-u32 var001b2000 = 0x00006f7f;
-u32 var001b2004 = 0x00ffffff;
-u32 var001b2008 = 0x007f7fff;
-u32 var001b200c = 0xffffffff;
-u32 var001b2010 = 0x8fffffff;
-u32 var001b2014 = 0x000044ff;
-u32 var001b2018 = 0x000030ff;
-u32 var001b201c = 0x7f7fffff;
-u32 var001b2020 = 0xffffffff;
-u32 var001b2024 = 0x6644ff7f;
-u32 var001b2028 = 0xbf00007f;
-u32 var001b202c = 0x5000007f;
-u32 var001b2030 = 0xff00007f;
-u32 var001b2034 = 0xffff00ff;
-u32 var001b2038 = 0x2f00007f;
-u32 var001b203c = 0x6f00007f;
-u32 var001b2040 = 0xff7050ff;
-u32 var001b2044 = 0x7f0000ff;
-u32 var001b2048 = 0xffff00ff;
-u32 var001b204c = 0xff9070ff;
-u32 var001b2050 = 0x440000ff;
-u32 var001b2054 = 0x003000ff;
-u32 var001b2058 = 0xffff00ff;
-u32 var001b205c = 0xffffffff;
-u32 var001b2060 = 0xff44447f;
-u32 var001b2064 = 0x00bf007f;
-u32 var001b2068 = 0x0050007f;
-u32 var001b206c = 0x00ff007f;
-u32 var001b2070 = 0xffff00ff;
-u32 var001b2074 = 0x002f007f;
-u32 var001b2078 = 0x00ff0028;
-u32 var001b207c = 0x55ff55ff;
-u32 var001b2080 = 0x006f00af;
-u32 var001b2084 = 0xffffffff;
-u32 var001b2088 = 0x00000000;
-u32 var001b208c = 0x004400ff;
-u32 var001b2090 = 0x003000ff;
-u32 var001b2094 = 0xffff00ff;
-u32 var001b2098 = 0xffffffff;
-u32 var001b209c = 0x44ff447f;
-u32 var001b20a0 = 0xffffffff;
-u32 var001b20a4 = 0xffffff7f;
-u32 var001b20a8 = 0xffffffff;
-u32 var001b20ac = 0xffffffff;
-u32 var001b20b0 = 0xffffff7f;
-u32 var001b20b4 = 0xffffffff;
-u32 var001b20b8 = 0xffffffff;
-u32 var001b20bc = 0xffffffff;
-u32 var001b20c0 = 0xffffffff;
-u32 var001b20c4 = 0xffffffff;
-u32 var001b20c8 = 0x00000000;
-u32 var001b20cc = 0xffffff5f;
-u32 var001b20d0 = 0xffffffff;
-u32 var001b20d4 = 0xffffff7f;
-u32 var001b20d8 = 0xffffffff;
-u32 var001b20dc = 0xaaaaaaff;
-u32 var001b20e0 = 0xaaaaaa7f;
-u32 var001b20e4 = 0xaaaaaaff;
-u32 var001b20e8 = 0xffffffff;
-u32 var001b20ec = 0xffffff2f;
-u32 var001b20f0 = 0xffffffff;
-u32 var001b20f4 = 0xffffffff;
-u32 var001b20f8 = 0xffffffff;
-u32 var001b20fc = 0xff8888ff;
-u32 var001b2100 = 0xffffffff;
-u32 var001b2104 = 0x00000000;
-u32 var001b2108 = 0xffffff5f;
-u32 var001b210c = 0xffffffff;
-u32 var001b2110 = 0xffffff7f;
-u32 var001b2114 = 0xffffffff;
-u32 var001b2118 = 0xffffff00;
-u32 var001b211c = 0xffffff00;
-u32 var001b2120 = 0xffffff00;
-u32 var001b2124 = 0xffffff00;
-u32 var001b2128 = 0xffffff00;
-u32 var001b212c = 0xffffff00;
-u32 var001b2130 = 0xffffff00;
-u32 var001b2134 = 0x4f4f4f00;
-u32 var001b2138 = 0xffffff00;
-u32 var001b213c = 0xffffff00;
-u32 var001b2140 = 0xffffff00;
-u32 var001b2144 = 0xffffff00;
-u32 var001b2148 = 0xffffff00;
-u32 var001b214c = 0xffffff00;
-u32 var001b2150 = 0x00000000;
-u32 var001b2154 = 0xffffff00;
-u32 var001b2158 = 0xffffff00;
-u32 var001b215c = 0xffffff00;
-u32 var001b2160 = 0xffffff00;
-u32 var001b2164 = 0xffffff00;
-u32 var001b2168 = 0xffffff00;
-u32 var001b216c = 0xffffff00;
-u32 var001b2170 = 0x006f6faf;
-u32 var001b2174 = 0xffffff00;
-u32 var001b2178 = 0xffffff00;
-u32 var001b217c = 0xffffff00;
-u32 var001b2180 = 0xffffff00;
-u32 var001b2184 = 0xffffff00;
-u32 var001b2188 = 0xffffff00;
-u32 var001b218c = 0x00000000;
-u32 var001b2190 = 0xffffff00;
-u32 var001b2194 = 0xffffff00;
-u32 var001b2198 = 0xffffff00;
-u32 var001b219c = 0xffffff00;
-u32 var001b21a0 = 0xffffff00;
-u32 var001b21a4 = 0xffffff00;
-u32 var001b21a8 = 0xffffff00;
-u32 var001b21ac = 0x006f6faf;
-u32 var001b21b0 = 0xffffff00;
-u32 var001b21b4 = 0xffffff00;
-u32 var001b21b8 = 0xffffff00;
-u32 var001b21bc = 0xffffff00;
-u32 var001b21c0 = 0xffffff00;
-u32 var001b21c4 = 0xffffff00;
-u32 var001b21c8 = 0x00000000;
-u32 var001b21cc = 0xffffff00;
-u32 var001b21d0 = 0xffffff00;
-u32 var001b21d4 = 0xffffff00;
-u32 var001b21d8 = 0xff7f0000;
-u32 var001b21dc = 0xffffff00;
-u32 var001b21e0 = 0xffffff00;
-u32 var001b21e4 = 0x00ffff00;
-u32 var001b21e8 = 0x006f6faf;
-u32 var001b21ec = 0xffffff00;
-u32 var001b21f0 = 0xffffff00;
-u32 var001b21f4 = 0xffffff00;
-u32 var001b21f8 = 0xffffff00;
-u32 var001b21fc = 0xffffff00;
-u32 var001b2200 = 0xffffff00;
-u32 var001b2204 = 0x00000000;
-u32 var001b2208 = 0xffffffff;
-u32 var001b220c = 0xffffff7f;
-u32 var001b2210 = 0xffffffff;
-u32 var001b2214 = 0xffffffff;
-u32 var001b2218 = 0xffffff7f;
-u32 var001b221c = 0xffffffff;
-u32 var001b2220 = 0xffffffff;
-u32 var001b2224 = 0xffffffff;
-u32 var001b2228 = 0xffffffff;
-u32 var001b222c = 0xffffffff;
-u32 var001b2230 = 0xffffffff;
-u32 var001b2234 = 0xffffff5f;
-u32 var001b2238 = 0xffffffff;
-u32 var001b223c = 0xffffff7f;
-u32 var001b2240 = 0xffffffff;
-u32 var001b2244 = 0xffffffff;
-u32 var001b2248 = 0xffffff7f;
-u32 var001b224c = 0xffffffff;
-u32 var001b2250 = 0xffffffff;
-u32 var001b2254 = 0xffffff7f;
-u32 var001b2258 = 0xffffffff;
-u32 var001b225c = 0xffffffff;
-u32 var001b2260 = 0xffffffff;
-u32 var001b2264 = 0xffffffff;
-u32 var001b2268 = 0xffffffff;
-u32 var001b226c = 0xffffffff;
-u32 var001b2270 = 0xffffff5f;
-u32 var001b2274 = 0xffffffff;
-u32 var001b2278 = 0xffffff7f;
-u32 var001b227c = 0xffffffff;
-u32 var001b2280 = 0x44444400;
-u32 var001b2284 = 0x44444400;
-u32 var001b2288 = 0x44444400;
-u32 var001b228c = 0x44444400;
-u32 var001b2290 = 0x44444400;
-u32 var001b2294 = 0x44444400;
-u32 var001b2298 = 0x44444400;
-u32 var001b229c = 0x4f4f4f00;
-u32 var001b22a0 = 0x44444400;
-u32 var001b22a4 = 0x44444400;
-u32 var001b22a8 = 0x44444400;
-u32 var001b22ac = 0x44444400;
-u32 var001b22b0 = 0x44444400;
-u32 var001b22b4 = 0x44444400;
-u32 var001b22b8 = 0x00000000;
-u32 var001b22bc = 0x44444400;
-u32 var001b22c0 = 0x44444400;
-u32 var001b22c4 = 0x44444400;
-u32 var001b22c8 = 0x44444400;
-u32 var001b22cc = 0x44444400;
-u32 var001b22d0 = 0x44444400;
-u32 var001b22d4 = 0x44444400;
-u32 var001b22d8 = 0x006f6faf;
-u32 var001b22dc = 0x44444400;
-u32 var001b22e0 = 0x44444400;
-u32 var001b22e4 = 0x44444400;
-u32 var001b22e8 = 0x44444400;
-u32 var001b22ec = 0x44444400;
-u32 var001b22f0 = 0x44444400;
-u32 var001b22f4 = 0x00000000;
-u32 var001b22f8 = 0x44444400;
-u32 var001b22fc = 0x44444400;
-u32 var001b2300 = 0x44444400;
-u32 var001b2304 = 0x44444400;
-u32 var001b2308 = 0x44444400;
-u32 var001b230c = 0x44444400;
-u32 var001b2310 = 0x44444400;
-u32 var001b2314 = 0x006f6faf;
-u32 var001b2318 = 0x44444400;
-u32 var001b231c = 0x44444400;
-u32 var001b2320 = 0x44444400;
-u32 var001b2324 = 0x44444400;
-u32 var001b2328 = 0x44444400;
-u32 var001b232c = 0x44444400;
-u32 var001b2330 = 0x00000000;
-u32 var001b2334 = 0x44444400;
-u32 var001b2338 = 0x44444400;
-u32 var001b233c = 0x44444400;
-u32 var001b2340 = 0x00ff0000;
-u32 var001b2344 = 0x44444400;
-u32 var001b2348 = 0x44444400;
-u32 var001b234c = 0xffff0000;
-u32 var001b2350 = 0x006f6faf;
-u32 var001b2354 = 0x44444400;
-u32 var001b2358 = 0x44444400;
-u32 var001b235c = 0x44444400;
-u32 var001b2360 = 0x44444400;
-u32 var001b2364 = 0x44444400;
-u32 var001b2368 = 0x44444400;
-u32 var001b236c = 0x00000000;
-u32 var001b2370 = 0xffffffff;
-u32 var001b2374 = 0xffffff7f;
-u32 var001b2378 = 0xffffffff;
-u32 var001b237c = 0xffffffff;
-u32 var001b2380 = 0xffffff7f;
-u32 var001b2384 = 0xffffffff;
-u32 var001b2388 = 0xffffffff;
-u32 var001b238c = 0xffffffff;
-u32 var001b2390 = 0xffffffff;
-u32 var001b2394 = 0xffffffff;
-u32 var001b2398 = 0xffffffff;
-u32 var001b239c = 0xffffff5f;
-u32 var001b23a0 = 0xffffffff;
-u32 var001b23a4 = 0xffffff7f;
-u32 var001b23a8 = 0xffffffff;
-u32 var001b23ac = 0xffffffff;
-u32 var001b23b0 = 0xffffff7f;
-u32 var001b23b4 = 0xffffffff;
-u32 var001b23b8 = 0xffffffff;
-u32 var001b23bc = 0xffffff7f;
-u32 var001b23c0 = 0xffffffff;
-u32 var001b23c4 = 0xffffffff;
-u32 var001b23c8 = 0xffffffff;
-u32 var001b23cc = 0xffffffff;
-u32 var001b23d0 = 0xffffffff;
-u32 var001b23d4 = 0xffffffff;
-u32 var001b23d8 = 0xffffff5f;
-u32 var001b23dc = 0xffffffff;
-u32 var001b23e0 = 0xffffff7f;
-u32 var001b23e4 = 0xffffffff;
-u32 var001b23e8 = 0x544d0000;
-u32 var001b23ec = 0x00000000;
-u32 var001b23f0 = 0x00000000;
-u32 var001b23f4 = 0x00000000;
-u32 var001b23f8 = 0x00000000;
-u32 var001b23fc = 0x00000000;
-char var001b2400[] = "(BNC:Menu) findItem Warning: Item not found\n";
-char var001b2430[] = "(BNC:Menu) menuFirstFocus - Menu %s does not have any focusable item!\n";
-char var001b2478[] = "(BNC:Menu) menuLastFocus - Menu %s does not have any focusable item!\n";
-char var001b24c0[] = "Init menu %x\n";
-char var001b24d0[] = "[]-[] Added Main menu to ctl slot %d\n";
-char var001b24f8[] = "[]-[] Added Slide menu to ctl slot %d\n";
-char var001b2520[] = "[]-[] StackStart Stats: slides %d, ctlPtr %d slidePtr %d\n";
-char var001b255c[] = "$-$-$avePtr: %d\n";
-char var001b2570[] = "[]-[] Menu End: now %d slides\n";
-char var001b2590[] = "Freeing challenge mem\n";
-char var001b25a8[] = "IG:) style %d gbHead:%d\n";
-char var001b25c4[] = "GRABBED GUN MEM!\n";
-char var001b25d8[] = "Freeing challenge mem\n";
-u32 var001b25f0 = 0x6d7a6e00;
-u32 var001b25f4 = 0x6d7a6600;
-u32 var001b25f8 = 0xbf000000;
-u32 var001b25fc = 0x50000000;
-u32 var001b2600 = 0xff000000;
-u32 var001b2604 = 0xbfbf0000;
-u32 var001b2608 = 0x50500000;
-u32 var001b260c = 0xffff0000;
-u32 var001b2610 = 0x0000bf00;
-u32 var001b2614 = 0x00005000;
-u32 var001b2618 = 0x0000ff00;
-u32 var001b261c = 0xbf00bf00;
-u32 var001b2620 = 0x50005000;
-u32 var001b2624 = 0xff00ff00;
-u32 var001b2628 = 0x00bfbf00;
-u32 var001b262c = 0x00505000;
-u32 var001b2630 = 0x00ffff00;
-u32 var001b2634 = 0xff885500;
-u32 var001b2638 = 0x7f482000;
-u32 var001b263c = 0xff885500;
-u32 var001b2640 = 0xff888800;
-u32 var001b2644 = 0x7f484800;
-u32 var001b2648 = 0xff888800;
-u32 var001b264c = 0x88445500;
-u32 var001b2650 = 0x48242000;
-u32 var001b2654 = 0x88445500;
-u32 var001b2658 = 0x310a0000;
-u32 var001b265c = 0x320a0000;
-u32 var001b2660 = 0x330a0000;
-u32 var001b2664 = 0x340a0000;
-char var001b2668[] = "[]-[] Terminate Complete\n";
-char var001b2684[] = "Enabling control %d\n";
-char var001b269c[] = "NOT IN MODE MULTIINGAME!\n";
-char var001b26b8[] = "Numactive now:%d\n";
-char var001b26cc[] = "[]-[] SwitchMenuMode called, context %d\n";
-char var001b26f8[] = "cthresh";
-char var001b2700[] = "[]-[] slide from %d";
-char var001b2714[] = " to %d\n";
-char var001b271c[] = "UNPAUSE: enabling control 0\n";
-char var001b273c[] = "file: type %d guid %x-%x data %x err %d\n";
-char var001b2768[] = "StartSelects\n";
-char var001b2778[] = "bblur";
-char var001b2780[] = "cone";
-char var001b2788[] = "usePiece";
-char var001b2794[] = "%s%s";
-char var001b279c[] = "%s%s";
-char var001b27a4[] = "Tune Selector - mode %d\n";
-u32 var001b27c0 = 0x7f0f0a30;
-u32 var001b27c4 = 0x7f0f0a38;
-u32 var001b27c8 = 0x7f0f0a40;
-u32 var001b27cc = 0x7f0f0a48;
-u32 var001b27d0 = 0x7f0f0a50;
-u32 var001b27d4 = 0x7f0f0a68;
-u32 var001b27d8 = 0x7f0f0ab8;
-u32 var001b27dc = 0x7f0f0ab8;
-u32 var001b27e0 = 0x7f0f0a70;
-u32 var001b27e4 = 0x7f0f0a78;
-u32 var001b27e8 = 0x7f0f0a80;
-u32 var001b27ec = 0x7f0f0ab8;
-u32 var001b27f0 = 0x7f0f0a88;
-u32 var001b27f4 = 0x7f0f0aa4;
-u32 var001b27f8 = 0x3ecccccd;
-u32 var001b27fc = 0x3ed68d76;
-u32 var001b2800 = 0x7f0f15e4;
-u32 var001b2804 = 0x7f0f1610;
-u32 var001b2808 = 0x7f0f1610;
-u32 var001b280c = 0x7f0f15d8;
-u32 var001b2810 = 0x7f0f1610;
-u32 var001b2814 = 0x7f0f1610;
-u32 var001b2818 = 0x7f0f15cc;
-u32 var001b281c = 0x7f0f15cc;
-u32 var001b2820 = 0x7f0f1610;
-u32 var001b2824 = 0x7f0f1610;
-u32 var001b2828 = 0x7f0f15f0;
-u32 var001b282c = 0x7f0f1608;
-u32 var001b2830 = 0x7f0f15cc;
-u32 var001b2834 = 0x7f0f15fc;
-u32 var001b2838 = 0x7f0f1608;
-u32 var001b283c = 0x7f0f1610;
-u32 var001b2840 = 0x7f0f1610;
-u32 var001b2844 = 0x7f0f1610;
-u32 var001b2848 = 0x7f0f15cc;
-u32 var001b284c = 0x7f0f1610;
-u32 var001b2850 = 0x7f0f1608;
-u32 var001b2854 = 0x7f0f15d8;
-u32 var001b2858 = 0x7f0f15cc;
-u32 var001b285c = 0x7f0f15d8;
-u32 var001b2860 = 0x7f0f19f4;
-u32 var001b2864 = 0x7f0f1730;
-u32 var001b2868 = 0x7f0f1d44;
-u32 var001b286c = 0x7f0f19f4;
-u32 var001b2870 = 0x7f0f1bb4;
-u32 var001b2874 = 0x7f0f1bf0;
-u32 var001b2878 = 0x7f0f1cbc;
-u32 var001b287c = 0x7f0f1894;
-u32 var001b2880 = 0x7f0f18ec;
-u32 var001b2884 = 0x7f0f1d44;
-u32 var001b2888 = 0x7f0f19a0;
-u32 var001b288c = 0x7f0f1784;
-u32 var001b2890 = 0x7f0f171c;
-u32 var001b2894 = 0x7f0f1ce0;
-u32 var001b2898 = 0x7f0f1ccc;
-u32 var001b289c = 0x7f0f1cf4;
-u32 var001b28a0 = 0x7f0f1d30;
-u32 var001b28a4 = 0x7f0f198c;
-u32 var001b28a8 = 0x7f0f1880;
-u32 var001b28ac = 0x7f0f16f4;
-u32 var001b28b0 = 0x7f0f1708;
-u32 var001b28b4 = 0x7f0f1d1c;
-u32 var001b28b8 = 0x7f0f19c4;
-u32 var001b28bc = 0x7f0f16c8;
-u32 var001b28c0 = 0x7f0f16b4;
-u32 var001b28c4 = 0x7f0f26b0;
-u32 var001b28c8 = 0x7f0f26cc;
-u32 var001b28cc = 0x7f0f26cc;
-u32 var001b28d0 = 0x7f0f26cc;
-u32 var001b28d4 = 0x7f0f26cc;
-u32 var001b28d8 = 0x7f0f26b0;
-u32 var001b28dc = 0x7f0f26b0;
-u32 var001b28e0 = 0x7f0f26cc;
-u32 var001b28e4 = 0x7f0f26cc;
-u32 var001b28e8 = 0x7f0f26cc;
-u32 var001b28ec = 0x7f0f26b0;
-u32 var001b28f0 = 0x7f0f26cc;
-u32 var001b28f4 = 0x7f0f26cc;
-u32 var001b28f8 = 0x7f0f26cc;
-u32 var001b28fc = 0x7f0f26cc;
-u32 var001b2900 = 0x7f0f26b8;
-u32 var001b2904 = 0x7f0f26cc;
-u32 var001b2908 = 0x7f0f26b0;
-u32 var001b290c = 0x7f0f26b0;
-u32 var001b2910 = 0x7f0f26b8;
-u32 var001b2914 = 0x7f0f26b0;
-u32 var001b2918 = 0x7f0f26b8;
-u32 var001b291c = 0x7f0f26b0;
-u32 var001b2920 = 0x7f0f26b8;
-u32 var001b2924 = 0x7f0f26b0;
-u32 var001b2928 = 0x40c90fdb;
-u32 var001b292c = 0x40f33333;
-u32 var001b2930 = 0x3b03126f;
-u32 var001b2934 = 0x3f7f7cee;
-u32 var001b2938 = 0x3f7f7cee;
-u32 var001b293c = 0x3b03126f;
-u32 var001b2940 = 0x3b03126f;
-u32 var001b2944 = 0x3b03126f;
-u32 var001b2948 = 0x40490fdb;
-u32 var001b294c = 0x7f0f74e4;
-u32 var001b2950 = 0x7f0f7500;
-u32 var001b2954 = 0x7f0f7500;
-u32 var001b2958 = 0x7f0f74e4;
-u32 var001b295c = 0x7f0f74e4;
-u32 var001b2960 = 0x7f0f7500;
-u32 var001b2964 = 0x7f0f7500;
-u32 var001b2968 = 0x7f0f74e4;
-u32 var001b296c = 0x7f0f74e4;
-u32 var001b2970 = 0x7f0f78a8;
-u32 var001b2974 = 0x7f0f7b00;
-u32 var001b2978 = 0x7f0f7b00;
-u32 var001b297c = 0x7f0f7e70;
-u32 var001b2980 = 0x7f0f7e70;
-u32 var001b2984 = 0x7f0f7b00;
-u32 var001b2988 = 0x7f0f7e70;
-u32 var001b298c = 0x7f0f7b00;
-u32 var001b2990 = 0x7f0f78a8;
-u32 var001b2994 = 0x7f0f8464;
-u32 var001b2998 = 0x7f0f8464;
-u32 var001b299c = 0x7f0f846c;
-u32 var001b29a0 = 0x7f0f846c;
-u32 var001b29a4 = 0x7f0f846c;
-u32 var001b29a8 = 0x7f0f8464;
-u32 var001b29ac = 0x7f0f8464;
-u32 var001b29b0 = 0x7f0f8464;
-u32 var001b29b4 = 0x7f0f8464;
-u32 var001b29b8 = 0x7f0f8464;
-u32 var001b29bc = 0x7f0f846c;
-u32 var001b29c0 = 0x7f0f846c;
-u32 var001b29c4 = 0x7f0f8464;
-u32 var001b29c8 = 0x7f0f856c;
-u32 var001b29cc = 0x7f0f8590;
-u32 var001b29d0 = 0x7f0f8534;
-u32 var001b29d4 = 0x7f0f85b8;
-u32 var001b29d8 = 0x7f0f8590;
-u32 var001b29dc = 0x7f0f8590;
-u32 var001b29e0 = 0x7f0f85a0;
-u32 var001b29e4 = 0x7f0f85b8;
-u32 var001b29e8 = 0x7f0f8590;
-u32 var001b29ec = 0x7f0f8544;
-u32 var001b29f0 = 0x7f0f8560;
-u32 var001b29f4 = 0x7f0f85b8;
-u32 var001b29f8 = 0x7f0f8590;
-u32 var001b29fc = 0xc0490fdb;
-u32 var001b2a00 = 0xc34d8000;
-u32 var001b2a04 = 0x4374b333;
-u32 var001b2a08 = 0x4288999a;
-u32 var001b2a0c = 0x3dfa0a52;
-u32 var001b2a10 = 0x3c23d70a;
-u32 var001b2a14 = 0x3d2c0831;
-u32 var001b2a18 = 0x3d4ccccd;
-u32 var001b2a1c = 0x3e4ccccd;
-u32 var001b2a20 = 0x3f4ccccd;
-u32 var001b2a24 = 0x3f4ccccd;
-u32 var001b2a28 = 0x3f4ccccd;
-u32 var001b2a2c = 0x3dcccccd;
-u32 var001b2a30 = 0x3d23d70a;
-u32 var001b2a34 = 0x3f4ccccd;
-u32 var001b2a38 = 0x3f4ccccd;
-u32 var001b2a3c = 0x3f4ccccd;
-u32 var001b2a40 = 0x3f333333;
-u32 var001b2a44 = 0x3e99999a;
-u32 var001b2a48 = 0x3f333333;
-u32 var001b2a4c = 0x3f333333;
-u32 var001b2a50 = 0x3f333333;
-u32 var001b2a54 = 0x3e99999a;
-u32 var001b2a58 = 0x3e99999a;
-u32 var001b2a5c = 0x3e99999a;
-u32 var001b2a60 = 0x3e4ccccd;
-u32 var001b2a64 = 0x3f4ccccd;
-u32 var001b2a68 = 0x7f0fa6e0;
-u32 var001b2a6c = 0x7f0fa6e0;
-u32 var001b2a70 = 0x7f0fa6f4;
-u32 var001b2a74 = 0x7f0fa6f4;
-u32 var001b2a78 = 0x7f0fa6e0;
-u32 var001b2a7c = 0x7f0fa6f4;
-u32 var001b2a80 = 0x7f0fa6f4;
-u32 var001b2a84 = 0x7f0fa6f4;
-u32 var001b2a88 = 0x7f0fa6f4;
-u32 var001b2a8c = 0x7f0fa6e0;
-u32 var001b2a90 = 0x7f0fa6f4;
-u32 var001b2a94 = 0x7f0fa6e0;
-u32 var001b2a98 = 0x7f0fb414;
-u32 var001b2a9c = 0x7f0fb414;
-u32 var001b2aa0 = 0x7f0fb33c;
-u32 var001b2aa4 = 0x7f0fb3c4;
-u32 var001b2aa8 = 0x7f0fb414;
-u32 var001b2aac = 0x7f0fb458;
-u32 var001b2ab0 = 0x7f0fb458;
-u32 var001b2ab4 = 0x7f0fb458;
-u32 var001b2ab8 = 0x7f0fb458;
-u32 var001b2abc = 0x7f0fb458;
-u32 var001b2ac0 = 0x7f0fb33c;
-u32 var001b2ac4 = 0x7f0fb458;
-u32 var001b2ac8 = 0x7f0fb414;
-u32 var001b2acc = 0x7f0fb4c8;
-u32 var001b2ad0 = 0x7f0fb5b4;
-u32 var001b2ad4 = 0x7f0fb84c;
-u32 var001b2ad8 = 0x7f0fb978;
-u32 var001b2adc = 0x7f0fbaf4;
-u32 var001b2ae0 = 0x7f0fbb88;
-u32 var001b2ae4 = 0x7f0fb6b4;
-u32 var001b2ae8 = 0x7f0fb5b4;
-u32 var001b2aec = 0x7f0fbb40;
-u32 var001b2af0 = 0x3f847ae1;
-u32 var001b2af4 = 0x47ae147b;
-u32 var001b2af8 = 0xc34d8000;
-u32 var001b2afc = 0x4374b333;
-u32 var001b2b00 = 0x7f0fd38c;
-u32 var001b2b04 = 0x7f0fd370;
-u32 var001b2b08 = 0x7f0fd370;
-u32 var001b2b0c = 0x7f0fd44c;
-u32 var001b2b10 = 0x7f0fd468;
-u32 var001b2b14 = 0x00000000;
-u32 var001b2b18 = 0x00000000;
-u32 var001b2b1c = 0x00000000;
-u32 var001b2b20 = 0x00010603;
-u32 var001b2b24 = 0x04070502;
-u32 var001b2b28 = 0x00000000;
-u32 var001b2b2c = 0x00000000;
-u32 var001b2b30 = 0x00000000;
-char var001b2b34[] = "Here is where the activemenu sets favourites\n";
-char var001b2b64[] = "slot %d = guntype %d\n";
-char var001b2b7c[] = "put it in %d\n";
-char var001b2b8c[] = "activemenu: setting up for multiplayer\n";
-char var001b2bb4[] = "activemenu: setting up for single player\n";
-char var001b2be0[] = "Put guntype %d in slot %d\n";
-char var001b2bfc[] = "ActiveMenu: Two or more equipped items of guntype %d\n";
-char var001b2c34[] = "FAV: Added gun %d to slot %d\n";
-u32 var001b2c54 = 0x00000000;
-char var001b2c58[] = "obcol";
-char var001b2c60[] = "ibcol";
-char var001b2c68[] = "defcol";
-char var001b2c70[] = "favcol";
-char var001b2c78[] = "pickcol";
-char var001b2c80[] = "pickcol2";
-u32 var001b2c8c = 0x7f0fd724;
-u32 var001b2c90 = 0x7f0fdc60;
-u32 var001b2c94 = 0x7f0fdc60;
-u32 var001b2c98 = 0x7f0fdc60;
-u32 var001b2c9c = 0x7f0fdc60;
-u32 var001b2ca0 = 0x7f0fd894;
-u32 var001b2ca4 = 0x7f0fd9d8;
-u32 var001b2ca8 = 0x7f0fdc60;
-u32 var001b2cac = 0x7f0fdc60;
-u32 var001b2cb0 = 0x7f0fdc60;
-u32 var001b2cb4 = 0x7f0fdc60;
-u32 var001b2cb8 = 0x7f0fdc60;
-u32 var001b2cbc = 0x7f0fdc60;
-u32 var001b2cc0 = 0x7f0fdc60;
-u32 var001b2cc4 = 0x7f0fdc60;
-u32 var001b2cc8 = 0x7f0fdc60;
-u32 var001b2ccc = 0x7f0fdc60;
-u32 var001b2cd0 = 0x7f0fdc60;
-u32 var001b2cd4 = 0x7f0fd9ec;
-u32 var001b2cd8 = 0x7f0fdc54;
-u32 var001b2cdc = 0x3e99999a;
-u32 var001b2ce0 = 0x3f8ccccd;
-u32 var001b2ce4 = 0x00000000;
-u32 var001b2ce8 = 0x00000000;
-u32 var001b2cec = 0x00000000;
-u32 var001b2cf0 = 0x25730a00;
-char var001b2cf4[] = "%s: %s\n";
-char var001b2cfc[] = "%s%s%.00f%%\n";
-u32 var001b2d0c = 0x00000000;
-u32 var001b2d10 = 0x00000000;
-char var001b2d14[] = "--:--\n";
-char var001b2d1c[] = "==:==\n";
-char var001b2d24[] = "%dm:%02ds";
-char var001b2d30[] = "%dh:%02dm:%02ds";
-u32 var001b2d40 = 0x57055706;
-u32 var001b2d44 = 0x57075708;
-u32 var001b2d48 = 0x57090000;
-u32 var001b2d4c = 0x570f5710;
-u32 var001b2d50 = 0x0a000000;
-char var001b2d54[] = "%s: %s\n";
-u32 var001b2d5c = 0x7f102398;
-u32 var001b2d60 = 0x7f1023a4;
-u32 var001b2d64 = 0x7f1023b0;
-u32 var001b2d68 = 0x7f1023d0;
-u32 var001b2d6c = 0x7f1023ec;
-u32 var001b2d70 = 0x7f10240c;
-u32 var001b2d74 = 0x7f102430;
-u32 var001b2d78 = 0x7f1024c8;
-u32 var001b2d7c = 0x7f1024c8;
-u32 var001b2d80 = 0x7f1024c8;
-u32 var001b2d84 = 0x7f1024c8;
-u32 var001b2d88 = 0x7f1024c8;
-u32 var001b2d8c = 0x7f1024c8;
-u32 var001b2d90 = 0x7f1024c8;
-u32 var001b2d94 = 0x7f1024c8;
-u32 var001b2d98 = 0x7f102480;
-u32 var001b2d9c = 0x7f1047ec;
-u32 var001b2da0 = 0x7f104b00;
-u32 var001b2da4 = 0x7f1048b0;
-u32 var001b2da8 = 0x7f104b6c;
-u32 var001b2dac = 0x7f104ba0;
-u32 var001b2db0 = 0x7f10493c;
-u32 var001b2db4 = 0x7f104a14;
-u32 var001b2db8 = 0x7f105584;
-u32 var001b2dbc = 0x7f105584;
-u32 var001b2dc0 = 0x7f105584;
-u32 var001b2dc4 = 0x7f105584;
-u32 var001b2dc8 = 0x7f105584;
-u32 var001b2dcc = 0x7f105584;
-u32 var001b2dd0 = 0x7f105584;
-u32 var001b2dd4 = 0x7f105584;
-u32 var001b2dd8 = 0x7f105584;
-u32 var001b2ddc = 0x7f105584;
-u32 var001b2de0 = 0x7f105584;
-u32 var001b2de4 = 0x7f104be8;
-u32 var001b2de8 = 0x7f10557c;
-u32 var001b2dec = 0x7f105584;
-u32 var001b2df0 = 0x7f105584;
-u32 var001b2df4 = 0x7f105584;
-u32 var001b2df8 = 0x7f105584;
-u32 var001b2dfc = 0x7f104a24;
-u32 var001b2e00 = 0xbe4ccccd;
-u32 var001b2e04 = 0x4196cbe4;
-u32 var001b2e08 = 0x7f106070;
-u32 var001b2e0c = 0x7f106058;
-u32 var001b2e10 = 0x7f106084;
-u32 var001b2e14 = 0x7f106060;
-u32 var001b2e18 = 0x7f106068;
-u32 var001b2e1c = 0x7f1060a4;
-u32 var001b2e20 = 0x7f1060b8;
-u32 var001b2e24 = 0x7f106164;
-u32 var001b2e28 = 0x7f106164;
-u32 var001b2e2c = 0x7f106164;
-u32 var001b2e30 = 0x7f106164;
-u32 var001b2e34 = 0x7f106164;
-u32 var001b2e38 = 0x7f106164;
-u32 var001b2e3c = 0x7f106164;
-u32 var001b2e40 = 0x7f106164;
-u32 var001b2e44 = 0x7f1060c8;
-u32 var001b2e48 = 0x7f1061ac;
-u32 var001b2e4c = 0x7f106380;
-u32 var001b2e50 = 0x7f1061c0;
-u32 var001b2e54 = 0x7f106380;
-u32 var001b2e58 = 0x7f106380;
-u32 var001b2e5c = 0x7f1061d4;
-u32 var001b2e60 = 0x7f1062b0;
-u32 var001b2e64 = 0x7f106380;
-u32 var001b2e68 = 0x7f106380;
-u32 var001b2e6c = 0x7f106380;
-u32 var001b2e70 = 0x7f106380;
-u32 var001b2e74 = 0x7f106380;
-u32 var001b2e78 = 0x7f106380;
-u32 var001b2e7c = 0x7f1062c4;
-u32 var001b2e80 = 0x7f106380;
-u32 var001b2e84 = 0x7f1062f4;
-u32 var001b2e88 = 0x7f1066b4;
-u32 var001b2e8c = 0x7f1067ac;
-u32 var001b2e90 = 0x7f1066dc;
-u32 var001b2e94 = 0x7f1067b8;
-u32 var001b2e98 = 0x7f1067d4;
-u32 var001b2e9c = 0x7f10672c;
-u32 var001b2ea0 = 0x7f10679c;
-u32 var001b2ea4 = 0x00000000;
-u32 var001b2ea8 = 0x00000000;
-u32 var001b2eac = 0x00000000;
-char var001b2eb0[] = "%s: %s";
-char var001b2eb8[] = "%s: %s\n";
-char var001b2ec0[] = "%s %s: %s %s %s";
-char var001b2ed0[] = "%s %s: %s %s %s %s %d:%02d %s %s";
-u32 var001b2ef4 = 0x0a000000;
-u32 var001b2ef8 = 0x00000000;
-u32 var001b2efc = 0x00000000;
-u32 var001b2f00 = 0x25732d00;
-char var001b2f04[] = "==:==";
-char var001b2f0c[] = "%d:%02d";
-char var001b2f14[] = "%d:%02d:%02d";
-u32 var001b2f24 = 0x25730a00;
-char var001b2f28[] = "Setup: item = %x\n";
-u32 var001b2f3c = 0x000000a0;
-u32 var001b2f40 = 0x00000031;
-u32 var001b2f44 = 0x0000004e;
-u32 var001b2f48 = 0x000004a0;
-char var001b2f4c[] = "location: controller pak 1\n";
-u32 var001b2f68 = 0x25730000;
-char var001b2f6c[] = "FileMan: Failure Handler\n";
-char var001b2f88[] = "Copy Memory Freed\n";
-char var001b2f9c[] = "FileMan: Success Handler\n";
-char var001b2fb8[] = "Copy Memory Freed\n";
-char var001b2fcc[] = ">> block read going write, target file is %x-%x\n";
-char var001b3000[] = "SaveElsewhere\n";
-char var001b3010[] = "DELETING: %x-%x\n";
-char var001b3024[] = "MyResult: %d\n";
-char var001b3034[] = "PakOperationSearch>> Search for pak: %x = %d\n";
-u32 var001b3064 = 0x00000080;
-u32 var001b3068 = 0x00000040;
-u32 var001b306c = 0x00000020;
-u32 var001b3070 = 0x00000008;
-char var001b3074[] = "FileAttemptOperation - pak %d op %d\n";
-char var001b309c[] = ">> blockWrite: file:%x pak:%x\n";
-char var001b30bc[] = ">> blockRead: file:%x pak:%x\n";
-char var001b30dc[] = "SUCCESS**->%d\n";
-char var001b30ec[] = "SUCCESS**->%d\n";
-char var001b30fc[] = ">>>>>>>>>>>>> FileWrite: type %d <<<<<<<<<<<<<<<\n";
-char var001b3130[] = "!!!!!!!!!!!! Wanted: %d\n";
-char var001b314c[] = "&&&&&&&&&&&&&&&&&&&&&&&&&&&PASSED**************\n";
-char var001b3180[] = "guid: %x gives pakno: %d\n";
-char var001b319c[] = "Invalidating pak %d\n";
-char var001b31b4[] = "YOUR TARGET: %x-%x\n";
-char var001b31c8[] = "MyResult: %d\n";
-char var001b31d8[] = "COULD NOT DELETE\n";
-char var001b31ec[] = "Multiplayer %d was using that file...\n";
-u32 var001b3214 = 0x47414d00;
-u32 var001b3218 = 0x4d504700;
-u32 var001b321c = 0x4d505000;
-u32 var001b3220 = 0x43414d00;
-u32 var001b3224 = 0x00000080;
-u32 var001b3228 = 0x00000040;
-u32 var001b322c = 0x00000020;
-u32 var001b3230 = 0x00000008;
-char var001b3234[] = "DestPakNo: %d (guid F:%x-%x:P)\n";
-char var001b3254[] = "Copy Memory Alloced\n";
-char var001b326c[] = "COULDNT GET THE RAM!\n";
-char var001b3284[] = "Saving...\n";
-u32 var001b3290 = 0x25730000;
-char var001b3294[] = "GETFileNameForThePurposesOfTheFileRenamingChecker: Unknown type %d\n";
-u32 var001b32d8 = 0x25730a00;
-char var001b32dc[] = "SetFileNameForThePurposesOfTheFileRenamingChecker: Unknown type %d\n";
-char var001b3320[] = "CheckFileName: Comparing range %d-%d\n";
-char var001b3348[] = "Compare '%s' to '%s' = %d\n";
-char var001b3364[] = "OI! DUPLICATE FILE NAME! NO!\n";
-char var001b3384[] = "()()()()()() Writing MPLAYER\n";
-char var001b33a4[] = "()()()()()() Writing MGAME\n";
-char var001b33c0[] = "Write Attempt Made...\n";
-char var001b33d8[] = "decided location: %d\n";
-u32 var001b33f0 = 0x25730a00;
-u32 var001b33f4 = 0x0a000000;
-u32 var001b33f8 = 0x25640000;
-char var001b33fc[] = "GOT OKed!, item->data = %d\n";
-char var001b3418[] = "GOT CANCELLED!\n";
-char var001b3428[] = "Picking Location, type %d wadtype %d wad %d\n";
-char var001b3458[] = "Torching file %d\n";
-char var001b346c[] = "Copying file %d\n";
-char var001b3480[] = "item: %x\n";
-char var001b348c[] = "Switched Wads Back\n";
-char var001b34a0[] = "MenuClosed\n";
-char var001b34ac[] = "Deleting files, wad %d\n";
-u32 var001b34c4 = 0x25643a0a;
-u32 var001b34c8 = 0x00000000;
-u32 var001b34cc = 0x25730a00;
-u32 var001b34d0 = 0x25730a00;
-u32 var001b34d4 = 0x25640a00;
-u32 var001b34d8 = 0x00000000;
-char var001b34dc[] = "GOT OKed!\n";
-char var001b34e8[] = "Try to find last opened file...\n";
-char var001b350c[] = "%s %s";
-u32 var001b3514 = 0x0a000000;
-char var001b3518[] = "%s %d:%02d:%02d";
-char var001b3528[] = "%s %02d:%02d";
-char var001b3538[] = ".%02d";
-char var001b3540[] = "%s %d\n";
-u32 var001b3548 = 0x7f108544;
-u32 var001b354c = 0x7f108544;
-u32 var001b3550 = 0x7f108544;
-u32 var001b3554 = 0x7f10853c;
-u32 var001b3558 = 0x7f10853c;
-u32 var001b355c = 0x7f108544;
-u32 var001b3560 = 0x7f10853c;
-u32 var001b3564 = 0x7f108544;
-u32 var001b3568 = 0x7f108828;
-u32 var001b356c = 0x7f108848;
-u32 var001b3570 = 0x7f108828;
-u32 var001b3574 = 0x7f108888;
-u32 var001b3578 = 0x7f108868;
-u32 var001b357c = 0x7f108868;
-u32 var001b3580 = 0x7f108868;
-u32 var001b3584 = 0x7f108838;
-u32 var001b3588 = 0x7f108838;
-u32 var001b358c = 0x7f108838;
-u32 var001b3590 = 0x7f108858;
-u32 var001b3594 = 0x7f108838;
-u32 var001b3598 = 0x7f108888;
-u32 var001b359c = 0x7f108878;
-u32 var001b35a0 = 0x7f108878;
-u32 var001b35a4 = 0x7f108878;
-u32 var001b35a8 = 0x7f108944;
-u32 var001b35ac = 0x7f108964;
-u32 var001b35b0 = 0x7f108954;
-u32 var001b35b4 = 0x7f108974;
-u32 var001b35b8 = 0x7f108944;
-u32 var001b35bc = 0x7f108954;
-u32 var001b35c0 = 0x7f108964;
-u32 var001b35c4 = 0x7f108944;
-u32 var001b35c8 = 0x7f108944;
-u32 var001b35cc = 0x7f108944;
-u32 var001b35d0 = 0x7f108964;
-u32 var001b35d4 = 0x7f108954;
-u32 var001b35d8 = 0x7f108974;
-u32 var001b35dc = 0x7f108944;
-u32 var001b35e0 = 0x7f108954;
-u32 var001b35e4 = 0x7f108964;
-u32 var001b35e8 = 0x7f108a70;
-u32 var001b35ec = 0x7f108a70;
-u32 var001b35f0 = 0x7f108a70;
-u32 var001b35f4 = 0x7f108a70;
-u32 var001b35f8 = 0x7f108a20;
-u32 var001b35fc = 0x7f108a20;
-u32 var001b3600 = 0x7f108a20;
-u32 var001b3604 = 0x7f108a70;
-u32 var001b3608 = 0x7f108a70;
-u32 var001b360c = 0x7f108a70;
-u32 var001b3610 = 0x7f108a70;
-u32 var001b3614 = 0x7f108a70;
-u32 var001b3618 = 0x7f108a70;
-u32 var001b361c = 0x7f108a20;
-u32 var001b3620 = 0x7f108a20;
-u32 var001b3624 = 0x7f108a20;
-u32 var001b3628 = 0x7f108b70;
-u32 var001b362c = 0x7f108be0;
-u32 var001b3630 = 0x7f108be0;
-u32 var001b3634 = 0x7f108be0;
-u32 var001b3638 = 0x7f108bcc;
-u32 var001b363c = 0x7f108bcc;
-u32 var001b3640 = 0x7f108bcc;
-u32 var001b3644 = 0x7f108be0;
-u32 var001b3648 = 0x7f108be0;
-u32 var001b364c = 0x7f108be0;
-u32 var001b3650 = 0x7f108be0;
-u32 var001b3654 = 0x7f108be0;
-u32 var001b3658 = 0x7f108be0;
-u32 var001b365c = 0x7f108b18;
-u32 var001b3660 = 0x7f108b18;
-u32 var001b3664 = 0x7f108b18;
-u32 var001b3668 = 0x7f108c94;
-u32 var001b366c = 0x7f108c94;
-u32 var001b3670 = 0x7f108c94;
-u32 var001b3674 = 0x7f108c9c;
-u32 var001b3678 = 0x7f108ca8;
-u32 var001b367c = 0x7f108cb0;
-u32 var001b3680 = 0x7f108c94;
-u32 var001b3684 = 0x7f108ca8;
-u32 var001b3688 = 0x7f108c9c;
-u32 var001b368c = 0x7f1093c4;
-u32 var001b3690 = 0x7f1093d4;
-u32 var001b3694 = 0x7f1093f0;
-u32 var001b3698 = 0x7f109420;
-u32 var001b369c = 0x7f109408;
-u32 var001b36a0 = 0x7f109408;
-u32 var001b36a4 = 0x7f109408;
-u32 var001b36a8 = 0x7f1092b8;
-u32 var001b36ac = 0x7f1092b8;
-u32 var001b36b0 = 0x7f1092b0;
-u32 var001b36b4 = 0x7f1092d0;
-u32 var001b36b8 = 0x7f1092ec;
-u32 var001b36bc = 0x7f109420;
-u32 var001b36c0 = 0x7f10930c;
-u32 var001b36c4 = 0x7f10930c;
-u32 var001b36c8 = 0x7f10930c;
-u32 var001b36cc = 0x7f109acc;
-u32 var001b36d0 = 0x7f109ae4;
-u32 var001b36d4 = 0x7f109ae4;
-u32 var001b36d8 = 0x7f109ae4;
-u32 var001b36dc = 0x7f109ae4;
-u32 var001b36e0 = 0x7f109ba0;
-u32 var001b36e4 = 0x7f109af8;
-u32 var001b36e8 = 0x7f109b90;
-u32 var001b36ec = 0x7f109ba0;
-u32 var001b36f0 = 0x7f109acc;
-u32 var001b36f4 = 0x7f109acc;
-u32 var001b36f8 = 0x7f109acc;
-u32 var001b36fc = 0x7f109af8;
-u32 var001b3700 = 0x7f109b90;
-u32 var001b3704 = 0x7f109ba0;
-u32 var001b3708 = 0x7f109ae4;
-u32 var001b370c = 0x7f109ae4;
-u32 var001b3710 = 0x7f109ae4;
-u32 var001b3714 = 0x7f109c14;
-u32 var001b3718 = 0x7f109c2c;
-u32 var001b371c = 0x7f109c2c;
-u32 var001b3720 = 0x7f109c2c;
-u32 var001b3724 = 0x7f109c2c;
-u32 var001b3728 = 0x7f109c7c;
-u32 var001b372c = 0x7f109c40;
-u32 var001b3730 = 0x7f109c6c;
-u32 var001b3734 = 0x7f109c7c;
-u32 var001b3738 = 0x7f109c14;
-u32 var001b373c = 0x7f109c14;
-u32 var001b3740 = 0x7f109c14;
-u32 var001b3744 = 0x7f109c40;
-u32 var001b3748 = 0x7f109c6c;
-u32 var001b374c = 0x7f109c7c;
-u32 var001b3750 = 0x7f109c2c;
-u32 var001b3754 = 0x7f109c2c;
-u32 var001b3758 = 0x7f109c2c;
-u32 var001b375c = 0x7f10ab8c;
-u32 var001b3760 = 0x7f10ad40;
-u32 var001b3764 = 0x7f10ad80;
-u32 var001b3768 = 0x7f10ad4c;
-u32 var001b376c = 0x7f10ad64;
-u32 var001b3770 = 0x7f10ad80;
-u32 var001b3774 = 0x7f10ab7c;
-u32 var001b3778 = 0x7f10ad80;
-u32 var001b377c = 0x7f10ad80;
-u32 var001b3780 = 0x7f10ad80;
-u32 var001b3784 = 0x7f10ad80;
-u32 var001b3788 = 0x7f10ad80;
-u32 var001b378c = 0x7f10ad80;
-u32 var001b3790 = 0x7f10ad80;
-u32 var001b3794 = 0x7f10ad80;
-u32 var001b3798 = 0x7f10ad80;
-u32 var001b379c = 0x7f10ad80;
-u32 var001b37a0 = 0x7f10ad80;
-u32 var001b37a4 = 0x7f10ab98;
-u32 var001b37a8 = 0x7f10ad34;
-u32 var001b37ac = 0x7f10b2c8;
-u32 var001b37b0 = 0x7f10b65c;
-u32 var001b37b4 = 0x7f10b65c;
-u32 var001b37b8 = 0x7f10b65c;
-u32 var001b37bc = 0x7f10b65c;
-u32 var001b37c0 = 0x7f10b604;
-u32 var001b37c4 = 0x7f10b2b8;
-u32 var001b37c8 = 0x7f10b65c;
-u32 var001b37cc = 0x7f10b65c;
-u32 var001b37d0 = 0x7f10b65c;
-u32 var001b37d4 = 0x7f10b65c;
-u32 var001b37d8 = 0x7f10b65c;
-u32 var001b37dc = 0x7f10b65c;
-u32 var001b37e0 = 0x7f10b65c;
-u32 var001b37e4 = 0x7f10b65c;
-u32 var001b37e8 = 0x7f10b65c;
-u32 var001b37ec = 0x7f10b65c;
-u32 var001b37f0 = 0x7f10b65c;
-u32 var001b37f4 = 0x7f10b2d4;
-u32 var001b37f8 = 0x7f10b5f8;
-u32 var001b37fc = 0x7f10bf70;
-u32 var001b3800 = 0x7f10c768;
-u32 var001b3804 = 0x7f10c7ec;
-u32 var001b3808 = 0x7f10c778;
-u32 var001b380c = 0x7f10c7b0;
-u32 var001b3810 = 0x7f10c6fc;
-u32 var001b3814 = 0x7f10bdb4;
-u32 var001b3818 = 0x7f10c7ec;
-u32 var001b381c = 0x7f10c7ec;
-u32 var001b3820 = 0x7f10c7ec;
-u32 var001b3824 = 0x7f10c7ec;
-u32 var001b3828 = 0x7f10c7ec;
-u32 var001b382c = 0x7f10c7ec;
-u32 var001b3830 = 0x7f10c7ec;
-u32 var001b3834 = 0x7f10c7ec;
-u32 var001b3838 = 0x7f10c7ec;
-u32 var001b383c = 0x7f10c7ec;
-u32 var001b3840 = 0x7f10c7ec;
-u32 var001b3844 = 0x7f10bf80;
-u32 var001b3848 = 0x7f10c6f0;
-u32 var001b384c = 0x7f10c7ec;
-u32 var001b3850 = 0x7f10c7ec;
-u32 var001b3854 = 0x7f10c7ec;
-u32 var001b3858 = 0x7f10c7ec;
-u32 var001b385c = 0x7f10bdc4;
-char var001b3860[] = "%s: %s\n";
-char var001b3868[] = "%s: %s\n";
-u32 var001b3870 = 0x25640000;
-u32 var001b3874 = 0x25640000;
-u32 var001b3878 = 0x25640000;
-u32 var001b387c = 0x25640000;
-u32 var001b3880 = 0x25640000;
-u32 var001b3884 = 0x25640000;
-char var001b3888[] = "%s%s%.1f%%";
-u32 var001b3894 = 0x00000000;
-u32 var001b3898 = 0x00000000;
-char var001b389c[] = "%s: %s\n";
-u32 var001b38a4 = 0x25730a00;
-char var001b38a8[] = "%s: %s\n";
-u32 var001b38b0 = 0x0a000000;
-char var001b38b4[] = "ctcol";
-u32 var001b38bc = 0x0a000000;
-char var001b38c0[] = "Flag %d = %s";
-char var001b38d0[] = "TRUE";
-char var001b38d8[] = "FALSE";
-char var001b38e0[] = "Dark";
-char var001b38e8[] = "MAX_FUDGE_DATA_SIZE>=sizeof(PakFileTypeGameSetup_s)";
-char var001b391c[] = "pdoptions.c";
-char var001b3928[] = "MAX_FUDGE_DATA_SIZE>=sizeof(PakFileTypeGameSetup_s)";
-char var001b395c[] = "pdoptions.c";
-char var001b3968[] = "MAX_FUDGE_DATA_SIZE>=sizeof(PakFileTypeGameSetup_s)";
-char var001b399c[] = "pdoptions.c";
-u32 var001b39a8 = 0x00000000;
-u32 var001b39ac = 0x00000000;
-char var001b39b0[] = "fileGuid";
-char var001b39bc[] = "bossfile.c";
-u32 var001b39c8 = 0x00000000;
-u32 var001b39cc = 0x00000000;
-char var001b39d0[] = "Rebuilding pakWad %d:\n";
-u32 var001b39e8 = 0x00000080;
-u32 var001b39ec = 0x00000040;
-u32 var001b39f0 = 0x00000020;
-u32 var001b39f4 = 0x00000008;
-u32 var001b39f8 = 0x04000102;
-u32 var001b39fc = 0x03000000;
-u32 var001b3a00 = 0x01020304;
-u32 var001b3a04 = 0x00000000;
-char var001b3a08[] = "tc != NULL";
-char var001b3a14[] = "gamefile.c";
-u32 var001b3a20 = 0x3ca3d70a;
-u32 var001b3a24 = 0x3ca3d70a;
-u32 var001b3a28 = 0x3c23d70a;
-u32 var001b3a2c = 0xbc23d70a;
-u32 var001b3a30 = 0xbc23d70a;
-u32 var001b3a34 = 0x3c23d70a;
-u32 var001b3a38 = 0x3c9374c0;
-u32 var001b3a3c = 0x3c9374c0;
-u32 var001b3a40 = 0x3f7b645a;
-u32 var001b3a44 = 0x3f333333;
-u32 var001b3a48 = 0x3dcccccd;
-u32 var001b3a4c = 0x3f19999a;
-u32 var001b3a50 = 0x3f199999;
-u32 var001b3a54 = 0x3ecccccd;
-u32 var001b3a58 = 0x3ecccccd;
-u32 var001b3a5c = 0x3f666666;
-u32 var001b3a60 = 0x3f7b645a;
-u32 var001b3a64 = 0x3f7f5b81;
-u32 var001b3a68 = 0x3f75c28f;
-u32 var001b3a6c = 0x3f7f5b81;
-u32 var001b3a70 = 0x3cccccce;
-u32 var001b3a74 = 0x3c088889;
-u32 var001b3a78 = 0x3c4cccce;
-u32 var001b3a7c = 0x3b888889;
-char var001b3a80[] = "padhalllv.c";
-u32 var001b3a8c = 0x00000000;
-u32 var001b3a90 = 0x002a2a2a;
-u32 var001b3a94 = 0x2a2a2a2a;
-u32 var001b3a98 = 0x2a2a2a2a;
-u32 var001b3a9c = 0x2a2a2a20;
-u32 var001b3aa0 = 0x30313233;
-u32 var001b3aa4 = 0x34353637;
-u32 var001b3aa8 = 0x38394142;
-u32 var001b3aac = 0x43444546;
-u32 var001b3ab0 = 0x4748494a;
-u32 var001b3ab4 = 0x4b4c4d4e;
-u32 var001b3ab8 = 0x4f505152;
-u32 var001b3abc = 0x53545556;
-u32 var001b3ac0 = 0x5758595a;
-u32 var001b3ac4 = 0x21222327;
-u32 var001b3ac8 = 0x2a2b2c2d;
-u32 var001b3acc = 0x2e2f3a3d;
-u32 var001b3ad0 = 0x3f400000;
-char var001b3ad4[] = "Pak %d -> Pak_UpdateAndGetPakNoteInfo - ERROR - ekPakErrorPakFatal\n";
-char var001b3b18[] = "Pak %d -> Pak_UpdateAndGetPakNoteInfo - ERROR - ekPakErrorNoPakPresent\n";
-char var001b3b60[] = "-> Unknown PakFileType_e - %d\n";
-char var001b3b80[] = "-forceversion";
-char var001b3b90[] = "Pak %d -> Header Cache 2 - FATAL ERROR\n";
-u32 var001b3bb8 = 0x0a000000;
-char var001b3bbc[] = "\nAddress = %u : ";
-char var001b3bd0[] = "%2x ";
-u32 var001b3bd8 = 0x0a000000;
-char var001b3bdc[] = "EEPROM DUMP";
-char var001b3be8[] = "PakSaveAtGuid: new guid = %x\n";
-char var001b3c08[] = "Call to osPfsReSizeFile -> pfs=%x, cc=%u, gc=%u, gn=%s, en=%s, l=%d\n";
-char var001b3c50[] = "Pak %d -> Pak_AddOneCameraFile\n";
-char var001b3c70[] = "Pak %d -> Pak_AddOneCameraFile - Making one default camera file\n";
-char var001b3cb4[] = "Pak %d -> Pak_AddOneCameraFile : Got Space - No need for resize\n";
-char var001b3cf8[] = "Pak %d -> Pak_AddOneCameraFile : No Space - Need to resize by %d pages\n";
-char var001b3d40[] = "Pak %d -> Pak_AddOneCameraFile - Make of one default camera files failed\n";
-char var001b3d8c[] = "Pak %d -> Pak_AddOneCameraFile : Error - No Room\n";
-char var001b3dc0[] = "Pak %d -> Pak_GameNoteResetSize : New=%u\n";
-char var001b3dec[] = "bDoUpdate7\n";
-char var001b3df8[] = "Pak_SetThisGameSetupFile -> Pak=%d, File=%d, EEPROM=%d\n";
-char var001b3e30[] = "pak/pak.c";
-char var001b3e3c[] = "Pak %d -> Pak_Dir - ERROR : Pak Not Ready\n";
-char var001b3e68[] = "Pak %d -> Pak_Dir - Done - Pak_GetOffsetEOF\n";
-char var001b3e98[] = "Pak %d -> Pak_Dir - Done - ekPakErrorHeaderCrcCheckFail\n";
-char var001b3ed4[] = "Pak Return Code = ekPakOk";
-char var001b3ef0[] = "Pak Return Code = ekPakErrorNoPakPresent";
-char var001b3f1c[] = "Pak Return Code = ekPakErrorPakFatal";
-char var001b3f44[] = "Pak Return Code = ekPakErrorFileNotFound";
-char var001b3f70[] = "Pak Return Code = ekPakErrorFileSystem";
-char var001b3f98[] = "Pak Return Code = ekPakErrorOutOfMemory";
-char var001b3fc0[] = "Pak Return Code = ekPakErrorPakWaitingForInit";
-char var001b3ff0[] = "Pak Return Code = ekPakErrorHeaderCrcCheckFail";
-char var001b4020[] = "Pak Return Code = ekPakErrorDataCrcCheckFail";
-char var001b4050[] = "Pak Return Code = ekPakErrorDataNotValid";
-char var001b407c[] = "Pak Return Code = Unknown - %d\n";
-char var001b409c[] = "Pak %d -> Pak_RepairAsBlank - St=%u, Ed=%u, Gap=%u, Blank Size=%u\n";
-char var001b40e0[] = "Pak %d -> Pak_RepairAsBlank - Fatal Error at tOffset %u\n";
-char var001b411c[] = "Pak %d -> Pak_ValidateVersion - Start - Game File Size = %d\n";
-char var001b415c[] = "Pak %d -> Pak_ValidateVersion - Clearing cache 2\n";
-char var001b4190[] = "Pak %d -> Pak_ValidateVersion 1 - Loaded with ret=%d at offset %u\n";
-char var001b41d4[] = "Pak %d -> Pak_ValidateVersion 1 - Blank at %u\n";
-char var001b4204[] = "Pak %d -> Pak_ValidateVersion 2 - Loaded  at offset %u\n";
-u32 var001b423c = 0x424f530a;
-u32 var001b4240 = 0x00000000;
-u32 var001b4244 = 0x43414d0a;
-u32 var001b4248 = 0x00000000;
-u32 var001b424c = 0x4d50500a;
-u32 var001b4250 = 0x00000000;
-u32 var001b4254 = 0x4d50470a;
-u32 var001b4258 = 0x00000000;
-u32 var001b425c = 0x47414d00;
-char var001b4260[] = "> Pak_DefragPak_Level1 - Merge of two blanks failed";
-char var001b4294[] = "Pak %d - Pak_StartOne called from line %d in %s -> Flags = %0x\n";
-char var001b42d4[] = "\nPak_StartOne -> Pak%d, Modes -\n";
-char var001b42f8[] = "Memory,";
-char var001b4300[] = "Rumble,";
-char var001b4308[] = "Game Boy";
-u32 var001b4314 = 0x0a000000;
-char var001b4318[] = "Pak %d -> %u Bytes of scratch for cache 2 memory at %0x\n";
-char var001b4354[] = "\nPak%d -> Pak_EndOne - Called from line %d in %s : Modes -\n";
-char var001b4390[] = "Memory,";
-char var001b4398[] = "Rumble,";
-char var001b43a0[] = "Game Boy";
-u32 var001b43ac = 0x0a000000;
-char var001b43b0[] = "Pak -> FATAL ERROR -> MEMORY INSTANCE ENDING IS NO LONGER SUPPORTED\n";
-char var001b43f8[] = "Pak -> Pak_MakeOne - Id=%d is finished\n";
-char var001b4420[] = "Pak %d -> Pak_Memory_UpdateNoteInfo\n";
-char var001b4448[] = "Pak %d -> Couldn't assertain the game note size\n";
-char var001b447c[] = "Pak %d -> Pak_AnalyseCurrentGameNote - Game note size = %uk\n";
-char var001b44bc[] = "Pak %d -> Searching for the game file\n";
-char var001b44e4[] = "Pak %d -> Game file wipe failed\n";
-char var001b4508[] = "RWI : Warning : tOffset > gPakObj[PakNum].GameFileSize\n";
-char var001b4540[] = "Pak %d -> Pak_DeleteFile_Offset - DataSize = %u\n";
-char var001b4574[] = "Pak %d -> Delete file offset (file id %d) failed\n";
-char var001b45a8[] = "Pak %d -> Delete file offset failed - Bad Offset passed\n";
-char var001b45e4[] = "-forceversion";
-char var001b45f4[] = "PakMac_PaksLive()=%x\n";
-char var001b460c[] = "paksNeedToBeLive4Game=%x\n";
-char var001b4628[] = "paksNeedToBeLive4Menu=%x\n";
-char var001b4644[] = "g_LastPackPattern=%x\n";
-char var001b465c[] = "forcescrub";
-char var001b4668[] = "pakdump";
-char var001b4670[] = "pakcache";
-char var001b467c[] = "pakinit";
-char var001b4684[] = "corruptme";
-char var001b4690[] = "wipeeeprom";
-char var001b469c[] = "dumpeeprom";
-char var001b46a8[] = "\nOS_GBPAK_GBCART_ON       - ";
-char var001b46c8[] = "\nOS_GBPAK_GBCART_PULL     - ";
-char var001b46e8[] = "\nOS_GBPAK_POWER           - ";
-char var001b4708[] = "\nOS_GBPAK_RSTB_DETECTION  - ";
-char var001b4728[] = "Pak -> Dumping contents of Game Boy Pack(TM) Id file";
-char var001b4760[] = "(u16) - Fixed1             - %d\n";
-char var001b4784[] = "(u16) - StartAddress       - %d\n";
-char var001b47a8[] = "(u8*) - Nintendo chr data  - %s\n";
-char var001b47cc[] = "(u8*) - Game Title         - %s\n";
-char var001b47f0[] = "(u16) - Company Code       - %d\n";
-char var001b4814[] = "(u8 ) - Body Code          - %d\n";
-char var001b4838[] = "(u8 ) - Rom Size           - %d\n";
-char var001b485c[] = "(u8 ) - Ram Size           - %d\n";
-char var001b4880[] = "(u8 ) - country_code       - %d\n";
-char var001b48a4[] = "(u8 ) - Fixed 2 (0x33)     - %d\n";
-char var001b48c8[] = "(u8 ) - Version Number     - %d\n";
-char var001b48ec[] = "(u8 ) - isum               - %d\n";
-char var001b4910[] = "(u16) - sum                - %d\n";
-char var001b4934[] = "Pak -> Finished Dump";
-u32 var001b494c = 0x43000000;
-u32 var001b4950 = 0x43140000;
-u32 var001b4954 = 0x435c0000;
-u32 var001b4958 = 0x437f0000;
-u32 var001b495c = 0x43020000;
-u32 var001b4960 = 0x43150000;
-u32 var001b4964 = 0x43520000;
-u32 var001b4968 = 0x437f0000;
-u32 var001b496c = 0x43040000;
-u32 var001b4970 = 0x43160000;
-u32 var001b4974 = 0x434a0000;
-u32 var001b4978 = 0x437f0000;
-u32 var001b497c = 0x43060000;
-u32 var001b4980 = 0x43160000;
-u32 var001b4984 = 0x43440000;
-u32 var001b4988 = 0x437f0000;
-u32 var001b498c = 0x43080000;
-u32 var001b4990 = 0x43170000;
-u32 var001b4994 = 0x433e0000;
-u32 var001b4998 = 0x437f0000;
-u32 var001b499c = 0x430a0000;
-u32 var001b49a0 = 0x43170000;
-u32 var001b49a4 = 0x43380000;
-u32 var001b49a8 = 0x437f0000;
-u32 var001b49ac = 0x430b0000;
-u32 var001b49b0 = 0x43180000;
-u32 var001b49b4 = 0x43320000;
-u32 var001b49b8 = 0x43750000;
-u32 var001b49bc = 0x430c0000;
-u32 var001b49c0 = 0x43180000;
-u32 var001b49c4 = 0x432c0000;
-u32 var001b49c8 = 0x436b0000;
-u32 var001b49cc = 0x430d0000;
-u32 var001b49d0 = 0x43180000;
-u32 var001b49d4 = 0x432a0000;
-u32 var001b49d8 = 0x435d0000;
-u32 var001b49dc = 0x430e0000;
-u32 var001b49e0 = 0x43180000;
-u32 var001b49e4 = 0x43280000;
-u32 var001b49e8 = 0x43500000;
-u32 var001b49ec = 0x430f0000;
-u32 var001b49f0 = 0x43180000;
-u32 var001b49f4 = 0x43260000;
-u32 var001b49f8 = 0x43440000;
-u32 var001b49fc = 0x43100000;
-u32 var001b4a00 = 0x43180000;
-u32 var001b4a04 = 0x43240000;
-u32 var001b4a08 = 0x433a0000;
-u32 var001b4a0c = 0x43120000;
-u32 var001b4a10 = 0x43180000;
-u32 var001b4a14 = 0x43210000;
-u32 var001b4a18 = 0x43310000;
-u32 var001b4a1c = 0x43140000;
-u32 var001b4a20 = 0x43180000;
-u32 var001b4a24 = 0x431d0000;
-u32 var001b4a28 = 0x43280000;
-u32 var001b4a2c = 0x43160000;
-u32 var001b4a30 = 0x43180000;
-u32 var001b4a34 = 0x43190000;
-u32 var001b4a38 = 0x43200000;
-u32 var001b4a3c = 0x43180000;
-u32 var001b4a40 = 0x43180000;
-u32 var001b4a44 = 0x43180000;
-u32 var001b4a48 = 0x43180000;
-u32 var001b4a4c = 0x00000000;
-u32 var001b4a50 = 0x00000000;
-u32 var001b4a54 = 0x00000000;
-u32 var001b4a58 = 0x00000000;
-u32 var001b4a5c = 0x00000000;
-u32 var001b4a60 = 0x41000000;
-u32 var001b4a64 = 0x40000000;
-u32 var001b4a68 = 0x41200000;
-u32 var001b4a6c = 0x41400000;
-u32 var001b4a70 = 0x40800000;
-u32 var001b4a74 = 0x41600000;
-u32 var001b4a78 = 0x40c00000;
-u32 var001b4a7c = 0x40400000;
-u32 var001b4a80 = 0x41300000;
-u32 var001b4a84 = 0x3f800000;
-u32 var001b4a88 = 0x41100000;
-u32 var001b4a8c = 0x41700000;
-u32 var001b4a90 = 0x40e00000;
-u32 var001b4a94 = 0x41500000;
-u32 var001b4a98 = 0x40a00000;
-u32 var001b4a9c = 0x00000000;
-u32 var001b4aa0 = 0x41600000;
-u32 var001b4aa4 = 0x40400000;
-u32 var001b4aa8 = 0x41500000;
-u32 var001b4aac = 0x41300000;
-u32 var001b4ab0 = 0x40a00000;
-u32 var001b4ab4 = 0x41000000;
-u32 var001b4ab8 = 0x40c00000;
-u32 var001b4abc = 0x41400000;
-u32 var001b4ac0 = 0x40000000;
-u32 var001b4ac4 = 0x41700000;
-u32 var001b4ac8 = 0x3f800000;
-u32 var001b4acc = 0x40e00000;
-u32 var001b4ad0 = 0x41100000;
-u32 var001b4ad4 = 0x40800000;
-u32 var001b4ad8 = 0x41200000;
-char var001b4adc[] = "Pak_StartCapture -> Failed - Code = %d\n";
-char var001b4b04[] = "Pak_DownloadNextBlockToPackBuffer : eQuality=ekCapQualityHeader, BufferNum=%d\n";
-char var001b4b54[] = "Pak : Doing Frame - Top    = %d\n";
-char var001b4b78[] = "Pak : Doing Frame - Height = %d\n";
-char var001b4b9c[] = "Pak : Doing Frame - Bottom = %d\n";
-char var001b4bc0[] = "Pak %d - ekPakInitStatusError_CorruptedPak\n";
-char var001b4bec[] = "Pak %d - ekPakInitStatusInitGameBoy_PDGB_Check_Error\n";
-char var001b4c24[] = "Pak %d - ekPakInitStatusError_DamagedPak\n";
-char var001b4c50[] = "Pak %d - ekPakInitStatusError_StuffedPak\n";
-char var001b4c7c[] = "Pak %d - ekPakInitStatusError_StuffedAndCheckedPak\n";
-char var001b4cb0[] = "Pak %d - ekPakInitStatusVoid\n";
-char var001b4cd0[] = "Pak %d -> Unhandled Init Status - %d\n";
-char var001b4cf8[] = "Pak %d - PakDamage_UjiWipedMyAss\n";
-char var001b4d1c[] = "-scrub";
-char var001b4d24[] = "Pak %d -> Pak_PdGameBoySetRWByte - Fatal Error\n";
-char var001b4d54[] = "0123456789012345678901234567890123456789";
-char var001b4d80[] = "PerfDark\n";
-u32 var001b4d8c = 0x7f116794;
-u32 var001b4d90 = 0x7f116794;
-u32 var001b4d94 = 0x7f11679c;
-u32 var001b4d98 = 0x7f11679c;
-u32 var001b4d9c = 0x7f11679c;
-u32 var001b4da0 = 0x7f116794;
-u32 var001b4da4 = 0x7f116794;
-u32 var001b4da8 = 0x7f11679c;
-u32 var001b4dac = 0x7f116794;
-u32 var001b4db0 = 0x7f11713c;
-u32 var001b4db4 = 0x7f11713c;
-u32 var001b4db8 = 0x7f11713c;
-u32 var001b4dbc = 0x7f117108;
-u32 var001b4dc0 = 0x7f11713c;
-u32 var001b4dc4 = 0x7f11713c;
-u32 var001b4dc8 = 0x7f11713c;
-u32 var001b4dcc = 0x7f117130;
-u32 var001b4dd0 = 0x7f11713c;
-u32 var001b4dd4 = 0x7f11713c;
-u32 var001b4dd8 = 0x7f11713c;
-u32 var001b4ddc = 0x7f11713c;
-u32 var001b4de0 = 0x7f11713c;
-u32 var001b4de4 = 0x7f11713c;
-u32 var001b4de8 = 0x7f11713c;
-u32 var001b4dec = 0x7f117118;
-u32 var001b4df0 = 0x7f11713c;
-u32 var001b4df4 = 0x7f11713c;
-u32 var001b4df8 = 0x7f11713c;
-u32 var001b4dfc = 0x7f11713c;
-u32 var001b4e00 = 0x7f11713c;
-u32 var001b4e04 = 0x7f11713c;
-u32 var001b4e08 = 0x7f11713c;
-u32 var001b4e0c = 0x7f11713c;
-u32 var001b4e10 = 0x7f11713c;
-u32 var001b4e14 = 0x7f11713c;
-u32 var001b4e18 = 0x7f11713c;
-u32 var001b4e1c = 0x7f11713c;
-u32 var001b4e20 = 0x7f11713c;
-u32 var001b4e24 = 0x7f11713c;
-u32 var001b4e28 = 0x7f11713c;
-u32 var001b4e2c = 0x7f117120;
-u32 var001b4e30 = 0x7f11932c;
-u32 var001b4e34 = 0x7f11932c;
-u32 var001b4e38 = 0x7f11932c;
-u32 var001b4e3c = 0x7f11932c;
-u32 var001b4e40 = 0x7f11932c;
-u32 var001b4e44 = 0x7f119334;
-u32 var001b4e48 = 0x7f119334;
-u32 var001b4e4c = 0x7f119334;
-u32 var001b4e50 = 0x7f119314;
-u32 var001b4e54 = 0x7f119334;
-u32 var001b4e58 = 0x7f119334;
-u32 var001b4e5c = 0x7f119334;
-u32 var001b4e60 = 0x7f119334;
-u32 var001b4e64 = 0x7f119334;
-u32 var001b4e68 = 0x7f11931c;
-u32 var001b4e6c = 0x7f119324;
-u32 var001b4e70 = 0x7f119360;
-u32 var001b4e74 = 0x7f119360;
-u32 var001b4e78 = 0x7f119360;
-u32 var001b4e7c = 0x7f119360;
-u32 var001b4e80 = 0x7f119360;
-u32 var001b4e84 = 0x7f119360;
-u32 var001b4e88 = 0x7f119360;
-u32 var001b4e8c = 0x7f119360;
-u32 var001b4e90 = 0x7f119360;
-u32 var001b4e94 = 0x7f119360;
-u32 var001b4e98 = 0x7f119360;
-u32 var001b4e9c = 0x7f11c3e0;
-u32 var001b4ea0 = 0x7f11c4ec;
-u32 var001b4ea4 = 0x7f11c468;
-u32 var001b4ea8 = 0x7f11c4ec;
-u32 var001b4eac = 0x7f11c4ec;
-u32 var001b4eb0 = 0x7f11c4ec;
-u32 var001b4eb4 = 0x7f11c4ac;
-u32 var001b4eb8 = 0x7f11c4ac;
-u32 var001b4ebc = 0x7f11c4ec;
-u32 var001b4ec0 = 0x7f11c468;
-u32 var001b4ec4 = 0x7f11c424;
-u32 var001b4ec8 = 0x7f11c540;
-u32 var001b4ecc = 0x7f11c540;
-u32 var001b4ed0 = 0x7f11c540;
-u32 var001b4ed4 = 0x7f11c540;
-u32 var001b4ed8 = 0x7f11c540;
-u32 var001b4edc = 0x7f11c540;
-u32 var001b4ee0 = 0x7f11c540;
-u32 var001b4ee4 = 0x7f11c540;
-u32 var001b4ee8 = 0x7f11c540;
-u32 var001b4eec = 0x7f11c540;
-u32 var001b4ef0 = 0x7f11c540;
-u32 var001b4ef4 = 0x7f11c540;
-u32 var001b4ef8 = 0x7f11c540;
-u32 var001b4efc = 0x7f11c540;
-u32 var001b4f00 = 0x7f11c540;
-u32 var001b4f04 = 0x7f11c540;
-u32 var001b4f08 = 0x7f11c540;
-u32 var001b4f0c = 0x7f11c540;
-u32 var001b4f10 = 0x7f11c73c;
-u32 var001b4f14 = 0x7f11c73c;
-u32 var001b4f18 = 0x7f11c73c;
-u32 var001b4f1c = 0x7f11c73c;
-u32 var001b4f20 = 0x7f11c73c;
-u32 var001b4f24 = 0x7f11c9e4;
-u32 var001b4f28 = 0x7f11c9e4;
-u32 var001b4f2c = 0x7f11c9e4;
-u32 var001b4f30 = 0x7f11c9e4;
-u32 var001b4f34 = 0x7f11c9e4;
-u32 var001b4f38 = 0x7f11cbc0;
-u32 var001b4f3c = 0x7f11cbc0;
-u32 var001b4f40 = 0x7f11cbc0;
-u32 var001b4f44 = 0x7f11cbc0;
-u32 var001b4f48 = 0x7f11cbc0;
-u32 var001b4f4c = 0x7f11cbc0;
-u32 var001b4f50 = 0x7f11cbc0;
-u32 var001b4f54 = 0x7f11cbc0;
-u32 var001b4f58 = 0x7f11cbc0;
-u32 var001b4f5c = 0x7f11cbc0;
-u32 var001b4f60 = 0x7f11cbc0;
-u32 var001b4f64 = 0x7f11cbc0;
-u32 var001b4f68 = 0x7f11cbc0;
-u32 var001b4f6c = 0x7f11e34c;
-u32 var001b4f70 = 0x7f11dffc;
-u32 var001b4f74 = 0x7f11e048;
-u32 var001b4f78 = 0x7f11e07c;
-u32 var001b4f7c = 0x7f11e0e8;
-u32 var001b4f80 = 0x7f11e118;
-u32 var001b4f84 = 0x7f11e138;
-u32 var001b4f88 = 0x7f11e0c0;
-u32 var001b4f8c = 0x7f11e160;
-u32 var001b4f90 = 0x7f11e178;
-u32 var001b4f94 = 0x7f11e188;
-u32 var001b4f98 = 0x7f11e34c;
-u32 var001b4f9c = 0x7f11e1ac;
-u32 var001b4fa0 = 0x7f11e34c;
-u32 var001b4fa4 = 0x7f11e24c;
-u32 var001b4fa8 = 0x7f11e1b8;
-u32 var001b4fac = 0x7f11e2ac;
-u32 var001b4fb0 = 0x7f11e34c;
-u32 var001b4fb4 = 0x7f11e34c;
-u32 var001b4fb8 = 0x7f11e34c;
-u32 var001b4fbc = 0x7f11e34c;
-u32 var001b4fc0 = 0x7f11e30c;
-u32 var001b4fc4 = 0x7f11e330;
-u32 var001b4fc8 = 0x7f11e34c;
-u32 var001b4fcc = 0x7f11e194;
-u32 var001b4fd0 = 0x7f11e1a0;
-u32 var001b4fd4 = 0x7f11e218;
-u32 var001b4fd8 = 0x7f11e240;
-u32 var001b4fdc = 0x00000000;
-u32 var001b4fe0 = 0x38d1b717;
-u32 var001b4fe4 = 0x3c23d70a;
-u32 var001b4fe8 = 0x48927c00;
-u32 var001b4fec = 0x38d1b717;
-u32 var001b4ff0 = 0xbc23d70a;
-u32 var001b4ff4 = 0x48927c00;
-u32 var001b4ff8 = 0x3b808081;
-u32 var001b4ffc = 0x3b808081;
-u32 var001b5000 = 0x3dcccccd;
-u32 var001b5004 = 0x7f120024;
-u32 var001b5008 = 0x7f1208a8;
-u32 var001b500c = 0x7f1209f8;
-u32 var001b5010 = 0x7f120130;
-u32 var001b5014 = 0x7f120b48;
-u32 var001b5018 = 0x7f12045c;
-u32 var001b501c = 0x7f120de8;
-u32 var001b5020 = 0x7f1207d8;
-u32 var001b5024 = 0x7f120c98;
-u32 var001b5028 = 0x7f120de8;
-u32 var001b502c = 0x7f120350;
-u32 var001b5030 = 0x7f120708;
-u32 var001b5034 = 0x7f12023c;
-u32 var001b5038 = 0x7f120638;
-u32 var001b503c = 0x7f120568;
-u32 var001b5040 = 0x7f120014;
-u32 var001b5044 = 0x3d088889;
-u32 var001b5048 = 0x3d088889;
-u32 var001b504c = 0x3d088889;
-u32 var001b5050 = 0x3d088889;
-u32 var001b5054 = 0x3d088889;
-u32 var001b5058 = 0x3d088889;
-u32 var001b505c = 0x3d088889;
-u32 var001b5060 = 0x3d088889;
-u32 var001b5064 = 0x3d088889;
-u32 var001b5068 = 0x3d088889;
-u32 var001b506c = 0x3d088889;
-u32 var001b5070 = 0x3d088889;
-u32 var001b5074 = 0x3d088889;
-u32 var001b5078 = 0x3d088889;
-u32 var001b507c = 0x477fff00;
-u32 var001b5080 = 0x449fe000;
-u32 var001b5084 = 0x446fc000;
-u32 var001b5088 = 0x7f12136c;
-u32 var001b508c = 0x7f121994;
-u32 var001b5090 = 0x7f121a84;
-u32 var001b5094 = 0x7f1215ec;
-u32 var001b5098 = 0x7f121b74;
-u32 var001b509c = 0x7f121724;
-u32 var001b50a0 = 0x7f122378;
-u32 var001b50a4 = 0x7f1221f0;
-u32 var001b50a8 = 0x7f121c64;
-u32 var001b50ac = 0x7f122378;
-u32 var001b50b0 = 0x7f12185c;
-u32 var001b50b4 = 0x7f122068;
-u32 var001b50b8 = 0x7f1214b0;
-u32 var001b50bc = 0x7f121edc;
-u32 var001b50c0 = 0x7f121d54;
-u32 var001b50c4 = 0x7f121374;
-u32 var001b50c8 = 0x477fff00;
-u32 var001b50cc = 0x46fffe00;
-u32 var001b50d0 = 0x46fffe00;
-u32 var001b50d4 = 0x43ff8000;
-u32 var001b50d8 = 0xc57fa000;
-u32 var001b50dc = 0xc57fa000;
-u32 var001b50e0 = 0xc4eac000;
-u32 var001b50e4 = 0xc4eac000;
-u32 var001b50e8 = 0xc4eac000;
-u32 var001b50ec = 0x46fffe00;
-u32 var001b50f0 = 0xc4eac000;
-u32 var001b50f4 = 0xc4eac000;
-u32 var001b50f8 = 0xc4eac000;
-u32 var001b50fc = 0xc4eac000;
-u32 var001b5100 = 0x44eaa000;
-u32 var001b5104 = 0x46fffe00;
-u32 var001b5108 = 0x3d888889;
-u32 var001b510c = 0x3c23d70a;
-u32 var001b5110 = 0x3bb60b61;
-u32 var001b5114 = 0x3d088889;
-u32 var001b5118 = 0x3c4ccccd;
-u32 var001b511c = 0x3dcccccd;
-u32 var001b5120 = 0x40c907a9;
-u32 var001b5124 = 0x3ea8f5c3;
-u32 var001b5128 = 0x3f28f5c3;
-u32 var001b512c = 0x3ea8f5c3;
-u32 var001b5130 = 0x3fa66666;
-u32 var001b5134 = 0x3fd9999a;
-u32 var001b5138 = 0x40490fdb;
-u32 var001b513c = 0x3fa0d2ee;
-u32 var001b5140 = 0x3eaaaaab;
-u32 var001b5144 = 0x00000000;
-u32 var001b5148 = 0x00000000;
-u32 var001b514c = 0x00000000;
-u32 var001b5150 = 0xc3653838;
-u32 var001b5154 = 0x4164924b;
-u32 var001b5158 = 0x3f6e147b;
-u32 var001b515c = 0x3f666666;
-u32 var001b5160 = 0xc0490fdb;
-u32 var001b5164 = 0x3faaaaab;
-u32 var001b5168 = 0x7f128b54;
-u32 var001b516c = 0x7f128b54;
-u32 var001b5170 = 0x7f128b5c;
-u32 var001b5174 = 0x7f128b8c;
-u32 var001b5178 = 0x7f128b94;
-u32 var001b517c = 0x7f128b64;
-u32 var001b5180 = 0x7f128b6c;
-u32 var001b5184 = 0x7f128b84;
-u32 var001b5188 = 0x7f128b74;
-u32 var001b518c = 0x7f128b7c;
-u32 var001b5190 = 0x7f128b9c;
-u32 var001b5194 = 0x7f128bc4;
-u32 var001b5198 = 0x7f128bcc;
-u32 var001b519c = 0x7f128bd4;
-u32 var001b51a0 = 0x7f128bdc;
-u32 var001b51a4 = 0x7f128bac;
-u32 var001b51a8 = 0x7f128bbc;
-u32 var001b51ac = 0x7f128ba4;
-u32 var001b51b0 = 0x7f128bb4;
-u32 var001b51b4 = 0x7f128be4;
-u32 var001b51b8 = 0x7f128bec;
-u32 var001b51bc = 0x7f128c14;
-u32 var001b51c0 = 0x7f128c0c;
-u32 var001b51c4 = 0x7f128bfc;
-u32 var001b51c8 = 0x7f128bf4;
-u32 var001b51cc = 0x7f128c04;
-u32 var001b51d0 = 0x7f128c2c;
-u32 var001b51d4 = 0x7f128c1c;
-u32 var001b51d8 = 0x7f128c34;
-u32 var001b51dc = 0x7f128c24;
-u32 var001b51e0 = 0x7f128c4c;
-u32 var001b51e4 = 0x7f128c44;
-u32 var001b51e8 = 0x7f128c64;
-u32 var001b51ec = 0x7f128c5c;
-u32 var001b51f0 = 0x7f128c54;
-u32 var001b51f4 = 0x7f128cbc;
-u32 var001b51f8 = 0x7f128c7c;
-u32 var001b51fc = 0x7f128c84;
-u32 var001b5200 = 0x7f128c8c;
-u32 var001b5204 = 0x7f128c94;
-u32 var001b5208 = 0x7f128c9c;
-u32 var001b520c = 0x7f128ca4;
-u32 var001b5210 = 0x7f128cac;
-u32 var001b5214 = 0x7f128cb4;
-u32 var001b5218 = 0x7f128c3c;
-u32 var001b521c = 0x7f128cd4;
-u32 var001b5220 = 0x7f128cd4;
-u32 var001b5224 = 0x7f128cd4;
-u32 var001b5228 = 0x7f128cd4;
-u32 var001b522c = 0x7f128c74;
-char var001b5230[] = "VTXSTORE : vtxfixrefs -> Start - p1=%x, p2=%x\n";
-char var001b5260[] = "vtxfixrefs : Part=%x -- Mapping ptr %x -> %x\n";
-char var001b5290[] = "VTXSTORE : vtxfixrefs -> End - Done=%d\n";
-char var001b52b8[] = "vtxstorecheck : memaFree -> %u bytes at Ptr=%x(%x)\n";
-char var001b52ec[] = "vtxstorecheck : At block 1 %d -> Ref1=%x, Ref2=%x\n";
-char var001b5320[] = "vtxstorecheck : At block 2 %d -> Ref1=%x, Ref2=%x\n";
-char var001b5354[] = "vtx buffer low, need to delete objects\n";
-char var001b537c[] = "getfreevertices : %d of type %d -> ref1=%x, ref2=%x\n";
-char var001b53b4[] = "vtxstore: 1st mema alloc of %u bytes\n";
-char var001b53dc[] = "getfreevertices : Return ptr = %x\n";
-char var001b5400[] = "vtxstore: Out of mema (returning NULL)\n";
-char var001b5428[] = "vtxstore: GROSS! CorspeCount > MAX_CORPSES corpses! Freeing corpse %x\n";
-char var001b5470[] = "vtxstore:  CorpseCount %d, Trying to free %d\n";
-char var001b54a0[] = "vtxstore: Freeing corpse %x\n";
-char var001b54c0[] = "vtxstore: Out of vertices type %d wanted %d free %d (returning NULL)\n";
-char var001b5508[] = "vtxstore: freevertices type %d, list %x\n";
-char var001b5534[] = "freevertices: address not found in array %x\n";
-u32 var001b5564 = 0x00000000;
-u32 var001b5568 = 0x00000000;
-u32 var001b556c = 0x00000000;
-char var001b5570[] = "ecol";
-u32 var001b5578 = 0x44bb8000;
-u32 var001b557c = 0x481c4000;
-u32 var001b5580 = 0x497423fe;
-u32 var001b5584 = 0x40c907a9;
-u32 var001b5588 = 0x3f4ccccd;
-u32 var001b558c = 0x38d1b717;
-u32 var001b5590 = 0x3f333333;
-u32 var001b5594 = 0x3e99999a;
-u32 var001b5598 = 0x3d4ccccd;
-u32 var001b559c = 0x3d4ccccd;
-u32 var001b55a0 = 0x40c907a9;
-u32 var001b55a4 = 0x3e4ccccd;
-u32 var001b55a8 = 0x3f4ccccd;
-u32 var001b55ac = 0x3f333333;
-u32 var001b55b0 = 0x3f266666;
-u32 var001b55b4 = 0x3f4ccccd;
-u32 var001b55b8 = 0x3f16db6e;
-u32 var001b55bc = 0x3f324925;
-u32 var001b55c0 = 0x3f524925;
-u32 var001b55c4 = 0x3f76db6e;
-u32 var001b55c8 = 0x00000000;
-u32 var001b55cc = 0x00000000;
-u32 var001b55d0 = 0x46ea6000;
-u32 var001b55d4 = 0x46ea6000;
-u32 var001b55d8 = 0xc6ea6000;
-u32 var001b55dc = 0x3b808081;
-u32 var001b55e0 = 0x3c23d70a;
-u32 var001b55e4 = 0x3ca3d70a;
-u32 var001b55e8 = 0x3ea8f5c3;
-u32 var001b55ec = 0x40c907a9;
-u32 var001b55f0 = 0x3e6b851f;
-u32 var001b55f4 = 0x00000000;
-u32 var001b55f8 = 0x00000000;
-u32 var001b55fc = 0x00000000;
-u32 var001b5600 = 0xb8d1b717;
-u32 var001b5604 = 0xb8d1b717;
-u32 var001b5608 = 0x3d4ccccd;
-u32 var001b560c = 0x469c4000;
-u32 var001b5610 = 0x3e4ccccd;
-u32 var001b5614 = 0x00000000;
-u32 var001b5618 = 0x00000000;
-u32 var001b561c = 0x00000000;
-char var001b5620[] = "rainspeedxtra";
-char var001b5630[] = "snowspeed";
-char var001b563c[] = "snowspeedxtra";
-char var001b564c[] = "raincol1";
-char var001b5658[] = "raincol2";
-char var001b5664[] = "rainwidth";
-char var001b5670[] = "rainout";
-char var001b5678[] = "cddiv";
-char var001b5680[] = "wetclip";
-char var001b5688[] = "bounder";
-char var001b5690[] = "trypitch";
-char var001b569c[] = "snowwidth";
-char var001b56a8[] = "snowheight";
-char var001b56b4[] = "snowcol1";
-char var001b56c0[] = "snowcol2";
-u32 var001b56cc = 0x3f333333;
-u32 var001b56d0 = 0x3a83126f;
-u32 var001b56d4 = 0x3c23d70a;
-u32 var001b56d8 = 0x3cf5c28f;
-u32 var001b56dc = 0x46fffe00;
-u32 var001b56e0 = 0x3fc90fdb;
-u32 var001b56e4 = 0x40c90fdb;
-u32 var001b56e8 = 0x3f7d70a4;
-u32 var001b56ec = 0x40490fdb;
-u32 var001b56f0 = 0x3c23d70a;
-u32 var001b56f4 = 0x3f333333;
-u32 var001b56f8 = 0x3fc90fdb;
-u32 var001b56fc = 0x40c90fdb;
-u32 var001b5700 = 0x40c90fdb;
-u32 var001b5704 = 0x40c90fdb;
-u32 var001b5708 = 0x3f7d70a4;
-u32 var001b570c = 0x40490fdb;
-u32 var001b5710 = 0x3c23d70a;
-u32 var001b5714 = 0x40c90fdb;
-u32 var001b5718 = 0x3d23d70a;
-u32 var001b571c = 0xbcf5c28f;
-u32 var001b5720 = 0x3cf5c28f;
-u32 var001b5724 = 0x3ca3d70a;
-u32 var001b5728 = 0x3c23d70a;
-u32 var001b572c = 0xbc23d70a;
-u32 var001b5730 = 0xbca3d70a;
-u32 var001b5734 = 0x3f333333;
-u32 var001b5738 = 0x3f7d70a4;
-u32 var001b573c = 0x3f266666;
-u32 var001b5740 = 0x3f28f5c3;
-u32 var001b5744 = 0x3ecccccd;
-u32 var001b5748 = 0x3e4ccccd;
-u32 var001b574c = 0x3dcccccd;
-u32 var001b5750 = 0x3e99999a;
-u32 var001b5754 = 0x3e4cccce;
-u32 var001b5758 = 0x3e99999a;
-u32 var001b575c = 0x3ecccccd;
-u32 var001b5760 = 0x3f19999a;
-u32 var001b5764 = 0x3f333333;
-u32 var001b5768 = 0x3f199999;
-u32 var001b576c = 0x3f4ccccd;
-u32 var001b5770 = 0x3f333333;
-u32 var001b5774 = 0x3f666666;
-u32 var001b5778 = 0x3f4ccccc;
-u32 var001b577c = 0x3f666666;
-u32 var001b5780 = 0x3727c5ac;
-u32 var001b5784 = 0x4096cbe4;
-u32 var001b5788 = 0x40490fdb;
-u32 var001b578c = 0x3fc90fdb;
-u32 var001b5790 = 0x3727c5ac;
-u32 var001b5794 = 0x00000000;
-u32 var001b5798 = 0x00000000;
-u32 var001b579c = 0x00000000;
-u32 var001b57a0 = 0x7f135d68;
-u32 var001b57a4 = 0x7f135d68;
-u32 var001b57a8 = 0x7f135da8;
-u32 var001b57ac = 0x7f135da8;
-u32 var001b57b0 = 0x7f135dec;
-u32 var001b57b4 = 0x7f135dec;
-u32 var001b57b8 = 0x3c8efa03;
-u32 var001b57bc = 0x43837333;
-u32 var001b57c0 = 0x746c6f61;
-u32 var001b57c4 = 0x64000000;
-char var001b57c8[] = "dump";
-u32 var001b57d0 = 0x666f7200;
-char var001b57d4[] = "flick";
-u32 var001b57dc = 0x3fc90fdb;
-u32 var001b57e0 = 0x40490fdb;
-u32 var001b57e4 = 0x4096cbe4;
-u32 var001b57e8 = 0x3fc90fdb;
-u32 var001b57ec = 0x40490fdb;
-u32 var001b57f0 = 0x4096cbe4;
-u32 var001b57f4 = 0x3e4ccccd;
-u32 var001b57f8 = 0x3f4ccccd;
-u32 var001b57fc = 0xb8d1b717;
-u32 var001b5800 = 0x38d1b717;
-u32 var001b5804 = 0x3b122531;
-u32 var001b5808 = 0x40c907a9;
-u32 var001b580c = 0x453b8000;
-u32 var001b5810 = 0x3be56042;
-u32 var001b5814 = 0x3b03126f;
-u32 var001b5818 = 0x3be56042;
-u32 var001b581c = 0x453b8000;
-u32 var001b5820 = 0x3c23d70a;
-u32 var001b5824 = 0x40c907a9;
-u32 var001b5828 = 0x7f139260;
-u32 var001b582c = 0x7f138ecc;
-u32 var001b5830 = 0x7f138fc4;
-u32 var001b5834 = 0x7f139060;
-u32 var001b5838 = 0x7f13915c;
-u32 var001b583c = 0x40c907a9;
-u32 var001b5840 = 0x40c907a9;
-u32 var001b5844 = 0x40c907a9;
-u32 var001b5848 = 0xc58ca000;
-u32 var001b584c = 0x455ac000;
-u32 var001b5850 = 0x416fd70a;
-u32 var001b5854 = 0x40c907a9;
-u32 var001b5858 = 0x40c907a9;
-u32 var001b585c = 0x3e4ccccd;
-u32 var001b5860 = 0x3dcccccd;
-u32 var001b5864 = 0x408ccccd;
-u32 var001b5868 = 0x3e99999a;
-u32 var001b586c = 0x3eae147b;
-u32 var001b5870 = 0x3eae147b;
-u32 var001b5874 = 0x3e116873;
-u32 var001b5878 = 0x7f13a544;
-u32 var001b587c = 0x7f13a544;
-u32 var001b5880 = 0x7f13a544;
-u32 var001b5884 = 0x7f13a560;
-u32 var001b5888 = 0x7f13a57c;
-u32 var001b588c = 0x7f13a560;
-u32 var001b5890 = 0x7f13a544;
-u32 var001b5894 = 0x7f13a544;
-u32 var001b5898 = 0x7f13a560;
-u32 var001b589c = 0x7f13a544;
-u32 var001b58a0 = 0x7f13a560;
-u32 var001b58a4 = 0x7f13a6b4;
-u32 var001b58a8 = 0x7f13a6b4;
-u32 var001b58ac = 0x7f13a6b4;
-u32 var001b58b0 = 0x7f13a6b4;
-u32 var001b58b4 = 0x7f13a6b4;
-u32 var001b58b8 = 0x7f13a6b4;
-u32 var001b58bc = 0x7f13a6ec;
-u32 var001b58c0 = 0x7f13a6d8;
-u32 var001b58c4 = 0x7f13a6d8;
-u32 var001b58c8 = 0x7f13a6b4;
-u32 var001b58cc = 0x7f13a6ec;
-u32 var001b58d0 = 0x7f13a72c;
-u32 var001b58d4 = 0x7f13a748;
-u32 var001b58d8 = 0x7f13a748;
-u32 var001b58dc = 0x7f13a748;
-u32 var001b58e0 = 0x7f13a748;
-u32 var001b58e4 = 0x7f13a748;
-u32 var001b58e8 = 0x7f13a780;
-u32 var001b58ec = 0x7f13a76c;
-u32 var001b58f0 = 0x7f13a76c;
-u32 var001b58f4 = 0x7f13a748;
-u32 var001b58f8 = 0x7f13a76c;
-u32 var001b58fc = 0x3e116873;
-u32 var001b5900 = 0x3e116873;
-u32 var001b5904 = 0x7f13aca4;
-u32 var001b5908 = 0x7f13aca8;
-u32 var001b590c = 0x7f13aca8;
-u32 var001b5910 = 0x7f13aca8;
-u32 var001b5914 = 0x7f13aca8;
-u32 var001b5918 = 0x7f13ac94;
-u32 var001b591c = 0x7f13ac9c;
-u32 var001b5920 = 0x7f13ac9c;
-u32 var001b5924 = 0x7f13aca8;
-u32 var001b5928 = 0x7f13ac9c;
-u32 var001b592c = 0x3d4ccccd;
-u32 var001b5930 = 0x3c23d70a;
-u32 var001b5934 = 0xbe86051b;
-u32 var001b5938 = 0x4516d000;
-u32 var001b593c = 0x44504000;
-u32 var001b5940 = 0x428db852;
-u32 var001b5944 = 0xc5002000;
-u32 var001b5948 = 0x3fbbc6a8;
-u32 var001b594c = 0x41033333;
-u32 var001b5950 = 0xc0833333;
-u32 var001b5954 = 0x3b80c73b;
-u32 var001b5958 = 0x00000000;
-u32 var001b595c = 0x00000000;
-char var001b5960[] = "modula";
-char var001b5968[] = "ripsize";
-u32 var001b5970 = 0x40c907a9;
-u32 var001b5974 = 0x7f13bf20;
-u32 var001b5978 = 0x7f13bf74;
-u32 var001b597c = 0x7f13bf90;
-u32 var001b5980 = 0x7f13bf3c;
-u32 var001b5984 = 0x7f13bf58;
-u32 var001b5988 = 0x7f13c00c;
-u32 var001b598c = 0x7f13bfcc;
-u32 var001b5990 = 0x4effffff;
-u32 var001b5994 = 0x4effffff;
-u32 var001b5998 = 0xceffffff;
-u32 var001b599c = 0x38d1b717;
-u32 var001b59a0 = 0x38d1b717;
-u32 var001b59a4 = 0x3ecccccd;
-u32 var001b59a8 = 0x38d1b717;
-u32 var001b59ac = 0x43ff8000;
-u32 var001b59b0 = 0x46fe8000;
-u32 var001b59b4 = 0x46fc5800;
-u32 var001b59b8 = 0x44a28000;
-u32 var001b59bc = 0x44a28000;
-u32 var001b59c0 = 0x3a49a634;
-u32 var001b59c4 = 0x3f19999a;
-u32 var001b59c8 = 0x461c3c00;
-u32 var001b59cc = 0x461c3c00;
-u32 var001b59d0 = 0xc61c3c00;
-u32 var001b59d4 = 0xc61c3c00;
-u32 var001b59d8 = 0x43ff8000;
-u32 var001b59dc = 0x46fe8000;
-u32 var001b59e0 = 0x3c8efa35;
-u32 var001b59e4 = 0x4169999a;
-u32 var001b59e8 = 0x3ecccccd;
-u32 var001b59ec = 0x3b808081;
-u32 var001b59f0 = 0x46d6d800;
-u32 var001b59f4 = 0x3b808081;
-u32 var001b59f8 = 0x443b8000;
-u32 var001b59fc = 0x3c23d70a;
-u32 var001b5a00 = 0x3c23d70a;
-u32 var001b5a04 = 0x3b888889;
-u32 var001b5a08 = 0x3b888889;
-u32 var001b5a0c = 0x3ecccccd;
-char var001b5a10[] = "WallHit_MakeSpaceRoom : ERROR - Couldn't find any space in room %d\n";
-char var001b5a54[] = "wallhit";
-char var001b5a5c[] = "g_MaxRound = %s%s%f";
-u32 var001b5a70 = 0x00000000;
-u32 var001b5a74 = 0x00000000;
-char var001b5a78[] = "g_MinRound = %s%s%f";
-u32 var001b5a8c = 0x00000000;
-u32 var001b5a90 = 0x00000000;
-char var001b5a94[] = "Done %d Z buffer calcs";
-char var001b5aac[] = "ZOOM : g_ZoomFactor=%s%s%f";
-u32 var001b5ac8 = 0x00000000;
-u32 var001b5acc = 0x00000000;
-char var001b5ad0[] = "ZOOM : g_ZoomScalar=%s%s%f";
-u32 var001b5aec = 0x00000000;
-u32 var001b5af0 = 0x00000000;
-char var001b5af4[] = "ZOOM : scale=%s%s%f";
-u32 var001b5b08 = 0x00000000;
-u32 var001b5b0c = 0x00000000;
-char var001b5b10[] = "WallHit_Tick : Status - RED";
-char var001b5b2c[] = "WallHit_Tick : Status - YELLOW (%u)";
-char var001b5b50[] = "WallHit_Tick : Status - GREEN";
-char var001b5b70[] = "WallHit_Tick : %d Used";
-char var001b5b88[] = "WallHit_Tick : %d Free";
-char var001b5ba0[] = "WallHit_Tick : %d Pending";
-char var001b5bbc[] = "WallHit_Tick : %d Blood";
-char var001b5bd4[] = "WallHit_Tick : %d Other";
-char var001b5bec[] = "WallHit_Tick : %d Ratio";
-char var001b5c04[] = "WallHit_Tick : %d(%d) Prop Hits";
-char var001b5c24[] = "tLifeTime=%s%s%f, tScalarGbl=%f";
-u32 var001b5c44 = 0x00000000;
-u32 var001b5c48 = 0x00000000;
-char var001b5c4c[] = "wallhit.c";
-char var001b5c58[] = "wallhit.c";
-char var001b5c64[] = "wallhit.c";
-char var001b5c70[] = "AFT : tVecU (along) = (%s%s%f,%f,%f)\n";
-u32 var001b5c98 = 0x00000000;
-u32 var001b5c9c = 0x00000000;
-char var001b5ca0[] = "AFT : tVecV (up)    = (%s%s%f,%f,%f)\n";
-u32 var001b5cc8 = 0x00000000;
-u32 var001b5ccc = 0x00000000;
-char var001b5cd0[] = "Wallhit colour %d not implemented, substituting black\n";
-u32 var001b5d08 = 0x3f19999a;
-u32 var001b5d0c = 0x3fc90fdb;
-u32 var001b5d10 = 0x3e4ccccd;
-u32 var001b5d14 = 0x3f19999a;
-u32 var001b5d18 = 0x3e4ccccd;
-u32 var001b5d1c = 0x3dcccccd;
-u32 var001b5d20 = 0x3f19999a;
-u32 var001b5d24 = 0x7f13f608;
-u32 var001b5d28 = 0x7f13f5ec;
-u32 var001b5d2c = 0x7f13f5ec;
-u32 var001b5d30 = 0x7f13f608;
-u32 var001b5d34 = 0x7f13f608;
-u32 var001b5d38 = 0x7f13f608;
-u32 var001b5d3c = 0x7f13f608;
-u32 var001b5d40 = 0x7f13f608;
-u32 var001b5d44 = 0x7f13f608;
-u32 var001b5d48 = 0x7f13f608;
-u32 var001b5d4c = 0x7f13f5ec;
-u32 var001b5d50 = 0x7f13f608;
-u32 var001b5d54 = 0x3c8efa35;
-u32 var001b5d58 = 0x3b808081;
-u32 var001b5d5c = 0x7f14034c;
-u32 var001b5d60 = 0x7f140300;
-u32 var001b5d64 = 0x7f1403c4;
-u32 var001b5d68 = 0x7f14043c;
-u32 var001b5d6c = 0x7f14045c;
-char var001b5d70[] = "envcol";
-char var001b5d78[] = "primcol";
-char var001b5d80[] = "envcol";
-char var001b5d88[] = "primcol";
-char var001b5d90[] = "sfxxx";
-char var001b5d98[] = "sfyyy";
-char var001b5da0[] = "interlaceGfx";
-char var001b5db0[] = "BlueInterlaceGfx";
-char var001b5dc4[] = "stretchBlurGfx";
-char var001b5dd4[] = "blurGfxFisheye";
-char var001b5de4[] = "%s %s%5.2f";
-u32 var001b5df0 = 0x00000000;
-char var001b5df4[] = "%s %s%4.2f";
-u32 var001b5e00 = 0x00000000;
-char var001b5e04[] = "%s %d";
-char var001b5e0c[] = "%s %d";
-u32 var001b5e14 = 0x25730000;
-u32 var001b5e18 = 0x25730000;
-u32 var001b5e1c = 0x25730000;
-u32 var001b5e20 = 0x25730000;
-char var001b5e24[] = "   %s";
-char var001b5e2c[] = "   %s";
-char var001b5e34[] = "   %s";
-u32 var001b5e3c = 0x25730000;
-u32 var001b5e40 = 0x25730000;
-u32 var001b5e44 = 0x25730000;
-u32 var001b5e48 = 0x25730000;
-u32 var001b5e4c = 0x25730000;
-char var001b5e50[] = "Fullscreen_DrawFaultScope";
-char var001b5e6c[] = "Fullscreen_DrawFaultScope";
-char var001b5e88[] = "IntroFaderBlurGfx";
-char var001b5e9c[] = "IntroTextInterfereGfx";
-char var001b5eb4[] = "BinocularViewGfx";
-u32 var001b5ec8 = 0x3e3e2000;
-u32 var001b5ecc = 0x203e3e00;
-char var001b5ed0[] = "%s %s:%03d";
-char var001b5edc[] = "%s %s%s%4.2fh";
-u32 var001b5eec = 0x00000000;
-u32 var001b5ef0 = 0x00000000;
-char var001b5ef4[] = "%s %s%s%4.2fX";
-u32 var001b5f04 = 0x00000000;
-u32 var001b5f08 = 0x00000000;
-char var001b5f0c[] = " JMBC";
-char var001b5f14[] = " WIDE BAND";
-char var001b5f20[] = " SCANNER\n";
-u32 var001b5f2c = 0x3f060a92;
-u32 var001b5f30 = 0x40278d36;
-u32 var001b5f34 = 0x3c23d70a;
-u32 var001b5f38 = 0x3bcccccd;
-u32 var001b5f3c = 0x3c23d70a;
-u32 var001b5f40 = 0x3f83d70a;
-u32 var001b5f44 = 0x3bcccccd;
-u32 var001b5f48 = 0x3c23d70a;
-u32 var001b5f4c = 0x3a83126f;
-u32 var001b5f50 = 0x3f19999a;
-u32 var001b5f54 = 0x3c23d70a;
-u32 var001b5f58 = 0x3bcccccd;
-u32 var001b5f5c = 0x40490fdb;
-u32 var001b5f60 = 0x40933333;
-u32 var001b5f64 = 0x4465599a;
-u32 var001b5f68 = 0x00000000;
-u32 var001b5f6c = 0x00000000;
-char var001b5f70[] = "Splat Tick - P=%x, B=%d, T=%d, S=%d, W=%d, D=%d, H=%d\n";
-char var001b5fa8[] = "SPLAT : Not Dead Enough %s%s%f";
-u32 var001b5fc8 = 0x00000000;
-u32 var001b5fcc = 0x00000000;
-char var001b5fd0[] = "splat.c";
-char var001b5fd8[] = "splat.c";
-char var001b5fe0[] = "Splat : Out of range\n";
-char var001b5ff8[] = "Splat_ResetChr : Reset One Char : chrdata = %x\n";
-u32 var001b6028 = 0x3f333333;
-u32 var001b602c = 0x3c8efa35;
-u32 var001b6030 = 0x497423f0;
-u32 var001b6034 = 0x7f149988;
-u32 var001b6038 = 0x7f149988;
-u32 var001b603c = 0x7f149988;
-u32 var001b6040 = 0x7f149998;
-u32 var001b6044 = 0x7f149998;
-u32 var001b6048 = 0x7f1499a8;
-u32 var001b604c = 0x00000000;
-char var001b6050[] = "Init";
-char var001b6058[] = "Start Header Read";
-char var001b606c[] = "Header Read Done";
-char var001b6080[] = "Null";
-char var001b6088[] = "Exit 1";
-char var001b6090[] = "Exit 2";
-char var001b6098[] = "Exit 3";
-u32 var001b60a0 = 0x00000000;
-u32 var001b60a4 = 0x00000000;
-u32 var001b60a8 = 0x00000000;
-u32 var001b60ac = 0x00000001;
-u32 var001b60b0 = 0x00000001;
-u32 var001b60b4 = 0x00000000;
-u32 var001b60b8 = 0x00000002;
-u32 var001b60bc = 0x00000000;
-u32 var001b60c0 = 0x00000001;
-u32 var001b60c4 = 0x00000001;
-u32 var001b60c8 = 0x00000000;
-u32 var001b60cc = 0x00000002;
-u32 var001b60d0 = 0x00000000;
-u32 var001b60d4 = 0x00000003;
-u32 var001b60d8 = 0x00000001;
-u32 var001b60dc = 0x00000002;
-u32 var001b60e0 = 0x00000002;
-u32 var001b60e4 = 0x00000001;
-u32 var001b60e8 = 0x00000003;
-u32 var001b60ec = 0x00000000;
-u32 var001b60f0 = 0x00000004;
-u32 var001b60f4 = 0x00000000;
-u32 var001b60f8 = 0x00000003;
-u32 var001b60fc = 0x00000001;
-u32 var001b6100 = 0x00000002;
-u32 var001b6104 = 0x00000002;
-u32 var001b6108 = 0x00000001;
-u32 var001b610c = 0x00000003;
-u32 var001b6110 = 0x00000000;
-u32 var001b6114 = 0x00000004;
-u32 var001b6118 = 0x00000000;
-u32 var001b611c = 0x00000005;
-u32 var001b6120 = 0x00000001;
-u32 var001b6124 = 0x00000004;
-u32 var001b6128 = 0x00000002;
-u32 var001b612c = 0x00000003;
-u32 var001b6130 = 0x00000003;
-u32 var001b6134 = 0x00000002;
-u32 var001b6138 = 0x00000004;
-u32 var001b613c = 0x00000001;
-u32 var001b6140 = 0x00000005;
-u32 var001b6144 = 0x00000000;
-u32 var001b6148 = 0x00000006;
-u32 var001b614c = 0x00000000;
-u32 var001b6150 = 0x00000005;
-u32 var001b6154 = 0x00000001;
-u32 var001b6158 = 0x00000004;
-u32 var001b615c = 0x00000002;
-u32 var001b6160 = 0x00000003;
-u32 var001b6164 = 0x00000003;
-u32 var001b6168 = 0x00000002;
-u32 var001b616c = 0x00000004;
-u32 var001b6170 = 0x00000001;
-u32 var001b6174 = 0x00000005;
-u32 var001b6178 = 0x00000000;
-u32 var001b617c = 0x00000006;
-u32 var001b6180 = 0x00000000;
-u32 var001b6184 = 0x00000007;
-u32 var001b6188 = 0x00000001;
-u32 var001b618c = 0x00000006;
-u32 var001b6190 = 0x00000002;
-u32 var001b6194 = 0x00000005;
-u32 var001b6198 = 0x00000003;
-u32 var001b619c = 0x00000004;
-u32 var001b61a0 = 0x00000004;
-u32 var001b61a4 = 0x00000003;
-u32 var001b61a8 = 0x00000005;
-u32 var001b61ac = 0x00000002;
-u32 var001b61b0 = 0x00000006;
-u32 var001b61b4 = 0x00000001;
-u32 var001b61b8 = 0x00000007;
-u32 var001b61bc = 0x00000000;
-u32 var001b61c0 = 0x00000007;
-u32 var001b61c4 = 0x00000001;
-u32 var001b61c8 = 0x00000006;
-u32 var001b61cc = 0x00000002;
-u32 var001b61d0 = 0x00000005;
-u32 var001b61d4 = 0x00000003;
-u32 var001b61d8 = 0x00000004;
-u32 var001b61dc = 0x00000004;
-u32 var001b61e0 = 0x00000003;
-u32 var001b61e4 = 0x00000005;
-u32 var001b61e8 = 0x00000002;
-u32 var001b61ec = 0x00000006;
-u32 var001b61f0 = 0x00000001;
-u32 var001b61f4 = 0x00000007;
-u32 var001b61f8 = 0x00000002;
-u32 var001b61fc = 0x00000007;
-u32 var001b6200 = 0x00000003;
-u32 var001b6204 = 0x00000006;
-u32 var001b6208 = 0x00000004;
-u32 var001b620c = 0x00000005;
-u32 var001b6210 = 0x00000005;
-u32 var001b6214 = 0x00000004;
-u32 var001b6218 = 0x00000006;
-u32 var001b621c = 0x00000003;
-u32 var001b6220 = 0x00000007;
-u32 var001b6224 = 0x00000002;
-u32 var001b6228 = 0x00000007;
-u32 var001b622c = 0x00000003;
-u32 var001b6230 = 0x00000006;
-u32 var001b6234 = 0x00000004;
-u32 var001b6238 = 0x00000005;
-u32 var001b623c = 0x00000005;
-u32 var001b6240 = 0x00000004;
-u32 var001b6244 = 0x00000006;
-u32 var001b6248 = 0x00000003;
-u32 var001b624c = 0x00000007;
-u32 var001b6250 = 0x00000004;
-u32 var001b6254 = 0x00000007;
-u32 var001b6258 = 0x00000005;
-u32 var001b625c = 0x00000006;
-u32 var001b6260 = 0x00000006;
-u32 var001b6264 = 0x00000005;
-u32 var001b6268 = 0x00000007;
-u32 var001b626c = 0x00000004;
-u32 var001b6270 = 0x00000007;
-u32 var001b6274 = 0x00000005;
-u32 var001b6278 = 0x00000006;
-u32 var001b627c = 0x00000006;
-u32 var001b6280 = 0x00000005;
-u32 var001b6284 = 0x00000007;
-u32 var001b6288 = 0x00000006;
-u32 var001b628c = 0x00000007;
-u32 var001b6290 = 0x00000007;
-u32 var001b6294 = 0x00000006;
-u32 var001b6298 = 0x00000007;
-u32 var001b629c = 0x00000007;
-u32 var001b62a0 = 0x00000000;
-u32 var001b62a4 = 0xffffffff;
-u32 var001b62a8 = 0xdc9785ff;
-u32 var001b62ac = 0xdc917bff;
-u32 var001b62b0 = 0xdd8d71ff;
-u32 var001b62b4 = 0xdd8367ff;
-u32 var001b62b8 = 0xdf795dff;
-u32 var001b62bc = 0xdf7953ff;
-u32 var001b62c0 = 0x00000000;
-u32 var001b62c4 = 0xffffffff;
-u32 var001b62c8 = 0xa67b6dff;
-u32 var001b62cc = 0xa16152ff;
-u32 var001b62d0 = 0x8c6741ff;
-u32 var001b62d4 = 0x81544cff;
-u32 var001b62d8 = 0x6a4031ff;
-u32 var001b62dc = 0x4f433cff;
-u32 var001b62e0 = 0x00000000;
-u32 var001b62e4 = 0xffffffff;
-u32 var001b62e8 = 0xccb38dff;
-u32 var001b62ec = 0xddc07cff;
-u32 var001b62f0 = 0xe6a667ff;
-u32 var001b62f4 = 0xd1ab50ff;
-u32 var001b62f8 = 0xc69f6dff;
-u32 var001b62fc = 0xb27e5bff;
-u32 var001b6300 = 0x00000000;
-u32 var001b6304 = 0xffffffff;
-u32 var001b6308 = 0x5f3a25ff;
-u32 var001b630c = 0x553a20ff;
-u32 var001b6310 = 0x4b351cff;
-u32 var001b6314 = 0x412d19ff;
-u32 var001b6318 = 0x41260fff;
-u32 var001b631c = 0x371e04ff;
-u32 var001b6320 = 0x00000000;
-u32 var001b6324 = 0xffffffff;
-u32 var001b6328 = 0xe9d679ff;
-u32 var001b632c = 0x654f40ff;
-u32 var001b6330 = 0xebb279ff;
-u32 var001b6334 = 0x846b51ff;
-u32 var001b6338 = 0xebc579ff;
-u32 var001b633c = 0xab8d6fff;
-u32 var001b6340 = 0x00000000;
-u32 var001b6344 = 0xffffffff;
-u32 var001b6348 = 0x26374dff;
-u32 var001b634c = 0x18253eff;
-u32 var001b6350 = 0x171d20ff;
-u32 var001b6354 = 0x060e16ff;
-u32 var001b6358 = 0x00001cff;
-u32 var001b635c = 0x000001ff;
-u32 var001b6360 = 0x00000000;
-u32 var001b6364 = 0xffffffff;
-u32 var001b6368 = 0x972f1aff;
-u32 var001b636c = 0x822817ff;
-u32 var001b6370 = 0x6e1e12ff;
-u32 var001b6374 = 0x5a140dff;
-u32 var001b6378 = 0x460a08ff;
-u32 var001b637c = 0x200001ff;
-u32 var001b6380 = 0x00000000;
-u32 var001b6384 = 0xffffffff;
-u32 var001b6388 = 0x79b2ebff;
-u32 var001b638c = 0x007fffff;
-u32 var001b6390 = 0x1f5fdfff;
-u32 var001b6394 = 0x0043caff;
-u32 var001b6398 = 0x00147eff;
-u32 var001b639c = 0x0c1857ff;
-char var001b63a0[] = "RWI : Cam Alloc : Guid=%d -> Total = %u (%d at %s)\n";
-char var001b63d4[] = "camdraw.c";
-char var001b63e0[] = "Cam -> Dumping head vertex colour information\n";
-char var001b6410[] = "Cam -> Face Col - Pal=%d, Entry=%d, Col=%08x\n";
-char var001b6440[] = "Cam -> Hair Col - Pal=%d, Entry=%d, Col=%08x\n";
-char var001b6470[] = "Cam_Tick (%d Total Slots)";
-char var001b648c[] = "Current Camera Slot = %d\n";
-char var001b64a8[] = "Slot %d -> Active = %d";
-char var001b64c0[] = "camdraw.c";
-char var001b64cc[] = "CAM : Cam_StartCamFileRead - Go\n";
-char var001b64f0[] = "************ Cam_ActivateAndClearSlot ************ : Slot=%d\n";
-char var001b6530[] = "camdraw.c";
-char var001b653c[] = "camdraw.c";
-char var001b6548[] = "camdraw.c";
-char var001b6554[] = "camdraw.c";
-char var001b6560[] = "camdraw.c";
-char var001b656c[] = "camdraw.c";
-char var001b6578[] = "camdraw.c";
-char var001b6584[] = "Cam_CopyEditorToUndo\n";
-char var001b659c[] = "camdraw.c";
-char var001b65a8[] = "Cam_CopyUndoToEditor\n";
-char var001b65c0[] = "camdraw.c";
-char var001b65cc[] = "camdraw.c";
-char var001b65d8[] = "camdraw.c";
-char var001b65e4[] = "camdraw.c";
-char var001b65f0[] = "Cam -> Setting current hair colour to %s\n";
-char var001b661c[] = "Cam -> Setting current face colour to %s\n";
-char var001b6648[] = "camdraw.c";
-char var001b6654[] = "Cam_SetAutoDeArtefact -> State = %d\n";
-char var001b667c[] = "camdraw.c";
-char var001b6688[] = "Cam_ClearCameraLoadBuffer -> Camera=%d\n";
-char var001b66b0[] = "Cam_StartTemp : Need %u bytes for temp cam images buffer\n";
-char var001b66ec[] = "camdraw.c";
-char var001b66f8[] = "camdraw.c";
-char var001b6704[] = "camdraw.c";
-char var001b6710[] = "camdraw.c";
-char var001b671c[] = "camdraw.c";
-char var001b6728[] = "Camera -> Cam_Start for Camera %d\n";
-char var001b674c[] = "Camera -> Cam_Stop\n";
-char var001b6760[] = "Camera -> Cam_Finish - Done\n";
-char var001b6780[] = "Camera ->Created a new slot - Id=%d\n";
-char var001b67a8[] = "Camera -> CD_DeleteSlot - Dumping slot %d\n";
-u32 var001b67d4 = 0x6b670000;
-u32 var001b67d8 = 0x4b700000;
-u32 var001b67dc = 0x4b690000;
-u32 var001b67e0 = 0x4b640000;
-char var001b67e4[] = "tInt";
-char var001b67ec[] = "gocal";
-u32 var001b67f4 = 0x61696d00;
-char var001b67f8[] = "CAM : Cam_MakeTextures\n";
-char var001b6810[] = "camdraw.c";
-char var001b681c[] = "pD->ReadMode = %s";
-char var001b6830[] = "Camera -> Getting Header Info\n";
-char var001b6850[] = "Camera -> Item=%d, pD->CamHeader[i]=%d\n";
-char var001b6878[] = "Camera -> Found %d Valid images\n";
-char var001b689c[] = "Camera -> Item=%d, Valid=%s, Bank=%d\n";
-u32 var001b68c4 = 0x59455300;
-u32 var001b68c8 = 0x4e4f0000;
-char var001b68cc[] = "CD_TransferCurrentCacheToEditorAndExit : Player=%d, pD->CamRdImg=%d\n";
-char var001b6914[] = "Camera -> CD_CycleHandleRead - Need to load up the camera header\n";
-char var001b6958[] = "Camera -> CD_CycleHandleRead - Image %d needs loading for editor coppying on menu exit\n";
-char var001b69b0[] = "Camera -> CD_CycleHandleRead - Error ekCamReadModeExit2 in Null cycle\n";
-char var001b69f8[] = "CAMERA : COPY SLOT (%d of %s): Slot %d(%s) -> Slot %d(%s)\n";
-char var001b6a34[] = "ACTIVE";
-char var001b6a3c[] = "NULL";
-char var001b6a44[] = "ACTIVE";
-char var001b6a4c[] = "NULL";
-char var001b6a54[] = "RWI : Warning -> Not copying the thumbnail texture\n";
-char var001b6a88[] = "CD_DrawTexture : pTex=%x\n";
-char var001b6aa4[] = "Cam -> WARNING - Not done intensity table recalc :- No samples within threshold\n";
-char var001b6af8[] = "Camera -> Call to reset auto calibrate\n";
-char var001b6b20[] = "AC -> ekCamAutoCalStatusReset - pD->tTime = %d, pD->tTimeNxAdd = %d\n";
-char var001b6b68[] = "Cam 0 -> Time = %d, Target = %d, tInt = %.2f\n";
-char var001b6b98[] = "Cam 0 -> Too Low -> Adding Time\n";
-char var001b6bbc[] = "Cam 0 -> Too High -> Subbing Time\n";
-char var001b6be0[] = "Cam -> ekCamAutoCalStatusSettingTime - New time = %d\n";
-char var001b6c18[] = "%s%sAC -> Gain = %d, Target = %.2f, tInt = %.2f\n";
-u32 var001b6c4c = 0x00000000;
-u32 var001b6c50 = 0x00000000;
-char var001b6c54[] = "Auto Calibrate is removing the menu message\n";
-char var001b6c84[] = "Auto Calibrate is shutting down\n";
-char var001b6ca8[] = "Cam -> Cam_BalanceSlot %d -> tZroShift = %d\n";
-char var001b6cd8[] = "Cam_BuildFaceTexture (slot=%d): %d of %s\n";
-char var001b6d04[] = "camdraw.c";
-char var001b6d10[] = "camdraw.c";
-char var001b6d1c[] = "Cam %d -> Balance : No Data Available\n";
-char var001b6d44[] = "camdraw.c";
-char var001b6d50[] = "Cam_SetSquashZ : %u, %u, %f\n";
-char var001b6d70[] = "camdraw.c";
-char var001b6d7c[] = "Cam : Alloc for copy of Vtx %d bytes\n";
-char var001b6da4[] = "CAM : Cam_AllocAndCopyAllVtx -> Ptr all-ready allocted - No extra needed\n";
-char var001b6df0[] = "camdraw.c";
-char var001b6dfc[] = "Cam_RebuildHead : Slot=%d\n";
-char var001b6e18[] = "Cam -> Cam_ColourHeadOnePart - Remapping %s\n";
-char var001b6e48[] = "Cam_ColourHead : Face Col = %u, Hair Col = %u\n";
-char var001b6e78[] = "FACE";
-char var001b6e80[] = "SIDE";
-char var001b6e88[] = "HAIR";
-char var001b6e90[] = "Cam -> Cam_SquashOnePart - pExtents=%08x, pVcopy=%08x, \n";
-char var001b6ecc[] = "Cam -> Cam_SquashOnePart - Head centre at (%d,%d,%d)\n";
-char var001b6f04[] = "Cam -> Cam_SquashOnePart - Scale Param 1 = %s%s%.3f\n";
-u32 var001b6f3c = 0x00000000;
-u32 var001b6f40 = 0x00000000;
-char var001b6f44[] = "Cam -> Cam_SquashOnePart - Scale Param 2 = %s%s%.3f\n";
-u32 var001b6f7c = 0x00000000;
-u32 var001b6f80 = 0x00000000;
-char var001b6f84[] = "Cam -> Cam_SquashOnePart - Scale Param 3 = %s%s%.3f\n";
-u32 var001b6fbc = 0x00000000;
-u32 var001b6fc0 = 0x00000000;
-char var001b6fc4[] = "Cam -> Cam_SquashOnePart - Scale Param 4 = %s%s%.3f\n";
-u32 var001b6ffc = 0x00000000;
-u32 var001b7000 = 0x00000000;
-char var001b7004[] = "Cam -> Cam_SquashOnePart - Scale Param 5 = %s%s%.3f\n";
-u32 var001b703c = 0x00000000;
-u32 var001b7040 = 0x00000000;
-char var001b7044[] = "Cam -> Cam_SquashOnePart - Scale Param 6 = %s%s%.3f\n";
-u32 var001b707c = 0x00000000;
-u32 var001b7080 = 0x00000000;
-char var001b7084[] = "Cam -> Cam_SquashOnePart - Scale Param 7 = %s%s%.3f\n";
-u32 var001b70bc = 0x00000000;
-u32 var001b70c0 = 0x00000000;
-char var001b70c4[] = "Cam_DctInitialise_Read -> %x\n";
-char var001b70e4[] = "Cam_DctUnCompressSlot -> %x\n";
-char var001b7104[] = "Cam_LoadFromPakIntoSlot -> Pak=%d, fileGuid=%u, pakGuid=%u, Slot=%d, pS=%x, pE=%x\n";
-char var001b7158[] = "camdraw.c";
-char var001b7164[] = "camdraw.c";
-char var001b7170[] = "Cam -> Compressing Editor Slot\n";
-char var001b7190[] = "Cam -> Trying image compression at quality %u\n";
-char var001b71c0[] = "Cam -> Failed - Too big - This=%u, Max=%d\n";
-char var001b71ec[] = "Cam -> Trying lower quality setting\n";
-char var001b7214[] = "Cam -> Save Failed - Cant get it small enough - oo-er\n";
-char var001b724c[] = "Cam -> Sucess at quality %u - Size=%u, Max=%d\n";
-char var001b727c[] = "\nCam_SaveEditSlotToParamPakItem -> Save failed\n";
-char var001b72ac[] = "Camera Save Error Result: %d\n";
-char var001b72cc[] = "Magic Guid set to %d\n";
-u32 var001b72e4 = 0x3dcccccd;
-u32 var001b72e8 = 0x3e4ccccd;
-u32 var001b72ec = 0x3c23d70a;
-u32 var001b72f0 = 0x33d6bf95;
-u32 var001b72f4 = 0x7f14bcd8;
-u32 var001b72f8 = 0x7f14bc54;
-u32 var001b72fc = 0x7f14bc98;
-u32 var001b7300 = 0x7f14bcb4;
-u32 var001b7304 = 0x7f14bc7c;
-u32 var001b7308 = 0x7f14bcd0;
-u32 var001b730c = 0x7f14bf48;
-u32 var001b7310 = 0x7f14c1b8;
-u32 var001b7314 = 0x7f14c050;
-u32 var001b7318 = 0x7f14c0f4;
-u32 var001b731c = 0x7f14c114;
-u32 var001b7320 = 0x7f14c1b8;
-u32 var001b7324 = 0x7f14c238;
-u32 var001b7328 = 0x7f14c394;
-u32 var001b732c = 0x7f14c280;
-u32 var001b7330 = 0x7f14c2cc;
-u32 var001b7334 = 0x7f14c28c;
-u32 var001b7338 = 0x7f14c394;
-u32 var001b733c = 0x7f14cffc;
-u32 var001b7340 = 0x7f14cffc;
-u32 var001b7344 = 0x7f14cffc;
-u32 var001b7348 = 0x7f14cffc;
-u32 var001b734c = 0x7f14cffc;
-u32 var001b7350 = 0x3ff33333;
-u32 var001b7354 = 0x3c23d70a;
-u32 var001b7358 = 0x3dcccccd;
-u32 var001b735c = 0x3dcccccd;
-u32 var001b7360 = 0x3ff33333;
-u32 var001b7364 = 0x40490fda;
-u32 var001b7368 = 0x00000000;
-u32 var001b736c = 0x00000000;
-u32 var001b7370 = 0x3dcccccd;
-u32 var001b7374 = 0x3f333333;
-u32 var001b7378 = 0x3f8f5c29;
-u32 var001b737c = 0x3df5c28f;
-u32 var001b7380 = 0x40c907a9;
-u32 var001b7384 = 0x3dcccccd;
-u32 var001b7388 = 0x3dcccccd;
-u32 var001b738c = 0x3dcccccd;
-u32 var001b7390 = 0xc61c4000;
-u32 var001b7394 = 0x461c4000;
-u32 var001b7398 = 0xc61c4000;
-u32 var001b739c = 0x461c4000;
-u32 var001b73a0 = 0x46ffffcd;
-u32 var001b73a4 = 0xc6ffffcd;
-u32 var001b73a8 = 0x00000000;
-u32 var001b73ac = 0x00000000;
-char var001b73b0[] = "burncol";
-char var001b73b8[] = "sbrd";
-char var001b73c0[] = "lalpha";
-char var001b73c8[] = "subtlety";
-char var001b73d4[] = "subtletx";
-char var001b73e0[] = "coly";
-char var001b73e8[] = "colx";
-char var001b73f0[] = "lfade";
-char var001b73f8[] = "llimbo";
-u32 var001b7400 = 0x453b8000;
-u32 var001b7404 = 0x453b8000;
-u32 var001b7408 = 0x00000000;
-u32 var001b740c = 0x00000000;
-u32 var001b7410 = 0x7f7fffff;
-u32 var001b7414 = 0x7f7fffff;
-u32 var001b7418 = 0x00000000;
-u32 var001b741c = 0x00000000;
-char var001b7420[] = "Checking Convex Room %d";
-char var001b7438[] = " Portal %d %s%s%.1f < %.1f";
-u32 var001b7454 = 0x00000000;
-u32 var001b7458 = 0x00000000;
-char var001b745c[] = " Convex Room Failed (1)";
-char var001b7474[] = " Portal %d %s%s%.1f > %.1f";
-u32 var001b7490 = 0x00000000;
-u32 var001b7494 = 0x00000000;
-char var001b7498[] = " Convex Room Failed (0)";
-char var001b74b0[] = "Checking Concave Room %d";
-char var001b74cc[] = " Checking Portal %d";
-char var001b74e0[] = "Reject P:%d (%s%s%.1f %.1f n3=%.1f)";
-u32 var001b7504 = 0x00000000;
-u32 var001b7508 = 0x00000000;
-char var001b750c[] = "Reject P:%d (%s%s%.1f %.1f n4=%.1f)";
-u32 var001b7530 = 0x00000000;
-u32 var001b7534 = 0x00000000;
-char var001b7538[] = " Full %d%s%s %.1f %.1f (%.1f %.1f)";
-u32 var001b755c = 0x00000000;
-u32 var001b7560 = 0x00000000;
-char var001b7564[] = " Failed 2 - Crossed portal %d";
-char var001b7584[] = " Failed 1 - Crossed portal %d";
-char var001b75a4[] = " Passed";
-char var001b75ac[] = "edist";
-u32 var001b75b4 = 0x3fc90fdb;
-u32 var001b75b8 = 0x3f266666;
-u32 var001b75bc = 0x3eb33333;
-u32 var001b75c0 = 0x3fc90fdb;
-u32 var001b75c4 = 0x3f333333;
-u32 var001b75c8 = 0x461c4000;
-u32 var001b75cc = 0x7f7fffff;
-u32 var001b75d0 = 0xff7fffff;
-u32 var001b75d4 = 0x46fffe00;
-u32 var001b75d8 = 0x7f7fffff;
-u32 var001b75dc = 0x7f7fffff;
-u32 var001b75e0 = 0x7f162c00;
-u32 var001b75e4 = 0x7f162c3c;
-u32 var001b75e8 = 0x7f162c24;
-u32 var001b75ec = 0x7f162cc0;
-u32 var001b75f0 = 0x7f162cc0;
-u32 var001b75f4 = 0x7f162cc0;
-u32 var001b75f8 = 0x7f162cc0;
-u32 var001b75fc = 0x7f162cc0;
-u32 var001b7600 = 0x7f162cc0;
-u32 var001b7604 = 0x7f162cc0;
-u32 var001b7608 = 0x7f162c60;
-u32 var001b760c = 0x7f162c98;
-u32 var001b7610 = 0x7f162cb0;
-u32 var001b7614 = 0x7f1626a4;
-u32 var001b7618 = 0x7f1626ac;
-u32 var001b761c = 0x7f1626cc;
-u32 var001b7620 = 0x7f1626ec;
-u32 var001b7624 = 0x7f16271c;
-u32 var001b7628 = 0x7f16274c;
-u32 var001b762c = 0x7f162774;
-u32 var001b7630 = 0x7f162cc0;
-u32 var001b7634 = 0x7f162cc0;
-u32 var001b7638 = 0x7f162cc0;
-u32 var001b763c = 0x7f162cc0;
-u32 var001b7640 = 0x7f162cc0;
-u32 var001b7644 = 0x7f162cc0;
-u32 var001b7648 = 0x7f162cc0;
-u32 var001b764c = 0x7f162cc0;
-u32 var001b7650 = 0x7f162cc0;
-u32 var001b7654 = 0x7f162cc0;
-u32 var001b7658 = 0x7f162cc0;
-u32 var001b765c = 0x7f162cc0;
-u32 var001b7660 = 0x7f162cc0;
-u32 var001b7664 = 0x7f1627a4;
-u32 var001b7668 = 0x7f162cc0;
-u32 var001b766c = 0x7f162cc0;
-u32 var001b7670 = 0x7f162cc0;
-u32 var001b7674 = 0x7f162cc0;
-u32 var001b7678 = 0x7f162cc0;
-u32 var001b767c = 0x7f162cc0;
-u32 var001b7680 = 0x7f162cc0;
-u32 var001b7684 = 0x7f162cc0;
-u32 var001b7688 = 0x7f162cc0;
-u32 var001b768c = 0x7f1627e8;
-u32 var001b7690 = 0x7f162858;
-u32 var001b7694 = 0x7f162a04;
-u32 var001b7698 = 0x7f162be4;
-u32 var001b769c = 0x7f1628d4;
-u32 var001b76a0 = 0x7f162960;
-u32 var001b76a4 = 0x7f162a70;
-u32 var001b76a8 = 0x7f162ab4;
-u32 var001b76ac = 0x7f162b1c;
-u32 var001b76b0 = 0x7f162b2c;
-u32 var001b76b4 = 0x7f162b3c;
-u32 var001b76b8 = 0x7f162b58;
-u32 var001b76bc = 0x7f162ba8;
-u32 var001b76c0 = 0x7f7fffff;
-u32 var001b76c4 = 0x7f7fffff;
-u32 var001b76c8 = 0x7f7fffff;
-u32 var001b76cc = 0xff7fffff;
-u32 var001b76d0 = 0xbf666666;
-u32 var001b76d4 = 0x00000000;
-u32 var001b76d8 = 0x00000000;
-u32 var001b76dc = 0x00000000;
-u32 var001b76e0 = 0x3a83126f;
-u32 var001b76e4 = 0x3a83126f;
-u32 var001b76e8 = 0x7f7fffff;
-u32 var001b76ec = 0x00000000;
-char var001b76f0[] = "-mgfx";
-char var001b76f8[] = "-mgfx";
-char var001b7700[] = "-mgfxtra";
-char var001b770c[] = "-mgfxtra";
-char var001b7718[] = "-mvtx";
-char var001b7720[] = "-mvtx";
-u32 var001b7728 = 0x00000000;
-u32 var001b772c = 0x00000000;
-char var001b7730[] = "fr: %d\n";
-char var001b7738[] = "cutsceneframe: %d\n";
-char var001b774c[] = "pos:%s%s %.2f %.2f %.2f\n";
-u32 var001b7768 = 0x00000000;
-u32 var001b776c = 0x00000000;
-u32 var001b7770 = 0x7f1681e8;
-u32 var001b7774 = 0x7f1681f0;
-u32 var001b7778 = 0x7f1681f0;
-u32 var001b777c = 0x7f1681f0;
-u32 var001b7780 = 0x7f1681f0;
-u32 var001b7784 = 0x7f1681f0;
-u32 var001b7788 = 0x7f1681f0;
-u32 var001b778c = 0x7f1681f0;
-u32 var001b7790 = 0x7f1681f0;
-u32 var001b7794 = 0x7f1681e8;
-u32 var001b7798 = 0x7f1681f0;
-u32 var001b779c = 0x7f1681f0;
-u32 var001b77a0 = 0x7f1681f0;
-u32 var001b77a4 = 0x7f1681f0;
-u32 var001b77a8 = 0x7f1681f0;
-u32 var001b77ac = 0x7f1681f0;
-u32 var001b77b0 = 0x7f1681f0;
-u32 var001b77b4 = 0x7f1681f0;
-u32 var001b77b8 = 0x7f1681f0;
-u32 var001b77bc = 0x7f1681f0;
-u32 var001b77c0 = 0x7f1681f0;
-u32 var001b77c4 = 0x7f1681f0;
-u32 var001b77c8 = 0x7f1681e8;
-u32 var001b77cc = 0x7f1681e8;
-u32 var001b77d0 = 0x7f1681f0;
-u32 var001b77d4 = 0x7f1681f0;
-u32 var001b77d8 = 0x7f1681f0;
-u32 var001b77dc = 0x7f1681e8;
-u32 var001b77e0 = 0x7f168a64;
-u32 var001b77e4 = 0x7f168ac8;
-u32 var001b77e8 = 0x7f168974;
-u32 var001b77ec = 0x7f168a64;
-u32 var001b77f0 = 0x7f168ac8;
-u32 var001b77f4 = 0x7f16894c;
-u32 var001b77f8 = 0x7f168ac8;
-u32 var001b77fc = 0x7f168ac8;
-u32 var001b7800 = 0x7f168c70;
-u32 var001b7804 = 0x7f168c84;
-u32 var001b7808 = 0x7f168c84;
-u32 var001b780c = 0x7f168c84;
-u32 var001b7810 = 0x7f168c84;
-u32 var001b7814 = 0x7f168c84;
-u32 var001b7818 = 0x7f168c84;
-u32 var001b781c = 0x7f168c84;
-u32 var001b7820 = 0x7f168c84;
-u32 var001b7824 = 0x7f168c84;
-u32 var001b7828 = 0x7f168c84;
-u32 var001b782c = 0x7f168c84;
-u32 var001b7830 = 0x7f168c84;
-u32 var001b7834 = 0x7f168c84;
-u32 var001b7838 = 0x7f168c84;
-u32 var001b783c = 0x7f168c68;
-u32 var001b7840 = 0x7f168c68;
-u32 var001b7844 = 0x7f168c68;
-u32 var001b7848 = 0x7f168c68;
-u32 var001b784c = 0x7f168c68;
-u32 var001b7850 = 0x3f866666;
-u32 var001b7854 = 0x3ca3d70b;
-u32 var001b7858 = 0x3f8ccccd;
-u32 var001b785c = 0x3bda740e;
-u32 var001b7860 = 0x3ca3d70b;
-u32 var001b7864 = 0x3f8ccccd;
-u32 var001b7868 = 0x3bda740e;
-u32 var001b786c = 0x3eb33333;
-u32 var001b7870 = 0x3e4ccccd;
-u32 var001b7874 = 0x3f19999a;
-u32 var001b7878 = 0x3f8ccccd;
-u32 var001b787c = 0x3f333333;
-u32 var001b7880 = 0x3f266666;
-u32 var001b7884 = 0x3f19999a;
-u32 var001b7888 = 0x3e4ccccd;
-u32 var001b788c = 0x3f8ccccd;
-u32 var001b7890 = 0x3e4ccccd;
-u32 var001b7894 = 0x3f19999a;
-u32 var001b7898 = 0x3ef33334;
-u32 var001b789c = 0x3f19999a;
-u32 var001b78a0 = 0x3e4ccccd;
-u32 var001b78a4 = 0x3f4ccccd;
-u32 var001b78a8 = 0x3f19999a;
-u32 var001b78ac = 0x3f8ccccd;
-u32 var001b78b0 = 0x3f966666;
-u32 var001b78b4 = 0x3e4ccccd;
-u32 var001b78b8 = 0x3f8ccccd;
-u32 var001b78bc = 0x00000000;
-char var001b78c0[] = "null";
-char var001b78c8[] = "leveltune";
-char var001b78d4[] = "nrgtune,watchtune,mpdeathtune";
-char var001b78f4[] = "ambience";
-char var001b7900[] = "NULL";
-char var001b7908[] = "playing";
-char var001b7910[] = "paused";
-char var001b7918[] = "MUSIC : activedeath=%d\n";
-u32 var001b7930 = 0x7f16e224;
-u32 var001b7934 = 0x7f16e3ec;
-u32 var001b7938 = 0x7f16e3ec;
-u32 var001b793c = 0x7f16e3ec;
-u32 var001b7940 = 0x7f16e3ec;
-u32 var001b7944 = 0x7f16e3ec;
-u32 var001b7948 = 0x7f16e3ec;
-u32 var001b794c = 0x7f16e3ec;
-u32 var001b7950 = 0x7f16e3ec;
-u32 var001b7954 = 0x7f16e3ec;
-u32 var001b7958 = 0x7f16e3ec;
-u32 var001b795c = 0x7f16e3e4;
-u32 var001b7960 = 0x7f16e3ec;
-u32 var001b7964 = 0x7f16e244;
-u32 var001b7968 = 0x7f16e304;
-u32 var001b796c = 0x7f16e2fc;
-u32 var001b7970 = 0x7f16e25c;
-u32 var001b7974 = 0x7f16e22c;
-u32 var001b7978 = 0x7f16e23c;
-u32 var001b797c = 0x7f16e30c;
-u32 var001b7980 = 0x7f16e24c;
-u32 var001b7984 = 0x7f16e254;
-u32 var001b7988 = 0x7f16e284;
-u32 var001b798c = 0x7f16e274;
-u32 var001b7990 = 0x7f16e204;
-u32 var001b7994 = 0x7f16e20c;
-u32 var001b7998 = 0x7f16e214;
-u32 var001b799c = 0x7f16e21c;
-u32 var001b79a0 = 0x7f16e264;
-u32 var001b79a4 = 0x7f16e27c;
-u32 var001b79a8 = 0x7f16e314;
-u32 var001b79ac = 0x7f16e2dc;
-u32 var001b79b0 = 0x7f16e26c;
-u32 var001b79b4 = 0x7f16e2ec;
-u32 var001b79b8 = 0x7f16e234;
-u32 var001b79bc = 0x7f16e2a4;
-u32 var001b79c0 = 0x7f16e2ac;
-u32 var001b79c4 = 0x7f16e2b4;
-u32 var001b79c8 = 0x7f16e2d4;
-u32 var001b79cc = 0x7f16e29c;
-u32 var001b79d0 = 0x7f16e2f4;
-u32 var001b79d4 = 0x7f16e28c;
-u32 var001b79d8 = 0x7f16e2bc;
-u32 var001b79dc = 0x7f16e2c4;
-u32 var001b79e0 = 0x7f16e2cc;
-u32 var001b79e4 = 0x7f16e294;
-u32 var001b79e8 = 0x7f16e3dc;
-u32 var001b79ec = 0x7f16e2e4;
-u32 var001b79f0 = 0x7f16e33c;
-u32 var001b79f4 = 0x7f16e344;
-u32 var001b79f8 = 0x7f16e34c;
-u32 var001b79fc = 0x7f16e354;
-u32 var001b7a00 = 0x7f16e35c;
-u32 var001b7a04 = 0x7f16e364;
-u32 var001b7a08 = 0x7f16e36c;
-u32 var001b7a0c = 0x7f16e374;
-u32 var001b7a10 = 0x7f16e37c;
-u32 var001b7a14 = 0x7f16e384;
-u32 var001b7a18 = 0x7f16e38c;
-u32 var001b7a1c = 0x7f16e394;
-u32 var001b7a20 = 0x7f16e39c;
-u32 var001b7a24 = 0x7f16e3a4;
-u32 var001b7a28 = 0x7f16e3ac;
-u32 var001b7a2c = 0x7f16e3b4;
-u32 var001b7a30 = 0x7f16e3bc;
-u32 var001b7a34 = 0x7f16e3c4;
-u32 var001b7a38 = 0x7f16e3cc;
-u32 var001b7a3c = 0x7f16e3d4;
-u32 var001b7a40 = 0x7f16e31c;
-u32 var001b7a44 = 0x7f16e324;
-u32 var001b7a48 = 0x7f16e32c;
-u32 var001b7a4c = 0x7f16e334;
-u32 var001b7a50 = 0x7f17004c;
-u32 var001b7a54 = 0x7f17004c;
-u32 var001b7a58 = 0x7f170070;
-u32 var001b7a5c = 0x7f170108;
-u32 var001b7a60 = 0x7f1701bc;
-u32 var001b7a64 = 0x7f170248;
-u32 var001b7a68 = 0x7f170294;
-u32 var001b7a6c = 0x7f1702fc;
-u32 var001b7a70 = 0x7f170360;
-u32 var001b7a74 = 0x7f170434;
-u32 var001b7a78 = 0x7f170764;
-u32 var001b7a7c = 0x7f170788;
-u32 var001b7a80 = 0x7f170764;
-u32 var001b7a84 = 0x7f170788;
-u32 var001b7a88 = 0x7f170788;
-u32 var001b7a8c = 0x7f1707ac;
-u32 var001b7a90 = 0x7f1707d0;
-u32 var001b7a94 = 0x7f1707ac;
-u32 var001b7a98 = 0x7f1707d0;
-u32 var001b7a9c = 0x7f170814;
-u32 var001b7aa0 = 0x7f1709c4;
-u32 var001b7aa4 = 0x7f170814;
-u32 var001b7aa8 = 0x7f1709c4;
-u32 var001b7aac = 0x7f170b74;
-u32 var001b7ab0 = 0x7f170cb4;
-u32 var001b7ab4 = 0x7f170ee4;
-u32 var001b7ab8 = 0x7f170e00;
-u32 var001b7abc = 0x7f171074;
-u32 var001b7ac0 = 0x7f171910;
-u32 var001b7ac4 = 0x7f1719f0;
-u32 var001b7ac8 = 0x7f171988;
-u32 var001b7acc = 0x7f171a50;
-u32 var001b7ad0 = 0x7f1719f0;
-u32 var001b7ad4 = 0x7f171ab8;
-u32 var001b7ad8 = 0x7f171b14;
-u32 var001b7adc = 0x7f171ab8;
-u32 var001b7ae0 = 0x7f171b14;
-u32 var001b7ae4 = 0x7f171bf0;
-u32 var001b7ae8 = 0x7f171d5c;
-u32 var001b7aec = 0x7f171cb0;
-u32 var001b7af0 = 0x7f171ea4;
-u32 var001b7af4 = 0x7f171e1c;
-u32 var001b7af8 = 0x7f171f50;
-u32 var001b7afc = 0x7f172038;
-u32 var001b7b00 = 0x7f171fd4;
-u32 var001b7b04 = 0x7f1720f0;
-u32 var001b7b08 = 0x7f172204;
-u32 var001b7b0c = 0x7f1722f8;
-u32 var001b7b10 = 0x7f172278;
-u32 var001b7b14 = 0x7f172374;
-u32 var001b7b18 = 0x7f1722f8;
-u32 var001b7b1c = 0x7f1723f8;
-u32 var001b7b20 = 0x7f172470;
-u32 var001b7b24 = 0x7f1723f8;
-u32 var001b7b28 = 0x7f172470;
-u32 var001b7b2c = 0x7f1725ac;
-u32 var001b7b30 = 0x7f172704;
-u32 var001b7b34 = 0x7f172650;
-u32 var001b7b38 = 0x7f1727ac;
-u32 var001b7b3c = 0x7f172704;
-u32 var001b7b40 = 0x7f172864;
-u32 var001b7b44 = 0x7f172904;
-u32 var001b7b48 = 0x7f172864;
-u32 var001b7b4c = 0x7f172904;
-u32 var001b7b50 = 0x7f172a24;
-u32 var001b7b54 = 0x7f172a38;
-u32 var001b7b58 = 0x7f172a24;
-u32 var001b7b5c = 0x7f172a38;
-u32 var001b7b60 = 0x7f172a38;
-u32 var001b7b64 = 0x7f172a50;
-u32 var001b7b68 = 0x7f172a68;
-u32 var001b7b6c = 0x7f172a50;
-u32 var001b7b70 = 0x7f172a68;
-u32 var001b7b74 = 0x7f172a50;
-u32 var001b7b78 = 0x7f172a68;
-u32 var001b7b7c = 0x7f172a50;
-u32 var001b7b80 = 0x7f172a68;
-u32 var001b7b84 = 0x7f172c24;
-u32 var001b7b88 = 0x7f172c68;
-u32 var001b7b8c = 0x7f172cac;
-u32 var001b7b90 = 0x7f172cf0;
-u32 var001b7b94 = 0x7f172d3c;
-u32 var001b7b98 = 0x7f172d98;
-u32 var001b7b9c = 0x7f172df4;
-char var001b7ba0[] = "default";
-char var001b7ba8[] = "stone";
-char var001b7bb0[] = "wood";
-char var001b7bb8[] = "metal";
-char var001b7bc0[] = "glass";
-char var001b7bc8[] = "shallow water";
-char var001b7bd8[] = "snow";
-char var001b7be0[] = "dirt";
-u32 var001b7be8 = 0x6d756400;
-char var001b7bec[] = "tile";
-char var001b7bf4[] = "metalobj";
-u32 var001b7c00 = 0x63687200;
-char var001b7c04[] = "glass xlu";
-char var001b7c10[] = "no hit";
-char var001b7c18[] = "deep water";
-u32 var001b7c24 = 0x00000000;
-u32 var001b7c28 = 0x00000000;
-u32 var001b7c2c = 0x00000000;
-u32 var001b7c30 = 0x7f175c04;
-u32 var001b7c34 = 0x7f175e28;
-u32 var001b7c38 = 0x7f175e28;
-u32 var001b7c3c = 0x7f175e28;
-u32 var001b7c40 = 0x7f175e28;
-u32 var001b7c44 = 0x7f175e28;
-u32 var001b7c48 = 0x7f175e28;
-u32 var001b7c4c = 0x7f175e28;
-u32 var001b7c50 = 0x7f175e28;
-u32 var001b7c54 = 0x7f175e0c;
-u32 var001b7c58 = 0x7f175dcc;
-u32 var001b7c5c = 0x7f175e28;
-u32 var001b7c60 = 0x7f175e28;
-u32 var001b7c64 = 0x7f175e28;
-u32 var001b7c68 = 0x7f175c04;
-u32 var001b7c6c = 0x7f1757d4;
-u32 var001b7c70 = 0x7f175880;
-u32 var001b7c74 = 0x7f1758e4;
-u32 var001b7c78 = 0x7f17597c;
-u32 var001b7c7c = 0x7f1759b8;
-u32 var001b7c80 = 0x7f1759f0;
-u32 var001b7c84 = 0x00000000;
-u32 var001b7c88 = 0x00000000;
-u32 var001b7c8c = 0x00000000;
-char var001b7c90[] = "Apr  6 2000 15:05:01";
-u32 var001b7ca8 = 0x00000000;
-u32 var001b7cac = 0x00000000;
-char var001b7cb0[] = "UM_Make : In\n";
-char var001b7cc0[] = "UM_Make : Out\n";
-char var001b7cd0[] = "Utils -> ERROR at Line %d of %s\n";
-char var001b7cf4[] = "Utils -> UM_fVec3_NormaliseTo - Vec = %s%s (%f,%f,%f)\n";
-u32 var001b7d2c = 0x00000000;
-u32 var001b7d30 = 0x00000000;
-char var001b7d34[] = "Utils -> Attempt to normalise zeo length vector\n";
-char var001b7d68[] = "utils.c";
-char var001b7d70[] = "UTILS -> DEBUG ERROR - UM_fVec3_MakeNormalTo - Cant normalise\n";
-char var001b7db0[] = "utils.c";
-char var001b7db8[] = "UTILS -> DEBUG ERROR - UM_fVec3_MakeNormalTo - Cant normalise\n";
-char var001b7df8[] = "utils.c";
-char var001b7e00[] = "WARNING - UTILS -> DEBUG - Triangle passed to Planar Poly Test\n";
-char var001b7e40[] = "utils.c";
-char var001b7e48[] = "utils.c";
-char var001b7e50[] = "UM_ZeroRunVerify_U8 - FAILED on item %d\n";
-u32 var001b7e7c = 0x3a83126f;
-u32 var001b7e80 = 0x00000000;
-u32 var001b7e84 = 0x0a000000;
-u32 var001b7e88 = 0x00000000;
-u32 var001b7e8c = 0x00000000;
-char var001b7e90[] = "%d%%\n";
-char var001b7e98[] = "%d%%\n";
-char var001b7ea0[] = "%d%%\n";
-char var001b7ea8[] = "Menu99 -> Calling Camera Module Start\n";
-char var001b7ed0[] = "Menu99 -> Calling Camera Module Finish\n";
-u32 var001b7ef8 = 0x25640a00;
-u32 var001b7efc = 0x25640a00;
-u32 var001b7f00 = 0x25640a00;
-u32 var001b7f04 = 0x25640a00;
-u32 var001b7f08 = 0x25640a00;
-u32 var001b7f0c = 0x25640a00;
-u32 var001b7f10 = 0x25640a00;
-u32 var001b7f14 = 0x25640a00;
-u32 var001b7f18 = 0x25640a00;
-u32 var001b7f1c = 0x25640a00;
-u32 var001b7f20 = 0x25644d0a;
-u32 var001b7f24 = 0x00000000;
-u32 var001b7f28 = 0x25644b0a;
-u32 var001b7f2c = 0x00000000;
-u32 var001b7f30 = 0x25640a00;
-char var001b7f34[] = "%s%s%.1fkm\n";
-u32 var001b7f40 = 0x00000000;
-u32 var001b7f44 = 0x00000000;
-char var001b7f48[] = "--:--\n";
-char var001b7f50[] = "==:==\n";
-char var001b7f58[] = "%d:%02d.%02d";
-char var001b7f68[] = "%d:%02d:%02d";
-char var001b7f78[] = "%s%s%.1f%%";
-u32 var001b7f84 = 0x00000000;
-u32 var001b7f88 = 0x00000000;
-char var001b7f8c[] = "%s%s%.1f";
-u32 var001b7f98 = 0x00000000;
-u32 var001b7f9c = 0x00000000;
-char var001b7fa0[] = "%s%s%.0f";
-u32 var001b7fac = 0x00000000;
-u32 var001b7fb0 = 0x00000000;
-char var001b7fb4[] = "%s%s%.1fK";
-u32 var001b7fc0 = 0x00000000;
-u32 var001b7fc4 = 0x00000000;
-char var001b7fc8[] = "%s%s%.0fK";
-u32 var001b7fd4 = 0x00000000;
-u32 var001b7fd8 = 0x00000000;
-char var001b7fdc[] = "%s%s%.1fM";
-u32 var001b7fe8 = 0x00000000;
-u32 var001b7fec = 0x00000000;
-char var001b7ff0[] = "%s%s%.0fM";
-u32 var001b7ffc = 0x00000000;
-u32 var001b8000 = 0x00000000;
-u32 var001b8004 = 0x00000000;
-u32 var001b8008 = 0x00000000;
-char var001b800c[] = "%s%s%.00f%%\n";
-u32 var001b801c = 0x00000000;
-u32 var001b8020 = 0x00000000;
-u32 var001b8024 = 0x00000000;
-u32 var001b8028 = 0x0a000000;
-u32 var001b802c = 0x25730000;
-u32 var001b8030 = 0x00000000;
-u32 var001b8034 = 0x00000000;
-u32 var001b8038 = 0x25643a0a;
-u32 var001b803c = 0x00000000;
-u32 var001b8040 = 0x00000000;
-u32 var001b8044 = 0x0a000000;
-u32 var001b8048 = 0x25733a0a;
-u32 var001b804c = 0x00000000;
-u32 var001b8050 = 0x0a000000;
-u32 var001b8054 = 0x25640a00;
-u32 var001b8058 = 0x25640a00;
-u32 var001b805c = 0x7f179248;
-u32 var001b8060 = 0x7f17935c;
-u32 var001b8064 = 0x7f17927c;
-u32 var001b8068 = 0x7f1793a4;
-u32 var001b806c = 0x7f1793fc;
-u32 var001b8070 = 0x7f1792cc;
-u32 var001b8074 = 0x7f179310;
-u32 var001b8078 = 0x7f179dd8;
-u32 var001b807c = 0x7f17a014;
-u32 var001b8080 = 0x7f17a014;
-u32 var001b8084 = 0x7f17a014;
-u32 var001b8088 = 0x7f17a014;
-u32 var001b808c = 0x7f179f0c;
-u32 var001b8090 = 0x7f179f04;
-u32 var001b8094 = 0x7f17a014;
-u32 var001b8098 = 0x7f17a014;
-u32 var001b809c = 0x7f17a014;
-u32 var001b80a0 = 0x7f179dec;
-u32 var001b80a4 = 0x7f17a014;
-u32 var001b80a8 = 0x7f179ecc;
-u32 var001b80ac = 0x7f17a014;
-u32 var001b80b0 = 0x7f179f0c;
-u32 var001b80b4 = 0x7f17a014;
-u32 var001b80b8 = 0x7f17a014;
-u32 var001b80bc = 0x7f17a014;
-u32 var001b80c0 = 0x7f17a014;
-u32 var001b80c4 = 0x7f17a014;
-u32 var001b80c8 = 0x7f179eac;
-u32 var001b80cc = 0x3c23d70a;
-u32 var001b80d0 = 0x41033333;
-u32 var001b80d4 = 0xc0833333;
-u32 var001b80d8 = 0xbe4ccccd;
-u32 var001b80dc = 0x3b03126f;
-u32 var001b80e0 = 0x461c4000;
-u32 var001b80e4 = 0x47c35000;
-u32 var001b80e8 = 0x49742400;
-u32 var001b80ec = 0x4b189680;
-u32 var001b80f0 = 0x7f17b52c;
-u32 var001b80f4 = 0x7f17b82c;
-u32 var001b80f8 = 0x7f17b82c;
-u32 var001b80fc = 0x7f17b82c;
-u32 var001b8100 = 0x7f17b82c;
-u32 var001b8104 = 0x7f17b70c;
-u32 var001b8108 = 0x7f17b700;
-u32 var001b810c = 0x7f17b82c;
-u32 var001b8110 = 0x7f17b82c;
-u32 var001b8114 = 0x7f17b82c;
-u32 var001b8118 = 0x7f17b540;
-u32 var001b811c = 0x7f17b82c;
-u32 var001b8120 = 0x7f17b70c;
-u32 var001b8124 = 0x7f17b82c;
-u32 var001b8128 = 0x7f17b82c;
-u32 var001b812c = 0x7f17b82c;
-u32 var001b8130 = 0x7f17b82c;
-u32 var001b8134 = 0x7f17b82c;
-u32 var001b8138 = 0x7f17b82c;
-u32 var001b813c = 0x7f17b82c;
-u32 var001b8140 = 0x7f17b6e0;
-u32 var001b8144 = 0x3c23d70a;
-u32 var001b8148 = 0xbe99999a;
-u32 var001b814c = 0x3c23d70a;
-u32 var001b8150 = 0x7f17baec;
-u32 var001b8154 = 0x7f17bcb4;
-u32 var001b8158 = 0x7f17bb1c;
-u32 var001b815c = 0x7f17bcdc;
-u32 var001b8160 = 0x7f17bd20;
-u32 var001b8164 = 0x7f17bbb4;
-u32 var001b8168 = 0x7f17bca4;
-u32 var001b816c = 0x7f17be18;
-u32 var001b8170 = 0x7f17be18;
-u32 var001b8174 = 0x7f17be18;
-u32 var001b8178 = 0x7f17be18;
-u32 var001b817c = 0x7f17be18;
-u32 var001b8180 = 0x7f17be18;
-u32 var001b8184 = 0x7f17be18;
-u32 var001b8188 = 0x7f17be18;
-u32 var001b818c = 0x7f17bd80;
-u32 var001b8190 = 0x7f17c028;
-u32 var001b8194 = 0x7f17c144;
-u32 var001b8198 = 0x7f17c034;
-u32 var001b819c = 0x7f17c150;
-u32 var001b81a0 = 0x7f17c164;
-u32 var001b81a4 = 0x7f17c064;
-u32 var001b81a8 = 0x7f17c134;
-u32 var001b81ac = 0x7f17c71c;
-u32 var001b81b0 = 0x7f17c994;
-u32 var001b81b4 = 0x7f17c750;
-u32 var001b81b8 = 0x7f17c9a0;
-u32 var001b81bc = 0x7f17c9bc;
-u32 var001b81c0 = 0x7f17c7a4;
-u32 var001b81c4 = 0x7f17c95c;
-u32 var001b81c8 = 0x7f17ca1c;
-u32 var001b81cc = 0x7f17ca1c;
-u32 var001b81d0 = 0x7f17ca1c;
-u32 var001b81d4 = 0x7f17ca1c;
-u32 var001b81d8 = 0x7f17ca1c;
-u32 var001b81dc = 0x7f17ca1c;
-u32 var001b81e0 = 0x7f17ca1c;
-u32 var001b81e4 = 0x7f17ca1c;
-u32 var001b81e8 = 0x7f17c8f4;
-u32 var001b81ec = 0x7f17dcb4;
-u32 var001b81f0 = 0x7f17df60;
-u32 var001b81f4 = 0x7f17dcf0;
-u32 var001b81f8 = 0x7f17df60;
-u32 var001b81fc = 0x7f17df60;
-u32 var001b8200 = 0x7f17dd90;
-u32 var001b8204 = 0x7f17dea0;
-u32 var001b8208 = 0x7f17df60;
-u32 var001b820c = 0x7f17df60;
-u32 var001b8210 = 0x7f17df60;
-u32 var001b8214 = 0x7f17df60;
-u32 var001b8218 = 0x7f17df60;
-u32 var001b821c = 0x7f17df60;
-u32 var001b8220 = 0x7f17df20;
-u32 var001b8224 = 0x7f17df60;
-u32 var001b8228 = 0x7f17deec;
-u32 var001b822c = 0x7f17e540;
-u32 var001b8230 = 0x7f17e600;
-u32 var001b8234 = 0x7f17e9a8;
-u32 var001b8238 = 0x7f17e608;
-u32 var001b823c = 0x7f17e610;
-u32 var001b8240 = 0x7f17e550;
-u32 var001b8244 = 0x7f17e5f0;
-u32 var001b8248 = 0x7f17e9a8;
-u32 var001b824c = 0x7f17e9a8;
-u32 var001b8250 = 0x7f17e9a8;
-u32 var001b8254 = 0x7f17e9a8;
-u32 var001b8258 = 0x7f17e9a8;
-u32 var001b825c = 0x7f17e9a8;
-u32 var001b8260 = 0x7f17e9a8;
-u32 var001b8264 = 0x7f17e9a8;
-u32 var001b8268 = 0x7f17e9a8;
-u32 var001b826c = 0x7f17e9a8;
-u32 var001b8270 = 0x7f17e9a8;
-u32 var001b8274 = 0x7f17e618;
-u32 var001b8278 = 0x7f17e9a0;
-u32 var001b827c = 0x7f17e9a8;
-u32 var001b8280 = 0x7f17e9a8;
-u32 var001b8284 = 0x7f17e9a8;
-u32 var001b8288 = 0x7f17e524;
-u32 var001b828c = 0x7f17f160;
-u32 var001b8290 = 0x7f17f17c;
-u32 var001b8294 = 0x7f17f198;
-u32 var001b8298 = 0x7f17f1e0;
-u32 var001b829c = 0x7f17f218;
-u32 var001b82a0 = 0x7f17f400;
-u32 var001b82a4 = 0x7f17f2b8;
-u32 var001b82a8 = 0x7f17f400;
-u32 var001b82ac = 0x7f17f304;
-u32 var001b82b0 = 0x7f17f370;
-u32 var001b82b4 = 0x7f17f520;
-u32 var001b82b8 = 0x7f17f598;
-u32 var001b82bc = 0x7f17f52c;
-u32 var001b82c0 = 0x7f17f598;
-u32 var001b82c4 = 0x7f17f598;
-u32 var001b82c8 = 0x7f17f54c;
-u32 var001b82cc = 0x7f17f564;
-u32 var001b82d0 = 0x7f17f598;
-u32 var001b82d4 = 0x7f17f598;
-u32 var001b82d8 = 0x7f17f598;
-u32 var001b82dc = 0x7f17f598;
-u32 var001b82e0 = 0x7f17f598;
-u32 var001b82e4 = 0x7f17f598;
-u32 var001b82e8 = 0x7f17f598;
-u32 var001b82ec = 0x7f17f598;
-u32 var001b82f0 = 0x7f17f598;
-u32 var001b82f4 = 0x7f17f598;
-u32 var001b82f8 = 0x7f17f598;
-u32 var001b82fc = 0x7f17f598;
-u32 var001b8300 = 0x7f17f598;
-u32 var001b8304 = 0x7f17f598;
-u32 var001b8308 = 0x7f17f598;
-u32 var001b830c = 0x7f17f598;
-u32 var001b8310 = 0x7f17f57c;
-u32 var001b8314 = 0x7f17f5d8;
-u32 var001b8318 = 0x7f17f678;
-u32 var001b831c = 0x7f17f604;
-u32 var001b8320 = 0x7f17f678;
-u32 var001b8324 = 0x7f17f678;
-u32 var001b8328 = 0x7f17f62c;
-u32 var001b832c = 0x7f17f640;
-u32 var001b8330 = 0x7f17f678;
-u32 var001b8334 = 0x7f17f678;
-u32 var001b8338 = 0x7f17f678;
-u32 var001b833c = 0x7f17f678;
-u32 var001b8340 = 0x7f17f678;
-u32 var001b8344 = 0x7f17f678;
-u32 var001b8348 = 0x7f17f678;
-u32 var001b834c = 0x7f17f678;
-u32 var001b8350 = 0x7f17f678;
-u32 var001b8354 = 0x7f17f678;
-u32 var001b8358 = 0x7f17f678;
-u32 var001b835c = 0x7f17f678;
-u32 var001b8360 = 0x7f17f678;
-u32 var001b8364 = 0x7f17f678;
-u32 var001b8368 = 0x7f17f678;
-u32 var001b836c = 0x7f17f678;
-u32 var001b8370 = 0x7f17f654;
-u32 var001b8374 = 0x7f17f6c0;
-u32 var001b8378 = 0x7f17f738;
-u32 var001b837c = 0x7f17f6cc;
-u32 var001b8380 = 0x7f17f738;
-u32 var001b8384 = 0x7f17f738;
-u32 var001b8388 = 0x7f17f6f4;
-u32 var001b838c = 0x7f17f708;
-u32 var001b8390 = 0x7f17f738;
-u32 var001b8394 = 0x7f17f738;
-u32 var001b8398 = 0x7f17f738;
-u32 var001b839c = 0x7f17f738;
-u32 var001b83a0 = 0x7f17f738;
-u32 var001b83a4 = 0x7f17f738;
-u32 var001b83a8 = 0x7f17f738;
-u32 var001b83ac = 0x7f17f738;
-u32 var001b83b0 = 0x7f17f738;
-u32 var001b83b4 = 0x7f17f738;
-u32 var001b83b8 = 0x7f17f738;
-u32 var001b83bc = 0x7f17f738;
-u32 var001b83c0 = 0x7f17f738;
-u32 var001b83c4 = 0x7f17f738;
-u32 var001b83c8 = 0x7f17f738;
-u32 var001b83cc = 0x7f17f738;
-u32 var001b83d0 = 0x7f17f71c;
-u32 var001b83d4 = 0x7f17f798;
-u32 var001b83d8 = 0x7f17f86c;
-u32 var001b83dc = 0x7f17f7cc;
-u32 var001b83e0 = 0x7f17f86c;
-u32 var001b83e4 = 0x7f17f86c;
-u32 var001b83e8 = 0x7f17f820;
-u32 var001b83ec = 0x7f17f830;
-u32 var001b83f0 = 0x7f17f86c;
-u32 var001b83f4 = 0x7f17f86c;
-u32 var001b83f8 = 0x7f17f86c;
-u32 var001b83fc = 0x7f17f86c;
-u32 var001b8400 = 0x7f17f86c;
-u32 var001b8404 = 0x7f17f86c;
-u32 var001b8408 = 0x7f17f86c;
-u32 var001b840c = 0x7f17f86c;
-u32 var001b8410 = 0x7f17f86c;
-u32 var001b8414 = 0x7f17f86c;
-u32 var001b8418 = 0x7f17f86c;
-u32 var001b841c = 0x7f17f86c;
-u32 var001b8420 = 0x7f17f86c;
-u32 var001b8424 = 0x7f17f86c;
-u32 var001b8428 = 0x7f17f86c;
-u32 var001b842c = 0x7f17f86c;
-u32 var001b8430 = 0x7f17f840;
-u32 var001b8434 = 0x00000000;
-u32 var001b8438 = 0x00000000;
-u32 var001b843c = 0x00000000;
-char var001b8440[] = "CaptureTheBriefcaseAddBankPad -> Adding New Pad %d  - Pad Id = %d-> Saving Pad\n";
-char var001b8490[] = "%d:%02d";
-char var001b8498[] = "%d:%02d";
-char var001b84a0[] = "%02d";
-char var001b84a8[] = "HackThatMacAddBankPad -> Adding New Pad %d  - Pad Id = %d-> Saving Pad\n";
-char var001b84f0[] = "HackThatMacReset -> Working\n";
-char var001b8510[] = "HackThatMacInitProps -> Start : %d Bank Pads\n";
-char var001b8540[] = "HackThatMacInitProps -> Adding prop %d (%x)\n";
-char var001b8570[] = "HackThatMacInitProps -> Mid : %d Bank Pads\n";
-char var001b859c[] = "HackThatMacInitProps -> Generating %d random box pads from %d in the bank\n";
-char var001b85e8[] = "HackThatMacInitProps -> %d/%d Random box pads generated - Listing\n";
-char var001b862c[] = "Pad %d -> Pad Id = %d\n";
-char var001b8644[] = "HackThatMacInitProps -> Building and adding custom prop %d - Pad=%d, Ptr=%08x\n";
-char var001b8694[] = "HackThatMacInitProps -> End\n";
-char var001b86b4[] = "HTM : Player %d - Term Pos = (%d,%d,%d)";
-char var001b86dc[] = "HTM : Player %d - Play Pos = (%d,%d,%d)";
-char var001b8704[] = "HTM : Player %d - T/P  Rel = (%d,%d,%d)";
-char var001b872c[] = "HTM : Player %d - Range XZ = %d";
-char var001b874c[] = "HTM : Player %d - Range Y  = %d";
-char var001b876c[] = "HTM : Player %d - Angle XZ = %d";
-char var001b878c[] = "HTM : Player %d - Dwnld Plr=%d, Dwnld Prop=%d\n";
-char var001b87bc[] = "HTM : Player %d - Download Time = %d";
-char var001b87e4[] = "PopACapReset -> num_mplayers=%d : Working\n";
-char var001b8810[] = "PopACapReset -> Generated %d victims for this game : Listing\n";
-char var001b8850[] = "PopACapReset -> Victim %d is player %d\n";
-char var001b8878[] = "PopACapReset -> Done\n";
-char var001b8890[] = "PopACapTick : Current Victim = %d (Player %d)\n";
-char var001b88c0[] = "%d:%02d";
-u32 var001b88c8 = 0x25730a00;
-u32 var001b88cc = 0x25730a00;
-u32 var001b88d0 = 0x25733a0a;
-u32 var001b88d4 = 0x00000000;
-u32 var001b88d8 = 0x25730a00;
-u32 var001b88dc = 0x7f17febc;
-u32 var001b88e0 = 0x7f17ff6c;
-u32 var001b88e4 = 0x7f17fec8;
-u32 var001b88e8 = 0x7f17ff6c;
-u32 var001b88ec = 0x7f17ff6c;
-u32 var001b88f0 = 0x7f17fee4;
-u32 var001b88f4 = 0x7f17ff34;
-u32 var001b88f8 = 0x7f17ff6c;
-u32 var001b88fc = 0x7f17ff6c;
-u32 var001b8900 = 0x7f17ff6c;
-u32 var001b8904 = 0x7f17ff6c;
-u32 var001b8908 = 0x7f17fe9c;
-u32 var001b890c = 0x7f17ff6c;
-u32 var001b8910 = 0x7f17ff6c;
-u32 var001b8914 = 0x7f17ff6c;
-u32 var001b8918 = 0x7f17ff6c;
-u32 var001b891c = 0x7f17ff6c;
-u32 var001b8920 = 0x7f17ff6c;
-u32 var001b8924 = 0x7f17ff6c;
-u32 var001b8928 = 0x7f17ff6c;
-u32 var001b892c = 0x7f17ff6c;
-u32 var001b8930 = 0x7f17ff6c;
-u32 var001b8934 = 0x7f17ff6c;
-u32 var001b8938 = 0x7f17fe9c;
-u32 var001b893c = 0x3f733333;
-u32 var001b8940 = 0x3d4ccccd;
-u32 var001b8944 = 0x3f733333;
-u32 var001b8948 = 0x3f733333;
-u32 var001b894c = 0x3d4ccccd;
-u32 var001b8950 = 0x3d4ccccd;
-u32 var001b8954 = 0x3e4ccccd;
-u32 var001b8958 = 0x40c907a9;
-u32 var001b895c = 0x42652ee0;
-u32 var001b8960 = 0x42652ee0;
-u32 var001b8964 = 0x7f185110;
-u32 var001b8968 = 0x7f18528c;
-u32 var001b896c = 0x7f18515c;
-u32 var001b8970 = 0x7f1852c8;
-u32 var001b8974 = 0x7f1852e4;
-u32 var001b8978 = 0x7f1851c4;
-u32 var001b897c = 0x7f18522c;
-u32 var001b8980 = 0x7f185f14;
-u32 var001b8984 = 0x7f185f14;
-u32 var001b8988 = 0x7f186168;
-u32 var001b898c = 0x7f186168;
-u32 var001b8990 = 0x7f186168;
-u32 var001b8994 = 0x7f186168;
-u32 var001b8998 = 0x7f186168;
-u32 var001b899c = 0x7f185f14;
-u32 var001b89a0 = 0x7f186168;
-u32 var001b89a4 = 0x7f186168;
-u32 var001b89a8 = 0x7f186168;
-u32 var001b89ac = 0x7f186168;
-u32 var001b89b0 = 0x7f186168;
-u32 var001b89b4 = 0x7f185f14;
-u32 var001b89b8 = 0x7f185f14;
-u32 var001b89bc = 0x7f1862e4;
-u32 var001b89c0 = 0x7f1862d4;
-u32 var001b89c4 = 0x7f1862ec;
-u32 var001b89c8 = 0x7f186254;
-u32 var001b89cc = 0x7f186260;
-u32 var001b89d0 = 0x7f186320;
-u32 var001b89d4 = 0x7f1863a0;
-u32 var001b89d8 = 0x7f1863a8;
-u32 var001b89dc = 0x7f1863b0;
-u32 var001b89e0 = 0x7f1863b8;
-u32 var001b89e4 = 0x7f1863c0;
-u32 var001b89e8 = 0x7f1863c8;
-u32 var001b89ec = 0x7f1863d0;
-u32 var001b89f0 = 0x7f1863d8;
-u32 var001b89f4 = 0x7f186328;
-u32 var001b89f8 = 0x7f186328;
-u32 var001b89fc = 0x7f186380;
-char var001b8a00[] = "||||||||||||| Starting game... players %d\n";
-char var001b8a2c[] = "%s %d\n";
-u32 var001b8a34 = 0x00000000;
-char var001b8a38[] = "-mpwpnset";
-char var001b8a44[] = "-mpwpnset";
-char var001b8a50[] = "%s %d\n";
-u32 var001b8a58 = 0x00000000;
-char var001b8a5c[] = "Gun index %d -> slot %d = gun %d\n\n";
-char var001b8a80[] = "HOLDER: selecting weapon set %d\n";
-u32 var001b8aa4 = 0x25640a00;
-u32 var001b8aa8 = 0x00000002;
-u32 var001b8aac = 0x00000004;
-u32 var001b8ab0 = 0x00000008;
-u32 var001b8ab4 = 0x00000010;
-u32 var001b8ab8 = 0x0000001c;
-u32 var001b8abc = 0x0000003c;
-u32 var001b8ac0 = 0x00000064;
-u32 var001b8ac4 = 0x00000096;
-u32 var001b8ac8 = 0x000000d2;
-u32 var001b8acc = 0x0000012c;
-char var001b8ad0[] = "%s%sAccuracy Peak! real value: %f (*100)\n";
-u32 var001b8afc = 0x00000000;
-u32 var001b8b00 = 0x00000000;
-char var001b8b04[] = "%splayer %d Accuracy :%f\n";
-u32 var001b8b20 = 0x00000000;
-char var001b8b24[] = "%splayer %d dist:%f -> %f = %d\n";
-u32 var001b8b44 = 0x00000000;
-char var001b8b48[] = "Player %d TitleCalc ============\n";
-u32 var001b8b6c = 0x53696d0a;
-u32 var001b8b70 = 0x00000000;
-char var001b8b74[] = "%s:%d\n";
-u32 var001b8b7c = 0x25730a00;
-char var001b8b80[] = "Adding GBCHead to load to slot %d: guid is %x-%x, player is %d\n";
-char var001b8bc0[] = "PakId for player %d: %d\n";
-char var001b8bdc[] = "Save Player Result: %d   New GUID: %x\n";
-char var001b8c04[] = "PakId for player %d: %d\n";
-char var001b8c20[] = "Load Player - Result: %d\n";
-u32 var001b8c3c = 0x00000000;
-char var001b8c40[] = "bot %d headId %d bodyId %d\n";
-char var001b8c5c[] = "team change %s %d\n";
-char var001b8c70[] = "mplayer.c";
-char var001b8c7c[] = "team change %s %d\n";
-char var001b8c90[] = "mplayer.c";
-char var001b8c9c[] = "SaveMultiGameFile : PakId=0x%x, FileId=0x%x\n";
-char var001b8ccc[] = "SaveGame Result: %d   New GUID: %x\n";
-char var001b8cf0[] = "LoadMultiGameFile : PakId=0x%x, FileId=0x%x\n";
-char var001b8d20[] = "LoadGame Result: %d\n";
-char var001b8d38[] = "GBCHead: Call to create head for slot %d (gbcheadobjs[slotno]=%x)\n";
-u32 var001b8d7c = 0x3f666666;
-u32 var001b8d80 = 0x3dcccccd;
-u32 var001b8d84 = 0x7f187e40;
-u32 var001b8d88 = 0x7f187e20;
-u32 var001b8d8c = 0x7f187e30;
-u32 var001b8d90 = 0x7f187e0c;
-u32 var001b8d94 = 0x7f187df8;
-u32 var001b8d98 = 0x4852f000;
-u32 var001b8d9c = 0x47c35000;
-u32 var001b8da0 = 0x461c4000;
-u32 var001b8da4 = 0x3e99999a;
-u32 var001b8da8 = 0x3f333333;
-u32 var001b8dac = 0x3dcccccd;
-u32 var001b8db0 = 0x3dcccccd;
-u32 var001b8db4 = 0x00000000;
-u32 var001b8db8 = 0x00000000;
-u32 var001b8dbc = 0x00000000;
-char var001b8dc0[] = "RadarDrawDot : Prop=%x";
-u32 var001b8dd8 = 0x40490fdb;
-u32 var001b8ddc = 0x3b83126f;
-u32 var001b8de0 = 0x3c8efa35;
-u32 var001b8de4 = 0x00000000;
-u32 var001b8de8 = 0x00000000;
-u32 var001b8dec = 0x00000000;
-u32 var001b8df0 = 0x7f190bcc;
-u32 var001b8df4 = 0x7f1907f8;
-u32 var001b8df8 = 0x7f190bcc;
-u32 var001b8dfc = 0x7f190bcc;
-u32 var001b8e00 = 0x7f1907f8;
-u32 var001b8e04 = 0x7f190a08;
-u32 var001b8e08 = 0x7f190bcc;
-u32 var001b8e0c = 0x7f190bcc;
-u32 var001b8e10 = 0x7f190bcc;
-u32 var001b8e14 = 0x7f190bcc;
-u32 var001b8e18 = 0x7f190bcc;
-u32 var001b8e1c = 0x7f190bcc;
-u32 var001b8e20 = 0x7f190bcc;
-u32 var001b8e24 = 0x7f190bcc;
-u32 var001b8e28 = 0x7f190bcc;
-u32 var001b8e2c = 0x7f190bcc;
-u32 var001b8e30 = 0x7f190bcc;
-u32 var001b8e34 = 0x7f1908b0;
-u32 var001b8e38 = 0x7f190b34;
-u32 var001b8e3c = 0x7f190bcc;
-u32 var001b8e40 = 0x7f190bcc;
-u32 var001b8e44 = 0x7f190bcc;
-u32 var001b8e48 = 0x7f190bcc;
-u32 var001b8e4c = 0x7f190bcc;
-u32 var001b8e50 = 0x7f190bcc;
-u32 var001b8e54 = 0x7f190bcc;
-u32 var001b8e58 = 0x7f190bcc;
-u32 var001b8e5c = 0x7f190bcc;
-u32 var001b8e60 = 0x7f190bcc;
-u32 var001b8e64 = 0x7f190bcc;
-u32 var001b8e68 = 0x7f190bcc;
-u32 var001b8e6c = 0x7f190bcc;
-u32 var001b8e70 = 0x7f190bcc;
-u32 var001b8e74 = 0x7f190bcc;
-u32 var001b8e78 = 0x7f190bcc;
-u32 var001b8e7c = 0x7f190bcc;
-u32 var001b8e80 = 0x7f190bcc;
-u32 var001b8e84 = 0x7f190bcc;
-u32 var001b8e88 = 0x7f190bcc;
-u32 var001b8e8c = 0x7f190bcc;
-u32 var001b8e90 = 0x7f190bcc;
-u32 var001b8e94 = 0x7f190bcc;
-u32 var001b8e98 = 0x7f190bcc;
-u32 var001b8e9c = 0x7f190bcc;
-u32 var001b8ea0 = 0x7f190bcc;
-u32 var001b8ea4 = 0x47742400;
-u32 var001b8ea8 = 0x461c4000;
-u32 var001b8eac = 0x40c907a9;
-u32 var001b8eb0 = 0x40c907a9;
-u32 var001b8eb4 = 0x40c907a9;
-u32 var001b8eb8 = 0x40c907a9;
-u32 var001b8ebc = 0x40490fdb;
-u32 var001b8ec0 = 0x40c907a9;
-u32 var001b8ec4 = 0x3edf5dd8;
-u32 var001b8ec8 = 0x3fc907a8;
-u32 var001b8ecc = 0x40c907a9;
-u32 var001b8ed0 = 0x40c907a9;
-u32 var001b8ed4 = 0x3d566e92;
-u32 var001b8ed8 = 0x40c907a9;
-u32 var001b8edc = 0x39a4af08;
-u32 var001b8ee0 = 0x3d7c45d9;
-u32 var001b8ee4 = 0xc0490fdb;
-u32 var001b8ee8 = 0x40490fdb;
-u32 var001b8eec = 0x40490fdb;
-u32 var001b8ef0 = 0x4181e420;
-u32 var001b8ef4 = 0xc27e6668;
-u32 var001b8ef8 = 0x3bce168a;
-u32 var001b8efc = 0x3b397ab1;
-u32 var001b8f00 = 0x7f1920a8;
-u32 var001b8f04 = 0x7f1920c0;
-u32 var001b8f08 = 0x7f1920d4;
-u32 var001b8f0c = 0x7f1920e8;
-u32 var001b8f10 = 0x7f1920fc;
-u32 var001b8f14 = 0x7f192110;
-u32 var001b8f18 = 0x40c66666;
-u32 var001b8f1c = 0x40f33333;
-u32 var001b8f20 = 0x41166666;
-u32 var001b8f24 = 0x41333333;
-u32 var001b8f28 = 0x41333333;
-u32 var001b8f2c = 0x3eb33333;
-u32 var001b8f30 = 0x3d6147b0;
-u32 var001b8f34 = 0x3f71eb85;
-u32 var001b8f38 = 0xc69c4000;
-u32 var001b8f3c = 0x37800080;
-u32 var001b8f40 = 0x3f79999a;
-u32 var001b8f44 = 0x3cccccc0;
-u32 var001b8f48 = 0x40fccccd;
-u32 var001b8f4c = 0x4101999a;
-u32 var001b8f50 = 0x40fccccd;
-u32 var001b8f54 = 0x49742400;
-u32 var001b8f58 = 0x7f196ec0;
-u32 var001b8f5c = 0x7f196f24;
-u32 var001b8f60 = 0x7f196f24;
-u32 var001b8f64 = 0x7f196f24;
-u32 var001b8f68 = 0x7f196ec0;
-u32 var001b8f6c = 0x7f196ec0;
-u32 var001b8f70 = 0x7f196ec0;
-u32 var001b8f74 = 0x7f196f24;
-u32 var001b8f78 = 0x7f196f24;
-u32 var001b8f7c = 0x7f196ec0;
-u32 var001b8f80 = 0x7f196ec0;
-u32 var001b8f84 = 0x7f196ec0;
-u32 var001b8f88 = 0x7f196ec0;
-u32 var001b8f8c = 0x7f196ec0;
-u32 var001b8f90 = 0x7f196ec0;
-u32 var001b8f94 = 0x7f196ec0;
-u32 var001b8f98 = 0x7f196ec0;
-u32 var001b8f9c = 0x7f196ec0;
-u32 var001b8fa0 = 0x7f196ec0;
-u32 var001b8fa4 = 0x7f196f9c;
-u32 var001b8fa8 = 0x7f196ec0;
-u32 var001b8fac = 0x7f196ec0;
-u32 var001b8fb0 = 0x7f196ec0;
-u32 var001b8fb4 = 0x7f196ec0;
-u32 var001b8fb8 = 0x7f196ec0;
-u32 var001b8fbc = 0x7f196f24;
-u32 var001b8fc0 = 0x7f196ec0;
-u32 var001b8fc4 = 0x7f196f78;
-u32 var001b8fc8 = 0x3d4ccccd;
-u32 var001b8fcc = 0x00000000;
-u32 var001b8fd0 = 0x48742400;
-u32 var001b8fd4 = 0x3eb33333;
-u32 var001b8fd8 = 0x7f197b34;
-u32 var001b8fdc = 0x7f197b24;
-u32 var001b8fe0 = 0x7f197b6c;
-u32 var001b8fe4 = 0x7f197ba8;
-u32 var001b8fe8 = 0x7f197be4;
-u32 var001b8fec = 0x7f197be4;
-u32 var001b8ff0 = 0x7f197be4;
-u32 var001b8ff4 = 0x7f197be4;
-u32 var001b8ff8 = 0x7f197be4;
-u32 var001b8ffc = 0x7f197be4;
-u32 var001b9000 = 0x7f197be4;
-u32 var001b9004 = 0x7f197be4;
-u32 var001b9008 = 0x7f197be4;
-u32 var001b900c = 0x7f197b50;
-u32 var001b9010 = 0x7f198508;
-u32 var001b9014 = 0x7f198570;
-u32 var001b9018 = 0x7f198588;
-u32 var001b901c = 0x7f1985a0;
-u32 var001b9020 = 0x7f1985b8;
-u32 var001b9024 = 0x7f198bd8;
-u32 var001b9028 = 0x7f1985dc;
-u32 var001b902c = 0x7f198644;
-u32 var001b9030 = 0x7f19865c;
-u32 var001b9034 = 0x7f198bd8;
-u32 var001b9038 = 0x7f198674;
-u32 var001b903c = 0x7f198698;
-u32 var001b9040 = 0x7f1986bc;
-u32 var001b9044 = 0x7f198730;
-u32 var001b9048 = 0x7f198748;
-u32 var001b904c = 0x7f198bd8;
-u32 var001b9050 = 0x7f198bd8;
-u32 var001b9054 = 0x7f198760;
-u32 var001b9058 = 0x7f198794;
-u32 var001b905c = 0x7f1987b8;
-u32 var001b9060 = 0x7f198bd8;
-u32 var001b9064 = 0x7f198bd8;
-u32 var001b9068 = 0x7f1987d0;
-u32 var001b906c = 0x7f1987e8;
-u32 var001b9070 = 0x7f19880c;
-u32 var001b9074 = 0x7f198960;
-u32 var001b9078 = 0x7f198978;
-u32 var001b907c = 0x7f198a04;
-u32 var001b9080 = 0x7f198bd8;
-u32 var001b9084 = 0x7f198bd8;
-u32 var001b9088 = 0x7f198ba0;
-u32 var001b908c = 0x3991a2b4;
-u32 var001b9090 = 0x3f666666;
-u32 var001b9094 = 0x44bb8000;
-u32 var001b9098 = 0x00000000;
-u32 var001b909c = 0x00000000;
-u32 var001b90a0 = 0x3d4ccccd;
-u32 var001b90a4 = 0x7f19a2c0;
-u32 var001b90a8 = 0x7f19a2c0;
-u32 var001b90ac = 0x7f19a2d0;
-u32 var001b90b0 = 0x7f19a2d0;
-u32 var001b90b4 = 0x7f19a2d0;
-u32 var001b90b8 = 0x7f19a2d0;
-u32 var001b90bc = 0x7f19a2d0;
-u32 var001b90c0 = 0x7f19a2d0;
-u32 var001b90c4 = 0x7f19a2d0;
-u32 var001b90c8 = 0x7f19a2d0;
-u32 var001b90cc = 0x7f19a2d0;
-u32 var001b90d0 = 0x7f19a2d0;
-u32 var001b90d4 = 0x7f19a2c0;
-u32 var001b90d8 = 0x7f19a2d0;
-u32 var001b90dc = 0x7f19a2d0;
-u32 var001b90e0 = 0x7f19a2d0;
-u32 var001b90e4 = 0x7f19a2c8;
-u32 var001b90e8 = 0x7f19a2c8;
-u32 var001b90ec = 0x7f19a2c8;
-u32 var001b90f0 = 0x7f19a2c8;
-u32 var001b90f4 = 0x7f19a2c8;
-u32 var001b90f8 = 0x7f19a300;
-u32 var001b90fc = 0x7f19a310;
-u32 var001b9100 = 0x7f19a310;
-u32 var001b9104 = 0x7f19a310;
-u32 var001b9108 = 0x7f19a308;
-u32 var001b910c = 0x7f19a308;
-u32 var001b9110 = 0x7f19a310;
-u32 var001b9114 = 0x7f19a310;
-u32 var001b9118 = 0x7f19a310;
-u32 var001b911c = 0x7f19a348;
-u32 var001b9120 = 0x7f19a370;
-u32 var001b9124 = 0x7f19a350;
-u32 var001b9128 = 0x7f19a370;
-u32 var001b912c = 0x7f19a370;
-u32 var001b9130 = 0x7f19a358;
-u32 var001b9134 = 0x7f19a360;
-u32 var001b9138 = 0x7f19a368;
-u32 var001b913c = 0x7f19a370;
-u32 var001b9140 = 0x7f19a370;
-u32 var001b9144 = 0x7f19a370;
-u32 var001b9148 = 0x7f19a340;
-u32 var001b914c = 0x41855555;
-u32 var001b9150 = 0x3eb2b17a;
-u32 var001b9154 = 0x3eb2b17a;
-u32 var001b9158 = 0x3eb2b17a;
-u32 var001b915c = 0x41855555;
-u32 var001b9160 = 0x4096c5bf;
-u32 var001b9164 = 0x404907a9;
-u32 var001b9168 = 0x3eb2b17a;
-u32 var001b916c = 0x00000000;
-u32 var001b9170 = 0x00000000;
-u32 var001b9174 = 0x00000000;
-u32 var001b9178 = 0x00000000;
-u32 var001b917c = 0x00000000;
-char var001b9180[] = "%s %d\n";
-char var001b9188[] = "%02d\n";
-char var001b9190[] = "%03d\n";
-char var001b9198[] = "%s %d\n";
-u32 var001b91a0 = 0x00000000;
-char var001b91a4[] = "%s%s%.2f%%\n";
-u32 var001b91b0 = 0x00000000;
-u32 var001b91b4 = 0x00000000;
-char var001b91b8[] = "%s %d%%\n";
-char var001b91c4[] = "%02d:%02d\n";
-u32 var001b91d0 = 0x25730000;
-u32 var001b91d4 = 0x25730000;
-char var001b91d8[] = "%s %02d:%02d\n";
-u32 var001b91e8 = 0x3031300a;
-u32 var001b91ec = 0x00000000;
-char var001b91f0[] = "%03d\n";
-u32 var001b91f8 = 0x25730000;
-u32 var001b91fc = 0x25730000;
-u32 var001b9200 = 0x25730000;
-u32 var001b9204 = 0x25730000;
-u32 var001b9208 = 0x25730000;
-u32 var001b920c = 0x0a000000;
-u32 var001b9210 = 0x7f19caa8;
-u32 var001b9214 = 0x7f19caa8;
-u32 var001b9218 = 0x7f19caa8;
-u32 var001b921c = 0x7f19caa8;
-u32 var001b9220 = 0x7f19caa8;
-u32 var001b9224 = 0x7f19caa8;
-u32 var001b9228 = 0x7f19caa8;
-u32 var001b922c = 0x7f19caa8;
-u32 var001b9230 = 0x7f19caa8;
-u32 var001b9234 = 0x7f19caa8;
-u32 var001b9238 = 0x7f19caa8;
-u32 var001b923c = 0x7f19caa8;
-u32 var001b9240 = 0x7f19caa8;
-u32 var001b9244 = 0x7f19caa8;
-u32 var001b9248 = 0x7f19caa8;
-u32 var001b924c = 0x7f19caa8;
-u32 var001b9250 = 0x7f19caa8;
-u32 var001b9254 = 0x7f19caa8;
-u32 var001b9258 = 0x7f19caa8;
-u32 var001b925c = 0x7f19caa8;
-u32 var001b9260 = 0x7f19caa8;
-u32 var001b9264 = 0x7f19caa8;
-u32 var001b9268 = 0x7f19caa8;
-u32 var001b926c = 0x7f19caa8;
-u32 var001b9270 = 0x7f19caa8;
-u32 var001b9274 = 0x7f19caa8;
-u32 var001b9278 = 0x7f19caa8;
-u32 var001b927c = 0x7f19caa8;
-u32 var001b9280 = 0x7f19caa8;
-u32 var001b9284 = 0x7f19caac;
-u32 var001b9288 = 0x7f19caa8;
-u32 var001b928c = 0x7f19caa8;
-u32 var001b9290 = 0x7f19caa8;
-u32 var001b9294 = 0x7f19cce4;
-u32 var001b9298 = 0x7f19ccf4;
-u32 var001b929c = 0x7f19ccec;
-u32 var001b92a0 = 0x7f19ccfc;
-u32 var001b92a4 = 0x7f19cd04;
-u32 var001b92a8 = 0x7f19cd0c;
-u32 var001b92ac = 0x7f19cd14;
-u32 var001b92b0 = 0x7f19cd1c;
-u32 var001b92b4 = 0x7f19cd24;
-u32 var001b92b8 = 0x7f19cd2c;
-u32 var001b92bc = 0x7f19cd34;
-u32 var001b92c0 = 0x7f19cd3c;
-u32 var001b92c4 = 0x7f19cd44;
-u32 var001b92c8 = 0x7f19cd4c;
-u32 var001b92cc = 0x7f19cd54;
-u32 var001b92d0 = 0x7f19cd5c;
-u32 var001b92d4 = 0x7f19cd64;
-u32 var001b92d8 = 0x7f19cd6c;
-u32 var001b92dc = 0x7f19cd94;
-u32 var001b92e0 = 0x7f19cd74;
-u32 var001b92e4 = 0x7f19cd7c;
-u32 var001b92e8 = 0x7f19cd9c;
-u32 var001b92ec = 0x7f19cda4;
-u32 var001b92f0 = 0x7f19cdac;
-u32 var001b92f4 = 0x7f19cdb4;
-u32 var001b92f8 = 0x7f19cd84;
-u32 var001b92fc = 0x7f19cd8c;
-u32 var001b9300 = 0x7f19cdbc;
-u32 var001b9304 = 0x7f19cdc4;
-u32 var001b9308 = 0x7f19cde4;
-u32 var001b930c = 0x7f19cdcc;
-u32 var001b9310 = 0x7f19cdd4;
-u32 var001b9314 = 0x7f19cddc;
-u32 var001b9318 = 0x7f19ce14;
-u32 var001b931c = 0x7f19ce24;
-u32 var001b9320 = 0x7f19ce1c;
-u32 var001b9324 = 0x7f19ce2c;
-u32 var001b9328 = 0x7f19ce34;
-u32 var001b932c = 0x7f19ce3c;
-u32 var001b9330 = 0x7f19ce44;
-u32 var001b9334 = 0x7f19ce4c;
-u32 var001b9338 = 0x7f19ce54;
-u32 var001b933c = 0x7f19ce5c;
-u32 var001b9340 = 0x7f19ce64;
-u32 var001b9344 = 0x7f19ce6c;
-u32 var001b9348 = 0x7f19ce74;
-u32 var001b934c = 0x7f19ce7c;
-u32 var001b9350 = 0x7f19ce84;
-u32 var001b9354 = 0x7f19ce8c;
-u32 var001b9358 = 0x7f19ce94;
-u32 var001b935c = 0x7f19ce9c;
-u32 var001b9360 = 0x7f19cec4;
-u32 var001b9364 = 0x7f19cea4;
-u32 var001b9368 = 0x7f19ceac;
-u32 var001b936c = 0x7f19cecc;
-u32 var001b9370 = 0x7f19ced4;
-u32 var001b9374 = 0x7f19cedc;
-u32 var001b9378 = 0x7f19cee4;
-u32 var001b937c = 0x7f19ceb4;
-u32 var001b9380 = 0x7f19cebc;
-u32 var001b9384 = 0x7f19ceec;
-u32 var001b9388 = 0x7f19cef4;
-u32 var001b938c = 0x7f19cf14;
-u32 var001b9390 = 0x7f19cefc;
-u32 var001b9394 = 0x7f19cf04;
-u32 var001b9398 = 0x7f19cf0c;
-u32 var001b939c = 0x7f19cf50;
-u32 var001b93a0 = 0x7f19cf98;
-u32 var001b93a4 = 0x7f19d010;
-u32 var001b93a8 = 0x7f19d070;
-u32 var001b93ac = 0x7f19d0e8;
-u32 var001b93b0 = 0x7f19d148;
-u32 var001b93b4 = 0x7f19d190;
-u32 var001b93b8 = 0x7f19d1f0;
-u32 var001b93bc = 0x7f19d9d0;
-u32 var001b93c0 = 0x7f19db00;
-u32 var001b93c4 = 0x7f19db58;
-u32 var001b93c8 = 0x7f19db84;
-u32 var001b93cc = 0x7f19dbb8;
-u32 var001b93d0 = 0x7f19dc6c;
-u32 var001b93d4 = 0x7f19dcc4;
-u32 var001b93d8 = 0x7f19dce8;
-u32 var001b93dc = 0x7f19dd0c;
-u32 var001b93e0 = 0x7f19dc1c;
-u32 var001b93e4 = 0x7f19d9b8;
-u32 var001b93e8 = 0x7f19db24;
-u32 var001b93ec = 0x3dcccccd;
-u32 var001b93f0 = 0x7f19e138;
-u32 var001b93f4 = 0x7f19e2e4;
-u32 var001b93f8 = 0x7f19e2f0;
-u32 var001b93fc = 0x7f19e320;
-u32 var001b9400 = 0x7f19e3cc;
-u32 var001b9404 = 0x7f19e3cc;
-u32 var001b9408 = 0x7f19e3cc;
-u32 var001b940c = 0x7f19e11c;
-u32 var001b9410 = 0xbfc90fdb;
-u32 var001b9414 = 0xc0490fdb;
-u32 var001b9418 = 0x3fc90fdb;
-u32 var001b941c = 0x40490fdb;
-u32 var001b9420 = 0x459c4000;
-u32 var001b9424 = 0x40490fdb;
-u32 var001b9428 = 0x7f19eabc;
-u32 var001b942c = 0x7f19eadc;
-u32 var001b9430 = 0x7f19eacc;
-u32 var001b9434 = 0x7f19eaec;
-u32 var001b9438 = 0x7f19eafc;
-u32 var001b943c = 0x7f19eb0c;
-u32 var001b9440 = 0x7f19eb1c;
-u32 var001b9444 = 0x7f19eb2c;
-u32 var001b9448 = 0x7f19eb3c;
-u32 var001b944c = 0x7f19eb4c;
-u32 var001b9450 = 0x7f19eb5c;
-u32 var001b9454 = 0x7f19eb6c;
-u32 var001b9458 = 0x7f19eb7c;
-u32 var001b945c = 0x7f19eb8c;
-u32 var001b9460 = 0x7f19eb9c;
-u32 var001b9464 = 0x7f19ebac;
-u32 var001b9468 = 0x7f19ebbc;
-u32 var001b946c = 0x7f19ebcc;
-u32 var001b9470 = 0x7f19ec1c;
-u32 var001b9474 = 0x7f19ebdc;
-u32 var001b9478 = 0x7f19ebec;
-u32 var001b947c = 0x7f19ec2c;
-u32 var001b9480 = 0x7f19ec3c;
-u32 var001b9484 = 0x7f19ec4c;
-u32 var001b9488 = 0x7f19ec5c;
-u32 var001b948c = 0x7f19ebfc;
-u32 var001b9490 = 0x7f19ec0c;
-u32 var001b9494 = 0x7f19ec6c;
-u32 var001b9498 = 0x7f19ec7c;
-u32 var001b949c = 0x7f19ec8c;
-u32 var001b94a0 = 0x7f19ec9c;
-u32 var001b94a4 = 0x7f19ecac;
-u32 var001b94a8 = 0x7f19ecbc;
-u32 var001b94ac = 0x40c907a9;
-u32 var001b94b0 = 0x3fc90fdb;
-u32 var001b94b4 = 0x4096c5bf;
-u32 var001b94b8 = 0x4096c5bf;
-u32 var001b94bc = 0x3fc90fdb;
-u32 var001b94c0 = 0x4012a974;
-u32 var001b94c4 = 0x407f7642;
-u32 var001b94c8 = 0x40490fdb;
-u32 var001b94cc = 0xc59c4000;
-u32 var001b94d0 = 0x40c907a9;
-u32 var001b94d4 = 0x40490fdb;
-u32 var001b94d8 = 0xbd0efa35;
-u32 var001b94dc = 0x40490fdb;
-u32 var001b94e0 = 0x3d0efa35;
-u32 var001b94e4 = 0x40490fdb;
-u32 var001b94e8 = 0x3dcccccd;
-u32 var001b94ec = 0x7f1a1018;
-u32 var001b94f0 = 0x7f1a1090;
-u32 var001b94f4 = 0x7f1a1090;
-u32 var001b94f8 = 0x7f1a1090;
-u32 var001b94fc = 0x7f1a1018;
-u32 var001b9500 = 0x7f1a1040;
-u32 var001b9504 = 0x7f1a1090;
-u32 var001b9508 = 0x7f1a1050;
-u32 var001b950c = 0x7f1a1090;
-u32 var001b9510 = 0x7f1a1090;
-u32 var001b9514 = 0x7f1a1090;
-u32 var001b9518 = 0x7f1a1090;
-u32 var001b951c = 0x7f1a1090;
-u32 var001b9520 = 0x7f1a1090;
-u32 var001b9524 = 0x7f1a1090;
-u32 var001b9528 = 0x7f1a1090;
-u32 var001b952c = 0x7f1a1020;
-u32 var001b9530 = 0x7f1a1070;
-u32 var001b9534 = 0x7f1a1090;
-u32 var001b9538 = 0x7f1a1090;
-u32 var001b953c = 0x7f1a1090;
-u32 var001b9540 = 0x7f1a1030;
-u32 var001b9544 = 0x7f1a1090;
-u32 var001b9548 = 0x7f1a1090;
-u32 var001b954c = 0x7f1a1090;
-u32 var001b9550 = 0x7f1a1090;
-u32 var001b9554 = 0x7f1a1090;
-u32 var001b9558 = 0x7f1a1090;
-u32 var001b955c = 0x7f1a1090;
-u32 var001b9560 = 0x7f1a1090;
-u32 var001b9564 = 0x7f1a1090;
-u32 var001b9568 = 0x7f1a1090;
-u32 var001b956c = 0x7f1a1090;
-u32 var001b9570 = 0x7f1a1090;
-u32 var001b9574 = 0x7f1a1090;
-u32 var001b9578 = 0x7f1a1080;
-u32 var001b957c = 0x7f1a1090;
-u32 var001b9580 = 0x7f1a1090;
-u32 var001b9584 = 0x7f1a1090;
-u32 var001b9588 = 0x7f1a1090;
-u32 var001b958c = 0x7f1a1090;
-u32 var001b9590 = 0x7f1a1090;
-u32 var001b9594 = 0x7f1a1090;
-u32 var001b9598 = 0x7f1a1090;
-u32 var001b959c = 0x7f1a1090;
-u32 var001b95a0 = 0x7f1a1090;
-u32 var001b95a4 = 0x7f1a1090;
-u32 var001b95a8 = 0x7f1a1090;
-u32 var001b95ac = 0x7f1a1090;
-u32 var001b95b0 = 0x7f1a1090;
-u32 var001b95b4 = 0x7f1a1090;
-u32 var001b95b8 = 0x7f1a1090;
-u32 var001b95bc = 0x7f1a1090;
-u32 var001b95c0 = 0x7f1a1090;
-u32 var001b95c4 = 0x7f1a1090;
-u32 var001b95c8 = 0x7f1a1090;
-u32 var001b95cc = 0x7f1a1090;
-u32 var001b95d0 = 0x7f1a1090;
-u32 var001b95d4 = 0x7f1a1090;
-u32 var001b95d8 = 0x7f1a1060;
-u32 var001b95dc = 0x7f1a1110;
-u32 var001b95e0 = 0x7f1a1170;
-u32 var001b95e4 = 0x7f1a1170;
-u32 var001b95e8 = 0x7f1a1170;
-u32 var001b95ec = 0x7f1a1120;
-u32 var001b95f0 = 0x7f1a1148;
-u32 var001b95f4 = 0x7f1a1170;
-u32 var001b95f8 = 0x7f1a1130;
-u32 var001b95fc = 0x7f1a1170;
-u32 var001b9600 = 0x7f1a1170;
-u32 var001b9604 = 0x7f1a1170;
-u32 var001b9608 = 0x7f1a1170;
-u32 var001b960c = 0x7f1a1170;
-u32 var001b9610 = 0x7f1a1170;
-u32 var001b9614 = 0x7f1a1170;
-u32 var001b9618 = 0x7f1a1170;
-u32 var001b961c = 0x7f1a1128;
-u32 var001b9620 = 0x7f1a1140;
-u32 var001b9624 = 0x7f1a1170;
-u32 var001b9628 = 0x7f1a1170;
-u32 var001b962c = 0x7f1a1170;
-u32 var001b9630 = 0x7f1a1138;
-u32 var001b9634 = 0x7f1a1170;
-u32 var001b9638 = 0x7f1a1170;
-u32 var001b963c = 0x7f1a1170;
-u32 var001b9640 = 0x7f1a1170;
-u32 var001b9644 = 0x7f1a1170;
-u32 var001b9648 = 0x7f1a1170;
-u32 var001b964c = 0x7f1a1170;
-u32 var001b9650 = 0x7f1a1170;
-u32 var001b9654 = 0x7f1a1170;
-u32 var001b9658 = 0x7f1a1170;
-u32 var001b965c = 0x7f1a1170;
-u32 var001b9660 = 0x7f1a1170;
-u32 var001b9664 = 0x7f1a1170;
-u32 var001b9668 = 0x7f1a1168;
-u32 var001b966c = 0x7f1a1170;
-u32 var001b9670 = 0x7f1a1170;
-u32 var001b9674 = 0x7f1a1170;
-u32 var001b9678 = 0x7f1a1170;
-u32 var001b967c = 0x7f1a1170;
-u32 var001b9680 = 0x7f1a1170;
-u32 var001b9684 = 0x7f1a1170;
-u32 var001b9688 = 0x7f1a1170;
-u32 var001b968c = 0x7f1a1170;
-u32 var001b9690 = 0x7f1a1170;
-u32 var001b9694 = 0x7f1a1170;
-u32 var001b9698 = 0x7f1a1170;
-u32 var001b969c = 0x7f1a1170;
-u32 var001b96a0 = 0x7f1a1170;
-u32 var001b96a4 = 0x7f1a1170;
-u32 var001b96a8 = 0x7f1a1170;
-u32 var001b96ac = 0x7f1a1170;
-u32 var001b96b0 = 0x7f1a1170;
-u32 var001b96b4 = 0x7f1a1170;
-u32 var001b96b8 = 0x7f1a1170;
-u32 var001b96bc = 0x7f1a1170;
-u32 var001b96c0 = 0x7f1a1170;
-u32 var001b96c4 = 0x7f1a1170;
-u32 var001b96c8 = 0x7f1a1118;
-u32 var001b96cc = 0x7f1a1524;
-u32 var001b96d0 = 0x7f1a152c;
-u32 var001b96d4 = 0x7f1a1534;
-u32 var001b96d8 = 0x7f1a153c;
-u32 var001b96dc = 0x7f1a1544;
-u32 var001b96e0 = 0x7f1a154c;
-u32 var001b96e4 = 0x7f1a1554;
-u32 var001b96e8 = 0x7f1a155c;
-u32 var001b96ec = 0x7f1a1564;
-u32 var001b96f0 = 0x7f1a156c;
-u32 var001b96f4 = 0x7f1a1574;
-u32 var001b96f8 = 0x7f1a157c;
-u32 var001b96fc = 0x7f1a1584;
-u32 var001b9700 = 0x7f1a158c;
-u32 var001b9704 = 0x7f1a1594;
-u32 var001b9708 = 0x7f1a159c;
-u32 var001b970c = 0x7f1a15a4;
-u32 var001b9710 = 0x7f1a15ac;
-u32 var001b9714 = 0x7f1a15b4;
-u32 var001b9718 = 0x7f1a15bc;
-u32 var001b971c = 0x7f1a15c4;
-u32 var001b9720 = 0x7f1a15cc;
-u32 var001b9724 = 0x7f1a15d4;
-u32 var001b9728 = 0x7f1a160c;
-u32 var001b972c = 0x7f1a1614;
-u32 var001b9730 = 0x7f1a161c;
-u32 var001b9734 = 0x7f1a162c;
-u32 var001b9738 = 0x7f1a1634;
-u32 var001b973c = 0x7f1a163c;
-u32 var001b9740 = 0x7f1a1644;
-u32 var001b9744 = 0x7f1a164c;
-u32 var001b9748 = 0x7f1a1654;
-u32 var001b974c = 0x7f1a165c;
-u32 var001b9750 = 0x7f1a1664;
-u32 var001b9754 = 0x7f1a166c;
-u32 var001b9758 = 0x7f1a1674;
-u32 var001b975c = 0x7f1a167c;
-u32 var001b9760 = 0x7f1a162c;
-u32 var001b9764 = 0x7f1a160c;
-u32 var001b9768 = 0x7f1a1644;
-u32 var001b976c = 0x7f1a161c;
-u32 var001b9770 = 0x7f1a1624;
-u32 var001b9774 = 0x7f1a163c;
-u32 var001b9778 = 0x7f1a1644;
-u32 var001b977c = 0x7f1a165c;
-u32 var001b9780 = 0x7f1a1674;
-u32 var001b9784 = 0x7f1a2474;
-u32 var001b9788 = 0x7f1a2474;
-u32 var001b978c = 0x7f1a2474;
-u32 var001b9790 = 0x7f1a2474;
-u32 var001b9794 = 0x7f1a2474;
-u32 var001b9798 = 0x7f1a2474;
-u32 var001b979c = 0x7f1a2474;
-u32 var001b97a0 = 0x7f1a2ca8;
-u32 var001b97a4 = 0x7f1a2ccc;
-u32 var001b97a8 = 0x7f1a2d5c;
-u32 var001b97ac = 0x7f1a2d5c;
-u32 var001b97b0 = 0x7f1a2cf0;
-u32 var001b97b4 = 0x7f1a2d5c;
-u32 var001b97b8 = 0x7f1a2d5c;
-u32 var001b97bc = 0x7f1a2d5c;
-u32 var001b97c0 = 0x7f1a2d5c;
-u32 var001b97c4 = 0x7f1a2d14;
-u32 var001b97c8 = 0x7f1a2d38;
-u32 var001b97cc = 0x4019999a;
-u32 var001b97d0 = 0x0a000000;
-u32 var001b97d4 = 0x0a000000;
-char var001b97d8[] = "%dm %2ds\n";
-char var001b97e4[] = "%s%s%2.2fs\n";
-u32 var001b97f0 = 0x00000000;
-u32 var001b97f4 = 0x00000000;
-u32 var001b97f8 = 0x25640a00;
-u32 var001b97fc = 0x25640a00;
-u32 var001b9800 = 0x25640a00;
-char var001b9804[] = "%s%s%.1f%%\n";
-u32 var001b9810 = 0x00000000;
-u32 var001b9814 = 0x00000000;
-u32 var001b9818 = 0x25730000;
-u32 var001b981c = 0x25640a00;
-u32 var001b9820 = 0x25730000;
-u32 var001b9824 = 0x25730000;
-char var001b9828[] = "%d%%\n";
-u32 var001b9830 = 0x25640a00;
-u32 var001b9834 = 0x25730000;
-char var001b9838[] = "%dm %ds\n";
-u32 var001b9844 = 0x2564730a;
-u32 var001b9848 = 0x00000000;
-u32 var001b984c = 0x25730000;
-u32 var001b9850 = 0x2f256400;
-char var001b9854[] = "%d%s\n";
-u32 var001b985c = 0x78310000;
-u32 var001b9860 = 0x78320000;
-u32 var001b9864 = 0x79310000;
-u32 var001b9868 = 0x79320000;
-u32 var001b986c = 0x78330000;
-u32 var001b9870 = 0x78340000;
-u32 var001b9874 = 0x79330000;
-u32 var001b9878 = 0x79340000;
-u32 var001b987c = 0x25640a00;
-u32 var001b9880 = 0x25640a00;
-u32 var001b9884 = 0x25640a00;
-u32 var001b9888 = 0x25640a00;
-u32 var001b988c = 0x25640a00;
-u32 var001b9890 = 0x25640a00;
-u32 var001b9894 = 0x25640a00;
-u32 var001b9898 = 0x25640a00;
-u32 var001b989c = 0x25640a00;
-u32 var001b98a0 = 0x25730a00;
-u32 var001b98a4 = 0x25730a00;
-u32 var001b98a8 = 0x25730a00;
-u32 var001b98ac = 0x25730a00;
-char var001b98b0[] = "%dm %2ds\n";
-char var001b98bc[] = "%s%s%2.2fs\n";
-u32 var001b98c8 = 0x00000000;
-u32 var001b98cc = 0x00000000;
-char var001b98d0[] = "%dm %2ds\n";
-char var001b98dc[] = "%s%s%2.2fs\n";
-u32 var001b98e8 = 0x00000000;
-u32 var001b98ec = 0x00000000;
-u32 var001b98f0 = 0x25730a00;
-u32 var001b98f4 = 0x7f1a34e0;
-u32 var001b98f8 = 0x7f1a34c8;
-u32 var001b98fc = 0x7f1a34f4;
-u32 var001b9900 = 0x7f1a34d0;
-u32 var001b9904 = 0x7f1a34d8;
-u32 var001b9908 = 0x7f1a34fc;
-u32 var001b990c = 0x7f1a3584;
-u32 var001b9910 = 0x7f1a3994;
-u32 var001b9914 = 0x7f1a3994;
-u32 var001b9918 = 0x7f1a3994;
-u32 var001b991c = 0x7f1a3994;
-u32 var001b9920 = 0x7f1a3994;
-u32 var001b9924 = 0x7f1a3994;
-u32 var001b9928 = 0x7f1a3994;
-u32 var001b992c = 0x7f1a3994;
-u32 var001b9930 = 0x7f1a3994;
-u32 var001b9934 = 0x7f1a3994;
-u32 var001b9938 = 0x7f1a3994;
-u32 var001b993c = 0x7f1a3598;
-u32 var001b9940 = 0x7f1a34bc;
-u32 var001b9944 = 0x4196cbe4;
-u32 var001b9948 = 0x7f1a5e40;
-u32 var001b994c = 0x7f1a5ef4;
-u32 var001b9950 = 0x7f1a5e4c;
-u32 var001b9954 = 0x7f1a5f00;
-u32 var001b9958 = 0x7f1a5f1c;
-u32 var001b995c = 0x7f1a5e9c;
-u32 var001b9960 = 0x7f1a5ee0;
-u32 var001b9964 = 0x3f333333;
-u32 var001b9968 = 0x3f4ccccd;
-u32 var001b996c = 0x41033333;
-u32 var001b9970 = 0xc0833333;
-u32 var001b9974 = 0x3b80c73b;
-u32 var001b9978 = 0x3c23d70a;
-u32 var001b997c = 0x7f1a6414;
-u32 var001b9980 = 0x7f1a6478;
-u32 var001b9984 = 0x7f1a6428;
-u32 var001b9988 = 0x7f1a6480;
-u32 var001b998c = 0x7f1a6488;
-u32 var001b9990 = 0x7f1a6448;
-u32 var001b9994 = 0x7f1a6468;
-u32 var001b9998 = 0x4196cbe4;
-u32 var001b999c = 0x7f1a6980;
-u32 var001b99a0 = 0x7f1a69dc;
-u32 var001b99a4 = 0x7f1a6994;
-u32 var001b99a8 = 0x7f1a69e4;
-u32 var001b99ac = 0x7f1a69ec;
-u32 var001b99b0 = 0x7f1a69ac;
-u32 var001b99b4 = 0x7f1a69cc;
-u32 var001b99b8 = 0x7f1a6dc0;
-u32 var001b99bc = 0x7f1a6e50;
-u32 var001b99c0 = 0x7f1a6dd4;
-u32 var001b99c4 = 0x7f1a6e5c;
-u32 var001b99c8 = 0x7f1a6e78;
-u32 var001b99cc = 0x7f1a6df4;
-u32 var001b99d0 = 0x7f1a6e3c;
-u32 var001b99d4 = 0x3a83126f;
-u32 var001b99d8 = 0x3c23d70a;
-u32 var001b99dc = 0x00000000;
+const char var001a9450[] = " (%d)\n";
+const char var001a9458[] = " (%d)\n";
+const char var001a9460[] = "set shot list(void) doesn't work for g_Vars.CommandInfo.truck!\n";
+const char var001a94a0[] = "set shot list(void) doesn't work for g_Vars.CommandInfo.heli!\n";
+const char var001a94e0[] = "set shot list(void) doesn't work for g_Vars.CommandInfo.hovercar!\n";
+const char var001a9524[] = "BOND IN ROOM \n";
+const char var001a9534[] = "bond not in room \n";
+const char var001a9548[] = "aTimer%s%s: %f\n";
+const char var001a9558[] = "";
+const char var001a955c[] = "";
+const char var001a9560[] = "bTimer:%s%s %f\n";
+const char var001a9570[] = "";
+const char var001a9574[] = "";
+const char var001a9578[] = "ai_ifbondintank: tank code has been removed.\n";
+const char var001a95a8[] = "AI_BONDENABLECONTROL\n";
+const char var001a95c0[] = "ai(void) enery tune on (%d, %d, %d)\n";
+const char var001a95e8[] = "ai(void) enery tune off (%d)\n";
+const char var001a9608[] = "%s%sAI_PRINT(void) height = %f ptop =  %f \n\n";
+const char var001a9638[] = "";
+const char var001a963c[] = "";
+const char var001a9640[] = "Preset character = %d, my target = %d \n";
+const char var001a9668[] = "characters target is %d \n";
+const char var001a9684[] = "(DGD)chrai.c(void) aiIfChrsTargetIsChr does not support CHR_BOND as chr1!\n";
+const char var001a96d0[] = "(DGD)chrai.c(void) aiIfChrsTargetIsChr does not support CHR_BOND as chr1!\n";
+const char var001a971c[] = "DGD(void) (chrai.c) WARNING! attempt to use invalid CHR_PRESET1 - defaulting to JO\n";
+const char var001a9770[] = "RISK CHECK = %d \n";
+const char var001a9784[] = "aiIfOpportunityFireJumpF() called with no botdata!\n";
+const char var001a97b8[] = "TARGET %d PASSED THE DISTANCE 2 TESTS \n";
+const char var001a97e0[] = "%d I NOTICE THE TARGET %d\n";
+const char var001a97fc[] = "%d I NOTICE THE TARGET %d\n";
+const char var001a9818[] = "%d OPPORTUNITY FIRE A CHARACTER = %d \n";
+const char var001a9840[] = "%d  CANNOT OPPORTUNITY FIRE A TARGET \n";
+const char var001a9868[] = " RISK CHECK = %d \n";
+const char var001a987c[] = "dist = %d \n";
+const char var001a9888[] = "USING VOICE NUMBER %d \n";
+const char var001a98a0[] = "SETORDERS COMMAND  \n";
+const char var001a98b8[] = "SQUADRON MEMBER CHR NUMBER = %d \n";
+const char var001a98dc[] = "DOING DIST CHECK \n";
+const char var001a98f0[] = "%d SYNCHED WITH A CHARACTER %d \n";
+const char var001a9914[] = "synched = %d \n";
+const char var001a9924[] = "LEADER'S GOING TO COVER \n";
+const char var001a9940[] = "LEADER IS BREAKING COVER \n";
+const char var001a995c[] = " I AM SAFE TO BREAK COVER \n";
+const char var001a9978[] = "not safe to break cover \n";
+const char var001a9994[] = "LEADER IS COVER SEEN \n";
+const char var001a99ac[] = "LEADER IS FLANKING LEFT \n";
+const char var001a99c8[] = "LEADER IS FLANKING RIGHT \n";
+const char var001a99e4[] = "LEADER IS DODGING \n";
+const char var001a99f8[] = "LEADER IS THROWING GRENADE \n";
+const char var001a9a18[] = "LEADER HAS SEEN FROM WAIT \n";
+const char var001a9a34[] = "UNKNOWN LEADER ACTION \n";
+const char var001a9a4c[] = "ORDERS CARRIED OUT  ";
+const char var001a9a64[] = "WITHDRAWING!!!!!!!!!!!\n";
+const char var001a9a7c[] = "CHECKING MY ORDERS  ";
+const char var001a9a94[] = "ACTING ON MY ORDERS  ";
+const char var001a9aac[] = "DOING DIST CHECK VS CHAR %d\n";
+const char var001a9acc[] = "I'm just carrying out my ORDERS \n";
+const char var001a9af0[] = "SQUAD IS DOING THAT ACTION\n";
+const char var001a9b0c[] = "SQUAD NOT DOING ACTION\n";
+const char var001a9b24[] = "g_Vars.CommandInfo.chrdata ->soundtimer = %d, g_Vars.CommandInfo.chrdata->talkgap = %d , soundgap = %d\n";
+const char var001a9b8c[] = "RESETTING THE LISTENING \n";
+const char var001a9ba8[] = "couldn't go to cover from danger !\n";
+const char var001a9bcc[] = "couldn't find cover from danger !\n";
+const char var001a9bf0[] = "Randnum = %d,    Alarmrandnum = %d \n";
+const char var001a9c18[] = "IVE FOUND MY PAD %d \n";
+
+const u32 var001a9c30[] = {
+	0x40c907a9,
+	0x40c907a9,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f055948,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f0559ac,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x7f05592c,
+	0x3d4ccccd,
+	0x40c907a9,
+	0x40c907a9,
+	0x7f0593bc,
+	0x7f0593bc,
+	0x7f0593bc,
+	0x7f0593bc,
+	0x7f0593bc,
+	0x7f0593bc,
+	0x7f0593bc,
+	0x7f0593bc,
+	0x7f059390,
+	0x7f059390,
+	0x7f059390,
+	0x7f059390,
+	0x7f059390,
+	0x7f059390,
+	0x7f059390,
+	0x7f059390,
+	0x7f059390,
+	0x7f059390,
+	0x7f0593a0,
+	0x7f059390,
+	0x7f0593a0,
+	0x7f0593a0,
+	0x7f0593a0,
+	0x7f0593a0,
+	0x7f0593b0,
+	0x7f0593bc,
+	0x455ac000,
+	0x461c3f9a,
+	0x44bb8000,
+	0x461c3c00,
+	0x4b189680,
+	0x455ac000,
+	0x45dac000,
+	0x455ac000,
+	0x7f05afec,
+	0x7f05b008,
+	0x7f05b028,
+	0x7f05b054,
+	0x7f05b088,
+	0x7f05b0bc,
+	0x7f05b100,
+	0x7f05b140,
+	0x7f05b184,
+	0x461c4000,
+	0x455ac000,
+	0x46f22fcd,
+	0x453b8000,
+	0x453b8000,
+	0x3dcccccd,
+	0x3ecccccd,
+	0x3ecccccd,
+	0x7f05f104,
+	0x7f05f104,
+	0x7f05f104,
+	0x7f05f104,
+	0x7f05f104,
+	0x7f05f104,
+	0x7f05f104,
+	0x7f05f104,
+	0x7f05f104,
+	0x7f05fa1c,
+	0x7f05fa28,
+	0x7f05fa34,
+	0x7f05fa40,
+	0x7f05fa4c,
+	0x7f05fa58,
+	0x7f05faa8,
+	0x7f05faf8,
+	0x7f05fb38,
+	0x7f05fb68,
+	0x7f05fbdc,
+	0x7f05fbf4,
+	0x7f05fc0c,
+	0x7f05fc24,
+	0x7f05fc3c,
+	0x7f05fc54,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x7f0607b4,
+	0x7f060754,
+	0x7f060754,
+	0x7f060768,
+	0x7f060754,
+	0x7f0607b4,
+	0x7f06077c,
+	0x7f060790,
+	0x7f0607a4,
+	0x4031eb85,
+	0x3e4ccccd,
+	0x3f866666,
+	0x3e4ccccd,
+	0x3dcccccd,
+	0x4031eb85,
+	0x3dcccccd,
+	0x7f061ae4,
+	0x7f061ae4,
+	0x7f061af0,
+	0x7f061af0,
+	0x7f061af0,
+	0x7f061adc,
+	0x7f061ae4,
+	0x7f061af0,
+	0x7f061af0,
+	0x7f061af0,
+	0x7f061af0,
+	0x7f061af0,
+	0x7f061af0,
+	0x7f061af0,
+	0x7f061ae4,
+	0x7f061af0,
+	0x7f061ad4,
+	0x7f061af0,
+	0x7f061af0,
+	0x7f061af0,
+	0x7f061af0,
+	0x7f061af0,
+	0x7f061aec,
+	0x4f7ffe00,
+	0x4f7ffe00,
+	0x3e2aaaab,
+	0x7f0628d8,
+	0x7f062a88,
+	0x7f062acc,
+	0x7f062a00,
+	0x7f062a44,
+	0x7f062a68,
+	0x7f062a78,
+	0x7f062a98,
+	0x7f062ae0,
+	0x7f062a2c,
+	0x7f062b18,
+	0x7f062a58,
+	0x7f062eb8,
+	0x7f062ec8,
+	0x7f062ed4,
+	0x7f062eb8,
+	0x7f062ed4,
+	0x7f062ed4,
+	0x7f062ed4,
+	0x7f062ed4,
+	0x7f063e74,
+	0x7f064130,
+	0x7f0640c8,
+	0x7f063e74,
+	0x7f0640c8,
+	0x7f0640a0,
+	0x7f064338,
+	0x7f064354,
+	0x7f064354,
+	0x7f064348,
+	0x7f064354,
+	0x7f064354,
+	0x7f064354,
+	0x7f064354,
+	0x3e333333,
+	0x3f533333,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001a9f60[] = "debugdoors";
+const char var001a9f6c[] = "scol";
+const char var001a9f74[] = "salp";
+const char var001a9f7c[] = "propobj.c";
+const char var001a9f88[] = "propobj.c";
+const char var001a9f94[] = "propobj.c";
+const char var001a9fa0[] = "propobj.c";
+const char var001a9fac[] = "propobj.c";
+const char var001a9fb8[] = "propobj.c";
+const char var001a9fc4[] = "propobj.c";
+const char var001a9fd0[] = "kkg";
+const char var001a9fd4[] = "kkd";
+const char var001a9fd8[] = "kkp";
+const char var001a9fdc[] = "debugdoor";
+const char var001a9fe8[] = "************** RWI : Door Stuck Mate -> Sort it out\n";
+const char var001aa020[] = "propobj.c";
+const char var001aa02c[] = "propobj.c";
+const char var001aa038[] = "propobj.c";
+const char var001aa044[] = "propobj.c";
+const char var001aa050[] = "HC: %x - visible\n";
+
+const u32 var001aa064[] = {
+	0x0a000000,
+	0x2e0a0000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x73000000,
+	0x0a000000,
+	0x2e0a0000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001aa140[] = "autodoorcanclose:      blocking door\n\n";
+const char var001aa168[] = ":\n";
+const char var001aa16c[] = "ALARM : PAN 1 = %d (%s%f)";
+const char var001aa188[] = "";
+const char var001aa18c[] = "ALARM : DIR 1 = %d";
+const char var001aa1a0[] = "ALARM : ADD 1 = %d (%s%f)";
+const char var001aa1bc[] = "";
+const char var001aa1c0[] = "propobj.c";
+
+const u32 var001aa1cc[] = {
+	0x3a83126f,
+	0x3d4ccccd,
+	0x39cd9a67,
+	0x3f666666,
+	0x40555555,
+	0x40d55555,
+	0x40555555,
+	0x3d4907a9,
+	0x3cc907a9,
+	0x3d4907a9,
+	0x3cc907a9,
+	0x3d4907a9,
+	0x3cc907a9,
+	0x404907a9,
+	0x4096c5bf,
+	0x404907a9,
+	0x46fffe00,
+	0x7f7fffff,
+	0x7f06c0ec,
+	0x7f06c15c,
+	0x7f06c15c,
+	0x7f06c15c,
+	0x7f06c128,
+	0x7f06c15c,
+	0x7f06bfa4,
+	0x7f06c15c,
+	0x7f06c15c,
+	0x7f06c15c,
+	0x7f06c15c,
+	0x7f06c15c,
+	0x7f06c15c,
+	0x7f06c15c,
+	0x7f06c13c,
+	0x7f06c15c,
+	0x7f06c15c,
+	0x7f06c15c,
+	0x7f06c15c,
+	0x7f06c150,
+	0x7f06c088,
+	0x3dcccccd,
+	0x3f7d70a4,
+	0xc0490fdb,
+	0x40c907a9,
+	0x40490fdb,
+	0x40c907a9,
+	0x40c907a9,
+	0x3d4ccccd,
+	0x3f230028,
+	0x3d4ccccd,
+	0x3f230028,
+	0x3cf5c28f,
+	0x3e19999a,
+	0xbfc907a9,
+	0xbfc907a9,
+	0x3f4ccccd,
+	0x3ecccccd,
+	0x3f4ccccd,
+	0x3ecccccd,
+	0x3f4ccccd,
+	0x3ecccccd,
+	0xbfc907a9,
+	0x47742400,
+	0x3cd67750,
+	0xc6ea6000,
+	0x3f666666,
+	0x3f666666,
+	0xc6ea6000,
+	0x40490fdb,
+	0x40c907a9,
+	0x40490fdb,
+	0x40c907a9,
+	0x40490fdb,
+	0x40c907a9,
+	0x40490fdb,
+	0x40c907a9,
+	0x40490fdb,
+	0x40c907a9,
+	0x3dae147b,
+	0x3d99999a,
+	0x3e4ccccd,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x3dcccccd,
+	0x3d32b179,
+	0x3d99999a,
+	0x3dcccccd,
+	0x3e99999a,
+	0x3dcccccd,
+	0x3e99999a,
+	0x3f6e147b,
+	0x3e99999a,
+	0x3f333333,
+	0x3e99999a,
+	0x3d23d70a,
+	0x40c907a9,
+	0x3dcccccd,
+	0x3e99999a,
+	0x3dcccccd,
+	0x3e99999a,
+	0x3ecccccd,
+	0x3e80a8be,
+	0x3f8a3d71,
+	0x3f3851ec,
+	0x3f8a3d71,
+	0x3f3851ec,
+	0x3f7851ec,
+	0x3d23d70a,
+	0x3e19999a,
+	0x3f7d70a4,
+	0x3f4ccccd,
+	0xbdcccccd,
+	0x459c4000,
+	0x4a127c00,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x3a83126f,
+	0x3dcccccd,
+	0xbdcccccd,
+	0xbdcccccd,
+	0xba83126f,
+	0xbdcccccd,
+	0x461c4000,
+	0x40c907a9,
+	0x3dcccccd,
+	0x3aebedfa,
+	0x461c4000,
+	0x47742400,
+	0x3c23d70a,
+	0x3c23d70a,
+	0x38d1b717,
+	0x3c23d70a,
+	0x3c23d70a,
+	0x3c23d70a,
+	0xc6ea6000,
+	0xc69c4000,
+	0x3e8e38e4,
+	0x3c360b61,
+	0x3d8f5c29,
+	0x3e8e38e4,
+	0x3a83126f,
+	0xba83126f,
+	0x3e8e38e4,
+	0x3e0e38e4,
+	0x400e38e4,
+	0x46d9038c,
+	0x3dcccccd,
+	0xbdcccccd,
+	0xbdcccccd,
+	0x3f8ccccd,
+	0x3f666666,
+	0x3f666666,
+	0x3dcccccd,
+	0xbdcccccd,
+	0x3e99999a,
+	0x3c8ef461,
+	0x40c907a9,
+	0x3c8ef461,
+	0x3e99999a,
+	0x3d3a5e30,
+	0x411ffffe,
+	0x40c907a9,
+	0x40c907a9,
+	0x404907a9,
+	0x404907a9,
+	0x3f4907a9,
+	0xbf4907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x404907a9,
+	0x3f4907a9,
+	0xbf4907a9,
+	0x443f042f,
+	0x3a2b8ba8,
+	0x3a2b8ba8,
+	0x443f042f,
+	0x443f042f,
+	0x3a2b8ba8,
+	0x3a2b8ba8,
+	0x443f042f,
+	0x40c907a9,
+	0x40c907a9,
+	0x3e4ccccd,
+	0x3c23d70a,
+	0x3fc907a9,
+	0x40c907a9,
+	0x3c8ef461,
+	0x40c907a9,
+	0x37432e42,
+	0x3a36fb5e,
+	0x36c32e42,
+	0x39b6fb5e,
+	0x40c907a9,
+	0x37432e42,
+	0x40c907a9,
+	0x3a36fb5e,
+	0x36c32e42,
+	0x40c907a9,
+	0x39b6fb5e,
+	0x40c907a9,
+	0x40c907a9,
+	0x3ccddaca,
+	0x358637bd,
+	0x3c23606f,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x404907a9,
+	0x3f9c5b4b,
+	0xbf9c5b4b,
+	0xc0490fdb,
+	0x40490fdb,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x3d566e92,
+	0x40c907a9,
+	0x3f4ccccd,
+	0xc0490fdb,
+	0x40490fdb,
+	0x3a64ba35,
+	0x3a64ba35,
+	0x40c907a9,
+	0x40c907a9,
+	0x404907a9,
+	0x3f192a68,
+	0x3c23606f,
+	0x3f7d70a4,
+	0x38d1b717,
+	0x40c907a9,
+	0x3fc907a9,
+	0x3e23d70a,
+	0x461c4000,
+	0x453b8000,
+	0x3f19999a,
+	0x3e99999a,
+	0xbdcccccd,
+	0x453b8000,
+	0x3e4ccccd,
+	0x40c907a9,
+	0x3fc90fdb,
+	0x40c907a9,
+	0x3cc907a9,
+	0x40490fdb,
+	0x40c907a9,
+	0x40490fdb,
+	0x3c888889,
+	0xc43c8000,
+	0x443c8000,
+	0x3dcccccd,
+	0x40c907a9,
+	0x40c907a9,
+	0x40490fdb,
+	0xc0490fdb,
+	0x40c907a9,
+	0x40c907a9,
+	0x40490fdb,
+	0x3eb2b8c2,
+	0x3c8efa35,
+	0x3c8efa35,
+	0x3b187c24,
+	0x3b987c24,
+	0x3e0ef461,
+	0xbb987c24,
+	0xbb987c24,
+	0x406ccccd,
+	0x3cfc9630,
+	0x3d567664,
+	0x40c907a9,
+	0x3c23d70a,
+	0x3e19999a,
+	0x3f7ae148,
+	0x40490fdb,
+	0x40b9999a,
+	0x39e4ba35,
+	0x3c566e92,
+	0x39e4ba35,
+	0xb9e4ba35,
+	0x39e4ba35,
+	0x3c566e92,
+	0x39e4ba35,
+	0xb9e4ba35,
+	0x3dcccccd,
+	0x40c907a9,
+	0x40c907a9,
+	0x3ee66666,
+	0x3e32b021,
+	0xbf333333,
+	0x3c1374bc,
+	0xc6ea6000,
+	0x40490fdb,
+	0xc0490fdb,
+	0x3f7ae148,
+	0x3d567664,
+	0x40c907a9,
+	0x3c23d70a,
+	0x3e19999a,
+	0x40490fdb,
+	0xc0490fdb,
+	0x49f42400,
+	0x48c35000,
+	0x461c4000,
+	0x451c4000,
+	0x471c4000,
+	0x47148900,
+	0x3d2aaaab,
+	0x3dcccccd,
+	0x3d2aaaab,
+	0x3e555555,
+	0x3964ba35,
+	0x3c566e92,
+	0x3964ba35,
+	0x3c566e92,
+	0x3964ba35,
+	0x3dcccccd,
+	0x40c907a9,
+	0x40c907a9,
+	0xc7c35000,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x7f07fbd8,
+	0x7f07f954,
+	0x7f07f960,
+	0x7f07f96c,
+	0x7f07f978,
+	0x7f07f984,
+	0x7f07f990,
+	0x7f07f99c,
+	0x7f07f9a8,
+	0x7f07f9b4,
+	0x7f07f9c0,
+	0x7f07f9cc,
+	0x7f07f9d8,
+	0x7f07f9e4,
+	0x7f07f9f0,
+	0x7f07f9fc,
+	0x7f07fa08,
+	0x7f07fa14,
+	0x7f07fa20,
+	0x7f07fa2c,
+	0x7f07fa38,
+	0x7f07fa44,
+	0x7f07fa50,
+	0x7f07fa5c,
+	0x7f07fa68,
+	0x7f07fa74,
+	0x7f07fa80,
+	0x7f07fa8c,
+	0x7f07fa98,
+	0x7f07faa4,
+	0x7f07fabc,
+	0x7f07fac8,
+	0x7f07fad4,
+	0x7f07fae0,
+	0x7f07faec,
+	0x7f07faf8,
+	0x7f07fab0,
+	0x7f07fb04,
+	0x7f07fb10,
+	0x7f07fb1c,
+	0x7f07fb28,
+	0x7f07fb34,
+	0x7f07fb40,
+	0x7f07fb4c,
+	0x7f07fb58,
+	0x7f07fb64,
+	0x7f07fb70,
+	0x7f07fb7c,
+	0x7f07fb88,
+	0x7f07fb94,
+	0x7f07fba0,
+	0x7f07fbac,
+	0x7f07fbb8,
+	0x7f07fbc4,
+	0x7f07fbd0,
+	0x40c907a9,
+	0x38c907a9,
+	0x7f07fce4,
+	0x7f07fcf8,
+	0x7f07fd68,
+	0x7f07fdd8,
+	0x7f07fe44,
+	0x7f07feb0,
+	0x7f07ff1c,
+	0x7f07ff88,
+	0x7f07ffb4,
+	0x7f080000,
+	0x7f080020,
+	0x7f080074,
+	0x7f08007c,
+	0x7f080084,
+	0x7f08011c,
+	0x7f080140,
+	0x38c907a9,
+	0x38c907a9,
+	0x38c907a9,
+	0x3fc907a9,
+	0x3fb50481,
+	0x3c888889,
+	0x3c888889,
+	0x47c34f80,
+	0xc7c34f80,
+	0x3f666666,
+	0x40555555,
+	0x40d55555,
+	0x40d55555,
+	0x3cc907a9,
+	0x3c4907a9,
+	0x3cc907a9,
+	0x3c4907a9,
+	0x3cc907a9,
+	0x3c4907a9,
+	0x3f4ccccd,
+	0x3b360b61,
+	0x382fa9a2,
+	0x3f795810,
+	0x3da0d2ee,
+	0x40d55555,
+	0x3c638e39,
+	0x395b940a,
+	0x3f760419,
+	0x3da0d2ee,
+	0x40d55555,
+	0x3dcccccd,
+	0x3d638e39,
+	0x3a5b940a,
+	0x3f760419,
+	0x3c20d2ee,
+	0x3f555555,
+	0x3dcccccd,
+	0x3d638e39,
+	0x3a5b940a,
+	0x3f760419,
+	0x3ca0d2ee,
+	0x3f555555,
+	0x3dcccccd,
+	0x3d638e39,
+	0x39db940a,
+	0x3f760419,
+	0x3da0d2ee,
+	0x3fd55555,
+	0x3e4ccccd,
+	0x3e4ccccd,
+	0x38d1b717,
+	0x41555555,
+	0x40c907a9,
+	0x3f4907a9,
+	0x3ec907a9,
+	0x3fd55555,
+	0x3f555555,
+	0x3fd55555,
+	0x3c4907a9,
+	0x3bc907a9,
+	0x3c4907a9,
+	0x3bc907a9,
+	0x3c4907a9,
+	0x3bc907a9,
+	0x41555555,
+	0x40d55555,
+	0x41555555,
+	0x3c4907a9,
+	0x3bc907a9,
+	0x3c4907a9,
+	0x3bc907a9,
+	0x3c4907a9,
+	0x3bc907a9,
+	0x40555555,
+	0x40555555,
+	0x40555555,
+	0x3d4907a9,
+	0x3cc907a9,
+	0x3d4907a9,
+	0x3cc907a9,
+	0x3d4907a9,
+	0x3cc907a9,
+	0x3fd55555,
+	0x3fd55555,
+	0x3d4907a9,
+	0x3cc907a9,
+	0x3d4907a9,
+	0x3cc907a9,
+	0x3d4907a9,
+	0x3cc907a9,
+	0x3fd55555,
+	0x3f555555,
+	0x40555555,
+	0x3fd55555,
+	0x3fd55555,
+	0x3f555555,
+	0x3ba0d2ee,
+	0x3b20d2ee,
+	0x3ba0d2ee,
+	0x3b20d2ee,
+	0x3ba0d2ee,
+	0x3b20d2ee,
+	0x46fffe00,
+	0x7f084ad0,
+	0x7f084b38,
+	0x7f084b38,
+	0x7f084b38,
+	0x7f084b04,
+	0x7f084b38,
+	0x7f084b38,
+	0x7f084b38,
+	0x7f084b38,
+	0x7f084b38,
+	0x7f084b38,
+	0x7f084b38,
+	0x7f084b38,
+	0x7f084b38,
+	0x7f084b18,
+	0x7f084b38,
+	0x7f084b38,
+	0x7f084b38,
+	0x7f084b38,
+	0x7f084b2c,
+	0x7f084a74,
+	0x7f085180,
+	0x7f085188,
+	0x7f085180,
+	0x7f085188,
+	0x7f085180,
+	0x7f085180,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085180,
+	0x7f085180,
+	0x7f085180,
+	0x7f085180,
+	0x7f085188,
+	0x7f085180,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085180,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085180,
+	0x7f085180,
+	0x7f085180,
+	0x7f085188,
+	0x7f085188,
+	0x7f085188,
+	0x7f085180,
+	0x7f085180,
+	0x7f085188,
+	0x7f085188,
+	0x7f085180,
+	0x7f085188,
+	0x7f085180,
+	0x7f085180,
+	0x7f085180,
+	0x7f085188,
+	0x7f085180,
+	0x7f0851d8,
+	0x7f0851e0,
+	0x7f0851e0,
+	0x7f0851d8,
+	0x7f0851d8,
+	0x7f0851e0,
+	0x7f0851e0,
+	0x7f0851e0,
+	0x7f0851e0,
+	0x7f0851e0,
+	0x7f0851e0,
+	0x7f0851e0,
+	0x7f0851e0,
+	0x7f0851d8,
+	0x7f0851e0,
+	0x7f0851e0,
+	0x7f0851d8,
+	0x7f0851d8,
+	0x46fffe00,
+	0x40c907a9,
+	0x404907a9,
+	0x3ec907a9,
+	0x40c907a9,
+	0x3ec907a9,
+	0x4016c5bf,
+	0x40bc772e,
+	0x407b4993,
+	0x7f087784,
+	0x7f087784,
+	0x7f087790,
+	0x7f087784,
+	0x7f087790,
+	0x7f0877b0,
+	0x7f087790,
+	0x7f087790,
+	0x7f087790,
+	0x7f087790,
+	0x7f087790,
+	0x7f087790,
+	0x7f087790,
+	0x7f087790,
+	0x7f087790,
+	0x7f087790,
+	0x7f087790,
+	0x7f0877b0,
+	0x7f087784,
+	0x7f08777c,
+	0x7f087790,
+	0x7f087784,
+	0x7f0877f4,
+	0x7f087790,
+	0x7f087790,
+	0x7f087784,
+	0x7f0877f4,
+	0x7f0877f4,
+	0x7f0877f4,
+	0x7f0877d4,
+	0x7f0877f4,
+	0x7f0877b0,
+	0x7f0879f4,
+	0x7f087aa0,
+	0x7f0879fc,
+	0x7f087a04,
+	0x7f087a0c,
+	0x7f087a14,
+	0x7f087aa0,
+	0x7f087a1c,
+	0x7f087a24,
+	0x7f087a2c,
+	0x7f087a34,
+	0x7f087a3c,
+	0x7f087a44,
+	0x7f087a4c,
+	0x7f087a54,
+	0x7f087a5c,
+	0x7f087a64,
+	0x7f087a94,
+	0x7f087a9c,
+	0x7f087a6c,
+	0x7f087aa0,
+	0x7f087a74,
+	0x7f087a7c,
+	0x7f087a8c,
+	0x7f087aa0,
+	0x7f087aa0,
+	0x7f087aa0,
+	0x7f087a84,
+	0x7f087b38,
+	0x7f087b38,
+	0x7f087bfc,
+	0x7f087b38,
+	0x7f087b38,
+	0x7f087bfc,
+	0x7f087b38,
+	0x7f087b38,
+	0x7f087bc0,
+	0x7f087b38,
+	0x7f087b38,
+	0x7f087b7c,
+	0x7f087b7c,
+	0x7f087b7c,
+	0x7f087b38,
+	0x7f087b38,
+	0x7f087b38,
+	0x7f087b38,
+	0x7f087b38,
+	0x7f087b38,
+	0x7f087b38,
+	0x7f087bfc,
+	0x7f087bfc,
+	0x7f087b7c,
+	0x7f087b7c,
+	0x7f087b7c,
+	0x7f087bfc,
+	0x7f087bfc,
+	0x7f087bfc,
+	0x7f087b38,
+	0x7f087bfc,
+	0x7f087b7c,
+	0x7f0881c8,
+	0x7f0881d0,
+	0x7f0881d8,
+	0x7f0881e0,
+	0x7f0881e8,
+	0x7f088214,
+	0x7f088214,
+	0x7f088214,
+	0x7f088214,
+	0x7f0881f0,
+	0x7f088214,
+	0x7f088214,
+	0x7f088214,
+	0x7f088214,
+	0x7f0881f8,
+	0x7f088214,
+	0x7f088200,
+	0x7f088214,
+	0x7f088210,
+	0x7f088208,
+	0x7f088214,
+	0x7f0882fc,
+	0x7f088304,
+	0x7f08830c,
+	0x7f088314,
+	0x7f08831c,
+	0x7f088324,
+	0x7f088408,
+	0x7f088408,
+	0x7f088408,
+	0x7f08832c,
+	0x7f088334,
+	0x7f088408,
+	0x7f088408,
+	0x7f088408,
+	0x7f08833c,
+	0x7f088408,
+	0x7f088344,
+	0x7f088408,
+	0x7f088354,
+	0x7f08834c,
+	0x7f088408,
+	0x7f088378,
+	0x7f088380,
+	0x7f088388,
+	0x7f088390,
+	0x7f088398,
+	0x7f0883a0,
+	0x7f0883dc,
+	0x7f0883dc,
+	0x7f0883dc,
+	0x7f0883a8,
+	0x7f0883b0,
+	0x7f0883dc,
+	0x7f0883dc,
+	0x7f0883dc,
+	0x7f0883b8,
+	0x7f0883dc,
+	0x7f0883c0,
+	0x7f0883dc,
+	0x7f0883d8,
+	0x7f0883c8,
+	0x7f0883d0,
+	0x7f088f20,
+	0x7f0888b4,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088934,
+	0x7f088a34,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088974,
+	0x7f088dd0,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x7f088f20,
+	0x40c907a9,
+	0xbf4907a9,
+	0x47ef4200,
+	0x471c4000,
+	0x461c4000,
+	0x47742400,
+	0x459c4000,
+	0x4148f5c3,
+	0xc148f5c3,
+	0x3d8ebee0,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x7f08b7cc,
+	0x3c8ef461,
+	0x40c907a9,
+	0x3c8ef461,
+	0x3c8ef461,
+	0x40c907a9,
+	0x3c8ef461,
+	0x461c4000,
+	0x3ecccccd,
+	0x3ecccccd,
+	0x7f08d598,
+	0x7f08d598,
+	0x7f08d598,
+	0x7f08d598,
+	0x7f08d598,
+	0x7f08d5a4,
+	0x7f08d5a4,
+	0x7f08d5a4,
+	0x7f08d598,
+	0x7f08d5a4,
+	0x7f08d5a4,
+	0x7f08d598,
+	0x7f08d828,
+	0x7f08d840,
+	0x7f08d84c,
+	0x7f08d858,
+	0x7f08d864,
+	0x7f08d86c,
+	0x7f08d874,
+	0x7f08d87c,
+	0x7f08d888,
+	0x7f08d894,
+	0x7f08d89c,
+	0x7f08d8a4,
+	0x7f08d8ac,
+	0x7f08d8c0,
+	0x7f08d8cc,
+	0x7f08d8dc,
+	0x7f08d8e4,
+	0x7f08d8ec,
+	0x7f08d900,
+	0x7f08d918,
+	0x7f08d924,
+	0x7f08d948,
+	0x7f08d954,
+	0x7f08d960,
+	0x7f08d8d4,
+	0x7f08d90c,
+	0x7f08d96c,
+	0x7f08d820,
+	0x7f08d834,
+	0x7f08d8b4,
+	0x7f08d93c,
+	0x7f08d930,
+	0x7f08db4c,
+	0x7f08db64,
+	0x7f08db70,
+	0x7f08db7c,
+	0x7f08db88,
+	0x7f08dc10,
+	0x7f08dc10,
+	0x7f08db90,
+	0x7f08db9c,
+	0x7f08dba8,
+	0x7f08dc10,
+	0x7f08dc10,
+	0x7f08dc10,
+	0x7f08dbbc,
+	0x7f08dbc8,
+	0x7f08dbd8,
+	0x7f08dbe0,
+	0x7f08dbe8,
+	0x7f08dc10,
+	0x7f08dc10,
+	0x7f08dc10,
+	0x7f08dc10,
+	0x7f08dbfc,
+	0x7f08dc08,
+	0x7f08dbd0,
+	0x7f08dc10,
+	0x7f08dc10,
+	0x7f08db44,
+	0x7f08db58,
+	0x7f08dbb0,
+	0x7f08ddd4,
+	0x7f08dde4,
+	0x7f08ddec,
+	0x7f08ddf4,
+	0x7f08ddfc,
+	0x7f08dea0,
+	0x7f08dea0,
+	0x7f08de04,
+	0x7f08de0c,
+	0x7f08de14,
+	0x7f08dea0,
+	0x7f08dea0,
+	0x7f08dea0,
+	0x7f08de24,
+	0x7f08de2c,
+	0x7f08de3c,
+	0x7f08de44,
+	0x7f08de4c,
+	0x7f08de5c,
+	0x7f08de64,
+	0x7f08de6c,
+	0x7f08de84,
+	0x7f08de8c,
+	0x7f08de94,
+	0x7f08de34,
+	0x7f08de54,
+	0x7f08de9c,
+	0x7f08ddcc,
+	0x7f08dddc,
+	0x7f08de1c,
+	0x7f08de7c,
+	0x7f08de74,
+	0x7f08dfa0,
+	0x7f08dfb0,
+	0x7f08dfb8,
+	0x7f08dfc0,
+	0x7f08dfc8,
+	0x7f08dfd0,
+	0x7f08dfd8,
+	0x7f08dfe0,
+	0x7f08dfe8,
+	0x7f08dff0,
+	0x7f08dff8,
+	0x7f08e000,
+	0x7f08e008,
+	0x7f08e018,
+	0x7f08e020,
+	0x7f08e030,
+	0x7f08e038,
+	0x7f08e040,
+	0x7f08e054,
+	0x7f08e054,
+	0x7f08e054,
+	0x7f08e054,
+	0x7f08e048,
+	0x7f08e050,
+	0x7f08e028,
+	0x7f08e054,
+	0x7f08e054,
+	0x7f08df98,
+	0x7f08dfa8,
+	0x7f08e010,
+	0x4e742400,
+	0x4e742400,
+	0x40c907a9,
+	0x40c907a9,
+	0x404907a9,
+	0x3c8ef461,
+	0x40c907a9,
+	0x3eb2b17a,
+	0x404907a9,
+	0x3eb2b17a,
+	0x404907a9,
+	0x471c4000,
+	0x453b8000,
+	0x3991a2b4,
+	0x3c888889,
+	0x3fd55555,
+	0x7f090df4,
+	0x7f090dfc,
+	0x7f090e24,
+	0x7f090e24,
+	0x7f090e0c,
+	0x7f090e24,
+	0x7f090e24,
+	0x7f090e24,
+	0x7f090e24,
+	0x7f090e24,
+	0x7f090e04,
+	0x7f090e24,
+	0x7f090e24,
+	0x7f090e24,
+	0x7f090e24,
+	0x7f090e24,
+	0x7f090e24,
+	0x7f090e24,
+	0x7f090e1c,
+	0x7f090e24,
+	0x7f090e24,
+	0x7f090e24,
+	0x7f090e24,
+	0x7f090e14,
+	0x481c4000,
+	0x3e8e38e3,
+	0x3e23d70a,
+	0x00000000,
+	0x00000000,
+	0x7f091e40,
+	0x7f091e48,
+	0x7f091e50,
+	0x7f091e80,
+	0x7f091e88,
+	0x7f091e90,
+	0x7f091e98,
+	0x7f091ea0,
+	0x7f091e38,
+	0x7f091ea8,
+	0x7f091eb0,
+	0x7f091eb8,
+	0x7f091ec0,
+	0x7f091ec8,
+	0x7f091e58,
+	0x7f091ff8,
+	0x7f091ed0,
+	0x7f091ed8,
+	0x7f091ee0,
+	0x7f091ef0,
+	0x7f091ef8,
+	0x7f091f00,
+	0x7f091f10,
+	0x7f091f18,
+	0x7f091f20,
+	0x7f091f28,
+	0x7f091f30,
+	0x7f091f38,
+	0x7f091f40,
+	0x7f091f48,
+	0x7f091f50,
+	0x7f091f58,
+	0x7f091f60,
+	0x7f091f68,
+	0x7f091f70,
+	0x7f091e78,
+	0x7f091f08,
+	0x7f091f78,
+	0x7f091f80,
+	0x7f091f88,
+	0x7f091ff8,
+	0x7f091e60,
+	0x7f091e70,
+	0x7f091ee8,
+	0x7f091f90,
+	0x7f091f98,
+	0x7f091e68,
+	0x7f091fa0,
+	0x7f091fa8,
+	0x7f091fb0,
+	0x7f091fb8,
+	0x7f091ff8,
+	0x7f091fc0,
+	0x7f091fc8,
+	0x7f091fd0,
+	0x7f091fe0,
+	0x7f091fd8,
+	0x7f091fe8,
+	0x7f091ff0,
+	0x7f092460,
+	0x7f092468,
+	0x7f092460,
+	0x7f092460,
+	0x7f092460,
+	0x7f092460,
+	0x7f092460,
+	0x7f092460,
+	0x7f092468,
+	0x7f092460,
+	0x7f092460,
+	0x7f092460,
+	0x7f092460,
+	0x7f092468,
+	0x7f092460,
+	0x7f092470,
+	0x7f092460,
+	0x7f092468,
+	0x7f092468,
+	0x7f092460,
+	0x7f092460,
+	0x7f092468,
+	0x7f092468,
+	0x7f092468,
+	0x7f092468,
+	0x7f092468,
+	0x7f092468,
+	0x7f092468,
+	0x7f092468,
+	0x7f092468,
+	0x7f092468,
+	0x7f092468,
+	0x7f092468,
+	0x7f092468,
+	0x7f092468,
+	0x7f092460,
+	0x7f092468,
+	0x7f092468,
+	0x7f092460,
+	0x7f092460,
+	0x7f092460,
+	0x7f092460,
+	0x7f092460,
+	0x7f092468,
+	0x7f092460,
+	0x7f092468,
+	0x7f092460,
+	0x7f092460,
+	0x7f092468,
+	0x7f092468,
+	0x7f092460,
+	0x7f092470,
+	0x7f092460,
+	0x7f092460,
+	0x7f092460,
+	0x7f092468,
+	0x7f092460,
+	0x7f092470,
+	0x7f092460,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001ab400[] = "Propsnd : USING TIME 60\n";
+const char var001ab41c[] = "PS_AUTO : Un-Pausing %d\n";
+const char var001ab438[] = "Propsnd : Using %d of %d (Peek = %d of %d)";
+const char var001ab464[] = "AISOUND: aisoundnewtypeflags - Channel %d -> Playing sound number id=%d(%x)\n";
+const char var001ab4b4[] = "AISOUND: PSTYPE_MARKER - Channel %d -> Playing sound number id=%d(%x)\n";
+const char var001ab4fc[] = "AISOUND: PSTYPE_MARKER - Channel %d -> Playing sound number id=%d(%x)\n";
+const char var001ab544[] = "AISOUND: CUTSCENE -> Playing sound number id=%d(%x))\n";
+const char var001ab57c[] = "AISOUND: Channel %d -> Playing sound number id=%d(%x), Prop=%x, Flags=%x, Type=%d, Zero=%d\n";
+const char var001ab5d8[] = "AISOUND: Channel %d -> Playing sound number id=%d(%x), Prop=%x, Flags=%x, Type=%d\n";
+const char var001ab62c[] = "AISOUND: CUTSCENE -> Stopping all cutscene sounds\n";
+const char var001ab660[] = "AISOUND: Stop sound channel %d\n";
+const char var001ab680[] = "AISOUND: Channel %d -> Setting params : Vol=%d, Pad=%d, Prop=%x, Time=%d, Far=%d, Silence=%d, Flags=%u\n";
+const char var001ab6e8[] = "AISOUND : This channel has a marker -> Shall start and use ID = %d(%x)\n";
+
+const u32 var001ab730[] = {
+	0x45abe800,
+	0x45b54800,
+	0x45bb8000,
+	0x392ec33e,
+	0x3c23d70a,
+	0x451c4000,
+	0x453b8000,
+	0x3f2aaaab,
+	0x3f333333,
+	0x3f333333,
+	0x40490fdb,
+	0x3c8efa35,
+	0x40490fdb,
+	0x40490fdb,
+	0x42652ee0,
+	0x451c4000,
+	0x453b8000,
+	0x45abe800,
+	0x45b54800,
+	0x451c4000,
+	0x453b8000,
+	0x4b18967f,
+	0x4b18967f,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001ab7c4[] = "%s %d: ";
+
+const u32 var001ab7cc[] = {
+	0x7f095ad8,
+	0x7f095ad8,
+	0x7f09571c,
+	0x7f095750,
+	0x7f09576c,
+	0x7f095788,
+	0x7f09590c,
+	0x7f095a68,
+	0x7f095ad8,
+	0x7f095ab4,
+	0x7f095ac8,
+	0x00000000,
+	0x00000000,
+	0x40c907a9,
+	0x3cc907a9,
+	0x40c907a9,
+	0x3cc907a9,
+	0x40c907a9,
+	0x3cc907a9,
+	0x3fd55555,
+	0x40555555,
+	0x3fd55555,
+	0x3fd55555,
+	0x40555555,
+	0x3e8e38e4,
+	0x40490fdb,
+	0x3fc90fdb,
+	0x4096cbe4,
+	0x40c90fdb,
+	0x3fc90fdb,
+	0x40490fdb,
+	0x40c90fdb,
+	0x00000000,
+	0x46fffe00,
+	0x40490fdb,
+	0x477fff00,
+	0x46fffe00,
+	0x40490fdb,
+	0x477fff00,
+	0x00000000,
+	0x00000000,
+	0x3c23d70a,
+	0xbf7fff58,
+	0x3f7fff58,
+	0xbf7fff58,
+	0x3f7fff58,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001ab890[] = "rontime";
+const char var001ab898[] = "rofftime";
+const char var001ab8a4[] = "gkef";
+const char var001ab8ac[] = "changegunmem type %d CurrentPlayer->gunctrl.gunmemtype %d\n";
+const char var001ab8e8[] = "LockTimer: %d\n";
+const char var001ab8f8[] = "BriGun: Releasing gunmem - current gunmemtype %d gunmemnew %d\n";
+const char var001ab938[] = "GiveMem: %d\n";
+const char var001ab948[] = "BriGun:  BriGunLoadTick process GUN_LOADSTATE_LOAD_OBJ\n";
+const char var001ab980[] = "BriGun:  Loading - %s, pMem 0x%08x Size %d\n";
+const char var001ab9ac[] = "BriGun:  Warning: LoadSize > MemSize, clamping decomp. buffer from %d to %d (%d Bytes)\n";
+const char var001aba04[] = "BriGun:  obLoadto at 0x%08x, size %d\n";
+const char var001aba2c[] = "BriGun:  Used size %d (Ob Size %d)\n";
+const char var001aba50[] = "BriGun:  block len %d usedsize %d\n";
+const char var001aba74[] = "BriGun:  obln ram_len %d block_len %d\n";
+const char var001aba9c[] = "BriGun:  new used size %d\n";
+const char var001abab8[] = "BriGun:  Texture Block at 0x%08x size %d, endp 0x%08x\n";
+const char var001abaf0[] = "BriGun:  Set Load State: GUN_LOADSTATE_DECOMPRESS_TEXTURES\n";
+const char var001abb2c[] = "BriGun:  BriGunLoadTick process GUN_LOADSTATE_DECOMPRESS_TEXTURES\n";
+const char var001abb70[] = "BriGun:  at texture %d\n";
+const char var001abb88[] = "BriGun:  Uncompress %d of %d\n";
+const char var001abba8[] = "BriGun:  Set Load State: GUN_LOADSTATE_DECOMPRESS_DLS\n";
+const char var001abbe0[] = "BriGun:  BriGunLoadTick process GUN_LOADSTATE_DECOMPRESS_DLS\n";
+const char var001abc20[] = "BriGun:  propgfx_decompress 0x%08x\n";
+const char var001abc44[] = "BriGun:  DL waste space %d from %d (Used %d, Ramlen %d, ObSize %d)\n";
+const char var001abc88[] = "Increase GUNSAVESIZE to %d!!!\n";
+const char var001abca8[] = "BriGun:  Set Load State: GUN_LOADSTATE_LOADED\n";
+const char var001abcd8[] = "need a new gun loading (lock %d gunmemnew %d)\n";
+const char var001abd08[] = "loading gun file: %d type: %d\n";
+const char var001abd28[] = "BriGun: Process MASTER_GUN_LOADSTATE_FLUX\n";
+const char var001abd54[] = "BriGun: Set Master State: MASTER_GUN_LOADSTATE_HANDS\n";
+const char var001abd8c[] = "BriGun: Process MASTER_GUN_LOADSTATE_HANDS\n";
+const char var001abdb8[] = "BriGun: Setup Hand Load\n";
+const char var001abdd4[] = "Hand  : Using cached hands\n";
+const char var001abdf0[] = "Hand  : Look ma no hands!\n";
+const char var001abe0c[] = "BriGun: Set Master State: MASTER_GUN_LOADSTATE_GUN\n";
+const char var001abe40[] = "BriGun: Process MASTER_GUN_LOADSTATE_GUN\n";
+const char var001abe6c[] = "BriGun: Setup Gun Load\n";
+const char var001abe84[] = "BriGun: Set Master State: MASTER_GUN_LOADSTATE_CARTS\n";
+const char var001abebc[] = "BriGun: Process MASTER_GUN_LOADSTATE_CARTS\n";
+const char var001abee8[] = "BriGun: Cart Loaded setting GUN_LOADSTATE_FLUX\n";
+const char var001abf18[] = "BriGun: Cart loading - looking for carts\n";
+const char var001abf44[] = "BriGun: Loading cart %d\n";
+const char var001abf60[] = "BriGun: Request for cart %d ignored - cart already loaded\n";
+const char var001abf9c[] = "BriGun: Compile Hand 0x%08x Gun 0x%0x8\n";
+const char var001abfc4[] = "Gun   : Compiled Gun 0x%08x\n";
+const char var001abfe4[] = "Gun   : Compiled Size %d\n";
+const char var001ac000[] = "Hand  : Compiled Hand 0x%08x\n";
+const char var001ac020[] = "Hand  : Compiled Size %d\n";
+const char var001ac03c[] = "Gun   : Compile overhead %d bytes\n";
+const char var001ac060[] = "Hand  : Hand Obj 0x%08x Gun Obj 0x%08x \n";
+const char var001ac08c[] = "Gun   : After Comp : Base 0x%08x Free %d\n";
+const char var001ac0b8[] = "Gun   : After Cached Setup : Base 0x%08x Free %d\n";
+const char var001ac0ec[] = "Gun   : TotalUsed %d, Free %d\n";
+const char var001ac10c[] = "BriGun: Set Master State: MASTER_GUN_LOADSTATE_LOADED\n";
+const char var001ac144[] = "GunLockTimer: %d\n";
+const char var001ac158[] = "** error\n";
+const char var001ac164[] = "** error\n";
+const char var001ac170[] = "wantedfn %d tiggle %d\n";
+const char var001ac188[] = "%d\n";
+const char var001ac18c[] = "%02d:%02d:%02d\n";
+const char var001ac19c[] = "%02d:%02d\n";
+
+const u32 var001ac1a8[] = {
+	0x461c4000,
+	0x3f451eb8,
+	0x3f333333,
+	0x3f5f5dd8,
+	0x3f5f5dd8,
+	0x7f09a1b8,
+	0x7f09a1b8,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a1b8,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a1b8,
+	0x7f09a1b8,
+	0x7f09a17c,
+	0x7f09a1b8,
+	0x7f09a1b8,
+	0x7f09a1b8,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a1b8,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a1b8,
+	0x7f09a1b8,
+	0x7f09a1b8,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a17c,
+	0x7f09a1b8,
+	0x3f5f5dd8,
+	0x3ecccccd,
+	0x3fc90fdb,
+	0x40c907a9,
+	0x3fc90fdb,
+	0x40490fdb,
+	0x3ecccccd,
+	0x3dcccccd,
+	0x3c23d70a,
+	0x7f09b928,
+	0x7f09b928,
+	0x7f09b928,
+	0x7f09b928,
+	0x7f09b928,
+	0x7f09b928,
+	0x7f09b928,
+	0x7f09b928,
+	0x7f09b928,
+	0x7f09b928,
+	0x7f09b928,
+	0x7f09b928,
+	0x7f09b928,
+	0x7f09b9f8,
+	0x7f09b9f8,
+	0x7f09b9f8,
+	0x7f09b9f8,
+	0x7f09b9f8,
+	0x7f09b928,
+	0x7f09b9f8,
+	0x7f09b9f8,
+	0x7f09b9f8,
+	0x7f09b9f8,
+	0x7f09b9f8,
+	0x7f09b9f8,
+	0x7f09b9f8,
+	0x7f09b928,
+	0x7f09b9f8,
+	0x7f09b9f8,
+	0x7f09b9f8,
+	0x7f09b9f8,
+	0x7f09b9f8,
+	0x7f09b9f8,
+	0x7f09b9f8,
+	0x7f09b928,
+	0x7f09b928,
+	0x7f09bbd8,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09ba7c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09ba7c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09ba7c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bbd8,
+	0x7f09bb9c,
+	0x7f09bb08,
+	0x7f09bb9c,
+	0x7f09bbd8,
+	0x7f09bbd8,
+	0x7f09bbd8,
+	0x7f09bbd8,
+	0x7f09bbd8,
+	0x7f09bbd8,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb9c,
+	0x7f09bb08,
+	0x40047ae1,
+	0x3f5f5dd8,
+	0x7f09c9ec,
+	0x7f09c9ec,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9ec,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c91c,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c7b4,
+	0x7f09c9ec,
+	0x7f09c888,
+	0x7f09c770,
+	0x7f09c9ec,
+	0x7f09c9ec,
+	0x7f09c844,
+	0x7f09c844,
+	0x7f09c7f8,
+	0x7f09c9ec,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c888,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9ec,
+	0x7f09c6dc,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c844,
+	0x7f09c844,
+	0x7f09c844,
+	0x7f09c844,
+	0x7f09c844,
+	0x7f09c844,
+	0x7f09c9ec,
+	0x7f09c9ec,
+	0x7f09c844,
+	0x7f09c844,
+	0x7f09c844,
+	0x7f09c9ec,
+	0x7f09c9ec,
+	0x7f09c9ec,
+	0x7f09c9ec,
+	0x7f09c9ec,
+	0x7f09c9ec,
+	0x7f09c9ec,
+	0x7f09c9ec,
+	0x7f09c9ec,
+	0x7f09c9ec,
+	0x7f09c9ec,
+	0x7f09c9ec,
+	0x7f09c9ec,
+	0x7f09c9ec,
+	0x7f09c9ec,
+	0x7f09c9b0,
+	0x7f09c9ec,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9b0,
+	0x7f09c9ec,
+	0x3f59999a,
+	0x3f5f5dd8,
+	0x7f09cc10,
+	0x7f09cc28,
+	0x7f09cc58,
+	0x7f09cc88,
+	0x7f09cc40,
+	0x7f09cc70,
+	0x7f09cccc,
+	0x7f09ccb8,
+	0x7f09cca0,
+	0x3da3d70a,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x3f7cb924,
+	0x3c51b700,
+	0x3f4ccccd,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x40c907a9,
+	0x40333333,
+	0x3f4ccccd,
+	0x3e4ccccd,
+	0x3dcccccd,
+	0x3e99999a,
+	0x3f7cb924,
+	0x3f7cb924,
+	0x3c51b700,
+	0x3c888889,
+	0x3e4ccccd,
+	0x3dcccccd,
+	0xbdcccccd,
+	0xbf4ccccd,
+	0x7f09df30,
+	0x7f09df40,
+	0x7f09df40,
+	0x7f09df40,
+	0x7f09df40,
+	0x7f09df40,
+	0x7f09df40,
+	0x7f09df40,
+	0x7f09df40,
+	0x7f09df40,
+	0x7f09df30,
+	0x7f09df40,
+	0x7f09df40,
+	0x7f09df40,
+	0x7f09df40,
+	0x7f09df30,
+	0x7f09df40,
+	0x7f09df40,
+	0x7f09df40,
+	0x7f09df40,
+	0x7f09df30,
+	0x7f09df40,
+	0x7f09df40,
+	0x7f09df30,
+	0x7f09e080,
+	0x7f09e11c,
+	0x7f09e0b8,
+	0x7f09e110,
+	0x7f09e11c,
+	0x7f09e11c,
+	0x7f09e11c,
+	0x7f09e11c,
+	0x7f09e11c,
+	0x7f09e11c,
+	0x7f09e118,
+	0x7f09e118,
+	0x4141999a,
+	0x3dcccccd,
+	0x4096c5bf,
+	0x404907a9,
+	0x3fd55555,
+	0x3eb2b179,
+	0xbeb2b179,
+	0x3eb2b179,
+	0x41ad5555,
+	0x41855555,
+	0x3fd55555,
+	0x3dcccccd,
+	0x3fd55555,
+	0x3e32b179,
+	0xbe32b179,
+	0x3e32b179,
+	0x3fd55555,
+	0x3e99999a,
+	0x3dcccccd,
+	0x3e99999a,
+	0x3dcccccd,
+	0xb3d6bf95,
+	0x33d6bf95,
+	0xc5bb8000,
+	0x3f6d4de3,
+	0x3d9590e8,
+	0x3e2aaaab,
+	0x7f0a2de0,
+	0x7f0a2e00,
+	0x7f0a2e20,
+	0x7f0a2e38,
+	0x7f0a2e4c,
+	0x7f0a2e60,
+	0x7f0a2f10,
+	0x7f0a3070,
+	0x7f0a3070,
+	0x7f0a2fb4,
+	0x7f0a2fdc,
+	0x7f0a3070,
+	0x7f0a3070,
+	0x7f0a3070,
+	0x7f0a3070,
+	0x7f0a3070,
+	0x7f0a2f4c,
+	0x7f0a3070,
+	0x7f0a3070,
+	0x7f0a3070,
+	0x7f0a3070,
+	0x7f0a2f88,
+	0x7f0a3004,
+	0x40490fdb,
+	0x42853333,
+	0x3c8efa35,
+	0x3f19999a,
+	0x3e4ccccd,
+	0x7f0a35ac,
+	0x7f0a36dc,
+	0x7f0a35ac,
+	0x7f0a35dc,
+	0x7f0a35dc,
+	0x7f0a36dc,
+	0x7f0a360c,
+	0x7f0a360c,
+	0x7f0a363c,
+	0x7f0a3664,
+	0x7f0a36dc,
+	0x7f0a3690,
+	0x7f0a3664,
+	0x7f0a363c,
+	0x7f0a363c,
+	0x7f0a363c,
+	0x7f0a363c,
+	0x7f0a36c4,
+	0x7f0a36b8,
+	0x3f28f5c3,
+	0x3f666666,
+	0x7f0a372c,
+	0x7f0a3740,
+	0x7f0a372c,
+	0x7f0a372c,
+	0x7f0a372c,
+	0x7f0a3740,
+	0x7f0a372c,
+	0x7f0a372c,
+	0x7f0a3740,
+	0x7f0a3740,
+	0x7f0a3740,
+	0x7f0a3740,
+	0x7f0a3740,
+	0x7f0a3740,
+	0x7f0a3740,
+	0x7f0a3740,
+	0x7f0a3740,
+	0x7f0a373c,
+	0x7f0a3734,
+	0x3c23d70a,
+	0x3f747ae1,
+	0x47ae147b,
+	0x33d6bf95,
+	0xbe0f5c29,
+	0x3e19999a,
+	0x40490fdb,
+	0x3e4ccccd,
+	0x40490fdb,
+	0x3e4ccccd,
+	0x40c90fd0,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x3ecccccd,
+	0x3f19999a,
+	0x46fffe00,
+	0x3c23d70a,
+	0x3fd16873,
+	0x3c23d70a,
+	0x411fffff,
+	0x3f088888,
+	0x40c907a9,
+	0x3d0bd8cf,
+	0x40c907a9,
+	0x3d0bd8cf,
+	0x40c907a9,
+	0x3d0bd8cf,
+	0x3f088888,
+	0x40c907a9,
+	0x40c907a9,
+	0x3c3d3463,
+	0x40c907a9,
+	0x3c3d3463,
+	0x40c907a9,
+	0x40c907a9,
+	0x3bda10fd,
+	0x40c907a9,
+	0x3bda10fd,
+	0x3e99999a,
+	0x3e8e38e4,
+	0x40c907a9,
+	0x3fd33333,
+	0x33333333,
+	0x3fc33333,
+	0x33333333,
+	0x3dccccce,
+	0x40c907a9,
+	0x411fffff,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a5540,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a5540,
+	0x7f0a5540,
+	0x7f0a5540,
+	0x7f0a5540,
+	0x7f0a5540,
+	0x7f0a550c,
+	0x7f0a5528,
+	0x7f0a5540,
+	0x7f0a5540,
+	0x7f0a5540,
+	0x7f0a5540,
+	0x7f0a5540,
+	0x7f0a5540,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x7f0a550c,
+	0x40490fdb,
+	0x3dccccce,
+	0x7f0a61f4,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a61fc,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6210,
+	0x7f0a6210,
+	0x7f0a6210,
+	0x7f0a6210,
+	0x7f0a6210,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6254,
+	0x7f0a6210,
+	0x40490fdb,
+	0x3dcccccd,
+	0x3d4ccccd,
+	0x3ba3d70a,
+	0x3cf5c28f,
+	0x3ecccccd,
+	0x3faaaaab,
+	0x3f3ebebf,
+	0x453b8000,
+	0x453b8000,
+	0x453b8000,
+	0x453b8000,
+	0x7f0a8a60,
+	0x7f0a8b50,
+	0x7f0a8b50,
+	0x7f0a8b50,
+	0x7f0a8a60,
+	0x7f0a8b50,
+	0x7f0a8b50,
+	0x7f0a8a0c,
+	0x7f0a8a0c,
+	0x7f0a8a0c,
+	0x7f0a8a60,
+	0x7f0a8a60,
+	0x7f0a8b50,
+	0x7f0a8b50,
+	0x7f0a8b50,
+	0x7f0a89a0,
+	0x7f0a8a60,
+	0x7f0a8b50,
+	0x7f0a8b50,
+	0x7f0a8b50,
+	0x7f0a8b50,
+	0x7f0a8b50,
+	0x7f0a8b50,
+	0x7f0a8b50,
+	0x7f0a8b50,
+	0x7f0a8b50,
+	0x7f0a8a60,
+	0x7f0a8b50,
+	0x7f0a8a0c,
+	0x7f0a8e6c,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8e6c,
+	0x7f0a8e6c,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8e6c,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8e6c,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8e6c,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8ee8,
+	0x7f0a8e6c,
+	0x7f0a8e6c,
+	0x7f0a8e6c,
+	0xc7c35000,
+	0x47c35000,
+	0x7f0a9934,
+	0x7f0a9974,
+	0x7f0a9950,
+	0x7f0a9974,
+	0x7f0a9974,
+	0x7f0a9974,
+	0x7f0a9974,
+	0x7f0a9974,
+	0x7f0a9974,
+	0x7f0a9974,
+	0x7f0a996c,
+	0x7f0a996c,
+	0x7f0a996c,
+	0x7f0a996c,
+	0x7f0a996c,
+	0x7f0a996c,
+	0x7f0a996c,
+	0x7f0a996c,
+	0x7f0a996c,
+	0x7f0a996c,
+	0x7f0a996c,
+	0x00000000,
+	0x73703100,
+	0x73703200,
+	0x73703300,
+	0x73706200,
+	0x73706900,
+	0x461c4000,
+	0x453b8000,
+	0x453b8000,
+	0x3f19999a,
+	0x3e99999a,
+	0xbdcccccd,
+	0x453b8000,
+	0x453b8000,
+	0x3e4ccccd,
+	0x3db2b17a,
+	0x3727c5ac,
+	0xb727c5ac,
+	0x461c4000,
+	0xc61c4000,
+	0x461c4000,
+	0xc61c4000,
+	0x461c4000,
+	0xc61c4000,
+	0x3fb50481,
+	0x7f0accc0,
+	0x7f0accc0,
+	0x7f0acccc,
+	0x7f0acccc,
+	0x7f0acccc,
+	0x7f0acca0,
+	0x7f0accc0,
+	0x7f0acccc,
+	0x7f0acccc,
+	0x7f0acccc,
+	0x7f0acccc,
+	0x7f0acccc,
+	0x7f0acccc,
+	0x7f0acccc,
+	0x7f0accc0,
+	0x7f0acccc,
+	0x7f0accc0,
+	0x7f0acccc,
+	0x7f0acccc,
+	0x7f0acccc,
+	0x7f0acccc,
+	0x7f0acccc,
+	0x7f0accb0,
+	0x3dcccccd,
+	0xc6ea6000,
+	0x46ea6000,
+	0x3f666666,
+	0x3f666666,
+	0x3f666666,
+	0x3f666666,
+	0x3f666666,
+	0x3f666666,
+	0x3fb50481,
+	0x3f666666,
+	0x3f088888,
+	0x40c907a9,
+	0x3ec907a9,
+	0x40c907a9,
+	0x3ec907a9,
+	0x40c907a9,
+	0x3ec907a9,
+	0x493ebc20,
+	0x3e8e38e4,
+	0x3ed55555,
+	0x40555555,
+	0x3fb55555,
+	0x3fd55555,
+	0x40c907a9,
+	0x3dc907a9,
+	0x40c907a9,
+	0x3dc907a9,
+	0x40c907a9,
+	0x3dc907a9,
+	0x40c907a9,
+	0x3dc907a9,
+	0x40c907a9,
+	0x3dc907a9,
+	0x40c907a9,
+	0x3dc907a9,
+	0x493ebc20,
+	0x3e8e38e4,
+	0x3dccccce,
+	0xc6ea6000,
+	0x46ea6000,
+	0x3e4ccccd,
+	0xb58637bd,
+	0x33d6bf95,
+	0x3dcccccd,
+	0xb58637bd,
+	0x33d6bf95,
+	0xb58637bd,
+	0x33d6bf95,
+	0x3e4ccccd,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001acda0[] = "%s: %d\n";
+const char var001acda8[] = "%s %d %s\n";
+const char var001acdb4[] = "%s: %d\n";
+const char var001acdbc[] = "%s %s";
+const char var001acdc4[] = "%s %s";
+
+const u32 var001acdcc[] = {
+	0x00000000,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x7f0b1fe0,
+	0x7f0b1fe0,
+	0x7f0b1fe0,
+	0x7f0b1fe0,
+	0x7f0b1fe8,
+	0x7f0b1fe8,
+	0x7f0b1ff0,
+	0x7f0b1ff8,
+	0x7f0b1fe0,
+	0x7f0b1fe0,
+	0x7f0b1fe0,
+	0x7f0b1fe0,
+	0x7f0b1ff8,
+	0x7f0b1fe0,
+	0x7f0b1fe8,
+	0x7f0b1fe8,
+	0x7f0b1fe8,
+	0x7f0b1fe8,
+	0x7f0b1fe8,
+	0x7f0b1fe0,
+	0x7f0b1ff0,
+	0x7f0b1fe8,
+	0x7f0b1ff8,
+	0x7f0b1fe0,
+	0x7f0b1fe0,
+	0x7f0b1fe0,
+	0x7f0b1fe0,
+	0x7f0b1fe0,
+	0x7f0b1fe0,
+	0x7f0b1fe0,
+	0x7f0b1fe0,
+	0x7f0b1fe0,
+	0x7f0b1fe0,
+	0x7f0b1fe0,
+	0x7f0b1fe0,
+	0x7f0b2008,
+	0x7f0b2000,
+	0x7f0b2000,
+	0x7f0b2000,
+	0x7f0b2000,
+	0x7f0b2000,
+	0x7f0b2000,
+	0x7f0b2000,
+	0x7f0b2000,
+	0x7f0b2008,
+	0x7f0b2008,
+	0x7f0b2008,
+	0x7f0b2008,
+	0x7f0b2008,
+	0x7f0b2008,
+	0x7f0b1fd8,
+	0x7f0b2008,
+	0x7f0b2008,
+	0x7f0b1fe0,
+};
+
+const char var001aceb0[] = "MOT : Type 1  = %d/%d (%d)";
+const char var001acecc[] = "MOT : Type 2  = %d/%d (%d)";
+const char var001acee8[] = "MOT : Type 3  = %d/%d (%d)";
+const char var001acf04[] = "MOT : Type OI = %d/%d/%d/%d";
+const char var001acf20[] = "MOT : Type OA = %d/%d/%d/%d";
+const char var001acf3c[] = "MOT : g_ObjCount = %d";
+const char var001acf54[] = "MOT : g_AnimCount = %d";
+const char var001acf6c[] = "Allocating %d bytes for objinst structure\n";
+const char var001acf98[] = "MotInst: Using cache entry type 1 %d (0x%08x) - Bytes=%d\n";
+const char var001acfd4[] = "MotInst: Using cache entry type 2 %d (0x%08x) - Bytes=%d\n";
+const char var001ad010[] = "MotInst: Using cache entry type 3 %d (0x%08x) - Bytes=%d\n";
+const char var001ad04c[] = "***************************************\n";
+const char var001ad078[] = "***************************************\n";
+const char var001ad0a4[] = "\nMotInst: Freeing type 2 cache entry %d (0x%08x)\n\n";
+const char var001ad0d8[] = "\nMotInst: Freeing type 3 cache entry %d (0x%08x)\n\n";
+const char var001ad10c[] = "MotInst -> Attempt to free item not in cache\n";
+
+const u32 var001ad13c[] = {
+	0x00000000,
+	0x42e52ee0,
+	0x3c0efa35,
+	0x3f060a92,
+	0x3f060a92,
+	0xe0ad78ec,
+	0x3c0efa35,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001ad160[] = "ACOUSTIC -> Allocating %d bytes for %d portal AV structures\n";
+const char var001ad1a0[] = "ACOUSTIC -> DGD WARNING: portalAVInit no portals!\n";
+const char var001ad1d4[] = "ACOUSTIC -> portalAVReset: checking propobj type %d\n";
+const char var001ad20c[] = "ACOUSTIC -> portalAVReset: found PROPDEF_WINDOWFADE for portal %d\n";
+const char var001ad250[] = "ACOUSTIC -> portalAVReset: found PROPDEF_WINDOW for portal %d\n";
+const char var001ad290[] = "ACOUSTIC -> Portal %3d - A=%.2f, V=%.2f\n";
+const char var001ad2bc[] = "ACOUSTIC -> DGD WARNING: portalAVReset no portals!\n";
+const char var001ad2f0[] = "Acoustic Reset -> Allocating %d bytes for %d roomacousticdata structures\n";
+const char var001ad33c[] = "ACOUSTIC ->    room %d bb %f %f\n";
+const char var001ad360[] = "ACOUSTIC -> DGD: acousticReset room %d does not have a 3D bounding box => radata[room].roomvolume is bodged!\n";
+const char var001ad3d0[] = "%s%sL2 -> Surface area bodged for room %d - using %f\n";
+
+const u32 var001ad408[] = {
+	0x00000000,
+	0x00000000,
+	0x3b808081,
+	0x3d888889,
+	0x4b989680,
+	0x00000000,
+};
+
+const char var001ad420[] = "Gunmem: 0x%08x\n";
+const char var001ad430[] = "Gunmem: bondsub 0x%08x\n";
+const char var001ad448[] = "Gunmem: bondsub->anim 0x%08x\n";
+const char var001ad468[] = "Gunmem: savedata 0x%08x\n";
+const char var001ad484[] = "Gunmem: wo 0x%08x\n";
+const char var001ad498[] = "Jo using %d bytes gunmem (gunmemsize %d)\n";
+const char var001ad4c4[] = "Gunmem: bondmeml 0x%08x size 0x%08x\n";
+const char var001ad4ec[] = "Gunmem: tex block free 0x%08x\n";
+const char var001ad50c[] = "Gunmem: Free at end %d\n";
+
+const u32 var001ad524[] = {
+	0x74707300,
+	0x49742400,
+	0x49742400,
+	0x471c4000,
+	0x40c907a9,
+	0x40c907a9,
+	0x7f0b7650,
+	0x7f0b7668,
+	0x7f0b76a0,
+	0x7f0b76c0,
+	0x7f0b76c8,
+	0x7f0b76d0,
+	0x7f0b76d8,
+	0x7f0b76e0,
+	0x7f0b76e0,
+	0x7f0b7658,
+	0x7f0b7658,
+	0x7f0b7660,
+	0x3c23d70a,
+	0x3f7a9fbe,
+	0x49742400,
+	0x7f0b8978,
+	0x7f0b899c,
+	0x7f0b89c0,
+	0x7f0b89e4,
+	0x7f0b8a08,
+	0x7f0b8a2c,
+	0x7f0b8a50,
+	0x7f0b8a74,
+	0x7f0b8a98,
+	0x7f0b8abc,
+	0x7f0b8ae0,
+	0x7f0b8b04,
+	0x7f0b8b4c,
+	0x7f0b8b70,
+	0x7f0b8b28,
+	0x40c907a9,
+	0x3c75c28f,
+	0x43338000,
+	0x3dcccccd,
+	0x40490fdb,
+	0x3da3d70a,
+	0x40c907a9,
+	0x40c907a9,
+	0x42653838,
+	0x3c8ef461,
+	0x3fc907a9,
+	0x40490fdb,
+	0x3db33333,
+	0x3e99999a,
+	0x3d088889,
+	0x3e4ccccd,
+	0x3d4ccccd,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x3f8e38e4,
+	0x7f0bade0,
+	0x7f0bae00,
+	0x7f0bae04,
+	0x7f0bae04,
+	0x7f0badf0,
+	0x7f0bae04,
+	0x7f0bae04,
+	0x7f0bae04,
+	0x7f0bae04,
+	0x7f0bae00,
+	0x7f0bae04,
+	0x7f0bade0,
+	0x7f0bb6d4,
+	0x7f0bb740,
+	0x7f0bb740,
+	0x7f0bb6fc,
+	0x7f0bb6fc,
+	0x7f0bb71c,
+	0x7f0bb760,
+	0x7f0bb804,
+	0x7f0bb804,
+	0x7f0bb778,
+	0x7f0bb778,
+	0x7f0bb7b4,
+	0x7f0bbaf0,
+	0x7f0bbb64,
+	0x7f0bbbf4,
+	0x7f0bbd50,
+	0x7f0bbe54,
+	0x40490fdb,
+	0x40490fdb,
+	0x3faaaaab,
+	0x3983126f,
+	0x3d4ccccd,
+	0x3d4ccccd,
+	0x3c8ef461,
+	0x40c907a9,
+	0x40490fdb,
+	0xc0490fdb,
+	0xbdb851ec,
+	0x3db851ec,
+	0xbe4ccccd,
+	0x3e4ccccd,
+	0x40c907a9,
+	0x40490fdb,
+	0x40c907a9,
+	0x40490fdb,
+	0x3c888889,
+	0x3f4ccccd,
+	0x40c907a9,
+	0x3b03126f,
+	0x3e4ccccd,
+	0x3c888889,
+	0x3b03126f,
+	0x3e4ccccd,
+	0x3c888889,
+	0x3c088889,
+	0x3c088889,
+	0x3c888889,
+	0x3f733333,
+	0x3df5c28f,
+	0x3df5c28f,
+	0x40490fdb,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x3c8ef461,
+	0x411ffffe,
+	0x3d4ccccd,
+	0x404907a9,
+	0x40c907a9,
+	0x3f99999a,
+	0x4036db6e,
+	0x3f99999a,
+	0x3ecccccd,
+	0x404907a9,
+	0x3f99999a,
+	0x3f99999a,
+	0xbfd11234,
+	0x3fd11234,
+	0x3dd66e92,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001ad750[] = "bondwalk.c";
+const char var001ad75c[] = "bondwalk.c";
+const char var001ad768[] = "bondwalk.c";
+const char var001ad774[] = "bondwalk.c";
+
+const u32 var001ad780[] = {
+	0xb8d1b717,
+	0x3dcccccd,
+	0x40c907a9,
+	0x3f99999a,
+	0x3f8ccccd,
+	0xc6ea6000,
+	0xc6ea6000,
+	0x3d3a5e30,
+	0x3d3a5e30,
+	0x3f745a1d,
+	0x3d3a5e30,
+	0x3fb1c71d,
+	0x3e8e38e4,
+	0x3e8e38e4,
+	0xc6ea6000,
+	0xc6ea6000,
+	0xc1555555,
+	0x41055555,
+	0x3f7212d7,
+	0x3d5ed290,
+	0x3bce168a,
+	0x3eb33333,
+	0x3bce168a,
+	0x3c8ef461,
+	0x3e4ccccd,
+	0x3e4ccccd,
+	0x3e4ccccd,
+	0x3c6a0ea1,
+	0x3e4ccccd,
+	0x3c6a0ea1,
+	0x3f8a3d71,
+	0xc27e6668,
+	0x43b0aaaa,
+	0x3ecccccd,
+	0x3c888889,
+	0x404907a9,
+	0x3eb33333,
+	0x3eb33333,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x3eb33333,
+	0x3f4ccccd,
+	0x3f4ccccd,
+	0x3f4ccccd,
+	0x4528c000,
+	0x3ecccccd,
+	0x3ecccccd,
+	0x3e99999a,
+	0x3f8ccccd,
+	0x3e99999a,
+	0x3e99999a,
+	0x3f333333,
+	0x3f99999a,
+	0x3c8ef461,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001ad860[] = "bondmove.c";
+
+const u32 var001ad86c[] = {
+	0xbf333333,
+	0x3f333333,
+	0x3d4ccccd,
+	0x3c4ccccd,
+	0x3d4ccccd,
+	0x3c4ccccd,
+	0x3d4ccccd,
+	0x3d4ccccd,
+	0xbf333333,
+	0x3f333333,
+	0x3d4ccccd,
+	0x3c4ccccd,
+	0x3d4ccccd,
+	0x3c4ccccd,
+	0x3d4ccccd,
+	0x3d4ccccd,
+	0x3e4ccccd,
+	0x40c907a9,
+	0x3f5dddde,
+	0x3c23d70a,
+	0x3c23d70a,
+	0x3d4ccccd,
+	0x3f76872b,
+	0x39a7c599,
+	0x3f6a3d71,
+	0x3f7a9fbe,
+	0x39a7c599,
+	0x3f76872b,
+	0x3e99999a,
+	0x3dcccccd,
+	0x3f266666,
+	0x38d1b717,
+	0x3d088889,
+	0x3a83126f,
+	0xba83126f,
+	0x3f666666,
+	0x3a83126f,
+	0xba83126f,
+	0x3f666666,
+	0x3c8ef461,
+	0x3c8ef461,
+	0x3c8ef461,
+	0x3c8ef461,
+	0x3c8ef461,
+	0x3f19999a,
+	0x3ecccccd,
+	0x3f19999a,
+	0x3ecccccd,
+	0x3ecccccd,
+	0x3ecccccd,
+	0x3c8ef461,
+	0x3c8ef461,
+	0x00000000,
+};
+
+const char var001ad940[] = "bondgrab.c";
+const char var001ad94c[] = "bondgrab.c";
+const char var001ad958[] = "bondgrab.c";
+const char var001ad964[] = "bondgrab.c";
+
+const u32 var001ad970[] = {
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x3e4ccccd,
+	0x40c907a9,
+	0x40c907a9,
+	0xc0490fdb,
+	0x40490fdb,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x3c8ef461,
+	0x3f7cbfb1,
+	0x3c5013c0,
+	0x40490fdb,
+	0x40c907a9,
+	0xc0490fdb,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x3f8147ae,
+	0x3c8ef461,
+	0xc6ea6000,
+	0x3d3a5e30,
+	0x3d3a5e30,
+	0x3f745a1d,
+	0x3d3a5e30,
+	0x3d888889,
+	0x3d888889,
+	0x3d888889,
+	0x3c6a0ea1,
+	0x3d888889,
+	0x3d888889,
+	0x3d888889,
+	0x3d888889,
+	0x3c6a0ea1,
+	0x3d888889,
+	0x3f8a3d71,
+	0x3f7c154d,
+	0x3c7aacc0,
+	0x3f4ccccd,
+	0x4528c000,
+	0x3ecccccd,
+	0x3f333333,
+	0x3f99999a,
+	0x3c8ef461,
+	0xc6ea6000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001ada40[] = "bondeyespy.c";
+const char var001ada50[] = "bondeyespy.c";
+const char var001ada60[] = "bondeyespy.c";
+const char var001ada70[] = "g";
+const char var001ada74[] = "l";
+const char var001ada78[] = "%s%s";
+
+const u32 var001ada80[] = {
+	0xc6ea6000,
+	0x3dcccccd,
+	0x3f847ae1,
+	0x47ae147b,
+	0x3c23d70a,
+	0x411ffffe,
+	0x3c8efa35,
+	0x3c8efa35,
+	0x3f75c28f,
+	0x3e99999a,
+	0x3c4ccccd,
+	0x3c4ccccd,
+	0x3f75c28f,
+	0x3c8efa35,
+	0x3c8efa35,
+	0x3c8efa35,
+	0x3c8efa35,
+	0x3d23d70a,
+	0x3d23d70a,
+	0x3c8efa35,
+	0x3c8efa35,
+	0x3e19999a,
+	0x3e19999a,
+	0x42b48000,
+	0x3dcccccd,
+	0x3ccccccd,
+	0x7f0d1aac,
+	0x7f0d1ba8,
+	0x7f0d1b54,
+	0x7f0d1bfc,
+	0x7f0d1b00,
+	0x40c907a9,
+	0x461c4000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001adb10[] = "bondbike.c";
+const char var001adb1c[] = "bondbike.c";
+const char var001adb28[] = "bondbike.c";
+
+const u32 var001adb34[] = {
+	0x40c907a9,
+	0x3fc907a9,
+	0x4096c5bf,
+	0x3f4907a9,
+	0x40afe6b4,
+	0x4016c5bf,
+	0x407b4993,
+	0x404907a9,
+	0x3dcccccd,
+	0xbdcccccd,
+	0xbdcccccd,
+	0x3dcccccd,
+	0x40490fdb,
+	0x3f4ccccd,
+	0x40c907a9,
+	0x40c907a9,
+	0x3f4ccccd,
+	0x3dcccccd,
+	0x40c907a9,
+	0x40c907a9,
+	0xc6ea6000,
+	0x4528c000,
+	0x3b23d70a,
+	0x3c8ef461,
+	0x40c907a9,
+	0x3f333333,
+	0x3c8ef461,
+	0x74786d75,
+	0x6c000000,
+};
+
+const char var001adba8[] = "depthsub";
+const char var001adbb4[] = "rsub";
+const char var001adbbc[] = ":%02d";
+const char var001adbc4[] = "%d";
+
+const u32 var001adbc8[] = {
+	0xc31fc000,
+	0x42f08000,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x461c4000,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001adbf0[] = "radmax";
+const char var001adbf8[] = "radmed";
+const char var001adc00[] = "radmin";
+const char var001adc08[] = "len1";
+const char var001adc10[] = "len2";
+const char var001adc18[] = "len3";
+const char var001adc20[] = "offx";
+const char var001adc28[] = "offy";
+const char var001adc30[] = "shieldcol";
+const char var001adc3c[] = "armourcol";
+const char var001adc48[] = "traumacol";
+const char var001adc54[] = "bgcol";
+const char var001adc5c[] = "shieldfade";
+const char var001adc68[] = "armourfade";
+const char var001adc74[] = "traumafade";
+const char var001adc80[] = "shielddir";
+const char var001adc8c[] = "underleft";
+const char var001adc98[] = "undertop";
+const char var001adca4[] = "underright";
+const char var001adcb0[] = "underbottom";
+const char var001adcbc[] = "undercol";
+
+const u32 var001adcc8[] = {
+	0x3f8a3d71,
+	0x3f6c8b44,
+	0x3f851eb8,
+	0x3ec41893,
+	0x3f6c8b44,
+	0x3ec41893,
+	0x3d4ccccd,
+	0x3f34fdf4,
+	0x3f828f5c,
+	0x3f34fdf4,
+	0x3f34fdf4,
+	0x3f34fdf4,
+	0x3dcccccd,
+	0x3ec41893,
+	0x3f6c8b44,
+	0x3ec41893,
+	0x3f6c8b44,
+	0x3e19999a,
+	0x3e4ccccd,
+	0x3f4ccccd,
+	0x3f59999a,
+	0x3f666666,
+	0x3f733333,
+	0x3f666666,
+	0x3eaf1aa0,
+	0x3f70a3d7,
+	0x3f70a3d7,
+	0x3f70a3d7,
+	0x3f249ba6,
+	0x3f441893,
+	0x3f441893,
+	0x3f7851ec,
+	0x3f5db22d,
+	0x3f7d70a4,
+	0x3f7c28f6,
+	0x3e322d0e,
+	0x3e322d0e,
+	0x3f4ccccd,
+	0x3ec41893,
+	0x3f6c8b44,
+	0x3f6c8b44,
+	0x3f59999a,
+	0x3f34fdf4,
+	0x3f34fdf4,
+	0x3f34fdf4,
+	0x3f666666,
+	0x3f6c8b44,
+	0x3ec41893,
+	0x3ec41893,
+	0x3f733333,
+	0x3a83126f,
+	0x3a83126f,
+	0x3a83126f,
+	0x00000000,
+};
+
+const char var001adda0[] = "sight";
+const char var001adda8[] = "sout";
+const char var001addb0[] = "sin";
+
+const u32 var001addb4[] = {
+	0x7f0d7514,
+	0x7f0d7514,
+	0x7f0d7514,
+	0x7f0d7514,
+	0x7f0d7514,
+	0x7f0d7880,
+	0x7f0d75e8,
+	0x7f0d75e8,
+	0x7f0d76ac,
+	0x7f0d7798,
+	0x7f0d7880,
+	0x3d4ccccd,
+	0xbd4ccccd,
+	0xbd4ccccd,
+	0x7f0d9034,
+	0x7f0d906c,
+	0x7f0d913c,
+	0x7f0d9288,
+	0x7f0d9350,
+	0x7f0d9350,
+	0x7f0d9450,
+	0x7f0d9460,
+	0x7f0d9460,
+	0x7f0d9460,
+	0x7f0d9460,
+	0x7f0d9460,
+	0x7f0d9460,
+	0x7f0d9460,
+	0x7f0d9460,
+	0x7f0d9460,
+	0x7f0d9460,
+	0x7f0d9460,
+	0x7f0d9460,
+	0x7f0d9460,
+	0x7f0d9460,
+	0x7f0d9400,
+	0x7f0d941c,
+	0x7f0d9438,
+	0x7f0d9440,
+	0x7f0d9448,
+	0x3e4ccccd,
+	0x7f0dcb84,
+	0x7f0dcbb8,
+	0x7f0dcbec,
+	0x7f0dcc20,
+	0x7f0dcc54,
+	0x7f0dcc88,
+	0x7f0dccbc,
+	0x7f0dcd14,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001ade80[] = "%s%s%4.2fX";
+const char var001ade8c[] = "";
+const char var001ade90[] = "";
+const char var001ade94[] = "/";
+const char var001ade98[] = "%s%s%4.2fX";
+
+const u32 var001adea4[] = {
+	0x00000000,
+	0x00000000,
+	0x40490fdb,
+	0x7f0dec8c,
+	0x7f0dec94,
+	0x7f0deca8,
+	0x7f0dee44,
+	0x7f0dee74,
+	0x7f0df9e4,
+	0x7f0df548,
+	0x7f0df700,
+	0x7f0df740,
+	0x7f0df8c8,
+	0x7f0df968,
+	0x40490fdb,
+	0x7f0e0504,
+	0x7f0e0504,
+	0x7f0e0504,
+	0x7f0dfebc,
+	0x7f0e0114,
+	0x7f0e0298,
+	0x00000000,
+	0x00000000,
+	0x63636363,
+	0x00000000,
+	0x40c907a9,
+	0x3e4ccccd,
+	0x3f666666,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x40c90fdb,
+	0x40490fdb,
+	0x3f060a92,
+	0x3f060a92,
+	0x3e32b8c3,
+	0x3dcc40de,
+	0x40490fdb,
+	0x3e32b8c3,
+	0x3dcc40de,
+	0x40c90fdb,
+	0x3f490fdb,
+	0x40490fdb,
+	0x40c90fdb,
+	0x40c90fdb,
+	0x40490fdb,
+	0x3f060a92,
+	0x3f060a92,
+	0x3e32b8c3,
+	0x3dcc40de,
+	0x40490fdb,
+	0x3e32b8c3,
+	0x3dcc40de,
+	0x459c4000,
+	0x461c4000,
+	0x461c4000,
+	0x459c4000,
+	0x40c907a9,
+	0xc5ce4000,
+	0x40c907a9,
+	0x45ce4000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001adfa0[] = "brcol";
+const char var001adfa8[] = "%d: ";
+const char var001adfb0[] = "%s";
+const char var001adfb4[] = "";
+const char var001adfb8[] = "";
+const char var001adfbc[] = "";
+const char var001adfc0[] = "%d\n";
+const char var001adfc4[] = "";
+const char var001adfc8[] = "";
+const char var001adfcc[] = "";
+const char var001adfd0[] = "";
+const char var001adfd4[] = "";
+const char var001adfd8[] = "";
+const char var001adfdc[] = "";
+const char var001adfe0[] = "";
+const char var001adfe4[] = "";
+const char var001adfe8[] = "";
+const char var001adfec[] = "";
+const char var001adff0[] = "";
+const char var001adff4[] = "";
+const char var001adff8[] = "";
+const char var001adffc[] = "";
+const char var001ae000[] = "";
+const char var001ae004[] = "";
+const char var001ae008[] = "";
+const char var001ae00c[] = "";
+const char var001ae010[] = "";
+const char var001ae014[] = "";
+const char var001ae018[] = "";
+const char var001ae01c[] = "";
+const char var001ae020[] = "";
+const char var001ae024[] = "";
+const char var001ae028[] = "";
+const char var001ae02c[] = "";
+const char var001ae030[] = "";
+const char var001ae034[] = "";
+const char var001ae038[] = "";
+const char var001ae03c[] = "";
+const char var001ae040[] = "";
+const char var001ae044[] = "";
+const char var001ae048[] = "";
+const char var001ae04c[] = "";
+const char var001ae050[] = "";
+const char var001ae054[] = "";
+const char var001ae058[] = "";
+const char var001ae05c[] = "";
+const char var001ae060[] = "";
+const char var001ae064[] = "";
+const char var001ae068[] = "";
+const char var001ae06c[] = "";
+const char var001ae070[] = "";
+const char var001ae074[] = "";
+const char var001ae078[] = "";
+const char var001ae07c[] = "";
+const char var001ae080[] = "";
+const char var001ae084[] = "";
+const char var001ae088[] = "";
+const char var001ae08c[] = "";
+const char var001ae090[] = "";
+const char var001ae094[] = "";
+const char var001ae098[] = "";
+const char var001ae09c[] = "";
+const char var001ae0a0[] = "";
+const char var001ae0a4[] = "";
+const char var001ae0a8[] = "";
+const char var001ae0ac[] = "";
+const char var001ae0b0[] = "";
+const char var001ae0b4[] = "";
+const char var001ae0b8[] = "";
+const char var001ae0bc[] = "";
+const char var001ae0c0[] = "";
+const char var001ae0c4[] = "";
+const char var001ae0c8[] = "";
+const char var001ae0cc[] = "";
+const char var001ae0d0[] = "";
+const char var001ae0d4[] = "";
+const char var001ae0d8[] = "";
+const char var001ae0dc[] = "";
+const char var001ae0e0[] = "";
+const char var001ae0e4[] = "";
+const char var001ae0e8[] = "";
+const char var001ae0ec[] = "";
+const char var001ae0f0[] = "";
+const char var001ae0f4[] = "";
+const char var001ae0f8[] = "";
+const char var001ae0fc[] = "";
+const char var001ae100[] = "";
+const char var001ae104[] = "";
+const char var001ae108[] = "";
+const char var001ae10c[] = "";
+const char var001ae110[] = "";
+const char var001ae114[] = "";
+const char var001ae118[] = "";
+const char var001ae11c[] = "";
+const char var001ae120[] = "";
+const char var001ae124[] = "";
+const char var001ae128[] = "";
+const char var001ae12c[] = "";
+const char var001ae130[] = "";
+const char var001ae134[] = "";
+const char var001ae138[] = "";
+const char var001ae13c[] = "";
+const char var001ae140[] = "";
+const char var001ae144[] = "";
+const char var001ae148[] = "";
+const char var001ae14c[] = "";
+const char var001ae150[] = "";
+const char var001ae154[] = "";
+const char var001ae158[] = "";
+const char var001ae15c[] = "";
+const char var001ae160[] = "";
+const char var001ae164[] = "";
+const char var001ae168[] = "";
+const char var001ae16c[] = "";
+const char var001ae170[] = "";
+const char var001ae174[] = "";
+const char var001ae178[] = "";
+const char var001ae17c[] = "";
+const char var001ae180[] = "";
+const char var001ae184[] = "";
+const char var001ae188[] = "";
+const char var001ae18c[] = "";
+const char var001ae190[] = "";
+const char var001ae194[] = "";
+const char var001ae198[] = "";
+const char var001ae19c[] = "";
+const char var001ae1a0[] = "";
+const char var001ae1a4[] = "";
+const char var001ae1a8[] = "";
+const char var001ae1ac[] = "";
+const char var001ae1b0[] = "";
+const char var001ae1b4[] = "";
+const char var001ae1b8[] = "";
+const char var001ae1bc[] = "";
+const char var001ae1c0[] = "";
+const char var001ae1c4[] = "";
+const char var001ae1c8[] = "";
+const char var001ae1cc[] = "";
+const char var001ae1d0[] = "";
+const char var001ae1d4[] = "";
+const char var001ae1d8[] = "";
+const char var001ae1dc[] = "";
+const char var001ae1e0[] = "";
+const char var001ae1e4[] = "";
+const char var001ae1e8[] = "";
+const char var001ae1ec[] = "";
+const char var001ae1f0[] = "";
+const char var001ae1f4[] = "";
+const char var001ae1f8[] = "";
+const char var001ae1fc[] = "";
+const char var001ae200[] = "";
+const char var001ae204[] = "";
+const char var001ae208[] = "";
+const char var001ae20c[] = "";
+const char var001ae210[] = "";
+const char var001ae214[] = "";
+const char var001ae218[] = "";
+const char var001ae21c[] = "";
+const char var001ae220[] = "";
+const char var001ae224[] = "";
+const char var001ae228[] = "";
+const char var001ae22c[] = "";
+const char var001ae230[] = "";
+const char var001ae234[] = "";
+const char var001ae238[] = "";
+const char var001ae23c[] = "";
+const char var001ae240[] = "";
+const char var001ae244[] = "";
+const char var001ae248[] = "";
+const char var001ae24c[] = "";
+const char var001ae250[] = "";
+const char var001ae254[] = "";
+const char var001ae258[] = "";
+const char var001ae25c[] = "";
+const char var001ae260[] = "";
+const char var001ae264[] = "";
+const char var001ae268[] = "";
+const char var001ae26c[] = "";
+const char var001ae270[] = "";
+const char var001ae274[] = "";
+const char var001ae278[] = "";
+const char var001ae27c[] = "";
+const char var001ae280[] = "";
+const char var001ae284[] = "";
+const char var001ae288[] = "";
+const char var001ae28c[] = "";
+const char var001ae290[] = "";
+const char var001ae294[] = "";
+const char var001ae298[] = "";
+const char var001ae29c[] = "";
+const char var001ae2a0[] = "";
+const char var001ae2a4[] = "";
+const char var001ae2a8[] = "";
+const char var001ae2ac[] = "";
+const char var001ae2b0[] = "";
+const char var001ae2b4[] = "";
+const char var001ae2b8[] = "";
+const char var001ae2bc[] = "";
+const char var001ae2c0[] = "";
+const char var001ae2c4[] = "";
+const char var001ae2c8[] = "";
+const char var001ae2cc[] = "";
+const char var001ae2d0[] = "";
+const char var001ae2d4[] = "";
+const char var001ae2d8[] = "";
+const char var001ae2dc[] = "";
+const char var001ae2e0[] = "";
+const char var001ae2e4[] = "";
+const char var001ae2e8[] = "";
+const char var001ae2ec[] = "";
+const char var001ae2f0[] = "";
+const char var001ae2f4[] = "";
+const char var001ae2f8[] = "";
+const char var001ae2fc[] = "";
+const char var001ae300[] = "";
+const char var001ae304[] = "";
+const char var001ae308[] = "";
+const char var001ae30c[] = "";
+const char var001ae310[] = "";
+const char var001ae314[] = "";
+const char var001ae318[] = "";
+const char var001ae31c[] = "";
+const char var001ae320[] = "";
+const char var001ae324[] = "";
+const char var001ae328[] = "";
+const char var001ae32c[] = "";
+const char var001ae330[] = "";
+const char var001ae334[] = "";
+const char var001ae338[] = "";
+const char var001ae33c[] = "";
+const char var001ae340[] = "";
+const char var001ae344[] = "";
+const char var001ae348[] = "";
+const char var001ae34c[] = "";
+const char var001ae350[] = "";
+const char var001ae354[] = "";
+const char var001ae358[] = "";
+const char var001ae35c[] = "";
+const char var001ae360[] = "";
+const char var001ae364[] = "";
+const char var001ae368[] = "";
+const char var001ae36c[] = "";
+const char var001ae370[] = "";
+const char var001ae374[] = "";
+const char var001ae378[] = "";
+const char var001ae37c[] = "";
+const char var001ae380[] = "";
+const char var001ae384[] = "";
+const char var001ae388[] = "";
+const char var001ae38c[] = "";
+const char var001ae390[] = "";
+const char var001ae394[] = "";
+const char var001ae398[] = "";
+const char var001ae39c[] = "";
+const char var001ae3a0[] = "";
+const char var001ae3a4[] = "";
+const char var001ae3a8[] = "";
+const char var001ae3ac[] = "";
+const char var001ae3b0[] = "";
+const char var001ae3b4[] = "";
+const char var001ae3b8[] = "";
+const char var001ae3bc[] = "";
+const char var001ae3c0[] = "";
+const char var001ae3c4[] = "";
+const char var001ae3c8[] = "";
+const char var001ae3cc[] = "";
+const char var001ae3d0[] = "";
+const char var001ae3d4[] = "";
+const char var001ae3d8[] = "";
+const char var001ae3dc[] = "";
+const char var001ae3e0[] = "";
+const char var001ae3e4[] = "";
+const char var001ae3e8[] = "";
+const char var001ae3ec[] = "";
+const char var001ae3f0[] = "";
+const char var001ae3f4[] = "";
+const char var001ae3f8[] = "";
+const char var001ae3fc[] = "";
+const char var001ae400[] = "";
+const char var001ae404[] = "";
+const char var001ae408[] = "";
+const char var001ae40c[] = "";
+const char var001ae410[] = "";
+const char var001ae414[] = "";
+const char var001ae418[] = "";
+const char var001ae41c[] = "";
+const char var001ae420[] = "";
+const char var001ae424[] = "";
+const char var001ae428[] = "";
+const char var001ae42c[] = "";
+const char var001ae430[] = "";
+const char var001ae434[] = "";
+const char var001ae438[] = "";
+const char var001ae43c[] = "";
+const char var001ae440[] = "";
+const char var001ae444[] = "";
+const char var001ae448[] = "";
+const char var001ae44c[] = "";
+const char var001ae450[] = "";
+const char var001ae454[] = "";
+const char var001ae458[] = "";
+const char var001ae45c[] = "";
+const char var001ae460[] = "";
+const char var001ae464[] = "";
+const char var001ae468[] = "";
+const char var001ae46c[] = "";
+const char var001ae470[] = "";
+const char var001ae474[] = "";
+const char var001ae478[] = "";
+const char var001ae47c[] = "";
+const char var001ae480[] = "";
+const char var001ae484[] = "";
+const char var001ae488[] = "";
+const char var001ae48c[] = "";
+const char var001ae490[] = "";
+const char var001ae494[] = "";
+const char var001ae498[] = "";
+const char var001ae49c[] = "";
+const char var001ae4a0[] = "";
+const char var001ae4a4[] = "";
+const char var001ae4a8[] = "";
+const char var001ae4ac[] = "";
+const char var001ae4b0[] = "";
+const char var001ae4b4[] = "";
+const char var001ae4b8[] = "";
+const char var001ae4bc[] = "";
+const char var001ae4c0[] = "";
+const char var001ae4c4[] = "";
+const char var001ae4c8[] = "";
+const char var001ae4cc[] = "";
+const char var001ae4d0[] = "";
+const char var001ae4d4[] = "";
+const char var001ae4d8[] = "";
+const char var001ae4dc[] = "";
+const char var001ae4e0[] = "";
+const char var001ae4e4[] = "";
+const char var001ae4e8[] = "";
+const char var001ae4ec[] = "";
+const char var001ae4f0[] = "";
+const char var001ae4f4[] = "";
+const char var001ae4f8[] = "";
+const char var001ae4fc[] = "";
+const char var001ae500[] = "";
+const char var001ae504[] = "";
+const char var001ae508[] = "";
+const char var001ae50c[] = "";
+const char var001ae510[] = "";
+const char var001ae514[] = "";
+const char var001ae518[] = "";
+const char var001ae51c[] = "";
+const char var001ae520[] = "";
+const char var001ae524[] = "";
+const char var001ae528[] = "";
+const char var001ae52c[] = "";
+const char var001ae530[] = "";
+const char var001ae534[] = "";
+const char var001ae538[] = "";
+const char var001ae53c[] = "";
+const char var001ae540[] = "";
+const char var001ae544[] = "";
+const char var001ae548[] = "";
+const char var001ae54c[] = "";
+const char var001ae550[] = "";
+const char var001ae554[] = "";
+const char var001ae558[] = "";
+const char var001ae55c[] = "";
+const char var001ae560[] = "";
+const char var001ae564[] = "";
+const char var001ae568[] = "";
+const char var001ae56c[] = "";
+const char var001ae570[] = "";
+const char var001ae574[] = "";
+const char var001ae578[] = "";
+const char var001ae57c[] = "";
+const char var001ae580[] = "";
+const char var001ae584[] = "";
+const char var001ae588[] = "";
+const char var001ae58c[] = "";
+const char var001ae590[] = "";
+const char var001ae594[] = "";
+const char var001ae598[] = "";
+const char var001ae59c[] = "";
+const char var001ae5a0[] = "";
+const char var001ae5a4[] = "";
+const char var001ae5a8[] = "";
+const char var001ae5ac[] = "";
+const char var001ae5b0[] = "";
+const char var001ae5b4[] = "";
+const char var001ae5b8[] = "";
+const char var001ae5bc[] = "";
+const char var001ae5c0[] = "";
+const char var001ae5c4[] = "";
+const char var001ae5c8[] = "";
+const char var001ae5cc[] = "";
+const char var001ae5d0[] = "";
+const char var001ae5d4[] = "";
+const char var001ae5d8[] = "";
+const char var001ae5dc[] = "";
+const char var001ae5e0[] = "";
+const char var001ae5e4[] = "";
+const char var001ae5e8[] = "";
+const char var001ae5ec[] = "";
+const char var001ae5f0[] = "";
+const char var001ae5f4[] = "";
+const char var001ae5f8[] = "";
+const char var001ae5fc[] = "";
+const char var001ae600[] = "";
+const char var001ae604[] = "";
+const char var001ae608[] = "";
+const char var001ae60c[] = "";
+const char var001ae610[] = "";
+const char var001ae614[] = "";
+const char var001ae618[] = "";
+const char var001ae61c[] = "";
+const char var001ae620[] = "";
+const char var001ae624[] = "";
+const char var001ae628[] = "";
+const char var001ae62c[] = "";
+const char var001ae630[] = "";
+const char var001ae634[] = "";
+const char var001ae638[] = "";
+const char var001ae63c[] = "";
+const char var001ae640[] = "";
+const char var001ae644[] = "";
+const char var001ae648[] = "";
+const char var001ae64c[] = "";
+const char var001ae650[] = "";
+const char var001ae654[] = "";
+const char var001ae658[] = "";
+const char var001ae65c[] = "";
+const char var001ae660[] = "";
+const char var001ae664[] = "";
+const char var001ae668[] = "";
+const char var001ae66c[] = "";
+const char var001ae670[] = "";
+const char var001ae674[] = "";
+const char var001ae678[] = "";
+const char var001ae67c[] = "";
+const char var001ae680[] = "";
+const char var001ae684[] = "";
+const char var001ae688[] = "";
+const char var001ae68c[] = "";
+const char var001ae690[] = "";
+const char var001ae694[] = "";
+const char var001ae698[] = "";
+const char var001ae69c[] = "";
+const char var001ae6a0[] = "";
+const char var001ae6a4[] = "";
+const char var001ae6a8[] = "";
+const char var001ae6ac[] = "";
+const char var001ae6b0[] = "";
+const char var001ae6b4[] = "";
+const char var001ae6b8[] = "";
+const char var001ae6bc[] = "";
+const char var001ae6c0[] = "";
+const char var001ae6c4[] = "";
+const char var001ae6c8[] = "";
+const char var001ae6cc[] = "";
+const char var001ae6d0[] = "";
+const char var001ae6d4[] = "";
+const char var001ae6d8[] = "";
+const char var001ae6dc[] = "";
+const char var001ae6e0[] = "";
+const char var001ae6e4[] = "";
+const char var001ae6e8[] = "";
+const char var001ae6ec[] = "";
+const char var001ae6f0[] = "";
+const char var001ae6f4[] = "";
+const char var001ae6f8[] = "";
+const char var001ae6fc[] = "";
+const char var001ae700[] = "";
+const char var001ae704[] = "";
+const char var001ae708[] = "";
+const char var001ae70c[] = "";
+const char var001ae710[] = "";
+const char var001ae714[] = "";
+const char var001ae718[] = "";
+const char var001ae71c[] = "";
+const char var001ae720[] = "";
+const char var001ae724[] = "";
+const char var001ae728[] = "";
+const char var001ae72c[] = "";
+const char var001ae730[] = "";
+const char var001ae734[] = "";
+const char var001ae738[] = "";
+const char var001ae73c[] = "";
+const char var001ae740[] = "";
+const char var001ae744[] = "";
+const char var001ae748[] = "";
+const char var001ae74c[] = "";
+const char var001ae750[] = "";
+const char var001ae754[] = "";
+const char var001ae758[] = "";
+const char var001ae75c[] = "";
+const char var001ae760[] = "";
+const char var001ae764[] = "";
+const char var001ae768[] = "";
+const char var001ae76c[] = "";
+const char var001ae770[] = "";
+const char var001ae774[] = "";
+const char var001ae778[] = "";
+const char var001ae77c[] = "";
+const char var001ae780[] = "";
+const char var001ae784[] = "";
+const char var001ae788[] = "";
+const char var001ae78c[] = "";
+const char var001ae790[] = "";
+const char var001ae794[] = "";
+const char var001ae798[] = "";
+const char var001ae79c[] = "";
+const char var001ae7a0[] = "";
+const char var001ae7a4[] = "";
+const char var001ae7a8[] = "";
+const char var001ae7ac[] = "";
+const char var001ae7b0[] = "";
+const char var001ae7b4[] = "";
+const char var001ae7b8[] = "";
+const char var001ae7bc[] = "";
+const char var001ae7c0[] = "";
+const char var001ae7c4[] = "";
+const char var001ae7c8[] = "";
+const char var001ae7cc[] = "";
+const char var001ae7d0[] = "";
+const char var001ae7d4[] = "";
+const char var001ae7d8[] = "";
+const char var001ae7dc[] = "";
+const char var001ae7e0[] = "";
+const char var001ae7e4[] = "";
+const char var001ae7e8[] = "";
+const char var001ae7ec[] = "";
+const char var001ae7f0[] = "";
+const char var001ae7f4[] = "";
+const char var001ae7f8[] = "";
+const char var001ae7fc[] = "";
+const char var001ae800[] = "";
+const char var001ae804[] = "";
+const char var001ae808[] = "";
+const char var001ae80c[] = "";
+const char var001ae810[] = "";
+const char var001ae814[] = "";
+const char var001ae818[] = "";
+const char var001ae81c[] = "";
+const char var001ae820[] = "";
+const char var001ae824[] = "";
+const char var001ae828[] = "";
+const char var001ae82c[] = "";
+const char var001ae830[] = "";
+const char var001ae834[] = "";
+const char var001ae838[] = "";
+const char var001ae83c[] = "";
+const char var001ae840[] = "";
+const char var001ae844[] = "";
+const char var001ae848[] = "";
+const char var001ae84c[] = "";
+const char var001ae850[] = "";
+const char var001ae854[] = "";
+const char var001ae858[] = "";
+const char var001ae85c[] = "";
+const char var001ae860[] = "";
+const char var001ae864[] = "";
+const char var001ae868[] = "";
+const char var001ae86c[] = "";
+const char var001ae870[] = "";
+const char var001ae874[] = "";
+const char var001ae878[] = "";
+const char var001ae87c[] = "";
+const char var001ae880[] = "";
+const char var001ae884[] = "";
+const char var001ae888[] = "";
+const char var001ae88c[] = "";
+const char var001ae890[] = "";
+const char var001ae894[] = "";
+const char var001ae898[] = "";
+const char var001ae89c[] = "";
+const char var001ae8a0[] = "";
+const char var001ae8a4[] = "";
+const char var001ae8a8[] = "";
+const char var001ae8ac[] = "";
+const char var001ae8b0[] = "";
+const char var001ae8b4[] = "";
+const char var001ae8b8[] = "";
+const char var001ae8bc[] = "";
+const char var001ae8c0[] = "";
+const char var001ae8c4[] = "";
+const char var001ae8c8[] = "";
+const char var001ae8cc[] = "";
+const char var001ae8d0[] = "";
+const char var001ae8d4[] = "";
+const char var001ae8d8[] = "";
+const char var001ae8dc[] = "";
+const char var001ae8e0[] = "";
+const char var001ae8e4[] = "";
+const char var001ae8e8[] = "";
+const char var001ae8ec[] = "";
+const char var001ae8f0[] = "";
+const char var001ae8f4[] = "";
+const char var001ae8f8[] = "";
+const char var001ae8fc[] = "";
+const char var001ae900[] = "";
+const char var001ae904[] = "";
+const char var001ae908[] = "";
+const char var001ae90c[] = "";
+const char var001ae910[] = "";
+const char var001ae914[] = "";
+const char var001ae918[] = "";
+const char var001ae91c[] = "";
+const char var001ae920[] = "";
+const char var001ae924[] = "";
+const char var001ae928[] = "";
+const char var001ae92c[] = "";
+const char var001ae930[] = "";
+const char var001ae934[] = "";
+const char var001ae938[] = "";
+const char var001ae93c[] = "";
+const char var001ae940[] = "";
+const char var001ae944[] = "";
+const char var001ae948[] = "";
+const char var001ae94c[] = "";
+const char var001ae950[] = "";
+const char var001ae954[] = "";
+const char var001ae958[] = "";
+const char var001ae95c[] = "";
+const char var001ae960[] = "";
+const char var001ae964[] = "";
+const char var001ae968[] = "";
+const char var001ae96c[] = "";
+const char var001ae970[] = "";
+const char var001ae974[] = "";
+const char var001ae978[] = "";
+const char var001ae97c[] = "";
+const char var001ae980[] = "";
+const char var001ae984[] = "";
+const char var001ae988[] = "";
+const char var001ae98c[] = "";
+const char var001ae990[] = "";
+const char var001ae994[] = "";
+const char var001ae998[] = "";
+const char var001ae99c[] = "";
+const char var001ae9a0[] = "";
+const char var001ae9a4[] = "";
+const char var001ae9a8[] = "";
+const char var001ae9ac[] = "";
+const char var001ae9b0[] = "";
+const char var001ae9b4[] = "";
+const char var001ae9b8[] = "";
+const char var001ae9bc[] = "";
+const char var001ae9c0[] = "";
+const char var001ae9c4[] = "";
+const char var001ae9c8[] = "";
+const char var001ae9cc[] = "";
+const char var001ae9d0[] = "";
+const char var001ae9d4[] = "";
+const char var001ae9d8[] = "";
+const char var001ae9dc[] = "";
+const char var001ae9e0[] = "";
+const char var001ae9e4[] = "";
+const char var001ae9e8[] = "";
+const char var001ae9ec[] = "";
+const char var001ae9f0[] = "";
+const char var001ae9f4[] = "";
+const char var001ae9f8[] = "";
+const char var001ae9fc[] = "";
+const char var001aea00[] = "";
+const char var001aea04[] = "";
+const char var001aea08[] = "";
+const char var001aea0c[] = "";
+const char var001aea10[] = "";
+const char var001aea14[] = "";
+const char var001aea18[] = "";
+const char var001aea1c[] = "";
+const char var001aea20[] = "";
+const char var001aea24[] = "";
+const char var001aea28[] = "";
+const char var001aea2c[] = "";
+const char var001aea30[] = "";
+const char var001aea34[] = "";
+const char var001aea38[] = "";
+const char var001aea3c[] = "";
+const char var001aea40[] = "";
+const char var001aea44[] = "";
+const char var001aea48[] = "";
+const char var001aea4c[] = "";
+const char var001aea50[] = "";
+const char var001aea54[] = "";
+const char var001aea58[] = "";
+const char var001aea5c[] = "";
+const char var001aea60[] = "";
+const char var001aea64[] = "";
+const char var001aea68[] = "";
+const char var001aea6c[] = "";
+const char var001aea70[] = "";
+const char var001aea74[] = "";
+const char var001aea78[] = "";
+const char var001aea7c[] = "";
+const char var001aea80[] = "";
+const char var001aea84[] = "";
+const char var001aea88[] = "";
+const char var001aea8c[] = "";
+const char var001aea90[] = "";
+const char var001aea94[] = "";
+const char var001aea98[] = "";
+const char var001aea9c[] = "";
+const char var001aeaa0[] = "";
+const char var001aeaa4[] = "";
+const char var001aeaa8[] = "";
+const char var001aeaac[] = "";
+const char var001aeab0[] = "";
+const char var001aeab4[] = "";
+const char var001aeab8[] = "";
+const char var001aeabc[] = "";
+const char var001aeac0[] = "";
+const char var001aeac4[] = "";
+const char var001aeac8[] = "";
+const char var001aeacc[] = "";
+const char var001aead0[] = "";
+const char var001aead4[] = "";
+const char var001aead8[] = "";
+const char var001aeadc[] = "";
+const char var001aeae0[] = "";
+const char var001aeae4[] = "";
+const char var001aeae8[] = "";
+const char var001aeaec[] = "";
+const char var001aeaf0[] = "";
+const char var001aeaf4[] = "";
+const char var001aeaf8[] = "";
+const char var001aeafc[] = "";
+const char var001aeb00[] = "";
+const char var001aeb04[] = "";
+const char var001aeb08[] = "";
+const char var001aeb0c[] = "";
+const char var001aeb10[] = "";
+const char var001aeb14[] = "";
+const char var001aeb18[] = "";
+const char var001aeb1c[] = "";
+const char var001aeb20[] = "";
+const char var001aeb24[] = "";
+const char var001aeb28[] = "";
+const char var001aeb2c[] = "";
+const char var001aeb30[] = "";
+const char var001aeb34[] = "";
+const char var001aeb38[] = "";
+const char var001aeb3c[] = "";
+const char var001aeb40[] = "";
+const char var001aeb44[] = "";
+const char var001aeb48[] = "";
+const char var001aeb4c[] = "";
+const char var001aeb50[] = "";
+const char var001aeb54[] = "";
+const char var001aeb58[] = "";
+const char var001aeb5c[] = "";
+const char var001aeb60[] = "";
+const char var001aeb64[] = "";
+const char var001aeb68[] = "";
+const char var001aeb6c[] = "";
+const char var001aeb70[] = "";
+const char var001aeb74[] = "";
+const char var001aeb78[] = "";
+const char var001aeb7c[] = "";
+const char var001aeb80[] = "";
+const char var001aeb84[] = "";
+const char var001aeb88[] = "";
+const char var001aeb8c[] = "";
+const char var001aeb90[] = "";
+const char var001aeb94[] = "";
+const char var001aeb98[] = "";
+const char var001aeb9c[] = "";
+const char var001aeba0[] = "";
+const char var001aeba4[] = "";
+const char var001aeba8[] = "";
+const char var001aebac[] = "";
+const char var001aebb0[] = "";
+const char var001aebb4[] = "";
+const char var001aebb8[] = "";
+const char var001aebbc[] = "";
+const char var001aebc0[] = "";
+const char var001aebc4[] = "";
+const char var001aebc8[] = "";
+const char var001aebcc[] = "";
+const char var001aebd0[] = "";
+const char var001aebd4[] = "";
+const char var001aebd8[] = "";
+const char var001aebdc[] = "";
+const char var001aebe0[] = "";
+const char var001aebe4[] = "";
+const char var001aebe8[] = "";
+const char var001aebec[] = "";
+const char var001aebf0[] = "";
+const char var001aebf4[] = "";
+const char var001aebf8[] = "";
+const char var001aebfc[] = "";
+const char var001aec00[] = "";
+const char var001aec04[] = "";
+const char var001aec08[] = "";
+const char var001aec0c[] = "";
+const char var001aec10[] = "";
+const char var001aec14[] = "";
+const char var001aec18[] = "";
+const char var001aec1c[] = "";
+const char var001aec20[] = "";
+const char var001aec24[] = "";
+const char var001aec28[] = "";
+const char var001aec2c[] = "";
+const char var001aec30[] = "";
+const char var001aec34[] = "";
+const char var001aec38[] = "";
+const char var001aec3c[] = "";
+const char var001aec40[] = "";
+const char var001aec44[] = "";
+const char var001aec48[] = "";
+const char var001aec4c[] = "";
+const char var001aec50[] = "";
+const char var001aec54[] = "";
+const char var001aec58[] = "";
+const char var001aec5c[] = "";
+const char var001aec60[] = "";
+const char var001aec64[] = "";
+const char var001aec68[] = "";
+const char var001aec6c[] = "";
+const char var001aec70[] = "";
+const char var001aec74[] = "";
+const char var001aec78[] = "";
+const char var001aec7c[] = "";
+const char var001aec80[] = "";
+const char var001aec84[] = "";
+const char var001aec88[] = "";
+const char var001aec8c[] = "";
+const char var001aec90[] = "";
+const char var001aec94[] = "";
+const char var001aec98[] = "";
+const char var001aec9c[] = "";
+const char var001aeca0[] = "";
+const char var001aeca4[] = "";
+const char var001aeca8[] = "";
+const char var001aecac[] = "";
+const char var001aecb0[] = "";
+const char var001aecb4[] = "";
+const char var001aecb8[] = "";
+const char var001aecbc[] = "";
+const char var001aecc0[] = "";
+const char var001aecc4[] = "";
+const char var001aecc8[] = "";
+const char var001aeccc[] = "";
+const char var001aecd0[] = "";
+const char var001aecd4[] = "";
+const char var001aecd8[] = "";
+const char var001aecdc[] = "";
+const char var001aece0[] = "";
+const char var001aece4[] = "";
+const char var001aece8[] = "";
+const char var001aecec[] = "";
+const char var001aecf0[] = "";
+const char var001aecf4[] = "";
+const char var001aecf8[] = "";
+const char var001aecfc[] = "";
+const char var001aed00[] = "";
+const char var001aed04[] = "";
+const char var001aed08[] = "";
+const char var001aed0c[] = "";
+const char var001aed10[] = "";
+const char var001aed14[] = "";
+const char var001aed18[] = "";
+const char var001aed1c[] = "";
+const char var001aed20[] = "";
+const char var001aed24[] = "";
+const char var001aed28[] = "";
+const char var001aed2c[] = "";
+const char var001aed30[] = "";
+const char var001aed34[] = "";
+const char var001aed38[] = "";
+const char var001aed3c[] = "";
+const char var001aed40[] = "";
+const char var001aed44[] = "";
+const char var001aed48[] = "";
+const char var001aed4c[] = "";
+const char var001aed50[] = "";
+const char var001aed54[] = "";
+const char var001aed58[] = "";
+const char var001aed5c[] = "";
+const char var001aed60[] = "";
+const char var001aed64[] = "";
+const char var001aed68[] = "";
+const char var001aed6c[] = "";
+const char var001aed70[] = "";
+const char var001aed74[] = "";
+const char var001aed78[] = "";
+const char var001aed7c[] = "";
+const char var001aed80[] = "";
+const char var001aed84[] = "";
+const char var001aed88[] = "";
+const char var001aed8c[] = "";
+const char var001aed90[] = "";
+const char var001aed94[] = "";
+const char var001aed98[] = "";
+const char var001aed9c[] = "";
+const char var001aeda0[] = "";
+const char var001aeda4[] = "";
+const char var001aeda8[] = "";
+const char var001aedac[] = "";
+const char var001aedb0[] = "";
+const char var001aedb4[] = "";
+const char var001aedb8[] = "";
+const char var001aedbc[] = "";
+const char var001aedc0[] = "";
+const char var001aedc4[] = "";
+const char var001aedc8[] = "";
+const char var001aedcc[] = "";
+const char var001aedd0[] = "";
+const char var001aedd4[] = "";
+const char var001aedd8[] = "";
+const char var001aeddc[] = "";
+const char var001aede0[] = "";
+const char var001aede4[] = "";
+const char var001aede8[] = "";
+const char var001aedec[] = "";
+const char var001aedf0[] = "";
+const char var001aedf4[] = "";
+const char var001aedf8[] = "";
+const char var001aedfc[] = "";
+const char var001aee00[] = "";
+const char var001aee04[] = "";
+const char var001aee08[] = "";
+const char var001aee0c[] = "";
+const char var001aee10[] = "";
+const char var001aee14[] = "";
+const char var001aee18[] = "";
+const char var001aee1c[] = "";
+const char var001aee20[] = "";
+const char var001aee24[] = "";
+const char var001aee28[] = "";
+const char var001aee2c[] = "";
+const char var001aee30[] = "";
+const char var001aee34[] = "";
+const char var001aee38[] = "";
+const char var001aee3c[] = "";
+const char var001aee40[] = "";
+const char var001aee44[] = "";
+const char var001aee48[] = "";
+const char var001aee4c[] = "";
+const char var001aee50[] = "";
+const char var001aee54[] = "";
+const char var001aee58[] = "";
+const char var001aee5c[] = "";
+const char var001aee60[] = "";
+const char var001aee64[] = "";
+const char var001aee68[] = "";
+const char var001aee6c[] = "";
+const char var001aee70[] = "";
+const char var001aee74[] = "";
+const char var001aee78[] = "";
+const char var001aee7c[] = "";
+const char var001aee80[] = "";
+const char var001aee84[] = "";
+const char var001aee88[] = "";
+const char var001aee8c[] = "";
+const char var001aee90[] = "";
+const char var001aee94[] = "";
+const char var001aee98[] = "";
+const char var001aee9c[] = "";
+const char var001aeea0[] = "";
+const char var001aeea4[] = "";
+const char var001aeea8[] = "";
+const char var001aeeac[] = "";
+const char var001aeeb0[] = "";
+const char var001aeeb4[] = "";
+const char var001aeeb8[] = "";
+const char var001aeebc[] = "";
+const char var001aeec0[] = "";
+const char var001aeec4[] = "";
+const char var001aeec8[] = "";
+const char var001aeecc[] = "";
+const char var001aeed0[] = "";
+const char var001aeed4[] = "";
+const char var001aeed8[] = "";
+const char var001aeedc[] = "";
+const char var001aeee0[] = "";
+const char var001aeee4[] = "";
+const char var001aeee8[] = "";
+const char var001aeeec[] = "";
+const char var001aeef0[] = "";
+const char var001aeef4[] = "";
+const char var001aeef8[] = "";
+const char var001aeefc[] = "";
+const char var001aef00[] = "";
+const char var001aef04[] = "";
+const char var001aef08[] = "";
+const char var001aef0c[] = "";
+const char var001aef10[] = "";
+const char var001aef14[] = "";
+const char var001aef18[] = "";
+const char var001aef1c[] = "";
+const char var001aef20[] = "";
+const char var001aef24[] = "";
+const char var001aef28[] = "";
+const char var001aef2c[] = "";
+const char var001aef30[] = "";
+const char var001aef34[] = "";
+const char var001aef38[] = "";
+const char var001aef3c[] = "";
+const char var001aef40[] = "";
+const char var001aef44[] = "";
+const char var001aef48[] = "";
+const char var001aef4c[] = "";
+const char var001aef50[] = "";
+const char var001aef54[] = "";
+const char var001aef58[] = "";
+const char var001aef5c[] = "";
+const char var001aef60[] = "";
+const char var001aef64[] = "";
+const char var001aef68[] = "";
+const char var001aef6c[] = "";
+const char var001aef70[] = "";
+const char var001aef74[] = "";
+const char var001aef78[] = "";
+const char var001aef7c[] = "";
+const char var001aef80[] = "";
+const char var001aef84[] = "";
+const char var001aef88[] = "";
+const char var001aef8c[] = "";
+const char var001aef90[] = "";
+const char var001aef94[] = "";
+const char var001aef98[] = "";
+const char var001aef9c[] = "";
+const char var001aefa0[] = "";
+const char var001aefa4[] = "";
+const char var001aefa8[] = "";
+const char var001aefac[] = "";
+const char var001aefb0[] = "";
+const char var001aefb4[] = "";
+const char var001aefb8[] = "";
+const char var001aefbc[] = "";
+const char var001aefc0[] = "";
+const char var001aefc4[] = "";
+const char var001aefc8[] = "";
+const char var001aefcc[] = "";
+const char var001aefd0[] = "";
+const char var001aefd4[] = "";
+const char var001aefd8[] = "";
+const char var001aefdc[] = "";
+const char var001aefe0[] = "";
+const char var001aefe4[] = "";
+const char var001aefe8[] = "";
+const char var001aefec[] = "";
+const char var001aeff0[] = "";
+const char var001aeff4[] = "";
+const char var001aeff8[] = "";
+const char var001aeffc[] = "";
+const char var001af000[] = "";
+const char var001af004[] = "";
+const char var001af008[] = "";
+const char var001af00c[] = "";
+const char var001af010[] = "";
+const char var001af014[] = "";
+const char var001af018[] = "";
+const char var001af01c[] = "";
+const char var001af020[] = "";
+const char var001af024[] = "";
+const char var001af028[] = "";
+const char var001af02c[] = "";
+const char var001af030[] = "";
+const char var001af034[] = "";
+const char var001af038[] = "";
+const char var001af03c[] = "";
+const char var001af040[] = "";
+const char var001af044[] = "";
+const char var001af048[] = "";
+const char var001af04c[] = "";
+const char var001af050[] = "";
+const char var001af054[] = "";
+const char var001af058[] = "";
+const char var001af05c[] = "";
+const char var001af060[] = "";
+const char var001af064[] = "";
+const char var001af068[] = "";
+const char var001af06c[] = "";
+const char var001af070[] = "";
+const char var001af074[] = "";
+const char var001af078[] = "";
+const char var001af07c[] = "";
+const char var001af080[] = "";
+const char var001af084[] = "";
+const char var001af088[] = "";
+const char var001af08c[] = "";
+const char var001af090[] = "";
+const char var001af094[] = "";
+const char var001af098[] = "";
+const char var001af09c[] = "";
+const char var001af0a0[] = "";
+const char var001af0a4[] = "";
+const char var001af0a8[] = "";
+const char var001af0ac[] = "";
+const char var001af0b0[] = "";
+const char var001af0b4[] = "";
+const char var001af0b8[] = "";
+const char var001af0bc[] = "";
+const char var001af0c0[] = "";
+const char var001af0c4[] = "";
+const char var001af0c8[] = "";
+const char var001af0cc[] = "";
+const char var001af0d0[] = "";
+const char var001af0d4[] = "";
+const char var001af0d8[] = "";
+const char var001af0dc[] = "";
+const char var001af0e0[] = "";
+const char var001af0e4[] = "";
+const char var001af0e8[] = "";
+const char var001af0ec[] = "";
+const char var001af0f0[] = "";
+const char var001af0f4[] = "";
+const char var001af0f8[] = "";
+const char var001af0fc[] = "";
+const char var001af100[] = "";
+const char var001af104[] = "";
+const char var001af108[] = "";
+const char var001af10c[] = "";
+const char var001af110[] = "";
+const char var001af114[] = "";
+const char var001af118[] = "";
+const char var001af11c[] = "";
+const char var001af120[] = "";
+const char var001af124[] = "";
+const char var001af128[] = "";
+const char var001af12c[] = "";
+const char var001af130[] = "";
+const char var001af134[] = "";
+const char var001af138[] = "";
+const char var001af13c[] = "";
+const char var001af140[] = "";
+const char var001af144[] = "";
+const char var001af148[] = "";
+const char var001af14c[] = "";
+const char var001af150[] = "";
+const char var001af154[] = "";
+const char var001af158[] = "";
+const char var001af15c[] = "";
+const char var001af160[] = "";
+const char var001af164[] = "";
+const char var001af168[] = "";
+const char var001af16c[] = "";
+const char var001af170[] = "";
+const char var001af174[] = "";
+const char var001af178[] = "";
+const char var001af17c[] = "";
+const char var001af180[] = "";
+const char var001af184[] = "";
+const char var001af188[] = "";
+const char var001af18c[] = "";
+const char var001af190[] = "";
+const char var001af194[] = "";
+const char var001af198[] = "";
+const char var001af19c[] = "";
+const char var001af1a0[] = "";
+const char var001af1a4[] = "";
+const char var001af1a8[] = "";
+const char var001af1ac[] = "";
+const char var001af1b0[] = "";
+const char var001af1b4[] = "";
+const char var001af1b8[] = "";
+const char var001af1bc[] = "";
+const char var001af1c0[] = "";
+const char var001af1c4[] = "";
+const char var001af1c8[] = "";
+const char var001af1cc[] = "";
+const char var001af1d0[] = "";
+const char var001af1d4[] = "";
+const char var001af1d8[] = "";
+const char var001af1dc[] = "";
+const char var001af1e0[] = "";
+const char var001af1e4[] = "";
+const char var001af1e8[] = "";
+const char var001af1ec[] = "";
+const char var001af1f0[] = "";
+const char var001af1f4[] = "";
+const char var001af1f8[] = "";
+const char var001af1fc[] = "";
+const char var001af200[] = "";
+const char var001af204[] = "";
+const char var001af208[] = "";
+const char var001af20c[] = "";
+const char var001af210[] = "";
+const char var001af214[] = "";
+const char var001af218[] = "";
+const char var001af21c[] = "";
+const char var001af220[] = "";
+const char var001af224[] = "";
+const char var001af228[] = "";
+const char var001af22c[] = "";
+const char var001af230[] = "";
+const char var001af234[] = "";
+const char var001af238[] = "";
+const char var001af23c[] = "";
+const char var001af240[] = "";
+const char var001af244[] = "";
+const char var001af248[] = "";
+const char var001af24c[] = "";
+const char var001af250[] = "";
+const char var001af254[] = "";
+const char var001af258[] = "";
+const char var001af25c[] = "";
+const char var001af260[] = "";
+const char var001af264[] = "";
+const char var001af268[] = "";
+const char var001af26c[] = "";
+const char var001af270[] = "";
+const char var001af274[] = "";
+const char var001af278[] = "";
+const char var001af27c[] = "";
+const char var001af280[] = "";
+const char var001af284[] = "";
+const char var001af288[] = "";
+const char var001af28c[] = "";
+const char var001af290[] = "";
+const char var001af294[] = "";
+const char var001af298[] = "";
+const char var001af29c[] = "";
+const char var001af2a0[] = "";
+const char var001af2a4[] = "";
+const char var001af2a8[] = "";
+const char var001af2ac[] = "";
+const char var001af2b0[] = "";
+const char var001af2b4[] = "";
+const char var001af2b8[] = "";
+const char var001af2bc[] = "";
+const char var001af2c0[] = "";
+const char var001af2c4[] = "";
+const char var001af2c8[] = "";
+const char var001af2cc[] = "";
+const char var001af2d0[] = "";
+const char var001af2d4[] = "";
+const char var001af2d8[] = "";
+const char var001af2dc[] = "";
+const char var001af2e0[] = "";
+const char var001af2e4[] = "";
+const char var001af2e8[] = "";
+const char var001af2ec[] = "";
+const char var001af2f0[] = "";
+const char var001af2f4[] = "";
+const char var001af2f8[] = "";
+const char var001af2fc[] = "";
+const char var001af300[] = "";
+const char var001af304[] = "";
+const char var001af308[] = "";
+const char var001af30c[] = "";
+const char var001af310[] = "";
+const char var001af314[] = "";
+const char var001af318[] = "";
+const char var001af31c[] = "";
+const char var001af320[] = "";
+const char var001af324[] = "";
+const char var001af328[] = "";
+const char var001af32c[] = "";
+const char var001af330[] = "";
+const char var001af334[] = "";
+const char var001af338[] = "";
+const char var001af33c[] = "";
+const char var001af340[] = "";
+const char var001af344[] = "";
+const char var001af348[] = "";
+const char var001af34c[] = "";
+const char var001af350[] = "";
+const char var001af354[] = "";
+const char var001af358[] = "";
+const char var001af35c[] = "";
+const char var001af360[] = "";
+const char var001af364[] = "";
+const char var001af368[] = "";
+const char var001af36c[] = "";
+const char var001af370[] = "";
+const char var001af374[] = "";
+const char var001af378[] = "";
+const char var001af37c[] = "";
+const char var001af380[] = "";
+const char var001af384[] = "";
+const char var001af388[] = "";
+const char var001af38c[] = "";
+const char var001af390[] = "";
+const char var001af394[] = "";
+const char var001af398[] = "";
+const char var001af39c[] = "";
+const char var001af3a0[] = "";
+const char var001af3a4[] = "";
+const char var001af3a8[] = "";
+const char var001af3ac[] = "";
+const char var001af3b0[] = "";
+const char var001af3b4[] = "";
+const char var001af3b8[] = "";
+const char var001af3bc[] = "";
+const char var001af3c0[] = "";
+const char var001af3c4[] = "";
+const char var001af3c8[] = "";
+const char var001af3cc[] = "";
+const char var001af3d0[] = "";
+const char var001af3d4[] = "";
+const char var001af3d8[] = "";
+const char var001af3dc[] = "";
+const char var001af3e0[] = "";
+const char var001af3e4[] = "";
+const char var001af3e8[] = "";
+const char var001af3ec[] = "";
+const char var001af3f0[] = "";
+const char var001af3f4[] = "";
+const char var001af3f8[] = "";
+const char var001af3fc[] = "";
+const char var001af400[] = "";
+const char var001af404[] = "";
+const char var001af408[] = "";
+const char var001af40c[] = "";
+const char var001af410[] = "";
+const char var001af414[] = "";
+const char var001af418[] = "";
+const char var001af41c[] = "";
+const char var001af420[] = "";
+const char var001af424[] = "";
+const char var001af428[] = "";
+const char var001af42c[] = "";
+const char var001af430[] = "";
+const char var001af434[] = "";
+const char var001af438[] = "";
+const char var001af43c[] = "";
+const char var001af440[] = "";
+const char var001af444[] = "";
+const char var001af448[] = "";
+const char var001af44c[] = "";
+const char var001af450[] = "";
+const char var001af454[] = "";
+const char var001af458[] = "";
+const char var001af45c[] = "";
+const char var001af460[] = "";
+const char var001af464[] = "";
+const char var001af468[] = "";
+const char var001af46c[] = "";
+const char var001af470[] = "";
+const char var001af474[] = "";
+const char var001af478[] = "";
+const char var001af47c[] = "";
+const char var001af480[] = "";
+const char var001af484[] = "";
+const char var001af488[] = "";
+const char var001af48c[] = "";
+const char var001af490[] = "";
+const char var001af494[] = "";
+const char var001af498[] = "";
+const char var001af49c[] = "";
+const char var001af4a0[] = "";
+const char var001af4a4[] = "";
+const char var001af4a8[] = "";
+const char var001af4ac[] = "";
+const char var001af4b0[] = "";
+const char var001af4b4[] = "";
+const char var001af4b8[] = "";
+const char var001af4bc[] = "";
+const char var001af4c0[] = "";
+const char var001af4c4[] = "";
+const char var001af4c8[] = "";
+const char var001af4cc[] = "";
+const char var001af4d0[] = "";
+const char var001af4d4[] = "";
+const char var001af4d8[] = "";
+const char var001af4dc[] = "";
+const char var001af4e0[] = "";
+const char var001af4e4[] = "";
+const char var001af4e8[] = "";
+const char var001af4ec[] = "";
+const char var001af4f0[] = "";
+const char var001af4f4[] = "";
+const char var001af4f8[] = "";
+const char var001af4fc[] = "";
+const char var001af500[] = "";
+const char var001af504[] = "";
+const char var001af508[] = "";
+const char var001af50c[] = "";
+const char var001af510[] = "";
+const char var001af514[] = "";
+const char var001af518[] = "";
+const char var001af51c[] = "";
+const char var001af520[] = "";
+const char var001af524[] = "";
+const char var001af528[] = "";
+const char var001af52c[] = "";
+const char var001af530[] = "";
+const char var001af534[] = "";
+const char var001af538[] = "";
+const char var001af53c[] = "";
+const char var001af540[] = "";
+const char var001af544[] = "";
+const char var001af548[] = "";
+const char var001af54c[] = "";
+const char var001af550[] = "";
+const char var001af554[] = "";
+const char var001af558[] = "";
+const char var001af55c[] = "";
+const char var001af560[] = "";
+const char var001af564[] = "";
+const char var001af568[] = "";
+const char var001af56c[] = "";
+const char var001af570[] = "";
+const char var001af574[] = "";
+const char var001af578[] = "";
+const char var001af57c[] = "";
+const char var001af580[] = "";
+const char var001af584[] = "";
+const char var001af588[] = "";
+const char var001af58c[] = "";
+const char var001af590[] = "";
+const char var001af594[] = "";
+const char var001af598[] = "";
+const char var001af59c[] = "";
+const char var001af5a0[] = "";
+const char var001af5a4[] = "";
+const char var001af5a8[] = "";
+const char var001af5ac[] = "";
+const char var001af5b0[] = "";
+const char var001af5b4[] = "";
+const char var001af5b8[] = "";
+const char var001af5bc[] = "";
+const char var001af5c0[] = "";
+const char var001af5c4[] = "";
+const char var001af5c8[] = "";
+const char var001af5cc[] = "";
+const char var001af5d0[] = "";
+const char var001af5d4[] = "";
+const char var001af5d8[] = "";
+const char var001af5dc[] = "";
+const char var001af5e0[] = "";
+const char var001af5e4[] = "";
+const char var001af5e8[] = "";
+const char var001af5ec[] = "";
+const char var001af5f0[] = "";
+const char var001af5f4[] = "";
+const char var001af5f8[] = "";
+const char var001af5fc[] = "";
+const char var001af600[] = "";
+const char var001af604[] = "";
+const char var001af608[] = "";
+const char var001af60c[] = "";
+const char var001af610[] = "";
+const char var001af614[] = "";
+const char var001af618[] = "";
+const char var001af61c[] = "";
+const char var001af620[] = "";
+const char var001af624[] = "";
+const char var001af628[] = "";
+const char var001af62c[] = "";
+const char var001af630[] = "";
+const char var001af634[] = "";
+const char var001af638[] = "";
+const char var001af63c[] = "";
+const char var001af640[] = "";
+const char var001af644[] = "";
+const char var001af648[] = "";
+const char var001af64c[] = "";
+const char var001af650[] = "";
+const char var001af654[] = "";
+const char var001af658[] = "";
+const char var001af65c[] = "";
+const char var001af660[] = "";
+const char var001af664[] = "";
+const char var001af668[] = "";
+const char var001af66c[] = "";
+const char var001af670[] = "";
+const char var001af674[] = "";
+const char var001af678[] = "";
+const char var001af67c[] = "";
+const char var001af680[] = "";
+const char var001af684[] = "";
+const char var001af688[] = "";
+const char var001af68c[] = "";
+const char var001af690[] = "";
+const char var001af694[] = "";
+const char var001af698[] = "";
+const char var001af69c[] = "";
+const char var001af6a0[] = "";
+const char var001af6a4[] = "";
+const char var001af6a8[] = "";
+const char var001af6ac[] = "";
+const char var001af6b0[] = "";
+const char var001af6b4[] = "";
+const char var001af6b8[] = "";
+const char var001af6bc[] = "";
+const char var001af6c0[] = "";
+const char var001af6c4[] = "";
+const char var001af6c8[] = "";
+const char var001af6cc[] = "";
+const char var001af6d0[] = "";
+const char var001af6d4[] = "";
+const char var001af6d8[] = "";
+const char var001af6dc[] = "";
+const char var001af6e0[] = "";
+const char var001af6e4[] = "";
+const char var001af6e8[] = "";
+const char var001af6ec[] = "";
+const char var001af6f0[] = "";
+const char var001af6f4[] = "";
+const char var001af6f8[] = "";
+const char var001af6fc[] = "";
+const char var001af700[] = "";
+const char var001af704[] = "";
+const char var001af708[] = "";
+const char var001af70c[] = "";
+const char var001af710[] = "";
+const char var001af714[] = "";
+const char var001af718[] = "";
+const char var001af71c[] = "";
+const char var001af720[] = "";
+const char var001af724[] = "";
+const char var001af728[] = "";
+const char var001af72c[] = "";
+const char var001af730[] = "";
+const char var001af734[] = "";
+const char var001af738[] = "";
+const char var001af73c[] = "";
+const char var001af740[] = "";
+const char var001af744[] = "";
+const char var001af748[] = "";
+const char var001af74c[] = "";
+const char var001af750[] = "";
+const char var001af754[] = "";
+const char var001af758[] = "";
+const char var001af75c[] = "";
+const char var001af760[] = "";
+const char var001af764[] = "";
+const char var001af768[] = "";
+const char var001af76c[] = "";
+const char var001af770[] = "";
+const char var001af774[] = "";
+const char var001af778[] = "";
+const char var001af77c[] = "";
+const char var001af780[] = "";
+const char var001af784[] = "";
+const char var001af788[] = "";
+const char var001af78c[] = "";
+const char var001af790[] = "";
+const char var001af794[] = "";
+const char var001af798[] = "";
+const char var001af79c[] = "";
+const char var001af7a0[] = "";
+const char var001af7a4[] = "";
+const char var001af7a8[] = "";
+const char var001af7ac[] = "";
+const char var001af7b0[] = "";
+const char var001af7b4[] = "";
+const char var001af7b8[] = "";
+const char var001af7bc[] = "";
+const char var001af7c0[] = "";
+const char var001af7c4[] = "";
+const char var001af7c8[] = "";
+const char var001af7cc[] = "";
+const char var001af7d0[] = "";
+const char var001af7d4[] = "";
+const char var001af7d8[] = "";
+const char var001af7dc[] = "";
+const char var001af7e0[] = "";
+const char var001af7e4[] = "";
+const char var001af7e8[] = "";
+const char var001af7ec[] = "";
+const char var001af7f0[] = "";
+const char var001af7f4[] = "";
+const char var001af7f8[] = "";
+const char var001af7fc[] = "";
+const char var001af800[] = "";
+const char var001af804[] = "";
+const char var001af808[] = "";
+const char var001af80c[] = "";
+const char var001af810[] = "";
+const char var001af814[] = "";
+const char var001af818[] = "";
+const char var001af81c[] = "";
+const char var001af820[] = "";
+const char var001af824[] = "";
+const char var001af828[] = "";
+const char var001af82c[] = "";
+const char var001af830[] = "";
+const char var001af834[] = "";
+const char var001af838[] = "";
+const char var001af83c[] = "";
+const char var001af840[] = "";
+const char var001af844[] = "";
+const char var001af848[] = "";
+const char var001af84c[] = "";
+const char var001af850[] = "";
+const char var001af854[] = "";
+const char var001af858[] = "";
+const char var001af85c[] = "";
+const char var001af860[] = "";
+const char var001af864[] = "";
+const char var001af868[] = "";
+const char var001af86c[] = "";
+const char var001af870[] = "";
+const char var001af874[] = "";
+const char var001af878[] = "";
+const char var001af87c[] = "";
+const char var001af880[] = "";
+const char var001af884[] = "";
+const char var001af888[] = "";
+const char var001af88c[] = "";
+const char var001af890[] = "";
+const char var001af894[] = "";
+const char var001af898[] = "";
+const char var001af89c[] = "";
+const char var001af8a0[] = "";
+const char var001af8a4[] = "";
+const char var001af8a8[] = "";
+const char var001af8ac[] = "";
+const char var001af8b0[] = "";
+const char var001af8b4[] = "";
+const char var001af8b8[] = "";
+const char var001af8bc[] = "";
+const char var001af8c0[] = "";
+const char var001af8c4[] = "";
+const char var001af8c8[] = "";
+const char var001af8cc[] = "";
+const char var001af8d0[] = "";
+const char var001af8d4[] = "";
+const char var001af8d8[] = "";
+const char var001af8dc[] = "";
+const char var001af8e0[] = "";
+const char var001af8e4[] = "";
+const char var001af8e8[] = "";
+const char var001af8ec[] = "";
+const char var001af8f0[] = "";
+const char var001af8f4[] = "";
+const char var001af8f8[] = "";
+const char var001af8fc[] = "";
+const char var001af900[] = "";
+const char var001af904[] = "";
+const char var001af908[] = "";
+const char var001af90c[] = "";
+const char var001af910[] = "";
+const char var001af914[] = "";
+const char var001af918[] = "";
+const char var001af91c[] = "";
+const char var001af920[] = "";
+const char var001af924[] = "";
+const char var001af928[] = "";
+const char var001af92c[] = "";
+const char var001af930[] = "";
+const char var001af934[] = "";
+const char var001af938[] = "";
+const char var001af93c[] = "";
+const char var001af940[] = "";
+const char var001af944[] = "";
+const char var001af948[] = "";
+const char var001af94c[] = "";
+const char var001af950[] = "";
+const char var001af954[] = "";
+const char var001af958[] = "";
+const char var001af95c[] = "";
+const char var001af960[] = "";
+const char var001af964[] = "";
+const char var001af968[] = "";
+const char var001af96c[] = "";
+const char var001af970[] = "";
+const char var001af974[] = "";
+const char var001af978[] = "";
+const char var001af97c[] = "";
+const char var001af980[] = "";
+const char var001af984[] = "";
+const char var001af988[] = "";
+const char var001af98c[] = "";
+const char var001af990[] = "";
+const char var001af994[] = "";
+const char var001af998[] = "";
+const char var001af99c[] = "";
+const char var001af9a0[] = "";
+const char var001af9a4[] = "";
+const char var001af9a8[] = "";
+const char var001af9ac[] = "";
+const char var001af9b0[] = "";
+const char var001af9b4[] = "";
+const char var001af9b8[] = "";
+const char var001af9bc[] = "";
+const char var001af9c0[] = "";
+const char var001af9c4[] = "";
+const char var001af9c8[] = "";
+const char var001af9cc[] = "";
+const char var001af9d0[] = "";
+const char var001af9d4[] = "";
+const char var001af9d8[] = "";
+const char var001af9dc[] = "";
+const char var001af9e0[] = "";
+const char var001af9e4[] = "";
+const char var001af9e8[] = "";
+const char var001af9ec[] = "";
+const char var001af9f0[] = "";
+const char var001af9f4[] = "";
+const char var001af9f8[] = "";
+const char var001af9fc[] = "";
+const char var001afa00[] = "";
+const char var001afa04[] = "";
+const char var001afa08[] = "";
+const char var001afa0c[] = "";
+const char var001afa10[] = "";
+const char var001afa14[] = "";
+const char var001afa18[] = "";
+const char var001afa1c[] = "";
+const char var001afa20[] = "";
+const char var001afa24[] = "";
+const char var001afa28[] = "";
+const char var001afa2c[] = "";
+const char var001afa30[] = "";
+const char var001afa34[] = "";
+const char var001afa38[] = "";
+const char var001afa3c[] = "";
+const char var001afa40[] = "";
+const char var001afa44[] = "";
+const char var001afa48[] = "";
+const char var001afa4c[] = "";
+const char var001afa50[] = "";
+const char var001afa54[] = "";
+const char var001afa58[] = "";
+const char var001afa5c[] = "";
+const char var001afa60[] = "";
+const char var001afa64[] = "";
+const char var001afa68[] = "";
+const char var001afa6c[] = "";
+const char var001afa70[] = "";
+const char var001afa74[] = "";
+const char var001afa78[] = "";
+const char var001afa7c[] = "";
+const char var001afa80[] = "";
+const char var001afa84[] = "";
+const char var001afa88[] = "";
+const char var001afa8c[] = "";
+const char var001afa90[] = "";
+const char var001afa94[] = "";
+const char var001afa98[] = "";
+const char var001afa9c[] = "";
+const char var001afaa0[] = "";
+const char var001afaa4[] = "";
+const char var001afaa8[] = "";
+const char var001afaac[] = "";
+const char var001afab0[] = "";
+const char var001afab4[] = "";
+const char var001afab8[] = "";
+const char var001afabc[] = "";
+const char var001afac0[] = "";
+const char var001afac4[] = "";
+const char var001afac8[] = "";
+const char var001afacc[] = "";
+const char var001afad0[] = "";
+const char var001afad4[] = "";
+const char var001afad8[] = "";
+const char var001afadc[] = "";
+const char var001afae0[] = "";
+const char var001afae4[] = "";
+const char var001afae8[] = "";
+const char var001afaec[] = "";
+const char var001afaf0[] = "";
+const char var001afaf4[] = "";
+const char var001afaf8[] = "";
+const char var001afafc[] = "";
+const char var001afb00[] = "";
+const char var001afb04[] = "";
+const char var001afb08[] = "";
+const char var001afb0c[] = "";
+const char var001afb10[] = "";
+const char var001afb14[] = "";
+const char var001afb18[] = "";
+const char var001afb1c[] = "";
+const char var001afb20[] = "";
+const char var001afb24[] = "";
+const char var001afb28[] = "";
+const char var001afb2c[] = "";
+const char var001afb30[] = "";
+const char var001afb34[] = "";
+const char var001afb38[] = "";
+const char var001afb3c[] = "";
+const char var001afb40[] = "";
+const char var001afb44[] = "";
+const char var001afb48[] = "";
+const char var001afb4c[] = "";
+const char var001afb50[] = "";
+const char var001afb54[] = "";
+const char var001afb58[] = "";
+const char var001afb5c[] = "";
+const char var001afb60[] = "";
+const char var001afb64[] = "";
+const char var001afb68[] = "";
+const char var001afb6c[] = "";
+const char var001afb70[] = "";
+const char var001afb74[] = "";
+const char var001afb78[] = "";
+const char var001afb7c[] = "";
+const char var001afb80[] = "";
+const char var001afb84[] = "";
+const char var001afb88[] = "";
+const char var001afb8c[] = "";
+const char var001afb90[] = "";
+const char var001afb94[] = "";
+const char var001afb98[] = "";
+const char var001afb9c[] = "";
+const char var001afba0[] = "";
+const char var001afba4[] = "";
+const char var001afba8[] = "";
+const char var001afbac[] = "";
+const char var001afbb0[] = "";
+const char var001afbb4[] = "";
+const char var001afbb8[] = "";
+const char var001afbbc[] = "";
+const char var001afbc0[] = "";
+const char var001afbc4[] = "";
+const char var001afbc8[] = "";
+const char var001afbcc[] = "";
+const char var001afbd0[] = "";
+const char var001afbd4[] = "";
+const char var001afbd8[] = "";
+const char var001afbdc[] = "";
+const char var001afbe0[] = "";
+const char var001afbe4[] = "";
+const char var001afbe8[] = "";
+const char var001afbec[] = "";
+const char var001afbf0[] = "";
+const char var001afbf4[] = "";
+const char var001afbf8[] = "";
+const char var001afbfc[] = "";
+const char var001afc00[] = "";
+const char var001afc04[] = "";
+const char var001afc08[] = "";
+const char var001afc0c[] = "";
+const char var001afc10[] = "";
+const char var001afc14[] = "";
+const char var001afc18[] = "";
+const char var001afc1c[] = "";
+const char var001afc20[] = "";
+const char var001afc24[] = "";
+const char var001afc28[] = "";
+const char var001afc2c[] = "";
+const char var001afc30[] = "";
+const char var001afc34[] = "";
+const char var001afc38[] = "";
+const char var001afc3c[] = "";
+const char var001afc40[] = "";
+const char var001afc44[] = "";
+const char var001afc48[] = "";
+const char var001afc4c[] = "";
+const char var001afc50[] = "";
+const char var001afc54[] = "";
+const char var001afc58[] = "";
+const char var001afc5c[] = "";
+const char var001afc60[] = "";
+const char var001afc64[] = "";
+const char var001afc68[] = "";
+const char var001afc6c[] = "";
+const char var001afc70[] = "";
+const char var001afc74[] = "";
+const char var001afc78[] = "";
+const char var001afc7c[] = "";
+const char var001afc80[] = "";
+const char var001afc84[] = "";
+const char var001afc88[] = "";
+const char var001afc8c[] = "";
+const char var001afc90[] = "";
+const char var001afc94[] = "";
+const char var001afc98[] = "";
+const char var001afc9c[] = "";
+const char var001afca0[] = "";
+const char var001afca4[] = "";
+const char var001afca8[] = "";
+const char var001afcac[] = "";
+const char var001afcb0[] = "";
+const char var001afcb4[] = "";
+const char var001afcb8[] = "";
+const char var001afcbc[] = "";
+const char var001afcc0[] = "";
+const char var001afcc4[] = "";
+const char var001afcc8[] = "";
+const char var001afccc[] = "";
+const char var001afcd0[] = "";
+const char var001afcd4[] = "";
+const char var001afcd8[] = "";
+const char var001afcdc[] = "";
+const char var001afce0[] = "";
+const char var001afce4[] = "";
+const char var001afce8[] = "";
+const char var001afcec[] = "";
+const char var001afcf0[] = "";
+const char var001afcf4[] = "";
+const char var001afcf8[] = "";
+const char var001afcfc[] = "";
+const char var001afd00[] = "";
+const char var001afd04[] = "";
+const char var001afd08[] = "";
+const char var001afd0c[] = "";
+const char var001afd10[] = "";
+const char var001afd14[] = "";
+const char var001afd18[] = "";
+const char var001afd1c[] = "";
+const char var001afd20[] = "";
+const char var001afd24[] = "";
+const char var001afd28[] = "";
+const char var001afd2c[] = "";
+const char var001afd30[] = "";
+const char var001afd34[] = "";
+const char var001afd38[] = "";
+const char var001afd3c[] = "";
+const char var001afd40[] = "";
+const char var001afd44[] = "";
+const char var001afd48[] = "";
+const char var001afd4c[] = "";
+const char var001afd50[] = "";
+const char var001afd54[] = "";
+const char var001afd58[] = "";
+const char var001afd5c[] = "";
+const char var001afd60[] = "";
+const char var001afd64[] = "";
+const char var001afd68[] = "";
+const char var001afd6c[] = "";
+const char var001afd70[] = "";
+const char var001afd74[] = "";
+const char var001afd78[] = "";
+const char var001afd7c[] = "";
+const char var001afd80[] = "";
+const char var001afd84[] = "";
+const char var001afd88[] = "";
+const char var001afd8c[] = "";
+const char var001afd90[] = "";
+const char var001afd94[] = "";
+const char var001afd98[] = "";
+const char var001afd9c[] = "";
+const char var001afda0[] = "";
+const char var001afda4[] = "";
+const char var001afda8[] = "";
+const char var001afdac[] = "";
+const char var001afdb0[] = "";
+const char var001afdb4[] = "";
+const char var001afdb8[] = "";
+const char var001afdbc[] = "";
+const char var001afdc0[] = "";
+const char var001afdc4[] = "";
+const char var001afdc8[] = "";
+const char var001afdcc[] = "";
+const char var001afdd0[] = "";
+const char var001afdd4[] = "";
+const char var001afdd8[] = "";
+const char var001afddc[] = "";
+const char var001afde0[] = "";
+const char var001afde4[] = "";
+const char var001afde8[] = "";
+const char var001afdec[] = "";
+const char var001afdf0[] = "";
+const char var001afdf4[] = "";
+const char var001afdf8[] = "";
+const char var001afdfc[] = "";
+const char var001afe00[] = "";
+const char var001afe04[] = "";
+const char var001afe08[] = "";
+const char var001afe0c[] = "";
+const char var001afe10[] = "";
+const char var001afe14[] = "";
+const char var001afe18[] = "";
+const char var001afe1c[] = "";
+const char var001afe20[] = "";
+const char var001afe24[] = "";
+const char var001afe28[] = "";
+const char var001afe2c[] = "";
+const char var001afe30[] = "";
+const char var001afe34[] = "";
+const char var001afe38[] = "";
+const char var001afe3c[] = "";
+const char var001afe40[] = "";
+const char var001afe44[] = "";
+const char var001afe48[] = "";
+const char var001afe4c[] = "";
+const char var001afe50[] = "";
+const char var001afe54[] = "";
+const char var001afe58[] = "";
+const char var001afe5c[] = "";
+const char var001afe60[] = "";
+const char var001afe64[] = "";
+const char var001afe68[] = "";
+const char var001afe6c[] = "";
+const char var001afe70[] = "";
+const char var001afe74[] = "";
+const char var001afe78[] = "";
+const char var001afe7c[] = "";
+const char var001afe80[] = "";
+const char var001afe84[] = "";
+const char var001afe88[] = "";
+const char var001afe8c[] = "";
+const char var001afe90[] = "";
+const char var001afe94[] = "";
+const char var001afe98[] = "";
+const char var001afe9c[] = "";
+const char var001afea0[] = "";
+const char var001afea4[] = "";
+const char var001afea8[] = "";
+const char var001afeac[] = "";
+const char var001afeb0[] = "";
+const char var001afeb4[] = "";
+const char var001afeb8[] = "";
+const char var001afebc[] = "";
+const char var001afec0[] = "";
+const char var001afec4[] = "";
+const char var001afec8[] = "";
+const char var001afecc[] = "";
+const char var001afed0[] = "";
+const char var001afed4[] = "";
+const char var001afed8[] = "";
+const char var001afedc[] = "";
+const char var001afee0[] = "";
+const char var001afee4[] = "";
+const char var001afee8[] = "";
+const char var001afeec[] = "";
+const char var001afef0[] = "";
+const char var001afef4[] = "";
+const char var001afef8[] = "";
+const char var001afefc[] = "";
+const char var001aff00[] = "";
+const char var001aff04[] = "";
+const char var001aff08[] = "";
+const char var001aff0c[] = "";
+const char var001aff10[] = "";
+const char var001aff14[] = "";
+const char var001aff18[] = "";
+const char var001aff1c[] = "";
+const char var001aff20[] = "";
+const char var001aff24[] = "";
+const char var001aff28[] = "";
+const char var001aff2c[] = "";
+const char var001aff30[] = "";
+const char var001aff34[] = "";
+const char var001aff38[] = "";
+const char var001aff3c[] = "";
+const char var001aff40[] = "";
+const char var001aff44[] = "";
+const char var001aff48[] = "";
+const char var001aff4c[] = "";
+const char var001aff50[] = "";
+const char var001aff54[] = "";
+const char var001aff58[] = "";
+const char var001aff5c[] = "";
+const char var001aff60[] = "";
+const char var001aff64[] = "";
+const char var001aff68[] = "";
+const char var001aff6c[] = "";
+const char var001aff70[] = "";
+const char var001aff74[] = "";
+const char var001aff78[] = "";
+const char var001aff7c[] = "";
+const char var001aff80[] = "";
+const char var001aff84[] = "";
+const char var001aff88[] = "";
+const char var001aff8c[] = "";
+const char var001aff90[] = "";
+const char var001aff94[] = "";
+const char var001aff98[] = "";
+const char var001aff9c[] = "";
+const char var001affa0[] = "";
+const char var001affa4[] = "";
+const char var001affa8[] = "";
+const char var001affac[] = "";
+const char var001affb0[] = "";
+const char var001affb4[] = "";
+const char var001affb8[] = "";
+const char var001affbc[] = "";
+const char var001affc0[] = "";
+const char var001affc4[] = "";
+const char var001affc8[] = "";
+const char var001affcc[] = "";
+const char var001affd0[] = "";
+const char var001affd4[] = "";
+const char var001affd8[] = "";
+const char var001affdc[] = "";
+const char var001affe0[] = "";
+const char var001affe4[] = "";
+const char var001affe8[] = "";
+const char var001affec[] = "";
+const char var001afff0[] = "";
+const char var001afff4[] = "";
+const char var001afff8[] = "";
+const char var001afffc[] = "";
+const char var001b0000[] = "";
+const char var001b0004[] = "";
+const char var001b0008[] = "";
+const char var001b000c[] = "";
+const char var001b0010[] = "";
+const char var001b0014[] = "";
+const char var001b0018[] = "";
+const char var001b001c[] = "";
+const char var001b0020[] = "";
+const char var001b0024[] = "";
+const char var001b0028[] = "";
+const char var001b002c[] = "";
+const char var001b0030[] = "";
+const char var001b0034[] = "";
+const char var001b0038[] = "";
+const char var001b003c[] = "";
+const char var001b0040[] = "";
+const char var001b0044[] = "";
+const char var001b0048[] = "";
+const char var001b004c[] = "";
+const char var001b0050[] = "";
+const char var001b0054[] = "";
+const char var001b0058[] = "";
+const char var001b005c[] = "";
+const char var001b0060[] = "";
+const char var001b0064[] = "";
+const char var001b0068[] = "";
+const char var001b006c[] = "";
+const char var001b0070[] = "";
+const char var001b0074[] = "";
+const char var001b0078[] = "";
+const char var001b007c[] = "";
+const char var001b0080[] = "";
+const char var001b0084[] = "";
+const char var001b0088[] = "";
+const char var001b008c[] = "";
+const char var001b0090[] = "";
+const char var001b0094[] = "";
+const char var001b0098[] = "";
+const char var001b009c[] = "";
+const char var001b00a0[] = "";
+const char var001b00a4[] = "";
+const char var001b00a8[] = "";
+const char var001b00ac[] = "";
+const char var001b00b0[] = "";
+const char var001b00b4[] = "";
+const char var001b00b8[] = "";
+const char var001b00bc[] = "";
+const char var001b00c0[] = "";
+const char var001b00c4[] = "";
+const char var001b00c8[] = "";
+const char var001b00cc[] = "";
+const char var001b00d0[] = "";
+const char var001b00d4[] = "";
+const char var001b00d8[] = "";
+const char var001b00dc[] = "";
+const char var001b00e0[] = "";
+const char var001b00e4[] = "";
+const char var001b00e8[] = "";
+const char var001b00ec[] = "";
+const char var001b00f0[] = "";
+const char var001b00f4[] = "";
+const char var001b00f8[] = "";
+const char var001b00fc[] = "";
+const char var001b0100[] = "";
+const char var001b0104[] = "";
+const char var001b0108[] = "";
+const char var001b010c[] = "";
+const char var001b0110[] = "";
+const char var001b0114[] = "";
+const char var001b0118[] = "";
+const char var001b011c[] = "";
+const char var001b0120[] = "";
+const char var001b0124[] = "";
+const char var001b0128[] = "";
+const char var001b012c[] = "";
+const char var001b0130[] = "";
+const char var001b0134[] = "";
+const char var001b0138[] = "";
+const char var001b013c[] = "";
+const char var001b0140[] = "";
+const char var001b0144[] = "";
+const char var001b0148[] = "";
+const char var001b014c[] = "";
+const char var001b0150[] = "";
+const char var001b0154[] = "";
+const char var001b0158[] = "";
+const char var001b015c[] = "";
+const char var001b0160[] = "";
+const char var001b0164[] = "";
+const char var001b0168[] = "";
+const char var001b016c[] = "";
+const char var001b0170[] = "";
+const char var001b0174[] = "";
+const char var001b0178[] = "";
+const char var001b017c[] = "";
+const char var001b0180[] = "";
+const char var001b0184[] = "";
+const char var001b0188[] = "";
+const char var001b018c[] = "";
+const char var001b0190[] = "";
+const char var001b0194[] = "";
+const char var001b0198[] = "";
+const char var001b019c[] = "";
+const char var001b01a0[] = "";
+const char var001b01a4[] = "";
+const char var001b01a8[] = "";
+const char var001b01ac[] = "";
+const char var001b01b0[] = "";
+const char var001b01b4[] = "";
+const char var001b01b8[] = "";
+const char var001b01bc[] = "";
+const char var001b01c0[] = "";
+const char var001b01c4[] = "";
+const char var001b01c8[] = "";
+const char var001b01cc[] = "";
+const char var001b01d0[] = "";
+const char var001b01d4[] = "";
+const char var001b01d8[] = "";
+const char var001b01dc[] = "";
+const char var001b01e0[] = "";
+const char var001b01e4[] = "";
+const char var001b01e8[] = "";
+const char var001b01ec[] = "";
+const char var001b01f0[] = "";
+const char var001b01f4[] = "";
+const char var001b01f8[] = "";
+const char var001b01fc[] = "";
+const char var001b0200[] = "";
+const char var001b0204[] = "";
+const char var001b0208[] = "";
+const char var001b020c[] = "";
+const char var001b0210[] = "";
+const char var001b0214[] = "";
+const char var001b0218[] = "";
+const char var001b021c[] = "";
+const char var001b0220[] = "";
+const char var001b0224[] = "";
+const char var001b0228[] = "";
+const char var001b022c[] = "";
+const char var001b0230[] = "";
+const char var001b0234[] = "";
+const char var001b0238[] = "";
+const char var001b023c[] = "";
+const char var001b0240[] = "";
+const char var001b0244[] = "";
+const char var001b0248[] = "";
+const char var001b024c[] = "";
+const char var001b0250[] = "";
+const char var001b0254[] = "";
+const char var001b0258[] = "";
+const char var001b025c[] = "";
+const char var001b0260[] = "";
+const char var001b0264[] = "";
+const char var001b0268[] = "";
+const char var001b026c[] = "";
+const char var001b0270[] = "";
+const char var001b0274[] = "";
+const char var001b0278[] = "";
+const char var001b027c[] = "";
+const char var001b0280[] = "";
+const char var001b0284[] = "";
+const char var001b0288[] = "";
+const char var001b028c[] = "";
+const char var001b0290[] = "";
+const char var001b0294[] = "";
+const char var001b0298[] = "";
+const char var001b029c[] = "";
+const char var001b02a0[] = "";
+const char var001b02a4[] = "";
+const char var001b02a8[] = "";
+const char var001b02ac[] = "";
+const char var001b02b0[] = "";
+const char var001b02b4[] = "";
+const char var001b02b8[] = "";
+const char var001b02bc[] = "";
+const char var001b02c0[] = "";
+const char var001b02c4[] = "";
+const char var001b02c8[] = "";
+const char var001b02cc[] = "";
+const char var001b02d0[] = "";
+const char var001b02d4[] = "";
+const char var001b02d8[] = "";
+const char var001b02dc[] = "";
+const char var001b02e0[] = "";
+const char var001b02e4[] = "";
+const char var001b02e8[] = "";
+const char var001b02ec[] = "";
+const char var001b02f0[] = "";
+const char var001b02f4[] = "";
+const char var001b02f8[] = "";
+const char var001b02fc[] = "";
+const char var001b0300[] = "";
+const char var001b0304[] = "";
+const char var001b0308[] = "";
+const char var001b030c[] = "";
+const char var001b0310[] = "";
+const char var001b0314[] = "";
+const char var001b0318[] = "";
+const char var001b031c[] = "";
+const char var001b0320[] = "";
+const char var001b0324[] = "";
+const char var001b0328[] = "";
+const char var001b032c[] = "";
+const char var001b0330[] = "";
+const char var001b0334[] = "";
+const char var001b0338[] = "";
+const char var001b033c[] = "";
+const char var001b0340[] = "";
+const char var001b0344[] = "";
+const char var001b0348[] = "";
+const char var001b034c[] = "";
+const char var001b0350[] = "";
+const char var001b0354[] = "";
+const char var001b0358[] = "";
+const char var001b035c[] = "";
+const char var001b0360[] = "";
+const char var001b0364[] = "";
+const char var001b0368[] = "";
+const char var001b036c[] = "";
+const char var001b0370[] = "";
+const char var001b0374[] = "";
+const char var001b0378[] = "";
+const char var001b037c[] = "";
+const char var001b0380[] = "";
+const char var001b0384[] = "";
+const char var001b0388[] = "";
+const char var001b038c[] = "";
+const char var001b0390[] = "";
+const char var001b0394[] = "";
+const char var001b0398[] = "";
+const char var001b039c[] = "";
+const char var001b03a0[] = "";
+const char var001b03a4[] = "";
+const char var001b03a8[] = "";
+const char var001b03ac[] = "";
+const char var001b03b0[] = "";
+const char var001b03b4[] = "";
+const char var001b03b8[] = "";
+const char var001b03bc[] = "";
+const char var001b03c0[] = "";
+const char var001b03c4[] = "";
+const char var001b03c8[] = "";
+const char var001b03cc[] = "";
+const char var001b03d0[] = "";
+const char var001b03d4[] = "";
+const char var001b03d8[] = "";
+const char var001b03dc[] = "";
+const char var001b03e0[] = "";
+const char var001b03e4[] = "";
+const char var001b03e8[] = "";
+const char var001b03ec[] = "";
+const char var001b03f0[] = "";
+const char var001b03f4[] = "";
+const char var001b03f8[] = "";
+const char var001b03fc[] = "";
+const char var001b0400[] = "";
+const char var001b0404[] = "";
+const char var001b0408[] = "";
+const char var001b040c[] = "";
+const char var001b0410[] = "";
+const char var001b0414[] = "";
+const char var001b0418[] = "";
+const char var001b041c[] = "";
+const char var001b0420[] = "";
+const char var001b0424[] = "";
+const char var001b0428[] = "";
+const char var001b042c[] = "";
+const char var001b0430[] = "";
+const char var001b0434[] = "";
+const char var001b0438[] = "";
+const char var001b043c[] = "";
+const char var001b0440[] = "";
+const char var001b0444[] = "";
+const char var001b0448[] = "";
+const char var001b044c[] = "";
+const char var001b0450[] = "";
+const char var001b0454[] = "";
+const char var001b0458[] = "";
+const char var001b045c[] = "";
+const char var001b0460[] = "";
+const char var001b0464[] = "";
+const char var001b0468[] = "";
+const char var001b046c[] = "";
+const char var001b0470[] = "";
+const char var001b0474[] = "";
+const char var001b0478[] = "";
+const char var001b047c[] = "";
+const char var001b0480[] = "";
+const char var001b0484[] = "";
+const char var001b0488[] = "";
+const char var001b048c[] = "";
+const char var001b0490[] = "";
+const char var001b0494[] = "";
+const char var001b0498[] = "";
+const char var001b049c[] = "";
+const char var001b04a0[] = "";
+const char var001b04a4[] = "";
+const char var001b04a8[] = "";
+const char var001b04ac[] = "";
+const char var001b04b0[] = "";
+const char var001b04b4[] = "";
+const char var001b04b8[] = "";
+const char var001b04bc[] = "";
+const char var001b04c0[] = "";
+const char var001b04c4[] = "";
+const char var001b04c8[] = "";
+const char var001b04cc[] = "";
+const char var001b04d0[] = "";
+const char var001b04d4[] = "";
+const char var001b04d8[] = "";
+const char var001b04dc[] = "";
+const char var001b04e0[] = "";
+const char var001b04e4[] = "";
+const char var001b04e8[] = "";
+const char var001b04ec[] = "";
+const char var001b04f0[] = "";
+const char var001b04f4[] = "";
+const char var001b04f8[] = "";
+const char var001b04fc[] = "";
+const char var001b0500[] = "";
+const char var001b0504[] = "";
+const char var001b0508[] = "";
+const char var001b050c[] = "";
+const char var001b0510[] = "";
+const char var001b0514[] = "";
+const char var001b0518[] = "";
+const char var001b051c[] = "";
+const char var001b0520[] = "";
+const char var001b0524[] = "";
+const char var001b0528[] = "";
+const char var001b052c[] = "";
+const char var001b0530[] = "";
+const char var001b0534[] = "";
+const char var001b0538[] = "";
+const char var001b053c[] = "";
+const char var001b0540[] = "";
+const char var001b0544[] = "";
+const char var001b0548[] = "";
+const char var001b054c[] = "";
+const char var001b0550[] = "";
+const char var001b0554[] = "";
+const char var001b0558[] = "";
+const char var001b055c[] = "";
+const char var001b0560[] = "";
+const char var001b0564[] = "";
+const char var001b0568[] = "";
+const char var001b056c[] = "";
+const char var001b0570[] = "";
+const char var001b0574[] = "";
+const char var001b0578[] = "";
+const char var001b057c[] = "";
+const char var001b0580[] = "";
+const char var001b0584[] = "";
+const char var001b0588[] = "";
+const char var001b058c[] = "";
+const char var001b0590[] = "";
+const char var001b0594[] = "";
+const char var001b0598[] = "";
+const char var001b059c[] = "";
+const char var001b05a0[] = "";
+const char var001b05a4[] = "";
+const char var001b05a8[] = "";
+const char var001b05ac[] = "";
+const char var001b05b0[] = "";
+const char var001b05b4[] = "";
+const char var001b05b8[] = "";
+const char var001b05bc[] = "";
+const char var001b05c0[] = "";
+const char var001b05c4[] = "";
+const char var001b05c8[] = "";
+const char var001b05cc[] = "";
+const char var001b05d0[] = "";
+const char var001b05d4[] = "";
+const char var001b05d8[] = "";
+const char var001b05dc[] = "";
+const char var001b05e0[] = "";
+const char var001b05e4[] = "";
+const char var001b05e8[] = "";
+const char var001b05ec[] = "";
+const char var001b05f0[] = "";
+const char var001b05f4[] = "";
+const char var001b05f8[] = "";
+const char var001b05fc[] = "";
+const char var001b0600[] = "";
+const char var001b0604[] = "";
+const char var001b0608[] = "";
+const char var001b060c[] = "";
+const char var001b0610[] = "";
+const char var001b0614[] = "";
+const char var001b0618[] = "";
+const char var001b061c[] = "";
+const char var001b0620[] = "";
+const char var001b0624[] = "";
+const char var001b0628[] = "";
+const char var001b062c[] = "";
+const char var001b0630[] = "";
+const char var001b0634[] = "";
+const char var001b0638[] = "";
+const char var001b063c[] = "";
+const char var001b0640[] = "";
+const char var001b0644[] = "";
+const char var001b0648[] = "";
+const char var001b064c[] = "";
+const char var001b0650[] = "";
+const char var001b0654[] = "";
+const char var001b0658[] = "";
+const char var001b065c[] = "";
+const char var001b0660[] = "";
+const char var001b0664[] = "";
+const char var001b0668[] = "";
+const char var001b066c[] = "";
+const char var001b0670[] = "";
+const char var001b0674[] = "";
+const char var001b0678[] = "";
+const char var001b067c[] = "";
+const char var001b0680[] = "";
+const char var001b0684[] = "";
+const char var001b0688[] = "";
+const char var001b068c[] = "";
+const char var001b0690[] = "";
+const char var001b0694[] = "";
+const char var001b0698[] = "";
+const char var001b069c[] = "";
+const char var001b06a0[] = "";
+const char var001b06a4[] = "";
+const char var001b06a8[] = "";
+const char var001b06ac[] = "";
+const char var001b06b0[] = "";
+const char var001b06b4[] = "";
+const char var001b06b8[] = "";
+const char var001b06bc[] = "";
+const char var001b06c0[] = "";
+const char var001b06c4[] = "";
+const char var001b06c8[] = "";
+const char var001b06cc[] = "";
+const char var001b06d0[] = "";
+const char var001b06d4[] = "";
+const char var001b06d8[] = "";
+const char var001b06dc[] = "";
+const char var001b06e0[] = "";
+const char var001b06e4[] = "";
+const char var001b06e8[] = "";
+const char var001b06ec[] = "";
+const char var001b06f0[] = "";
+const char var001b06f4[] = "";
+const char var001b06f8[] = "";
+const char var001b06fc[] = "";
+const char var001b0700[] = "";
+const char var001b0704[] = "";
+const char var001b0708[] = "";
+const char var001b070c[] = "";
+const char var001b0710[] = "";
+const char var001b0714[] = "";
+const char var001b0718[] = "";
+const char var001b071c[] = "";
+const char var001b0720[] = "";
+const char var001b0724[] = "";
+const char var001b0728[] = "";
+const char var001b072c[] = "";
+const char var001b0730[] = "";
+const char var001b0734[] = "";
+const char var001b0738[] = "";
+const char var001b073c[] = "";
+const char var001b0740[] = "";
+const char var001b0744[] = "";
+const char var001b0748[] = "";
+const char var001b074c[] = "";
+const char var001b0750[] = "";
+const char var001b0754[] = "";
+const char var001b0758[] = "";
+const char var001b075c[] = "";
+const char var001b0760[] = "";
+const char var001b0764[] = "";
+const char var001b0768[] = "";
+const char var001b076c[] = "";
+const char var001b0770[] = "";
+const char var001b0774[] = "";
+const char var001b0778[] = "";
+const char var001b077c[] = "";
+const char var001b0780[] = "";
+const char var001b0784[] = "";
+const char var001b0788[] = "";
+const char var001b078c[] = "";
+const char var001b0790[] = "";
+const char var001b0794[] = "";
+const char var001b0798[] = "";
+const char var001b079c[] = "";
+const char var001b07a0[] = "";
+const char var001b07a4[] = "";
+const char var001b07a8[] = "";
+const char var001b07ac[] = "";
+const char var001b07b0[] = "";
+const char var001b07b4[] = "";
+const char var001b07b8[] = "";
+const char var001b07bc[] = "";
+const char var001b07c0[] = "";
+const char var001b07c4[] = "";
+const char var001b07c8[] = "";
+const char var001b07cc[] = "";
+const char var001b07d0[] = "";
+const char var001b07d4[] = "";
+const char var001b07d8[] = "";
+const char var001b07dc[] = "";
+const char var001b07e0[] = "";
+const char var001b07e4[] = "";
+const char var001b07e8[] = "";
+const char var001b07ec[] = "";
+const char var001b07f0[] = "";
+const char var001b07f4[] = "";
+const char var001b07f8[] = "";
+const char var001b07fc[] = "";
+const char var001b0800[] = "";
+const char var001b0804[] = "";
+const char var001b0808[] = "";
+const char var001b080c[] = "";
+const char var001b0810[] = "";
+const char var001b0814[] = "";
+const char var001b0818[] = "";
+const char var001b081c[] = "";
+const char var001b0820[] = "";
+const char var001b0824[] = "";
+const char var001b0828[] = "";
+const char var001b082c[] = "";
+const char var001b0830[] = "";
+const char var001b0834[] = "";
+const char var001b0838[] = "";
+const char var001b083c[] = "";
+const char var001b0840[] = "";
+const char var001b0844[] = "";
+const char var001b0848[] = "";
+const char var001b084c[] = "";
+const char var001b0850[] = "";
+const char var001b0854[] = "";
+const char var001b0858[] = "";
+const char var001b085c[] = "";
+const char var001b0860[] = "";
+const char var001b0864[] = "";
+const char var001b0868[] = "";
+const char var001b086c[] = "";
+const char var001b0870[] = "";
+const char var001b0874[] = "";
+const char var001b0878[] = "";
+const char var001b087c[] = "";
+const char var001b0880[] = "";
+const char var001b0884[] = "";
+const char var001b0888[] = "";
+const char var001b088c[] = "";
+const char var001b0890[] = "";
+const char var001b0894[] = "";
+const char var001b0898[] = "";
+const char var001b089c[] = "";
+const char var001b08a0[] = "";
+const char var001b08a4[] = "";
+const char var001b08a8[] = "";
+const char var001b08ac[] = "";
+const char var001b08b0[] = "";
+const char var001b08b4[] = "";
+const char var001b08b8[] = "";
+const char var001b08bc[] = "";
+const char var001b08c0[] = "";
+const char var001b08c4[] = "";
+const char var001b08c8[] = "";
+const char var001b08cc[] = "";
+const char var001b08d0[] = "";
+const char var001b08d4[] = "";
+const char var001b08d8[] = "";
+const char var001b08dc[] = "";
+const char var001b08e0[] = "";
+const char var001b08e4[] = "";
+const char var001b08e8[] = "";
+const char var001b08ec[] = "";
+const char var001b08f0[] = "";
+const char var001b08f4[] = "";
+const char var001b08f8[] = "";
+const char var001b08fc[] = "";
+const char var001b0900[] = "";
+const char var001b0904[] = "";
+const char var001b0908[] = "";
+const char var001b090c[] = "";
+const char var001b0910[] = "";
+const char var001b0914[] = "";
+const char var001b0918[] = "";
+const char var001b091c[] = "";
+const char var001b0920[] = "";
+const char var001b0924[] = "";
+const char var001b0928[] = "";
+const char var001b092c[] = "";
+const char var001b0930[] = "";
+const char var001b0934[] = "";
+const char var001b0938[] = "";
+const char var001b093c[] = "";
+const char var001b0940[] = "";
+const char var001b0944[] = "";
+const char var001b0948[] = "";
+const char var001b094c[] = "";
+const char var001b0950[] = "";
+const char var001b0954[] = "";
+const char var001b0958[] = "";
+const char var001b095c[] = "";
+const char var001b0960[] = "";
+const char var001b0964[] = "";
+const char var001b0968[] = "";
+const char var001b096c[] = "";
+const char var001b0970[] = "";
+const char var001b0974[] = "";
+const char var001b0978[] = "";
+const char var001b097c[] = "";
+const char var001b0980[] = "";
+const char var001b0984[] = "";
+const char var001b0988[] = "";
+const char var001b098c[] = "";
+const char var001b0990[] = "";
+const char var001b0994[] = "";
+const char var001b0998[] = "";
+const char var001b099c[] = "";
+const char var001b09a0[] = "";
+const char var001b09a4[] = "";
+const char var001b09a8[] = "";
+const char var001b09ac[] = "";
+const char var001b09b0[] = "";
+const char var001b09b4[] = "";
+const char var001b09b8[] = "";
+const char var001b09bc[] = "";
+const char var001b09c0[] = "";
+const char var001b09c4[] = "";
+const char var001b09c8[] = "";
+const char var001b09cc[] = "";
+const char var001b09d0[] = "";
+const char var001b09d4[] = "";
+const char var001b09d8[] = "";
+const char var001b09dc[] = "";
+const char var001b09e0[] = "";
+const char var001b09e4[] = "";
+const char var001b09e8[] = "";
+const char var001b09ec[] = "";
+const char var001b09f0[] = "";
+const char var001b09f4[] = "";
+const char var001b09f8[] = "";
+const char var001b09fc[] = "";
+const char var001b0a00[] = "";
+const char var001b0a04[] = "";
+const char var001b0a08[] = "";
+const char var001b0a0c[] = "";
+const char var001b0a10[] = "";
+const char var001b0a14[] = "";
+const char var001b0a18[] = "";
+const char var001b0a1c[] = "";
+const char var001b0a20[] = "";
+const char var001b0a24[] = "";
+const char var001b0a28[] = "";
+const char var001b0a2c[] = "";
+const char var001b0a30[] = "";
+const char var001b0a34[] = "";
+const char var001b0a38[] = "";
+const char var001b0a3c[] = "";
+const char var001b0a40[] = "";
+const char var001b0a44[] = "";
+const char var001b0a48[] = "";
+const char var001b0a4c[] = "";
+const char var001b0a50[] = "";
+const char var001b0a54[] = "";
+const char var001b0a58[] = "";
+const char var001b0a5c[] = "";
+const char var001b0a60[] = "";
+const char var001b0a64[] = "";
+const char var001b0a68[] = "";
+const char var001b0a6c[] = "";
+const char var001b0a70[] = "";
+const char var001b0a74[] = "";
+const char var001b0a78[] = "";
+const char var001b0a7c[] = "";
+const char var001b0a80[] = "";
+const char var001b0a84[] = "";
+const char var001b0a88[] = "";
+const char var001b0a8c[] = "";
+const char var001b0a90[] = "";
+const char var001b0a94[] = "";
+const char var001b0a98[] = "";
+const char var001b0a9c[] = "";
+const char var001b0aa0[] = "";
+const char var001b0aa4[] = "";
+const char var001b0aa8[] = "";
+const char var001b0aac[] = "";
+const char var001b0ab0[] = "";
+const char var001b0ab4[] = "";
+const char var001b0ab8[] = "";
+const char var001b0abc[] = "";
+const char var001b0ac0[] = "";
+const char var001b0ac4[] = "";
+const char var001b0ac8[] = "";
+const char var001b0acc[] = "";
+const char var001b0ad0[] = "";
+const char var001b0ad4[] = "";
+const char var001b0ad8[] = "";
+const char var001b0adc[] = "";
+const char var001b0ae0[] = "";
+const char var001b0ae4[] = "";
+const char var001b0ae8[] = "";
+const char var001b0aec[] = "";
+const char var001b0af0[] = "";
+const char var001b0af4[] = "";
+const char var001b0af8[] = "";
+const char var001b0afc[] = "";
+const char var001b0b00[] = "";
+const char var001b0b04[] = "";
+const char var001b0b08[] = "";
+const char var001b0b0c[] = "";
+const char var001b0b10[] = "";
+const char var001b0b14[] = "";
+const char var001b0b18[] = "";
+const char var001b0b1c[] = "";
+const char var001b0b20[] = "";
+const char var001b0b24[] = "";
+const char var001b0b28[] = "";
+const char var001b0b2c[] = "";
+const char var001b0b30[] = "";
+const char var001b0b34[] = "";
+const char var001b0b38[] = "";
+const char var001b0b3c[] = "";
+const char var001b0b40[] = "";
+const char var001b0b44[] = "";
+const char var001b0b48[] = "";
+const char var001b0b4c[] = "";
+const char var001b0b50[] = "";
+const char var001b0b54[] = "";
+const char var001b0b58[] = "";
+const char var001b0b5c[] = "";
+const char var001b0b60[] = "";
+const char var001b0b64[] = "";
+const char var001b0b68[] = "";
+const char var001b0b6c[] = "";
+const char var001b0b70[] = "";
+const char var001b0b74[] = "";
+const char var001b0b78[] = "";
+const char var001b0b7c[] = "";
+const char var001b0b80[] = "";
+const char var001b0b84[] = "";
+const char var001b0b88[] = "";
+const char var001b0b8c[] = "";
+const char var001b0b90[] = "";
+const char var001b0b94[] = "";
+const char var001b0b98[] = "";
+const char var001b0b9c[] = "";
+const char var001b0ba0[] = "";
+const char var001b0ba4[] = "";
+const char var001b0ba8[] = "";
+const char var001b0bac[] = "";
+const char var001b0bb0[] = "";
+const char var001b0bb4[] = "";
+const char var001b0bb8[] = "";
+const char var001b0bbc[] = "";
+const char var001b0bc0[] = "";
+const char var001b0bc4[] = "";
+const char var001b0bc8[] = "";
+const char var001b0bcc[] = "";
+const char var001b0bd0[] = "";
+const char var001b0bd4[] = "";
+const char var001b0bd8[] = "";
+const char var001b0bdc[] = "";
+const char var001b0be0[] = "";
+const char var001b0be4[] = "";
+const char var001b0be8[] = "";
+const char var001b0bec[] = "";
+const char var001b0bf0[] = "";
+const char var001b0bf4[] = "";
+const char var001b0bf8[] = "";
+const char var001b0bfc[] = "";
+const char var001b0c00[] = "";
+const char var001b0c04[] = "";
+const char var001b0c08[] = "";
+const char var001b0c0c[] = "";
+const char var001b0c10[] = "";
+const char var001b0c14[] = "";
+const char var001b0c18[] = "";
+const char var001b0c1c[] = "";
+const char var001b0c20[] = "";
+const char var001b0c24[] = "";
+const char var001b0c28[] = "";
+const char var001b0c2c[] = "";
+const char var001b0c30[] = "";
+const char var001b0c34[] = "";
+const char var001b0c38[] = "";
+const char var001b0c3c[] = "";
+const char var001b0c40[] = "";
+const char var001b0c44[] = "";
+const char var001b0c48[] = "";
+const char var001b0c4c[] = "";
+const char var001b0c50[] = "";
+const char var001b0c54[] = "";
+const char var001b0c58[] = "";
+const char var001b0c5c[] = "";
+const char var001b0c60[] = "";
+const char var001b0c64[] = "";
+const char var001b0c68[] = "";
+const char var001b0c6c[] = "";
+const char var001b0c70[] = "";
+const char var001b0c74[] = "";
+const char var001b0c78[] = "";
+const char var001b0c7c[] = "";
+const char var001b0c80[] = "";
+const char var001b0c84[] = "";
+const char var001b0c88[] = "";
+const char var001b0c8c[] = "";
+const char var001b0c90[] = "";
+const char var001b0c94[] = "";
+const char var001b0c98[] = "";
+const char var001b0c9c[] = "";
+const char var001b0ca0[] = "";
+const char var001b0ca4[] = "";
+const char var001b0ca8[] = "";
+const char var001b0cac[] = "";
+const char var001b0cb0[] = "";
+const char var001b0cb4[] = "";
+const char var001b0cb8[] = "";
+const char var001b0cbc[] = "";
+const char var001b0cc0[] = "";
+const char var001b0cc4[] = "";
+const char var001b0cc8[] = "";
+const char var001b0ccc[] = "";
+const char var001b0cd0[] = "";
+const char var001b0cd4[] = "";
+const char var001b0cd8[] = "";
+const char var001b0cdc[] = "";
+const char var001b0ce0[] = "";
+const char var001b0ce4[] = "";
+const char var001b0ce8[] = "";
+const char var001b0cec[] = "";
+const char var001b0cf0[] = "";
+const char var001b0cf4[] = "";
+const char var001b0cf8[] = "";
+const char var001b0cfc[] = "";
+const char var001b0d00[] = "";
+const char var001b0d04[] = "";
+const char var001b0d08[] = "";
+const char var001b0d0c[] = "";
+const char var001b0d10[] = "";
+const char var001b0d14[] = "";
+const char var001b0d18[] = "";
+const char var001b0d1c[] = "";
+const char var001b0d20[] = "";
+const char var001b0d24[] = "";
+const char var001b0d28[] = "";
+const char var001b0d2c[] = "";
+const char var001b0d30[] = "";
+const char var001b0d34[] = "";
+const char var001b0d38[] = "";
+const char var001b0d3c[] = "";
+const char var001b0d40[] = "";
+const char var001b0d44[] = "";
+const char var001b0d48[] = "";
+const char var001b0d4c[] = "";
+const char var001b0d50[] = "";
+const char var001b0d54[] = "";
+const char var001b0d58[] = "";
+const char var001b0d5c[] = "";
+const char var001b0d60[] = "";
+const char var001b0d64[] = "";
+const char var001b0d68[] = "";
+const char var001b0d6c[] = "";
+const char var001b0d70[] = "";
+const char var001b0d74[] = "";
+const char var001b0d78[] = "";
+const char var001b0d7c[] = "";
+const char var001b0d80[] = "";
+const char var001b0d84[] = "";
+const char var001b0d88[] = "";
+const char var001b0d8c[] = "";
+const char var001b0d90[] = "";
+const char var001b0d94[] = "";
+const char var001b0d98[] = "";
+const char var001b0d9c[] = "";
+const char var001b0da0[] = "";
+const char var001b0da4[] = "";
+const char var001b0da8[] = "";
+const char var001b0dac[] = "";
+const char var001b0db0[] = "";
+const char var001b0db4[] = "";
+const char var001b0db8[] = "";
+const char var001b0dbc[] = "";
+const char var001b0dc0[] = "";
+const char var001b0dc4[] = "";
+const char var001b0dc8[] = "";
+const char var001b0dcc[] = "";
+const char var001b0dd0[] = "";
+const char var001b0dd4[] = "";
+const char var001b0dd8[] = "";
+const char var001b0ddc[] = "";
+const char var001b0de0[] = "";
+const char var001b0de4[] = "";
+const char var001b0de8[] = "";
+const char var001b0dec[] = "";
+const char var001b0df0[] = "";
+const char var001b0df4[] = "";
+const char var001b0df8[] = "";
+const char var001b0dfc[] = "";
+const char var001b0e00[] = "";
+const char var001b0e04[] = "";
+const char var001b0e08[] = "";
+const char var001b0e0c[] = "";
+const char var001b0e10[] = "";
+const char var001b0e14[] = "";
+const char var001b0e18[] = "";
+const char var001b0e1c[] = "";
+const char var001b0e20[] = "";
+const char var001b0e24[] = "";
+const char var001b0e28[] = "";
+const char var001b0e2c[] = "";
+const char var001b0e30[] = "";
+const char var001b0e34[] = "";
+const char var001b0e38[] = "";
+const char var001b0e3c[] = "";
+const char var001b0e40[] = "";
+const char var001b0e44[] = "";
+const char var001b0e48[] = "";
+const char var001b0e4c[] = "";
+const char var001b0e50[] = "";
+const char var001b0e54[] = "";
+const char var001b0e58[] = "";
+const char var001b0e5c[] = "";
+const char var001b0e60[] = "";
+const char var001b0e64[] = "";
+const char var001b0e68[] = "";
+const char var001b0e6c[] = "";
+const char var001b0e70[] = "";
+const char var001b0e74[] = "";
+const char var001b0e78[] = "";
+const char var001b0e7c[] = "";
+const char var001b0e80[] = "";
+const char var001b0e84[] = "";
+const char var001b0e88[] = "";
+const char var001b0e8c[] = "";
+const char var001b0e90[] = "";
+const char var001b0e94[] = "";
+const char var001b0e98[] = "";
+const char var001b0e9c[] = "";
+const char var001b0ea0[] = "";
+const char var001b0ea4[] = "";
+const char var001b0ea8[] = "";
+const char var001b0eac[] = "";
+const char var001b0eb0[] = "";
+const char var001b0eb4[] = "";
+const char var001b0eb8[] = "";
+const char var001b0ebc[] = "";
+const char var001b0ec0[] = "";
+const char var001b0ec4[] = "";
+const char var001b0ec8[] = "";
+const char var001b0ecc[] = "";
+const char var001b0ed0[] = "";
+const char var001b0ed4[] = "";
+const char var001b0ed8[] = "";
+const char var001b0edc[] = "";
+const char var001b0ee0[] = "";
+const char var001b0ee4[] = "";
+const char var001b0ee8[] = "";
+const char var001b0eec[] = "";
+const char var001b0ef0[] = "";
+const char var001b0ef4[] = "";
+const char var001b0ef8[] = "";
+const char var001b0efc[] = "";
+const char var001b0f00[] = "";
+const char var001b0f04[] = "";
+const char var001b0f08[] = "";
+const char var001b0f0c[] = "";
+const char var001b0f10[] = "";
+const char var001b0f14[] = "";
+const char var001b0f18[] = "";
+const char var001b0f1c[] = "";
+const char var001b0f20[] = "";
+const char var001b0f24[] = "";
+const char var001b0f28[] = "";
+const char var001b0f2c[] = "";
+const char var001b0f30[] = "";
+const char var001b0f34[] = "";
+const char var001b0f38[] = "";
+const char var001b0f3c[] = "";
+const char var001b0f40[] = "";
+const char var001b0f44[] = "";
+const char var001b0f48[] = "";
+const char var001b0f4c[] = "";
+const char var001b0f50[] = "";
+const char var001b0f54[] = "";
+const char var001b0f58[] = "";
+const char var001b0f5c[] = "";
+const char var001b0f60[] = "";
+const char var001b0f64[] = "";
+const char var001b0f68[] = "";
+const char var001b0f6c[] = "";
+const char var001b0f70[] = "";
+const char var001b0f74[] = "";
+const char var001b0f78[] = "";
+const char var001b0f7c[] = "";
+const char var001b0f80[] = "";
+const char var001b0f84[] = "";
+const char var001b0f88[] = "";
+const char var001b0f8c[] = "";
+const char var001b0f90[] = "";
+const char var001b0f94[] = "";
+const char var001b0f98[] = "";
+const char var001b0f9c[] = "";
+const char var001b0fa0[] = "";
+const char var001b0fa4[] = "";
+const char var001b0fa8[] = "";
+const char var001b0fac[] = "";
+const char var001b0fb0[] = "";
+const char var001b0fb4[] = "";
+const char var001b0fb8[] = "";
+const char var001b0fbc[] = "";
+const char var001b0fc0[] = "";
+const char var001b0fc4[] = "";
+const char var001b0fc8[] = "";
+const char var001b0fcc[] = "";
+const char var001b0fd0[] = "";
+const char var001b0fd4[] = "";
+const char var001b0fd8[] = "";
+const char var001b0fdc[] = "";
+const char var001b0fe0[] = "";
+const char var001b0fe4[] = "";
+const char var001b0fe8[] = "";
+const char var001b0fec[] = "";
+const char var001b0ff0[] = "";
+const char var001b0ff4[] = "";
+const char var001b0ff8[] = "";
+const char var001b0ffc[] = "";
+const char var001b1000[] = "";
+const char var001b1004[] = "";
+const char var001b1008[] = "";
+const char var001b100c[] = "";
+const char var001b1010[] = "";
+const char var001b1014[] = "";
+const char var001b1018[] = "";
+const char var001b101c[] = "";
+const char var001b1020[] = "";
+const char var001b1024[] = "";
+const char var001b1028[] = "";
+const char var001b102c[] = "";
+const char var001b1030[] = "";
+const char var001b1034[] = "";
+const char var001b1038[] = "";
+const char var001b103c[] = "";
+const char var001b1040[] = "";
+const char var001b1044[] = "";
+const char var001b1048[] = "";
+const char var001b104c[] = "";
+const char var001b1050[] = "";
+const char var001b1054[] = "";
+const char var001b1058[] = "";
+const char var001b105c[] = "";
+const char var001b1060[] = "";
+const char var001b1064[] = "";
+const char var001b1068[] = "";
+const char var001b106c[] = "";
+const char var001b1070[] = "";
+const char var001b1074[] = "";
+const char var001b1078[] = "";
+const char var001b107c[] = "";
+const char var001b1080[] = "";
+const char var001b1084[] = "";
+const char var001b1088[] = "";
+const char var001b108c[] = "";
+const char var001b1090[] = "";
+const char var001b1094[] = "";
+const char var001b1098[] = "";
+const char var001b109c[] = "";
+const char var001b10a0[] = "";
+const char var001b10a4[] = "";
+const char var001b10a8[] = "";
+const char var001b10ac[] = "";
+const char var001b10b0[] = "";
+const char var001b10b4[] = "";
+const char var001b10b8[] = "";
+const char var001b10bc[] = "";
+const char var001b10c0[] = "";
+const char var001b10c4[] = "";
+const char var001b10c8[] = "";
+const char var001b10cc[] = "";
+const char var001b10d0[] = "";
+const char var001b10d4[] = "";
+const char var001b10d8[] = "";
+const char var001b10dc[] = "";
+const char var001b10e0[] = "";
+const char var001b10e4[] = "";
+const char var001b10e8[] = "";
+const char var001b10ec[] = "";
+const char var001b10f0[] = "";
+const char var001b10f4[] = "";
+const char var001b10f8[] = "";
+const char var001b10fc[] = "";
+const char var001b1100[] = "";
+const char var001b1104[] = "";
+const char var001b1108[] = "";
+const char var001b110c[] = "";
+const char var001b1110[] = "";
+const char var001b1114[] = "";
+const char var001b1118[] = "";
+const char var001b111c[] = "";
+const char var001b1120[] = "";
+const char var001b1124[] = "";
+const char var001b1128[] = "";
+const char var001b112c[] = "";
+const char var001b1130[] = "";
+const char var001b1134[] = "";
+const char var001b1138[] = "";
+const char var001b113c[] = "";
+const char var001b1140[] = "";
+const char var001b1144[] = "";
+const char var001b1148[] = "";
+const char var001b114c[] = "";
+const char var001b1150[] = "";
+const char var001b1154[] = "";
+const char var001b1158[] = "";
+const char var001b115c[] = "";
+const char var001b1160[] = "";
+const char var001b1164[] = "";
+const char var001b1168[] = "";
+const char var001b116c[] = "";
+const char var001b1170[] = "";
+const char var001b1174[] = "";
+const char var001b1178[] = "";
+const char var001b117c[] = "";
+const char var001b1180[] = "";
+const char var001b1184[] = "";
+const char var001b1188[] = "";
+const char var001b118c[] = "";
+const char var001b1190[] = "";
+const char var001b1194[] = "";
+const char var001b1198[] = "";
+const char var001b119c[] = "";
+const char var001b11a0[] = "";
+const char var001b11a4[] = "";
+const char var001b11a8[] = "";
+const char var001b11ac[] = "";
+const char var001b11b0[] = "";
+const char var001b11b4[] = "";
+const char var001b11b8[] = "";
+const char var001b11bc[] = "";
+const char var001b11c0[] = "";
+const char var001b11c4[] = "";
+const char var001b11c8[] = "";
+const char var001b11cc[] = "";
+const char var001b11d0[] = "";
+const char var001b11d4[] = "";
+const char var001b11d8[] = "";
+const char var001b11dc[] = "";
+const char var001b11e0[] = "";
+const char var001b11e4[] = "";
+const char var001b11e8[] = "";
+const char var001b11ec[] = "";
+const char var001b11f0[] = "";
+const char var001b11f4[] = "";
+const char var001b11f8[] = "";
+const char var001b11fc[] = "";
+const char var001b1200[] = "";
+const char var001b1204[] = "";
+const char var001b1208[] = "";
+const char var001b120c[] = "";
+const char var001b1210[] = "";
+const char var001b1214[] = "";
+const char var001b1218[] = "";
+const char var001b121c[] = "";
+const char var001b1220[] = "";
+const char var001b1224[] = "";
+const char var001b1228[] = "";
+const char var001b122c[] = "";
+const char var001b1230[] = "";
+const char var001b1234[] = "";
+const char var001b1238[] = "";
+const char var001b123c[] = "";
+const char var001b1240[] = "";
+const char var001b1244[] = "";
+const char var001b1248[] = "";
+const char var001b124c[] = "";
+const char var001b1250[] = "";
+const char var001b1254[] = "";
+const char var001b1258[] = "";
+const char var001b125c[] = "";
+const char var001b1260[] = "";
+const char var001b1264[] = "";
+const char var001b1268[] = "";
+const char var001b126c[] = "";
+const char var001b1270[] = "";
+const char var001b1274[] = "";
+const char var001b1278[] = "";
+const char var001b127c[] = "";
+const char var001b1280[] = "";
+const char var001b1284[] = "";
+const char var001b1288[] = "";
+const char var001b128c[] = "";
+const char var001b1290[] = "";
+const char var001b1294[] = "";
+const char var001b1298[] = "";
+const char var001b129c[] = "";
+const char var001b12a0[] = "";
+const char var001b12a4[] = "";
+const char var001b12a8[] = "";
+const char var001b12ac[] = "";
+const char var001b12b0[] = "";
+const char var001b12b4[] = "";
+const char var001b12b8[] = "";
+const char var001b12bc[] = "";
+const char var001b12c0[] = "";
+const char var001b12c4[] = "";
+const char var001b12c8[] = "";
+const char var001b12cc[] = "";
+const char var001b12d0[] = "";
+const char var001b12d4[] = "";
+const char var001b12d8[] = "";
+const char var001b12dc[] = "";
+const char var001b12e0[] = "";
+const char var001b12e4[] = "";
+const char var001b12e8[] = "";
+const char var001b12ec[] = "";
+const char var001b12f0[] = "";
+const char var001b12f4[] = "";
+const char var001b12f8[] = "";
+const char var001b12fc[] = "";
+const char var001b1300[] = "";
+const char var001b1304[] = "";
+const char var001b1308[] = "";
+const char var001b130c[] = "";
+const char var001b1310[] = "";
+const char var001b1314[] = "";
+const char var001b1318[] = "";
+const char var001b131c[] = "";
+const char var001b1320[] = "";
+const char var001b1324[] = "";
+const char var001b1328[] = "";
+const char var001b132c[] = "";
+const char var001b1330[] = "";
+const char var001b1334[] = "";
+const char var001b1338[] = "";
+const char var001b133c[] = "";
+const char var001b1340[] = "";
+const char var001b1344[] = "";
+const char var001b1348[] = "";
+const char var001b134c[] = "";
+const char var001b1350[] = "";
+const char var001b1354[] = "";
+const char var001b1358[] = "";
+const char var001b135c[] = "";
+const char var001b1360[] = "";
+const char var001b1364[] = "";
+const char var001b1368[] = "";
+const char var001b136c[] = "";
+const char var001b1370[] = "";
+const char var001b1374[] = "";
+const char var001b1378[] = "";
+const char var001b137c[] = "";
+const char var001b1380[] = "";
+const char var001b1384[] = "";
+const char var001b1388[] = "";
+const char var001b138c[] = "";
+const char var001b1390[] = "";
+const char var001b1394[] = "";
+const char var001b1398[] = "";
+const char var001b139c[] = "";
+const char var001b13a0[] = "";
+const char var001b13a4[] = "";
+const char var001b13a8[] = "";
+const char var001b13ac[] = "";
+const char var001b13b0[] = "";
+const char var001b13b4[] = "";
+const char var001b13b8[] = "";
+const char var001b13bc[] = "";
+const char var001b13c0[] = "";
+const char var001b13c4[] = "";
+const char var001b13c8[] = "";
+const char var001b13cc[] = "";
+const char var001b13d0[] = "";
+const char var001b13d4[] = "";
+const char var001b13d8[] = "";
+const char var001b13dc[] = "";
+const char var001b13e0[] = "";
+const char var001b13e4[] = "";
+const char var001b13e8[] = "";
+const char var001b13ec[] = "";
+const char var001b13f0[] = "";
+const char var001b13f4[] = "";
+const char var001b13f8[] = "";
+const char var001b13fc[] = "";
+const char var001b1400[] = "";
+const char var001b1404[] = "";
+const char var001b1408[] = "";
+const char var001b140c[] = "";
+const char var001b1410[] = "";
+const char var001b1414[] = "";
+const char var001b1418[] = "";
+const char var001b141c[] = "";
+const char var001b1420[] = "";
+const char var001b1424[] = "";
+const char var001b1428[] = "";
+const char var001b142c[] = "";
+const char var001b1430[] = "";
+const char var001b1434[] = "";
+const char var001b1438[] = "";
+const char var001b143c[] = "";
+const char var001b1440[] = "";
+const char var001b1444[] = "";
+const char var001b1448[] = "";
+const char var001b144c[] = "";
+const char var001b1450[] = "";
+const char var001b1454[] = "";
+const char var001b1458[] = "";
+const char var001b145c[] = "";
+const char var001b1460[] = "";
+const char var001b1464[] = "";
+const char var001b1468[] = "";
+const char var001b146c[] = "";
+const char var001b1470[] = "";
+const char var001b1474[] = "";
+const char var001b1478[] = "";
+const char var001b147c[] = "";
+const char var001b1480[] = "";
+const char var001b1484[] = "";
+const char var001b1488[] = "";
+const char var001b148c[] = "";
+const char var001b1490[] = "";
+const char var001b1494[] = "";
+const char var001b1498[] = "";
+const char var001b149c[] = "";
+const char var001b14a0[] = "";
+const char var001b14a4[] = "";
+const char var001b14a8[] = "";
+const char var001b14ac[] = "";
+const char var001b14b0[] = "";
+const char var001b14b4[] = "";
+const char var001b14b8[] = "";
+const char var001b14bc[] = "";
+const char var001b14c0[] = "";
+const char var001b14c4[] = "";
+const char var001b14c8[] = "";
+const char var001b14cc[] = "";
+const char var001b14d0[] = "";
+const char var001b14d4[] = "";
+const char var001b14d8[] = "";
+const char var001b14dc[] = "";
+const char var001b14e0[] = "";
+const char var001b14e4[] = "";
+const char var001b14e8[] = "";
+const char var001b14ec[] = "";
+const char var001b14f0[] = "";
+const char var001b14f4[] = "";
+const char var001b14f8[] = "";
+const char var001b14fc[] = "";
+const char var001b1500[] = "";
+const char var001b1504[] = "";
+const char var001b1508[] = "";
+const char var001b150c[] = "";
+const char var001b1510[] = "";
+const char var001b1514[] = "";
+const char var001b1518[] = "";
+const char var001b151c[] = "";
+const char var001b1520[] = "";
+const char var001b1524[] = "";
+const char var001b1528[] = "";
+const char var001b152c[] = "";
+const char var001b1530[] = "";
+const char var001b1534[] = "";
+const char var001b1538[] = "";
+const char var001b153c[] = "";
+const char var001b1540[] = "";
+const char var001b1544[] = "";
+const char var001b1548[] = "";
+const char var001b154c[] = "";
+const char var001b1550[] = "";
+const char var001b1554[] = "";
+const char var001b1558[] = "";
+const char var001b155c[] = "";
+const char var001b1560[] = "";
+const char var001b1564[] = "";
+const char var001b1568[] = "";
+const char var001b156c[] = "";
+const char var001b1570[] = "";
+const char var001b1574[] = "";
+const char var001b1578[] = "";
+const char var001b157c[] = "";
+const char var001b1580[] = "";
+const char var001b1584[] = "";
+const char var001b1588[] = "";
+const char var001b158c[] = "";
+const char var001b1590[] = "";
+const char var001b1594[] = "";
+const char var001b1598[] = "";
+const char var001b159c[] = "";
+const char var001b15a0[] = "";
+const char var001b15a4[] = "";
+const char var001b15a8[] = "";
+const char var001b15ac[] = "";
+const char var001b15b0[] = "";
+const char var001b15b4[] = "";
+const char var001b15b8[] = "";
+const char var001b15bc[] = "";
+const char var001b15c0[] = "";
+const char var001b15c4[] = "";
+const char var001b15c8[] = "";
+const char var001b15cc[] = "";
+const char var001b15d0[] = "";
+const char var001b15d4[] = "";
+const char var001b15d8[] = "";
+const char var001b15dc[] = "";
+const char var001b15e0[] = "";
+const char var001b15e4[] = "";
+const char var001b15e8[] = "";
+const char var001b15ec[] = "";
+const char var001b15f0[] = "";
+const char var001b15f4[] = "";
+const char var001b15f8[] = "";
+const char var001b15fc[] = "";
+const char var001b1600[] = "";
+const char var001b1604[] = "";
+const char var001b1608[] = "";
+const char var001b160c[] = "";
+const char var001b1610[] = "";
+const char var001b1614[] = "";
+const char var001b1618[] = "";
+const char var001b161c[] = "";
+const char var001b1620[] = "";
+const char var001b1624[] = "";
+const char var001b1628[] = "";
+const char var001b162c[] = "";
+const char var001b1630[] = "";
+const char var001b1634[] = "";
+const char var001b1638[] = "";
+const char var001b163c[] = "";
+const char var001b1640[] = "";
+const char var001b1644[] = "";
+const char var001b1648[] = "";
+const char var001b164c[] = "";
+const char var001b1650[] = "";
+const char var001b1654[] = "";
+const char var001b1658[] = "";
+const char var001b165c[] = "";
+const char var001b1660[] = "";
+const char var001b1664[] = "";
+const char var001b1668[] = "";
+const char var001b166c[] = "";
+const char var001b1670[] = "";
+const char var001b1674[] = "";
+const char var001b1678[] = "";
+const char var001b167c[] = "";
+const char var001b1680[] = "";
+const char var001b1684[] = "";
+const char var001b1688[] = "";
+const char var001b168c[] = "";
+const char var001b1690[] = "";
+const char var001b1694[] = "";
+const char var001b1698[] = "";
+const char var001b169c[] = "";
+const char var001b16a0[] = "";
+const char var001b16a4[] = "";
+const char var001b16a8[] = "";
+const char var001b16ac[] = "";
+const char var001b16b0[] = "";
+const char var001b16b4[] = "";
+const char var001b16b8[] = "";
+const char var001b16bc[] = "";
+const char var001b16c0[] = "";
+const char var001b16c4[] = "";
+const char var001b16c8[] = "";
+const char var001b16cc[] = "";
+const char var001b16d0[] = "";
+const char var001b16d4[] = "";
+const char var001b16d8[] = "";
+const char var001b16dc[] = "";
+const char var001b16e0[] = "";
+const char var001b16e4[] = "";
+const char var001b16e8[] = "";
+const char var001b16ec[] = "";
+const char var001b16f0[] = "";
+const char var001b16f4[] = "";
+const char var001b16f8[] = "";
+const char var001b16fc[] = "";
+const char var001b1700[] = "";
+const char var001b1704[] = "";
+const char var001b1708[] = "";
+const char var001b170c[] = "";
+const char var001b1710[] = "";
+const char var001b1714[] = "";
+const char var001b1718[] = "";
+const char var001b171c[] = "";
+const char var001b1720[] = "";
+const char var001b1724[] = "";
+const char var001b1728[] = "";
+const char var001b172c[] = "";
+const char var001b1730[] = "";
+const char var001b1734[] = "";
+const char var001b1738[] = "";
+const char var001b173c[] = "";
+const char var001b1740[] = "";
+const char var001b1744[] = "";
+const char var001b1748[] = "";
+const char var001b174c[] = "";
+const char var001b1750[] = "";
+const char var001b1754[] = "";
+const char var001b1758[] = "";
+const char var001b175c[] = "";
+const char var001b1760[] = "";
+const char var001b1764[] = "";
+const char var001b1768[] = "";
+const char var001b176c[] = "";
+const char var001b1770[] = "";
+const char var001b1774[] = "";
+const char var001b1778[] = "";
+const char var001b177c[] = "";
+const char var001b1780[] = "";
+const char var001b1784[] = "";
+const char var001b1788[] = "";
+const char var001b178c[] = "";
+const char var001b1790[] = "";
+const char var001b1794[] = "";
+const char var001b1798[] = "";
+const char var001b179c[] = "";
+const char var001b17a0[] = "";
+const char var001b17a4[] = "";
+const char var001b17a8[] = "";
+const char var001b17ac[] = "";
+const char var001b17b0[] = "";
+const char var001b17b4[] = "";
+const char var001b17b8[] = "";
+const char var001b17bc[] = "";
+const char var001b17c0[] = "";
+const char var001b17c4[] = "";
+const char var001b17c8[] = "";
+const char var001b17cc[] = "";
+const char var001b17d0[] = "";
+const char var001b17d4[] = "";
+const char var001b17d8[] = "";
+const char var001b17dc[] = "";
+const char var001b17e0[] = "";
+const char var001b17e4[] = "";
+const char var001b17e8[] = "";
+const char var001b17ec[] = "";
+const char var001b17f0[] = "";
+const char var001b17f4[] = "";
+const char var001b17f8[] = "";
+const char var001b17fc[] = "";
+const char var001b1800[] = "";
+const char var001b1804[] = "";
+const char var001b1808[] = "";
+const char var001b180c[] = "";
+const char var001b1810[] = "";
+const char var001b1814[] = "";
+const char var001b1818[] = "";
+const char var001b181c[] = "";
+const char var001b1820[] = "";
+const char var001b1824[] = "";
+const char var001b1828[] = "";
+const char var001b182c[] = "";
+const char var001b1830[] = "";
+const char var001b1834[] = "";
+const char var001b1838[] = "";
+const char var001b183c[] = "";
+const char var001b1840[] = "";
+const char var001b1844[] = "";
+const char var001b1848[] = "";
+const char var001b184c[] = "";
+const char var001b1850[] = "";
+const char var001b1854[] = "";
+const char var001b1858[] = "";
+const char var001b185c[] = "";
+const char var001b1860[] = "";
+const char var001b1864[] = "";
+const char var001b1868[] = "";
+const char var001b186c[] = "";
+const char var001b1870[] = "";
+const char var001b1874[] = "";
+const char var001b1878[] = "";
+const char var001b187c[] = "";
+const char var001b1880[] = "";
+const char var001b1884[] = "";
+const char var001b1888[] = "";
+const char var001b188c[] = "";
+const char var001b1890[] = "";
+const char var001b1894[] = "";
+const char var001b1898[] = "";
+const char var001b189c[] = "";
+const char var001b18a0[] = "";
+const char var001b18a4[] = "";
+const char var001b18a8[] = "";
+const char var001b18ac[] = "";
+const char var001b18b0[] = "";
+const char var001b18b4[] = "";
+const char var001b18b8[] = "";
+const char var001b18bc[] = "";
+const char var001b18c0[] = "";
+const char var001b18c4[] = "";
+const char var001b18c8[] = "";
+const char var001b18cc[] = "";
+const char var001b18d0[] = "";
+const char var001b18d4[] = "";
+const char var001b18d8[] = "";
+const char var001b18dc[] = "";
+const char var001b18e0[] = "";
+const char var001b18e4[] = "";
+const char var001b18e8[] = "";
+const char var001b18ec[] = "";
+const char var001b18f0[] = "";
+const char var001b18f4[] = "";
+const char var001b18f8[] = "";
+const char var001b18fc[] = "";
+const char var001b1900[] = "";
+const char var001b1904[] = "";
+const char var001b1908[] = "";
+const char var001b190c[] = "";
+const char var001b1910[] = "";
+const char var001b1914[] = "";
+const char var001b1918[] = "";
+const char var001b191c[] = "";
+const char var001b1920[] = "";
+const char var001b1924[] = "";
+const char var001b1928[] = "";
+const char var001b192c[] = "";
+const char var001b1930[] = "";
+const char var001b1934[] = "";
+const char var001b1938[] = "";
+const char var001b193c[] = "";
+const char var001b1940[] = "";
+const char var001b1944[] = "";
+const char var001b1948[] = "";
+const char var001b194c[] = "";
+const char var001b1950[] = "";
+const char var001b1954[] = "";
+const char var001b1958[] = "";
+const char var001b195c[] = "";
+const char var001b1960[] = "";
+const char var001b1964[] = "";
+const char var001b1968[] = "";
+const char var001b196c[] = "";
+const char var001b1970[] = "";
+const char var001b1974[] = "";
+const char var001b1978[] = "";
+const char var001b197c[] = "";
+const char var001b1980[] = "";
+const char var001b1984[] = "";
+const char var001b1988[] = "";
+const char var001b198c[] = "";
+const char var001b1990[] = "";
+const char var001b1994[] = "";
+const char var001b1998[] = "";
+const char var001b199c[] = "";
+const char var001b19a0[] = "";
+const char var001b19a4[] = "";
+const char var001b19a8[] = "";
+const char var001b19ac[] = "";
+const char var001b19b0[] = "";
+const char var001b19b4[] = "";
+const char var001b19b8[] = "";
+const char var001b19bc[] = "";
+const char var001b19c0[] = "";
+const char var001b19c4[] = "";
+const char var001b19c8[] = "";
+const char var001b19cc[] = "";
+const char var001b19d0[] = "";
+const char var001b19d4[] = "";
+const char var001b19d8[] = "";
+const char var001b19dc[] = "";
+const char var001b19e0[] = "";
+const char var001b19e4[] = "";
+const char var001b19e8[] = "";
+const char var001b19ec[] = "";
+const char var001b19f0[] = "";
+const char var001b19f4[] = "";
+const char var001b19f8[] = "";
+const char var001b19fc[] = "";
+const char var001b1a00[] = "";
+const char var001b1a04[] = "";
+const char var001b1a08[] = "";
+const char var001b1a0c[] = "";
+const char var001b1a10[] = "";
+const char var001b1a14[] = "";
+const char var001b1a18[] = "";
+const char var001b1a1c[] = "";
+const char var001b1a20[] = "";
+const char var001b1a24[] = "";
+const char var001b1a28[] = "";
+const char var001b1a2c[] = "";
+const char var001b1a30[] = "";
+const char var001b1a34[] = "";
+const char var001b1a38[] = "";
+const char var001b1a3c[] = "";
+const char var001b1a40[] = "";
+const char var001b1a44[] = "";
+const char var001b1a48[] = "";
+const char var001b1a4c[] = "";
+const char var001b1a50[] = "";
+const char var001b1a54[] = "";
+const char var001b1a58[] = "";
+const char var001b1a5c[] = "";
+const char var001b1a60[] = "";
+const char var001b1a64[] = "";
+const char var001b1a68[] = "";
+const char var001b1a6c[] = "";
+const char var001b1a70[] = "";
+const char var001b1a74[] = "";
+const char var001b1a78[] = "";
+const char var001b1a7c[] = "";
+const char var001b1a80[] = "";
+const char var001b1a84[] = "";
+const char var001b1a88[] = "";
+const char var001b1a8c[] = "";
+const char var001b1a90[] = "";
+const char var001b1a94[] = "";
+const char var001b1a98[] = "";
+const char var001b1a9c[] = "";
+const char var001b1aa0[] = "";
+const char var001b1aa4[] = "";
+const char var001b1aa8[] = "";
+const char var001b1aac[] = "";
+const char var001b1ab0[] = "";
+const char var001b1ab4[] = "";
+const char var001b1ab8[] = "";
+const char var001b1abc[] = "";
+const char var001b1ac0[] = "";
+const char var001b1ac4[] = "";
+const char var001b1ac8[] = "";
+const char var001b1acc[] = "";
+const char var001b1ad0[] = "";
+const char var001b1ad4[] = "";
+const char var001b1ad8[] = "";
+const char var001b1adc[] = "";
+const char var001b1ae0[] = "";
+const char var001b1ae4[] = "";
+const char var001b1ae8[] = "";
+const char var001b1aec[] = "";
+const char var001b1af0[] = "";
+const char var001b1af4[] = "";
+const char var001b1af8[] = "";
+const char var001b1afc[] = "";
+const char var001b1b00[] = "";
+const char var001b1b04[] = "";
+const char var001b1b08[] = "";
+const char var001b1b0c[] = "";
+const char var001b1b10[] = "";
+const char var001b1b14[] = "";
+const char var001b1b18[] = "";
+const char var001b1b1c[] = "";
+const char var001b1b20[] = "";
+const char var001b1b24[] = "";
+const char var001b1b28[] = "";
+const char var001b1b2c[] = "";
+const char var001b1b30[] = "";
+const char var001b1b34[] = "";
+const char var001b1b38[] = "";
+const char var001b1b3c[] = "";
+const char var001b1b40[] = "";
+const char var001b1b44[] = "";
+const char var001b1b48[] = "";
+const char var001b1b4c[] = "";
+const char var001b1b50[] = "";
+const char var001b1b54[] = "";
+const char var001b1b58[] = "";
+const char var001b1b5c[] = "";
+const char var001b1b60[] = "";
+const char var001b1b64[] = "";
+const char var001b1b68[] = "";
+const char var001b1b6c[] = "";
+const char var001b1b70[] = "";
+const char var001b1b74[] = "";
+const char var001b1b78[] = "";
+const char var001b1b7c[] = "";
+const char var001b1b80[] = "";
+const char var001b1b84[] = "";
+const char var001b1b88[] = "";
+const char var001b1b8c[] = "";
+const char var001b1b90[] = "";
+const char var001b1b94[] = "";
+const char var001b1b98[] = "";
+const char var001b1b9c[] = "";
+const char var001b1ba0[] = "";
+const char var001b1ba4[] = "";
+const char var001b1ba8[] = "";
+const char var001b1bac[] = "";
+const char var001b1bb0[] = "";
+const char var001b1bb4[] = "";
+const char var001b1bb8[] = "";
+const char var001b1bbc[] = "";
+const char var001b1bc0[] = "";
+const char var001b1bc4[] = "";
+const char var001b1bc8[] = "";
+const char var001b1bcc[] = "";
+const char var001b1bd0[] = "";
+const char var001b1bd4[] = "";
+const char var001b1bd8[] = "";
+const char var001b1bdc[] = "";
+const char var001b1be0[] = "";
+const char var001b1be4[] = "";
+const char var001b1be8[] = "";
+const char var001b1bec[] = "";
+const char var001b1bf0[] = "";
+const char var001b1bf4[] = "";
+const char var001b1bf8[] = "";
+const char var001b1bfc[] = "";
+const char var001b1c00[] = "";
+const char var001b1c04[] = "";
+const char var001b1c08[] = "";
+const char var001b1c0c[] = "";
+const char var001b1c10[] = "";
+const char var001b1c14[] = "";
+const char var001b1c18[] = "";
+const char var001b1c1c[] = "";
+const char var001b1c20[] = "";
+const char var001b1c24[] = "";
+const char var001b1c28[] = "";
+const char var001b1c2c[] = "";
+const char var001b1c30[] = "";
+const char var001b1c34[] = "";
+const char var001b1c38[] = "";
+const char var001b1c3c[] = "";
+const char var001b1c40[] = "";
+const char var001b1c44[] = "";
+const char var001b1c48[] = "";
+const char var001b1c4c[] = "";
+const char var001b1c50[] = "";
+const char var001b1c54[] = "";
+const char var001b1c58[] = "";
+const char var001b1c5c[] = "";
+const char var001b1c60[] = "";
+const char var001b1c64[] = "";
+const char var001b1c68[] = "";
+const char var001b1c6c[] = "";
+const char var001b1c70[] = "";
+const char var001b1c74[] = "";
+const char var001b1c78[] = "";
+const char var001b1c7c[] = "";
+const char var001b1c80[] = "";
+const char var001b1c84[] = "";
+const char var001b1c88[] = "";
+const char var001b1c8c[] = "";
+const char var001b1c90[] = "";
+const char var001b1c94[] = "";
+const char var001b1c98[] = "";
+const char var001b1c9c[] = "";
+const char var001b1ca0[] = "";
+const char var001b1ca4[] = "";
+const char var001b1ca8[] = "";
+const char var001b1cac[] = "";
+const char var001b1cb0[] = "";
+const char var001b1cb4[] = "";
+const char var001b1cb8[] = "";
+const char var001b1cbc[] = "";
+const char var001b1cc0[] = "";
+const char var001b1cc4[] = "";
+const char var001b1cc8[] = "";
+const char var001b1ccc[] = "";
+const char var001b1cd0[] = "";
+const char var001b1cd4[] = "";
+const char var001b1cd8[] = "";
+const char var001b1cdc[] = "";
+const char var001b1ce0[] = "";
+const char var001b1ce4[] = "";
+const char var001b1ce8[] = "";
+const char var001b1cec[] = "";
+const char var001b1cf0[] = "";
+const char var001b1cf4[] = "";
+const char var001b1cf8[] = "";
+const char var001b1cfc[] = "";
+const char var001b1d00[] = "";
+const char var001b1d04[] = "";
+const char var001b1d08[] = "";
+const char var001b1d0c[] = "";
+const char var001b1d10[] = "";
+const char var001b1d14[] = "";
+const char var001b1d18[] = "";
+const char var001b1d1c[] = "";
+const char var001b1d20[] = "";
+const char var001b1d24[] = "";
+const char var001b1d28[] = "";
+const char var001b1d2c[] = "";
+const char var001b1d30[] = "";
+const char var001b1d34[] = "";
+const char var001b1d38[] = "";
+const char var001b1d3c[] = "";
+const char var001b1d40[] = "";
+const char var001b1d44[] = "";
+const char var001b1d48[] = "";
+const char var001b1d4c[] = "";
+const char var001b1d50[] = "";
+const char var001b1d54[] = "";
+const char var001b1d58[] = "";
+const char var001b1d5c[] = "";
+const char var001b1d60[] = "";
+const char var001b1d64[] = "";
+const char var001b1d68[] = "";
+const char var001b1d6c[] = "";
+const char var001b1d70[] = "";
+const char var001b1d74[] = "";
+const char var001b1d78[] = "";
+const char var001b1d7c[] = "";
+const char var001b1d80[] = "";
+const char var001b1d84[] = "";
+const char var001b1d88[] = "";
+const char var001b1d8c[] = "";
+const char var001b1d90[] = "";
+const char var001b1d94[] = "";
+const char var001b1d98[] = "";
+const char var001b1d9c[] = "";
+const char var001b1da0[] = "";
+const char var001b1da4[] = "";
+const char var001b1da8[] = "";
+const char var001b1dac[] = "";
+const char var001b1db0[] = "";
+const char var001b1db4[] = "";
+const char var001b1db8[] = "";
+const char var001b1dbc[] = "";
+const char var001b1dc0[] = "";
+const char var001b1dc4[] = "";
+const char var001b1dc8[] = "";
+const char var001b1dcc[] = "";
+const char var001b1dd0[] = "";
+const char var001b1dd4[] = "";
+const char var001b1dd8[] = "";
+const char var001b1ddc[] = "";
+const char var001b1de0[] = "";
+const char var001b1de4[] = "";
+const char var001b1de8[] = "";
+const char var001b1dec[] = "";
+const char var001b1df0[] = "";
+const char var001b1df4[] = "";
+const char var001b1df8[] = "";
+const char var001b1dfc[] = "";
+const char var001b1e00[] = "";
+const char var001b1e04[] = "";
+const char var001b1e08[] = "";
+const char var001b1e0c[] = "";
+const char var001b1e10[] = "";
+const char var001b1e14[] = "";
+const char var001b1e18[] = "";
+const char var001b1e1c[] = "";
+const char var001b1e20[] = "";
+const char var001b1e24[] = "";
+const char var001b1e28[] = "";
+const char var001b1e2c[] = "";
+const char var001b1e30[] = "";
+const char var001b1e34[] = "";
+const char var001b1e38[] = "";
+const char var001b1e3c[] = "";
+const char var001b1e40[] = "";
+const char var001b1e44[] = "%d\n";
+const char var001b1e48[] = "%d\n";
+const char var001b1e4c[] = "%d\n";
+const char var001b1e50[] = "%d\n";
+const char var001b1e54[] = "%d\n";
+
+const u32 var001b1e58[] = {
+	0x3eb33333,
+	0x3f266666,
+	0x7f0eccc4,
+	0x7f0ecd00,
+	0x7f0ecd64,
+	0x7f0ecd74,
+	0x7f0ecd84,
+	0x7f0ecd94,
+	0x7f0ecda4,
+	0x7f0ecdb4,
+	0x7f0ecdc4,
+	0x7f0ecdd4,
+	0x7f0ecde4,
+	0x7f0ecdf4,
+	0x7f0f0630,
+	0x7f0f05d0,
+	0x7f0f06f0,
+	0x7f0f05e0,
+	0x7f0f0610,
+	0x7f0f0660,
+	0x7f0f0670,
+	0x7f0f05f0,
+	0x7f0f0600,
+	0x7f0f06f0,
+	0x7f0f0650,
+	0x7f0f0680,
+	0x7f0f0690,
+	0x7f0f06a0,
+	0x7f0f06b0,
+	0x7f0f06f0,
+	0x7f0f06c0,
+	0x7f0f06d0,
+	0x7f0f06f0,
+	0x7f0f06f0,
+	0x7f0f0640,
+	0x7f0f06f0,
+	0x7f0f0620,
+	0x7f0f06f0,
+	0x7f0f06e0,
+	0x7f0f0744,
+	0x7f0f0848,
+	0x7f0f075c,
+	0x7f0f07a0,
+	0x7f0f0848,
+	0x7f0f0848,
+	0x7f0f0770,
+	0x7f0f078c,
+	0x7f0f0848,
+	0x7f0f0848,
+	0x7f0f07e4,
+	0x7f0f0800,
+	0x7f0f07cc,
+	0x7f0f082c,
+	0x7f0f0848,
+	0x7f0f0818,
+	0x7f0f0848,
+	0x7f0f0848,
+	0x7f0f0848,
+	0x7f0f0848,
+	0x7f0f0848,
+	0x7f0f07bc,
+	0x7f0f0890,
+	0x7f0f0908,
+	0x7f0f0908,
+	0x7f0f08a0,
+	0x7f0f0908,
+	0x7f0f0908,
+	0x7f0f08d0,
+	0x7f0f0908,
+	0x7f0f0908,
+	0x7f0f0908,
+	0x7f0f0890,
+	0x7f0f08f0,
+	0x7f0f08c0,
+	0x7f0f08e0,
+	0x7f0f0908,
+	0x7f0f0908,
+	0x7f0f0908,
+	0x7f0f0908,
+	0x7f0f0908,
+	0x7f0f0908,
+	0x7f0f0908,
+	0x7f0f08b0,
+	0x7f0f0908,
+	0x7f0f0900,
+	0x00000000,
+	0x20202000,
+	0x20202000,
+	0x20202000,
+	0x4f4f4f00,
+	0x00000000,
+	0x00000000,
+	0x4f4f4f00,
+	0x4f4f4f00,
+	0x4f4f4f00,
+	0x4f4f4f00,
+	0x00000000,
+	0x00000000,
+	0x4f4f4f00,
+	0x00000000,
+	0x00000000,
+	0x0060bf7f,
+	0x0000507f,
+	0x00f0ff7f,
+	0xffffffff,
+	0x00002f7f,
+	0x00006f7f,
+	0x00ffffff,
+	0x007f7fff,
+	0xffffffff,
+	0x8fffffff,
+	0x000044ff,
+	0x000030ff,
+	0x7f7fffff,
+	0xffffffff,
+	0x6644ff7f,
+	0xbf00007f,
+	0x5000007f,
+	0xff00007f,
+	0xffff00ff,
+	0x2f00007f,
+	0x6f00007f,
+	0xff7050ff,
+	0x7f0000ff,
+	0xffff00ff,
+	0xff9070ff,
+	0x440000ff,
+	0x003000ff,
+	0xffff00ff,
+	0xffffffff,
+	0xff44447f,
+	0x00bf007f,
+	0x0050007f,
+	0x00ff007f,
+	0xffff00ff,
+	0x002f007f,
+	0x00ff0028,
+	0x55ff55ff,
+	0x006f00af,
+	0xffffffff,
+	0x00000000,
+	0x004400ff,
+	0x003000ff,
+	0xffff00ff,
+	0xffffffff,
+	0x44ff447f,
+	0xffffffff,
+	0xffffff7f,
+	0xffffffff,
+	0xffffffff,
+	0xffffff7f,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0x00000000,
+	0xffffff5f,
+	0xffffffff,
+	0xffffff7f,
+	0xffffffff,
+	0xaaaaaaff,
+	0xaaaaaa7f,
+	0xaaaaaaff,
+	0xffffffff,
+	0xffffff2f,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xff8888ff,
+	0xffffffff,
+	0x00000000,
+	0xffffff5f,
+	0xffffffff,
+	0xffffff7f,
+	0xffffffff,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0x4f4f4f00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0x00000000,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0x006f6faf,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0x00000000,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0x006f6faf,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0x00000000,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xff7f0000,
+	0xffffff00,
+	0xffffff00,
+	0x00ffff00,
+	0x006f6faf,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0xffffff00,
+	0x00000000,
+	0xffffffff,
+	0xffffff7f,
+	0xffffffff,
+	0xffffffff,
+	0xffffff7f,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffff5f,
+	0xffffffff,
+	0xffffff7f,
+	0xffffffff,
+	0xffffffff,
+	0xffffff7f,
+	0xffffffff,
+	0xffffffff,
+	0xffffff7f,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffff5f,
+	0xffffffff,
+	0xffffff7f,
+	0xffffffff,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x4f4f4f00,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x00000000,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x006f6faf,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x00000000,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x006f6faf,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x00000000,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x00ff0000,
+	0x44444400,
+	0x44444400,
+	0xffff0000,
+	0x006f6faf,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x44444400,
+	0x00000000,
+	0xffffffff,
+	0xffffff7f,
+	0xffffffff,
+	0xffffffff,
+	0xffffff7f,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffff5f,
+	0xffffffff,
+	0xffffff7f,
+	0xffffffff,
+	0xffffffff,
+	0xffffff7f,
+	0xffffffff,
+	0xffffffff,
+	0xffffff7f,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffffff,
+	0xffffff5f,
+	0xffffffff,
+	0xffffff7f,
+	0xffffffff,
+	0x544d0000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001b2400[] = "(BNC:Menu) findItem Warning: Item not found\n";
+const char var001b2430[] = "(BNC:Menu) menuFirstFocus - Menu %s does not have any focusable item!\n";
+const char var001b2478[] = "(BNC:Menu) menuLastFocus - Menu %s does not have any focusable item!\n";
+const char var001b24c0[] = "Init menu %x\n";
+const char var001b24d0[] = "[]-[] Added Main menu to ctl slot %d\n";
+const char var001b24f8[] = "[]-[] Added Slide menu to ctl slot %d\n";
+const char var001b2520[] = "[]-[] StackStart Stats: slides %d, ctlPtr %d slidePtr %d\n";
+const char var001b255c[] = "$-$-$avePtr: %d\n";
+const char var001b2570[] = "[]-[] Menu End: now %d slides\n";
+const char var001b2590[] = "Freeing challenge mem\n";
+const char var001b25a8[] = "IG:) style %d gbHead:%d\n";
+const char var001b25c4[] = "GRABBED GUN MEM!\n";
+const char var001b25d8[] = "Freeing challenge mem\n";
+const char var001b25f0[] = "mzn";
+const char var001b25f4[] = "mzf";
+
+const u32 var001b25f8[] = {
+	0xbf000000,
+	0x50000000,
+	0xff000000,
+	0xbfbf0000,
+	0x50500000,
+	0xffff0000,
+	0x0000bf00,
+	0x00005000,
+	0x0000ff00,
+	0xbf00bf00,
+	0x50005000,
+	0xff00ff00,
+	0x00bfbf00,
+	0x00505000,
+	0x00ffff00,
+	0xff885500,
+	0x7f482000,
+	0xff885500,
+	0xff888800,
+	0x7f484800,
+	0xff888800,
+	0x88445500,
+	0x48242000,
+	0x88445500,
+};
+
+const char var001b2658[] = "1\n";
+const char var001b265c[] = "2\n";
+const char var001b2660[] = "3\n";
+const char var001b2664[] = "4\n";
+const char var001b2668[] = "[]-[] Terminate Complete\n";
+const char var001b2684[] = "Enabling control %d\n";
+const char var001b269c[] = "NOT IN MODE MULTIINGAME!\n";
+const char var001b26b8[] = "Numactive now:%d\n";
+const char var001b26cc[] = "[]-[] SwitchMenuMode called, context %d\n";
+const char var001b26f8[] = "cthresh";
+const char var001b2700[] = "[]-[] slide from %d";
+const char var001b2714[] = " to %d\n";
+const char var001b271c[] = "UNPAUSE: enabling control 0\n";
+const char var001b273c[] = "file: type %d guid %x-%x data %x err %d\n";
+const char var001b2768[] = "StartSelects\n";
+const char var001b2778[] = "bblur";
+const char var001b2780[] = "cone";
+const char var001b2788[] = "usePiece";
+const char var001b2794[] = "%s%s";
+const char var001b279c[] = "%s%s";
+const char var001b27a4[] = "Tune Selector - mode %d\n";
+
+const u32 var001b27c0[] = {
+	0x7f0f0a30,
+	0x7f0f0a38,
+	0x7f0f0a40,
+	0x7f0f0a48,
+	0x7f0f0a50,
+	0x7f0f0a68,
+	0x7f0f0ab8,
+	0x7f0f0ab8,
+	0x7f0f0a70,
+	0x7f0f0a78,
+	0x7f0f0a80,
+	0x7f0f0ab8,
+	0x7f0f0a88,
+	0x7f0f0aa4,
+	0x3ecccccd,
+	0x3ed68d76,
+	0x7f0f15e4,
+	0x7f0f1610,
+	0x7f0f1610,
+	0x7f0f15d8,
+	0x7f0f1610,
+	0x7f0f1610,
+	0x7f0f15cc,
+	0x7f0f15cc,
+	0x7f0f1610,
+	0x7f0f1610,
+	0x7f0f15f0,
+	0x7f0f1608,
+	0x7f0f15cc,
+	0x7f0f15fc,
+	0x7f0f1608,
+	0x7f0f1610,
+	0x7f0f1610,
+	0x7f0f1610,
+	0x7f0f15cc,
+	0x7f0f1610,
+	0x7f0f1608,
+	0x7f0f15d8,
+	0x7f0f15cc,
+	0x7f0f15d8,
+	0x7f0f19f4,
+	0x7f0f1730,
+	0x7f0f1d44,
+	0x7f0f19f4,
+	0x7f0f1bb4,
+	0x7f0f1bf0,
+	0x7f0f1cbc,
+	0x7f0f1894,
+	0x7f0f18ec,
+	0x7f0f1d44,
+	0x7f0f19a0,
+	0x7f0f1784,
+	0x7f0f171c,
+	0x7f0f1ce0,
+	0x7f0f1ccc,
+	0x7f0f1cf4,
+	0x7f0f1d30,
+	0x7f0f198c,
+	0x7f0f1880,
+	0x7f0f16f4,
+	0x7f0f1708,
+	0x7f0f1d1c,
+	0x7f0f19c4,
+	0x7f0f16c8,
+	0x7f0f16b4,
+	0x7f0f26b0,
+	0x7f0f26cc,
+	0x7f0f26cc,
+	0x7f0f26cc,
+	0x7f0f26cc,
+	0x7f0f26b0,
+	0x7f0f26b0,
+	0x7f0f26cc,
+	0x7f0f26cc,
+	0x7f0f26cc,
+	0x7f0f26b0,
+	0x7f0f26cc,
+	0x7f0f26cc,
+	0x7f0f26cc,
+	0x7f0f26cc,
+	0x7f0f26b8,
+	0x7f0f26cc,
+	0x7f0f26b0,
+	0x7f0f26b0,
+	0x7f0f26b8,
+	0x7f0f26b0,
+	0x7f0f26b8,
+	0x7f0f26b0,
+	0x7f0f26b8,
+	0x7f0f26b0,
+	0x40c90fdb,
+	0x40f33333,
+	0x3b03126f,
+	0x3f7f7cee,
+	0x3f7f7cee,
+	0x3b03126f,
+	0x3b03126f,
+	0x3b03126f,
+	0x40490fdb,
+	0x7f0f74e4,
+	0x7f0f7500,
+	0x7f0f7500,
+	0x7f0f74e4,
+	0x7f0f74e4,
+	0x7f0f7500,
+	0x7f0f7500,
+	0x7f0f74e4,
+	0x7f0f74e4,
+	0x7f0f78a8,
+	0x7f0f7b00,
+	0x7f0f7b00,
+	0x7f0f7e70,
+	0x7f0f7e70,
+	0x7f0f7b00,
+	0x7f0f7e70,
+	0x7f0f7b00,
+	0x7f0f78a8,
+	0x7f0f8464,
+	0x7f0f8464,
+	0x7f0f846c,
+	0x7f0f846c,
+	0x7f0f846c,
+	0x7f0f8464,
+	0x7f0f8464,
+	0x7f0f8464,
+	0x7f0f8464,
+	0x7f0f8464,
+	0x7f0f846c,
+	0x7f0f846c,
+	0x7f0f8464,
+	0x7f0f856c,
+	0x7f0f8590,
+	0x7f0f8534,
+	0x7f0f85b8,
+	0x7f0f8590,
+	0x7f0f8590,
+	0x7f0f85a0,
+	0x7f0f85b8,
+	0x7f0f8590,
+	0x7f0f8544,
+	0x7f0f8560,
+	0x7f0f85b8,
+	0x7f0f8590,
+	0xc0490fdb,
+	0xc34d8000,
+	0x4374b333,
+	0x4288999a,
+	0x3dfa0a52,
+	0x3c23d70a,
+	0x3d2c0831,
+	0x3d4ccccd,
+	0x3e4ccccd,
+	0x3f4ccccd,
+	0x3f4ccccd,
+	0x3f4ccccd,
+	0x3dcccccd,
+	0x3d23d70a,
+	0x3f4ccccd,
+	0x3f4ccccd,
+	0x3f4ccccd,
+	0x3f333333,
+	0x3e99999a,
+	0x3f333333,
+	0x3f333333,
+	0x3f333333,
+	0x3e99999a,
+	0x3e99999a,
+	0x3e99999a,
+	0x3e4ccccd,
+	0x3f4ccccd,
+	0x7f0fa6e0,
+	0x7f0fa6e0,
+	0x7f0fa6f4,
+	0x7f0fa6f4,
+	0x7f0fa6e0,
+	0x7f0fa6f4,
+	0x7f0fa6f4,
+	0x7f0fa6f4,
+	0x7f0fa6f4,
+	0x7f0fa6e0,
+	0x7f0fa6f4,
+	0x7f0fa6e0,
+	0x7f0fb414,
+	0x7f0fb414,
+	0x7f0fb33c,
+	0x7f0fb3c4,
+	0x7f0fb414,
+	0x7f0fb458,
+	0x7f0fb458,
+	0x7f0fb458,
+	0x7f0fb458,
+	0x7f0fb458,
+	0x7f0fb33c,
+	0x7f0fb458,
+	0x7f0fb414,
+	0x7f0fb4c8,
+	0x7f0fb5b4,
+	0x7f0fb84c,
+	0x7f0fb978,
+	0x7f0fbaf4,
+	0x7f0fbb88,
+	0x7f0fb6b4,
+	0x7f0fb5b4,
+	0x7f0fbb40,
+	0x3f847ae1,
+	0x47ae147b,
+	0xc34d8000,
+	0x4374b333,
+	0x7f0fd38c,
+	0x7f0fd370,
+	0x7f0fd370,
+	0x7f0fd44c,
+	0x7f0fd468,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00010603,
+	0x04070502,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001b2b34[] = "Here is where the activemenu sets favourites\n";
+const char var001b2b64[] = "slot %d = guntype %d\n";
+const char var001b2b7c[] = "put it in %d\n";
+const char var001b2b8c[] = "activemenu: setting up for multiplayer\n";
+const char var001b2bb4[] = "activemenu: setting up for single player\n";
+const char var001b2be0[] = "Put guntype %d in slot %d\n";
+const char var001b2bfc[] = "ActiveMenu: Two or more equipped items of guntype %d\n";
+const char var001b2c34[] = "FAV: Added gun %d to slot %d\n";
+const char var001b2c54[] = "";
+const char var001b2c58[] = "obcol";
+const char var001b2c60[] = "ibcol";
+const char var001b2c68[] = "defcol";
+const char var001b2c70[] = "favcol";
+const char var001b2c78[] = "pickcol";
+const char var001b2c80[] = "pickcol2";
+
+const u32 var001b2c8c[] = {
+	0x7f0fd724,
+	0x7f0fdc60,
+	0x7f0fdc60,
+	0x7f0fdc60,
+	0x7f0fdc60,
+	0x7f0fd894,
+	0x7f0fd9d8,
+	0x7f0fdc60,
+	0x7f0fdc60,
+	0x7f0fdc60,
+	0x7f0fdc60,
+	0x7f0fdc60,
+	0x7f0fdc60,
+	0x7f0fdc60,
+	0x7f0fdc60,
+	0x7f0fdc60,
+	0x7f0fdc60,
+	0x7f0fdc60,
+	0x7f0fd9ec,
+	0x7f0fdc54,
+	0x3e99999a,
+	0x3f8ccccd,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001b2cf0[] = "%s\n";
+const char var001b2cf4[] = "%s: %s\n";
+const char var001b2cfc[] = "%s%s%.00f%%\n";
+const char var001b2d0c[] = "";
+const char var001b2d10[] = "";
+const char var001b2d14[] = "--:--\n";
+const char var001b2d1c[] = "==:==\n";
+const char var001b2d24[] = "%dm:%02ds";
+const char var001b2d30[] = "%dh:%02dm:%02ds";
+
+const u32 var001b2d40[] = {
+	0x57055706,
+	0x57075708,
+	0x57090000,
+	0x570f5710,
+};
+
+const char var001b2d50[] = "\n";
+const char var001b2d54[] = "%s: %s\n";
+
+const u32 var001b2d5c[] = {
+	0x7f102398,
+	0x7f1023a4,
+	0x7f1023b0,
+	0x7f1023d0,
+	0x7f1023ec,
+	0x7f10240c,
+	0x7f102430,
+	0x7f1024c8,
+	0x7f1024c8,
+	0x7f1024c8,
+	0x7f1024c8,
+	0x7f1024c8,
+	0x7f1024c8,
+	0x7f1024c8,
+	0x7f1024c8,
+	0x7f102480,
+	0x7f1047ec,
+	0x7f104b00,
+	0x7f1048b0,
+	0x7f104b6c,
+	0x7f104ba0,
+	0x7f10493c,
+	0x7f104a14,
+	0x7f105584,
+	0x7f105584,
+	0x7f105584,
+	0x7f105584,
+	0x7f105584,
+	0x7f105584,
+	0x7f105584,
+	0x7f105584,
+	0x7f105584,
+	0x7f105584,
+	0x7f105584,
+	0x7f104be8,
+	0x7f10557c,
+	0x7f105584,
+	0x7f105584,
+	0x7f105584,
+	0x7f105584,
+	0x7f104a24,
+	0xbe4ccccd,
+	0x4196cbe4,
+	0x7f106070,
+	0x7f106058,
+	0x7f106084,
+	0x7f106060,
+	0x7f106068,
+	0x7f1060a4,
+	0x7f1060b8,
+	0x7f106164,
+	0x7f106164,
+	0x7f106164,
+	0x7f106164,
+	0x7f106164,
+	0x7f106164,
+	0x7f106164,
+	0x7f106164,
+	0x7f1060c8,
+	0x7f1061ac,
+	0x7f106380,
+	0x7f1061c0,
+	0x7f106380,
+	0x7f106380,
+	0x7f1061d4,
+	0x7f1062b0,
+	0x7f106380,
+	0x7f106380,
+	0x7f106380,
+	0x7f106380,
+	0x7f106380,
+	0x7f106380,
+	0x7f1062c4,
+	0x7f106380,
+	0x7f1062f4,
+	0x7f1066b4,
+	0x7f1067ac,
+	0x7f1066dc,
+	0x7f1067b8,
+	0x7f1067d4,
+	0x7f10672c,
+	0x7f10679c,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001b2eb0[] = "%s: %s";
+const char var001b2eb8[] = "%s: %s\n";
+const char var001b2ec0[] = "%s %s: %s %s %s";
+const char var001b2ed0[] = "%s %s: %s %s %s %s %d:%02d %s %s";
+const char var001b2ef4[] = "\n";
+const char var001b2ef8[] = "";
+const char var001b2efc[] = "";
+const char var001b2f00[] = "%s-";
+const char var001b2f04[] = "==:==";
+const char var001b2f0c[] = "%d:%02d";
+const char var001b2f14[] = "%d:%02d:%02d";
+const char var001b2f24[] = "%s\n";
+const char var001b2f28[] = "Setup: item = %x\n";
+
+const u32 var001b2f3c[] = {
+	0x000000a0,
+	0x00000031,
+	0x0000004e,
+	0x000004a0,
+};
+
+const char var001b2f4c[] = "location: controller pak 1\n";
+const char var001b2f68[] = "%s";
+const char var001b2f6c[] = "FileMan: Failure Handler\n";
+const char var001b2f88[] = "Copy Memory Freed\n";
+const char var001b2f9c[] = "FileMan: Success Handler\n";
+const char var001b2fb8[] = "Copy Memory Freed\n";
+const char var001b2fcc[] = ">> block read going write, target file is %x-%x\n";
+const char var001b3000[] = "SaveElsewhere\n";
+const char var001b3010[] = "DELETING: %x-%x\n";
+const char var001b3024[] = "MyResult: %d\n";
+const char var001b3034[] = "PakOperationSearch>> Search for pak: %x = %d\n";
+
+const u32 var001b3064[] = {
+	0x00000080,
+	0x00000040,
+	0x00000020,
+	0x00000008,
+};
+
+const char var001b3074[] = "FileAttemptOperation - pak %d op %d\n";
+const char var001b309c[] = ">> blockWrite: file:%x pak:%x\n";
+const char var001b30bc[] = ">> blockRead: file:%x pak:%x\n";
+const char var001b30dc[] = "SUCCESS**->%d\n";
+const char var001b30ec[] = "SUCCESS**->%d\n";
+const char var001b30fc[] = ">>>>>>>>>>>>> FileWrite: type %d <<<<<<<<<<<<<<<\n";
+const char var001b3130[] = "!!!!!!!!!!!! Wanted: %d\n";
+const char var001b314c[] = "&&&&&&&&&&&&&&&&&&&&&&&&&&&PASSED**************\n";
+const char var001b3180[] = "guid: %x gives pakno: %d\n";
+const char var001b319c[] = "Invalidating pak %d\n";
+const char var001b31b4[] = "YOUR TARGET: %x-%x\n";
+const char var001b31c8[] = "MyResult: %d\n";
+const char var001b31d8[] = "COULD NOT DELETE\n";
+const char var001b31ec[] = "Multiplayer %d was using that file...\n";
+
+const u32 var001b3214[] = {
+	0x47414d00,
+	0x4d504700,
+	0x4d505000,
+	0x43414d00,
+	0x00000080,
+	0x00000040,
+	0x00000020,
+	0x00000008,
+};
+
+const char var001b3234[] = "DestPakNo: %d (guid F:%x-%x:P)\n";
+const char var001b3254[] = "Copy Memory Alloced\n";
+const char var001b326c[] = "COULDNT GET THE RAM!\n";
+const char var001b3284[] = "Saving...\n";
+const char var001b3290[] = "%s";
+const char var001b3294[] = "GETFileNameForThePurposesOfTheFileRenamingChecker: Unknown type %d\n";
+const char var001b32d8[] = "%s\n";
+const char var001b32dc[] = "SetFileNameForThePurposesOfTheFileRenamingChecker: Unknown type %d\n";
+const char var001b3320[] = "CheckFileName: Comparing range %d-%d\n";
+const char var001b3348[] = "Compare '%s' to '%s' = %d\n";
+const char var001b3364[] = "OI! DUPLICATE FILE NAME! NO!\n";
+const char var001b3384[] = "()()()()()() Writing MPLAYER\n";
+const char var001b33a4[] = "()()()()()() Writing MGAME\n";
+const char var001b33c0[] = "Write Attempt Made...\n";
+const char var001b33d8[] = "decided location: %d\n";
+const char var001b33f0[] = "%s\n";
+const char var001b33f4[] = "\n";
+const char var001b33f8[] = "%d";
+const char var001b33fc[] = "GOT OKed!, item->data = %d\n";
+const char var001b3418[] = "GOT CANCELLED!\n";
+const char var001b3428[] = "Picking Location, type %d wadtype %d wad %d\n";
+const char var001b3458[] = "Torching file %d\n";
+const char var001b346c[] = "Copying file %d\n";
+const char var001b3480[] = "item: %x\n";
+const char var001b348c[] = "Switched Wads Back\n";
+const char var001b34a0[] = "MenuClosed\n";
+const char var001b34ac[] = "Deleting files, wad %d\n";
+const char var001b34c4[] = "%d:\n";
+const char var001b34cc[] = "%s\n";
+const char var001b34d0[] = "%s\n";
+const char var001b34d4[] = "%d\n";
+const char var001b34d8[] = "";
+const char var001b34dc[] = "GOT OKed!\n";
+const char var001b34e8[] = "Try to find last opened file...\n";
+const char var001b350c[] = "%s %s";
+const char var001b3514[] = "\n";
+const char var001b3518[] = "%s %d:%02d:%02d";
+const char var001b3528[] = "%s %02d:%02d";
+const char var001b3538[] = ".%02d";
+const char var001b3540[] = "%s %d\n";
+
+const u32 var001b3548[] = {
+	0x7f108544,
+	0x7f108544,
+	0x7f108544,
+	0x7f10853c,
+	0x7f10853c,
+	0x7f108544,
+	0x7f10853c,
+	0x7f108544,
+	0x7f108828,
+	0x7f108848,
+	0x7f108828,
+	0x7f108888,
+	0x7f108868,
+	0x7f108868,
+	0x7f108868,
+	0x7f108838,
+	0x7f108838,
+	0x7f108838,
+	0x7f108858,
+	0x7f108838,
+	0x7f108888,
+	0x7f108878,
+	0x7f108878,
+	0x7f108878,
+	0x7f108944,
+	0x7f108964,
+	0x7f108954,
+	0x7f108974,
+	0x7f108944,
+	0x7f108954,
+	0x7f108964,
+	0x7f108944,
+	0x7f108944,
+	0x7f108944,
+	0x7f108964,
+	0x7f108954,
+	0x7f108974,
+	0x7f108944,
+	0x7f108954,
+	0x7f108964,
+	0x7f108a70,
+	0x7f108a70,
+	0x7f108a70,
+	0x7f108a70,
+	0x7f108a20,
+	0x7f108a20,
+	0x7f108a20,
+	0x7f108a70,
+	0x7f108a70,
+	0x7f108a70,
+	0x7f108a70,
+	0x7f108a70,
+	0x7f108a70,
+	0x7f108a20,
+	0x7f108a20,
+	0x7f108a20,
+	0x7f108b70,
+	0x7f108be0,
+	0x7f108be0,
+	0x7f108be0,
+	0x7f108bcc,
+	0x7f108bcc,
+	0x7f108bcc,
+	0x7f108be0,
+	0x7f108be0,
+	0x7f108be0,
+	0x7f108be0,
+	0x7f108be0,
+	0x7f108be0,
+	0x7f108b18,
+	0x7f108b18,
+	0x7f108b18,
+	0x7f108c94,
+	0x7f108c94,
+	0x7f108c94,
+	0x7f108c9c,
+	0x7f108ca8,
+	0x7f108cb0,
+	0x7f108c94,
+	0x7f108ca8,
+	0x7f108c9c,
+	0x7f1093c4,
+	0x7f1093d4,
+	0x7f1093f0,
+	0x7f109420,
+	0x7f109408,
+	0x7f109408,
+	0x7f109408,
+	0x7f1092b8,
+	0x7f1092b8,
+	0x7f1092b0,
+	0x7f1092d0,
+	0x7f1092ec,
+	0x7f109420,
+	0x7f10930c,
+	0x7f10930c,
+	0x7f10930c,
+	0x7f109acc,
+	0x7f109ae4,
+	0x7f109ae4,
+	0x7f109ae4,
+	0x7f109ae4,
+	0x7f109ba0,
+	0x7f109af8,
+	0x7f109b90,
+	0x7f109ba0,
+	0x7f109acc,
+	0x7f109acc,
+	0x7f109acc,
+	0x7f109af8,
+	0x7f109b90,
+	0x7f109ba0,
+	0x7f109ae4,
+	0x7f109ae4,
+	0x7f109ae4,
+	0x7f109c14,
+	0x7f109c2c,
+	0x7f109c2c,
+	0x7f109c2c,
+	0x7f109c2c,
+	0x7f109c7c,
+	0x7f109c40,
+	0x7f109c6c,
+	0x7f109c7c,
+	0x7f109c14,
+	0x7f109c14,
+	0x7f109c14,
+	0x7f109c40,
+	0x7f109c6c,
+	0x7f109c7c,
+	0x7f109c2c,
+	0x7f109c2c,
+	0x7f109c2c,
+	0x7f10ab8c,
+	0x7f10ad40,
+	0x7f10ad80,
+	0x7f10ad4c,
+	0x7f10ad64,
+	0x7f10ad80,
+	0x7f10ab7c,
+	0x7f10ad80,
+	0x7f10ad80,
+	0x7f10ad80,
+	0x7f10ad80,
+	0x7f10ad80,
+	0x7f10ad80,
+	0x7f10ad80,
+	0x7f10ad80,
+	0x7f10ad80,
+	0x7f10ad80,
+	0x7f10ad80,
+	0x7f10ab98,
+	0x7f10ad34,
+	0x7f10b2c8,
+	0x7f10b65c,
+	0x7f10b65c,
+	0x7f10b65c,
+	0x7f10b65c,
+	0x7f10b604,
+	0x7f10b2b8,
+	0x7f10b65c,
+	0x7f10b65c,
+	0x7f10b65c,
+	0x7f10b65c,
+	0x7f10b65c,
+	0x7f10b65c,
+	0x7f10b65c,
+	0x7f10b65c,
+	0x7f10b65c,
+	0x7f10b65c,
+	0x7f10b65c,
+	0x7f10b2d4,
+	0x7f10b5f8,
+	0x7f10bf70,
+	0x7f10c768,
+	0x7f10c7ec,
+	0x7f10c778,
+	0x7f10c7b0,
+	0x7f10c6fc,
+	0x7f10bdb4,
+	0x7f10c7ec,
+	0x7f10c7ec,
+	0x7f10c7ec,
+	0x7f10c7ec,
+	0x7f10c7ec,
+	0x7f10c7ec,
+	0x7f10c7ec,
+	0x7f10c7ec,
+	0x7f10c7ec,
+	0x7f10c7ec,
+	0x7f10c7ec,
+	0x7f10bf80,
+	0x7f10c6f0,
+	0x7f10c7ec,
+	0x7f10c7ec,
+	0x7f10c7ec,
+	0x7f10c7ec,
+	0x7f10bdc4,
+};
+
+const char var001b3860[] = "%s: %s\n";
+const char var001b3868[] = "%s: %s\n";
+const char var001b3870[] = "%d";
+const char var001b3874[] = "%d";
+const char var001b3878[] = "%d";
+const char var001b387c[] = "%d";
+const char var001b3880[] = "%d";
+const char var001b3884[] = "%d";
+const char var001b3888[] = "%s%s%.1f%%";
+const char var001b3894[] = "";
+const char var001b3898[] = "";
+const char var001b389c[] = "%s: %s\n";
+const char var001b38a4[] = "%s\n";
+const char var001b38a8[] = "%s: %s\n";
+const char var001b38b0[] = "\n";
+const char var001b38b4[] = "ctcol";
+const char var001b38bc[] = "\n";
+const char var001b38c0[] = "Flag %d = %s";
+const char var001b38d0[] = "TRUE";
+const char var001b38d8[] = "FALSE";
+const char var001b38e0[] = "Dark";
+const char var001b38e8[] = "MAX_FUDGE_DATA_SIZE>=sizeof(PakFileTypeGameSetup_s)";
+const char var001b391c[] = "pdoptions.c";
+const char var001b3928[] = "MAX_FUDGE_DATA_SIZE>=sizeof(PakFileTypeGameSetup_s)";
+const char var001b395c[] = "pdoptions.c";
+const char var001b3968[] = "MAX_FUDGE_DATA_SIZE>=sizeof(PakFileTypeGameSetup_s)";
+const char var001b399c[] = "pdoptions.c";
+const char var001b39a8[] = "";
+const char var001b39ac[] = "";
+const char var001b39b0[] = "fileGuid";
+const char var001b39bc[] = "bossfile.c";
+const char var001b39c8[] = "";
+const char var001b39cc[] = "";
+const char var001b39d0[] = "Rebuilding pakWad %d:\n";
+
+const u32 var001b39e8[] = {
+	0x00000080,
+	0x00000040,
+	0x00000020,
+	0x00000008,
+	0x04000102,
+	0x03000000,
+	0x01020304,
+	0x00000000,
+};
+
+const char var001b3a08[] = "tc != NULL";
+const char var001b3a14[] = "gamefile.c";
+
+const u32 var001b3a20[] = {
+	0x3ca3d70a,
+	0x3ca3d70a,
+	0x3c23d70a,
+	0xbc23d70a,
+	0xbc23d70a,
+	0x3c23d70a,
+	0x3c9374c0,
+	0x3c9374c0,
+	0x3f7b645a,
+	0x3f333333,
+	0x3dcccccd,
+	0x3f19999a,
+	0x3f199999,
+	0x3ecccccd,
+	0x3ecccccd,
+	0x3f666666,
+	0x3f7b645a,
+	0x3f7f5b81,
+	0x3f75c28f,
+	0x3f7f5b81,
+	0x3cccccce,
+	0x3c088889,
+	0x3c4cccce,
+	0x3b888889,
+};
+
+const char var001b3a80[] = "padhalllv.c";
+
+const u32 var001b3a8c[] = {
+	0x00000000,
+	0x002a2a2a,
+	0x2a2a2a2a,
+	0x2a2a2a2a,
+	0x2a2a2a20,
+	0x30313233,
+	0x34353637,
+	0x38394142,
+	0x43444546,
+	0x4748494a,
+	0x4b4c4d4e,
+	0x4f505152,
+	0x53545556,
+	0x5758595a,
+	0x21222327,
+	0x2a2b2c2d,
+	0x2e2f3a3d,
+	0x3f400000,
+};
+
+const char var001b3ad4[] = "Pak %d -> Pak_UpdateAndGetPakNoteInfo - ERROR - ekPakErrorPakFatal\n";
+const char var001b3b18[] = "Pak %d -> Pak_UpdateAndGetPakNoteInfo - ERROR - ekPakErrorNoPakPresent\n";
+const char var001b3b60[] = "-> Unknown PakFileType_e - %d\n";
+const char var001b3b80[] = "-forceversion";
+const char var001b3b90[] = "Pak %d -> Header Cache 2 - FATAL ERROR\n";
+const char var001b3bb8[] = "\n";
+const char var001b3bbc[] = "\nAddress = %u : ";
+const char var001b3bd0[] = "%2x ";
+const char var001b3bd8[] = "\n";
+const char var001b3bdc[] = "EEPROM DUMP";
+const char var001b3be8[] = "PakSaveAtGuid: new guid = %x\n";
+const char var001b3c08[] = "Call to osPfsReSizeFile -> pfs=%x, cc=%u, gc=%u, gn=%s, en=%s, l=%d\n";
+const char var001b3c50[] = "Pak %d -> Pak_AddOneCameraFile\n";
+const char var001b3c70[] = "Pak %d -> Pak_AddOneCameraFile - Making one default camera file\n";
+const char var001b3cb4[] = "Pak %d -> Pak_AddOneCameraFile : Got Space - No need for resize\n";
+const char var001b3cf8[] = "Pak %d -> Pak_AddOneCameraFile : No Space - Need to resize by %d pages\n";
+const char var001b3d40[] = "Pak %d -> Pak_AddOneCameraFile - Make of one default camera files failed\n";
+const char var001b3d8c[] = "Pak %d -> Pak_AddOneCameraFile : Error - No Room\n";
+const char var001b3dc0[] = "Pak %d -> Pak_GameNoteResetSize : New=%u\n";
+const char var001b3dec[] = "bDoUpdate7\n";
+const char var001b3df8[] = "Pak_SetThisGameSetupFile -> Pak=%d, File=%d, EEPROM=%d\n";
+const char var001b3e30[] = "pak/pak.c";
+const char var001b3e3c[] = "Pak %d -> Pak_Dir - ERROR : Pak Not Ready\n";
+const char var001b3e68[] = "Pak %d -> Pak_Dir - Done - Pak_GetOffsetEOF\n";
+const char var001b3e98[] = "Pak %d -> Pak_Dir - Done - ekPakErrorHeaderCrcCheckFail\n";
+const char var001b3ed4[] = "Pak Return Code = ekPakOk";
+const char var001b3ef0[] = "Pak Return Code = ekPakErrorNoPakPresent";
+const char var001b3f1c[] = "Pak Return Code = ekPakErrorPakFatal";
+const char var001b3f44[] = "Pak Return Code = ekPakErrorFileNotFound";
+const char var001b3f70[] = "Pak Return Code = ekPakErrorFileSystem";
+const char var001b3f98[] = "Pak Return Code = ekPakErrorOutOfMemory";
+const char var001b3fc0[] = "Pak Return Code = ekPakErrorPakWaitingForInit";
+const char var001b3ff0[] = "Pak Return Code = ekPakErrorHeaderCrcCheckFail";
+const char var001b4020[] = "Pak Return Code = ekPakErrorDataCrcCheckFail";
+const char var001b4050[] = "Pak Return Code = ekPakErrorDataNotValid";
+const char var001b407c[] = "Pak Return Code = Unknown - %d\n";
+const char var001b409c[] = "Pak %d -> Pak_RepairAsBlank - St=%u, Ed=%u, Gap=%u, Blank Size=%u\n";
+const char var001b40e0[] = "Pak %d -> Pak_RepairAsBlank - Fatal Error at tOffset %u\n";
+const char var001b411c[] = "Pak %d -> Pak_ValidateVersion - Start - Game File Size = %d\n";
+const char var001b415c[] = "Pak %d -> Pak_ValidateVersion - Clearing cache 2\n";
+const char var001b4190[] = "Pak %d -> Pak_ValidateVersion 1 - Loaded with ret=%d at offset %u\n";
+const char var001b41d4[] = "Pak %d -> Pak_ValidateVersion 1 - Blank at %u\n";
+const char var001b4204[] = "Pak %d -> Pak_ValidateVersion 2 - Loaded  at offset %u\n";
+const char var001b423c[] = "BOS\n";
+const char var001b4244[] = "CAM\n";
+const char var001b424c[] = "MPP\n";
+const char var001b4254[] = "MPG\n";
+const char var001b425c[] = "GAM";
+const char var001b4260[] = "> Pak_DefragPak_Level1 - Merge of two blanks failed";
+const char var001b4294[] = "Pak %d - Pak_StartOne called from line %d in %s -> Flags = %0x\n";
+const char var001b42d4[] = "\nPak_StartOne -> Pak%d, Modes -\n";
+const char var001b42f8[] = "Memory,";
+const char var001b4300[] = "Rumble,";
+const char var001b4308[] = "Game Boy";
+const char var001b4314[] = "\n";
+const char var001b4318[] = "Pak %d -> %u Bytes of scratch for cache 2 memory at %0x\n";
+const char var001b4354[] = "\nPak%d -> Pak_EndOne - Called from line %d in %s : Modes -\n";
+const char var001b4390[] = "Memory,";
+const char var001b4398[] = "Rumble,";
+const char var001b43a0[] = "Game Boy";
+const char var001b43ac[] = "\n";
+const char var001b43b0[] = "Pak -> FATAL ERROR -> MEMORY INSTANCE ENDING IS NO LONGER SUPPORTED\n";
+const char var001b43f8[] = "Pak -> Pak_MakeOne - Id=%d is finished\n";
+const char var001b4420[] = "Pak %d -> Pak_Memory_UpdateNoteInfo\n";
+const char var001b4448[] = "Pak %d -> Couldn't assertain the game note size\n";
+const char var001b447c[] = "Pak %d -> Pak_AnalyseCurrentGameNote - Game note size = %uk\n";
+const char var001b44bc[] = "Pak %d -> Searching for the game file\n";
+const char var001b44e4[] = "Pak %d -> Game file wipe failed\n";
+const char var001b4508[] = "RWI : Warning : tOffset > gPakObj[PakNum].GameFileSize\n";
+const char var001b4540[] = "Pak %d -> Pak_DeleteFile_Offset - DataSize = %u\n";
+const char var001b4574[] = "Pak %d -> Delete file offset (file id %d) failed\n";
+const char var001b45a8[] = "Pak %d -> Delete file offset failed - Bad Offset passed\n";
+const char var001b45e4[] = "-forceversion";
+const char var001b45f4[] = "PakMac_PaksLive()=%x\n";
+const char var001b460c[] = "paksNeedToBeLive4Game=%x\n";
+const char var001b4628[] = "paksNeedToBeLive4Menu=%x\n";
+const char var001b4644[] = "g_LastPackPattern=%x\n";
+const char var001b465c[] = "forcescrub";
+const char var001b4668[] = "pakdump";
+const char var001b4670[] = "pakcache";
+const char var001b467c[] = "pakinit";
+const char var001b4684[] = "corruptme";
+const char var001b4690[] = "wipeeeprom";
+const char var001b469c[] = "dumpeeprom";
+const char var001b46a8[] = "\nOS_GBPAK_GBCART_ON       - ";
+const char var001b46c8[] = "\nOS_GBPAK_GBCART_PULL     - ";
+const char var001b46e8[] = "\nOS_GBPAK_POWER           - ";
+const char var001b4708[] = "\nOS_GBPAK_RSTB_DETECTION  - ";
+const char var001b4728[] = "Pak -> Dumping contents of Game Boy Pack(TM) Id file";
+const char var001b4760[] = "(u16) - Fixed1             - %d\n";
+const char var001b4784[] = "(u16) - StartAddress       - %d\n";
+const char var001b47a8[] = "(u8*) - Nintendo chr data  - %s\n";
+const char var001b47cc[] = "(u8*) - Game Title         - %s\n";
+const char var001b47f0[] = "(u16) - Company Code       - %d\n";
+const char var001b4814[] = "(u8 ) - Body Code          - %d\n";
+const char var001b4838[] = "(u8 ) - Rom Size           - %d\n";
+const char var001b485c[] = "(u8 ) - Ram Size           - %d\n";
+const char var001b4880[] = "(u8 ) - country_code       - %d\n";
+const char var001b48a4[] = "(u8 ) - Fixed 2 (0x33)     - %d\n";
+const char var001b48c8[] = "(u8 ) - Version Number     - %d\n";
+const char var001b48ec[] = "(u8 ) - isum               - %d\n";
+const char var001b4910[] = "(u16) - sum                - %d\n";
+const char var001b4934[] = "Pak -> Finished Dump";
+
+const u32 var001b494c[] = {
+	0x43000000,
+	0x43140000,
+	0x435c0000,
+	0x437f0000,
+	0x43020000,
+	0x43150000,
+	0x43520000,
+	0x437f0000,
+	0x43040000,
+	0x43160000,
+	0x434a0000,
+	0x437f0000,
+	0x43060000,
+	0x43160000,
+	0x43440000,
+	0x437f0000,
+	0x43080000,
+	0x43170000,
+	0x433e0000,
+	0x437f0000,
+	0x430a0000,
+	0x43170000,
+	0x43380000,
+	0x437f0000,
+	0x430b0000,
+	0x43180000,
+	0x43320000,
+	0x43750000,
+	0x430c0000,
+	0x43180000,
+	0x432c0000,
+	0x436b0000,
+	0x430d0000,
+	0x43180000,
+	0x432a0000,
+	0x435d0000,
+	0x430e0000,
+	0x43180000,
+	0x43280000,
+	0x43500000,
+	0x430f0000,
+	0x43180000,
+	0x43260000,
+	0x43440000,
+	0x43100000,
+	0x43180000,
+	0x43240000,
+	0x433a0000,
+	0x43120000,
+	0x43180000,
+	0x43210000,
+	0x43310000,
+	0x43140000,
+	0x43180000,
+	0x431d0000,
+	0x43280000,
+	0x43160000,
+	0x43180000,
+	0x43190000,
+	0x43200000,
+	0x43180000,
+	0x43180000,
+	0x43180000,
+	0x43180000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x41000000,
+	0x40000000,
+	0x41200000,
+	0x41400000,
+	0x40800000,
+	0x41600000,
+	0x40c00000,
+	0x40400000,
+	0x41300000,
+	0x3f800000,
+	0x41100000,
+	0x41700000,
+	0x40e00000,
+	0x41500000,
+	0x40a00000,
+	0x00000000,
+	0x41600000,
+	0x40400000,
+	0x41500000,
+	0x41300000,
+	0x40a00000,
+	0x41000000,
+	0x40c00000,
+	0x41400000,
+	0x40000000,
+	0x41700000,
+	0x3f800000,
+	0x40e00000,
+	0x41100000,
+	0x40800000,
+	0x41200000,
+};
+
+const char var001b4adc[] = "Pak_StartCapture -> Failed - Code = %d\n";
+const char var001b4b04[] = "Pak_DownloadNextBlockToPackBuffer : eQuality=ekCapQualityHeader, BufferNum=%d\n";
+const char var001b4b54[] = "Pak : Doing Frame - Top    = %d\n";
+const char var001b4b78[] = "Pak : Doing Frame - Height = %d\n";
+const char var001b4b9c[] = "Pak : Doing Frame - Bottom = %d\n";
+const char var001b4bc0[] = "Pak %d - ekPakInitStatusError_CorruptedPak\n";
+const char var001b4bec[] = "Pak %d - ekPakInitStatusInitGameBoy_PDGB_Check_Error\n";
+const char var001b4c24[] = "Pak %d - ekPakInitStatusError_DamagedPak\n";
+const char var001b4c50[] = "Pak %d - ekPakInitStatusError_StuffedPak\n";
+const char var001b4c7c[] = "Pak %d - ekPakInitStatusError_StuffedAndCheckedPak\n";
+const char var001b4cb0[] = "Pak %d - ekPakInitStatusVoid\n";
+const char var001b4cd0[] = "Pak %d -> Unhandled Init Status - %d\n";
+const char var001b4cf8[] = "Pak %d - PakDamage_UjiWipedMyAss\n";
+const char var001b4d1c[] = "-scrub";
+const char var001b4d24[] = "Pak %d -> Pak_PdGameBoySetRWByte - Fatal Error\n";
+const char var001b4d54[] = "0123456789012345678901234567890123456789";
+const char var001b4d80[] = "PerfDark\n";
+
+const u32 var001b4d8c[] = {
+	0x7f116794,
+	0x7f116794,
+	0x7f11679c,
+	0x7f11679c,
+	0x7f11679c,
+	0x7f116794,
+	0x7f116794,
+	0x7f11679c,
+	0x7f116794,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f117108,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f117130,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f117118,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f11713c,
+	0x7f117120,
+	0x7f11932c,
+	0x7f11932c,
+	0x7f11932c,
+	0x7f11932c,
+	0x7f11932c,
+	0x7f119334,
+	0x7f119334,
+	0x7f119334,
+	0x7f119314,
+	0x7f119334,
+	0x7f119334,
+	0x7f119334,
+	0x7f119334,
+	0x7f119334,
+	0x7f11931c,
+	0x7f119324,
+	0x7f119360,
+	0x7f119360,
+	0x7f119360,
+	0x7f119360,
+	0x7f119360,
+	0x7f119360,
+	0x7f119360,
+	0x7f119360,
+	0x7f119360,
+	0x7f119360,
+	0x7f119360,
+	0x7f11c3e0,
+	0x7f11c4ec,
+	0x7f11c468,
+	0x7f11c4ec,
+	0x7f11c4ec,
+	0x7f11c4ec,
+	0x7f11c4ac,
+	0x7f11c4ac,
+	0x7f11c4ec,
+	0x7f11c468,
+	0x7f11c424,
+	0x7f11c540,
+	0x7f11c540,
+	0x7f11c540,
+	0x7f11c540,
+	0x7f11c540,
+	0x7f11c540,
+	0x7f11c540,
+	0x7f11c540,
+	0x7f11c540,
+	0x7f11c540,
+	0x7f11c540,
+	0x7f11c540,
+	0x7f11c540,
+	0x7f11c540,
+	0x7f11c540,
+	0x7f11c540,
+	0x7f11c540,
+	0x7f11c540,
+	0x7f11c73c,
+	0x7f11c73c,
+	0x7f11c73c,
+	0x7f11c73c,
+	0x7f11c73c,
+	0x7f11c9e4,
+	0x7f11c9e4,
+	0x7f11c9e4,
+	0x7f11c9e4,
+	0x7f11c9e4,
+	0x7f11cbc0,
+	0x7f11cbc0,
+	0x7f11cbc0,
+	0x7f11cbc0,
+	0x7f11cbc0,
+	0x7f11cbc0,
+	0x7f11cbc0,
+	0x7f11cbc0,
+	0x7f11cbc0,
+	0x7f11cbc0,
+	0x7f11cbc0,
+	0x7f11cbc0,
+	0x7f11cbc0,
+	0x7f11e34c,
+	0x7f11dffc,
+	0x7f11e048,
+	0x7f11e07c,
+	0x7f11e0e8,
+	0x7f11e118,
+	0x7f11e138,
+	0x7f11e0c0,
+	0x7f11e160,
+	0x7f11e178,
+	0x7f11e188,
+	0x7f11e34c,
+	0x7f11e1ac,
+	0x7f11e34c,
+	0x7f11e24c,
+	0x7f11e1b8,
+	0x7f11e2ac,
+	0x7f11e34c,
+	0x7f11e34c,
+	0x7f11e34c,
+	0x7f11e34c,
+	0x7f11e30c,
+	0x7f11e330,
+	0x7f11e34c,
+	0x7f11e194,
+	0x7f11e1a0,
+	0x7f11e218,
+	0x7f11e240,
+	0x00000000,
+	0x38d1b717,
+	0x3c23d70a,
+	0x48927c00,
+	0x38d1b717,
+	0xbc23d70a,
+	0x48927c00,
+	0x3b808081,
+	0x3b808081,
+	0x3dcccccd,
+	0x7f120024,
+	0x7f1208a8,
+	0x7f1209f8,
+	0x7f120130,
+	0x7f120b48,
+	0x7f12045c,
+	0x7f120de8,
+	0x7f1207d8,
+	0x7f120c98,
+	0x7f120de8,
+	0x7f120350,
+	0x7f120708,
+	0x7f12023c,
+	0x7f120638,
+	0x7f120568,
+	0x7f120014,
+	0x3d088889,
+	0x3d088889,
+	0x3d088889,
+	0x3d088889,
+	0x3d088889,
+	0x3d088889,
+	0x3d088889,
+	0x3d088889,
+	0x3d088889,
+	0x3d088889,
+	0x3d088889,
+	0x3d088889,
+	0x3d088889,
+	0x3d088889,
+	0x477fff00,
+	0x449fe000,
+	0x446fc000,
+	0x7f12136c,
+	0x7f121994,
+	0x7f121a84,
+	0x7f1215ec,
+	0x7f121b74,
+	0x7f121724,
+	0x7f122378,
+	0x7f1221f0,
+	0x7f121c64,
+	0x7f122378,
+	0x7f12185c,
+	0x7f122068,
+	0x7f1214b0,
+	0x7f121edc,
+	0x7f121d54,
+	0x7f121374,
+	0x477fff00,
+	0x46fffe00,
+	0x46fffe00,
+	0x43ff8000,
+	0xc57fa000,
+	0xc57fa000,
+	0xc4eac000,
+	0xc4eac000,
+	0xc4eac000,
+	0x46fffe00,
+	0xc4eac000,
+	0xc4eac000,
+	0xc4eac000,
+	0xc4eac000,
+	0x44eaa000,
+	0x46fffe00,
+	0x3d888889,
+	0x3c23d70a,
+	0x3bb60b61,
+	0x3d088889,
+	0x3c4ccccd,
+	0x3dcccccd,
+	0x40c907a9,
+	0x3ea8f5c3,
+	0x3f28f5c3,
+	0x3ea8f5c3,
+	0x3fa66666,
+	0x3fd9999a,
+	0x40490fdb,
+	0x3fa0d2ee,
+	0x3eaaaaab,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0xc3653838,
+	0x4164924b,
+	0x3f6e147b,
+	0x3f666666,
+	0xc0490fdb,
+	0x3faaaaab,
+	0x7f128b54,
+	0x7f128b54,
+	0x7f128b5c,
+	0x7f128b8c,
+	0x7f128b94,
+	0x7f128b64,
+	0x7f128b6c,
+	0x7f128b84,
+	0x7f128b74,
+	0x7f128b7c,
+	0x7f128b9c,
+	0x7f128bc4,
+	0x7f128bcc,
+	0x7f128bd4,
+	0x7f128bdc,
+	0x7f128bac,
+	0x7f128bbc,
+	0x7f128ba4,
+	0x7f128bb4,
+	0x7f128be4,
+	0x7f128bec,
+	0x7f128c14,
+	0x7f128c0c,
+	0x7f128bfc,
+	0x7f128bf4,
+	0x7f128c04,
+	0x7f128c2c,
+	0x7f128c1c,
+	0x7f128c34,
+	0x7f128c24,
+	0x7f128c4c,
+	0x7f128c44,
+	0x7f128c64,
+	0x7f128c5c,
+	0x7f128c54,
+	0x7f128cbc,
+	0x7f128c7c,
+	0x7f128c84,
+	0x7f128c8c,
+	0x7f128c94,
+	0x7f128c9c,
+	0x7f128ca4,
+	0x7f128cac,
+	0x7f128cb4,
+	0x7f128c3c,
+	0x7f128cd4,
+	0x7f128cd4,
+	0x7f128cd4,
+	0x7f128cd4,
+	0x7f128c74,
+};
+
+const char var001b5230[] = "VTXSTORE : vtxfixrefs -> Start - p1=%x, p2=%x\n";
+const char var001b5260[] = "vtxfixrefs : Part=%x -- Mapping ptr %x -> %x\n";
+const char var001b5290[] = "VTXSTORE : vtxfixrefs -> End - Done=%d\n";
+const char var001b52b8[] = "vtxstorecheck : memaFree -> %u bytes at Ptr=%x(%x)\n";
+const char var001b52ec[] = "vtxstorecheck : At block 1 %d -> Ref1=%x, Ref2=%x\n";
+const char var001b5320[] = "vtxstorecheck : At block 2 %d -> Ref1=%x, Ref2=%x\n";
+const char var001b5354[] = "vtx buffer low, need to delete objects\n";
+const char var001b537c[] = "getfreevertices : %d of type %d -> ref1=%x, ref2=%x\n";
+const char var001b53b4[] = "vtxstore: 1st mema alloc of %u bytes\n";
+const char var001b53dc[] = "getfreevertices : Return ptr = %x\n";
+const char var001b5400[] = "vtxstore: Out of mema (returning NULL)\n";
+const char var001b5428[] = "vtxstore: GROSS! CorspeCount > MAX_CORPSES corpses! Freeing corpse %x\n";
+const char var001b5470[] = "vtxstore:  CorpseCount %d, Trying to free %d\n";
+const char var001b54a0[] = "vtxstore: Freeing corpse %x\n";
+const char var001b54c0[] = "vtxstore: Out of vertices type %d wanted %d free %d (returning NULL)\n";
+const char var001b5508[] = "vtxstore: freevertices type %d, list %x\n";
+const char var001b5534[] = "freevertices: address not found in array %x\n";
+const char var001b5564[] = "";
+const char var001b5568[] = "";
+const char var001b556c[] = "";
+const char var001b5570[] = "ecol";
+
+const u32 var001b5578[] = {
+	0x44bb8000,
+	0x481c4000,
+	0x497423fe,
+	0x40c907a9,
+	0x3f4ccccd,
+	0x38d1b717,
+	0x3f333333,
+	0x3e99999a,
+	0x3d4ccccd,
+	0x3d4ccccd,
+	0x40c907a9,
+	0x3e4ccccd,
+	0x3f4ccccd,
+	0x3f333333,
+	0x3f266666,
+	0x3f4ccccd,
+	0x3f16db6e,
+	0x3f324925,
+	0x3f524925,
+	0x3f76db6e,
+	0x00000000,
+	0x00000000,
+	0x46ea6000,
+	0x46ea6000,
+	0xc6ea6000,
+	0x3b808081,
+	0x3c23d70a,
+	0x3ca3d70a,
+	0x3ea8f5c3,
+	0x40c907a9,
+	0x3e6b851f,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0xb8d1b717,
+	0xb8d1b717,
+	0x3d4ccccd,
+	0x469c4000,
+	0x3e4ccccd,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001b5620[] = "rainspeedxtra";
+const char var001b5630[] = "snowspeed";
+const char var001b563c[] = "snowspeedxtra";
+const char var001b564c[] = "raincol1";
+const char var001b5658[] = "raincol2";
+const char var001b5664[] = "rainwidth";
+const char var001b5670[] = "rainout";
+const char var001b5678[] = "cddiv";
+const char var001b5680[] = "wetclip";
+const char var001b5688[] = "bounder";
+const char var001b5690[] = "trypitch";
+const char var001b569c[] = "snowwidth";
+const char var001b56a8[] = "snowheight";
+const char var001b56b4[] = "snowcol1";
+const char var001b56c0[] = "snowcol2";
+
+const u32 var001b56cc[] = {
+	0x3f333333,
+	0x3a83126f,
+	0x3c23d70a,
+	0x3cf5c28f,
+	0x46fffe00,
+	0x3fc90fdb,
+	0x40c90fdb,
+	0x3f7d70a4,
+	0x40490fdb,
+	0x3c23d70a,
+	0x3f333333,
+	0x3fc90fdb,
+	0x40c90fdb,
+	0x40c90fdb,
+	0x40c90fdb,
+	0x3f7d70a4,
+	0x40490fdb,
+	0x3c23d70a,
+	0x40c90fdb,
+	0x3d23d70a,
+	0xbcf5c28f,
+	0x3cf5c28f,
+	0x3ca3d70a,
+	0x3c23d70a,
+	0xbc23d70a,
+	0xbca3d70a,
+	0x3f333333,
+	0x3f7d70a4,
+	0x3f266666,
+	0x3f28f5c3,
+	0x3ecccccd,
+	0x3e4ccccd,
+	0x3dcccccd,
+	0x3e99999a,
+	0x3e4cccce,
+	0x3e99999a,
+	0x3ecccccd,
+	0x3f19999a,
+	0x3f333333,
+	0x3f199999,
+	0x3f4ccccd,
+	0x3f333333,
+	0x3f666666,
+	0x3f4ccccc,
+	0x3f666666,
+	0x3727c5ac,
+	0x4096cbe4,
+	0x40490fdb,
+	0x3fc90fdb,
+	0x3727c5ac,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x7f135d68,
+	0x7f135d68,
+	0x7f135da8,
+	0x7f135da8,
+	0x7f135dec,
+	0x7f135dec,
+	0x3c8efa03,
+	0x43837333,
+	0x746c6f61,
+	0x64000000,
+};
+
+const char var001b57c8[] = "dump";
+const char var001b57d0[] = "for";
+const char var001b57d4[] = "flick";
+
+const u32 var001b57dc[] = {
+	0x3fc90fdb,
+	0x40490fdb,
+	0x4096cbe4,
+	0x3fc90fdb,
+	0x40490fdb,
+	0x4096cbe4,
+	0x3e4ccccd,
+	0x3f4ccccd,
+	0xb8d1b717,
+	0x38d1b717,
+	0x3b122531,
+	0x40c907a9,
+	0x453b8000,
+	0x3be56042,
+	0x3b03126f,
+	0x3be56042,
+	0x453b8000,
+	0x3c23d70a,
+	0x40c907a9,
+	0x7f139260,
+	0x7f138ecc,
+	0x7f138fc4,
+	0x7f139060,
+	0x7f13915c,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0xc58ca000,
+	0x455ac000,
+	0x416fd70a,
+	0x40c907a9,
+	0x40c907a9,
+	0x3e4ccccd,
+	0x3dcccccd,
+	0x408ccccd,
+	0x3e99999a,
+	0x3eae147b,
+	0x3eae147b,
+	0x3e116873,
+	0x7f13a544,
+	0x7f13a544,
+	0x7f13a544,
+	0x7f13a560,
+	0x7f13a57c,
+	0x7f13a560,
+	0x7f13a544,
+	0x7f13a544,
+	0x7f13a560,
+	0x7f13a544,
+	0x7f13a560,
+	0x7f13a6b4,
+	0x7f13a6b4,
+	0x7f13a6b4,
+	0x7f13a6b4,
+	0x7f13a6b4,
+	0x7f13a6b4,
+	0x7f13a6ec,
+	0x7f13a6d8,
+	0x7f13a6d8,
+	0x7f13a6b4,
+	0x7f13a6ec,
+	0x7f13a72c,
+	0x7f13a748,
+	0x7f13a748,
+	0x7f13a748,
+	0x7f13a748,
+	0x7f13a748,
+	0x7f13a780,
+	0x7f13a76c,
+	0x7f13a76c,
+	0x7f13a748,
+	0x7f13a76c,
+	0x3e116873,
+	0x3e116873,
+	0x7f13aca4,
+	0x7f13aca8,
+	0x7f13aca8,
+	0x7f13aca8,
+	0x7f13aca8,
+	0x7f13ac94,
+	0x7f13ac9c,
+	0x7f13ac9c,
+	0x7f13aca8,
+	0x7f13ac9c,
+	0x3d4ccccd,
+	0x3c23d70a,
+	0xbe86051b,
+	0x4516d000,
+	0x44504000,
+	0x428db852,
+	0xc5002000,
+	0x3fbbc6a8,
+	0x41033333,
+	0xc0833333,
+	0x3b80c73b,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001b5960[] = "modula";
+const char var001b5968[] = "ripsize";
+
+const u32 var001b5970[] = {
+	0x40c907a9,
+	0x7f13bf20,
+	0x7f13bf74,
+	0x7f13bf90,
+	0x7f13bf3c,
+	0x7f13bf58,
+	0x7f13c00c,
+	0x7f13bfcc,
+	0x4effffff,
+	0x4effffff,
+	0xceffffff,
+	0x38d1b717,
+	0x38d1b717,
+	0x3ecccccd,
+	0x38d1b717,
+	0x43ff8000,
+	0x46fe8000,
+	0x46fc5800,
+	0x44a28000,
+	0x44a28000,
+	0x3a49a634,
+	0x3f19999a,
+	0x461c3c00,
+	0x461c3c00,
+	0xc61c3c00,
+	0xc61c3c00,
+	0x43ff8000,
+	0x46fe8000,
+	0x3c8efa35,
+	0x4169999a,
+	0x3ecccccd,
+	0x3b808081,
+	0x46d6d800,
+	0x3b808081,
+	0x443b8000,
+	0x3c23d70a,
+	0x3c23d70a,
+	0x3b888889,
+	0x3b888889,
+	0x3ecccccd,
+};
+
+const char var001b5a10[] = "WallHit_MakeSpaceRoom : ERROR - Couldn't find any space in room %d\n";
+const char var001b5a54[] = "wallhit";
+const char var001b5a5c[] = "g_MaxRound = %s%s%f";
+const char var001b5a70[] = "";
+const char var001b5a74[] = "";
+const char var001b5a78[] = "g_MinRound = %s%s%f";
+const char var001b5a8c[] = "";
+const char var001b5a90[] = "";
+const char var001b5a94[] = "Done %d Z buffer calcs";
+const char var001b5aac[] = "ZOOM : g_ZoomFactor=%s%s%f";
+const char var001b5ac8[] = "";
+const char var001b5acc[] = "";
+const char var001b5ad0[] = "ZOOM : g_ZoomScalar=%s%s%f";
+const char var001b5aec[] = "";
+const char var001b5af0[] = "";
+const char var001b5af4[] = "ZOOM : scale=%s%s%f";
+const char var001b5b08[] = "";
+const char var001b5b0c[] = "";
+const char var001b5b10[] = "WallHit_Tick : Status - RED";
+const char var001b5b2c[] = "WallHit_Tick : Status - YELLOW (%u)";
+const char var001b5b50[] = "WallHit_Tick : Status - GREEN";
+const char var001b5b70[] = "WallHit_Tick : %d Used";
+const char var001b5b88[] = "WallHit_Tick : %d Free";
+const char var001b5ba0[] = "WallHit_Tick : %d Pending";
+const char var001b5bbc[] = "WallHit_Tick : %d Blood";
+const char var001b5bd4[] = "WallHit_Tick : %d Other";
+const char var001b5bec[] = "WallHit_Tick : %d Ratio";
+const char var001b5c04[] = "WallHit_Tick : %d(%d) Prop Hits";
+const char var001b5c24[] = "tLifeTime=%s%s%f, tScalarGbl=%f";
+const char var001b5c44[] = "";
+const char var001b5c48[] = "";
+const char var001b5c4c[] = "wallhit.c";
+const char var001b5c58[] = "wallhit.c";
+const char var001b5c64[] = "wallhit.c";
+const char var001b5c70[] = "AFT : tVecU (along) = (%s%s%f,%f,%f)\n";
+const char var001b5c98[] = "";
+const char var001b5c9c[] = "";
+const char var001b5ca0[] = "AFT : tVecV (up)    = (%s%s%f,%f,%f)\n";
+const char var001b5cc8[] = "";
+const char var001b5ccc[] = "";
+const char var001b5cd0[] = "Wallhit colour %d not implemented, substituting black\n";
+
+const u32 var001b5d08[] = {
+	0x3f19999a,
+	0x3fc90fdb,
+	0x3e4ccccd,
+	0x3f19999a,
+	0x3e4ccccd,
+	0x3dcccccd,
+	0x3f19999a,
+	0x7f13f608,
+	0x7f13f5ec,
+	0x7f13f5ec,
+	0x7f13f608,
+	0x7f13f608,
+	0x7f13f608,
+	0x7f13f608,
+	0x7f13f608,
+	0x7f13f608,
+	0x7f13f608,
+	0x7f13f5ec,
+	0x7f13f608,
+	0x3c8efa35,
+	0x3b808081,
+	0x7f14034c,
+	0x7f140300,
+	0x7f1403c4,
+	0x7f14043c,
+	0x7f14045c,
+};
+
+const char var001b5d70[] = "envcol";
+const char var001b5d78[] = "primcol";
+const char var001b5d80[] = "envcol";
+const char var001b5d88[] = "primcol";
+const char var001b5d90[] = "sfxxx";
+const char var001b5d98[] = "sfyyy";
+const char var001b5da0[] = "interlaceGfx";
+const char var001b5db0[] = "BlueInterlaceGfx";
+const char var001b5dc4[] = "stretchBlurGfx";
+const char var001b5dd4[] = "blurGfxFisheye";
+const char var001b5de4[] = "%s %s%5.2f";
+const char var001b5df0[] = "";
+const char var001b5df4[] = "%s %s%4.2f";
+const char var001b5e00[] = "";
+const char var001b5e04[] = "%s %d";
+const char var001b5e0c[] = "%s %d";
+const char var001b5e14[] = "%s";
+const char var001b5e18[] = "%s";
+const char var001b5e1c[] = "%s";
+const char var001b5e20[] = "%s";
+const char var001b5e24[] = "   %s";
+const char var001b5e2c[] = "   %s";
+const char var001b5e34[] = "   %s";
+const char var001b5e3c[] = "%s";
+const char var001b5e40[] = "%s";
+const char var001b5e44[] = "%s";
+const char var001b5e48[] = "%s";
+const char var001b5e4c[] = "%s";
+const char var001b5e50[] = "Fullscreen_DrawFaultScope";
+const char var001b5e6c[] = "Fullscreen_DrawFaultScope";
+const char var001b5e88[] = "IntroFaderBlurGfx";
+const char var001b5e9c[] = "IntroTextInterfereGfx";
+const char var001b5eb4[] = "BinocularViewGfx";
+const char var001b5ec8[] = ">> ";
+const char var001b5ecc[] = " >>";
+const char var001b5ed0[] = "%s %s:%03d";
+const char var001b5edc[] = "%s %s%s%4.2fh";
+const char var001b5eec[] = "";
+const char var001b5ef0[] = "";
+const char var001b5ef4[] = "%s %s%s%4.2fX";
+const char var001b5f04[] = "";
+const char var001b5f08[] = "";
+const char var001b5f0c[] = " JMBC";
+const char var001b5f14[] = " WIDE BAND";
+const char var001b5f20[] = " SCANNER\n";
+
+const u32 var001b5f2c[] = {
+	0x3f060a92,
+	0x40278d36,
+	0x3c23d70a,
+	0x3bcccccd,
+	0x3c23d70a,
+	0x3f83d70a,
+	0x3bcccccd,
+	0x3c23d70a,
+	0x3a83126f,
+	0x3f19999a,
+	0x3c23d70a,
+	0x3bcccccd,
+	0x40490fdb,
+	0x40933333,
+	0x4465599a,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001b5f70[] = "Splat Tick - P=%x, B=%d, T=%d, S=%d, W=%d, D=%d, H=%d\n";
+const char var001b5fa8[] = "SPLAT : Not Dead Enough %s%s%f";
+const char var001b5fc8[] = "";
+const char var001b5fcc[] = "";
+const char var001b5fd0[] = "splat.c";
+const char var001b5fd8[] = "splat.c";
+const char var001b5fe0[] = "Splat : Out of range\n";
+const char var001b5ff8[] = "Splat_ResetChr : Reset One Char : chrdata = %x\n";
+
+const u32 var001b6028[] = {
+	0x3f333333,
+	0x3c8efa35,
+	0x497423f0,
+	0x7f149988,
+	0x7f149988,
+	0x7f149988,
+	0x7f149998,
+	0x7f149998,
+	0x7f1499a8,
+	0x00000000,
+};
+
+const char var001b6050[] = "Init";
+const char var001b6058[] = "Start Header Read";
+const char var001b606c[] = "Header Read Done";
+const char var001b6080[] = "Null";
+const char var001b6088[] = "Exit 1";
+const char var001b6090[] = "Exit 2";
+const char var001b6098[] = "Exit 3";
+
+const u32 var001b60a0[] = {
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000001,
+	0x00000001,
+	0x00000000,
+	0x00000002,
+	0x00000000,
+	0x00000001,
+	0x00000001,
+	0x00000000,
+	0x00000002,
+	0x00000000,
+	0x00000003,
+	0x00000001,
+	0x00000002,
+	0x00000002,
+	0x00000001,
+	0x00000003,
+	0x00000000,
+	0x00000004,
+	0x00000000,
+	0x00000003,
+	0x00000001,
+	0x00000002,
+	0x00000002,
+	0x00000001,
+	0x00000003,
+	0x00000000,
+	0x00000004,
+	0x00000000,
+	0x00000005,
+	0x00000001,
+	0x00000004,
+	0x00000002,
+	0x00000003,
+	0x00000003,
+	0x00000002,
+	0x00000004,
+	0x00000001,
+	0x00000005,
+	0x00000000,
+	0x00000006,
+	0x00000000,
+	0x00000005,
+	0x00000001,
+	0x00000004,
+	0x00000002,
+	0x00000003,
+	0x00000003,
+	0x00000002,
+	0x00000004,
+	0x00000001,
+	0x00000005,
+	0x00000000,
+	0x00000006,
+	0x00000000,
+	0x00000007,
+	0x00000001,
+	0x00000006,
+	0x00000002,
+	0x00000005,
+	0x00000003,
+	0x00000004,
+	0x00000004,
+	0x00000003,
+	0x00000005,
+	0x00000002,
+	0x00000006,
+	0x00000001,
+	0x00000007,
+	0x00000000,
+	0x00000007,
+	0x00000001,
+	0x00000006,
+	0x00000002,
+	0x00000005,
+	0x00000003,
+	0x00000004,
+	0x00000004,
+	0x00000003,
+	0x00000005,
+	0x00000002,
+	0x00000006,
+	0x00000001,
+	0x00000007,
+	0x00000002,
+	0x00000007,
+	0x00000003,
+	0x00000006,
+	0x00000004,
+	0x00000005,
+	0x00000005,
+	0x00000004,
+	0x00000006,
+	0x00000003,
+	0x00000007,
+	0x00000002,
+	0x00000007,
+	0x00000003,
+	0x00000006,
+	0x00000004,
+	0x00000005,
+	0x00000005,
+	0x00000004,
+	0x00000006,
+	0x00000003,
+	0x00000007,
+	0x00000004,
+	0x00000007,
+	0x00000005,
+	0x00000006,
+	0x00000006,
+	0x00000005,
+	0x00000007,
+	0x00000004,
+	0x00000007,
+	0x00000005,
+	0x00000006,
+	0x00000006,
+	0x00000005,
+	0x00000007,
+	0x00000006,
+	0x00000007,
+	0x00000007,
+	0x00000006,
+	0x00000007,
+	0x00000007,
+	0x00000000,
+	0xffffffff,
+	0xdc9785ff,
+	0xdc917bff,
+	0xdd8d71ff,
+	0xdd8367ff,
+	0xdf795dff,
+	0xdf7953ff,
+	0x00000000,
+	0xffffffff,
+	0xa67b6dff,
+	0xa16152ff,
+	0x8c6741ff,
+	0x81544cff,
+	0x6a4031ff,
+	0x4f433cff,
+	0x00000000,
+	0xffffffff,
+	0xccb38dff,
+	0xddc07cff,
+	0xe6a667ff,
+	0xd1ab50ff,
+	0xc69f6dff,
+	0xb27e5bff,
+	0x00000000,
+	0xffffffff,
+	0x5f3a25ff,
+	0x553a20ff,
+	0x4b351cff,
+	0x412d19ff,
+	0x41260fff,
+	0x371e04ff,
+	0x00000000,
+	0xffffffff,
+	0xe9d679ff,
+	0x654f40ff,
+	0xebb279ff,
+	0x846b51ff,
+	0xebc579ff,
+	0xab8d6fff,
+	0x00000000,
+	0xffffffff,
+	0x26374dff,
+	0x18253eff,
+	0x171d20ff,
+	0x060e16ff,
+	0x00001cff,
+	0x000001ff,
+	0x00000000,
+	0xffffffff,
+	0x972f1aff,
+	0x822817ff,
+	0x6e1e12ff,
+	0x5a140dff,
+	0x460a08ff,
+	0x200001ff,
+	0x00000000,
+	0xffffffff,
+	0x79b2ebff,
+	0x007fffff,
+	0x1f5fdfff,
+	0x0043caff,
+	0x00147eff,
+	0x0c1857ff,
+};
+
+const char var001b63a0[] = "RWI : Cam Alloc : Guid=%d -> Total = %u (%d at %s)\n";
+const char var001b63d4[] = "camdraw.c";
+const char var001b63e0[] = "Cam -> Dumping head vertex colour information\n";
+const char var001b6410[] = "Cam -> Face Col - Pal=%d, Entry=%d, Col=%08x\n";
+const char var001b6440[] = "Cam -> Hair Col - Pal=%d, Entry=%d, Col=%08x\n";
+const char var001b6470[] = "Cam_Tick (%d Total Slots)";
+const char var001b648c[] = "Current Camera Slot = %d\n";
+const char var001b64a8[] = "Slot %d -> Active = %d";
+const char var001b64c0[] = "camdraw.c";
+const char var001b64cc[] = "CAM : Cam_StartCamFileRead - Go\n";
+const char var001b64f0[] = "************ Cam_ActivateAndClearSlot ************ : Slot=%d\n";
+const char var001b6530[] = "camdraw.c";
+const char var001b653c[] = "camdraw.c";
+const char var001b6548[] = "camdraw.c";
+const char var001b6554[] = "camdraw.c";
+const char var001b6560[] = "camdraw.c";
+const char var001b656c[] = "camdraw.c";
+const char var001b6578[] = "camdraw.c";
+const char var001b6584[] = "Cam_CopyEditorToUndo\n";
+const char var001b659c[] = "camdraw.c";
+const char var001b65a8[] = "Cam_CopyUndoToEditor\n";
+const char var001b65c0[] = "camdraw.c";
+const char var001b65cc[] = "camdraw.c";
+const char var001b65d8[] = "camdraw.c";
+const char var001b65e4[] = "camdraw.c";
+const char var001b65f0[] = "Cam -> Setting current hair colour to %s\n";
+const char var001b661c[] = "Cam -> Setting current face colour to %s\n";
+const char var001b6648[] = "camdraw.c";
+const char var001b6654[] = "Cam_SetAutoDeArtefact -> State = %d\n";
+const char var001b667c[] = "camdraw.c";
+const char var001b6688[] = "Cam_ClearCameraLoadBuffer -> Camera=%d\n";
+const char var001b66b0[] = "Cam_StartTemp : Need %u bytes for temp cam images buffer\n";
+const char var001b66ec[] = "camdraw.c";
+const char var001b66f8[] = "camdraw.c";
+const char var001b6704[] = "camdraw.c";
+const char var001b6710[] = "camdraw.c";
+const char var001b671c[] = "camdraw.c";
+const char var001b6728[] = "Camera -> Cam_Start for Camera %d\n";
+const char var001b674c[] = "Camera -> Cam_Stop\n";
+const char var001b6760[] = "Camera -> Cam_Finish - Done\n";
+const char var001b6780[] = "Camera ->Created a new slot - Id=%d\n";
+const char var001b67a8[] = "Camera -> CD_DeleteSlot - Dumping slot %d\n";
+const char var001b67d4[] = "kg";
+const char var001b67d8[] = "Kp";
+const char var001b67dc[] = "Ki";
+const char var001b67e0[] = "Kd";
+const char var001b67e4[] = "tInt";
+const char var001b67ec[] = "gocal";
+const char var001b67f4[] = "aim";
+const char var001b67f8[] = "CAM : Cam_MakeTextures\n";
+const char var001b6810[] = "camdraw.c";
+const char var001b681c[] = "pD->ReadMode = %s";
+const char var001b6830[] = "Camera -> Getting Header Info\n";
+const char var001b6850[] = "Camera -> Item=%d, pD->CamHeader[i]=%d\n";
+const char var001b6878[] = "Camera -> Found %d Valid images\n";
+const char var001b689c[] = "Camera -> Item=%d, Valid=%s, Bank=%d\n";
+const char var001b68c4[] = "YES";
+const char var001b68c8[] = "NO";
+const char var001b68cc[] = "CD_TransferCurrentCacheToEditorAndExit : Player=%d, pD->CamRdImg=%d\n";
+const char var001b6914[] = "Camera -> CD_CycleHandleRead - Need to load up the camera header\n";
+const char var001b6958[] = "Camera -> CD_CycleHandleRead - Image %d needs loading for editor coppying on menu exit\n";
+const char var001b69b0[] = "Camera -> CD_CycleHandleRead - Error ekCamReadModeExit2 in Null cycle\n";
+const char var001b69f8[] = "CAMERA : COPY SLOT (%d of %s): Slot %d(%s) -> Slot %d(%s)\n";
+const char var001b6a34[] = "ACTIVE";
+const char var001b6a3c[] = "NULL";
+const char var001b6a44[] = "ACTIVE";
+const char var001b6a4c[] = "NULL";
+const char var001b6a54[] = "RWI : Warning -> Not copying the thumbnail texture\n";
+const char var001b6a88[] = "CD_DrawTexture : pTex=%x\n";
+const char var001b6aa4[] = "Cam -> WARNING - Not done intensity table recalc :- No samples within threshold\n";
+const char var001b6af8[] = "Camera -> Call to reset auto calibrate\n";
+const char var001b6b20[] = "AC -> ekCamAutoCalStatusReset - pD->tTime = %d, pD->tTimeNxAdd = %d\n";
+const char var001b6b68[] = "Cam 0 -> Time = %d, Target = %d, tInt = %.2f\n";
+const char var001b6b98[] = "Cam 0 -> Too Low -> Adding Time\n";
+const char var001b6bbc[] = "Cam 0 -> Too High -> Subbing Time\n";
+const char var001b6be0[] = "Cam -> ekCamAutoCalStatusSettingTime - New time = %d\n";
+const char var001b6c18[] = "%s%sAC -> Gain = %d, Target = %.2f, tInt = %.2f\n";
+const char var001b6c4c[] = "";
+const char var001b6c50[] = "";
+const char var001b6c54[] = "Auto Calibrate is removing the menu message\n";
+const char var001b6c84[] = "Auto Calibrate is shutting down\n";
+const char var001b6ca8[] = "Cam -> Cam_BalanceSlot %d -> tZroShift = %d\n";
+const char var001b6cd8[] = "Cam_BuildFaceTexture (slot=%d): %d of %s\n";
+const char var001b6d04[] = "camdraw.c";
+const char var001b6d10[] = "camdraw.c";
+const char var001b6d1c[] = "Cam %d -> Balance : No Data Available\n";
+const char var001b6d44[] = "camdraw.c";
+const char var001b6d50[] = "Cam_SetSquashZ : %u, %u, %f\n";
+const char var001b6d70[] = "camdraw.c";
+const char var001b6d7c[] = "Cam : Alloc for copy of Vtx %d bytes\n";
+const char var001b6da4[] = "CAM : Cam_AllocAndCopyAllVtx -> Ptr all-ready allocted - No extra needed\n";
+const char var001b6df0[] = "camdraw.c";
+const char var001b6dfc[] = "Cam_RebuildHead : Slot=%d\n";
+const char var001b6e18[] = "Cam -> Cam_ColourHeadOnePart - Remapping %s\n";
+const char var001b6e48[] = "Cam_ColourHead : Face Col = %u, Hair Col = %u\n";
+const char var001b6e78[] = "FACE";
+const char var001b6e80[] = "SIDE";
+const char var001b6e88[] = "HAIR";
+const char var001b6e90[] = "Cam -> Cam_SquashOnePart - pExtents=%08x, pVcopy=%08x, \n";
+const char var001b6ecc[] = "Cam -> Cam_SquashOnePart - Head centre at (%d,%d,%d)\n";
+const char var001b6f04[] = "Cam -> Cam_SquashOnePart - Scale Param 1 = %s%s%.3f\n";
+const char var001b6f3c[] = "";
+const char var001b6f40[] = "";
+const char var001b6f44[] = "Cam -> Cam_SquashOnePart - Scale Param 2 = %s%s%.3f\n";
+const char var001b6f7c[] = "";
+const char var001b6f80[] = "";
+const char var001b6f84[] = "Cam -> Cam_SquashOnePart - Scale Param 3 = %s%s%.3f\n";
+const char var001b6fbc[] = "";
+const char var001b6fc0[] = "";
+const char var001b6fc4[] = "Cam -> Cam_SquashOnePart - Scale Param 4 = %s%s%.3f\n";
+const char var001b6ffc[] = "";
+const char var001b7000[] = "";
+const char var001b7004[] = "Cam -> Cam_SquashOnePart - Scale Param 5 = %s%s%.3f\n";
+const char var001b703c[] = "";
+const char var001b7040[] = "";
+const char var001b7044[] = "Cam -> Cam_SquashOnePart - Scale Param 6 = %s%s%.3f\n";
+const char var001b707c[] = "";
+const char var001b7080[] = "";
+const char var001b7084[] = "Cam -> Cam_SquashOnePart - Scale Param 7 = %s%s%.3f\n";
+const char var001b70bc[] = "";
+const char var001b70c0[] = "";
+const char var001b70c4[] = "Cam_DctInitialise_Read -> %x\n";
+const char var001b70e4[] = "Cam_DctUnCompressSlot -> %x\n";
+const char var001b7104[] = "Cam_LoadFromPakIntoSlot -> Pak=%d, fileGuid=%u, pakGuid=%u, Slot=%d, pS=%x, pE=%x\n";
+const char var001b7158[] = "camdraw.c";
+const char var001b7164[] = "camdraw.c";
+const char var001b7170[] = "Cam -> Compressing Editor Slot\n";
+const char var001b7190[] = "Cam -> Trying image compression at quality %u\n";
+const char var001b71c0[] = "Cam -> Failed - Too big - This=%u, Max=%d\n";
+const char var001b71ec[] = "Cam -> Trying lower quality setting\n";
+const char var001b7214[] = "Cam -> Save Failed - Cant get it small enough - oo-er\n";
+const char var001b724c[] = "Cam -> Sucess at quality %u - Size=%u, Max=%d\n";
+const char var001b727c[] = "\nCam_SaveEditSlotToParamPakItem -> Save failed\n";
+const char var001b72ac[] = "Camera Save Error Result: %d\n";
+const char var001b72cc[] = "Magic Guid set to %d\n";
+
+const u32 var001b72e4[] = {
+	0x3dcccccd,
+	0x3e4ccccd,
+	0x3c23d70a,
+	0x33d6bf95,
+	0x7f14bcd8,
+	0x7f14bc54,
+	0x7f14bc98,
+	0x7f14bcb4,
+	0x7f14bc7c,
+	0x7f14bcd0,
+	0x7f14bf48,
+	0x7f14c1b8,
+	0x7f14c050,
+	0x7f14c0f4,
+	0x7f14c114,
+	0x7f14c1b8,
+	0x7f14c238,
+	0x7f14c394,
+	0x7f14c280,
+	0x7f14c2cc,
+	0x7f14c28c,
+	0x7f14c394,
+	0x7f14cffc,
+	0x7f14cffc,
+	0x7f14cffc,
+	0x7f14cffc,
+	0x7f14cffc,
+	0x3ff33333,
+	0x3c23d70a,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x3ff33333,
+	0x40490fda,
+	0x00000000,
+	0x00000000,
+	0x3dcccccd,
+	0x3f333333,
+	0x3f8f5c29,
+	0x3df5c28f,
+	0x40c907a9,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x3dcccccd,
+	0xc61c4000,
+	0x461c4000,
+	0xc61c4000,
+	0x461c4000,
+	0x46ffffcd,
+	0xc6ffffcd,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001b73b0[] = "burncol";
+const char var001b73b8[] = "sbrd";
+const char var001b73c0[] = "lalpha";
+const char var001b73c8[] = "subtlety";
+const char var001b73d4[] = "subtletx";
+const char var001b73e0[] = "coly";
+const char var001b73e8[] = "colx";
+const char var001b73f0[] = "lfade";
+const char var001b73f8[] = "llimbo";
+
+const u32 var001b7400[] = {
+	0x453b8000,
+	0x453b8000,
+	0x00000000,
+	0x00000000,
+	0x7f7fffff,
+	0x7f7fffff,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001b7420[] = "Checking Convex Room %d";
+const char var001b7438[] = " Portal %d %s%s%.1f < %.1f";
+const char var001b7454[] = "";
+const char var001b7458[] = "";
+const char var001b745c[] = " Convex Room Failed (1)";
+const char var001b7474[] = " Portal %d %s%s%.1f > %.1f";
+const char var001b7490[] = "";
+const char var001b7494[] = "";
+const char var001b7498[] = " Convex Room Failed (0)";
+const char var001b74b0[] = "Checking Concave Room %d";
+const char var001b74cc[] = " Checking Portal %d";
+const char var001b74e0[] = "Reject P:%d (%s%s%.1f %.1f n3=%.1f)";
+const char var001b7504[] = "";
+const char var001b7508[] = "";
+const char var001b750c[] = "Reject P:%d (%s%s%.1f %.1f n4=%.1f)";
+const char var001b7530[] = "";
+const char var001b7534[] = "";
+const char var001b7538[] = " Full %d%s%s %.1f %.1f (%.1f %.1f)";
+const char var001b755c[] = "";
+const char var001b7560[] = "";
+const char var001b7564[] = " Failed 2 - Crossed portal %d";
+const char var001b7584[] = " Failed 1 - Crossed portal %d";
+const char var001b75a4[] = " Passed";
+const char var001b75ac[] = "edist";
+
+const u32 var001b75b4[] = {
+	0x3fc90fdb,
+	0x3f266666,
+	0x3eb33333,
+	0x3fc90fdb,
+	0x3f333333,
+	0x461c4000,
+	0x7f7fffff,
+	0xff7fffff,
+	0x46fffe00,
+	0x7f7fffff,
+	0x7f7fffff,
+	0x7f162c00,
+	0x7f162c3c,
+	0x7f162c24,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162c60,
+	0x7f162c98,
+	0x7f162cb0,
+	0x7f1626a4,
+	0x7f1626ac,
+	0x7f1626cc,
+	0x7f1626ec,
+	0x7f16271c,
+	0x7f16274c,
+	0x7f162774,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f1627a4,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f162cc0,
+	0x7f1627e8,
+	0x7f162858,
+	0x7f162a04,
+	0x7f162be4,
+	0x7f1628d4,
+	0x7f162960,
+	0x7f162a70,
+	0x7f162ab4,
+	0x7f162b1c,
+	0x7f162b2c,
+	0x7f162b3c,
+	0x7f162b58,
+	0x7f162ba8,
+	0x7f7fffff,
+	0x7f7fffff,
+	0x7f7fffff,
+	0xff7fffff,
+	0xbf666666,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x3a83126f,
+	0x3a83126f,
+	0x7f7fffff,
+	0x00000000,
+};
+
+const char var001b76f0[] = "-mgfx";
+const char var001b76f8[] = "-mgfx";
+const char var001b7700[] = "-mgfxtra";
+const char var001b770c[] = "-mgfxtra";
+const char var001b7718[] = "-mvtx";
+const char var001b7720[] = "-mvtx";
+const char var001b7728[] = "";
+const char var001b772c[] = "";
+const char var001b7730[] = "fr: %d\n";
+const char var001b7738[] = "cutsceneframe: %d\n";
+const char var001b774c[] = "pos:%s%s %.2f %.2f %.2f\n";
+
+const u32 var001b7768[] = {
+	0x00000000,
+	0x00000000,
+	0x7f1681e8,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681e8,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681e8,
+	0x7f1681e8,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681f0,
+	0x7f1681e8,
+	0x7f168a64,
+	0x7f168ac8,
+	0x7f168974,
+	0x7f168a64,
+	0x7f168ac8,
+	0x7f16894c,
+	0x7f168ac8,
+	0x7f168ac8,
+	0x7f168c70,
+	0x7f168c84,
+	0x7f168c84,
+	0x7f168c84,
+	0x7f168c84,
+	0x7f168c84,
+	0x7f168c84,
+	0x7f168c84,
+	0x7f168c84,
+	0x7f168c84,
+	0x7f168c84,
+	0x7f168c84,
+	0x7f168c84,
+	0x7f168c84,
+	0x7f168c84,
+	0x7f168c68,
+	0x7f168c68,
+	0x7f168c68,
+	0x7f168c68,
+	0x7f168c68,
+	0x3f866666,
+	0x3ca3d70b,
+	0x3f8ccccd,
+	0x3bda740e,
+	0x3ca3d70b,
+	0x3f8ccccd,
+	0x3bda740e,
+	0x3eb33333,
+	0x3e4ccccd,
+	0x3f19999a,
+	0x3f8ccccd,
+	0x3f333333,
+	0x3f266666,
+	0x3f19999a,
+	0x3e4ccccd,
+	0x3f8ccccd,
+	0x3e4ccccd,
+	0x3f19999a,
+	0x3ef33334,
+	0x3f19999a,
+	0x3e4ccccd,
+	0x3f4ccccd,
+	0x3f19999a,
+	0x3f8ccccd,
+	0x3f966666,
+	0x3e4ccccd,
+	0x3f8ccccd,
+	0x00000000,
+};
+
+const char var001b78c0[] = "null";
+const char var001b78c8[] = "leveltune";
+const char var001b78d4[] = "nrgtune,watchtune,mpdeathtune";
+const char var001b78f4[] = "ambience";
+const char var001b7900[] = "NULL";
+const char var001b7908[] = "playing";
+const char var001b7910[] = "paused";
+const char var001b7918[] = "MUSIC : activedeath=%d\n";
+
+const u32 var001b7930[] = {
+	0x7f16e224,
+	0x7f16e3ec,
+	0x7f16e3ec,
+	0x7f16e3ec,
+	0x7f16e3ec,
+	0x7f16e3ec,
+	0x7f16e3ec,
+	0x7f16e3ec,
+	0x7f16e3ec,
+	0x7f16e3ec,
+	0x7f16e3ec,
+	0x7f16e3e4,
+	0x7f16e3ec,
+	0x7f16e244,
+	0x7f16e304,
+	0x7f16e2fc,
+	0x7f16e25c,
+	0x7f16e22c,
+	0x7f16e23c,
+	0x7f16e30c,
+	0x7f16e24c,
+	0x7f16e254,
+	0x7f16e284,
+	0x7f16e274,
+	0x7f16e204,
+	0x7f16e20c,
+	0x7f16e214,
+	0x7f16e21c,
+	0x7f16e264,
+	0x7f16e27c,
+	0x7f16e314,
+	0x7f16e2dc,
+	0x7f16e26c,
+	0x7f16e2ec,
+	0x7f16e234,
+	0x7f16e2a4,
+	0x7f16e2ac,
+	0x7f16e2b4,
+	0x7f16e2d4,
+	0x7f16e29c,
+	0x7f16e2f4,
+	0x7f16e28c,
+	0x7f16e2bc,
+	0x7f16e2c4,
+	0x7f16e2cc,
+	0x7f16e294,
+	0x7f16e3dc,
+	0x7f16e2e4,
+	0x7f16e33c,
+	0x7f16e344,
+	0x7f16e34c,
+	0x7f16e354,
+	0x7f16e35c,
+	0x7f16e364,
+	0x7f16e36c,
+	0x7f16e374,
+	0x7f16e37c,
+	0x7f16e384,
+	0x7f16e38c,
+	0x7f16e394,
+	0x7f16e39c,
+	0x7f16e3a4,
+	0x7f16e3ac,
+	0x7f16e3b4,
+	0x7f16e3bc,
+	0x7f16e3c4,
+	0x7f16e3cc,
+	0x7f16e3d4,
+	0x7f16e31c,
+	0x7f16e324,
+	0x7f16e32c,
+	0x7f16e334,
+	0x7f17004c,
+	0x7f17004c,
+	0x7f170070,
+	0x7f170108,
+	0x7f1701bc,
+	0x7f170248,
+	0x7f170294,
+	0x7f1702fc,
+	0x7f170360,
+	0x7f170434,
+	0x7f170764,
+	0x7f170788,
+	0x7f170764,
+	0x7f170788,
+	0x7f170788,
+	0x7f1707ac,
+	0x7f1707d0,
+	0x7f1707ac,
+	0x7f1707d0,
+	0x7f170814,
+	0x7f1709c4,
+	0x7f170814,
+	0x7f1709c4,
+	0x7f170b74,
+	0x7f170cb4,
+	0x7f170ee4,
+	0x7f170e00,
+	0x7f171074,
+	0x7f171910,
+	0x7f1719f0,
+	0x7f171988,
+	0x7f171a50,
+	0x7f1719f0,
+	0x7f171ab8,
+	0x7f171b14,
+	0x7f171ab8,
+	0x7f171b14,
+	0x7f171bf0,
+	0x7f171d5c,
+	0x7f171cb0,
+	0x7f171ea4,
+	0x7f171e1c,
+	0x7f171f50,
+	0x7f172038,
+	0x7f171fd4,
+	0x7f1720f0,
+	0x7f172204,
+	0x7f1722f8,
+	0x7f172278,
+	0x7f172374,
+	0x7f1722f8,
+	0x7f1723f8,
+	0x7f172470,
+	0x7f1723f8,
+	0x7f172470,
+	0x7f1725ac,
+	0x7f172704,
+	0x7f172650,
+	0x7f1727ac,
+	0x7f172704,
+	0x7f172864,
+	0x7f172904,
+	0x7f172864,
+	0x7f172904,
+	0x7f172a24,
+	0x7f172a38,
+	0x7f172a24,
+	0x7f172a38,
+	0x7f172a38,
+	0x7f172a50,
+	0x7f172a68,
+	0x7f172a50,
+	0x7f172a68,
+	0x7f172a50,
+	0x7f172a68,
+	0x7f172a50,
+	0x7f172a68,
+	0x7f172c24,
+	0x7f172c68,
+	0x7f172cac,
+	0x7f172cf0,
+	0x7f172d3c,
+	0x7f172d98,
+	0x7f172df4,
+};
+
+const char var001b7ba0[] = "default";
+const char var001b7ba8[] = "stone";
+const char var001b7bb0[] = "wood";
+const char var001b7bb8[] = "metal";
+const char var001b7bc0[] = "glass";
+const char var001b7bc8[] = "shallow water";
+const char var001b7bd8[] = "snow";
+const char var001b7be0[] = "dirt";
+const char var001b7be8[] = "mud";
+const char var001b7bec[] = "tile";
+const char var001b7bf4[] = "metalobj";
+const char var001b7c00[] = "chr";
+const char var001b7c04[] = "glass xlu";
+const char var001b7c10[] = "no hit";
+const char var001b7c18[] = "deep water";
+
+const u32 var001b7c24[] = {
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x7f175c04,
+	0x7f175e28,
+	0x7f175e28,
+	0x7f175e28,
+	0x7f175e28,
+	0x7f175e28,
+	0x7f175e28,
+	0x7f175e28,
+	0x7f175e28,
+	0x7f175e0c,
+	0x7f175dcc,
+	0x7f175e28,
+	0x7f175e28,
+	0x7f175e28,
+	0x7f175c04,
+	0x7f1757d4,
+	0x7f175880,
+	0x7f1758e4,
+	0x7f17597c,
+	0x7f1759b8,
+	0x7f1759f0,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001b7c90[] = "Apr  6 2000 15:05:01";
+const char var001b7ca8[] = "";
+const char var001b7cac[] = "";
+const char var001b7cb0[] = "UM_Make : In\n";
+const char var001b7cc0[] = "UM_Make : Out\n";
+const char var001b7cd0[] = "Utils -> ERROR at Line %d of %s\n";
+const char var001b7cf4[] = "Utils -> UM_fVec3_NormaliseTo - Vec = %s%s (%f,%f,%f)\n";
+const char var001b7d2c[] = "";
+const char var001b7d30[] = "";
+const char var001b7d34[] = "Utils -> Attempt to normalise zeo length vector\n";
+const char var001b7d68[] = "utils.c";
+const char var001b7d70[] = "UTILS -> DEBUG ERROR - UM_fVec3_MakeNormalTo - Cant normalise\n";
+const char var001b7db0[] = "utils.c";
+const char var001b7db8[] = "UTILS -> DEBUG ERROR - UM_fVec3_MakeNormalTo - Cant normalise\n";
+const char var001b7df8[] = "utils.c";
+const char var001b7e00[] = "WARNING - UTILS -> DEBUG - Triangle passed to Planar Poly Test\n";
+const char var001b7e40[] = "utils.c";
+const char var001b7e48[] = "utils.c";
+const char var001b7e50[] = "UM_ZeroRunVerify_U8 - FAILED on item %d\n";
+
+const u32 var001b7e7c[] = {
+	0x3a83126f,
+	0x00000000,
+};
+
+const char var001b7e84[] = "\n";
+const char var001b7e88[] = "";
+const char var001b7e8c[] = "";
+const char var001b7e90[] = "%d%%\n";
+const char var001b7e98[] = "%d%%\n";
+const char var001b7ea0[] = "%d%%\n";
+const char var001b7ea8[] = "Menu99 -> Calling Camera Module Start\n";
+const char var001b7ed0[] = "Menu99 -> Calling Camera Module Finish\n";
+const char var001b7ef8[] = "%d\n";
+const char var001b7efc[] = "%d\n";
+const char var001b7f00[] = "%d\n";
+const char var001b7f04[] = "%d\n";
+const char var001b7f08[] = "%d\n";
+const char var001b7f0c[] = "%d\n";
+const char var001b7f10[] = "%d\n";
+const char var001b7f14[] = "%d\n";
+const char var001b7f18[] = "%d\n";
+const char var001b7f1c[] = "%d\n";
+const char var001b7f20[] = "%dM\n";
+const char var001b7f28[] = "%dK\n";
+const char var001b7f30[] = "%d\n";
+const char var001b7f34[] = "%s%s%.1fkm\n";
+const char var001b7f40[] = "";
+const char var001b7f44[] = "";
+const char var001b7f48[] = "--:--\n";
+const char var001b7f50[] = "==:==\n";
+const char var001b7f58[] = "%d:%02d.%02d";
+const char var001b7f68[] = "%d:%02d:%02d";
+const char var001b7f78[] = "%s%s%.1f%%";
+const char var001b7f84[] = "";
+const char var001b7f88[] = "";
+const char var001b7f8c[] = "%s%s%.1f";
+const char var001b7f98[] = "";
+const char var001b7f9c[] = "";
+const char var001b7fa0[] = "%s%s%.0f";
+const char var001b7fac[] = "";
+const char var001b7fb0[] = "";
+const char var001b7fb4[] = "%s%s%.1fK";
+const char var001b7fc0[] = "";
+const char var001b7fc4[] = "";
+const char var001b7fc8[] = "%s%s%.0fK";
+const char var001b7fd4[] = "";
+const char var001b7fd8[] = "";
+const char var001b7fdc[] = "%s%s%.1fM";
+const char var001b7fe8[] = "";
+const char var001b7fec[] = "";
+const char var001b7ff0[] = "%s%s%.0fM";
+const char var001b7ffc[] = "";
+const char var001b8000[] = "";
+const char var001b8004[] = "";
+const char var001b8008[] = "";
+const char var001b800c[] = "%s%s%.00f%%\n";
+const char var001b801c[] = "";
+const char var001b8020[] = "";
+const char var001b8024[] = "";
+const char var001b8028[] = "\n";
+const char var001b802c[] = "%s";
+const char var001b8030[] = "";
+const char var001b8034[] = "";
+const char var001b8038[] = "%d:\n";
+const char var001b8040[] = "";
+const char var001b8044[] = "\n";
+const char var001b8048[] = "%s:\n";
+const char var001b8050[] = "\n";
+const char var001b8054[] = "%d\n";
+const char var001b8058[] = "%d\n";
+
+const u32 var001b805c[] = {
+	0x7f179248,
+	0x7f17935c,
+	0x7f17927c,
+	0x7f1793a4,
+	0x7f1793fc,
+	0x7f1792cc,
+	0x7f179310,
+	0x7f179dd8,
+	0x7f17a014,
+	0x7f17a014,
+	0x7f17a014,
+	0x7f17a014,
+	0x7f179f0c,
+	0x7f179f04,
+	0x7f17a014,
+	0x7f17a014,
+	0x7f17a014,
+	0x7f179dec,
+	0x7f17a014,
+	0x7f179ecc,
+	0x7f17a014,
+	0x7f179f0c,
+	0x7f17a014,
+	0x7f17a014,
+	0x7f17a014,
+	0x7f17a014,
+	0x7f17a014,
+	0x7f179eac,
+	0x3c23d70a,
+	0x41033333,
+	0xc0833333,
+	0xbe4ccccd,
+	0x3b03126f,
+	0x461c4000,
+	0x47c35000,
+	0x49742400,
+	0x4b189680,
+	0x7f17b52c,
+	0x7f17b82c,
+	0x7f17b82c,
+	0x7f17b82c,
+	0x7f17b82c,
+	0x7f17b70c,
+	0x7f17b700,
+	0x7f17b82c,
+	0x7f17b82c,
+	0x7f17b82c,
+	0x7f17b540,
+	0x7f17b82c,
+	0x7f17b70c,
+	0x7f17b82c,
+	0x7f17b82c,
+	0x7f17b82c,
+	0x7f17b82c,
+	0x7f17b82c,
+	0x7f17b82c,
+	0x7f17b82c,
+	0x7f17b6e0,
+	0x3c23d70a,
+	0xbe99999a,
+	0x3c23d70a,
+	0x7f17baec,
+	0x7f17bcb4,
+	0x7f17bb1c,
+	0x7f17bcdc,
+	0x7f17bd20,
+	0x7f17bbb4,
+	0x7f17bca4,
+	0x7f17be18,
+	0x7f17be18,
+	0x7f17be18,
+	0x7f17be18,
+	0x7f17be18,
+	0x7f17be18,
+	0x7f17be18,
+	0x7f17be18,
+	0x7f17bd80,
+	0x7f17c028,
+	0x7f17c144,
+	0x7f17c034,
+	0x7f17c150,
+	0x7f17c164,
+	0x7f17c064,
+	0x7f17c134,
+	0x7f17c71c,
+	0x7f17c994,
+	0x7f17c750,
+	0x7f17c9a0,
+	0x7f17c9bc,
+	0x7f17c7a4,
+	0x7f17c95c,
+	0x7f17ca1c,
+	0x7f17ca1c,
+	0x7f17ca1c,
+	0x7f17ca1c,
+	0x7f17ca1c,
+	0x7f17ca1c,
+	0x7f17ca1c,
+	0x7f17ca1c,
+	0x7f17c8f4,
+	0x7f17dcb4,
+	0x7f17df60,
+	0x7f17dcf0,
+	0x7f17df60,
+	0x7f17df60,
+	0x7f17dd90,
+	0x7f17dea0,
+	0x7f17df60,
+	0x7f17df60,
+	0x7f17df60,
+	0x7f17df60,
+	0x7f17df60,
+	0x7f17df60,
+	0x7f17df20,
+	0x7f17df60,
+	0x7f17deec,
+	0x7f17e540,
+	0x7f17e600,
+	0x7f17e9a8,
+	0x7f17e608,
+	0x7f17e610,
+	0x7f17e550,
+	0x7f17e5f0,
+	0x7f17e9a8,
+	0x7f17e9a8,
+	0x7f17e9a8,
+	0x7f17e9a8,
+	0x7f17e9a8,
+	0x7f17e9a8,
+	0x7f17e9a8,
+	0x7f17e9a8,
+	0x7f17e9a8,
+	0x7f17e9a8,
+	0x7f17e9a8,
+	0x7f17e618,
+	0x7f17e9a0,
+	0x7f17e9a8,
+	0x7f17e9a8,
+	0x7f17e9a8,
+	0x7f17e524,
+	0x7f17f160,
+	0x7f17f17c,
+	0x7f17f198,
+	0x7f17f1e0,
+	0x7f17f218,
+	0x7f17f400,
+	0x7f17f2b8,
+	0x7f17f400,
+	0x7f17f304,
+	0x7f17f370,
+	0x7f17f520,
+	0x7f17f598,
+	0x7f17f52c,
+	0x7f17f598,
+	0x7f17f598,
+	0x7f17f54c,
+	0x7f17f564,
+	0x7f17f598,
+	0x7f17f598,
+	0x7f17f598,
+	0x7f17f598,
+	0x7f17f598,
+	0x7f17f598,
+	0x7f17f598,
+	0x7f17f598,
+	0x7f17f598,
+	0x7f17f598,
+	0x7f17f598,
+	0x7f17f598,
+	0x7f17f598,
+	0x7f17f598,
+	0x7f17f598,
+	0x7f17f598,
+	0x7f17f57c,
+	0x7f17f5d8,
+	0x7f17f678,
+	0x7f17f604,
+	0x7f17f678,
+	0x7f17f678,
+	0x7f17f62c,
+	0x7f17f640,
+	0x7f17f678,
+	0x7f17f678,
+	0x7f17f678,
+	0x7f17f678,
+	0x7f17f678,
+	0x7f17f678,
+	0x7f17f678,
+	0x7f17f678,
+	0x7f17f678,
+	0x7f17f678,
+	0x7f17f678,
+	0x7f17f678,
+	0x7f17f678,
+	0x7f17f678,
+	0x7f17f678,
+	0x7f17f678,
+	0x7f17f654,
+	0x7f17f6c0,
+	0x7f17f738,
+	0x7f17f6cc,
+	0x7f17f738,
+	0x7f17f738,
+	0x7f17f6f4,
+	0x7f17f708,
+	0x7f17f738,
+	0x7f17f738,
+	0x7f17f738,
+	0x7f17f738,
+	0x7f17f738,
+	0x7f17f738,
+	0x7f17f738,
+	0x7f17f738,
+	0x7f17f738,
+	0x7f17f738,
+	0x7f17f738,
+	0x7f17f738,
+	0x7f17f738,
+	0x7f17f738,
+	0x7f17f738,
+	0x7f17f738,
+	0x7f17f71c,
+	0x7f17f798,
+	0x7f17f86c,
+	0x7f17f7cc,
+	0x7f17f86c,
+	0x7f17f86c,
+	0x7f17f820,
+	0x7f17f830,
+	0x7f17f86c,
+	0x7f17f86c,
+	0x7f17f86c,
+	0x7f17f86c,
+	0x7f17f86c,
+	0x7f17f86c,
+	0x7f17f86c,
+	0x7f17f86c,
+	0x7f17f86c,
+	0x7f17f86c,
+	0x7f17f86c,
+	0x7f17f86c,
+	0x7f17f86c,
+	0x7f17f86c,
+	0x7f17f86c,
+	0x7f17f86c,
+	0x7f17f840,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001b8440[] = "CaptureTheBriefcaseAddBankPad -> Adding New Pad %d  - Pad Id = %d-> Saving Pad\n";
+const char var001b8490[] = "%d:%02d";
+const char var001b8498[] = "%d:%02d";
+const char var001b84a0[] = "%02d";
+const char var001b84a8[] = "HackThatMacAddBankPad -> Adding New Pad %d  - Pad Id = %d-> Saving Pad\n";
+const char var001b84f0[] = "HackThatMacReset -> Working\n";
+const char var001b8510[] = "HackThatMacInitProps -> Start : %d Bank Pads\n";
+const char var001b8540[] = "HackThatMacInitProps -> Adding prop %d (%x)\n";
+const char var001b8570[] = "HackThatMacInitProps -> Mid : %d Bank Pads\n";
+const char var001b859c[] = "HackThatMacInitProps -> Generating %d random box pads from %d in the bank\n";
+const char var001b85e8[] = "HackThatMacInitProps -> %d/%d Random box pads generated - Listing\n";
+const char var001b862c[] = "Pad %d -> Pad Id = %d\n";
+const char var001b8644[] = "HackThatMacInitProps -> Building and adding custom prop %d - Pad=%d, Ptr=%08x\n";
+const char var001b8694[] = "HackThatMacInitProps -> End\n";
+const char var001b86b4[] = "HTM : Player %d - Term Pos = (%d,%d,%d)";
+const char var001b86dc[] = "HTM : Player %d - Play Pos = (%d,%d,%d)";
+const char var001b8704[] = "HTM : Player %d - T/P  Rel = (%d,%d,%d)";
+const char var001b872c[] = "HTM : Player %d - Range XZ = %d";
+const char var001b874c[] = "HTM : Player %d - Range Y  = %d";
+const char var001b876c[] = "HTM : Player %d - Angle XZ = %d";
+const char var001b878c[] = "HTM : Player %d - Dwnld Plr=%d, Dwnld Prop=%d\n";
+const char var001b87bc[] = "HTM : Player %d - Download Time = %d";
+const char var001b87e4[] = "PopACapReset -> num_mplayers=%d : Working\n";
+const char var001b8810[] = "PopACapReset -> Generated %d victims for this game : Listing\n";
+const char var001b8850[] = "PopACapReset -> Victim %d is player %d\n";
+const char var001b8878[] = "PopACapReset -> Done\n";
+const char var001b8890[] = "PopACapTick : Current Victim = %d (Player %d)\n";
+const char var001b88c0[] = "%d:%02d";
+const char var001b88c8[] = "%s\n";
+const char var001b88cc[] = "%s\n";
+const char var001b88d0[] = "%s:\n";
+const char var001b88d8[] = "%s\n";
+
+const u32 var001b88dc[] = {
+	0x7f17febc,
+	0x7f17ff6c,
+	0x7f17fec8,
+	0x7f17ff6c,
+	0x7f17ff6c,
+	0x7f17fee4,
+	0x7f17ff34,
+	0x7f17ff6c,
+	0x7f17ff6c,
+	0x7f17ff6c,
+	0x7f17ff6c,
+	0x7f17fe9c,
+	0x7f17ff6c,
+	0x7f17ff6c,
+	0x7f17ff6c,
+	0x7f17ff6c,
+	0x7f17ff6c,
+	0x7f17ff6c,
+	0x7f17ff6c,
+	0x7f17ff6c,
+	0x7f17ff6c,
+	0x7f17ff6c,
+	0x7f17ff6c,
+	0x7f17fe9c,
+	0x3f733333,
+	0x3d4ccccd,
+	0x3f733333,
+	0x3f733333,
+	0x3d4ccccd,
+	0x3d4ccccd,
+	0x3e4ccccd,
+	0x40c907a9,
+	0x42652ee0,
+	0x42652ee0,
+	0x7f185110,
+	0x7f18528c,
+	0x7f18515c,
+	0x7f1852c8,
+	0x7f1852e4,
+	0x7f1851c4,
+	0x7f18522c,
+	0x7f185f14,
+	0x7f185f14,
+	0x7f186168,
+	0x7f186168,
+	0x7f186168,
+	0x7f186168,
+	0x7f186168,
+	0x7f185f14,
+	0x7f186168,
+	0x7f186168,
+	0x7f186168,
+	0x7f186168,
+	0x7f186168,
+	0x7f185f14,
+	0x7f185f14,
+	0x7f1862e4,
+	0x7f1862d4,
+	0x7f1862ec,
+	0x7f186254,
+	0x7f186260,
+	0x7f186320,
+	0x7f1863a0,
+	0x7f1863a8,
+	0x7f1863b0,
+	0x7f1863b8,
+	0x7f1863c0,
+	0x7f1863c8,
+	0x7f1863d0,
+	0x7f1863d8,
+	0x7f186328,
+	0x7f186328,
+	0x7f186380,
+};
+
+const char var001b8a00[] = "||||||||||||| Starting game... players %d\n";
+const char var001b8a2c[] = "%s %d\n";
+const char var001b8a34[] = "";
+const char var001b8a38[] = "-mpwpnset";
+const char var001b8a44[] = "-mpwpnset";
+const char var001b8a50[] = "%s %d\n";
+const char var001b8a58[] = "";
+const char var001b8a5c[] = "Gun index %d -> slot %d = gun %d\n\n";
+const char var001b8a80[] = "HOLDER: selecting weapon set %d\n";
+const char var001b8aa4[] = "%d\n";
+
+const u32 var001b8aa8[] = {
+	0x00000002,
+	0x00000004,
+	0x00000008,
+	0x00000010,
+	0x0000001c,
+	0x0000003c,
+	0x00000064,
+	0x00000096,
+	0x000000d2,
+	0x0000012c,
+};
+
+const char var001b8ad0[] = "%s%sAccuracy Peak! real value: %f (*100)\n";
+const char var001b8afc[] = "";
+const char var001b8b00[] = "";
+const char var001b8b04[] = "%splayer %d Accuracy :%f\n";
+const char var001b8b20[] = "";
+const char var001b8b24[] = "%splayer %d dist:%f -> %f = %d\n";
+const char var001b8b44[] = "";
+const char var001b8b48[] = "Player %d TitleCalc ============\n";
+const char var001b8b6c[] = "Sim\n";
+const char var001b8b74[] = "%s:%d\n";
+const char var001b8b7c[] = "%s\n";
+const char var001b8b80[] = "Adding GBCHead to load to slot %d: guid is %x-%x, player is %d\n";
+const char var001b8bc0[] = "PakId for player %d: %d\n";
+const char var001b8bdc[] = "Save Player Result: %d   New GUID: %x\n";
+const char var001b8c04[] = "PakId for player %d: %d\n";
+const char var001b8c20[] = "Load Player - Result: %d\n";
+const char var001b8c3c[] = "";
+const char var001b8c40[] = "bot %d headId %d bodyId %d\n";
+const char var001b8c5c[] = "team change %s %d\n";
+const char var001b8c70[] = "mplayer.c";
+const char var001b8c7c[] = "team change %s %d\n";
+const char var001b8c90[] = "mplayer.c";
+const char var001b8c9c[] = "SaveMultiGameFile : PakId=0x%x, FileId=0x%x\n";
+const char var001b8ccc[] = "SaveGame Result: %d   New GUID: %x\n";
+const char var001b8cf0[] = "LoadMultiGameFile : PakId=0x%x, FileId=0x%x\n";
+const char var001b8d20[] = "LoadGame Result: %d\n";
+const char var001b8d38[] = "GBCHead: Call to create head for slot %d (gbcheadobjs[slotno]=%x)\n";
+
+const u32 var001b8d7c[] = {
+	0x3f666666,
+	0x3dcccccd,
+	0x7f187e40,
+	0x7f187e20,
+	0x7f187e30,
+	0x7f187e0c,
+	0x7f187df8,
+	0x4852f000,
+	0x47c35000,
+	0x461c4000,
+	0x3e99999a,
+	0x3f333333,
+	0x3dcccccd,
+	0x3dcccccd,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001b8dc0[] = "RadarDrawDot : Prop=%x";
+
+const u32 var001b8dd8[] = {
+	0x40490fdb,
+	0x3b83126f,
+	0x3c8efa35,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x7f190bcc,
+	0x7f1907f8,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f1907f8,
+	0x7f190a08,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f1908b0,
+	0x7f190b34,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x7f190bcc,
+	0x47742400,
+	0x461c4000,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x40c907a9,
+	0x40490fdb,
+	0x40c907a9,
+	0x3edf5dd8,
+	0x3fc907a8,
+	0x40c907a9,
+	0x40c907a9,
+	0x3d566e92,
+	0x40c907a9,
+	0x39a4af08,
+	0x3d7c45d9,
+	0xc0490fdb,
+	0x40490fdb,
+	0x40490fdb,
+	0x4181e420,
+	0xc27e6668,
+	0x3bce168a,
+	0x3b397ab1,
+	0x7f1920a8,
+	0x7f1920c0,
+	0x7f1920d4,
+	0x7f1920e8,
+	0x7f1920fc,
+	0x7f192110,
+	0x40c66666,
+	0x40f33333,
+	0x41166666,
+	0x41333333,
+	0x41333333,
+	0x3eb33333,
+	0x3d6147b0,
+	0x3f71eb85,
+	0xc69c4000,
+	0x37800080,
+	0x3f79999a,
+	0x3cccccc0,
+	0x40fccccd,
+	0x4101999a,
+	0x40fccccd,
+	0x49742400,
+	0x7f196ec0,
+	0x7f196f24,
+	0x7f196f24,
+	0x7f196f24,
+	0x7f196ec0,
+	0x7f196ec0,
+	0x7f196ec0,
+	0x7f196f24,
+	0x7f196f24,
+	0x7f196ec0,
+	0x7f196ec0,
+	0x7f196ec0,
+	0x7f196ec0,
+	0x7f196ec0,
+	0x7f196ec0,
+	0x7f196ec0,
+	0x7f196ec0,
+	0x7f196ec0,
+	0x7f196ec0,
+	0x7f196f9c,
+	0x7f196ec0,
+	0x7f196ec0,
+	0x7f196ec0,
+	0x7f196ec0,
+	0x7f196ec0,
+	0x7f196f24,
+	0x7f196ec0,
+	0x7f196f78,
+	0x3d4ccccd,
+	0x00000000,
+	0x48742400,
+	0x3eb33333,
+	0x7f197b34,
+	0x7f197b24,
+	0x7f197b6c,
+	0x7f197ba8,
+	0x7f197be4,
+	0x7f197be4,
+	0x7f197be4,
+	0x7f197be4,
+	0x7f197be4,
+	0x7f197be4,
+	0x7f197be4,
+	0x7f197be4,
+	0x7f197be4,
+	0x7f197b50,
+	0x7f198508,
+	0x7f198570,
+	0x7f198588,
+	0x7f1985a0,
+	0x7f1985b8,
+	0x7f198bd8,
+	0x7f1985dc,
+	0x7f198644,
+	0x7f19865c,
+	0x7f198bd8,
+	0x7f198674,
+	0x7f198698,
+	0x7f1986bc,
+	0x7f198730,
+	0x7f198748,
+	0x7f198bd8,
+	0x7f198bd8,
+	0x7f198760,
+	0x7f198794,
+	0x7f1987b8,
+	0x7f198bd8,
+	0x7f198bd8,
+	0x7f1987d0,
+	0x7f1987e8,
+	0x7f19880c,
+	0x7f198960,
+	0x7f198978,
+	0x7f198a04,
+	0x7f198bd8,
+	0x7f198bd8,
+	0x7f198ba0,
+	0x3991a2b4,
+	0x3f666666,
+	0x44bb8000,
+	0x00000000,
+	0x00000000,
+	0x3d4ccccd,
+	0x7f19a2c0,
+	0x7f19a2c0,
+	0x7f19a2d0,
+	0x7f19a2d0,
+	0x7f19a2d0,
+	0x7f19a2d0,
+	0x7f19a2d0,
+	0x7f19a2d0,
+	0x7f19a2d0,
+	0x7f19a2d0,
+	0x7f19a2d0,
+	0x7f19a2d0,
+	0x7f19a2c0,
+	0x7f19a2d0,
+	0x7f19a2d0,
+	0x7f19a2d0,
+	0x7f19a2c8,
+	0x7f19a2c8,
+	0x7f19a2c8,
+	0x7f19a2c8,
+	0x7f19a2c8,
+	0x7f19a300,
+	0x7f19a310,
+	0x7f19a310,
+	0x7f19a310,
+	0x7f19a308,
+	0x7f19a308,
+	0x7f19a310,
+	0x7f19a310,
+	0x7f19a310,
+	0x7f19a348,
+	0x7f19a370,
+	0x7f19a350,
+	0x7f19a370,
+	0x7f19a370,
+	0x7f19a358,
+	0x7f19a360,
+	0x7f19a368,
+	0x7f19a370,
+	0x7f19a370,
+	0x7f19a370,
+	0x7f19a340,
+	0x41855555,
+	0x3eb2b17a,
+	0x3eb2b17a,
+	0x3eb2b17a,
+	0x41855555,
+	0x4096c5bf,
+	0x404907a9,
+	0x3eb2b17a,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+};
+
+const char var001b9180[] = "%s %d\n";
+const char var001b9188[] = "%02d\n";
+const char var001b9190[] = "%03d\n";
+const char var001b9198[] = "%s %d\n";
+const char var001b91a0[] = "";
+const char var001b91a4[] = "%s%s%.2f%%\n";
+const char var001b91b0[] = "";
+const char var001b91b4[] = "";
+const char var001b91b8[] = "%s %d%%\n";
+const char var001b91c4[] = "%02d:%02d\n";
+const char var001b91d0[] = "%s";
+const char var001b91d4[] = "%s";
+const char var001b91d8[] = "%s %02d:%02d\n";
+const char var001b91e8[] = "010\n";
+const char var001b91f0[] = "%03d\n";
+const char var001b91f8[] = "%s";
+const char var001b91fc[] = "%s";
+const char var001b9200[] = "%s";
+const char var001b9204[] = "%s";
+const char var001b9208[] = "%s";
+const char var001b920c[] = "\n";
+
+const u32 var001b9210[] = {
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caac,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19caa8,
+	0x7f19cce4,
+	0x7f19ccf4,
+	0x7f19ccec,
+	0x7f19ccfc,
+	0x7f19cd04,
+	0x7f19cd0c,
+	0x7f19cd14,
+	0x7f19cd1c,
+	0x7f19cd24,
+	0x7f19cd2c,
+	0x7f19cd34,
+	0x7f19cd3c,
+	0x7f19cd44,
+	0x7f19cd4c,
+	0x7f19cd54,
+	0x7f19cd5c,
+	0x7f19cd64,
+	0x7f19cd6c,
+	0x7f19cd94,
+	0x7f19cd74,
+	0x7f19cd7c,
+	0x7f19cd9c,
+	0x7f19cda4,
+	0x7f19cdac,
+	0x7f19cdb4,
+	0x7f19cd84,
+	0x7f19cd8c,
+	0x7f19cdbc,
+	0x7f19cdc4,
+	0x7f19cde4,
+	0x7f19cdcc,
+	0x7f19cdd4,
+	0x7f19cddc,
+	0x7f19ce14,
+	0x7f19ce24,
+	0x7f19ce1c,
+	0x7f19ce2c,
+	0x7f19ce34,
+	0x7f19ce3c,
+	0x7f19ce44,
+	0x7f19ce4c,
+	0x7f19ce54,
+	0x7f19ce5c,
+	0x7f19ce64,
+	0x7f19ce6c,
+	0x7f19ce74,
+	0x7f19ce7c,
+	0x7f19ce84,
+	0x7f19ce8c,
+	0x7f19ce94,
+	0x7f19ce9c,
+	0x7f19cec4,
+	0x7f19cea4,
+	0x7f19ceac,
+	0x7f19cecc,
+	0x7f19ced4,
+	0x7f19cedc,
+	0x7f19cee4,
+	0x7f19ceb4,
+	0x7f19cebc,
+	0x7f19ceec,
+	0x7f19cef4,
+	0x7f19cf14,
+	0x7f19cefc,
+	0x7f19cf04,
+	0x7f19cf0c,
+	0x7f19cf50,
+	0x7f19cf98,
+	0x7f19d010,
+	0x7f19d070,
+	0x7f19d0e8,
+	0x7f19d148,
+	0x7f19d190,
+	0x7f19d1f0,
+	0x7f19d9d0,
+	0x7f19db00,
+	0x7f19db58,
+	0x7f19db84,
+	0x7f19dbb8,
+	0x7f19dc6c,
+	0x7f19dcc4,
+	0x7f19dce8,
+	0x7f19dd0c,
+	0x7f19dc1c,
+	0x7f19d9b8,
+	0x7f19db24,
+	0x3dcccccd,
+	0x7f19e138,
+	0x7f19e2e4,
+	0x7f19e2f0,
+	0x7f19e320,
+	0x7f19e3cc,
+	0x7f19e3cc,
+	0x7f19e3cc,
+	0x7f19e11c,
+	0xbfc90fdb,
+	0xc0490fdb,
+	0x3fc90fdb,
+	0x40490fdb,
+	0x459c4000,
+	0x40490fdb,
+	0x7f19eabc,
+	0x7f19eadc,
+	0x7f19eacc,
+	0x7f19eaec,
+	0x7f19eafc,
+	0x7f19eb0c,
+	0x7f19eb1c,
+	0x7f19eb2c,
+	0x7f19eb3c,
+	0x7f19eb4c,
+	0x7f19eb5c,
+	0x7f19eb6c,
+	0x7f19eb7c,
+	0x7f19eb8c,
+	0x7f19eb9c,
+	0x7f19ebac,
+	0x7f19ebbc,
+	0x7f19ebcc,
+	0x7f19ec1c,
+	0x7f19ebdc,
+	0x7f19ebec,
+	0x7f19ec2c,
+	0x7f19ec3c,
+	0x7f19ec4c,
+	0x7f19ec5c,
+	0x7f19ebfc,
+	0x7f19ec0c,
+	0x7f19ec6c,
+	0x7f19ec7c,
+	0x7f19ec8c,
+	0x7f19ec9c,
+	0x7f19ecac,
+	0x7f19ecbc,
+	0x40c907a9,
+	0x3fc90fdb,
+	0x4096c5bf,
+	0x4096c5bf,
+	0x3fc90fdb,
+	0x4012a974,
+	0x407f7642,
+	0x40490fdb,
+	0xc59c4000,
+	0x40c907a9,
+	0x40490fdb,
+	0xbd0efa35,
+	0x40490fdb,
+	0x3d0efa35,
+	0x40490fdb,
+	0x3dcccccd,
+	0x7f1a1018,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1018,
+	0x7f1a1040,
+	0x7f1a1090,
+	0x7f1a1050,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1020,
+	0x7f1a1070,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1030,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1080,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1090,
+	0x7f1a1060,
+	0x7f1a1110,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1120,
+	0x7f1a1148,
+	0x7f1a1170,
+	0x7f1a1130,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1128,
+	0x7f1a1140,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1138,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1168,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1170,
+	0x7f1a1118,
+	0x7f1a1524,
+	0x7f1a152c,
+	0x7f1a1534,
+	0x7f1a153c,
+	0x7f1a1544,
+	0x7f1a154c,
+	0x7f1a1554,
+	0x7f1a155c,
+	0x7f1a1564,
+	0x7f1a156c,
+	0x7f1a1574,
+	0x7f1a157c,
+	0x7f1a1584,
+	0x7f1a158c,
+	0x7f1a1594,
+	0x7f1a159c,
+	0x7f1a15a4,
+	0x7f1a15ac,
+	0x7f1a15b4,
+	0x7f1a15bc,
+	0x7f1a15c4,
+	0x7f1a15cc,
+	0x7f1a15d4,
+	0x7f1a160c,
+	0x7f1a1614,
+	0x7f1a161c,
+	0x7f1a162c,
+	0x7f1a1634,
+	0x7f1a163c,
+	0x7f1a1644,
+	0x7f1a164c,
+	0x7f1a1654,
+	0x7f1a165c,
+	0x7f1a1664,
+	0x7f1a166c,
+	0x7f1a1674,
+	0x7f1a167c,
+	0x7f1a162c,
+	0x7f1a160c,
+	0x7f1a1644,
+	0x7f1a161c,
+	0x7f1a1624,
+	0x7f1a163c,
+	0x7f1a1644,
+	0x7f1a165c,
+	0x7f1a1674,
+	0x7f1a2474,
+	0x7f1a2474,
+	0x7f1a2474,
+	0x7f1a2474,
+	0x7f1a2474,
+	0x7f1a2474,
+	0x7f1a2474,
+	0x7f1a2ca8,
+	0x7f1a2ccc,
+	0x7f1a2d5c,
+	0x7f1a2d5c,
+	0x7f1a2cf0,
+	0x7f1a2d5c,
+	0x7f1a2d5c,
+	0x7f1a2d5c,
+	0x7f1a2d5c,
+	0x7f1a2d14,
+	0x7f1a2d38,
+	0x4019999a,
+};
+
+const char var001b97d0[] = "\n";
+const char var001b97d4[] = "\n";
+const char var001b97d8[] = "%dm %2ds\n";
+const char var001b97e4[] = "%s%s%2.2fs\n";
+const char var001b97f0[] = "";
+const char var001b97f4[] = "";
+const char var001b97f8[] = "%d\n";
+const char var001b97fc[] = "%d\n";
+const char var001b9800[] = "%d\n";
+const char var001b9804[] = "%s%s%.1f%%\n";
+const char var001b9810[] = "";
+const char var001b9814[] = "";
+const char var001b9818[] = "%s";
+const char var001b981c[] = "%d\n";
+const char var001b9820[] = "%s";
+const char var001b9824[] = "%s";
+const char var001b9828[] = "%d%%\n";
+const char var001b9830[] = "%d\n";
+const char var001b9834[] = "%s";
+const char var001b9838[] = "%dm %ds\n";
+const char var001b9844[] = "%ds\n";
+const char var001b984c[] = "%s";
+const char var001b9850[] = "/%d";
+const char var001b9854[] = "%d%s\n";
+const char var001b985c[] = "x1";
+const char var001b9860[] = "x2";
+const char var001b9864[] = "y1";
+const char var001b9868[] = "y2";
+const char var001b986c[] = "x3";
+const char var001b9870[] = "x4";
+const char var001b9874[] = "y3";
+const char var001b9878[] = "y4";
+const char var001b987c[] = "%d\n";
+const char var001b9880[] = "%d\n";
+const char var001b9884[] = "%d\n";
+const char var001b9888[] = "%d\n";
+const char var001b988c[] = "%d\n";
+const char var001b9890[] = "%d\n";
+const char var001b9894[] = "%d\n";
+const char var001b9898[] = "%d\n";
+const char var001b989c[] = "%d\n";
+const char var001b98a0[] = "%s\n";
+const char var001b98a4[] = "%s\n";
+const char var001b98a8[] = "%s\n";
+const char var001b98ac[] = "%s\n";
+const char var001b98b0[] = "%dm %2ds\n";
+const char var001b98bc[] = "%s%s%2.2fs\n";
+const char var001b98c8[] = "";
+const char var001b98cc[] = "";
+const char var001b98d0[] = "%dm %2ds\n";
+const char var001b98dc[] = "%s%s%2.2fs\n";
+const char var001b98e8[] = "";
+const char var001b98ec[] = "";
+const char var001b98f0[] = "%s\n";
+
+const u32 var001b98f4[] = {
+	0x7f1a34e0,
+	0x7f1a34c8,
+	0x7f1a34f4,
+	0x7f1a34d0,
+	0x7f1a34d8,
+	0x7f1a34fc,
+	0x7f1a3584,
+	0x7f1a3994,
+	0x7f1a3994,
+	0x7f1a3994,
+	0x7f1a3994,
+	0x7f1a3994,
+	0x7f1a3994,
+	0x7f1a3994,
+	0x7f1a3994,
+	0x7f1a3994,
+	0x7f1a3994,
+	0x7f1a3994,
+	0x7f1a3598,
+	0x7f1a34bc,
+	0x4196cbe4,
+	0x7f1a5e40,
+	0x7f1a5ef4,
+	0x7f1a5e4c,
+	0x7f1a5f00,
+	0x7f1a5f1c,
+	0x7f1a5e9c,
+	0x7f1a5ee0,
+	0x3f333333,
+	0x3f4ccccd,
+	0x41033333,
+	0xc0833333,
+	0x3b80c73b,
+	0x3c23d70a,
+	0x7f1a6414,
+	0x7f1a6478,
+	0x7f1a6428,
+	0x7f1a6480,
+	0x7f1a6488,
+	0x7f1a6448,
+	0x7f1a6468,
+	0x4196cbe4,
+	0x7f1a6980,
+	0x7f1a69dc,
+	0x7f1a6994,
+	0x7f1a69e4,
+	0x7f1a69ec,
+	0x7f1a69ac,
+	0x7f1a69cc,
+	0x7f1a6dc0,
+	0x7f1a6e50,
+	0x7f1a6dd4,
+	0x7f1a6e5c,
+	0x7f1a6e78,
+	0x7f1a6df4,
+	0x7f1a6e3c,
+	0x3a83126f,
+	0x3c23d70a,
+	0x00000000,
+};
