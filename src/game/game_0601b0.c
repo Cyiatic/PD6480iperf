@@ -176508,7 +176508,7 @@ glabel menudialog000fcd48
 );
 
 GLOBAL_ASM(
-glabel menuhandler000fce08
+glabel menuhandlerRepairPak
 /*  f0fce08:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f0fce0c:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f0fce10:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -176678,7 +176678,7 @@ glabel func0f0fcfb8
 );
 
 GLOBAL_ASM(
-glabel menuhandler000fd04c
+glabel menuhandlerRetrySavePak
 /*  f0fd04c:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f0fd050:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f0fd054:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -176720,7 +176720,7 @@ glabel menuhandler000fd04c
 );
 
 GLOBAL_ASM(
-glabel menuhandler000fd0e0
+glabel menuhandlerWarnRepairPak
 /*  f0fd0e0:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f0fd0e4:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f0fd0e8:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -182671,7 +182671,7 @@ glabel menuhandler001024fc
 );
 
 GLOBAL_ASM(
-glabel menuhandler0010251c
+glabel menuhandlerReversePitch
 /*  f10251c:	3c02800a */ 	lui	$v0,0x800a
 /*  f102520:	24429fc0 */ 	addiu	$v0,$v0,-24640
 /*  f102524:	8c4e0298 */ 	lw	$t6,0x298($v0)
@@ -182717,7 +182717,7 @@ glabel menuhandler0010251c
 );
 
 GLOBAL_ASM(
-glabel menuhandler001025b4
+glabel menuhandlerAimControl
 /*  f1025b4:	3c02800a */ 	lui	$v0,0x800a
 /*  f1025b8:	24429fc0 */ 	addiu	$v0,$v0,-24640
 /*  f1025bc:	8c4e0298 */ 	lw	$t6,0x298($v0)
@@ -182787,7 +182787,7 @@ glabel menuhandler001025b4
 );
 
 GLOBAL_ASM(
-glabel menuhandler00102698
+glabel menuhandlerSoundMode
 /*  f102698:	27bdffd8 */ 	addiu	$sp,$sp,-40
 /*  f10269c:	3c0e8007 */ 	lui	$t6,0x8007
 /*  f1026a0:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -182845,7 +182845,7 @@ glabel menuhandler00102698
 );
 
 GLOBAL_ASM(
-glabel menuhandler00102754
+glabel menuhandlerScreenSize
 /*  f102754:	27bdffd8 */ 	addiu	$sp,$sp,-40
 /*  f102758:	3c0e8007 */ 	lui	$t6,0x8007
 /*  f10275c:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -182904,7 +182904,7 @@ glabel menuhandler00102754
 );
 
 GLOBAL_ASM(
-glabel menuhandler00102814
+glabel menuhandlerScreenRatio
 /*  f102814:	27bdffe0 */ 	addiu	$sp,$sp,-32
 /*  f102818:	3c0e8007 */ 	lui	$t6,0x8007
 /*  f10281c:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -182961,7 +182961,7 @@ glabel menuhandler00102814
 );
 
 GLOBAL_ASM(
-glabel menuhandler001028cc
+glabel menuhandlerScreenSplit
 /*  f1028cc:	27bdffc8 */ 	addiu	$sp,$sp,-56
 /*  f1028d0:	3c0e8007 */ 	lui	$t6,0x8007
 /*  f1028d4:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -183069,7 +183069,7 @@ glabel menuhandler001028cc
 );
 
 GLOBAL_ASM(
-glabel menuhandler00102a40
+glabel menuhandlerLookAhead
 /*  f102a40:	3c02800a */ 	lui	$v0,0x800a
 /*  f102a44:	24429fc0 */ 	addiu	$v0,$v0,-24640
 /*  f102a48:	8c4e0298 */ 	lw	$t6,0x298($v0)
@@ -183113,7 +183113,7 @@ glabel menuhandler00102a40
 );
 
 GLOBAL_ASM(
-glabel menuhandler00102acc
+glabel menuhandlerHeadRoll
 /*  f102acc:	3c02800a */ 	lui	$v0,0x800a
 /*  f102ad0:	24429fc0 */ 	addiu	$v0,$v0,-24640
 /*  f102ad4:	8c4e0298 */ 	lw	$t6,0x298($v0)
@@ -183157,7 +183157,7 @@ glabel menuhandler00102acc
 );
 
 GLOBAL_ASM(
-glabel menuhandler00102b58
+glabel menuhandlerInGameSubtitles
 /*  f102b58:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f102b5c:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f102b60:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -183188,7 +183188,7 @@ glabel menuhandler00102b58
 );
 
 GLOBAL_ASM(
-glabel menuhandler00102bb8
+glabel menuhandlerCutsceneSubtitles
 /*  f102bb8:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f102bbc:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f102bc0:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -183219,7 +183219,7 @@ glabel menuhandler00102bb8
 );
 
 GLOBAL_ASM(
-glabel menuhandler00102c18
+glabel menuhandlerAlternativeTitle
 /*  f102c18:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f102c1c:	10810014 */ 	beq	$a0,$at,.L0f102c70
 /*  f102c20:	afa50004 */ 	sw	$a1,0x4($sp)
@@ -183261,7 +183261,7 @@ glabel menuhandler00102c18
 );
 
 GLOBAL_ASM(
-glabel menuhandler00102c9c
+glabel menuhandlerHiRes
 /*  f102c9c:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f102ca0:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f102ca4:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -183353,7 +183353,7 @@ glabel menuhandler00102c9c
 );
 
 GLOBAL_ASM(
-glabel menuhandler00102dd0
+glabel menuhandlerAmmoOnScreen
 /*  f102dd0:	3c02800a */ 	lui	$v0,0x800a
 /*  f102dd4:	24429fc0 */ 	addiu	$v0,$v0,-24640
 /*  f102dd8:	8c4e0298 */ 	lw	$t6,0x298($v0)
@@ -183397,7 +183397,7 @@ glabel menuhandler00102dd0
 );
 
 GLOBAL_ASM(
-glabel menuhandler00102e5c
+glabel menuhandlerShowGunFunction
 /*  f102e5c:	3c02800a */ 	lui	$v0,0x800a
 /*  f102e60:	24429fc0 */ 	addiu	$v0,$v0,-24640
 /*  f102e64:	8c4e0298 */ 	lw	$t6,0x298($v0)
@@ -183450,7 +183450,7 @@ glabel menuhandler00102e5c
 );
 
 GLOBAL_ASM(
-glabel menuhandler00102f08
+glabel menuhandlerShowMissionTime
 /*  f102f08:	3c02800a */ 	lui	$v0,0x800a
 /*  f102f0c:	24429fc0 */ 	addiu	$v0,$v0,-24640
 /*  f102f10:	8c4e0298 */ 	lw	$t6,0x298($v0)
@@ -183494,7 +183494,7 @@ glabel menuhandler00102f08
 );
 
 GLOBAL_ASM(
-glabel menuhandler00102f94
+glabel menuhandlerAlwaysShowTarget
 /*  f102f94:	3c02800a */ 	lui	$v0,0x800a
 /*  f102f98:	24429fc0 */ 	addiu	$v0,$v0,-24640
 /*  f102f9c:	8c4e0298 */ 	lw	$t6,0x298($v0)
@@ -183547,7 +183547,7 @@ glabel menuhandler00102f94
 );
 
 GLOBAL_ASM(
-glabel menuhandler00103040
+glabel menuhandlerShowZoomRange
 /*  f103040:	3c02800a */ 	lui	$v0,0x800a
 /*  f103044:	24429fc0 */ 	addiu	$v0,$v0,-24640
 /*  f103048:	8c4e0298 */ 	lw	$t6,0x298($v0)
@@ -183600,7 +183600,7 @@ glabel menuhandler00103040
 );
 
 GLOBAL_ASM(
-glabel menuhandler001030ec
+glabel menuhandlerPaintball
 /*  f1030ec:	3c02800a */ 	lui	$v0,0x800a
 /*  f1030f0:	24429fc0 */ 	addiu	$v0,$v0,-24640
 /*  f1030f4:	8c4e0298 */ 	lw	$t6,0x298($v0)
@@ -183644,7 +183644,7 @@ glabel menuhandler001030ec
 );
 
 GLOBAL_ASM(
-glabel menuhandler00103178
+glabel menuhandlerSightOnScreen
 /*  f103178:	3c02800a */ 	lui	$v0,0x800a
 /*  f10317c:	24429fc0 */ 	addiu	$v0,$v0,-24640
 /*  f103180:	8c4e0298 */ 	lw	$t6,0x298($v0)
@@ -183688,7 +183688,7 @@ glabel menuhandler00103178
 );
 
 GLOBAL_ASM(
-glabel menuhandler00103204
+glabel menuhandlerAutoAim
 /*  f103204:	3c02800a */ 	lui	$v0,0x800a
 /*  f103208:	24429fc0 */ 	addiu	$v0,$v0,-24640
 /*  f10320c:	8c4e0298 */ 	lw	$t6,0x298($v0)
@@ -183732,7 +183732,7 @@ glabel menuhandler00103204
 );
 
 GLOBAL_ASM(
-glabel menuhandler00103290
+glabel menuhandlerMusicVolume
 /*  f103290:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f103294:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f103298:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -183764,7 +183764,7 @@ glabel menuhandler00103290
 );
 
 GLOBAL_ASM(
-glabel menuhandler001032f4
+glabel menuhandlerSfxVolume
 /*  f1032f4:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f1032f8:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f1032fc:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -184070,7 +184070,7 @@ glabel func0f1036ac
 );
 
 GLOBAL_ASM(
-glabel menuhandler00103708
+glabel menuhandlerPdModeSetting
 /*  f103708:	27bdffe0 */ 	addiu	$sp,$sp,-32
 /*  f10370c:	afbf001c */ 	sw	$ra,0x1c($sp)
 /*  f103710:	afa50024 */ 	sw	$a1,0x24($sp)
@@ -184511,7 +184511,7 @@ glabel func0f1038ec
 );
 
 GLOBAL_ASM(
-glabel menuhandler00103cf0
+glabel menuhandlerSoloDifficulty
 /*  f103cf0:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f103cf4:	afa60020 */ 	sw	$a2,0x20($sp)
 /*  f103cf8:	24010006 */ 	addiu	$at,$zero,0x6
@@ -184588,7 +184588,7 @@ glabel menuhandler00103cf0
 );
 
 GLOBAL_ASM(
-glabel menuhandler00103e00
+glabel menuhandlerPdMode
 /*  f103e00:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f103e04:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f103e08:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -184882,7 +184882,7 @@ glabel menudialog00104104
 );
 
 GLOBAL_ASM(
-glabel menuhandler001041d4
+glabel menuhandlerCoopRadar
 /*  f1041d4:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f1041d8:	10810007 */ 	beq	$a0,$at,.L0f1041f8
 /*  f1041dc:	afa50004 */ 	sw	$a1,0x4($sp)
@@ -184915,7 +184915,7 @@ glabel menuhandler001041d4
 );
 
 GLOBAL_ASM(
-glabel menuhandler00104238
+glabel menuhandlerCoopFriendlyFire
 /*  f104238:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f10423c:	10810007 */ 	beq	$a0,$at,.L0f10425c
 /*  f104240:	afa50004 */ 	sw	$a1,0x4($sp)
@@ -184948,7 +184948,7 @@ glabel menuhandler00104238
 );
 
 GLOBAL_ASM(
-glabel menuhandler0010429c
+glabel menuhandlerCoopBuddy
 /*  f10429c:	27bdffc0 */ 	addiu	$sp,$sp,-64
 /*  f1042a0:	3c0f7f1b */ 	lui	$t7,0x7f1b
 /*  f1042a4:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -185061,7 +185061,7 @@ glabel menuhandler0010429c
 );
 
 GLOBAL_ASM(
-glabel menuhandler00104420
+glabel menuhandlerAntiRadar
 /*  f104420:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f104424:	10810007 */ 	beq	$a0,$at,.L0f104444
 /*  f104428:	afa50004 */ 	sw	$a1,0x4($sp)
@@ -185094,7 +185094,7 @@ glabel menuhandler00104420
 );
 
 GLOBAL_ASM(
-glabel menuhandler00104484
+glabel menuhandlerAntiPlayer
 /*  f104484:	27bdffe0 */ 	addiu	$sp,$sp,-32
 /*  f104488:	3c0e7f1b */ 	lui	$t6,0x7f1b
 /*  f10448c:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -186458,7 +186458,7 @@ glabel menuhandler00105728
 );
 
 GLOBAL_ASM(
-glabel menuhandler0010582c
+glabel menuhandlerChangeAgent
 /*  f10582c:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f105830:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f105834:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -187601,7 +187601,7 @@ glabel menuhandler00106644
 );
 
 GLOBAL_ASM(
-glabel menuhandler001067fc
+glabel menuhandlerMainMenuSoloMissions
 /*  f1067fc:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f106800:	afa5001c */ 	sw	$a1,0x1c($sp)
 /*  f106804:	24010006 */ 	addiu	$at,$zero,0x6
@@ -187642,7 +187642,7 @@ glabel menuhandler001067fc
 );
 
 GLOBAL_ASM(
-glabel menuhandler00106884
+glabel menuhandlerMainMenuCombatSimulator
 /*  f106884:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f106888:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f10688c:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -187675,7 +187675,7 @@ glabel menuhandler00106884
 );
 
 GLOBAL_ASM(
-glabel menuhandler001068f4
+glabel menuhandlerMainMenuCooperative
 /*  f1068f4:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f1068f8:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f1068fc:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -187701,7 +187701,7 @@ glabel menuhandler001068f4
 );
 
 GLOBAL_ASM(
-glabel menuhandler00106948
+glabel menuhandlerMainMenuCounterOperative
 /*  f106948:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f10694c:	2401000c */ 	addiu	$at,$zero,0xc
 /*  f106950:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -188704,7 +188704,7 @@ glabel func0f107510
 );
 
 GLOBAL_ASM(
-glabel menuhandler001076b0
+glabel menuhandlerCheat
 /*  f1076b0:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f1076b4:	afa60020 */ 	sw	$a2,0x20($sp)
 /*  f1076b8:	24010006 */ 	addiu	$at,$zero,0x6
@@ -188816,7 +188816,7 @@ glabel menuhandler001076b0
 );
 
 GLOBAL_ASM(
-glabel menuhandler00107834
+glabel menuhandlerCheatBuddy
 /*  f107834:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f107838:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f10783c:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -189270,7 +189270,7 @@ glabel func0f107a78
 );
 
 GLOBAL_ASM(
-glabel menuhandler00107e90
+glabel menuhandlerTurnOffAllCheats
 /*  f107e90:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f107e94:	afa50004 */ 	sw	$a1,0x4($sp)
 /*  f107e98:	14810005 */ 	bne	$a0,$at,.L0f107eb0
@@ -190285,7 +190285,7 @@ glabel menuhandler00108bf0
 );
 
 GLOBAL_ASM(
-glabel menuhandler00108c24
+glabel menuhandlerSaveElsewhere
 /*  f108c24:	27bdffe0 */ 	addiu	$sp,$sp,-32
 /*  f108c28:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f108c2c:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -191755,7 +191755,7 @@ glabel func0f109ec4
 );
 
 GLOBAL_ASM(
-glabel menuhandler0010a0b0
+glabel menuhandlerRenameFile
 /*  f10a0b0:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f10a0b4:	afbf0014 */ 	sw	$ra,0x14($sp)
 /*  f10a0b8:	afa5001c */ 	sw	$a1,0x1c($sp)
@@ -191987,7 +191987,7 @@ glabel func0f10a2ec
 );
 
 GLOBAL_ASM(
-glabel menuhandler0010a3a4
+glabel menuhandlerSaveLocation
 /*  f10a3a4:	3c0e8007 */ 	lui	$t6,0x8007
 /*  f10a3a8:	8dce1448 */ 	lw	$t6,0x1448($t6)
 /*  f10a3ac:	3c18800a */ 	lui	$t8,0x800a
@@ -192687,7 +192687,7 @@ glabel func0f10aad8
 );
 
 GLOBAL_ASM(
-glabel menuhandler0010ad98
+glabel menucustomFileToDelete
 /*  f10ad98:	3c088007 */ 	lui	$t0,0x8007
 /*  f10ad9c:	25081448 */ 	addiu	$t0,$t0,0x1448
 /*  f10ada0:	8d0e0000 */ 	lw	$t6,0x0($t0)
@@ -192789,7 +192789,7 @@ glabel menuhandler0010ad98
 );
 
 GLOBAL_ASM(
-glabel menuhandler0010af0c
+glabel menucustomFileToCopy
 /*  f10af0c:	3c028007 */ 	lui	$v0,0x8007
 /*  f10af10:	8c425bc0 */ 	lw	$v0,0x5bc0($v0)
 /*  f10af14:	27bdffe8 */ 	addiu	$sp,$sp,-24
@@ -193028,7 +193028,7 @@ glabel menuhandler0010b14c
 );
 
 GLOBAL_ASM(
-glabel menuhandler0010b26c
+glabel menucustomDeleteGameNote
 /*  f10b26c:	3c038007 */ 	lui	$v1,0x8007
 /*  f10b270:	8c634a4c */ 	lw	$v1,0x4a4c($v1)
 /*  f10b274:	27bdfea8 */ 	addiu	$sp,$sp,-344
@@ -193655,7 +193655,7 @@ glabel menudialog0010ba10
 );
 
 GLOBAL_ASM(
-glabel menuhandler0010bb38
+glabel menuhandlerOpenCopyFile
 /*  f10bb38:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f10bb3c:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f10bb40:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -193705,7 +193705,7 @@ glabel menuhandler0010bb38
 );
 
 GLOBAL_ASM(
-glabel menuhandler0010bbec
+glabel menuhandlerOpenDeleteFile
 /*  f10bbec:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f10bbf0:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f10bbf4:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -193812,7 +193812,7 @@ glabel menuhandler0010bc98
 );
 
 GLOBAL_ASM(
-glabel menuhandler0010bd60
+glabel menucustomChooseAgent
 /*  f10bd60:	3c088007 */ 	lui	$t0,0x8007
 /*  f10bd64:	8d085bc0 */ 	lw	$t0,0x5bc0($t0)
 /*  f10bd68:	27bdfeb8 */ 	addiu	$sp,$sp,-328
@@ -194655,7 +194655,7 @@ glabel func0f10c970
 );
 
 GLOBAL_ASM(
-glabel menuhandler0010c9c0
+glabel menuhandlerDropOut
 /*  f10c9c0:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f10c9c4:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f10c9c8:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -194715,7 +194715,7 @@ glabel menuhandler0010ca1c
 );
 
 GLOBAL_ASM(
-glabel menuhandler0010ca80
+glabel menuhandler4MbAdvanceSetup
 /*  f10ca80:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f10ca84:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f10ca88:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -195112,7 +195112,7 @@ glabel func0f10cf2c
 );
 
 GLOBAL_ASM(
-glabel menuhandler0010cfe4
+glabel menuhandlerReplyPreviousMission
 /*  f10cfe4:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f10cfe8:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f10cfec:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -195751,7 +195751,7 @@ glabel func0f10d770
 );
 
 GLOBAL_ASM(
-glabel menuhandler0010d87c
+glabel menuhandlerReplyLastLevel
 /*  f10d87c:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f10d880:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f10d884:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -195781,7 +195781,7 @@ glabel menuhandler0010d87c
 );
 
 GLOBAL_ASM(
-glabel menuhandler0010d8dc
+glabel menuhandlerContinueToCredits
 /*  f10d8dc:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f10d8e0:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f10d8e4:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -315534,7 +315534,7 @@ glabel menuhandler00177e00
 );
 
 GLOBAL_ASM(
-glabel menuhandler00177fd8
+glabel menuhandlerMpEndGame
 /*  f177fd8:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f177fdc:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f177fe0:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -317079,7 +317079,7 @@ glabel menuhandler001791c8
 );
 
 GLOBAL_ASM(
-glabel menuhandler001794b4
+glabel menuhandlerMpControlStyle
 /*  f1794b4:	27bdffd8 */ 	addiu	$sp,$sp,-40
 /*  f1794b8:	3c0e8008 */ 	lui	$t6,0x8008
 /*  f1794bc:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -317138,7 +317138,7 @@ glabel menuhandler001794b4
 );
 
 GLOBAL_ASM(
-glabel menuhandler00179574
+glabel menuhandlerMpWeaponSlot
 /*  f179574:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f179578:	24010001 */ 	addiu	$at,$zero,0x1
 /*  f17957c:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -317248,7 +317248,7 @@ glabel menuhandler00179634
 );
 
 GLOBAL_ASM(
-glabel menuhandler001796c4
+glabel menuhandlerMpControlCheckbox
 /*  f1796c4:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f1796c8:	10810025 */ 	beq	$a0,$at,.L0f179760
 /*  f1796cc:	3c0d8007 */ 	lui	$t5,0x8007
@@ -317330,7 +317330,7 @@ glabel menuhandler001796c4
 );
 
 GLOBAL_ASM(
-glabel menuhandler001797e0
+glabel menuhandlerMpAimControl
 /*  f1797e0:	27bdffe0 */ 	addiu	$sp,$sp,-32
 /*  f1797e4:	3c0e8008 */ 	lui	$t6,0x8008
 /*  f1797e8:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -317387,7 +317387,7 @@ glabel menuhandler001797e0
 );
 
 GLOBAL_ASM(
-glabel menuhandler00179898
+glabel menuhandlerMpCheckboxOption
 /*  f179898:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17989c:	1081000e */ 	beq	$a0,$at,.L0f1798d8
 /*  f1798a0:	3c02800b */ 	lui	$v0,0x800b
@@ -317426,7 +317426,7 @@ glabel menuhandler00179898
 );
 
 GLOBAL_ASM(
-glabel menuhandler00179914
+glabel menuhandlerMpTeamsEnabled
 /*  f179914:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f179918:	2401000c */ 	addiu	$at,$zero,0xc
 /*  f17991c:	1481000c */ 	bne	$a0,$at,.L0f179950
@@ -317445,7 +317445,7 @@ glabel menuhandler00179914
 /*  f179948:	10000003 */ 	beqz	$zero,.L0f179958
 /*  f17994c:	00001025 */ 	or	$v0,$zero,$zero
 .L0f179950:
-/*  f179950:	0fc5e626 */ 	jal	menuhandler00179898
+/*  f179950:	0fc5e626 */ 	jal	menuhandlerMpCheckboxOption
 /*  f179954:	00000000 */ 	sll	$zero,$zero,0x0
 .L0f179958:
 /*  f179958:	8fbf0014 */ 	lw	$ra,0x14($sp)
@@ -317947,7 +317947,7 @@ glabel func0f179da4
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017a028
+glabel menuhandlerMpCharacterBody
 /*  f17a028:	27bdffd8 */ 	addiu	$sp,$sp,-40
 /*  f17a02c:	afb00020 */ 	sw	$s0,0x20($sp)
 /*  f17a030:	24010006 */ 	addiu	$at,$zero,0x6
@@ -318071,7 +318071,7 @@ glabel menudialog0017a174
 /*  f17a1e4:	24650028 */ 	addiu	$a1,$v1,0x28
 /*  f17a1e8:	10a40003 */ 	beq	$a1,$a0,.L0f17a1f8
 /*  f17a1ec:	27a60028 */ 	addiu	$a2,$sp,0x28
-/*  f17a1f0:	0fc5e80a */ 	jal	menuhandler0017a028
+/*  f17a1f0:	0fc5e80a */ 	jal	menuhandlerMpCharacterBody
 /*  f17a1f4:	2404000b */ 	addiu	$a0,$zero,0xb
 .L0f17a1f8:
 /*  f17a1f8:	8fbf0014 */ 	lw	$ra,0x14($sp)
@@ -319100,7 +319100,7 @@ glabel func0f17af9c
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017b01c
+glabel menuhandlerMpMedal
 /*  f17b01c:	27bdff90 */ 	addiu	$sp,$sp,-112
 /*  f17b020:	24010013 */ 	addiu	$at,$zero,0x13
 /*  f17b024:	afbf0024 */ 	sw	$ra,0x24($sp)
@@ -319660,7 +319660,7 @@ glabel func0f17b4f8
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017b840
+glabel menuhandlerMpCharacterHead
 /*  f17b840:	27bdffe0 */ 	addiu	$sp,$sp,-32
 /*  f17b844:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17b848:	1481000a */ 	bne	$a0,$at,.L0f17b874
@@ -320324,7 +320324,7 @@ glabel menuhandler0017bfc0
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017c1a4
+glabel menuhandlerMpTime
 /*  f17c1a4:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17c1a8:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17c1ac:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -320382,7 +320382,7 @@ glabel menuhandler0017c1a4
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017c264
+glabel menuhandlerMpScore
 /*  f17c264:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17c268:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17c26c:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -320440,7 +320440,7 @@ glabel menuhandler0017c264
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017c324
+glabel menuhandlerMpTeamScore
 /*  f17c324:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17c328:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17c32c:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -320499,7 +320499,7 @@ glabel menuhandler0017c324
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017c3e8
+glabel menuhandlerMpRestoreScoreDefaults
 /*  f17c3e8:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17c3ec:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17c3f0:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -320517,7 +320517,7 @@ glabel menuhandler0017c3e8
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017c41c
+glabel menuhandlerMpHandicapPlayer
 /*  f17c41c:	27bdffe0 */ 	addiu	$sp,$sp,-32
 /*  f17c420:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17c424:	1081001a */ 	beq	$a0,$at,.L0f17c490
@@ -320615,7 +320615,7 @@ glabel func0f17c524
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017c56c
+glabel menuhandlerMpRestoreHandicapDefaults
 /*  f17c56c:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17c570:	afa50004 */ 	sw	$a1,0x4($sp)
 /*  f17c574:	14810009 */ 	bne	$a0,$at,.L0f17c59c
@@ -320991,7 +320991,7 @@ glabel func0f17ca40
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017ca94
+glabel menuhandlerMpSimulantHead
 /*  f17ca94:	27bdffe0 */ 	addiu	$sp,$sp,-32
 /*  f17ca98:	afbf001c */ 	sw	$ra,0x1c($sp)
 /*  f17ca9c:	8cae0008 */ 	lw	$t6,0x8($a1)
@@ -321100,7 +321100,7 @@ glabel menuhandler0017ca94
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017cc24
+glabel menuhandlerMpSimulantBody
 /*  f17cc24:	27bdffe0 */ 	addiu	$sp,$sp,-32
 /*  f17cc28:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17cc2c:	14810016 */ 	bne	$a0,$at,.L0f17cc88
@@ -321190,7 +321190,7 @@ glabel menudialog0017ccfc
 /*  f17cd68:	10a40005 */ 	beq	$a1,$a0,.L0f17cd80
 /*  f17cd6c:	27a60028 */ 	addiu	$a2,$sp,0x28
 /*  f17cd70:	2404000b */ 	addiu	$a0,$zero,0xb
-/*  f17cd74:	0fc5e80a */ 	jal	menuhandler0017a028
+/*  f17cd74:	0fc5e80a */ 	jal	menuhandlerMpCharacterBody
 /*  f17cd78:	afa7003c */ 	sw	$a3,0x3c($sp)
 /*  f17cd7c:	8fa7003c */ 	lw	$a3,0x3c($sp)
 .L0f17cd80:
@@ -321206,7 +321206,7 @@ glabel menudialog0017ccfc
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017cda0
+glabel menuhandlerMpSimulantDifficulty
 /*  f17cda0:	27bdffd0 */ 	addiu	$sp,$sp,-48
 /*  f17cda4:	afb40028 */ 	sw	$s4,0x28($sp)
 /*  f17cda8:	afb20020 */ 	sw	$s2,0x20($sp)
@@ -321333,7 +321333,7 @@ glabel menuhandler0017cda0
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017cf58
+glabel menuhandlerMpDeleteSimulant
 /*  f17cf58:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17cf5c:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17cf60:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -321401,7 +321401,7 @@ glabel func0f17cfc0
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017d044
+glabel menuhandlerMpChangeSimulantType
 /*  f17d044:	27bdffd8 */ 	addiu	$sp,$sp,-40
 /*  f17d048:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17d04c:	afbf0024 */ 	sw	$ra,0x24($sp)
@@ -321479,7 +321479,7 @@ glabel menuhandler0017d044
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017d15c
+glabel menuhandlerMpClearAllSimulants
 /*  f17d15c:	27bdffe0 */ 	addiu	$sp,$sp,-32
 /*  f17d160:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17d164:	afbf001c */ 	sw	$ra,0x1c($sp)
@@ -321506,7 +321506,7 @@ glabel menuhandler0017d15c
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017d1b0
+glabel menuhandlerMpAddSimulant
 /*  f17d1b0:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17d1b4:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17d1b8:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -321553,7 +321553,7 @@ glabel menuhandler0017d1b0
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017d250
+glabel menuhandlerMpSimulantSlot
 /*  f17d250:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17d254:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17d258:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -321929,7 +321929,7 @@ glabel func0f17d4b0
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017d760
+glabel menuhandlerMpTwoTeams
 /*  f17d760:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17d764:	afbf0014 */ 	sw	$ra,0x14($sp)
 /*  f17d768:	0fc5f52c */ 	jal	func0f17d4b0
@@ -321941,7 +321941,7 @@ glabel menuhandler0017d760
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017d780
+glabel menuhandlerMpThreeTeams
 /*  f17d780:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17d784:	afbf0014 */ 	sw	$ra,0x14($sp)
 /*  f17d788:	0fc5f52c */ 	jal	func0f17d4b0
@@ -321953,7 +321953,7 @@ glabel menuhandler0017d780
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017d7a0
+glabel menuhandlerMpFourTeams
 /*  f17d7a0:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17d7a4:	afbf0014 */ 	sw	$ra,0x14($sp)
 /*  f17d7a8:	0fc5f52c */ 	jal	func0f17d4b0
@@ -321965,7 +321965,7 @@ glabel menuhandler0017d7a0
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017d7c0
+glabel menuhandlerMpMaximumTeams
 /*  f17d7c0:	27bdffc8 */ 	addiu	$sp,$sp,-56
 /*  f17d7c4:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17d7c8:	afbf0034 */ 	sw	$ra,0x34($sp)
@@ -322043,7 +322043,7 @@ glabel menuhandler0017d7c0
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017d8d0
+glabel menuhandlerMpHumansVsSimulants
 /*  f17d8d0:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17d8d4:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17d8d8:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -322102,7 +322102,7 @@ glabel menuhandler0017d8d0
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017d998
+glabel menuhandlerMpHumanSimulantPairs
 /*  f17d998:	27bdffd0 */ 	addiu	$sp,$sp,-48
 /*  f17d99c:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17d9a0:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -322240,7 +322240,7 @@ glabel func0f17dac4
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017db5c
+glabel menuhandlerMpTeamSlot
 /*  f17db5c:	27bdffe0 */ 	addiu	$sp,$sp,-32
 /*  f17db60:	afb00018 */ 	sw	$s0,0x18($sp)
 /*  f17db64:	24010006 */ 	addiu	$at,$zero,0x6
@@ -322590,7 +322590,7 @@ glabel func0f17dfac
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017e00c
+glabel menuhandlerMpMultipleTunes
 /*  f17e00c:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17e010:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17e014:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -322784,7 +322784,7 @@ glabel func0f17e288
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017e2ac
+glabel menuhandlerMpTeamNameSlot
 /*  f17e2ac:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17e2b0:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17e2b4:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -323301,7 +323301,7 @@ glabel menuhandler0017e9d8
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017ea10
+glabel menuhandlerMpAbortChallenge
 /*  f17ea10:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17ea14:	24010018 */ 	addiu	$at,$zero,0x18
 /*  f17ea18:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -323331,7 +323331,7 @@ glabel menuhandler0017ea10
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017ea6c
+glabel menuhandlerMpStartChallenge
 /*  f17ea6c:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17ea70:	24010018 */ 	addiu	$at,$zero,0x18
 /*  f17ea74:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -323511,7 +323511,7 @@ glabel menuhandler0017ec64
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017ecd4
+glabel menuhandlerMpLock
 /*  f17ecd4:	27bdffd8 */ 	addiu	$sp,$sp,-40
 /*  f17ecd8:	3c0f8008 */ 	lui	$t7,0x8008
 /*  f17ecdc:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -323735,7 +323735,7 @@ glabel menuhandler0017ef30
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017efbc
+glabel menuhandlerMpSaveSettings
 /*  f17efbc:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17efc0:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17efc4:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -324102,7 +324102,7 @@ glabel func0f17f428
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017f480
+glabel menuhandlerMpFinishedSetup
 /*  f17f480:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17f484:	2401000f */ 	addiu	$at,$zero,0xf
 /*  f17f488:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -324193,7 +324193,7 @@ glabel menuhandler0017f4fc
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017f5a4
+glabel menuhandlerMpNumberOfSimulants
 /*  f17f5a4:	248effff */ 	addiu	$t6,$a0,-1
 /*  f17f5a8:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17f5ac:	2dc10018 */ 	sltiu	$at,$t6,0x18
@@ -324258,7 +324258,7 @@ glabel menuhandler0017f5a4
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017f68c
+glabel menuhandlerMpSimulantsPerTeam
 /*  f17f68c:	248effff */ 	addiu	$t6,$a0,-1
 /*  f17f690:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17f694:	2dc10018 */ 	sltiu	$at,$t6,0x18
@@ -324405,7 +324405,7 @@ glabel menuhandler0017f74c
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017f890
+glabel menuhandlerMpQuickteamOption
 /*  f17f890:	27bdffe0 */ 	addiu	$sp,$sp,-32
 /*  f17f894:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17f898:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -324508,7 +324508,7 @@ glabel menudialog0017f930
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017f9ec
+glabel menuhandlerMpAdvancedSetup
 /*  f17f9ec:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17f9f0:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f17f9f4:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -324786,7 +324786,7 @@ glabel func0f17fcb0
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017fdb0
+glabel menuhandlerMpDisplayTeam
 /*  f17fdb0:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17fdb4:	2401000c */ 	addiu	$at,$zero,0xc
 /*  f17fdb8:	1481000a */ 	bne	$a0,$at,.L0f17fde4
@@ -324802,7 +324802,7 @@ glabel menuhandler0017fdb0
 /*  f17fddc:	10000003 */ 	beqz	$zero,.L0f17fdec
 /*  f17fde0:	24020001 */ 	addiu	$v0,$zero,0x1
 .L0f17fde4:
-/*  f17fde4:	0fc5e626 */ 	jal	menuhandler00179898
+/*  f17fde4:	0fc5e626 */ 	jal	menuhandlerMpCheckboxOption
 /*  f17fde8:	00000000 */ 	sll	$zero,$zero,0x0
 .L0f17fdec:
 /*  f17fdec:	8fbf0014 */ 	lw	$ra,0x14($sp)
@@ -324812,7 +324812,7 @@ glabel menuhandler0017fdb0
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017fdfc
+glabel menuhandlerMpOneHitKills
 /*  f17fdfc:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f17fe00:	2401000c */ 	addiu	$at,$zero,0xc
 /*  f17fe04:	10810004 */ 	beq	$a0,$at,.L0f17fe18
@@ -324831,7 +324831,7 @@ glabel menuhandler0017fdfc
 /*  f17fe30:	10000003 */ 	beqz	$zero,.L0f17fe40
 /*  f17fe34:	24020001 */ 	addiu	$v0,$zero,0x1
 .L0f17fe38:
-/*  f17fe38:	0fc5e626 */ 	jal	menuhandler00179898
+/*  f17fe38:	0fc5e626 */ 	jal	menuhandlerMpCheckboxOption
 /*  f17fe3c:	00000000 */ 	sll	$zero,$zero,0x0
 .L0f17fe40:
 /*  f17fe40:	8fbf0014 */ 	lw	$ra,0x14($sp)
@@ -324841,7 +324841,7 @@ glabel menuhandler0017fdfc
 );
 
 GLOBAL_ASM(
-glabel menuhandler0017fe50
+glabel menuhandlerMpSlowMotion
 /*  f17fe50:	27bdffd8 */ 	addiu	$sp,$sp,-40
 /*  f17fe54:	3c0e8008 */ 	lui	$t6,0x8008
 /*  f17fe58:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -331021,7 +331021,7 @@ glabel menuhandler00185068
 );
 
 GLOBAL_ASM(
-glabel menuhandler00185380
+glabel menuhandlerMpOpenOptions
 /*  f185380:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f185384:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f185388:	afbf0014 */ 	sw	$ra,0x14($sp)
@@ -366319,7 +366319,7 @@ glabel menudialog001a3af4
 );
 
 GLOBAL_ASM(
-glabel menuhandler001a3c18
+glabel menuhandlerFrDifficulty
 /*  f1a3c18:	27bdffe8 */ 	addiu	$sp,$sp,-24
 /*  f1a3c1c:	24010006 */ 	addiu	$at,$zero,0x6
 /*  f1a3c20:	afbf0014 */ 	sw	$ra,0x14($sp)
