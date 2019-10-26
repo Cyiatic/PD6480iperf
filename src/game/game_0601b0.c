@@ -186367,30 +186367,18 @@ glabel func0f1056a0
 /*  f1056d8:	00000000 */ 	sll	$zero,$zero,0x0
 );
 
-GLOBAL_ASM(
-glabel menuhandler001056dc
-/*  f1056dc:	24010006 */ 	addiu	$at,$zero,0x6
-/*  f1056e0:	10810007 */ 	beq	$a0,$at,.L0f105700
-/*  f1056e4:	afa50004 */ 	sw	$a1,0x4($sp)
-/*  f1056e8:	24010008 */ 	addiu	$at,$zero,0x8
-/*  f1056ec:	1481000b */ 	bne	$a0,$at,.L0f10571c
-/*  f1056f0:	3c03800a */ 	lui	$v1,0x800a
-/*  f1056f4:	24639fc0 */ 	addiu	$v1,$v1,-24640
-/*  f1056f8:	03e00008 */ 	jr	$ra
-/*  f1056fc:	906204e3 */ 	lbu	$v0,0x4e3($v1)
-.L0f105700:
-/*  f105700:	3c03800a */ 	lui	$v1,0x800a
-/*  f105704:	24639fc0 */ 	addiu	$v1,$v1,-24640
-/*  f105708:	8c6f0458 */ 	lw	$t7,0x458($v1)
-/*  f10570c:	8cce0000 */ 	lw	$t6,0x0($a2)
-/*  f105710:	35f80001 */ 	ori	$t8,$t7,0x1
-/*  f105714:	ac780458 */ 	sw	$t8,0x458($v1)
-/*  f105718:	a06e04e3 */ 	sb	$t6,0x4e3($v1)
-.L0f10571c:
-/*  f10571c:	00001025 */ 	or	$v0,$zero,$zero
-/*  f105720:	03e00008 */ 	jr	$ra
-/*  f105724:	00000000 */ 	sll	$zero,$zero,0x0
-);
+s32 menuhandlerLangFilter(u32 operation, u32 unk, u32 *value)
+{
+	switch (operation) {
+	case 8:
+		return g_Vars.langFilterActive;
+	case 6:
+		g_Vars.langFilterActive = *value;
+		g_Vars.unk000458 |= 1;
+	}
+
+	return 0;
+}
 
 GLOBAL_ASM(
 glabel menuhandler00105728
