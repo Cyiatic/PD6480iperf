@@ -297702,37 +297702,21 @@ glabel func0f167c88
 /*  f168568:	00000000 */ 	sll	$zero,$zero,0x0
 );
 
-GLOBAL_ASM(
-glabel func0f16856c
-/*  f16856c:	3c038008 */ 	lui	$v1,0x8008
-/*  f168570:	24634060 */ 	addiu	$v1,$v1,0x4060
-/*  f168574:	8c780000 */ 	lw	$t8,0x0($v1)
-/*  f168578:	3c028008 */ 	lui	$v0,0x8008
-/*  f16857c:	24424054 */ 	addiu	$v0,$v0,0x4054
-/*  f168580:	a4450000 */ 	sh	$a1,0x0($v0)
-/*  f168584:	3c018008 */ 	lui	$at,0x8008
-/*  f168588:	ac38405c */ 	sw	$t8,0x405c($at)
-/*  f16858c:	84590000 */ 	lh	$t9,0x0($v0)
-/*  f168590:	afa50004 */ 	sw	$a1,0x4($sp)
-/*  f168594:	3c01bf80 */ 	lui	$at,0xbf80
-/*  f168598:	57200007 */ 	bnezl	$t9,.L0f1685b8
-/*  f16859c:	44803000 */ 	mtc1	$zero,$f6
-/*  f1685a0:	44812000 */ 	mtc1	$at,$f4
-/*  f1685a4:	ac640000 */ 	sw	$a0,0x0($v1)
-/*  f1685a8:	3c018008 */ 	lui	$at,0x8008
-/*  f1685ac:	03e00008 */ 	jr	$ra
-/*  f1685b0:	e4244058 */ 	swc1	$f4,0x4058($at)
-/*  f1685b4:	44803000 */ 	mtc1	$zero,$f6
-.L0f1685b8:
-/*  f1685b8:	3c018008 */ 	lui	$at,0x8008
-/*  f1685bc:	24080002 */ 	addiu	$t0,$zero,0x2
-/*  f1685c0:	e4264058 */ 	swc1	$f6,0x4058($at)
-/*  f1685c4:	ac640000 */ 	sw	$a0,0x0($v1)
-/*  f1685c8:	3c018008 */ 	lui	$at,0x8008
-/*  f1685cc:	a4284064 */ 	sh	$t0,0x4064($at)
-/*  f1685d0:	03e00008 */ 	jr	$ra
-/*  f1685d4:	00000000 */ 	sll	$zero,$zero,0x0
-);
+void fadeConfigure(u32 color, s16 num_frames)
+{
+	g_FadeNumFrames = num_frames;
+	g_FadePrevColor = g_FadeColor;
+
+	if (g_FadeNumFrames == 0) {
+		g_FadeColor = color;
+		fade80084058 = -1.0;
+		return;
+	}
+
+	fade80084058 = 0.0;
+	g_FadeColor = color;
+	fade80084064 = 2;
+}
 
 GLOBAL_ASM(
 glabel func0f1685d8
