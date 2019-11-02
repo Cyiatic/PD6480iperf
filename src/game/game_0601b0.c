@@ -30309,25 +30309,14 @@ glabel func0f07accc
 /*  f07adb4:	27bd00f8 */ 	addiu	$sp,$sp,0xf8
 );
 
-GLOBAL_ASM(
-glabel objGetTargetSomething
-/*  f07adb8:	84830094 */ 	lh	$v1,0x94($a0)
-/*  f07adbc:	2401ffff */ 	addiu	$at,$zero,-1
-/*  f07adc0:	3c18800a */ 	lui	$t8,0x800a
-/*  f07adc4:	14610005 */ 	bne	$v1,$at,.L0f07addc
-/*  f07adc8:	000378c0 */ 	sll	$t7,$v1,0x3
-/*  f07adcc:	3c0e800a */ 	lui	$t6,0x800a
-/*  f07add0:	8dcea244 */ 	lw	$t6,-0x5dbc($t6)
-/*  f07add4:	03e00008 */ 	jr	$ra
-/*  f07add8:	8dc200bc */ 	lw	$v0,0xbc($t6)
-.L0f07addc:
-/*  f07addc:	8f18a2f8 */ 	lw	$t8,-0x5d08($t8)
-/*  f07ade0:	01e37821 */ 	addu	$t7,$t7,$v1
-/*  f07ade4:	000f78c0 */ 	sll	$t7,$t7,0x3
-/*  f07ade8:	01f81021 */ 	addu	$v0,$t7,$t8
-/*  f07adec:	03e00008 */ 	jr	$ra
-/*  f07adf0:	00000000 */ 	sll	$zero,$zero,0x0
-);
+struct targetsomething *heliGetTargetSomething(struct heliobj *heli)
+{
+	if (heli->target == -1) {
+		return g_Vars.unk000284->targetsomething;
+	}
+
+	return g_Vars.targets + heli->target;
+}
 
 GLOBAL_ASM(
 glabel func0f07adf4
@@ -30355,7 +30344,7 @@ glabel func0f07ae18
 /*  f07ae34:	c444007c */ 	lwc1	$f4,0x7c($v0)
 /*  f07ae38:	a3a00023 */ 	sb	$zero,0x23($sp)
 /*  f07ae3c:	afa20024 */ 	sw	$v0,0x24($sp)
-/*  f07ae40:	0fc1eb6e */ 	jal	objGetTargetSomething
+/*  f07ae40:	0fc1eb6e */ 	jal	heliGetTargetSomething
 /*  f07ae44:	e7a4001c */ 	swc1	$f4,0x1c($sp)
 /*  f07ae48:	8fa40024 */ 	lw	$a0,0x24($sp)
 /*  f07ae4c:	c4480008 */ 	lwc1	$f8,0x8($v0)
@@ -30432,7 +30421,7 @@ glabel func0f07af34
 /*  f07af44:	1040001d */ 	beqz	$v0,.L0f07afbc
 /*  f07af48:	00402025 */ 	or	$a0,$v0,$zero
 /*  f07af4c:	afa00020 */ 	sw	$zero,0x20($sp)
-/*  f07af50:	0fc1eb6e */ 	jal	objGetTargetSomething
+/*  f07af50:	0fc1eb6e */ 	jal	heliGetTargetSomething
 /*  f07af54:	afa20024 */ 	sw	$v0,0x24($sp)
 /*  f07af58:	904e0000 */ 	lbu	$t6,0x0($v0)
 /*  f07af5c:	24010006 */ 	addiu	$at,$zero,0x6
@@ -30698,7 +30687,7 @@ glabel func0f07b290
 /*  f07b2a8:	00803025 */ 	or	$a2,$a0,$zero
 /*  f07b2ac:	51c0004c */ 	beqzl	$t6,.L0f07b3e0
 /*  f07b2b0:	8fbf0024 */ 	lw	$ra,0x24($sp)
-/*  f07b2b4:	0fc1eb6e */ 	jal	objGetTargetSomething
+/*  f07b2b4:	0fc1eb6e */ 	jal	heliGetTargetSomething
 /*  f07b2b8:	afa600d0 */ 	sw	$a2,0xd0($sp)
 /*  f07b2bc:	8faf00d4 */ 	lw	$t7,0xd4($sp)
 /*  f07b2c0:	8fa600d0 */ 	lw	$a2,0xd0($sp)
@@ -30808,7 +30797,7 @@ glabel func0f07b3f0
 /*  f07b444:	c44400cc */ 	lwc1	$f4,0xcc($v0)
 /*  f07b448:	e7b00110 */ 	swc1	$f16,0x110($sp)
 /*  f07b44c:	e7b0010c */ 	swc1	$f16,0x10c($sp)
-/*  f07b450:	0fc1eb6e */ 	jal	objGetTargetSomething
+/*  f07b450:	0fc1eb6e */ 	jal	heliGetTargetSomething
 /*  f07b454:	e7a400e0 */ 	swc1	$f4,0xe0($sp)
 /*  f07b458:	afa200dc */ 	sw	$v0,0xdc($sp)
 /*  f07b45c:	afa000d4 */ 	sw	$zero,0xd4($sp)
@@ -32369,7 +32358,7 @@ glabel func0f07cacc
 /*  f07caf4:	afa40170 */ 	sw	$a0,0x170($sp)
 /*  f07caf8:	8c930004 */ 	lw	$s3,0x4($a0)
 /*  f07cafc:	afb30168 */ 	sw	$s3,0x168($sp)
-/*  f07cb00:	0fc1eb6e */ 	jal	objGetTargetSomething
+/*  f07cb00:	0fc1eb6e */ 	jal	heliGetTargetSomething
 /*  f07cb04:	02602025 */ 	or	$a0,$s3,$zero
 /*  f07cb08:	8fa50170 */ 	lw	$a1,0x170($sp)
 /*  f07cb0c:	afa2015c */ 	sw	$v0,0x15c($sp)
