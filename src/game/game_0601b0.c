@@ -355920,22 +355920,12 @@ glabel func0f19a850
 /**
  * @cmd 0185
  */
-GLOBAL_ASM(
-glabel ai0185
-/*  f19aa80:	27bdffe8 */ 	addiu	$sp,$sp,-24
-/*  f19aa84:	afbf0014 */ 	sw	$ra,0x14($sp)
-/*  f19aa88:	0fc641c2 */ 	jal	func0f190708
-/*  f19aa8c:	00000000 */ 	sll	$zero,$zero,0x0
-/*  f19aa90:	3c03800a */ 	lui	$v1,0x800a
-/*  f19aa94:	24639fc0 */ 	addiu	$v1,$v1,-24640
-/*  f19aa98:	8c6e0438 */ 	lw	$t6,0x438($v1)
-/*  f19aa9c:	8fbf0014 */ 	lw	$ra,0x14($sp)
-/*  f19aaa0:	27bd0018 */ 	addiu	$sp,$sp,0x18
-/*  f19aaa4:	25cf0002 */ 	addiu	$t7,$t6,0x2
-/*  f19aaa8:	ac6f0438 */ 	sw	$t7,0x438($v1)
-/*  f19aaac:	03e00008 */ 	jr	$ra
-/*  f19aab0:	00001025 */ 	or	$v0,$zero,$zero
-);
+bool ai0185(void)
+{
+	func0f190708();
+	g_Vars.aioffset += 2;
+	return false;
+}
 
 /**
  * @cmd 0176
