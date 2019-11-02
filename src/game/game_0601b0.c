@@ -355972,22 +355972,14 @@ glabel ai0176
 /*  f19ab3c:	00000000 */ 	sll	$zero,$zero,0x0
 );
 
-GLOBAL_ASM(
-glabel func0f19ab40
-/*  f19ab40:	3c0e8009 */ 	lui	$t6,0x8009
-/*  f19ab44:	91ce0af0 */ 	lbu	$t6,0xaf0($t6)
-/*  f19ab48:	3c018009 */ 	lui	$at,0x8009
-/*  f19ab4c:	11c00006 */ 	beqz	$t6,.L0f19ab68
-/*  f19ab50:	00000000 */ 	sll	$zero,$zero,0x0
-/*  f19ab54:	ac200af4 */ 	sw	$zero,0xaf4($at)
-/*  f19ab58:	3c018009 */ 	lui	$at,0x8009
-/*  f19ab5c:	ac200af8 */ 	sw	$zero,0xaf8($at)
-/*  f19ab60:	3c018009 */ 	lui	$at,0x8009
-/*  f19ab64:	ac200afc */ 	sw	$zero,0xafc($at)
-.L0f19ab68:
-/*  f19ab68:	03e00008 */ 	jr	$ra
-/*  f19ab6c:	00000000 */ 	sll	$zero,$zero,0x0
-);
+void func0f19ab40(void)
+{
+	if (var80090af0) {
+		var80090af4 = 0;
+		var80090af8 = 0;
+		var80090afc = 0;
+	}
+}
 
 GLOBAL_ASM(
 glabel func0f19ab70
