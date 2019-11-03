@@ -54853,9 +54853,9 @@ bool countdownTimerIsHidden(void)
 	return g_CountdownTimerVisible < 1;
 }
 
-void countdownTimerSetValue(float seconds)
+void countdownTimerSetValue(float frames)
 {
-	g_CountdownTimerValue = seconds;
+	g_CountdownTimerValue = frames;
 }
 
 float countdownTimerGetValue(void)
