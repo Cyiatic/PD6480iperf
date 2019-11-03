@@ -96527,7 +96527,7 @@ glabel func0f0b5050
 /*  f0b5128:	5b000096 */ 	blezl	$t8,.L0f0b5384
 /*  f0b512c:	8fbf002c */ 	lw	$ra,0x2c($sp)
 .L0f0b5130:
-/*  f0b5130:	0fc4a39e */ 	jal	func0f128e78
+/*  f0b5130:	0fc4a39e */ 	jal	calculatePlayerIndex
 /*  f0b5134:	02202025 */ 	or	$a0,$s1,$zero
 /*  f0b5138:	8e190290 */ 	lw	$t9,0x290($s0)
 /*  f0b513c:	00114080 */ 	sll	$t0,$s1,0x2
@@ -96623,7 +96623,7 @@ glabel func0f0b5050
 /*  f0b5278:	19e00041 */ 	blez	$t7,.L0f0b5380
 /*  f0b527c:	02202025 */ 	or	$a0,$s1,$zero
 .L0f0b5280:
-/*  f0b5280:	0fc4a39e */ 	jal	func0f128e78
+/*  f0b5280:	0fc4a39e */ 	jal	calculatePlayerIndex
 /*  f0b5284:	afa50034 */ 	sw	$a1,0x34($sp)
 /*  f0b5288:	8e190290 */ 	lw	$t9,0x290($s0)
 /*  f0b528c:	00003025 */ 	or	$a2,$zero,$zero
@@ -96770,7 +96770,7 @@ glabel func0f0b53a4
 /*  f0b547c:	5b000096 */ 	blezl	$t8,.L0f0b56d8
 /*  f0b5480:	8fbf002c */ 	lw	$ra,0x2c($sp)
 .L0f0b5484:
-/*  f0b5484:	0fc4a39e */ 	jal	func0f128e78
+/*  f0b5484:	0fc4a39e */ 	jal	calculatePlayerIndex
 /*  f0b5488:	02202025 */ 	or	$a0,$s1,$zero
 /*  f0b548c:	8e190290 */ 	lw	$t9,0x290($s0)
 /*  f0b5490:	00114080 */ 	sll	$t0,$s1,0x2
@@ -96866,7 +96866,7 @@ glabel func0f0b53a4
 /*  f0b55cc:	19e00041 */ 	blez	$t7,.L0f0b56d4
 /*  f0b55d0:	02202025 */ 	or	$a0,$s1,$zero
 .L0f0b55d4:
-/*  f0b55d4:	0fc4a39e */ 	jal	func0f128e78
+/*  f0b55d4:	0fc4a39e */ 	jal	calculatePlayerIndex
 /*  f0b55d8:	afa50034 */ 	sw	$a1,0x34($sp)
 /*  f0b55dc:	8e190290 */ 	lw	$t9,0x290($s0)
 /*  f0b55e0:	00003025 */ 	or	$a2,$zero,$zero
@@ -226328,7 +226328,7 @@ void setCurrentPlayerNum(u32 playernum)
 	g_Vars.currentplayernum = playernum;
 	g_Vars.currentplayer = g_Vars.players[playernum];
 	g_Vars.unk000288 = &g_Vars.unk000074[playernum];
-	g_Vars.unk000290 = func0f128e78(playernum);
+	g_Vars.currentplayerindex = calculatePlayerIndex(playernum);
 }
 
 GLOBAL_ASM(
@@ -226713,32 +226713,25 @@ glabel func0f128dbc
 /*  f128e74:	27bd0030 */ 	addiu	$sp,$sp,0x30
 );
 
-GLOBAL_ASM(
-glabel func0f128e78
-/*  f128e78:	3c05800a */ 	lui	$a1,0x800a
-/*  f128e7c:	3c07800a */ 	lui	$a3,0x800a
-/*  f128e80:	3c06800a */ 	lui	$a2,0x800a
-/*  f128e84:	00001825 */ 	or	$v1,$zero,$zero
-/*  f128e88:	24c69fc0 */ 	addiu	$a2,$a2,-24640
-/*  f128e8c:	24e79fd0 */ 	addiu	$a3,$a3,-24624
-/*  f128e90:	24a59fc0 */ 	addiu	$a1,$a1,-24640
-/*  f128e94:	8ca20274 */ 	lw	$v0,0x274($a1)
-.L0f128e98:
-/*  f128e98:	24a50004 */ 	addiu	$a1,$a1,0x4
-/*  f128e9c:	10820008 */ 	beq	$a0,$v0,.L0f128ec0
-/*  f128ea0:	00027080 */ 	sll	$t6,$v0,0x2
-/*  f128ea4:	00ce7821 */ 	addu	$t7,$a2,$t6
-/*  f128ea8:	8df80064 */ 	lw	$t8,0x64($t7)
-/*  f128eac:	13000002 */ 	beqz	$t8,.L0f128eb8
-/*  f128eb0:	00000000 */ 	sll	$zero,$zero,0x0
-/*  f128eb4:	24630001 */ 	addiu	$v1,$v1,0x1
-.L0f128eb8:
-/*  f128eb8:	54a7fff7 */ 	bnel	$a1,$a3,.L0f128e98
-/*  f128ebc:	8ca20274 */ 	lw	$v0,0x274($a1)
-.L0f128ec0:
-/*  f128ec0:	03e00008 */ 	jr	$ra
-/*  f128ec4:	00601025 */ 	or	$v0,$v1,$zero
-);
+u32 calculatePlayerIndex(u32 playernum)
+{
+	u32 count = 0;
+	u32 i;
+
+	for (i = 0; i < 4; i++) {
+		u32 thisnum = g_Vars.unk000274[i];
+
+		if (playernum == thisnum) {
+			break;
+		}
+
+		if (g_Vars.players[thisnum]) {
+			count++;
+		}
+	}
+
+	return count;
+}
 
 GLOBAL_ASM(
 glabel func0f128ec8
