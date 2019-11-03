@@ -54839,25 +54839,14 @@ glabel func0f09054c
 /*  f090804:	00000000 */ 	sll	$zero,$zero,0x0
 );
 
-GLOBAL_ASM(
-glabel countdownTimerSetVisible
-/*  f090808:	10a00008 */ 	beqz	$a1,.L0f09082c
-/*  f09080c:	3c028007 */ 	lui	$v0,0x8007
-/*  f090810:	3c028007 */ 	lui	$v0,0x8007
-/*  f090814:	24429904 */ 	addiu	$v0,$v0,-26364
-/*  f090818:	8c4e0000 */ 	lw	$t6,0x0($v0)
-/*  f09081c:	00807827 */ 	nor	$t7,$a0,$zero
-/*  f090820:	01cfc024 */ 	and	$t8,$t6,$t7
-/*  f090824:	03e00008 */ 	jr	$ra
-/*  f090828:	ac580000 */ 	sw	$t8,0x0($v0)
-.L0f09082c:
-/*  f09082c:	24429904 */ 	addiu	$v0,$v0,-26364
-/*  f090830:	8c590000 */ 	lw	$t9,0x0($v0)
-/*  f090834:	03244025 */ 	or	$t0,$t9,$a0
-/*  f090838:	ac480000 */ 	sw	$t0,0x0($v0)
-/*  f09083c:	03e00008 */ 	jr	$ra
-/*  f090840:	00000000 */ 	sll	$zero,$zero,0x0
-);
+void countdownTimerSetVisible(u32 flag, bool show)
+{
+	if (show) {
+		g_CountdownTimerVisible &= ~flag;
+	} else {
+		g_CountdownTimerVisible |= flag;
+	}
+}
 
 GLOBAL_ASM(
 glabel func0f090844
