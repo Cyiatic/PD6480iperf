@@ -54873,22 +54873,12 @@ bool countdownTimerIsRunning(void)
 	return g_CountdownTimerRunning;
 }
 
-GLOBAL_ASM(
-glabel func0f090888
-/*  f090888:	3c0e8007 */ 	lui	$t6,0x8007
-/*  f09088c:	8dce9908 */ 	lw	$t6,-0x66f8($t6)
-/*  f090890:	3c028007 */ 	lui	$v0,0x8007
-/*  f090894:	2442990c */ 	addiu	$v0,$v0,-26356
-/*  f090898:	11c00005 */ 	beqz	$t6,.L0f0908b0
-/*  f09089c:	3c01800a */ 	lui	$at,0x800a
-/*  f0908a0:	c4440000 */ 	lwc1	$f4,0x0($v0)
-/*  f0908a4:	c426a00c */ 	lwc1	$f6,-0x5ff4($at)
-/*  f0908a8:	46062201 */ 	sub.s	$f8,$f4,$f6
-/*  f0908ac:	e4480000 */ 	swc1	$f8,0x0($v0)
-.L0f0908b0:
-/*  f0908b0:	03e00008 */ 	jr	$ra
-/*  f0908b4:	00000000 */ 	sll	$zero,$zero,0x0
-);
+void countdownTimerTick(void)
+{
+	if (g_CountdownTimerRunning) {
+		g_CountdownTimerValue -= g_Vars.countdowntimerstep;
+	}
+}
 
 GLOBAL_ASM(
 glabel func0f0908b8
@@ -55400,7 +55390,7 @@ glabel func0f090db4
 .L0f091004:
 /*  f091004:	0fc24153 */ 	jal	func0f09054c
 /*  f091008:	00000000 */ 	sll	$zero,$zero,0x0
-/*  f09100c:	0fc24222 */ 	jal	func0f090888
+/*  f09100c:	0fc24222 */ 	jal	countdownTimerTick
 /*  f091010:	00000000 */ 	sll	$zero,$zero,0x0
 /*  f091014:	0fc22b2c */ 	jal	func0f08acb0
 /*  f091018:	00000000 */ 	sll	$zero,$zero,0x0
