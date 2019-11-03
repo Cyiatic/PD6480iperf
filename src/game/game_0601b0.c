@@ -54848,14 +54848,10 @@ void countdownTimerSetVisible(u32 flag, bool show)
 	}
 }
 
-GLOBAL_ASM(
-glabel func0f090844
-/*  f090844:	3c028007 */ 	lui	$v0,0x8007
-/*  f090848:	8c429904 */ 	lw	$v0,-0x66fc($v0)
-/*  f09084c:	2c4e0001 */ 	sltiu	$t6,$v0,0x1
-/*  f090850:	03e00008 */ 	jr	$ra
-/*  f090854:	01c01025 */ 	or	$v0,$t6,$zero
-);
+bool countdownTimerIsHidden(void)
+{
+	return g_CountdownTimerVisible < 1;
+}
 
 void countdownTimerSetValue(float seconds)
 {
@@ -141097,7 +141093,7 @@ glabel func0f0dcef4
 /*  f0dd020:	afa70080 */ 	sw	$a3,0x80($sp)
 /*  f0dd024:	afa80048 */ 	sw	$t0,0x48($sp)
 /*  f0dd028:	afa9004c */ 	sw	$t1,0x4c($sp)
-/*  f0dd02c:	0fc24211 */ 	jal	func0f090844
+/*  f0dd02c:	0fc24211 */ 	jal	countdownTimerIsHidden
 /*  f0dd030:	afaa0044 */ 	sw	$t2,0x44($sp)
 /*  f0dd034:	24050001 */ 	addiu	$a1,$zero,0x1
 /*  f0dd038:	8fa60050 */ 	lw	$a2,0x50($sp)
@@ -141362,7 +141358,7 @@ glabel func0f0dd2ac
 /*  f0dd3d8:	afa30058 */ 	sw	$v1,0x58($sp)
 /*  f0dd3dc:	afa4005c */ 	sw	$a0,0x5c($sp)
 /*  f0dd3e0:	afa50054 */ 	sw	$a1,0x54($sp)
-/*  f0dd3e4:	0fc24211 */ 	jal	func0f090844
+/*  f0dd3e4:	0fc24211 */ 	jal	countdownTimerIsHidden
 /*  f0dd3e8:	afa70050 */ 	sw	$a3,0x50($sp)
 /*  f0dd3ec:	3c06800a */ 	lui	$a2,0x800a
 /*  f0dd3f0:	24c69fc0 */ 	addiu	$a2,$a2,-24640
