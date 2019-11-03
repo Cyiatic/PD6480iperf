@@ -54876,12 +54876,10 @@ void countdownTimerSetRunning(bool running)
 	g_CountdownTimerRunning = running;
 }
 
-GLOBAL_ASM(
-glabel func0f09087c
-/*  f09087c:	3c028007 */ 	lui	$v0,0x8007
-/*  f090880:	03e00008 */ 	jr	$ra
-/*  f090884:	8c429908 */ 	lw	$v0,-0x66f8($v0)
-);
+bool countdownTimerIsRunning(void)
+{
+	return g_CountdownTimerRunning;
+}
 
 GLOBAL_ASM(
 glabel func0f090888
