@@ -54857,12 +54857,10 @@ glabel func0f090844
 /*  f090854:	01c01025 */ 	or	$v0,$t6,$zero
 );
 
-GLOBAL_ASM(
-glabel func0f090858
-/*  f090858:	3c018007 */ 	lui	$at,0x8007
-/*  f09085c:	03e00008 */ 	jr	$ra
-/*  f090860:	e42c990c */ 	swc1	$f12,-0x66f4($at)
-);
+void countdownTimerSetValue(float seconds)
+{
+	g_CountdownTimerValue = seconds;
+}
 
 GLOBAL_ASM(
 glabel func0f090864
