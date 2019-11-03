@@ -54862,12 +54862,10 @@ void countdownTimerSetValue(float seconds)
 	g_CountdownTimerValue = seconds;
 }
 
-GLOBAL_ASM(
-glabel func0f090864
-/*  f090864:	3c018007 */ 	lui	$at,0x8007
-/*  f090868:	03e00008 */ 	jr	$ra
-/*  f09086c:	c420990c */ 	lwc1	$f0,-0x66f4($at)
-);
+float countdownTimerGetValue(void)
+{
+	return g_CountdownTimerValue;
+}
 
 void countdownTimerSetRunning(bool running)
 {
