@@ -30312,7 +30312,7 @@ glabel func0f07accc
 struct targetsomething *heliGetTargetSomething(struct heliobj *heli)
 {
 	if (heli->target == -1) {
-		return g_Vars.unk000284->targetsomething;
+		return g_Vars.currentplayer->targetsomething;
 	}
 
 	return g_Vars.targets + heli->target;
@@ -226323,29 +226323,13 @@ glabel func0f128834
 /*  f128928:	00000000 */ 	sll	$zero,$zero,0x0
 );
 
-GLOBAL_ASM(
-glabel setCurrentPlayerNum
-/*  f12892c:	3c03800a */ 	lui	$v1,0x800a
-/*  f128930:	24639fc0 */ 	addiu	$v1,$v1,-24640
-/*  f128934:	00047080 */ 	sll	$t6,$a0,0x2
-/*  f128938:	ac64028c */ 	sw	$a0,0x28c($v1)
-/*  f12893c:	006e7821 */ 	addu	$t7,$v1,$t6
-/*  f128940:	0004c9c0 */ 	sll	$t9,$a0,0x7
-/*  f128944:	8df80064 */ 	lw	$t8,0x64($t7)
-/*  f128948:	27bdffe8 */ 	addiu	$sp,$sp,-24
-/*  f12894c:	00794021 */ 	addu	$t0,$v1,$t9
-/*  f128950:	afbf0014 */ 	sw	$ra,0x14($sp)
-/*  f128954:	25090074 */ 	addiu	$t1,$t0,0x74
-/*  f128958:	ac690288 */ 	sw	$t1,0x288($v1)
-/*  f12895c:	0fc4a39e */ 	jal	func0f128e78
-/*  f128960:	ac780284 */ 	sw	$t8,0x284($v1)
-/*  f128964:	8fbf0014 */ 	lw	$ra,0x14($sp)
-/*  f128968:	3c03800a */ 	lui	$v1,0x800a
-/*  f12896c:	24639fc0 */ 	addiu	$v1,$v1,-24640
-/*  f128970:	ac620290 */ 	sw	$v0,0x290($v1)
-/*  f128974:	03e00008 */ 	jr	$ra
-/*  f128978:	27bd0018 */ 	addiu	$sp,$sp,0x18
-);
+void setCurrentPlayerNum(u32 playernum)
+{
+	g_Vars.currentplayernum = playernum;
+	g_Vars.currentplayer = g_Vars.players[playernum];
+	g_Vars.unk000288 = &g_Vars.unk000074[playernum];
+	g_Vars.unk000290 = func0f128e78(playernum);
+}
 
 GLOBAL_ASM(
 glabel posGetPlayerNum
