@@ -12608,7 +12608,7 @@
                 ]
             }
         ],
-        "ROOM_DISH_000A": [
+        "ROOM_DISH_FIRINGRANGE": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -26774,7 +26774,7 @@
                 ]
             }
         ],
-        "ROOM_DISH_0016": [
+        "ROOM_DISH_HOLO1": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -27722,7 +27722,7 @@
                 ]
             }
         ],
-        "ROOM_DISH_0017": [
+        "ROOM_DISH_HOLO2": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -28534,7 +28534,7 @@
                 ]
             }
         ],
-        "ROOM_DISH_0018": [
+        "ROOM_DISH_HOLO3": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -29035,7 +29035,7 @@
                 ]
             }
         ],
-        "ROOM_DISH_0019": [
+        "ROOM_DISH_HOLO4": [
             {
                 "flag0001": true,
                 "flag0002": true,
@@ -33590,7 +33590,7 @@
                 ]
             }
         ],
-        "ROOM_DISH_001E": [
+        "ROOM_DISH_DEVICELAB": [
             {
                 "flag0001": false,
                 "flag0002": false,

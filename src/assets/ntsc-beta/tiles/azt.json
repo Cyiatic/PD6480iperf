@@ -187075,7 +187075,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_003D": [
+        "ROOM_AZT_003C_2": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -187267,7 +187267,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_003E": [
+        "ROOM_AZT_003D": [
             {
                 "flag0001": true,
                 "flag0002": true,
@@ -188693,7 +188693,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_003F": [
+        "ROOM_AZT_003E": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -188927,7 +188927,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0040": [
+        "ROOM_AZT_003F": [
             {
                 "flag0001": true,
                 "flag0002": true,
@@ -189351,7 +189351,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0041": [
+        "ROOM_AZT_0040": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -191292,7 +191292,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0042": [
+        "ROOM_AZT_0041": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -192330,7 +192330,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0043": [
+        "ROOM_AZT_0042": [
             {
                 "flag0001": true,
                 "flag0002": true,
@@ -192892,7 +192892,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0044": [
+        "ROOM_AZT_0043": [
             {
                 "flag0001": true,
                 "flag0002": true,
@@ -194453,7 +194453,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0045": [
+        "ROOM_AZT_0044": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -196133,7 +196133,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0046": [
+        "ROOM_AZT_0045": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -196885,7 +196885,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0047": [
+        "ROOM_AZT_0046": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -197820,7 +197820,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0048": [
+        "ROOM_AZT_0047": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -199034,7 +199034,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0049": [
+        "ROOM_AZT_0048": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -200359,7 +200359,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_004A": [
+        "ROOM_AZT_0049": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -200983,7 +200983,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_004B": [
+        "ROOM_AZT_004A": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -202764,7 +202764,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_004C": [
+        "ROOM_AZT_004B": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -204024,7 +204024,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_004D": [
+        "ROOM_AZT_004C": [
             {
                 "flag0001": true,
                 "flag0002": true,
@@ -207968,7 +207968,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_004E": [
+        "ROOM_AZT_004D": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -213033,7 +213033,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_004F": [
+        "ROOM_AZT_004E": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -213610,7 +213610,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0050": [
+        "ROOM_AZT_004F": [
             {
                 "flag0001": true,
                 "flag0002": true,
@@ -214742,7 +214742,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0051": [
+        "ROOM_AZT_0050": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -216180,7 +216180,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0052": [
+        "ROOM_AZT_0051": [
             {
                 "flag0001": true,
                 "flag0002": true,
@@ -217667,7 +217667,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0053": [
+        "ROOM_AZT_0052": [
             {
                 "flag0001": true,
                 "flag0002": true,
@@ -219522,7 +219522,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0054": [
+        "ROOM_AZT_0053": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -221806,7 +221806,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0055": [
+        "ROOM_AZT_0054": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -226063,7 +226063,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0056": [
+        "ROOM_AZT_0055": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -228675,7 +228675,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0057": [
+        "ROOM_AZT_0056": [
             {
                 "flag0001": true,
                 "flag0002": true,
@@ -233154,7 +233154,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0058": [
+        "ROOM_AZT_0057": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -236486,7 +236486,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0059": [
+        "ROOM_AZT_0058": [
             {
                 "flag0001": true,
                 "flag0002": true,
@@ -238972,7 +238972,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_005A": [
+        "ROOM_AZT_0059": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -239174,7 +239174,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_005B": [
+        "ROOM_AZT_005A": [
             {
                 "flag0001": true,
                 "flag0002": true,
@@ -242050,7 +242050,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_005C": [
+        "ROOM_AZT_005B": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -244102,7 +244102,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_005D": [
+        "ROOM_AZT_005C": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -247634,7 +247634,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_005E": [
+        "ROOM_AZT_005D": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -248221,7 +248221,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_005F": [
+        "ROOM_AZT_005E": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -248956,7 +248956,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0060": [
+        "ROOM_AZT_005F": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -250293,7 +250293,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0061": [
+        "ROOM_AZT_0060": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -251741,7 +251741,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0062": [
+        "ROOM_AZT_0061": [
             {
                 "flag0001": false,
                 "flag0002": false,
@@ -252587,7 +252587,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0063": [
+        "ROOM_AZT_0062": [
             {
                 "flag0001": true,
                 "flag0002": true,
@@ -254605,7 +254605,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0064": [
+        "ROOM_AZT_0063": [
             {
                 "flag0001": true,
                 "flag0002": true,
@@ -255974,7 +255974,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0065": [
+        "ROOM_AZT_0064": [
             {
                 "flag0001": true,
                 "flag0002": true,
@@ -257861,7 +257861,7 @@
                 ]
             }
         ],
-        "ROOM_AZT_0066": [
+        "ROOM_AZT_0065": [
             {
                 "flag0001": false,
                 "flag0002": false,
