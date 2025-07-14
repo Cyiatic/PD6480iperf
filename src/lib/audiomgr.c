@@ -92,11 +92,11 @@ void amgrCreate(ALSynConfig *config)
 				config->params[i] = (s32 *) sp068;
 			}
 		}
-	}
 
-	n_alInit(&g_AudioManager.g, config);
-	func00030bfc(0, 60);
-	osCreateThread(&g_AudioManager.thread, THREAD_AUDIO, &amgrMain, 0, g_AudioSp, THREADPRI_AUDIO);
+		n_alInit(&g_AudioManager.g, config);
+		func00030bfc(0, 60);
+		osCreateThread(&g_AudioManager.thread, THREAD_AUDIO, &amgrMain, 0, g_AudioSp, THREADPRI_AUDIO);
+	}
 }
 
 s8 g_AudioIsThreadRunning = false;
