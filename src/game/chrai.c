@@ -158,7 +158,7 @@ void aiTerminateCleanup(struct chrdata *chr)
 			s32 i;
 
 			for (i = 0; i < g_NumBgChrs; i++) {
-				if (chr == &g_BgChrs[i]) {
+				if (g_BgChrnums[i] == chr->chrnum) {
 					myindex = i;
 					break;
 				}
@@ -167,6 +167,7 @@ void aiTerminateCleanup(struct chrdata *chr)
 			if (myindex >= 0) {
 				for (i = myindex + 1; i < g_NumBgChrs; i++) {
 					g_BgChrs[i - 1] = g_BgChrs[i];
+					g_BgChrnums[i - 1] = g_BgChrnums[i];
 				}
 
 				g_NumBgChrs--;
