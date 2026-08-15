@@ -25,6 +25,8 @@ usb64.exe -rom=PD6480iperf-v2-retail-header.z64 -start
 
 ## Result on 2026-08-15
 
-After restarting Game Capture HD on the alternate USB port, Plug 1 was power-cycled and the EverDrive returned `ED64 found at port COM3`. The source-built candidate uploaded and started through `usb64` successfully at approximately 916 KB/s. The Elgato detected a live `640x480p30` signal and active game audio, but the video image remained completely black at 12 seconds after boot.
+After restarting Game Capture HD on the alternate USB port, both Kasa relays were power-cycled and the EverDrive returned `ED64 found at port COM3`. The source-built candidate uploaded and started through `usb64` successfully at approximately 917 KB/s.
 
-As controls, the untouched retail Perfect Dark ROM and earlier EverDrive menu-side state produced the same black image in this current capture state. Earlier captures in the workspace show this Elgato rendering the EverDrive menu and Ocarina of Time, so this result does not clear or reject the candidate; the current hardware video path remains unresolved. The candidate is not yet cleared for Analogue testing on the basis of this capture alone.
+The Game Capture HD application preview remained black, but its live Elgato timeshift stream contained actual decoded video. A frame extracted from the candidate's stream shows Perfect Dark running on the N64 with the in-game message `no controller in controller socket 1 - please power off and attach a controller`. This confirms cartridge boot and video output on real hardware. The L-trigger graph was not exercised because no controller was connected.
+
+Evidence frame: `artifacts/PD6480iperf-hardware-boot-no-controller.png`.
