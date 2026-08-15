@@ -8,12 +8,12 @@ The mod is based off the framerate graph mod, so you can press L to toggle the f
 
 ## 640x480i variant
 
-The `PD6480iperf` private fork carries a 640x480i framebuffer/VI configuration on top of this performance branch. The ready-to-test retail-header candidate and its base-specific xdelta are:
+The `PD6480iperf` private fork carries a 640x480i framebuffer/VI configuration on top of this performance branch. The source-built, retail-header candidate and its base-specific xdelta are:
 
-* `artifacts/PD6480iperf-minimal-retail-header.z64`
-* `artifacts/PD6480iperf-minimal-retail-header.xdelta`
+* `artifacts/PD6480iperf-v2-retail-header.z64`
+* `artifacts/PD6480iperf-v2-retail-header.xdelta`
 
-The merge retains the performance branch's original triple-buffer/title path, applies the 640x480i VI changes, and keeps the L-trigger frame-rate graph. An Expansion Pak is required.
+The merge is built from the performance source branch, applies the 640x480i VI/framebuffer changes, preserves the L-trigger frame-rate graph, and emits the retail NTSC V1.1 `NPDE`/version-1 cartridge header. An Expansion Pak is required. The minimal candidate remains in the repository as an earlier experimental binary.
 
 The current physical test result is recorded in [`docs/PD6480i-hardware-test.md`](docs/PD6480i-hardware-test.md).
 
