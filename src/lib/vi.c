@@ -31,37 +31,37 @@ u16 *g_FrameBuffers[3];
 struct rend_vidat g_ViDataArray[] = {
 	{
 		0, 0, 0, 0,
-		320, 220,         // x and y
+		640, 480,         // x and y
 		60,               // fovy
-		1.4545454978943f, // aspect
+		1.3333333730698f, // aspect
 		30,               // znear
 		10000,            // zfar
-		320, 220,         // bufx and bufy
-		320, 220,         // viewx and viewy
+		640, 480,         // bufx and bufy
+		640, 480,         // viewx and viewy
 		0, 0,             // viewleft and viewtop
 		true,             // usezbuf
 		0,
 	}, {
 		0, 0, 0, 0,
-		320, 220,         // x and y
+		640, 480,         // x and y
 		60,               // fovy
-		1.4545454978943f, // aspect
+		1.3333333730698f, // aspect
 		30,               // znear
 		10000,            // zfar
-		320, 220,         // bufx and bufy
-		320, 220,         // viewx and viewy
+		640, 480,         // bufx and bufy
+		640, 480,         // viewx and viewy
 		0, 0,             // viewleft and viewtop
 		true,             // usezbuf
 		0,
 	}, {
 		0, 0, 0, 0,
-		320, 220,         // x and y
+		640, 480,         // x and y
 		60,               // fovy
-		1.4545454978943f, // aspect
+		1.3333333730698f, // aspect
 		30,               // znear
 		10000,            // zfar
-		320, 220,         // bufx and bufy
-		320, 220,         // viewx and viewy
+		640, 480,         // bufx and bufy
+		640, 480,         // viewx and viewy
 		0, 0,             // viewleft and viewtop
 		true,             // usezbuf
 		0,
@@ -127,13 +127,13 @@ void viConfigureForLegal(void)
 	s32 i;
 
 	for (i = 0; i < 3; i++) {
-		g_ViDataArray[i].x = 320;
-		g_ViDataArray[i].bufx = 320;
-		g_ViDataArray[i].viewx = 320;
+		g_ViDataArray[i].x = 640;
+		g_ViDataArray[i].bufx = 640;
+		g_ViDataArray[i].viewx = 640;
 
-		g_ViDataArray[i].y = 220;
-		g_ViDataArray[i].bufy = 220;
-		g_ViDataArray[i].viewy = 220;
+		g_ViDataArray[i].y = 480;
+		g_ViDataArray[i].bufy = 480;
+		g_ViDataArray[i].viewy = 480;
 	}
 
 #if PAL
@@ -141,12 +141,12 @@ void viConfigureForLegal(void)
 #endif
 }
 
-const s16 g_ViModeWidths[] = {320, 320, 640};
+const s16 g_ViModeWidths[] = {640, 640, 1280};
 
 #if PAL
-const s16 g_ViModeHeights[] = {220, 220, 504};
+const s16 g_ViModeHeights[] = {480, 480, 504};
 #else
-const s16 g_ViModeHeights[] = {220, 220, 440};
+const s16 g_ViModeHeights[] = {480, 480, 440};
 #endif
 
 /**
@@ -299,11 +299,11 @@ void viUpdateMode(void)
 		var8008dcc0[g_ViSlot].comRegs.width = g_ViBackData->bufx;
 		var8008dcc0[g_ViSlot].comRegs.xScale = g_ViBackData->bufx * 1024 / 640;
 		var8008dcc0[g_ViSlot].fldRegs[0].origin = g_ViBackData->bufx * 2;
-		var8008dcc0[g_ViSlot].fldRegs[1].origin = g_ViBackData->bufx * 2;
+		var8008dcc0[g_ViSlot].fldRegs[1].origin = g_ViBackData->bufx * 4;
 
 		// 324
-		var8008dcc0[g_ViSlot].fldRegs[0].yScale = g_ViBackData->bufy * 2048 / 440;
-		var8008dcc0[g_ViSlot].fldRegs[1].yScale = g_ViBackData->bufy * 2048 / 440;
+		var8008dcc0[g_ViSlot].fldRegs[0].yScale = 2048;
+		var8008dcc0[g_ViSlot].fldRegs[1].yScale = 2048;
 
 		// 3ac
 		reg = var8008dcc0[g_ViSlot].comRegs.hStart;

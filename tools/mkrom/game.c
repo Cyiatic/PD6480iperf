@@ -1,8 +1,19 @@
-#include <arpa/inet.h>
 #include <memory.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#ifdef _WIN32
+static uint32_t pd_ntohl(uint32_t value)
+{
+    return ((value & 0x000000ffu) << 24)
+        | ((value & 0x0000ff00u) << 8)
+        | ((value & 0x00ff0000u) >> 8)
+        | ((value & 0xff000000u) >> 24);
+}
+#define ntohl pd_ntohl
+#else
+#include <arpa/inet.h>
+#endif
 #include "mkrom.h"
 
 extern struct state state;

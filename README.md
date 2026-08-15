@@ -6,6 +6,12 @@ No accurate benchmarking has been done.
 
 The mod is based off the framerate graph mod, so you can press L to toggle the frame rate graph.
 
+## 640x480i variant
+
+The `PD6480iperf` private fork carries a 640x480i framebuffer/VI configuration on top of this performance branch. The ready-to-test retail-header candidate and its base-specific xdelta are in `artifacts/`. An Expansion Pak is required.
+
+The current physical test result is recorded in [`docs/PD6480i-hardware-test.md`](docs/PD6480i-hardware-test.md).
+
 ## GCC build
 
 The code is built with modern gcc and is optimised for code size. It reduces the game segment by around 360KB and the lib segment by around 72KB. This memory can then be used to do things which improve performance, and enables some of the improvements detailed below.

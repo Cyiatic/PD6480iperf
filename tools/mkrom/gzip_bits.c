@@ -5,7 +5,6 @@
  */
 
 #include "gzip.h"
-#include "crypt.h"
 
 /* ===========================================================================
  * Local data used by the "bit string" routines.

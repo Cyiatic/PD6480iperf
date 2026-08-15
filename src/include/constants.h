@@ -37,7 +37,7 @@
 #define SECSTOTIME240(secs) (secs * 240)
 #define SECSTOTIME60(secs)  (secs * 60)
 #define PFS(device)         (device == SAVEDEVICE_GAMEPAK ? NULL : &g_Pfses[device])
-#define FRAMEBUFFER_SIZE    (320 * 220 * sizeof(u16))
+#define FRAMEBUFFER_SIZE    (640 * 480 * sizeof(u16))
 #define UNCACHED(x)         ((void *)((u32)(x)|0xa0000000))
 #define WRAP(var, limit)    if (var >= (limit)) var -= (limit)
 
