@@ -329,42 +329,72 @@ void viUpdateMode(void)
 	} else /*534*/ if (g_ViBackData->mode == VIMODE_HI) {
 		if (osTvType == OS_TV_MPAL) {
 			var8008dcc0[g_ViSlot] = osViModeTable[OS_VI_MPAL_HAF1];
-		} else {
-			var8008dcc0[g_ViSlot] = osViModeTable[OS_VI_NTSC_HAF1];
-		}
 
-		var8008dcc0[g_ViSlot].comRegs.width = g_ViBackData->bufx;
-		var8008dcc0[g_ViSlot].comRegs.xScale = g_ViBackData->bufx * 1024 / 640;
-		var8008dcc0[g_ViSlot].fldRegs[0].yScale = 2048;
-		var8008dcc0[g_ViSlot].fldRegs[1].yScale = 2048;
-		var8008dcc0[g_ViSlot].fldRegs[0].origin = g_ViBackData->bufx * 2;
-		var8008dcc0[g_ViSlot].fldRegs[1].origin = g_ViBackData->bufx * 4;
+			var8008dcc0[g_ViSlot].comRegs.width = g_ViBackData->bufx;
+			var8008dcc0[g_ViSlot].comRegs.xScale = g_ViBackData->bufx * 1024 / 640;
+			var8008dcc0[g_ViSlot].fldRegs[0].yScale = 2048;
+			var8008dcc0[g_ViSlot].fldRegs[1].yScale = 2048;
+			var8008dcc0[g_ViSlot].fldRegs[0].origin = g_ViBackData->bufx * 2;
+			var8008dcc0[g_ViSlot].fldRegs[1].origin = g_ViBackData->bufx * 4;
 
-		reg = var8008dcc0[g_ViSlot].comRegs.hStart;
-		reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d588);
-		var8008dcc0[g_ViSlot].comRegs.hStart = reg;
+			reg = var8008dcc0[g_ViSlot].comRegs.hStart;
+			reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d588);
+			var8008dcc0[g_ViSlot].comRegs.hStart = reg;
 
-		reg = var8008dcc0[g_ViSlot].fldRegs[0].vStart;
-		reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d58c);
-		var8008dcc0[g_ViSlot].fldRegs[0].vStart = reg;
-		var8008de0c = reg;
-
-		reg = var8008dcc0[g_ViSlot].fldRegs[1].vStart;
-		reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d58c);
-		var8008dcc0[g_ViSlot].fldRegs[1].vStart = reg;
-		var8008de10 = reg;
-
-		// 7f8
-		if (var8005dd18) {
-			reg = var8005d58c;
-			reg = (reg + 431) % 0xffff << 16 | (reg + 123) % 0xffff;
+			reg = var8008dcc0[g_ViSlot].fldRegs[0].vStart;
+			reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d58c);
 			var8008dcc0[g_ViSlot].fldRegs[0].vStart = reg;
 			var8008de0c = reg;
 
-			reg = var8005d58c;
-			reg = (reg + 433) % 0xffff << 16 | (reg + 121) % 0xffff;
+			reg = var8008dcc0[g_ViSlot].fldRegs[1].vStart;
+			reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d58c);
 			var8008dcc0[g_ViSlot].fldRegs[1].vStart = reg;
 			var8008de10 = reg;
+
+			if (var8005dd18) {
+				reg = var8005d58c;
+				reg = (reg + 431) % 0xffff << 16 | (reg + 123) % 0xffff;
+				var8008dcc0[g_ViSlot].fldRegs[0].vStart = reg;
+				var8008de0c = reg;
+
+				reg = var8005d58c;
+				reg = (reg + 433) % 0xffff << 16 | (reg + 121) % 0xffff;
+				var8008dcc0[g_ViSlot].fldRegs[1].vStart = reg;
+				var8008de10 = reg;
+			}
+		} else {
+			var8008dcc0[g_ViSlot] = osViModeTable[OS_VI_NTSC_HAF1];
+
+			/*
+			 * The 640x480i patch uses the HAF1 register set verbatim for
+			 * NTSC. The normal high-res formulas below produce a 2560/5120
+			 * alternating origin and a 2048 y-scale, which is incompatible
+			 * with the interlaced 1280-word framebuffer.
+			 */
+			var8008dcc0[g_ViSlot].comRegs.ctrl = 0x0000305e;
+			var8008dcc0[g_ViSlot].comRegs.width = 1280;
+			var8008dcc0[g_ViSlot].comRegs.burst = 0x03e52239;
+			var8008dcc0[g_ViSlot].comRegs.vSync = 524;
+			var8008dcc0[g_ViSlot].comRegs.hSync = 0x00000c15;
+			var8008dcc0[g_ViSlot].comRegs.leap = 0x0c150c15;
+			var8008dcc0[g_ViSlot].comRegs.hStart = 0x006c02ec;
+			var8008dcc0[g_ViSlot].comRegs.xScale = 1024;
+			var8008dcc0[g_ViSlot].comRegs.vCurrent = 0;
+
+			var8008dcc0[g_ViSlot].fldRegs[0].origin = 1280;
+			var8008dcc0[g_ViSlot].fldRegs[0].yScale = 1024;
+			var8008dcc0[g_ViSlot].fldRegs[0].vStart = 0x002301fd;
+			var8008dcc0[g_ViSlot].fldRegs[0].vBurst = 0x000e0204;
+			var8008dcc0[g_ViSlot].fldRegs[0].vIntr = 2;
+
+			var8008dcc0[g_ViSlot].fldRegs[1].origin = 2560;
+			var8008dcc0[g_ViSlot].fldRegs[1].yScale = 1024;
+			var8008dcc0[g_ViSlot].fldRegs[1].vStart = 0x002501ff;
+			var8008dcc0[g_ViSlot].fldRegs[1].vBurst = 0x000e0204;
+			var8008dcc0[g_ViSlot].fldRegs[1].vIntr = 2;
+
+			var8008de0c = var8008dcc0[g_ViSlot].fldRegs[0].vStart;
+			var8008de10 = var8008dcc0[g_ViSlot].fldRegs[1].vStart;
 		}
 
 		g_SchedViModesPending[g_ViSlot] = true;

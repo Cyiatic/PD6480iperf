@@ -23,6 +23,10 @@ The EverDrive repository's USB loader was also used for the current candidate:
 usb64.exe -rom=PD6480iperf-v2-retail-header.z64 -start
 ```
 
+## Current candidate
+
+`artifacts/PD6480iperf-v3-raw-haf-retail-header.z64` is the newer test candidate. It keeps the performance branch and 640x480 framebuffer changes, but uses the standalone patch's NTSC HAF1 interlaced register set for the title-screen transition. Its SHA-256 is `d690e8f3d2cec9fabcec829c2b8cb5db561572e9a2ab0a511e3a2d8abf70dd2d`.
+
 ## Result on 2026-08-15
 
 After restarting Game Capture HD on the alternate USB port, both Kasa relays were power-cycled and the EverDrive returned `ED64 found at port COM3`. The source-built candidate uploaded and started through `usb64` successfully at approximately 917 KB/s.

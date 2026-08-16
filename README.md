@@ -13,6 +13,11 @@ The `PD6480iperf` private fork carries a 640x480i framebuffer/VI configuration o
 * `artifacts/PD6480iperf-v2-retail-header.z64`
 * `artifacts/PD6480iperf-v2-retail-header.xdelta`
 
+The newer raw-HAF candidate additionally uses the standalone 640x480i patch's NTSC interlaced VI register set during the title-screen mode transition:
+
+* `artifacts/PD6480iperf-v3-raw-haf-retail-header.z64`
+* `artifacts/PD6480iperf-v3-raw-haf-retail-header.xdelta`
+
 The merge is built from the performance source branch, applies the 640x480i VI/framebuffer changes, preserves the L-trigger frame-rate graph, and emits the retail NTSC V1.1 `NPDE`/version-1 cartridge header. An Expansion Pak is required. The minimal candidate remains in the repository as an earlier experimental binary.
 
 The current physical test result is recorded in [`docs/PD6480i-hardware-test.md`](docs/PD6480i-hardware-test.md).
