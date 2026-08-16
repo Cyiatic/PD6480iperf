@@ -36,3 +36,11 @@ After restarting Game Capture HD on the alternate USB port, both Kasa relays wer
 The Game Capture HD application preview remained black, but its live Elgato timeshift stream contained actual decoded video. This confirms cartridge boot and video output on real hardware. The L-trigger graph was not exercised by scripted input, although the performance-branch code retaining it is present.
 
 Evidence frames: `artifacts/PD6480iperf-v7-hardware-in-game-45s.png` and `artifacts/PD6480iperf-v7-hardware-in-game-50s.png`.
+
+## v8/v9 follow-up on 2026-08-15
+
+The v8 static-low two-buffer candidate was tested from a cold relay cycle with the controller connected. It reached the console crash screen on the real N64 during the same model-loading path reported on Analogue 3D; it is not a fix. Its SHA-256 is `a7c7886a80e448c4a0377e99100fdfb4130412949e028ce7f9c9d28c2a5fa172`.
+
+The v9 candidate restores the performance branch's three-buffer VI/scheduler contract while keeping the raw-HAF 640x480i registers and static gameplay framebuffer layout. Its SHA-256 is `49f80369ce300bb4319c38a1a75505abdba29d9d661c7898345be81a04016f7a`.
+
+The restarted Elgato path did not yield a reliable saved video frame for v9, so v9 remains a candidate for testing rather than a verified hardware result. Both Kasa relays were left off after the session.

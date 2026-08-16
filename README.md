@@ -23,6 +23,13 @@ The verified v7 candidate uses the same raw-HAF register set and matches the sta
 * `artifacts/PD6480iperf-v7-raw-haf-2buf-retail-header.z64`
 * `artifacts/PD6480iperf-v7-raw-haf-2buf-retail-header.xdelta`
 
+The v8 two-buffer static-memory follow-up still reached the crash handler on a real N64 during model loading. The v9 diagnostic candidate restores the performance branch's original three-buffer scheduler contract while retaining the 640x480i HAF registers and reserved gameplay framebuffer locations:
+
+* `artifacts/PD6480iperf-v9-static-low-3buf-retail-header.z64`
+* `artifacts/PD6480iperf-v9-static-low-3buf-retail-header.xdelta`
+
+v9 is packaged for further console/Analogue testing; the post-restart Elgato capture pass did not produce a reliable saved video frame, so it is not marked as hardware-verified.
+
 The merge is built from the performance source branch, applies the 640x480i VI/framebuffer changes, preserves the L-trigger frame-rate graph, and emits the retail NTSC V1.1 `NPDE`/version-1 cartridge header. An Expansion Pak is required. The minimal candidate remains in the repository as an earlier experimental binary.
 
 The current physical test result is recorded in [`docs/PD6480i-hardware-test.md`](docs/PD6480i-hardware-test.md). The frame-rate graph remains on L, inherited from the performance branch; controller-input testing was not automated in the capture session.
