@@ -30,6 +30,13 @@ The v8 two-buffer static-memory follow-up still reached the crash handler on a r
 
 v9 is packaged for further console/Analogue testing; the post-restart Elgato capture pass did not produce a reliable saved video frame, so it is not marked as hardware-verified.
 
+The v10 candidate also rounds the compressed background-section allocation to the same 16-byte length used by the DMA copy. This prevents a short tail overwrite of adjacent texture-pointer data:
+
+* `artifacts/PD6480iperf-v10-aligned-bg-dma-retail-header.z64`
+* `artifacts/PD6480iperf-v10-aligned-bg-dma-retail-header.xdelta`
+
+v10 is built and packaged but not hardware-verified; the EverDrive USB serial device was absent during the test attempt.
+
 The merge is built from the performance source branch, applies the 640x480i VI/framebuffer changes, preserves the L-trigger frame-rate graph, and emits the retail NTSC V1.1 `NPDE`/version-1 cartridge header. An Expansion Pak is required. The minimal candidate remains in the repository as an earlier experimental binary.
 
 The current physical test result is recorded in [`docs/PD6480i-hardware-test.md`](docs/PD6480i-hardware-test.md). The frame-rate graph remains on L, inherited from the performance branch; controller-input testing was not automated in the capture session.
