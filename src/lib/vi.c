@@ -26,22 +26,10 @@ Mtx *var80092870;
 u16 g_ViPerspScale;
 u8 g_ViFrontIndex;
 u8 g_ViBackIndex;
-u16 *g_FrameBuffers[3];
+u16 *g_FrameBuffers[2];
 
 struct rend_vidat g_ViDataArray[] = {
 	{
-		0, 0, 0, 0,
-		640, 480,         // x and y
-		60,               // fovy
-		1.3333333730698f, // aspect
-		30,               // znear
-		10000,            // zfar
-		640, 480,         // bufx and bufy
-		640, 480,         // viewx and viewy
-		0, 0,             // viewleft and viewtop
-		true,             // usezbuf
-		0,
-	}, {
 		0, 0, 0, 0,
 		640, 480,         // x and y
 		60,               // fovy
@@ -98,7 +86,7 @@ void viConfigureForCopyright(u16 *texturedata)
 {
 	s32 i;
 
-	for (i = 0; i < 3; i++) {
+	for (i = 0; i < 2; i++) {
 		g_FrameBuffers[i] = texturedata;
 
 		g_ViDataArray[i].x = 576;
@@ -126,7 +114,7 @@ void viConfigureForLegal(void)
 {
 	s32 i;
 
-	for (i = 0; i < 3; i++) {
+	for (i = 0; i < 2; i++) {
 		g_ViDataArray[i].x = 640;
 		g_ViDataArray[i].bufx = 640;
 		g_ViDataArray[i].viewx = 640;
@@ -166,25 +154,25 @@ void viReset(s32 stagenum)
 	u8 *ptr;
 	u8 *fb0;
 	u8 *fb1;
-	u8 *fb2;
 
 	if (stagenum == STAGE_TITLE) {
 		viSetMode(VIMODE_HI);
 		fbsize = g_ViModeWidths[2] * g_ViModeHeights[2] * 2;
 
-		ptr = mempAlloc(fbsize * 3 + 0x40, MEMPOOL_STAGE);
+		ptr = mempAlloc(fbsize * 2 + 0x40, MEMPOOL_STAGE);
 		ptr = (u8 *)(((u32)ptr + 0x3f) & 0xffffffc0);
 
 		g_FrameBuffers[0] = (u16 *) ptr;
 		g_FrameBuffers[1] = (u16 *) (ptr + fbsize);
-		g_FrameBuffers[2] = (u16 *) (ptr + fbsize * 2);
 	} else {
 		viSetMode(VIMODE_LO);
 		fbsize = FRAMEBUFFER_SIZE;
 
-		g_FrameBuffers[0] = (void *) (0x80400000 - fbsize);
-		g_FrameBuffers[1] = (void *) (0x80400000);
-		g_FrameBuffers[2] = (void *) (0x80800000 - fbsize);
+		ptr = mempAlloc(fbsize * 2 + 0x40, MEMPOOL_STAGE);
+		ptr = (u8 *)(((u32)ptr + 0x3f) & 0xffffffc0);
+
+		g_FrameBuffers[0] = (u16 *) ptr;
+		g_FrameBuffers[1] = (u16 *) (ptr + fbsize);
 	}
 
 	g_ViFrontData->fb = g_FrameBuffers[g_ViFrontIndex];
@@ -192,12 +180,10 @@ void viReset(s32 stagenum)
 
 	fb0 = (u8 *) g_FrameBuffers[0];
 	fb1 = (u8 *) g_FrameBuffers[1];
-	fb2 = (u8 *) g_FrameBuffers[2];
 
 	for (i = 0; i < fbsize; i++) {
 		fb0[i] = 0;
 		fb1[i] = 0;
-		fb2[i] = 0;
 	}
 
 	g_ViReconfigured = true;
@@ -212,7 +198,7 @@ void viReset(s32 stagenum)
  */
 void viBlack(bool black)
 {
-	black += 3;
+	black += 2;
 	g_ViUnblackTimer = black;
 }
 
@@ -292,84 +278,42 @@ void viUpdateMode(void)
 	if (g_ViBackData->mode == VIMODE_LO) {
 		if (osTvType == OS_TV_MPAL) {
 			var8008dcc0[g_ViSlot] = osViModeTable[OS_VI_MPAL_LAN1];
-		} else {
-			var8008dcc0[g_ViSlot] = osViModeTable[OS_VI_NTSC_LAN1];
-		}
-
-		var8008dcc0[g_ViSlot].comRegs.width = g_ViBackData->bufx;
-		var8008dcc0[g_ViSlot].comRegs.xScale = g_ViBackData->bufx * 1024 / 640;
-		var8008dcc0[g_ViSlot].fldRegs[0].origin = g_ViBackData->bufx * 2;
-		var8008dcc0[g_ViSlot].fldRegs[1].origin = g_ViBackData->bufx * 4;
-
-		// 324
-		var8008dcc0[g_ViSlot].fldRegs[0].yScale = 2048;
-		var8008dcc0[g_ViSlot].fldRegs[1].yScale = 2048;
-
-		// 3ac
-		reg = var8008dcc0[g_ViSlot].comRegs.hStart;
-		reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d588);
-		var8008dcc0[g_ViSlot].comRegs.hStart = reg;
-		var8008dcc0[g_ViSlot].fldRegs[0].vStart = reg;
-		var8008dcc0[g_ViSlot].fldRegs[1].vStart = reg;
-
-		v1 = g_ViBackData->bufy * 1024 / var8008dcc0[g_ViSlot].fldRegs[0].yScale;
-
-		// 458
-		if (v1 > 300) {
-			v1 >>= 1;
-		}
-
-		tmp = 277 - v1;
-		reg = ((tmp + 2) << 16) | (tmp + ((v1 - 2) * 2) + 2);
-		reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d58c);
-		var8008de0c = reg;
-		var8008de10 = reg;
-
-		g_SchedViModesPending[g_ViSlot] = true;
-	} else /*534*/ if (g_ViBackData->mode == VIMODE_HI) {
-		if (osTvType == OS_TV_MPAL) {
-			var8008dcc0[g_ViSlot] = osViModeTable[OS_VI_MPAL_HAF1];
 
 			var8008dcc0[g_ViSlot].comRegs.width = g_ViBackData->bufx;
 			var8008dcc0[g_ViSlot].comRegs.xScale = g_ViBackData->bufx * 1024 / 640;
-			var8008dcc0[g_ViSlot].fldRegs[0].yScale = 2048;
-			var8008dcc0[g_ViSlot].fldRegs[1].yScale = 2048;
 			var8008dcc0[g_ViSlot].fldRegs[0].origin = g_ViBackData->bufx * 2;
 			var8008dcc0[g_ViSlot].fldRegs[1].origin = g_ViBackData->bufx * 4;
 
+			// 324
+			var8008dcc0[g_ViSlot].fldRegs[0].yScale = 2048;
+			var8008dcc0[g_ViSlot].fldRegs[1].yScale = 2048;
+
+			// 3ac
 			reg = var8008dcc0[g_ViSlot].comRegs.hStart;
 			reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d588);
 			var8008dcc0[g_ViSlot].comRegs.hStart = reg;
-
-			reg = var8008dcc0[g_ViSlot].fldRegs[0].vStart;
-			reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d58c);
 			var8008dcc0[g_ViSlot].fldRegs[0].vStart = reg;
-			var8008de0c = reg;
-
-			reg = var8008dcc0[g_ViSlot].fldRegs[1].vStart;
-			reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d58c);
 			var8008dcc0[g_ViSlot].fldRegs[1].vStart = reg;
-			var8008de10 = reg;
 
-			if (var8005dd18) {
-				reg = var8005d58c;
-				reg = (reg + 431) % 0xffff << 16 | (reg + 123) % 0xffff;
-				var8008dcc0[g_ViSlot].fldRegs[0].vStart = reg;
-				var8008de0c = reg;
+			v1 = g_ViBackData->bufy * 1024 / var8008dcc0[g_ViSlot].fldRegs[0].yScale;
 
-				reg = var8005d58c;
-				reg = (reg + 433) % 0xffff << 16 | (reg + 121) % 0xffff;
-				var8008dcc0[g_ViSlot].fldRegs[1].vStart = reg;
-				var8008de10 = reg;
+			// 458
+			if (v1 > 300) {
+				v1 >>= 1;
 			}
+
+			tmp = 277 - v1;
+			reg = ((tmp + 2) << 16) | (tmp + ((v1 - 2) * 2) + 2);
+			reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d58c);
+			var8008de0c = reg;
+			var8008de10 = reg;
 		} else {
 			var8008dcc0[g_ViSlot] = osViModeTable[OS_VI_NTSC_HAF1];
 
 			/*
-			 * The 640x480i patch uses the HAF1 register set verbatim for
-			 * NTSC. The normal high-res formulas below produce a 2560/5120
-			 * alternating origin and a 2048 y-scale, which is incompatible
-			 * with the interlaced 1280-word framebuffer.
+			 * Gameplay uses VIMODE_LO, but the 640x480i patch drives it with
+			 * the NTSC HAF1 register set so the two 640-pixel fields are
+			 * interlaced instead of using the LAN mode.
 			 */
 			var8008dcc0[g_ViSlot].comRegs.ctrl = 0x0000305e;
 			var8008dcc0[g_ViSlot].comRegs.width = 1280;
@@ -398,6 +342,48 @@ void viUpdateMode(void)
 		}
 
 		g_SchedViModesPending[g_ViSlot] = true;
+	} else /*534*/ if (g_ViBackData->mode == VIMODE_HI) {
+		if (osTvType == OS_TV_MPAL) {
+			var8008dcc0[g_ViSlot] = osViModeTable[OS_VI_MPAL_HAF1];
+		} else {
+			var8008dcc0[g_ViSlot] = osViModeTable[OS_VI_NTSC_HAF1];
+		}
+
+		var8008dcc0[g_ViSlot].comRegs.width = g_ViBackData->bufx;
+		var8008dcc0[g_ViSlot].comRegs.xScale = g_ViBackData->bufx * 1024 / 640;
+		var8008dcc0[g_ViSlot].fldRegs[0].yScale = 2048;
+		var8008dcc0[g_ViSlot].fldRegs[1].yScale = 2048;
+		var8008dcc0[g_ViSlot].fldRegs[0].origin = g_ViBackData->bufx * 2;
+		var8008dcc0[g_ViSlot].fldRegs[1].origin = g_ViBackData->bufx * 4;
+
+		reg = var8008dcc0[g_ViSlot].comRegs.hStart;
+		reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d588);
+		var8008dcc0[g_ViSlot].comRegs.hStart = reg;
+
+		reg = var8008dcc0[g_ViSlot].fldRegs[0].vStart;
+		reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d58c);
+		var8008dcc0[g_ViSlot].fldRegs[0].vStart = reg;
+		var8008de0c = reg;
+
+		reg = var8008dcc0[g_ViSlot].fldRegs[1].vStart;
+		reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d58c);
+		var8008dcc0[g_ViSlot].fldRegs[1].vStart = reg;
+		var8008de10 = reg;
+
+		// 7f8
+		if (var8005dd18) {
+			reg = var8005d58c;
+			reg = (reg + 431) % 0xffff << 16 | (reg + 123) % 0xffff;
+			var8008dcc0[g_ViSlot].fldRegs[0].vStart = reg;
+			var8008de0c = reg;
+
+			reg = var8005d58c;
+			reg = (reg + 433) % 0xffff << 16 | (reg + 121) % 0xffff;
+			var8008dcc0[g_ViSlot].fldRegs[1].vStart = reg;
+			var8008de10 = reg;
+		}
+
+		g_SchedViModesPending[g_ViSlot] = true;
 	} else {
 		// 8f4
 		g_SchedViModesPending[g_ViSlot] = false;
@@ -413,8 +399,8 @@ void viUpdateMode(void)
 	g_ViFrontIndex++;
 	g_ViBackIndex++;
 
-	WRAP(g_ViFrontIndex, 3);
-	WRAP(g_ViBackIndex, 3);
+	WRAP(g_ViFrontIndex, 2);
+	WRAP(g_ViBackIndex, 2);
 
 	g_ViFrontData = g_ViDataArray + g_ViFrontIndex;
 	g_ViBackData = g_ViDataArray + g_ViBackIndex;

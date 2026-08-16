@@ -18,9 +18,14 @@ The newer raw-HAF candidate additionally uses the standalone 640x480i patch's NT
 * `artifacts/PD6480iperf-v3-raw-haf-retail-header.z64`
 * `artifacts/PD6480iperf-v3-raw-haf-retail-header.xdelta`
 
+The verified v7 candidate uses the same raw-HAF register set and matches the standalone patch's two-framebuffer layout. It was boot-tested on a real N64 through an EverDrive and reached live 3D gameplay:
+
+* `artifacts/PD6480iperf-v7-raw-haf-2buf-retail-header.z64`
+* `artifacts/PD6480iperf-v7-raw-haf-2buf-retail-header.xdelta`
+
 The merge is built from the performance source branch, applies the 640x480i VI/framebuffer changes, preserves the L-trigger frame-rate graph, and emits the retail NTSC V1.1 `NPDE`/version-1 cartridge header. An Expansion Pak is required. The minimal candidate remains in the repository as an earlier experimental binary.
 
-The current physical test result is recorded in [`docs/PD6480i-hardware-test.md`](docs/PD6480i-hardware-test.md).
+The current physical test result is recorded in [`docs/PD6480i-hardware-test.md`](docs/PD6480i-hardware-test.md). The frame-rate graph remains on L, inherited from the performance branch; controller-input testing was not automated in the capture session.
 
 ## GCC build
 

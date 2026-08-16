@@ -17,6 +17,8 @@ The physical path is the Kasa Plug 1 power switch, the EverDrive USB connection,
 UNFLoader.exe -b -f 3 -r PD6480iperf-v2-retail-header.z64
 ```
 
+For the v7 session, the upstream prerelease Windows x86 UNFLoader build was used. The older v2.2 executable uploaded data but did not start the ROM on this setup; the prerelease build completed the same command and booted it.
+
 The EverDrive repository's USB loader was also used for the current candidate:
 
 ```text
@@ -25,12 +27,12 @@ usb64.exe -rom=PD6480iperf-v2-retail-header.z64 -start
 
 ## Current candidate
 
-`artifacts/PD6480iperf-v3-raw-haf-retail-header.z64` is the newer test candidate. It keeps the performance branch and 640x480 framebuffer changes, but uses the standalone patch's NTSC HAF1 interlaced register set for the title-screen transition. Its SHA-256 is `d690e8f3d2cec9fabcec829c2b8cb5db561572e9a2ab0a511e3a2d8abf70dd2d`.
+`artifacts/PD6480iperf-v7-raw-haf-2buf-retail-header.z64` is the verified candidate. It keeps the performance branch and 640x480 framebuffer changes, uses the standalone patch's NTSC HAF1 interlaced register set, and matches its two-framebuffer layout. Its SHA-256 is `b1e95594dfe7197ba407af0616ad9ab2bb36f841fbfe93983101b7ce91fee19b`. The xdelta is based on Perfect Dark (U) (V1.1) [!].
 
 ## Result on 2026-08-15
 
-After restarting Game Capture HD on the alternate USB port, both Kasa relays were power-cycled and the EverDrive returned `ED64 found at port COM3`. The source-built candidate uploaded and started through `usb64` successfully at approximately 917 KB/s.
+After restarting Game Capture HD on the alternate USB port, both Kasa relays were power-cycled and the EverDrive USB device was present on COM3. The controller was connected. The prerelease UNFLoader completed the v7 upload, and the Elgato recording showed the boot logos followed by live 3D Perfect Dark at approximately 45–50 seconds. The black interval after the title logo was a loading interval; the game subsequently rendered normally.
 
-The Game Capture HD application preview remained black, but its live Elgato timeshift stream contained actual decoded video. A frame extracted from the candidate's stream shows Perfect Dark running on the N64 with the in-game message `no controller in controller socket 1 - please power off and attach a controller`. This confirms cartridge boot and video output on real hardware. The L-trigger graph was not exercised because no controller was connected.
+The Game Capture HD application preview remained black, but its live Elgato timeshift stream contained actual decoded video. This confirms cartridge boot and video output on real hardware. The L-trigger graph was not exercised by scripted input, although the performance-branch code retaining it is present.
 
-Evidence frame: `artifacts/PD6480iperf-hardware-boot-no-controller.png`.
+Evidence frames: `artifacts/PD6480iperf-v7-hardware-in-game-45s.png` and `artifacts/PD6480iperf-v7-hardware-in-game-50s.png`.
