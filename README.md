@@ -48,6 +48,8 @@ The merge is built from the performance source branch, applies the 640x480i VI/f
 
 The current physical test result is recorded in [`docs/PD6480i-hardware-test.md`](docs/PD6480i-hardware-test.md). The frame-rate graph remains on L, inherited from the performance branch; controller-input testing was not automated in the capture session.
 
+The supplied input-patch provenance and base-dump checks are recorded in [`docs/input-patch-analysis.md`](docs/input-patch-analysis.md).
+
 ## GCC build
 
 The code is built with modern gcc and is optimised for code size. It reduces the game segment by around 360KB and the lib segment by around 72KB. This memory can then be used to do things which improve performance, and enables some of the improvements detailed below.
