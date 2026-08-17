@@ -71,3 +71,9 @@ The v18 source tree was rebuilt with the local MIPS toolchain. The resulting `bu
 The current ED64 cable was tested with all three available upload/read paths. The prerelease UNFLoader command is `UNFLoader.exe -r <rom>`; it reported `No FTDI USB devices found`. The older `loader64.exe -v -w -f <rom>` reported `device not found`, and the ED64-X `usb64-reconnect2m.exe -screen=<file>` probe reported `EverDrive64 X-series device not found`. PnP still reports the USB converter as **Disabled**, the FTDI child as **Disconnected**, and no COM port is present. No ROM upload occurred.
 
 Game Capture HD was restarted. Windows still enumerates `USB\\VID_0FD9&PID_0051\\110B14E2A7` as **Started**; the available capture trace ends with `Video signal lost`, and no live frame was available for this pass. No Kasa relay was changed. v18 remains source-built and xdelta-verified, but not hardware-verified.
+
+## v19 title-allocation follow-up on 2026-08-17
+
+The v19 source correction changes only the high-resolution title allocation and buffer rotation: two 1280x440 title buffers are allocated within the reserved stage window, while gameplay keeps the three-buffer performance path. The fresh build produced `artifacts/PD6480iperf-v19-title-2buf-gameplay-3buf-dma-safe-retail-header.z64` with SHA-256 `3f23972bb1d3b7a428b3f119c48e6b266b6be37e9197e389044c3384f140a212`. Its V1.1 xdelta decodes exactly to that ROM.
+
+After the ED64 cable was swapped back, the prerelease UNFLoader again reported `No FTDI USB devices found`, and the ED64 USB probe reported `EverDrive64 X-series device not found`. No ROM upload occurred. The Game Capture HD process was restarted and is responding; `pnputil` reports the capture device as **Started**, but there is no newly decoded frame or boot result. No Kasa relay was changed, and v19 remains unverified on real hardware.

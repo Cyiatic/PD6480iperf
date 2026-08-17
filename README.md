@@ -44,7 +44,14 @@ The v18 candidate restores the full 640x480 renderer geometry while retaining th
 
 v18 is packaged and xdelta-verified but is not hardware-verified. The restored ED64 cable passed a framebuffer read; the fresh Elgato session still reported no signal.
 
-The clean source rebuild reproduces v18 exactly (32 MiB, SHA-256 `83344e1bbc296eb11e8f09e50a32d1416e63ff9ef029f787bbec9423a2debca2`). The current ED64 retest could not upload it because Windows reports the FTDI device disabled; both UNFLoader (`-r <rom>`) and the ED64 USB probe report no device.
+The v19 follow-up fixes the title-screen framebuffer allocation exposed by the Analogue crash review. The high-resolution title mode uses two buffers, which fit the reserved Expansion Pak stage window; gameplay retains the three-buffer VI/scheduler path and the aligned background DMA scratch fix:
+
+* `artifacts/PD6480iperf-v19-title-2buf-gameplay-3buf-dma-safe-retail-header.z64`
+* `artifacts/PD6480iperf-v19-title-2buf-gameplay-3buf-dma-safe-retail-header.xdelta`
+
+v19 is source-built and xdelta-verified but has not yet been boot-tested because the ED64 FTDI device is currently disabled in Windows. The fresh Elgato process is responsive and the capture device enumerates as Started, but no new decoded frame was available.
+
+The pre-v19 source rebuild reproduced v18 exactly (32 MiB, SHA-256 `83344e1bbc296eb11e8f09e50a32d1416e63ff9ef029f787bbec9423a2debca2`). The current v19 ED64 retest could not upload it because Windows reports the FTDI device disabled; both UNFLoader (`-r <rom>`) and the ED64 USB probe report no device.
 
 The merge is built from the performance source branch, applies the 640x480i VI/framebuffer changes, preserves the L-trigger frame-rate graph, and emits the retail NTSC V1.1 `NPDE`/version-1 cartridge header. An Expansion Pak is required. The minimal candidate remains in the repository as an earlier experimental binary.
 

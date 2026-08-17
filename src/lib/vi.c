@@ -26,6 +26,7 @@ Mtx *var80092870;
 u16 g_ViPerspScale;
 u8 g_ViFrontIndex;
 u8 g_ViBackIndex;
+u8 g_ViFrameBufferCount = 3;
 u16 *g_FrameBuffers[3];
 
 struct rend_vidat g_ViDataArray[] = {
@@ -172,15 +173,22 @@ void viReset(s32 stagenum)
 		viSetMode(VIMODE_HI);
 		fbsize = g_ViModeWidths[2] * g_ViModeHeights[2] * 2;
 
-		ptr = mempAlloc(fbsize * 3 + 0x40, MEMPOOL_STAGE);
+		/*
+		 * The reserved expansion-stage window has room for two 1280x440
+		 * buffers, but not three. Keep title allocation within that window;
+		 * gameplay continues to use the three fixed buffers below.
+		 */
+		g_ViFrameBufferCount = 2;
+		ptr = mempAlloc(fbsize * g_ViFrameBufferCount + 0x40, MEMPOOL_STAGE);
 		ptr = (u8 *)(((u32)ptr + 0x3f) & 0xffffffc0);
 
 		g_FrameBuffers[0] = (u16 *) ptr;
 		g_FrameBuffers[1] = (u16 *) (ptr + fbsize);
-		g_FrameBuffers[2] = (u16 *) (ptr + fbsize * 2);
+		g_FrameBuffers[2] = g_FrameBuffers[0];
 	} else {
 		viSetMode(VIMODE_LO);
 		fbsize = FRAMEBUFFER_SIZE;
+		g_ViFrameBufferCount = 3;
 
 		g_FrameBuffers[0] = (void *) (0x80400000 - fbsize);
 		g_FrameBuffers[1] = (void *) (0x80400000);
@@ -413,8 +421,8 @@ void viUpdateMode(void)
 	g_ViFrontIndex++;
 	g_ViBackIndex++;
 
-	WRAP(g_ViFrontIndex, 3);
-	WRAP(g_ViBackIndex, 3);
+	WRAP(g_ViFrontIndex, g_ViFrameBufferCount);
+	WRAP(g_ViBackIndex, g_ViFrameBufferCount);
 
 	g_ViFrontData = g_ViDataArray + g_ViFrontIndex;
 	g_ViBackData = g_ViDataArray + g_ViBackIndex;
