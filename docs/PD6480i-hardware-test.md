@@ -56,3 +56,7 @@ The real-N64 attempt could not start: Game Capture HD reported `No Signal`, and 
 The ED64 cable was restored and verified independently: Windows enumerated the converter and serial port as COM3, and `usb64-reconnect2m.exe -screen=...` read the EverDrive menu framebuffer successfully at approximately 797 KB/s. The N64 was power-cycled through the N64 Kasa relay and the capture path was power-cycled through Plug 1.
 
 A known v7 480i control-ROM handoff completed through ED64, but the fresh Game Capture HD trace reported `RES_NO_SIGNAL` and then `Video signal lost`. Reinitialising Plug 1 while the 480i control image was running produced no new input format or decoded frame. The v18 candidate is therefore packaged and xdelta-verified, but remains unverified on real hardware until the video path supplies a live frame. Both Kasa relays were turned off afterward.
+
+## Resume check after ED64 cable swap on 2026-08-17
+
+The FTDI device was checked again after the ED64 cable was swapped back. Windows still reported instance `USB\\VID_0403&PID_6001\\AB0NWMD3` as **Disabled**, with no COM port, so no ROM was uploaded. The installed Game Capture HD application launched and the capture device was enumerated as **Started**, but its fresh trace again reported `RES_NO_SIGNAL` followed by `Video signal lost`. No Kasa relay was changed during this check.
