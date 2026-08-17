@@ -80,7 +80,7 @@ void schedRenderCrashOnBuffer(void *framebuffer)
 	}
 }
 
-extern u16 *g_FrameBuffers[2];
+extern u16 *g_FrameBuffers[3];
 
 void schedRenderCrashPeriodically(u32 framecount)
 {
@@ -88,6 +88,7 @@ void schedRenderCrashPeriodically(u32 framecount)
 		if (osGetCount() - g_SchedCrashLastRendered > g_SchedCrashRenderInterval) {
 			crashRenderFrame(g_FrameBuffers[0]);
 			crashRenderFrame(g_FrameBuffers[1]);
+			crashRenderFrame(g_FrameBuffers[2]);
 		}
 	}
 }
