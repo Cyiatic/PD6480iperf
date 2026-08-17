@@ -60,3 +60,14 @@ A known v7 480i control-ROM handoff completed through ED64, but the fresh Game C
 ## Resume check after ED64 cable swap on 2026-08-17
 
 The FTDI device was checked again after the ED64 cable was swapped back. Windows still reported instance `USB\\VID_0403&PID_6001\\AB0NWMD3` as **Disabled**, with no COM port, so no ROM was uploaded. The installed Game Capture HD application launched and the capture device was enumerated as **Started**, but its fresh trace again reported `RES_NO_SIGNAL` followed by `Video signal lost`. No Kasa relay was changed during this check.
+
+## Source rebuild and loader retest on 2026-08-17
+
+The v18 source tree was rebuilt with the local MIPS toolchain. The resulting `build/ntsc-final/pd.z64` is byte-for-byte identical to `artifacts/PD6480iperf-v18-raw-haf-3buf-dma-safe-retail-header.z64`:
+
+- Size: 32 MiB
+- SHA-256: `83344e1bbc296eb11e8f09e50a32d1416e63ff9ef029f787bbec9423a2debca2`
+
+The current ED64 cable was tested with all three available upload/read paths. The prerelease UNFLoader command is `UNFLoader.exe -r <rom>`; it reported `No FTDI USB devices found`. The older `loader64.exe -v -w -f <rom>` reported `device not found`, and the ED64-X `usb64-reconnect2m.exe -screen=<file>` probe reported `EverDrive64 X-series device not found`. PnP still reports the USB converter as **Disabled**, the FTDI child as **Disconnected**, and no COM port is present. No ROM upload occurred.
+
+Game Capture HD was restarted. Windows still enumerates `USB\\VID_0FD9&PID_0051\\110B14E2A7` as **Started**; the available capture trace ends with `Video signal lost`, and no live frame was available for this pass. No Kasa relay was changed. v18 remains source-built and xdelta-verified, but not hardware-verified.
