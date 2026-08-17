@@ -37,6 +37,13 @@ The v10 candidate also rounds the compressed background-section allocation to th
 
 v10 is built and packaged but not hardware-verified; the EverDrive USB serial device was absent during the test attempt.
 
+The v18 candidate restores the full 640x480 renderer geometry while retaining the three-buffer VI/scheduler contract, static gameplay framebuffers, stage-pool separation, raw-HAF 480i registers, and aligned background DMA scratch:
+
+* `artifacts/PD6480iperf-v18-raw-haf-3buf-dma-safe-retail-header.z64`
+* `artifacts/PD6480iperf-v18-raw-haf-3buf-dma-safe-retail-header.xdelta`
+
+v18 is packaged and xdelta-verified but is not hardware-verified. The restored ED64 cable passed a framebuffer read; the fresh Elgato session still reported no signal.
+
 The merge is built from the performance source branch, applies the 640x480i VI/framebuffer changes, preserves the L-trigger frame-rate graph, and emits the retail NTSC V1.1 `NPDE`/version-1 cartridge header. An Expansion Pak is required. The minimal candidate remains in the repository as an earlier experimental binary.
 
 The current physical test result is recorded in [`docs/PD6480i-hardware-test.md`](docs/PD6480i-hardware-test.md). The frame-rate graph remains on L, inherited from the performance branch; controller-input testing was not automated in the capture session.
