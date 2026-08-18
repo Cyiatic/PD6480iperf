@@ -1,6 +1,6 @@
 # PD6480i hardware test
 
-## Candidate
+## Historical bootstrap candidate
 
 - `artifacts/PD6480iperf-v2-retail-header.z64`
 - Base: Perfect Dark (U) (V1.1) [!], MD5 `e03b088b6ac9e0080440efed07c1e40f`
@@ -14,7 +14,7 @@
 The physical path is Kasa `Plug 1` for this N64 power, the EverDrive USB connection, and the Elgato Game Capture HD. The separately named Kasa device `N64` controls a different machine and must not be toggled. UNFLoader's EverDrive selector is `-f 3`:
 
 ```text
-UNFLoader.exe -b -f 3 -r PD6480iperf-v2-retail-header.z64
+UNFLoader.exe -b -f 3 -r PD6480iperf-v27-fixed-game-framebuffers-retail-header.z64
 ```
 
 For the v7 session, the upstream prerelease Windows x86 UNFLoader build was used. The older v2.2 executable uploaded data but did not start the ROM on this setup; the prerelease build completed the same command and booted it.
@@ -22,12 +22,12 @@ For the v7 session, the upstream prerelease Windows x86 UNFLoader build was used
 The EverDrive repository's USB loader was also used for the current candidate:
 
 ```text
-usb64.exe -rom=PD6480iperf-v2-retail-header.z64 -start
+usb64.exe -rom=PD6480iperf-v27-fixed-game-framebuffers-retail-header.z64 -start
 ```
 
 ## Current candidate
 
-`artifacts/PD6480iperf-v7-raw-haf-2buf-retail-header.z64` is the verified candidate. It keeps the performance branch and 640x480 framebuffer changes, uses the standalone patch's NTSC HAF1 interlaced register set, and matches its two-framebuffer layout. Its SHA-256 is `b1e95594dfe7197ba407af0616ad9ab2bb36f841fbfe93983101b7ce91fee19b`. The xdelta is based on Perfect Dark (U) (V1.1) [!].
+`artifacts/PD6480iperf-v27-fixed-game-framebuffers-retail-header.z64` is the current verified candidate. It keeps the performance branch, its L-trigger FPS graph, and the standalone patch's NTSC HAF1 interlaced register set, while using reserved high-memory gameplay framebuffers. Its SHA-256 is `6c5a04202b7943056e4b10151580be06cbe0dd53ff6c9ccfb7c0947c780ed4af`; the xdelta is based on Perfect Dark (U) (V1.1) [!].
 
 ## Result on 2026-08-15
 
@@ -110,3 +110,9 @@ Both tests ended with `Plug 1` off and verified `Relay: 0`. The separately named
 After the physical input path was changed, the corrected workflow was run again using only `Plug 1`. A framebuffer read before upload showed the EverDrive menu. The foreground prerelease UNFLoader then completed the v20 upload in 36.15 seconds. Fifteen seconds after handoff, the ED64 framebuffer utility could no longer connect and produced no image, consistent with PIFboot leaving the loader menu. This is an independent handoff indication, not visual gameplay evidence.
 
 Game Capture HD still logged `Video signal lost` and the native probe remained `SIGNAL=0 / FORMAT=0`. `Plug 1` was turned off and verified `Relay: 0`; the separately named `N64` device was not queried or toggled. Visual confirmation of the game and L-trigger graph remains pending a live Elgato input signal.
+
+## v27 clean power-cycle retest on 2026-08-18
+
+The v27 candidate keeps the performance branch and 640x480i changes, while placing the gameplay framebuffers at the reserved high-memory addresses. The packaged ROM is `artifacts/PD6480iperf-v27-fixed-game-framebuffers-retail-header.z64` (SHA-256 `6c5a04202b7943056e4b10151580be06cbe0dd53ff6c9ccfb7c0947c780ed4af`); its xdelta is `artifacts/PD6480iperf-v27-fixed-game-framebuffers-retail-header.xdelta` (SHA-256 `03d979cf451c700880e0d1e968607b083a2ace3dc312d4e0a2d71ab4a9fab05`). Applying that xdelta to the V1.1 base reproduced the packaged ROM byte-for-byte.
+
+After a full `Plug 1` off/on cycle, the ED64 enumerated as COM3. The prerelease UNFLoader command `UNFLoader.exe -b -f 3 -r <v27-rom>` completed in 36.06 seconds. The Elgato timeshift decode showed the normal RARE, Nintendo, and Perfect Dark boot sequence, followed by sustained live 3D frames through approximately 105 seconds; no crash handler appeared. The evidence was decoded from Timeshift segment `_0069.ts`. `Plug 1` was turned off and the ED64 probe then correctly reported no device. The separately named `N64` switch was not queried or toggled.
