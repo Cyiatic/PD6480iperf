@@ -22,4 +22,10 @@ Applying the xdelta to the stated V1.1 base reproduces the ROM byte-for-byte.
 
 ## Hardware status
 
-No v21 hardware boot claim is made yet. The corrected Elgato wiring is now known to be the valid capture path, but this pass could not safely power the console: Kasa currently exposed only the unrelated `N64` entry and did not expose `Plug 1`. The ED64 probe therefore reported no powered EverDrive. The separate `N64` Kasa device was not used.
+On 2026-08-18, Kasa exposed both rows and the exact `Plug 1` row was powered on; the separate `N64` row was not used. ED64 read the menu on COM3 before upload, and the v21 upload/PIFboot handoff completed (the ED64 loader service disappeared afterward as expected).
+
+A fresh 21.3-second Game Capture HD recording then showed the N64 crash handler at 1, 3, and 5 seconds after capture began; no live 3D gameplay frame was present. Evidence: `artifacts/PD6480iperf-v21-hardware-crash-20260818.png`. This is a real hardware regression, not an Elgato no-signal result.
+
+As a capture-path control, the known-good v7 ROM was run through the same setup and reached the Perfect Dark product-identification screen at approximately 47 seconds. Evidence: `artifacts/PD6480iperf-v7-control-product-id-20260818.png`.
+
+`Plug 1` was powered off after both tests, and ED64 again reported no device. The separately named `N64` Kasa device was not used.
