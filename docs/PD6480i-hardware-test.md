@@ -104,3 +104,9 @@ The ED64 is volatile, so switching `Plug 1` off after an upload resets the cartr
 Using that sequence, v20 uploaded successfully in 36.12 seconds. The ED64 framebuffer utility could read the menu after a reset, but after the upload/PIFboot handoff it could no longer access the loader service; this is consistent with the cartridge leaving the menu, but is not visual game evidence. Game Capture HD still returned `COUNT=1 / SIGNAL=0 / FORMAT=0` for 60 seconds. A stock Perfect Dark V1.1 control uploaded in 35.88 seconds and produced the same Elgato result. Enabling the capture application's interlaced-input flag did not change the result and was restored to its original value. The reference `usb64.exe` path reported an index error without transferring a ROM, so the prerelease UNFLoader remains the working upload path.
 
 Both tests ended with `Plug 1` off and verified `Relay: 0`. The separately named `N64` device was not queried or toggled. v20 remains unverified on real hardware because the current Elgato path supplies no decoded signal.
+
+## Retest after physical capture-path change on 2026-08-17
+
+After the physical input path was changed, the corrected workflow was run again using only `Plug 1`. A framebuffer read before upload showed the EverDrive menu. The foreground prerelease UNFLoader then completed the v20 upload in 36.15 seconds. Fifteen seconds after handoff, the ED64 framebuffer utility could no longer connect and produced no image, consistent with PIFboot leaving the loader menu. This is an independent handoff indication, not visual gameplay evidence.
+
+Game Capture HD still logged `Video signal lost` and the native probe remained `SIGNAL=0 / FORMAT=0`. `Plug 1` was turned off and verified `Relay: 0`; the separately named `N64` device was not queried or toggled. Visual confirmation of the game and L-trigger graph remains pending a live Elgato input signal.
