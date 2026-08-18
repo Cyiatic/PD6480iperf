@@ -22,4 +22,4 @@ The xdelta was decoded against the V1.1 base and reproduced the ROM hash exactly
 
 ## Hardware status
 
-v19 is not hardware-verified. After the ED64 cable was swapped back, UNFLoader reported `No FTDI USB devices found` and the ED64 USB probe reported that the device was not found. Windows still shows the Elgato Game Capture HD device as Started, and the GameCapture process was restarted successfully, but no new decoded capture frame was available. No Kasa relay was changed.
+v19 is not hardware-verified. The candidate was uploaded with `UNFLoader.exe -b -f 3 -r <v19-rom>` through ED64 and the loader handoff completed; the ED64 probe then disappeared as expected after PIFboot. The live Game Capture HD graph reported `RES_NO_SIGNAL`, including for a stock retail control upload, so no visual boot result can be attributed to v19. `Plug 1` was turned off and verified off afterward. The separately named Kasa device `N64` controls another machine and was not touched.

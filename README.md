@@ -49,9 +49,16 @@ The v19 follow-up fixes the title-screen framebuffer allocation exposed by the A
 * `artifacts/PD6480iperf-v19-title-2buf-gameplay-3buf-dma-safe-retail-header.z64`
 * `artifacts/PD6480iperf-v19-title-2buf-gameplay-3buf-dma-safe-retail-header.xdelta`
 
-v19 is source-built and xdelta-verified but has not yet been boot-tested because the ED64 FTDI device is currently disabled in Windows. The fresh Elgato process is responsive and the capture device enumerates as Started, but no new decoded frame was available.
+v19 is source-built and xdelta-verified. With the restored ED64 cable, the prerelease loader command `UNFLoader.exe -b -f 3 -r <v19-rom>` completed the upload/PIFboot handoff; the ED64 probe then disappeared as expected after the cartridge left the loader menu. The fresh Game Capture HD graph still reported `RES_NO_SIGNAL`, including after a stock retail control upload, so v19 has no visual hardware verification yet.
 
-The pre-v19 source rebuild reproduced v18 exactly (32 MiB, SHA-256 `83344e1bbc296eb11e8f09e50a32d1416e63ff9ef029f787bbec9423a2debca2`). The current v19 ED64 retest could not upload it because Windows reports the FTDI device disabled; both UNFLoader (`-r <rom>`) and the ED64 USB probe report no device.
+The pre-v19 source rebuild reproduced v18 exactly (32 MiB, SHA-256 `83344e1bbc296eb11e8f09e50a32d1416e63ff9ef029f787bbec9423a2debca2`). The physical N64 power path is Kasa `Plug 1`; the separately named `N64` switch controls another machine and is not part of this workflow.
+
+The v20 follow-up keeps the v19 VI/framebuffer layout and also rounds the section-3 background DMA scratch allocation. Section 2 was already rounded in v10; section 3 had the same latent tail-overwrite hazard because its allocation used the unrounded compressed length while the DMA used a 16-byte-rounded length:
+
+* `artifacts/PD6480iperf-v20-section2-section3-dma-safe-title-2buf-gameplay-3buf-retail-header.z64`
+* `artifacts/PD6480iperf-v20-section2-section3-dma-safe-title-2buf-gameplay-3buf-retail-header.xdelta`
+
+v20 was uploaded through ED64 with `UNFLoader.exe -b -f 3 -r <v20-rom>`. The Elgato device initialized but reported `RES_NO_SIGNAL` on both fresh format probes and then `Video signal lost`, so there is still no visual hardware verification.
 
 The merge is built from the performance source branch, applies the 640x480i VI/framebuffer changes, preserves the L-trigger frame-rate graph, and emits the retail NTSC V1.1 `NPDE`/version-1 cartridge header. An Expansion Pak is required. The minimal candidate remains in the repository as an earlier experimental binary.
 

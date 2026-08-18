@@ -11,7 +11,7 @@
 
 ## Loader workflow
 
-The physical path is the Kasa Plug 1 power switch, the EverDrive USB connection, and the Elgato Game Capture HD. UNFLoader's EverDrive selector is `-f 3`:
+The physical path is Kasa `Plug 1` for this N64 power, the EverDrive USB connection, and the Elgato Game Capture HD. The separately named Kasa device `N64` controls a different machine and must not be toggled. UNFLoader's EverDrive selector is `-f 3`:
 
 ```text
 UNFLoader.exe -b -f 3 -r PD6480iperf-v2-retail-header.z64
@@ -31,7 +31,7 @@ usb64.exe -rom=PD6480iperf-v2-retail-header.z64 -start
 
 ## Result on 2026-08-15
 
-After restarting Game Capture HD on the alternate USB port, both Kasa relays were power-cycled and the EverDrive USB device was present on COM3. The controller was connected. The prerelease UNFLoader completed the v7 upload, and the Elgato recording showed the boot logos followed by live 3D Perfect Dark at approximately 45–50 seconds. The black interval after the title logo was a loading interval; the game subsequently rendered normally.
+After restarting Game Capture HD on the alternate USB port, `Plug 1` was power-cycled and the EverDrive USB device was present on COM3. The controller was connected. The prerelease UNFLoader completed the v7 upload, and the Elgato recording showed the boot logos followed by live 3D Perfect Dark at approximately 45–50 seconds. The black interval after the title logo was a loading interval; the game subsequently rendered normally.
 
 The Game Capture HD application preview remained black, but its live Elgato timeshift stream contained actual decoded video. This confirms cartridge boot and video output on real hardware. The L-trigger graph was not exercised by scripted input, although the performance-branch code retaining it is present.
 
@@ -43,19 +43,19 @@ The v8 static-low two-buffer candidate was tested from a cold relay cycle with t
 
 The v9 candidate restores the performance branch's three-buffer VI/scheduler contract while keeping the raw-HAF 640x480i registers and static gameplay framebuffer layout. Its SHA-256 is `49f80369ce300bb4319c38a1a75505abdba29d9d661c7898345be81a04016f7a`.
 
-The restarted Elgato path did not yield a reliable saved video frame for v9, so v9 remains a candidate for testing rather than a verified hardware result. Both Kasa relays were left off after the session.
+The restarted Elgato path did not yield a reliable saved video frame for v9, so v9 remains a candidate for testing rather than a verified hardware result. `Plug 1` was left off after the session; the separately named `N64` device was not touched.
 
 ## v10 follow-up on 2026-08-16
 
 v10 rounds the section-2 background allocation to the same 16-byte boundary as the DMA copy. This directly addresses the corrupted model/texture pointer pattern in the crash dump. The ROM SHA-256 is `9b721bc8088fd1f5208370c6afa5b797bb844c79a620bb2b0a125069225ab310`; the xdelta SHA-256 is `345c61cbdb981579c737dfe55195fea8462e9818ceaa19cea74d5f7946ab4d9c`.
 
-The real-N64 attempt could not start: Game Capture HD reported `No Signal`, and Windows did not enumerate the EverDrive USB serial device that had been present during the v7 test. v10 is therefore packaged as an unverified candidate only. Both Kasa relays were turned off afterward.
+The real-N64 attempt could not start: Game Capture HD reported `No Signal`, and Windows did not enumerate the EverDrive USB serial device that had been present during the v7 test. v10 is therefore packaged as an unverified candidate only. `Plug 1` was turned off afterward; the separately named `N64` device was not touched.
 
 ## v18 follow-up on 2026-08-17
 
-The ED64 cable was restored and verified independently: Windows enumerated the converter and serial port as COM3, and `usb64-reconnect2m.exe -screen=...` read the EverDrive menu framebuffer successfully at approximately 797 KB/s. The N64 was power-cycled through the N64 Kasa relay and the capture path was power-cycled through Plug 1.
+The ED64 cable was restored and verified independently: Windows enumerated the converter and serial port as COM3, and `usb64-reconnect2m.exe -screen=...` read the EverDrive menu framebuffer successfully at approximately 797 KB/s. For this setup, N64 power is controlled only through `Plug 1`; the separately named `N64` device is unrelated and must remain untouched.
 
-A known v7 480i control-ROM handoff completed through ED64, but the fresh Game Capture HD trace reported `RES_NO_SIGNAL` and then `Video signal lost`. Reinitialising Plug 1 while the 480i control image was running produced no new input format or decoded frame. The v18 candidate is therefore packaged and xdelta-verified, but remains unverified on real hardware until the video path supplies a live frame. Both Kasa relays were turned off afterward.
+A known v7 480i control-ROM handoff completed through ED64, but the fresh Game Capture HD trace reported `RES_NO_SIGNAL` and then `Video signal lost`. Reinitialising `Plug 1` while the 480i control image was running produced no new input format or decoded frame. The v18 candidate is therefore packaged and xdelta-verified, but remains unverified on real hardware until the video path supplies a live frame. `Plug 1` was turned off afterward; the separately named `N64` device was not touched.
 
 ## Resume check after ED64 cable swap on 2026-08-17
 
@@ -76,4 +76,10 @@ Game Capture HD was restarted. Windows still enumerates `USB\\VID_0FD9&PID_0051\
 
 The v19 source correction changes only the high-resolution title allocation and buffer rotation: two 1280x440 title buffers are allocated within the reserved stage window, while gameplay keeps the three-buffer performance path. The fresh build produced `artifacts/PD6480iperf-v19-title-2buf-gameplay-3buf-dma-safe-retail-header.z64` with SHA-256 `3f23972bb1d3b7a428b3f119c48e6b266b6be37e9197e389044c3384f140a212`. Its V1.1 xdelta decodes exactly to that ROM.
 
-After the ED64 cable was swapped back, the prerelease UNFLoader again reported `No FTDI USB devices found`, and the ED64 USB probe reported `EverDrive64 X-series device not found`. No ROM upload occurred. The Game Capture HD process was restarted and is responding; `pnputil` reports the capture device as **Started**, but there is no newly decoded frame or boot result. No Kasa relay was changed, and v19 remains unverified on real hardware.
+With the ED64 cable restored, the prerelease loader was run as `UNFLoader.exe -b -f 3 -r <v19-rom>` and completed the upload/PIFboot handoff. The ED64 probe then correctly disappeared because the cartridge had left the loader menu. After a 45-second wait, the live Game Capture HD graph still reported `RES_NO_SIGNAL`; a stock retail control upload produced the same capture result, so this does not distinguish the ROMs. `Plug 1` was turned off and verified off afterward; the separately named `N64` device was not touched. v19 remains unverified on real hardware because there is no visual capture evidence.
+
+## v20 section-3 DMA follow-up on 2026-08-17
+
+The v20 source correction retains v19 and additionally rounds the section-3 background scratch allocation to the same 16-byte boundary used by its DMA copy. The build produced `artifacts/PD6480iperf-v20-section2-section3-dma-safe-title-2buf-gameplay-3buf-retail-header.z64` with SHA-256 `9d4b9c987363fffc0d525bbcf2937217c8856a4e440d38c1cd2d596d9c011a74`; its xdelta decodes exactly to that ROM.
+
+With `Plug 1` on, the prerelease loader completed `UNFLoader.exe -b -f 3 -r <v20-rom>` in 36.67 seconds and handed off through PIFboot. After restarting Game Capture HD, the device initialized, but both fresh format probes returned `RES_NO_SIGNAL`, followed by `Video signal lost`; no decoded live frame was available. `Plug 1` was turned off and verified off afterward. The separately named `N64` device was not accessed. v20 remains unverified on real hardware because the Elgato video path supplied no live signal.

@@ -1630,8 +1630,9 @@ void bgBuildTables(s32 stagenum)
 		section3compsize = *(u16 *)&header[2];
 		inflatedsize = (inflatedsize | 0xf) + 1;
 
-		// Load and inflate section 3
-		section3 = mempAlloc(inflatedsize + section3compsize, MEMPOOL_STAGE);
+		// Load and inflate section 3. bgLoadFile rounds the DMA length up to a
+		// 16-byte boundary, so reserve the rounded compressed scratch size too.
+		section3 = mempAlloc(inflatedsize + ALIGN16(section3compsize), MEMPOOL_STAGE);
 		scratch = section3 + inflatedsize;
 
 		bgLoadFile(scratch, g_BgSection3 + 4, ((section3compsize - 1) | 0xf) + 1);
