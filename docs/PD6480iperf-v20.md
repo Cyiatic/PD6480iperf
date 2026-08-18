@@ -17,4 +17,6 @@ The xdelta was decoded against the V1.1 base and reproduced the ROM hash exactly
 
 The candidate uploaded successfully through ED64 with `UNFLoader.exe -b -f 3 -r <v20-rom>` in 36.67 seconds, and the loader/PIFboot handoff completed. A fresh Game Capture HD session enumerated the capture device and initialized its video graph, but both live format probes returned `RES_NO_SIGNAL`, followed by `Video signal lost`; no decoded live frame was available. This is the same capture-path failure seen with the stock control image, so v20 is not visually hardware-verified.
 
+A second v20 pass after restarting Game Capture HD and power-cycling only Kasa `Plug 1` produced the same result: the trace reported `RES_NO_SIGNAL` followed by `Video signal lost`. `Plug 1` was turned off and verified off afterward. The separately named Kasa device `N64` controls another machine and was not queried or toggled.
+
 The N64 power was controlled only through Kasa `Plug 1`, which was turned off and verified off afterward. The separately named Kasa device `N64` controls another machine and was not accessed.
