@@ -2,6 +2,8 @@
 
 v20 retains the v19 640x480i VI configuration, L-trigger frame-rate graph, title two-buffer allocation, gameplay three-buffer scheduler path, and section-2 DMA fix. It additionally fixes the matching section-3 scratch allocation: `bgLoadFile` copies a 16-byte-rounded compressed length, so the section-3 allocation now reserves `ALIGN16(section3compsize)` bytes for that scratch payload.
 
+As a data-level check, all 60 NTSC-final background segments were parsed using the same header arithmetic as `bgReset`/`bgBuildTables`. Seven section-2 files and 30 section-3 files have compressed data larger than their aligned inflated size; the largest padded DMA tail is 16 bytes in both sections. The v20 allocations reserve that complete padded DMA length, so these tails no longer write beyond their temporary scratch buffers.
+
 ## Artifacts
 
 - ROM: `artifacts/PD6480iperf-v20-section2-section3-dma-safe-title-2buf-gameplay-3buf-retail-header.z64`
