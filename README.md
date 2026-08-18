@@ -60,6 +60,8 @@ The v20 follow-up keeps the v19 VI/framebuffer layout and also rounds the sectio
 
 v20 was uploaded through ED64 with `UNFLoader.exe -b -f 3 -r <v20-rom>`. The Elgato device initialized but reported `RES_NO_SIGNAL` on both fresh format probes and then `Video signal lost`, so there is still no visual hardware verification.
 
+The valid upload-test sequence is to power on `Plug 1`, upload the ROM, leave the console powered while observing it, and power off only when the test ends. A post-upload power cycle resets the EverDrive's volatile image back to its menu and is therefore a recovery/cleanup action, not a boot verification.
+
 The merge is built from the performance source branch, applies the 640x480i VI/framebuffer changes, preserves the L-trigger frame-rate graph, and emits the retail NTSC V1.1 `NPDE`/version-1 cartridge header. An Expansion Pak is required. The minimal candidate remains in the repository as an earlier experimental binary.
 
 The current physical test result is recorded in [`docs/PD6480i-hardware-test.md`](docs/PD6480i-hardware-test.md). The frame-rate graph remains on L, inherited from the performance branch; controller-input testing was not automated in the capture session.

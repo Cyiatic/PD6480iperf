@@ -96,3 +96,11 @@ The upload workflow was retested with the required clean boot sequence: upload t
 - The known-good v7 control ROM uploaded in 36.06 seconds and received the same clean power cycle. The probe again returned `SIGNAL=0 / FORMAT=0` from `20:03:24` through `20:03:59`.
 
 Both passes ended with `Plug 1` off and verified `Relay: 0`. Since the control ROM also supplied no signal after the same clean boot sequence, these passes do not distinguish v20 from v7; current visual hardware verification remains blocked by the Elgato input path. The separately named `N64` device was not queried or toggled.
+
+## Corrected upload semantics and control retest on 2026-08-17
+
+The ED64 is volatile, so switching `Plug 1` off after an upload resets the cartridge to its menu. That sequence is useful for recovery/cleanup but is not a valid boot verification. The valid test sequence is: power on `Plug 1`, upload with the prerelease UNFLoader, leave power on while observing, and switch `Plug 1` off only when the test is finished.
+
+Using that sequence, v20 uploaded successfully in 36.12 seconds. The ED64 framebuffer utility could read the menu after a reset, but after the upload/PIFboot handoff it could no longer access the loader service; this is consistent with the cartridge leaving the menu, but is not visual game evidence. Game Capture HD still returned `COUNT=1 / SIGNAL=0 / FORMAT=0` for 60 seconds. A stock Perfect Dark V1.1 control uploaded in 35.88 seconds and produced the same Elgato result. Enabling the capture application's interlaced-input flag did not change the result and was restored to its original value. The reference `usb64.exe` path reported an index error without transferring a ROM, so the prerelease UNFLoader remains the working upload path.
+
+Both tests ended with `Plug 1` off and verified `Relay: 0`. The separately named `N64` device was not queried or toggled. v20 remains unverified on real hardware because the current Elgato path supplies no decoded signal.
