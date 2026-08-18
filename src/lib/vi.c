@@ -26,23 +26,10 @@ Mtx *var80092870;
 u16 g_ViPerspScale;
 u8 g_ViFrontIndex;
 u8 g_ViBackIndex;
-u8 g_ViFrameBufferCount = 3;
-u16 *g_FrameBuffers[3];
+u16 *g_FrameBuffers[2];
 
 struct rend_vidat g_ViDataArray[] = {
 	{
-		0, 0, 0, 0,
-		640, 480,         // x and y
-		60,               // fovy
-		1.3333333730698f, // aspect
-		30,               // znear
-		10000,            // zfar
-		640, 480,         // bufx and bufy
-		640, 480,         // viewx and viewy
-		0, 0,             // viewleft and viewtop
-		true,             // usezbuf
-		0,
-	}, {
 		0, 0, 0, 0,
 		640, 480,         // x and y
 		60,               // fovy
@@ -99,7 +86,7 @@ void viConfigureForCopyright(u16 *texturedata)
 {
 	s32 i;
 
-	for (i = 0; i < 3; i++) {
+	for (i = 0; i < 2; i++) {
 		g_FrameBuffers[i] = texturedata;
 
 		g_ViDataArray[i].x = 576;
@@ -127,7 +114,7 @@ void viConfigureForLegal(void)
 {
 	s32 i;
 
-	for (i = 0; i < 3; i++) {
+	for (i = 0; i < 2; i++) {
 		g_ViDataArray[i].x = 640;
 		g_ViDataArray[i].bufx = 640;
 		g_ViDataArray[i].viewx = 640;
@@ -167,32 +154,26 @@ void viReset(s32 stagenum)
 	u8 *ptr;
 	u8 *fb0;
 	u8 *fb1;
-	u8 *fb2;
 
 	if (stagenum == STAGE_TITLE) {
 		viSetMode(VIMODE_HI);
 		fbsize = g_ViModeWidths[2] * g_ViModeHeights[2] * 2;
 
-		/*
-		 * The reserved expansion-stage window has room for two 1280x440
-		 * buffers, but not three. Keep title allocation within that window;
-		 * gameplay continues to use the three fixed buffers below.
-		 */
-		g_ViFrameBufferCount = 2;
-		ptr = mempAlloc(fbsize * g_ViFrameBufferCount + 0x40, MEMPOOL_STAGE);
+		/* Keep title allocation within the reserved expansion-stage window. */
+		ptr = mempAlloc(fbsize * 2 + 0x40, MEMPOOL_STAGE);
 		ptr = (u8 *)(((u32)ptr + 0x3f) & 0xffffffc0);
 
 		g_FrameBuffers[0] = (u16 *) ptr;
 		g_FrameBuffers[1] = (u16 *) (ptr + fbsize);
-		g_FrameBuffers[2] = g_FrameBuffers[0];
 	} else {
 		viSetMode(VIMODE_LO);
 		fbsize = FRAMEBUFFER_SIZE;
-		g_ViFrameBufferCount = 3;
 
-		g_FrameBuffers[0] = (void *) (0x80400000 - fbsize);
-		g_FrameBuffers[1] = (void *) (0x80400000);
-		g_FrameBuffers[2] = (void *) (0x80800000 - fbsize);
+		ptr = mempAlloc(fbsize * 2 + 0x40, MEMPOOL_STAGE);
+		ptr = (u8 *)(((u32)ptr + 0x3f) & 0xffffffc0);
+
+		g_FrameBuffers[0] = (u16 *) ptr;
+		g_FrameBuffers[1] = (u16 *) (ptr + fbsize);
 	}
 
 	g_ViFrontData->fb = g_FrameBuffers[g_ViFrontIndex];
@@ -200,12 +181,10 @@ void viReset(s32 stagenum)
 
 	fb0 = (u8 *) g_FrameBuffers[0];
 	fb1 = (u8 *) g_FrameBuffers[1];
-	fb2 = (u8 *) g_FrameBuffers[2];
 
 	for (i = 0; i < fbsize; i++) {
 		fb0[i] = 0;
 		fb1[i] = 0;
-		fb2[i] = 0;
 	}
 
 	g_ViReconfigured = true;
@@ -220,7 +199,7 @@ void viReset(s32 stagenum)
  */
 void viBlack(bool black)
 {
-	black += 3;
+	black += 2;
 	g_ViUnblackTimer = black;
 }
 
@@ -421,8 +400,8 @@ void viUpdateMode(void)
 	g_ViFrontIndex++;
 	g_ViBackIndex++;
 
-	WRAP(g_ViFrontIndex, g_ViFrameBufferCount);
-	WRAP(g_ViBackIndex, g_ViFrameBufferCount);
+	WRAP(g_ViFrontIndex, 2);
+	WRAP(g_ViBackIndex, 2);
 
 	g_ViFrontData = g_ViDataArray + g_ViFrontIndex;
 	g_ViBackData = g_ViDataArray + g_ViBackIndex;
