@@ -19,4 +19,6 @@ The candidate uploaded successfully through ED64 with `UNFLoader.exe -b -f 3 -r 
 
 A second v20 pass after restarting Game Capture HD and power-cycling only Kasa `Plug 1` produced the same result: the trace reported `RES_NO_SIGNAL` followed by `Video signal lost`. `Plug 1` was turned off and verified off afterward. The separately named Kasa device `N64` controls another machine and was not queried or toggled.
 
+The post-upload boot sequence was also retested explicitly: v20 was uploaded, only `Plug 1` was switched off and verified, then switched on and verified before Game Capture HD was restarted. The native Elgato probe returned `SIGNAL=0 / FORMAT=0` for 35 seconds. A cleanly power-cycled v7 control ROM produced the same probe result, so this is not a v20-specific visual failure; the candidate remains unverified because the current capture path supplies no signal.
+
 The N64 power was controlled only through Kasa `Plug 1`, which was turned off and verified off afterward. The separately named Kasa device `N64` controls another machine and was not accessed.

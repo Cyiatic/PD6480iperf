@@ -87,3 +87,12 @@ With `Plug 1` on, the prerelease loader completed `UNFLoader.exe -b -f 3 -r <v20
 ## v20 capture-path retest on 2026-08-17
 
 For a second v20 pass, Game Capture HD was restarted, only `Plug 1` was powered on, and the same ED64 command was run: `UNFLoader.exe -b -f 3 -r <v20-rom>`. The fresh trace again reported `RES_NO_SIGNAL` at `19:29:13`, followed by `Video signal lost` at `19:29:20`. Windows continued to enumerate the Elgato (`USB\\VID_0FD9&PID_0051\\110B14E2A7`) as present and healthy, so this remains a missing input-signal result rather than a capture-device enumeration failure. `Plug 1` was powered off and verified off afterward; the separately named `N64` device was not queried or toggled. This second pass supplies no visual boot evidence for v20.
+
+## Clean post-upload power-cycle controls on 2026-08-17
+
+The upload workflow was retested with the required clean boot sequence: upload through ED64, turn only `Plug 1` off and verify `Relay: 0`, wait, turn `Plug 1` on and verify `Relay: 1`, then restart Game Capture HD before sampling the native capture API.
+
+- v20 uploaded in 35.97 seconds. The Elgato read-only probe returned `SIGNAL=0 / FORMAT=0` at 5-second intervals from `20:00:05` through `20:00:35`.
+- The known-good v7 control ROM uploaded in 36.06 seconds and received the same clean power cycle. The probe again returned `SIGNAL=0 / FORMAT=0` from `20:03:24` through `20:03:59`.
+
+Both passes ended with `Plug 1` off and verified `Relay: 0`. Since the control ROM also supplied no signal after the same clean boot sequence, these passes do not distinguish v20 from v7; current visual hardware verification remains blocked by the Elgato input path. The separately named `N64` device was not queried or toggled.
