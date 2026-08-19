@@ -1286,7 +1286,10 @@ void bgReset(s32 stagenum)
 	// This is the cause and fix for the Challenge 7 memory corruption bug in
 	// NTSC 1.0. A full writeup about the bug and how the fix works can be found
 	// in the docs folder of this project.
-	section2 = mempAlloc(inflatedsize + section2compsize, MEMPOOL_STAGE);
+	/* The DMA length is rounded up to 16 bytes. Reserve that exact length
+	 * after the inflated data so the DMA cannot overwrite the next allocation
+	 * when the stage heap happens to end at this buffer. */
+	section2 = mempAlloc(inflatedsize + ALIGN16(section2compsize), MEMPOOL_STAGE);
 	scratch = (u32) section2 + inflatedsize;
 
 	// Load compressed data from ROM to scratch
@@ -1629,8 +1632,9 @@ void bgBuildTables(s32 stagenum)
 		section3compsize = *(u16 *)&header[2];
 		inflatedsize = (inflatedsize | 0xf) + 1;
 
-		// Load and inflate section 3
-		section3 = mempAlloc(inflatedsize + section3compsize, MEMPOOL_STAGE);
+		// Load and inflate section 3. Reserve the full rounded DMA payload so
+		// its tail cannot hit an adjacent allocation.
+		section3 = mempAlloc(inflatedsize + ALIGN16(section3compsize), MEMPOOL_STAGE);
 		scratch = section3 + inflatedsize;
 
 		bgLoadFile(scratch, g_BgSection3 + 4, ((section3compsize - 1) | 0xf) + 1);

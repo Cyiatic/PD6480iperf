@@ -608,7 +608,7 @@ build/recomp/%/err.english.cc:
 # Link all objects together with ld to make stage1.elf. In this stage, the game,
 # lib and data segments are uncompressed and placed past the end of the ROM.
 $(B_DIR)/stage1.elf: $(O_FILES) ld/pd.ld
-	cpp -DROMID=$(ROMID) -DVERSION=$(VERSION) -DROMALLOCATION_DATA=$(ROMALLOCATION_DATA) -DROMALLOCATION_LIB=$(ROMALLOCATION_LIB) -DROMALLOCATION_GAME=$(ROMALLOCATION_GAME) -DROM_SIZE=$(ROM_SIZE) -P ld/pd.ld -o $(B_DIR)/pd.ld
+	$(TOOLCHAIN)-cpp -Umips -DROMID=$(ROMID) -DVERSION=$(VERSION) -DROMALLOCATION_DATA=$(ROMALLOCATION_DATA) -DROMALLOCATION_LIB=$(ROMALLOCATION_LIB) -DROMALLOCATION_GAME=$(ROMALLOCATION_GAME) -DROM_SIZE=$(ROM_SIZE) -P ld/pd.ld -o $(B_DIR)/pd.ld
 	$(TOOLCHAIN)-ld --no-check-sections -z muldefs -T $(B_DIR)/pd.ld --print-map -o $@ > $(B_DIR)/pd.map
 
 $(B_DIR)/stage1.bin: $(B_DIR)/stage1.elf
@@ -851,10 +851,10 @@ $(B_DIR)/%.o: src/%.c $(ASSETMGR_O_FILES) $(RECOMP_FILES)
 
 $(B_DIR)/%.o: src/%.s
 	@mkdir -p $(dir $@)
-	cpp -P -Wno-trigraphs -I include -I include/PR -I src/include $(C_DEFINES) -D_LANGUAGE_ASSEMBLY -D_MIPSEB $< | $(AS) $(ASFLAGS) -o $@
+	$(TOOLCHAIN)-cpp -Umips -P -Wno-trigraphs -I include -I include/PR -I src/include $(C_DEFINES) -D_LANGUAGE_ASSEMBLY -D_MIPSEB $< | $(AS) $(ASFLAGS) -o $@
 
 $(B_DIR)/ailists/%.o: $(B_DIR)/ailists/%.s
-	cpp -P -Wno-trigraphs -I include -I include/PR -I src/include $(C_DEFINES) -D_LANGUAGE_ASSEMBLY -D_MIPSEB $< | $(AS) $(ASFLAGS) -G 0 -o $@
+	$(TOOLCHAIN)-cpp -Umips -P -Wno-trigraphs -I include -I include/PR -I src/include $(C_DEFINES) -D_LANGUAGE_ASSEMBLY -D_MIPSEB $< | $(AS) $(ASFLAGS) -G 0 -o $@
 
 $(B_DIR)/assets/%.o: $(A_DIR)/%.c $(RECOMP_FILES)
 	@mkdir -p $(dir $@)

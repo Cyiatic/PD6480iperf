@@ -6,6 +6,12 @@ No accurate benchmarking has been done.
 
 The mod is based off the framerate graph mod, so you can press L to toggle the frame rate graph.
 
+## Current v32 candidate
+
+The current candidate is `artifacts/PD6480iperf-v32-exact-bg-dma-safe-retail-header.z64`, with a base-specific xdelta at `artifacts/PD6480iperf-v32-exact-bg-dma-safe-retail-header.xdelta`. It keeps the performance branch, 640x480i mode, L-trigger FPS graph, and Expansion Pak requirement. The focused source fix reserves the full 16-byte-rounded compressed DMA payload for background sections 2 and 3, preventing the DMA tail from overwriting adjacent stage allocations.
+
+The ROM and xdelta are packaged and round-trip verified. The v32 hardware upload completed through the ED64-XIO path, but the current Elgato run did not yield a decodable live frame, so v32 is not marked as gameplay-verified yet. See [`docs/PD6480iperf-v32.md`](docs/PD6480iperf-v32.md).
+
 ## 640x480i variant
 
 The `PD6480iperf` private fork carries a 640x480i framebuffer/VI configuration on top of this performance branch. The source-built, retail-header candidate and its base-specific xdelta are:
