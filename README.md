@@ -6,11 +6,11 @@ No accurate benchmarking has been done.
 
 The mod is based off the framerate graph mod, so you can press L to toggle the frame rate graph.
 
-## Current v32 candidate
+## Current v34 candidate
 
-The current candidate is `artifacts/PD6480iperf-v32-exact-bg-dma-safe-retail-header.z64`, with a base-specific xdelta at `artifacts/PD6480iperf-v32-exact-bg-dma-safe-retail-header.xdelta`. It keeps the performance branch, 640x480i mode, L-trigger FPS graph, and Expansion Pak requirement. The focused source fix reserves the full 16-byte-rounded compressed DMA payload for background sections 2 and 3, preventing the DMA tail from overwriting adjacent stage allocations.
+The current candidate is `artifacts/PD6480iperf-v34-retail-section2-bank-safe.z64`, with a base-specific xdelta at `artifacts/PD6480iperf-v34-retail-section2-bank-safe.xdelta`. It keeps the performance branch, 640x480i mode, L-trigger FPS graph, and Expansion Pak requirement. The source uses the retail V1.1 section-2 background fix (`inflatedsize + 0x8000` with the compressed DMA scratch in the expansion-bank portion) and leaves section 3 on its original path.
 
-The ROM and xdelta are packaged and round-trip verified. The v32 hardware upload completed through the ED64-XIO path, but the current Elgato run did not yield a decodable live frame, so v32 is not marked as gameplay-verified yet. See [`docs/PD6480iperf-v32.md`](docs/PD6480iperf-v32.md).
+The ROM and xdelta are packaged and round-trip verified. The v34 hardware upload completed through the ED64-XIO path and the Elgato reported continuous N64 game audio for approximately 83 seconds, but supplied no decodable video frame. It is therefore a boot/audio-confirmed candidate, not visually gameplay-verified. See [`docs/PD6480iperf-v34.md`](docs/PD6480iperf-v34.md).
 
 ## 640x480i variant
 
