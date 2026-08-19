@@ -30,3 +30,9 @@ The test used only Kasa `Plug 1` for N64 power. The separately named `N64` Kasa 
 - Plug 1 was turned off after the observation window and the ED64 probe then reported no device.
 
 The uploader used for this pass was an ED64-XIO-compatible copy with the same single-command protocol, 8 KiB host write blocks, and a 60-second serial timeout. The stock XIO utility completed a 2 MiB control but stalled late in a 32 MiB stream on this host.
+
+## Corrected live-menu retest — 2026-08-19
+
+This pass followed the physical workflow directly: `Plug 1` was on before the test, the Elgato live preview visibly showed the ED64 menu, and ED64 was present on COM3. v32 then transferred completely through the same XIO uploader in 38.510 seconds at approximately 852 KB/s. The ED64 probe disappeared after `-start`, consistent with leaving the menu for the uploaded ROM.
+
+The Elgato live preview was sampled at approximately 15, 30, and 45 seconds after handoff. It remained black at all three points. No recording was started. A stock-ROM comparison was attempted afterward but its 32 MiB transfer stalled, so it supplies no comparison result. `Plug 1` was turned off at the end; the separate `N64` switch was not used.
