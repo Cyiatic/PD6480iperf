@@ -1286,9 +1286,8 @@ void bgReset(s32 stagenum)
 	// This is the cause and fix for the Challenge 7 memory corruption bug in
 	// NTSC 1.0. A full writeup about the bug and how the fix works can be found
 	// in the docs folder of this project.
-	/* Keep this temporary buffer in the expansion stage bank, as in the
-	 * retail V1.1 fix. The compressed DMA length is rounded to 16 bytes and
-	 * the extra bank space prevents its tail from reaching texture data. */
+	/* Match the retail V1.1 fix exactly: the larger allocation moves this
+	 * temporary buffer into the Expansion Pak stage bank. */
 	section2 = mempAlloc(inflatedsize + 0x8000, MEMPOOL_STAGE);
 	scratch = (u32) section2 + 0x8000;
 
@@ -1632,8 +1631,8 @@ void bgBuildTables(s32 stagenum)
 		section3compsize = *(u16 *)&header[2];
 		inflatedsize = (inflatedsize | 0xf) + 1;
 
-		// Load and inflate section 3. Keep the original allocation here; the
-		// retail V1.1 safety fix applies to section 2 only.
+		// Load and inflate section 3 using the original allocation path. The
+		// retail safety fix is specific to section 2.
 		section3 = mempAlloc(inflatedsize + section3compsize, MEMPOOL_STAGE);
 		scratch = section3 + inflatedsize;
 

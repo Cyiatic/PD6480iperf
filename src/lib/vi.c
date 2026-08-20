@@ -26,22 +26,10 @@ Mtx *var80092870;
 u16 g_ViPerspScale;
 u8 g_ViFrontIndex;
 u8 g_ViBackIndex;
-u16 *g_FrameBuffers[3];
+u16 *g_FrameBuffers[2];
 
 struct rend_vidat g_ViDataArray[] = {
 	{
-		0, 0, 0, 0,
-		640, 480,         // x and y
-		60,               // fovy
-		1.3333333730698f, // aspect
-		30,               // znear
-		10000,            // zfar
-		640, 480,         // bufx and bufy
-		640, 480,         // viewx and viewy
-		0, 0,             // viewleft and viewtop
-		true,             // usezbuf
-		0,
-	}, {
 		0, 0, 0, 0,
 		640, 480,         // x and y
 		60,               // fovy
@@ -98,7 +86,7 @@ void viConfigureForCopyright(u16 *texturedata)
 {
 	s32 i;
 
-	for (i = 0; i < 3; i++) {
+	for (i = 0; i < 2; i++) {
 		g_FrameBuffers[i] = texturedata;
 
 		g_ViDataArray[i].x = 576;
@@ -126,7 +114,7 @@ void viConfigureForLegal(void)
 {
 	s32 i;
 
-	for (i = 0; i < 3; i++) {
+	for (i = 0; i < 2; i++) {
 		g_ViDataArray[i].x = 640;
 		g_ViDataArray[i].bufx = 640;
 		g_ViDataArray[i].viewx = 640;
@@ -166,7 +154,6 @@ void viReset(s32 stagenum)
 	u8 *ptr;
 	u8 *fb0;
 	u8 *fb1;
-	u8 *fb2;
 
 	if (stagenum == STAGE_TITLE) {
 		viSetMode(VIMODE_HI);
@@ -178,16 +165,15 @@ void viReset(s32 stagenum)
 
 		g_FrameBuffers[0] = (u16 *) ptr;
 		g_FrameBuffers[1] = (u16 *) (ptr + fbsize);
-		g_FrameBuffers[2] = g_FrameBuffers[0];
 	} else {
 		viSetMode(VIMODE_LO);
 		fbsize = FRAMEBUFFER_SIZE;
 
 		/* Keep gameplay framebuffers out of the stage heap. The performance
-		 * branch reserves these two banks for the VI. */
+		 * branch uses that heap for room and weapon data, and the original
+		 * allocator reserves these two banks for the VI instead. */
 		g_FrameBuffers[0] = (u16 *) (0x80400000 - fbsize);
 		g_FrameBuffers[1] = (u16 *) 0x80400000;
-		g_FrameBuffers[2] = (u16 *) (0x80800000 - fbsize);
 	}
 
 	g_ViFrontData->fb = g_FrameBuffers[g_ViFrontIndex];
@@ -195,12 +181,10 @@ void viReset(s32 stagenum)
 
 	fb0 = (u8 *) g_FrameBuffers[0];
 	fb1 = (u8 *) g_FrameBuffers[1];
-	fb2 = (u8 *) g_FrameBuffers[2];
 
 	for (i = 0; i < fbsize; i++) {
 		fb0[i] = 0;
 		fb1[i] = 0;
-		fb2[i] = 0;
 	}
 
 	g_ViReconfigured = true;
@@ -405,9 +389,6 @@ void viUpdateMode(void)
 	}
 
 	// 908
-	/* The VI mode table is double-buffered in sched.c. The colour
-	 * framebuffers may be triple-buffered, but the mode slots must remain a
-	 * two-entry ring or the third update writes past var8008dcc0. */
 	g_ViSlot = (g_ViSlot + 1) % 2;
 
 	g_RdpCurTask->framebuffer = g_ViBackData->fb;
@@ -417,8 +398,8 @@ void viUpdateMode(void)
 	g_ViFrontIndex++;
 	g_ViBackIndex++;
 
-	WRAP(g_ViFrontIndex, 3);
-	WRAP(g_ViBackIndex, 3);
+	WRAP(g_ViFrontIndex, 2);
+	WRAP(g_ViBackIndex, 2);
 
 	g_ViFrontData = g_ViDataArray + g_ViFrontIndex;
 	g_ViBackData = g_ViDataArray + g_ViBackIndex;

@@ -12,6 +12,14 @@ The current candidate is `artifacts/PD6480iperf-v49-vi-slot-2-480i-performance.z
 
 The v49 fix preserves triple colour framebuffers but restores the VI mode-slot ring to two entries, matching the scheduler's two `OSViMode` slots. The ROM and xdelta are packaged and round-trip verified. The v49 hardware upload completed through ED64 in 36.33 seconds; Game Capture HD held `640x480p30` and active N64 audio for approximately one minute. The desktop preview remains unusable for visual verification, so this is a signal/audio-confirmed candidate, not an FPS-graph-verified release. See [`docs/PD6480iperf-v49.md`](docs/PD6480iperf-v49.md).
 
+## Staged v50 candidate
+
+v50 is a two-colour-framebuffer follow-up that retains the raw-HAF 480i VI
+registers, two-entry VI mode-slot ring, retail V1.1 section-2 safety fix, and
+L-trigger FPS graph. It is built and xdelta round-trip verified, but its
+real-hardware upload is still pending because Kasa `Plug 1` was offline during
+the latest test pass. See [`docs/PD6480iperf-v50.md`](docs/PD6480iperf-v50.md).
+
 ## 640x480i variant
 
 The `PD6480iperf` private fork carries a 640x480i framebuffer/VI configuration on top of this performance branch. The source-built, retail-header candidate and its base-specific xdelta are:
