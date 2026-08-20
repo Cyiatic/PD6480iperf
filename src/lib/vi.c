@@ -169,11 +169,14 @@ void viReset(s32 stagenum)
 		viSetMode(VIMODE_LO);
 		fbsize = FRAMEBUFFER_SIZE;
 
-		/* Keep gameplay framebuffers out of the stage heap. The performance
-		 * branch uses that heap for room and weapon data, and the original
-		 * allocator reserves these two banks for the VI instead. */
-		g_FrameBuffers[0] = (u16 *) (0x80400000 - fbsize);
-		g_FrameBuffers[1] = (u16 *) 0x80400000;
+		/* Match the hardware-tested v7 performance layout. The two gameplay
+		 * buffers are stage allocations; only the 480i VI register setup is
+		 * changed from the performance branch. */
+		ptr = mempAlloc(fbsize * 2 + 0x40, MEMPOOL_STAGE);
+		ptr = (u8 *)(((u32)ptr + 0x3f) & 0xffffffc0);
+
+		g_FrameBuffers[0] = (u16 *) ptr;
+		g_FrameBuffers[1] = (u16 *) (ptr + fbsize);
 	}
 
 	g_ViFrontData->fb = g_FrameBuffers[g_ViFrontIndex];
@@ -199,7 +202,8 @@ void viReset(s32 stagenum)
  */
 void viBlack(bool black)
 {
-	black += 2;
+	/* Preserve the performance branch's unblank timing used by v7. */
+	black += 3;
 	g_ViUnblackTimer = black;
 }
 

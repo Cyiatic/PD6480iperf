@@ -20,6 +20,18 @@ L-trigger FPS graph. It is built and xdelta round-trip verified, but its
 real-hardware upload is still pending because Kasa `Plug 1` was offline during
 the latest test pass. See [`docs/PD6480iperf-v50.md`](docs/PD6480iperf-v50.md).
 
+## Staged v51 candidate
+
+v51 keeps v50's raw-HAF 480i VI registers, two-entry VI mode-slot ring, retail
+V1.1 section-2 safety fix, and L-trigger FPS graph. It restores the two-buffer
+stage allocation and VI unblank timing used by the real-N64-verified v7 layout.
+The build and base-specific xdelta round-trip are verified; hardware testing
+is still pending while Kasa `Plug 1` is offline. See
+[`docs/PD6480iperf-v51.md`](docs/PD6480iperf-v51.md).
+
+* `artifacts/PD6480iperf-v51-v7-layout-section2-safe.z64`
+* `artifacts/PD6480iperf-v51-v7-layout-section2-safe.xdelta`
+
 ## 640x480i variant
 
 The `PD6480iperf` private fork carries a 640x480i framebuffer/VI configuration on top of this performance branch. The source-built, retail-header candidate and its base-specific xdelta are:

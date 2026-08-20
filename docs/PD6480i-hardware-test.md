@@ -143,3 +143,16 @@ same capture path is black for the stock/menu control, so it cannot distinguish
 the ROM's video contents. No recording was made and no visual gameplay or
 L-trigger graph claim is made. `Plug 1` was powered off after the observation;
 the separately named `N64` switch was not touched.
+
+## v51 v7-layout follow-up on 2026-08-20
+
+v51 keeps v50's raw-HAF 640x480i registers and retail V1.1 section-2 scratch
+fix, but restores the two-buffer stage allocation and VI unblank timing from
+the v7 layout that reached live 3D on real N64 hardware. The packaged ROM is
+`artifacts/PD6480iperf-v51-v7-layout-section2-safe.z64` (SHA-256
+`8d6697fce38641fc6f2b45a3d74c655d5f259d94f7f73d913464ce97048a7449`),
+and its base-specific xdelta round-trips byte-for-byte.
+
+This candidate has not yet been uploaded. At the time of packaging, Kasa
+`Plug 1` was offline, so the ED64 was unavailable and Elgato correctly showed
+no signal. The separately named `N64` switch was not accessed.
