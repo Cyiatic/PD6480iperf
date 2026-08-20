@@ -124,3 +124,22 @@ v34 keeps the retail V1.1 section-2 `+0x8000` background scratch fix and restore
 Only Kasa `Plug 1` was used for N64 power; the separately named `N64` switch was untouched. After `Plug 1` was powered on and a stale uploader process was cleared, ED64 enumerated on COM3. `UNFLoader.exe -b -f 3 -r <v34-rom>` completed the 32 MiB transfer in 36.73 seconds. Game Capture HD reported active N64 audio at approximately 8 seconds and 83 seconds after handoff, but its video pane and Timeshift video remained black/empty. This confirms the image remains alive far beyond the prior early failure, but does not provide visual gameplay or L-trigger graph evidence. No recording was made; the status frame is `artifacts/PD6480iperf-v34-elgato-83s.png`.
 
 `Plug 1` was turned off after the observation window and the ED64 probe reported no device. The separately named `N64` switch was not queried or toggled.
+
+## v49 VI-slot fix and hardware retest on 2026-08-20
+
+The v49 candidate preserves the three colour framebuffers used by the current
+performance merge, but changes `g_ViSlot` back to a two-entry ring. The
+scheduler owns only two `OSViMode` slots; the previous modulo-3 rotation could
+overwrite adjacent scheduler state on the third mode update. The packaged ROM
+is `artifacts/PD6480iperf-v49-vi-slot-2-480i-performance.z64` (SHA-256
+`38d1beabf0672f9e34dbe553d99473769afd17f2ba17a2b845316a5b57f10b4a`), and its
+V1.1 xdelta round-trips byte-for-byte.
+
+With only `Plug 1` powered on, the prerelease UNFLoader completed
+`UNFLoader.exe -b -f 3 -r <v49-rom>` in 36.33 seconds. Game Capture HD held
+`640x480p30` and active N64 audio at level 71 at approximately 18 and 56
+seconds after handoff. The desktop `PrintWindow` capture remained black; the
+same capture path is black for the stock/menu control, so it cannot distinguish
+the ROM's video contents. No recording was made and no visual gameplay or
+L-trigger graph claim is made. `Plug 1` was powered off after the observation;
+the separately named `N64` switch was not touched.

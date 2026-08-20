@@ -6,11 +6,11 @@ No accurate benchmarking has been done.
 
 The mod is based off the framerate graph mod, so you can press L to toggle the frame rate graph.
 
-## Current v34 candidate
+## Current v49 candidate
 
-The current candidate is `artifacts/PD6480iperf-v34-retail-section2-bank-safe.z64`, with a base-specific xdelta at `artifacts/PD6480iperf-v34-retail-section2-bank-safe.xdelta`. It keeps the performance branch, 640x480i mode, L-trigger FPS graph, and Expansion Pak requirement. The source uses the retail V1.1 section-2 background fix (`inflatedsize + 0x8000` with the compressed DMA scratch in the expansion-bank portion) and leaves section 3 on its original path.
+The current candidate is `artifacts/PD6480iperf-v49-vi-slot-2-480i-performance.z64`, with a base-specific xdelta at `artifacts/PD6480iperf-v49-vi-slot-2-480i-performance.xdelta`. It keeps the performance branch, 640x480i mode, L-trigger FPS graph, and Expansion Pak requirement. It also keeps the retail V1.1 section-2 background fix and leaves section 3 on its original path.
 
-The ROM and xdelta are packaged and round-trip verified. The v34 hardware upload completed through the ED64-XIO path and the Elgato reported continuous N64 game audio for approximately 83 seconds, but supplied no decodable video frame. It is therefore a boot/audio-confirmed candidate, not visually gameplay-verified. See [`docs/PD6480iperf-v34.md`](docs/PD6480iperf-v34.md).
+The v49 fix preserves triple colour framebuffers but restores the VI mode-slot ring to two entries, matching the scheduler's two `OSViMode` slots. The ROM and xdelta are packaged and round-trip verified. The v49 hardware upload completed through ED64 in 36.33 seconds; Game Capture HD held `640x480p30` and active N64 audio for approximately one minute. The desktop preview remains unusable for visual verification, so this is a signal/audio-confirmed candidate, not an FPS-graph-verified release. See [`docs/PD6480iperf-v49.md`](docs/PD6480iperf-v49.md).
 
 ## 640x480i variant
 
