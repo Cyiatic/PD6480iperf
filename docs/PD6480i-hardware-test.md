@@ -156,3 +156,40 @@ and its base-specific xdelta round-trips byte-for-byte.
 This candidate has not yet been uploaded. At the time of packaging, Kasa
 `Plug 1` was offline, so the ED64 was unavailable and Elgato correctly showed
 no signal. The separately named `N64` switch was not accessed.
+
+## v52 performance-memory follow-up on 2026-08-20
+
+v52 restores the performance branch's global `FRAMEBUFFER_SIZE` reservation
+for boot, stack, and memory-pool boundaries while keeping a dedicated 640x480
+colour-buffer size in the 480i VI path. The packaged ROM is
+`artifacts/PD6480iperf-v52-perf-memory-reservation-480i.z64` (SHA-256
+`7bef1bd3618b20d56ae364ca8f7a12836f9559c1e4135b5c512b65fe28b830c4`), and its
+base-specific xdelta round-trips byte-for-byte.
+
+Hardware testing is pending. The test must use Kasa `Plug 1` for the N64,
+the ED64 USB path for upload, and Elgato for post-handoff video. The separately
+named `N64` switch is not part of this workflow.
+
+## v59 native-hires hardware verification on 2026-08-20
+
+v59 is the current verified candidate:
+
+* ROM: `artifacts/PD6480iperf-v59-hires-old-working.z64`
+* ROM SHA-256: `97B0C9FD5E5216B42CFFC1A531F115581AC4FD66FABAAC148AB53EE17F9A635E`
+* xdelta: `artifacts/PD6480iperf-v59-hires-old-working.xdelta`
+* xdelta SHA-256: `9947F048B899E2DC0DEF22416F3A49424104077013C90B0D309BFE11D51473D3`
+
+The ROM uploaded successfully through ED64 in 36.33 seconds with only Kasa
+`Plug 1` powering the test N64. After waiting at least 65 seconds after the
+upload handoff, the Elgato flashback contained the N64 logo, Perfect Dark logo,
+and live 3D gameplay. The extracted live-gameplay frame is
+`artifacts/PD6480iperf-v59-live-gameplay.png`.
+
+The test recording was deleted after extraction. `Plug 1` was powered off at
+the end of the test; the separately named `N64` switch was not touched.
+
+The v60-v62 newer-`pd-perf` source-line variants were hardware-tested and each
+produced uniform black after handoff. They are not release candidates. The
+newer source line removed the high-resolution-aware renderer paths, so a
+VI-width/buffer-only change cannot reproduce v59's working high-resolution
+path.

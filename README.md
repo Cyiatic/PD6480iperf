@@ -6,6 +6,17 @@ No accurate benchmarking has been done.
 
 The mod is based off the framerate graph mod, so you can press L to toggle the frame rate graph.
 
+## Current verified v59 candidate
+
+The current console-verified candidate is `artifacts/PD6480iperf-v59-hires-old-working.z64`, with its base-specific xdelta at `artifacts/PD6480iperf-v59-hires-old-working.xdelta`.
+
+* ROM SHA-256: `97B0C9FD5E5216B42CFFC1A531F115581AC4FD66FABAAC148AB53EE17F9A635E`
+* xdelta SHA-256: `9947F048B899E2DC0DEF22416F3A49424104077013C90B0D309BFE11D51473D3`
+
+It retains the performance branch, L-triggered FPS graph, Expansion Pak requirement, and the high-resolution 640x220 framebuffer/native interlaced VI path. The ROM was uploaded through ED64 on a real N64; after the upload handoff and a 65-second run window, Elgato showed the N64 logo, Perfect Dark logo, and live 3D gameplay. The gameplay evidence is `artifacts/PD6480iperf-v59-live-gameplay.png`.
+
+The v60-v62 attempts based on the newer `pd-perf` source line were also built and round-trip checked, but each produced a uniform-black post-handoff capture on real hardware. They are retained as experiments, not recommended candidates. The newer source line removed the high-resolution-aware renderer paths, so changing only its VI width/buffer declarations is insufficient.
+
 ## Current v49 candidate
 
 The current candidate is `artifacts/PD6480iperf-v49-vi-slot-2-480i-performance.z64`, with a base-specific xdelta at `artifacts/PD6480iperf-v49-vi-slot-2-480i-performance.xdelta`. It keeps the performance branch, 640x480i mode, L-trigger FPS graph, and Expansion Pak requirement. It also keeps the retail V1.1 section-2 background fix and leaves section 3 on its original path.
@@ -31,6 +42,19 @@ is still pending while Kasa `Plug 1` is offline. See
 
 * `artifacts/PD6480iperf-v51-v7-layout-section2-safe.z64`
 * `artifacts/PD6480iperf-v51-v7-layout-section2-safe.xdelta`
+
+## Staged v52 candidate
+
+v52 keeps the v51 640x480i/performance layout, but restores the performance
+branch's small global `FRAMEBUFFER_SIZE` reservation for boot, stack, and
+memory-pool boundaries. The actual 640x480 gameplay colour buffers are now
+reserved separately inside the VI implementation. This targets the memory
+interaction isolated by the standalone 480i hardware control test. The build
+and base-specific xdelta round-trip are verified; hardware testing is pending.
+See [`docs/PD6480iperf-v52.md`](docs/PD6480iperf-v52.md).
+
+* `artifacts/PD6480iperf-v52-perf-memory-reservation-480i.z64`
+* `artifacts/PD6480iperf-v52-perf-memory-reservation-480i.xdelta`
 
 ## 640x480i variant
 
