@@ -6,7 +6,24 @@ No accurate benchmarking has been done.
 
 The mod is based off the framerate graph mod, so you can press L to toggle the frame rate graph.
 
-## Current verified v59 candidate
+## v69 640x480i resolution candidate
+
+v59 is a live-verified performance/high-resolution candidate, but its active gameplay path is the 640x220 framebuffer with the non-interlaced NTSC LAN1 VI mode. It is not equivalent to the supplied 640x480i patch.
+
+v69 is the source-built resolution correction for console/Analogue testing:
+
+* `artifacts/PD6480iperf-v69-v59-hires-haf1-480i.z64`
+* `artifacts/PD6480iperf-v69-v59-hires-haf1-480i.xdelta`
+
+It keeps v59's performance branch and L-trigger FPS graph, enables the existing high-resolution renderer at 640x480, selects the NTSC HAF1 interlaced VI path for gameplay, and allocates matching 640x480 colour buffers. The V1.1 xdelta round-trips byte-for-byte.
+
+ROM SHA-256: `941859DDEFE5C5E51CD818A64C4293176BBC07912ABCACAAD020D882B6DC87C8`
+
+xdelta SHA-256: `A5248FFD42C35F7880D5C8E9277045C589B9629D5379C0F1B219AEF9DA75DE5B`
+
+v69 is not yet hardware-verified: the ED64 FTDI device was not present during the latest upload attempt. See [`docs/PD6480iperf-v69.md`](docs/PD6480iperf-v69.md).
+
+## Current live-verified v59 candidate
 
 The current console-verified candidate is `artifacts/PD6480iperf-v59-hires-old-working.z64`, with its base-specific xdelta at `artifacts/PD6480iperf-v59-hires-old-working.xdelta`.
 

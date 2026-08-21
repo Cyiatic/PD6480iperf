@@ -193,3 +193,32 @@ produced uniform black after handoff. They are not release candidates. The
 newer source line removed the high-resolution-aware renderer paths, so a
 VI-width/buffer-only change cannot reproduce v59's working high-resolution
 path.
+
+## v69 640x480i resolution correction on 2026-08-20
+
+The v59 source was audited against the supplied standalone 640x480i patch. Its
+working path is 640x220 with NTSC LAN1 timing, so its live gameplay is not the
+same resolution/timing as the standalone patch. v69 changes only the v59
+resolution path: the high-resolution mode is 640x480, its mode selector enters
+`VIMODE_HI`, and the existing NTSC HAF1 path is used for gameplay. The gameplay
+buffers are enlarged to the matching 640x480 layout. The L-trigger FPS graph
+and v59 performance code remain unchanged.
+
+The packaged files are:
+
+* `artifacts/PD6480iperf-v69-v59-hires-haf1-480i.z64`
+* `artifacts/PD6480iperf-v69-v59-hires-haf1-480i.xdelta`
+
+The ROM SHA-256 is
+`941859DDEFE5C5E51CD818A64C4293176BBC07912ABCACAAD020D882B6DC87C8`; the
+xdelta SHA-256 is
+`A5248FFD42C35F7880D5C8E9277045C589B9629D5379C0F1B219AEF9DA75DE5B`.
+The xdelta was decoded against `Perfect Dark (U) (V1.1) [!].z64` and reproduced
+the ROM byte-for-byte.
+
+The attempted console handoff did not constitute a hardware test. Only Kasa
+`Plug 1` was power-cycled; the separately named `N64` switch was not touched.
+Windows had no present FTDI/ED64 COM device, and both the installed and
+prerelease UNFLoader attempts exited without transferring a ROM. A PnP rescan
+did not restore the device, so there is no post-handoff Elgato result to report.
+`Plug 1` was turned off afterward and no recording was created.
