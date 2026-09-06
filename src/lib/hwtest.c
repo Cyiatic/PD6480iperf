@@ -51,13 +51,28 @@ static bool pdHwPulse(u32 tick, u32 start)
 	return tick >= start && tick < start + 3;
 }
 
+static void pdHwApplyInput(struct contsample *samples, s32 first, s32 last, const OSContPad *pad)
+{
+	s32 index = first;
+	s32 i;
+	if (first == last) return;
+	do {
+		index = (index + 1) % 20;
+		for (i = 0; i < 4; i++) {
+			samples[index].pads[i].button = i == 0 ? pad->button : 0;
+			samples[index].pads[i].stick_x = i == 0 ? pad->stick_x : 0;
+			samples[index].pads[i].stick_y = i == 0 ? pad->stick_y : 0;
+			/* Keep physical errno: scheduler compares adjacent presence status.
+			 * Faking absent pads as present causes repeated SI re-querying. */
+		}
+	} while (index != last);
+}
+
 void pdHwReplay(struct contsample *samples, s32 first, s32 last)
 {
 	OSContPad pad = {0};
 	struct menudialog *dialog;
 	u32 tick;
-	s32 i;
-	s32 index;
 	if (first == last) return;
 	dialog = g_Menus[0].curdialog;
 	tick = ++g_PdHwPhaseTicks;
@@ -129,14 +144,5 @@ void pdHwReplay(struct contsample *samples, s32 first, s32 last)
 	default:
 		break;
 	}
-	index = first;
-	do {
-		index = (index + 1) % 20;
-		for (i = 0; i < 4; i++) {
-			samples[index].pads[i].button = i == 0 ? pad.button : 0;
-			samples[index].pads[i].stick_x = i == 0 ? pad.stick_x : 0;
-			samples[index].pads[i].stick_y = i == 0 ? pad.stick_y : 0;
-			samples[index].pads[i].errno = 0;
-		}
-	} while (index != last);
+	pdHwApplyInput(samples, first, last, &pad);
 }
