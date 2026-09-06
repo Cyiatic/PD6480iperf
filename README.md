@@ -6,20 +6,37 @@ No accurate benchmarking has been done.
 
 The mod is based off the framerate graph mod, so you can press L to toggle the frame rate graph.
 
-## v78: known War opening freeze; follow-up fix in progress
+## v79: pad-cover corruption fix, development candidate
+
+v79 corrects the generated cover-record counts that caused War's opening
+freeze. The exact ROM passes all 60 pad-asset structural audits and initial
+Perfect Agent load checks in all 21 solo missions. Seventeen final snapshots
+are unpaused; four are menus. These are not completed-mission checks. Additional
+tests pass War's old crash point, a fresh Dark/CI boot, the L graph and actual
+Hi-Res on/off inputs. Both modes retain full 640x480 buffers; the checkbox does
+not reallocate them.
+
+ED64 uploaded the exact candidate to an original N64. Fresh Elgato footage shows
+the city/aircraft/rooftop opening past the logos, followed by a black interval
+and the Rare logo again. This is animated-intro evidence, not interactive
+hardware or Analogue verification. Plug 1 is off and recordings were deleted.
+Whole-level preloading remains disabled; speed has not been benchmarked.
+See [v79 evidence, hashes and limitations](docs/PD6480iperf-v79.md).
+
+## v78: known War opening freeze, superseded by v79
 
 The broader 21-mission matrix found a War opening freeze despite 20 initial
 mission-start passes. Its generated pad file advertises 425 cover records but
 contains only 200; setup writes past that data into model tables. Four generated
 pad files have this count mismatch. v78 is not a working full-game release.
-The follow-up fixes the generator count and adds structural bounds checks.
+v79 fixes the generator count and adds structural bounds checks.
 
 v78 addresses the Infiltration/Rescue startup allocation failures and moves
 temporary portal-distance work into reserved loading-time scratch space.
 It retains fixed full 640x480i colour/depth buffers and the L graph. Both
 positions of the legacy Hi-Res checkbox use the same full-resolution mode.
 
-The exact ROM reaches the animated Defection opening on an original N64 through
+The exact ROM reaches the opening's city/traffic view on an original N64 through
 ED64, verified with fresh Elgato frames. Emulator menu-input tests enable and
 disable Hi-Res and resume movement with it enabled; initial Perfect Agent
 mission-load tests include the previously failing Area 51 variants.

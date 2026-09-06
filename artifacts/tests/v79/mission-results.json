@@ -1,0 +1,1746 @@
+[
+  {
+    "requested_stage": "AIRBASE",
+    "requested_stage_id": 39,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 39,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x8031f980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80496000",
+      "hardware_verified": false,
+      "level_paused": false,
+      "g_MempOnboardPools": {
+        "left": "0x803d6b70",
+        "right": "0x803d6b78",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x807256b0",
+        "right": "0x80771950",
+        "free_bytes": 311968
+      },
+      "level_frame_number": 441,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 0,
+      "room_count": 147,
+      "loaded_rooms": [
+        116,
+        118,
+        122,
+        123,
+        124,
+        125,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        137,
+        144,
+        145,
+        146
+      ],
+      "largest_room_gfx_request": {
+        "room": 27,
+        "bytes": 23616
+      },
+      "mema_free_bytes": 202176,
+      "mema_largest_recorded_free_block": 131072,
+      "mema_reserved_bytes": 262144,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 39,
+        "index": 9
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": true
+  },
+  {
+    "requested_stage": "AIRFORCEONE",
+    "requested_stage_id": 49,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 49,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x8031f980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80400000",
+      "hardware_verified": false,
+      "level_paused": false,
+      "g_MempOnboardPools": {
+        "left": "0x803d4ca0",
+        "right": "0x803d4ca8",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x80741b50",
+        "right": "0x8075f250",
+        "free_bytes": 120576
+      },
+      "level_frame_number": 811,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 0,
+      "room_count": 104,
+      "loaded_rooms": [
+        20,
+        22,
+        23,
+        24
+      ],
+      "largest_room_gfx_request": {
+        "room": 50,
+        "bytes": 32416
+      },
+      "mema_free_bytes": 117536,
+      "mema_largest_recorded_free_block": 70384,
+      "mema_reserved_bytes": 159872,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 49,
+        "index": 10
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": true
+  },
+  {
+    "requested_stage": "ATTACKSHIP",
+    "requested_stage_id": 52,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 52,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x8031f980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80496000",
+      "hardware_verified": false,
+      "level_paused": false,
+      "g_MempOnboardPools": {
+        "left": "0x803ce4f0",
+        "right": "0x803ce4f8",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x8070e2d0",
+        "right": "0x807b6d60",
+        "free_bytes": 690832
+      },
+      "level_frame_number": 912,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 0,
+      "room_count": 114,
+      "loaded_rooms": [
+        29,
+        30,
+        113
+      ],
+      "largest_room_gfx_request": {
+        "room": 110,
+        "bytes": 36960
+      },
+      "mema_free_bytes": 242240,
+      "mema_largest_recorded_free_block": 131072,
+      "mema_reserved_bytes": 262144,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 52,
+        "index": 15
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": true
+  },
+  {
+    "requested_stage": "CHICAGO",
+    "requested_stage_id": 29,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 29,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x8031f980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80496000",
+      "hardware_verified": false,
+      "level_paused": false,
+      "g_MempOnboardPools": {
+        "left": "0x803dba20",
+        "right": "0x803dba28",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x8066e9f0",
+        "right": "0x80771950",
+        "free_bytes": 1060704
+      },
+      "level_frame_number": 933,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 0,
+      "room_count": 107,
+      "loaded_rooms": [
+        2,
+        14,
+        16,
+        17,
+        18,
+        20,
+        23,
+        42,
+        43,
+        51,
+        52,
+        53,
+        54,
+        56,
+        57,
+        58,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104
+      ],
+      "largest_room_gfx_request": {
+        "room": 7,
+        "bytes": 17408
+      },
+      "mema_free_bytes": 134864,
+      "mema_largest_recorded_free_block": 128688,
+      "mema_reserved_bytes": 262144,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 29,
+        "index": 4
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": true
+  },
+  {
+    "requested_stage": "CRASHSITE",
+    "requested_stage_id": 28,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 28,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x8031f980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80400000",
+      "hardware_verified": false,
+      "level_paused": false,
+      "g_MempOnboardPools": {
+        "left": "0x803d3ba0",
+        "right": "0x803d3ba8",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x806f5e10",
+        "right": "0x80782300",
+        "free_bytes": 574704
+      },
+      "level_frame_number": 750,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 0,
+      "room_count": 102,
+      "loaded_rooms": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        49,
+        50,
+        69
+      ],
+      "largest_room_gfx_request": {
+        "room": 27,
+        "bytes": 37104
+      },
+      "mema_free_bytes": 171632,
+      "mema_largest_recorded_free_block": 131072,
+      "mema_reserved_bytes": 262144,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 28,
+        "index": 11
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": true
+  },
+  {
+    "requested_stage": "DEEPSEA",
+    "requested_stage_id": 56,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 56,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x8031f980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80400000",
+      "hardware_verified": false,
+      "level_paused": false,
+      "g_MempOnboardPools": {
+        "left": "0x803c46a0",
+        "right": "0x803c46a8",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x8074b0b0",
+        "right": "0x8078b430",
+        "free_bytes": 263040
+      },
+      "level_frame_number": 837,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 0,
+      "room_count": 196,
+      "loaded_rooms": [
+        1,
+        2,
+        3,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "largest_room_gfx_request": {
+        "room": 109,
+        "bytes": 27360
+      },
+      "mema_free_bytes": 182336,
+      "mema_largest_recorded_free_block": 131072,
+      "mema_reserved_bytes": 262144,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 56,
+        "index": 13
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": true
+  },
+  {
+    "requested_stage": "DEFECTION",
+    "requested_stage_id": 48,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 48,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x8031f980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80400000",
+      "hardware_verified": false,
+      "level_paused": false,
+      "g_MempOnboardPools": {
+        "left": "0x803dbb60",
+        "right": "0x803dbb68",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x806d8130",
+        "right": "0x8076cdf0",
+        "free_bytes": 609472
+      },
+      "level_frame_number": 746,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 0,
+      "room_count": 168,
+      "loaded_rooms": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        11,
+        12,
+        58,
+        162,
+        163,
+        164,
+        165
+      ],
+      "largest_room_gfx_request": {
+        "room": 167,
+        "bytes": 61328
+      },
+      "mema_free_bytes": 94272,
+      "mema_largest_recorded_free_block": 87184,
+      "mema_reserved_bytes": 262144,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 48,
+        "index": 0
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": true
+  },
+  {
+    "requested_stage": "DEFENSE",
+    "requested_stage_id": 45,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 45,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x8031f980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80400000",
+      "hardware_verified": false,
+      "level_paused": false,
+      "g_MempOnboardPools": {
+        "left": "0x803e4710",
+        "right": "0x803e4718",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x80705be0",
+        "right": "0x807445b0",
+        "free_bytes": 256464
+      },
+      "level_frame_number": 603,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 0,
+      "room_count": 141,
+      "loaded_rooms": [
+        5,
+        6,
+        17,
+        70,
+        73,
+        74,
+        75,
+        76,
+        83,
+        84,
+        126
+      ],
+      "largest_room_gfx_request": {
+        "room": 84,
+        "bytes": 14752
+      },
+      "mema_free_bytes": 192576,
+      "mema_largest_recorded_free_block": 131072,
+      "mema_reserved_bytes": 262144,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 45,
+        "index": 14
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": true
+  },
+  {
+    "requested_stage": "DUEL",
+    "requested_stage_id": 79,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 79,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x80324980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80496000",
+      "hardware_verified": false,
+      "level_paused": true,
+      "g_MempOnboardPools": {
+        "left": "0x803cd6b0",
+        "right": "0x803cd6b8",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x80652790",
+        "right": "0x807cd110",
+        "free_bytes": 1550720
+      },
+      "level_frame_number": 321,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 3,
+      "room_count": 141,
+      "loaded_rooms": [
+        22,
+        23,
+        24,
+        25
+      ],
+      "largest_room_gfx_request": {
+        "room": 84,
+        "bytes": 15744
+      },
+      "mema_free_bytes": 252720,
+      "mema_largest_recorded_free_block": 131072,
+      "mema_reserved_bytes": 262144,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 79,
+        "index": 20
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": false
+  },
+  {
+    "requested_stage": "ESCAPE",
+    "requested_stage_id": 25,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 25,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x8031f980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80496000",
+      "hardware_verified": false,
+      "level_paused": false,
+      "g_MempOnboardPools": {
+        "left": "0x803c9550",
+        "right": "0x803c9558",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x80768c50",
+        "right": "0x80787140",
+        "free_bytes": 124144
+      },
+      "level_frame_number": 511,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 0,
+      "room_count": 271,
+      "loaded_rooms": [
+        15,
+        145,
+        147,
+        148,
+        151,
+        152,
+        153,
+        154
+      ],
+      "largest_room_gfx_request": {
+        "room": 90,
+        "bytes": 31888
+      },
+      "mema_free_bytes": 232112,
+      "mema_largest_recorded_free_block": 147472,
+      "mema_reserved_bytes": 278544,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 25,
+        "index": 8
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": true
+  },
+  {
+    "requested_stage": "EXTRACTION",
+    "requested_stage_id": 34,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 34,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x8031f980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80496000",
+      "hardware_verified": false,
+      "level_paused": false,
+      "g_MempOnboardPools": {
+        "left": "0x803dbb60",
+        "right": "0x803dbb68",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x806da670",
+        "right": "0x80758720",
+        "free_bytes": 516272
+      },
+      "level_frame_number": 638,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 0,
+      "room_count": 168,
+      "loaded_rooms": [
+        1,
+        15,
+        18,
+        19,
+        20,
+        43,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "largest_room_gfx_request": {
+        "room": 167,
+        "bytes": 61328
+      },
+      "mema_free_bytes": 226576,
+      "mema_largest_recorded_free_block": 131072,
+      "mema_reserved_bytes": 262144,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 34,
+        "index": 2
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": true
+  },
+  {
+    "requested_stage": "G5BUILDING",
+    "requested_stage_id": 30,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 30,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x8031f980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80400000",
+      "hardware_verified": false,
+      "level_paused": false,
+      "g_MempOnboardPools": {
+        "left": "0x803ded60",
+        "right": "0x803ded68",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x806afe50",
+        "right": "0x80775540",
+        "free_bytes": 808688
+      },
+      "level_frame_number": 1006,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 0,
+      "room_count": 99,
+      "loaded_rooms": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        31
+      ],
+      "largest_room_gfx_request": {
+        "room": 40,
+        "bytes": 17136
+      },
+      "mema_free_bytes": 194224,
+      "mema_largest_recorded_free_block": 131072,
+      "mema_reserved_bytes": 262144,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 30,
+        "index": 5
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": true
+  },
+  {
+    "requested_stage": "INFILTRATION",
+    "requested_stage_id": 47,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 47,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x8031f980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80496000",
+      "hardware_verified": false,
+      "level_paused": false,
+      "g_MempOnboardPools": {
+        "left": "0x803c9550",
+        "right": "0x803c9558",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x8074c9f0",
+        "right": "0x807633f0",
+        "free_bytes": 92672
+      },
+      "level_frame_number": 670,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 0,
+      "room_count": 271,
+      "loaded_rooms": [
+        15,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "largest_room_gfx_request": {
+        "room": 90,
+        "bytes": 31888
+      },
+      "mema_free_bytes": 93632,
+      "mema_largest_recorded_free_block": 92048,
+      "mema_reserved_bytes": 131072,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 47,
+        "index": 6
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": true
+  },
+  {
+    "requested_stage": "INVESTIGATION",
+    "requested_stage_id": 51,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 51,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x8031f980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80496000",
+      "hardware_verified": false,
+      "level_paused": false,
+      "g_MempOnboardPools": {
+        "left": "0x803cf860",
+        "right": "0x803cf868",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x806d9340",
+        "right": "0x8078a090",
+        "free_bytes": 724304
+      },
+      "level_frame_number": 1004,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 0,
+      "room_count": 111,
+      "loaded_rooms": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "largest_room_gfx_request": {
+        "room": 105,
+        "bytes": 20256
+      },
+      "mema_free_bytes": 219488,
+      "mema_largest_recorded_free_block": 131072,
+      "mema_reserved_bytes": 262144,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 51,
+        "index": 1
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": true
+  },
+  {
+    "requested_stage": "MAIANSOS",
+    "requested_stage_id": 9,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 9,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x80324980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80496000",
+      "hardware_verified": false,
+      "level_paused": true,
+      "g_MempOnboardPools": {
+        "left": "0x803ce630",
+        "right": "0x803ce638",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x8076f120",
+        "right": "0x8078db70",
+        "free_bytes": 125520
+      },
+      "level_frame_number": 294,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 3,
+      "room_count": 271,
+      "loaded_rooms": [
+        15,
+        147,
+        148,
+        150,
+        151,
+        152,
+        153,
+        154
+      ],
+      "largest_room_gfx_request": {
+        "room": 90,
+        "bytes": 31888
+      },
+      "mema_free_bytes": 303808,
+      "mema_largest_recorded_free_block": 220224,
+      "mema_reserved_bytes": 351296,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 9,
+        "index": 18
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": false
+  },
+  {
+    "requested_stage": "MBR",
+    "requested_stage_id": 55,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 55,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x80324980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80496000",
+      "hardware_verified": false,
+      "level_paused": true,
+      "g_MempOnboardPools": {
+        "left": "0x803e0af0",
+        "right": "0x803e0af8",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x806ba300",
+        "right": "0x8075f3a0",
+        "free_bytes": 676000
+      },
+      "level_frame_number": 428,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 3,
+      "room_count": 168,
+      "loaded_rooms": [
+        1,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        40,
+        42,
+        133
+      ],
+      "largest_room_gfx_request": {
+        "room": 167,
+        "bytes": 61328
+      },
+      "mema_free_bytes": 187840,
+      "mema_largest_recorded_free_block": 131072,
+      "mema_reserved_bytes": 262144,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 55,
+        "index": 17
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": false
+  },
+  {
+    "requested_stage": "PELAGIC",
+    "requested_stage_id": 33,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 33,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x8031f980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80400000",
+      "hardware_verified": false,
+      "level_paused": false,
+      "g_MempOnboardPools": {
+        "left": "0x803c4100",
+        "right": "0x803c4108",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x8070ce20",
+        "right": "0x8078ec30",
+        "free_bytes": 531984
+      },
+      "level_frame_number": 933,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 0,
+      "room_count": 130,
+      "loaded_rooms": [
+        41,
+        42,
+        43
+      ],
+      "largest_room_gfx_request": {
+        "room": 127,
+        "bytes": 57088
+      },
+      "mema_free_bytes": 230096,
+      "mema_largest_recorded_free_block": 131072,
+      "mema_reserved_bytes": 262144,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 33,
+        "index": 12
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": true
+  },
+  {
+    "requested_stage": "RESCUE",
+    "requested_stage_id": 53,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 53,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x8031f980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80496000",
+      "hardware_verified": false,
+      "level_paused": false,
+      "g_MempOnboardPools": {
+        "left": "0x803c9550",
+        "right": "0x803c9558",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x80769170",
+        "right": "0x8077f860",
+        "free_bytes": 91888
+      },
+      "level_frame_number": 620,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 0,
+      "room_count": 271,
+      "loaded_rooms": [
+        15,
+        96,
+        97,
+        98,
+        99,
+        100
+      ],
+      "largest_room_gfx_request": {
+        "room": 90,
+        "bytes": 31888
+      },
+      "mema_free_bytes": 106544,
+      "mema_largest_recorded_free_block": 103920,
+      "mema_reserved_bytes": 131072,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 53,
+        "index": 7
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": true
+  },
+  {
+    "requested_stage": "SKEDARRUINS",
+    "requested_stage_id": 42,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 42,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x8031f980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80496000",
+      "hardware_verified": false,
+      "level_paused": false,
+      "g_MempOnboardPools": {
+        "left": "0x803d0640",
+        "right": "0x803d0648",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x806d71d0",
+        "right": "0x807b8c40",
+        "free_bytes": 924272
+      },
+      "level_frame_number": 786,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 0,
+      "room_count": 138,
+      "loaded_rooms": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        16,
+        28,
+        136
+      ],
+      "largest_room_gfx_request": {
+        "room": 136,
+        "bytes": 24800
+      },
+      "mema_free_bytes": 157424,
+      "mema_largest_recorded_free_block": 131072,
+      "mema_reserved_bytes": 262144,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 42,
+        "index": 16
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": true
+  },
+  {
+    "requested_stage": "VILLA",
+    "requested_stage_id": 44,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 44,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x8031f980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80496000",
+      "hardware_verified": false,
+      "level_paused": false,
+      "g_MempOnboardPools": {
+        "left": "0x803c6620",
+        "right": "0x803c6628",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x807284f0",
+        "right": "0x80769650",
+        "free_bytes": 266592
+      },
+      "level_frame_number": 481,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 0,
+      "room_count": 150,
+      "loaded_rooms": [
+        3,
+        5,
+        12,
+        17,
+        31,
+        32,
+        37,
+        38,
+        39,
+        41,
+        42,
+        60,
+        62,
+        64,
+        74,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113
+      ],
+      "largest_room_gfx_request": {
+        "room": 40,
+        "bytes": 26832
+      },
+      "mema_free_bytes": 62096,
+      "mema_largest_recorded_free_block": 43872,
+      "mema_reserved_bytes": 262144,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 44,
+        "index": 3
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": true
+  },
+  {
+    "requested_stage": "WAR",
+    "requested_stage_id": 22,
+    "rom_sha256": "c618b23fc61cf21e4221221544bacaf6a6749d6863a237a3118daa511cef12b6",
+    "instrumented_menu_selection": true,
+    "source_state_sha256": "877dc08ca39f72d48b7a7ad815b19a2e9ebe8f37afbaed87f860519f35ef558e",
+    "elf_sha256": "56a27fda97279dfcbfd70173ccd9efb7f8bf2269a9170f9b0b4cae9cf496dda1",
+    "eeprom_header_adapter": true,
+    "hardware_verified": false,
+    "exit_code": 0,
+    "resident_code_hashes": {
+      "mainLoop": "39c3b307230078191c750d3c55ebe7260cbada1a9ecff800239c3fc2c1ca3f5a",
+      "memaReset": "d55867069e22d291b3e61b5d91ad5be939a1d5194aa2656977c986fbe152d491",
+      "memaAlloc": "34e1e224170b5aa9586267a879cba9b31c2aacba5c5b06fea1d0813a04edce7b",
+      "func0f004c6c": "88c9476a1f3d9f478cb64481687b6cc95f315576aebfb70f1f22bff50debfddd",
+      "viReset": "0165ce0cd3ea72186cf0034d4df95a332832594856c206695b5f00fb38cd018f",
+      "memaAppendBank": "6aaa240c6b92f847dafaa882fc22b2caa0d670a9070fdd538e80178e52b7e7c5"
+    },
+    "snapshot": {
+      "stage": 22,
+      "logical_vi_resolution": 0,
+      "hires_option": 0,
+      "oom_marker": 0,
+      "oom_requested_bytes": 0,
+      "eeprom_detected": 1,
+      "framebuffers": [
+        "0x80400000",
+        "0x80496000"
+      ],
+      "depth": "0x80323980",
+      "active_dimensions": [
+        640,
+        480
+      ],
+      "active_framebuffer": "0x80400000",
+      "hardware_verified": false,
+      "level_paused": true,
+      "g_MempOnboardPools": {
+        "left": "0x803d0640",
+        "right": "0x803d0648",
+        "free_bytes": 8
+      },
+      "g_MempExpansionPools": {
+        "left": "0x806a8990",
+        "right": "0x807b4980",
+        "free_bytes": 1097712
+      },
+      "level_frame_number": 491,
+      "tick_mode": 1,
+      "in_cutscene": 0,
+      "player_pause_mode": 3,
+      "room_count": 138,
+      "loaded_rooms": [
+        2,
+        28,
+        65,
+        66,
+        67,
+        68,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        79
+      ],
+      "largest_room_gfx_request": {
+        "room": 136,
+        "bytes": 25728
+      },
+      "mema_free_bytes": 191712,
+      "mema_largest_recorded_free_block": 131072,
+      "mema_reserved_bytes": 262144,
+      "mission_config": {
+        "difficulty": 2,
+        "stage": 22,
+        "index": 19
+      }
+    },
+    "load_gate_passed": true,
+    "unpaused_snapshot": false
+  }
+]

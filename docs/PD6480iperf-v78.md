@@ -62,8 +62,8 @@ This is not a claim to preserve that optimization or a measured speed increase.
 
 The exact ROM identified below was uploaded through ED64 in 36.19 seconds after
 switching on Kasa's exact child **Plug 1** at 20:09:59 local time. The unrelated
-**N64** outlet was not operated. Fresh Elgato frames show the animated Defection
-3D opening, including the aircraft and a later city view. The last inspected
+**N64** outlet was not operated. Fresh Elgato frames show the logo animation
+and, later, the opening's city/traffic view. The last inspected
 frame came from the segment created at 20:16:23, not an earlier run.
 
 This establishes boot into the animated 3D intro only. It does not establish
@@ -74,6 +74,10 @@ After inspection, Plug 1 was switched off and **Relay: 0** independently
 verified. The capture process was stopped. All four test video segments and
 their test metadata were permanently deleted (728,659,018 bytes total); only
 small evidence stills remain locally in `../hardware-v78/`.
+
+Evidence correction: `live-2.png` shows the logo animation, not Defection's
+aircraft. The retained `n64-defection-intro.png` now uses the later `live-3.png`
+city/traffic frame. Do not cite the earlier still as a level-scene pass.
 
 ## Emulator evidence
 

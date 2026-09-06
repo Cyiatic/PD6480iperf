@@ -36,6 +36,8 @@ def inspect(elf_path, ram_path):
         'active_framebuffer': hex(word(back + 0x28)),
         'hardware_verified': False,
     }
+    if 'var80084014' in elf.symbols:
+        report['level_paused'] = bool(word(addr('var80084014')))
     for name in ('g_MempOnboardPools', 'g_MempExpansionPools'):
         pool = addr(name) + 4 * 20  # MEMPOOL_STAGE, sizeof(memorypool)
         report[name] = {'left': hex(word(pool + 4)), 'right': hex(word(pool + 8)),
@@ -47,6 +49,9 @@ def inspect(elf_path, ram_path):
         report['level_frame_number'] = word(variables + 0x0c)
         report['tick_mode'] = word(variables + 0x2ac)
         report['in_cutscene'] = word(variables + 0x4bc)
+        player = word(variables + 0x284)
+        if 0x80000000 <= player <= 0x80800000 - 0x1c70:
+            report['player_pause_mode'] = word(player + 0x1a24)
         count = word(variables + 0x2bc)
         rooms = word(addr('g_Rooms'))
         if 0 < count < 4096 and 0x80000000 <= rooms < 0x80800000 - count * 0x90:

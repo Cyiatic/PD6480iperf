@@ -84,6 +84,11 @@ def main():
                     state['oom_marker'] == 0 and state['active_dimensions'] == [640, 480]
                     and state.get('in_cutscene') == 0 and state.get('tick_mode') == 1
                     and state.get('level_frame_number', 0) > 100)
+                # An initialized mission can still be sitting in a pause menu.
+                # Neither flag establishes sustained movement or completion.
+                report['unpaused_snapshot'] = (
+                    report['load_gate_passed'] and state.get('level_paused') is False
+                    and state.get('player_pause_mode') == 0)
         except (subprocess.TimeoutExpired, subprocess.CalledProcessError, ValueError) as error:
             report['error'] = str(error)
             report['load_gate_passed'] = False

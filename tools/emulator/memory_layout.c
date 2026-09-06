@@ -9,4 +9,5 @@ const u32 pdTestLayout[] = {
     OFF(g_vars, roomcount), OFF(g_vars, lvframenum), OFF(g_vars, in_cutscene),
     sizeof(struct room), OFF(room, loaded240), OFF(room, gfxdata),
     OFF(room, vtxbatches), OFF(room, gfxdatalen), OFF(room, flags),
+    OFF(g_vars, currentplayer), sizeof(struct player), OFF(player, pausemode),
 };
