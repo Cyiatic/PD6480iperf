@@ -6142,12 +6142,32 @@ static void bgPreloadSelectedRooms(void)
 	}
 }
 
+static u32 bgGetLateAllocationReserve(void)
+{
+	u32 reserve = 128 * 1024;
+	s32 i;
+
+	/* CI hosts multiplayer setup while PLAYERCOUNT() still equals one.
+	 * menuReset configures all four lazy scratch buffers, and opening a
+	 * dialog on any controller can allocate one before leaving the CI stage.
+	 * Budget the actual pending capacities, not active gameplay players. */
+	if (g_Vars.stagenum == STAGE_CITRAINING) {
+		for (i = 0; i < ARRAYCOUNT(g_Menus); i++) {
+			if (g_Menus[i].unk840.unk004 == NULL) {
+				reserve += ALIGN16(g_Menus[i].unk840.unk008);
+			}
+		}
+	}
+
+	return reserve;
+}
+
 void bgPreload(void)
 {
 	s32 i;
 	u32 maxsize = 0;
 	u32 bytes;
-	u32 reserve = 128 * 1024;
+	u32 reserve;
 	void *bank;
 
 	bgcacheReset(&g_BgCacheHeap);
@@ -6194,11 +6214,7 @@ void bgPreload(void)
 	}
 	g_BgCacheScratch = NULL;
 
-	/* CI's menu model scratch is intentionally lazy in menuRenderModels.
-	 * Reserve its known per-player capacity in addition to general headroom. */
-	if (g_Vars.stagenum == STAGE_CITRAINING) {
-		reserve += 0x25800 * PLAYERCOUNT();
-	}
+	reserve = bgGetLateAllocationReserve();
 	/* Essential stage, weapon and texture allocations are now complete.
 	 * Leave the reserve in the stage heap for later setup/menu/texture requests;
 	 * mema remains separate and unchanged (file manager and damaged vertices).
