@@ -1288,6 +1288,23 @@ static void menuOpenDialog(struct menudialogdef *dialogdef, struct menudialog *d
 void menuPushDialog(struct menudialogdef *dialogdef)
 {
 	if (dialogdef) {
+		/* This storage is shared by previews, mission briefing and challenge
+		 * descriptions. It must exist before any dialog or focus callback. */
+		if (g_Vars.stagenum == STAGE_CITRAINING
+				&& g_Menus[g_MpPlayerNum].unk840.unk004 == NULL) {
+			struct menu840 *scratch = &g_Menus[g_MpPlayerNum].unk840;
+
+			if (scratch->unk008 == 0) {
+				return;
+			}
+
+			scratch->unk004 = mempAlloc(scratch->unk008, MEMPOOL_STAGE);
+
+			if (scratch->unk004 == NULL) {
+				return;
+			}
+		}
+
 		func0f0f37a4(&g_Menus[g_MpPlayerNum].unk840);
 
 		if (g_Menus[g_MpPlayerNum].depth < 6 && g_Menus[g_MpPlayerNum].numdialogs < ARRAYCOUNT(g_Menus[0].dialogs)) {
@@ -1568,13 +1585,6 @@ Gfx *menuRenderModels(Gfx *gdl, struct menu840 *thing, s32 arg2)
 	u16 headfilenum;
 	s32 bodynum;
 	s32 headnum;
-
-	/* CI has four potential setup-menu previews, usually all unused during
-	 * gameplay. Reserve each model buffer only when that preview is rendered. */
-	if (g_Vars.stagenum == STAGE_CITRAINING && thing->unk004 == NULL
-			&& thing->unk008 != 0) {
-		thing->unk004 = mempAlloc(thing->unk008, MEMPOOL_STAGE);
-	}
 
 	if (g_Vars.stagenum != STAGE_CITRAINING && g_Vars.stagenum != STAGE_CREDITS) {
 		if (g_MenuData.unk5d5_01 && arg2 != 1 && arg2 < 3) {
