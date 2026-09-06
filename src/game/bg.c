@@ -1291,8 +1291,9 @@ void bgReset(s32 stagenum)
 		g_BgPreload = false;
 		break;
 	default:
-		/* v75 memory diagnostic: stream through mema, using the existing
-		 * supported path for the four large stages above. */
+		/* Full 480i colour/depth storage leaves too little memory for all
+		 * room geometry and textures at once. Use the bounded mema cache;
+		 * bgTickRooms retains visited rooms while it has spare capacity. */
 		g_BgPreload = false;
 		break;
 	}
@@ -2644,13 +2645,16 @@ void bgGarbageCollectRooms(s32 bytesneeded, bool desparate)
 
 /**
  * Increase the loaded240 timers for rooms which are no longer visible.
- * If any rooms have reached the timer limit then unload them, but don't unload
- * more than 2 rooms per frame.
+ * Retain old rooms while the cache has at least 64 KiB of contiguous spare
+ * capacity for file menus, vertex data and newly visible rooms. Under pressure,
+ * use the original timed eviction (at most two rooms per frame). Immediate
+ * room-load and file-list requests also retain their explicit garbage collection.
  */
 void bgTickRooms(void)
 {
 	s32 numunloaded = 0;
 	s32 i;
+	bool pressure = memaGetLongestFree() < 64 * 1024;
 
 	for (i = 1; i < g_Vars.roomcount; i++) {
 		if (g_Rooms[i].loaded240) {
@@ -2664,7 +2668,7 @@ void bgTickRooms(void)
 				g_Rooms[i].loaded240 = 1;
 			}
 
-			if (numunloaded < 2 && g_Rooms[i].loaded240 == g_BgUnloadDelay240_2) {
+			if (pressure && numunloaded < 2 && g_Rooms[i].loaded240 == g_BgUnloadDelay240_2) {
 				bgUnloadRoom(i);
 				memaDefrag();
 				numunloaded++;

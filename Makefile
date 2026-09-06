@@ -510,7 +510,7 @@ else ifeq ($(COMPILER), gcc)
         -fno-builtin \
         -fno-common \
         -fno-inline-functions \
-        -fno-merge-constants \
+        -fmerge-constants \
         -fno-strict-aliasing \
         -fno-zero-initialized-in-bss \
         -fwrapv \
