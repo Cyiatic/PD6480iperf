@@ -61,13 +61,20 @@ int main(void)
 	assert(bgcacheAlloc(&heap, 131072) == arena);
 	assert(bgcacheAlloc(&heap, 131072) == arena + 135168);
 	for (i = 131072; i < 135168; i++) assert(arena[i] == 0xa5);
-	assert(!bgcacheCanEvict(0, 0));
-	assert(!bgcacheCanEvict(10, 10));
-	assert(!bgcacheCanEvict(10, 9));
-	assert(!bgcacheCanEvict(10, 8));
-	assert(bgcacheCanEvict(10, 7));
-	assert(!bgcacheCanEvict(0, UINT32_MAX));
-	assert(bgcacheCanEvict(0, UINT32_MAX - 2));
+	assert(!bgcacheCanEvict(0, 0, false));
+	assert(!bgcacheCanEvict(10, 10, false));
+	assert(!bgcacheCanEvict(10, 9, false));
+	assert(!bgcacheCanEvict(10, 8, false));
+	assert(bgcacheCanEvict(10, 7, false));
+	assert(!bgcacheCanEvict(0, UINT32_MAX, false));
+	assert(bgcacheCanEvict(0, UINT32_MAX - 2, false));
+	for (i = 0; i < 512; i++) {
+		u32 epoch = UINT32_MAX - 255 + i;
+		for (j = 0; j < 512; j++) {
+			assert(bgcacheCanEvict(epoch, epoch - j, false) == (j >= 3));
+			assert(bgcacheCanEvict(epoch, epoch - j, true) == (j != 0));
+		}
+	}
 	puts("PASS: actual cache allocator, gap guards, overlap rejection, 100000 fragmentation operations, task epoch pinning");
 	return 0;
 }

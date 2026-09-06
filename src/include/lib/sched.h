@@ -2,9 +2,11 @@
 #define _IN_BOOT_SCHED_H
 #include <ultra64.h>
 #include <sched.h>
+#include "types.h"
 
 void schedSubmitAudTask(OSSched *sc, OSScTask *t);
 void schedSubmitGfxTask(OSSched *sc, OSScTask *t);
+bool schedIsGfxIdle(void);
 void schedInitArtifacts(void);
 void schedResetArtifacts(void);
 void schedUpdatePendingArtifacts(void);

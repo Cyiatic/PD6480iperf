@@ -129,11 +129,14 @@ static void *bgcacheAlloc(struct bgcacheheap *heap, u32 size)
 	return block;
 }
 
-/* mainTick submits exactly one graphics task per epoch and allows at most
- * two outstanding tasks. Keep the current epoch and two predecessors pinned.
- * This is independent of pause/time dilation and of per-player portal ticks. */
-static bool bgcacheCanEvict(u32 epoch, u32 lastuse)
+/* Keep the current epoch pinned while its display list is being built. With
+ * graphics in flight, also retain both predecessors as before. A caller may
+ * supply gfxidle only after an atomic scheduler check finds no active/queued
+ * graphics task: previous frames then have no remaining RSP/RDP readers.
+ * This must be called by main, the sole graphics producer, before submission. */
+static bool bgcacheCanEvict(u32 epoch, u32 lastuse, bool gfxidle)
 {
-	return (u32)(epoch - lastuse) >= 3;
+	u32 age = epoch - lastuse;
+	return age >= 3 || (gfxidle && age != 0);
 }
 #endif

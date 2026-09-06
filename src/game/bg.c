@@ -32,6 +32,7 @@
 #include "lib/vi.h"
 #include "lib/dma.h"
 #include "lib/main.h"
+#include "lib/sched.h"
 #include "lib/memp.h"
 #include "lib/mema.h"
 #include "lib/rng.h"
@@ -138,6 +139,7 @@ u32 g_BgCacheMisses;
 u32 g_BgCacheEvictions;
 u32 g_BgCacheLoadFailures;
 u32 g_BgCachePreloadSkipped;
+u32 g_BgCacheIdleEvictions;
 
 void bgRoomCacheNextFrame(void)
 {
@@ -166,6 +168,10 @@ static void bgCacheUnloadRoom(s32 roomnum)
 static void *bgCacheAlloc(u32 size, s32 loadingroom)
 {
 	void *ptr = bgcacheAlloc(&g_BgCacheHeap, size);
+	bool gfxidle = false;
+	if (!ptr && g_BgCacheMode == 3) {
+		gfxidle = schedIsGfxIdle();
+	}
 	while (!ptr && g_BgCacheMode == 3) {
 		s32 oldest = -1;
 		u32 age = 0;
@@ -173,7 +179,7 @@ static void *bgCacheAlloc(u32 size, s32 loadingroom)
 		for (i = 1; i < g_Vars.roomcount; i++) {
 			u32 elapsed = g_BgCacheEpoch - g_BgCacheRooms[i].lastuse;
 			if (i != loadingroom && g_Rooms[i].loaded240
-					&& bgcacheCanEvict(g_BgCacheEpoch, g_BgCacheRooms[i].lastuse)
+					&& bgcacheCanEvict(g_BgCacheEpoch, g_BgCacheRooms[i].lastuse, gfxidle)
 					&& elapsed > age) {
 				oldest = i;
 				age = elapsed;
@@ -181,6 +187,9 @@ static void *bgCacheAlloc(u32 size, s32 loadingroom)
 		}
 		if (oldest < 0) {
 			break;
+		}
+		if (age < 3) {
+			g_BgCacheIdleEvictions++;
 		}
 		bgCacheUnloadRoom(oldest);
 		g_BgCacheEvictions++;
@@ -6187,6 +6196,7 @@ void bgPreload(u32 prepaidlatebytes)
 	g_BgCacheEvictions = 0;
 	g_BgCacheLoadFailures = 0;
 	g_BgCachePreloadSkipped = 0;
+	g_BgCacheIdleEvictions = 0;
 	g_BgCacheRooms = mempAlloc(ALIGN16(g_Vars.roomcount * sizeof(struct bgcacheroom)), MEMPOOL_STAGE);
 	if (!g_BgCacheRooms) {
 		g_BgCacheLoadFailures++;

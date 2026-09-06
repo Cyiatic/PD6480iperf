@@ -26,6 +26,7 @@
 #define OS_SC_YIELDED           0x0020  /* set if yield completed       */
 
 OSSched g_Sched;
+extern OSThread *__osRunningThread;
 OSViMode var8008dcc0[2];
 OSViMode *var8008dd60[2];
 OSViMode var8008dd68[2];
@@ -338,6 +339,27 @@ static void __scMain(void *arg)
 //-----------------------------------------------------------------------------\
 //-- Public functions ---------------------------------------------------------/
 //----------------------------------------------------------------------------/
+
+bool schedIsGfxIdle(void)
+{
+	OSPri prevpri;
+	bool idle;
+	if (__osRunningThread != &g_MainThread) {
+		return false;
+	}
+	prevpri = osGetThreadPri(0);
+
+	/* Main is the only graphics producer. Take one atomic ownership snapshot:
+	 * otherwise the scheduler could move a queued task into a current slot
+	 * between reads and make a live task appear absent. Audio may run later,
+	 * but no new graphics task can be submitted until main resumes/submits. */
+	osSetThreadPri(0, THREADPRI_SCHED + 1);
+	idle = g_Sched.curRDPTask == NULL
+		&& g_Sched.nextGfxTask == NULL && g_Sched.nextGfxTask2 == NULL
+		&& (g_Sched.curRSPTask == NULL || g_Sched.curRSPTask->list.t.type == M_AUDTASK);
+	osSetThreadPri(0, prevpri);
+	return idle;
+}
 
 void schedSubmitAudTask(OSSched *sc, OSScTask *t)
 {
