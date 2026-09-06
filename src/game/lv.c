@@ -395,6 +395,7 @@ void lvReset(s32 stagenum)
 		portalsReset();
 		lightsReset();
 		setCurrentPlayerNum(0);
+		bodyPreloadDefaultBuddyHead();
 		bgPreload();
 	}
 

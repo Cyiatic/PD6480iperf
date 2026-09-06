@@ -10,6 +10,7 @@ void bodiesReset(s32 stagenum);
 
 u32 bodyGetRace(s32 bodynum);
 bool bodyLoad(s32 bodynum);
+void bodyPreloadDefaultBuddyHead(void);
 struct model *body0f02ce8c(s32 bodynum, s32 headnum, struct modelfiledata *bodyfiledata, struct modelfiledata *headfiledata, bool sunglasses, struct model *model, bool isplayer, u8 varyheight);
 struct model *bodyAllocateModel(s32 bodynum, s32 headnum, u32 spawnflags);
 s32 bodyChooseHead(s32 bodynum);

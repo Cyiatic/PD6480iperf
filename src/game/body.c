@@ -278,6 +278,24 @@ static struct model *body0f02d338(s32 bodynum, s32 headnum, struct modelfiledata
 	return body0f02ce8c(bodynum, headnum, bodyfiledata, headfiledata, sunglasses, NULL, false, varyheight);
 }
 
+void bodyPreloadDefaultBuddyHead(void)
+{
+	/* The default AI buddy spawns after the first gameplay ticks. Loading her
+	 * head then needs an extra 32 KiB of temporary model-decompression space,
+	 * which may no longer fit once bgPreload has committed its room banks.
+	 * Load/cache only this known pending head before those banks are sized.
+	 * modeldefLoadToNew releases its scratch through fileSetSize as usual. */
+	if (g_MissionConfig.iscoop && g_Vars.numaibuddies > 0
+			&& !g_Vars.normmplayerisrunning
+			&& g_Vars.stagenum != STAGE_CITRAINING
+			&& g_Vars.stagenum != STAGE_MBR
+			&& !(g_CheatsActiveBank0 & ((1 << CHEAT_PUGILIST)
+				| (1 << CHEAT_HOTSHOT) | (1 << CHEAT_HITANDRUN) | (1 << CHEAT_ALIEN)))
+			&& g_HeadsAndBodies[HEAD_VD].filedata == NULL) {
+		g_HeadsAndBodies[HEAD_VD].filedata = modeldefLoadToNew(g_HeadsAndBodies[HEAD_VD].filenum);
+	}
+}
+
 struct model *bodyAllocateModel(s32 bodynum, s32 headnum, u32 spawnflags)
 {
 	bool sunglasses = false;
