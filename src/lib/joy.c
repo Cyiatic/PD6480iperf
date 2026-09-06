@@ -349,7 +349,8 @@ void joyDebugJoy(void)
 
 	g_JoyData.curstart = g_JoyData.curlast;
 	g_JoyData.curlast = g_JoyData.nextlast;
-	/* V82D isolation: do not run synthetic input. RAM save/blocker unchanged. */
+	/* V82F diagnostic: restore status-preserving input under the watchdog. */
+	pdHwReplay(g_JoyData.samples, g_JoyData.curstart, g_JoyData.curlast);
 
 	for (i = 0; i < 4; i++) {
 		g_JoyData.buttonspressed[i] = 0;

@@ -1020,7 +1020,7 @@ static Gfx *lvPrint(Gfx *gdl)
 		s32 x = 10;
 		s32 y = 155;
 		gdl = text0f153628(gdl);
-		sprintf(label, "V82C TEST P%d\nHI %d CHECK %d\n", g_PdHwPhase,
+		sprintf(label, "V82F TEST P%d\nHI %d CHECK %d\n", g_PdHwPhase,
 			g_HiResEnabled, g_PdHwToggleChecks);
 		gdl = textRender(gdl, &x, &y, label, g_CharsHandelGothicMd,
 			g_FontHandelGothicMd, 0xffff00ff, 0x000000a0, g_ViBackData->x, g_ViBackData->y, 0, 0);
