@@ -25,8 +25,8 @@
 Mtxf var80092830;
 Mtx *var80092870;
 u16 g_ViPerspScale;
-u8 g_ViFrontIndex;
-u8 g_ViBackIndex;
+u8 g_ViFrontIndex = 0;
+u8 g_ViBackIndex = 1;
 u16 *g_FrameBuffers[PD480_BUFFER_COUNT];
 
 struct rend_vidat g_ViDataArray[] = {
@@ -66,8 +66,10 @@ s32 g_ViSlot = 0;
 
 void viConfigureForLogos(void)
 {
-	g_ViFrontIndex = 0;
-	g_ViBackIndex = 1;
+	/* Also called mid-frame when leaving the controller check. Resetting the
+	 * indices here can submit the displayed image twice in succession. With
+	 * two buffers the FIFO then waits forever for itself to replace that image.
+	 * Initialise indices once in .data; preserve the submission order here. */
 
 	g_ViFrontData = g_ViDataArray + g_ViFrontIndex;
 	g_ViBackData = g_ViDataArray + g_ViBackIndex;

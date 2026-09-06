@@ -57,7 +57,7 @@ static void pdHwWatchProc(void *arg)
 	g_ViBackData->x = 320;
 	g_ViBackData->y = 240;
 	crashReset();
-	rmonPrintf("V82G STARTUP TIMEOUT - DIAGNOSTIC\n");
+	rmonPrintf("V82H STARTUP TIMEOUT - DIAGNOSTIC\n");
 	rmonPrintf("STEP %u MAIN STATE %u SCHED STATE %u\n", g_PdHwBootStep, state, schedstate);
 	rmonPrintf("MAIN PC %08x RA %08x\n", g_MainThread.context.pc, (u32)g_MainThread.context.ra);
 	rmonPrintf("MAIN CAUSE %08x BAD %08x\n", g_MainThread.context.cause, g_MainThread.context.badvaddr);
