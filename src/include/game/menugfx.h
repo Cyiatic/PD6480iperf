@@ -4,6 +4,10 @@
 #include "data.h"
 #include "types.h"
 
+#define BLURIMG_WIDTH 40
+#define BLURIMG_HEIGHT 30
+#define BLURIMG_BYTES (BLURIMG_WIDTH * BLURIMG_HEIGHT * sizeof(u16))
+
 void menugfxCreateBlur(void);
 Gfx *menugfxRenderBgBlur(Gfx *gdl, u32 colour, s16 arg2, s16 arg3);
 Gfx *menugfxRenderDialogBackground(Gfx *gdl, s32 x1, s32 y1, s32 x2, s32 y2, struct menudialog *dialog, u32 colour1, u32 colour2, f32 arg8);

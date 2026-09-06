@@ -20,8 +20,6 @@
 
 #define NUM_SUCCESS_PARTICLES 280
 
-#define BLURIMG_WIDTH  40
-#define BLURIMG_HEIGHT 30
 #define SAMPLE_WIDTH  8
 #define SAMPLE_HEIGHT 8
 #define PXTOBYTES(val) ((val) * 2)
@@ -103,7 +101,7 @@ Gfx *menugfxRenderBgBlur(Gfx *gdl, u32 colour, s16 arg2, s16 arg3)
 	gDPPipeSync(gdl++);
 	gSPTexture(gdl++, 0xffff, 0xffff, 0, G_TX_RENDERTILE, G_ON);
 
-	gDPLoadTextureBlock(gdl++, g_BlurBuffer, G_IM_FMT_RGBA, G_IM_SIZ_16b, 40, 30, 0,
+	gDPLoadTextureBlock(gdl++, g_BlurBuffer, G_IM_FMT_RGBA, G_IM_SIZ_16b, BLURIMG_WIDTH, BLURIMG_HEIGHT, 0,
 			G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP,
 			G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 
