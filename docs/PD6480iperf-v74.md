@@ -1,6 +1,6 @@
 # v74: full depth allocation and framebuffer readout
 
-Status: **built and statically checked; not uploaded or console-verified**.
+Status: **rejected: runtime framebuffer allocation failure reproduced**.
 This is not a declaration that the Hi-Res freeze is fixed on hardware.
 
 ## Concrete defect corrected
@@ -83,7 +83,7 @@ The stock-format `Dark` 100% EEPROM save is included separately. Its hash is
 It has not been console-import-verified. Back up an existing save before
 manually importing; no existing save was overwritten during this work.
 
-## Hardware access attempt — 2026-09-05
+## Initial hardware access attempt — 2026-09-05
 
 No v74 ROM was uploaded, and no relay was changed.
 
@@ -105,3 +105,25 @@ No v74 ROM was uploaded, and no relay was changed.
 The next required verification is Plug 1 on, successful ED64 upload, fresh
 Elgato frames beyond Rare into gameplay, a Hi-Res checkbox test, and L graph
 showing FB 640x480; then Plug 1 off. Analogue 3D is a separate unverified target.
+
+## Subsequent authenticated test — 2026-09-05
+
+The user completed Kasa CLI login. Exact-child `-device "Plug 1"` on/off/status
+now works. Plug 1 was enabled, v74 uploaded successfully over ED64 in 36.38 s,
+and fresh Elgato timeshift video showed the EverDrive menu, boot/intro imagery
+and Nintendo logo, then black. No gameplay was verified. Plug 1 was turned off
+and `Relay: 0` verified. Temporary test TS segments were removed after retaining
+small stills/contact sheet under `../hardware-v74/`; the separately named N64
+outlet was not operated.
+
+A software-only ParaLLEl N64 cached-interpreter/cxd4/Angrylion test reproduced
+a concrete v74 failure on loading Defection. The 8 MiB RDRAM snapshot reports
+`g_LvOom = 'p'`, `g_LvOomSize = 1,228,864`, `fb0 = NULL`, and only 1,185,552
+bytes free in the expansion stage pool (8 bytes onboard). `viReset` then tries
+to clear the null framebuffer. The old depth overrun is fixed, but the full
+colour/depth images and the performance branch's whole-level room preload
+exceed the available memory. Do not offer v74 as a working candidate.
+
+The stock V1.1 control reached its file-selection menu with the same emulator
+configuration and scripted Start input. Emulator evidence is separate from,
+and does not replace, original N64 or Analogue verification.
