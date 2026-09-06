@@ -12,12 +12,18 @@ The user confirmed that `PD6480iperf-v7-raw-haf-2buf-retail-header.z64`
 displays product identification and then crashes on Analogue 3D. Its SHA-256 is
 `b1e95594dfe7197ba407af0616ad9ab2bb36f841fbfe93983101b7ce91fee19b`.
 Do not use v7 as a known-good control or recommend it for another test.
+An exact-ROM audit finds **686 invalid compressed asset entries**, including
+the Rare logo, which contains a 16-byte header/zero stub instead of its model.
 Historical claims below and in older test notes do not establish reliable boot
 or playable gameplay. See [the exact-binary crash analysis](docs/v7-boot-crash-analysis.md).
 
 The later candidate that the user could play in Carrington Institute still
 freezes when Hi-Res is enabled. No complete 480i/performance fix is verified.
 The separate [Dark 100% save](artifacts/saves/README.md) does not fix ROM faults.
+
+Before any future candidate handoff, run `python tools/audit_rom_assets.py ROM.z64`.
+v69 and v70 pass this compressed-file audit; that alone does not verify their
+rendering, memory layout, or Hi-Res-toggle behavior.
 
 ## v69 640x480i resolution candidate
 

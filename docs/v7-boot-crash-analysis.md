@@ -58,20 +58,74 @@ agent-load operation is in `filemgr.c`. A save has not been ruled out as an
 indirect influence by a controlled A/B test, but there is no evidence here
 that the newly generated Dark agent data caused this pre-menu crash.
 
+## Confirmed malformed assets in the actual v7 ROM
+
+Follow-up inspection identified the invalid input itself. The ROM's compressed
+data segment is at `0x25050`; its uncompressed file table is at offset `0x1d6bc`
+within that segment. The table was detected from this ROM, not imported from
+an unrelated linker map.
+
+`g_ModelStates[MODEL_RARELOGO]` selects `FILE_PRARELOGO` (`0x560`). In v7 the
+entry points to ROM `0x1954e50..0x1954e60`. Its complete 16-byte content is:
+
+```text
+11 73 00 70 00 00 00 00 00 00 00 00 00 00 00 00
+```
+
+The header claims `0x7000` (28,672) decompressed bytes, but the remaining zeros
+are not a valid DEFLATE stream. Independent zlib decoding rejects it with
+`invalid stored block lengths`. The extracted stock Rare-logo model really is
+`0x7000` bytes and begins with root-node offset `0x05000078`.
+
+Consequently, v7 cannot load this mandatory logo from the bytes in its packaged
+ROM. `modeldefLoad` calls pointer conversion after `fileLoadToAddr` without
+rejecting an unsuccessful decompression. This supplies a concrete explanation
+for the invalid model pointer and post-product-identification crash, without
+requiring a theory about Analogue or the newly generated save.
+
+The defect is widespread, not isolated to the logo:
+
+| ROM | Valid compressed files | Invalid compressed files | Rare-logo stored size |
+| --- | ---: | ---: | ---: |
+| v7, SHA-256 `b1e95594...fee19b` | 717 | 686 | 16 bytes (invalid) |
+| v69, SHA-256 `941859dd...dc87c8` | 1403 | 0 | 12,336 bytes |
+| v70, SHA-256 `9eea71f0...3f4dd29` | 1403 | 0 | 12,336 bytes |
+| User's stock USA v1.1 | 1403 | 0 | 12,336 bytes |
+
+All four have 608 raw/non-1173 file entries and two empty aliases. The audit
+does not validate compressed subsections inside raw BG files, audio, or the
+renderer; a zero error count is not a hardware-pass claim.
+
+The header-only pattern is consistent with the old `tools/rarezip` shell
+pipeline emitting the five-byte header before a failed compressor. That
+script lacks pipeline failure handling. The precise historical tool failure
+has not been reconstructed, so this is an explanation of how the packaging
+defect could arise, not a confirmed log-derived cause.
+
+Reproduction (read-only):
+
+```text
+python tools/audit_rom_assets.py artifacts/PD6480iperf-v7-raw-haf-2buf-retail-header.z64
+```
+
+This must exit nonzero. Stock, v69, and v70 pass the same check.
+
 ## What is and is not established
 
 - Established: the exact archived v7 fails; the faulting read is in model
   pointer conversion, with an invalid node pointer.
 - Established: successful product identification is insufficient evidence
   that subsequent model loading works.
-- Not established: where the model data became invalid. File-table selection,
-  DMA/decompression, and buffer ownership must be checked before changing code.
+- Established: the mandatory Rare-logo compressed data is already invalid on
+  disk; 685 other nonempty compressed file entries are invalid as well.
+- Not established: the precise historical compressor/tool invocation that
+  created those header-only assets.
 - Not established: a framebuffer-only fix, a background-section DMA fix, an
   Analogue-only fault, or an effect of the new agent save.
 - No replacement ROM was built or console-tested during this analysis.
   Power/capture/upload hardware was not operated.
 
-The next meaningful diagnostic is to inspect the Rare-logo file table entry,
-compressed header, and model header before and after decompression, while
-checking title/framebuffer memory bounds. Do not suppress the invalid-pointer
-read and report a skipped logo as a fix.
+Do not spend another console test on this v7 binary. Any rebuild must first
+pass the asset audit; the Hi-Res freeze in later, valid-asset candidates remains
+a separate unresolved issue. Do not suppress the invalid-pointer read and
+report a skipped logo as a fix.
