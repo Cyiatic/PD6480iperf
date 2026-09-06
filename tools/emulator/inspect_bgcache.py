@@ -46,6 +46,8 @@ def inspect_cache(result, offsets, elf, address, word, half, physical, count, ro
         ('mode','Mode'), ('epoch','Epoch'), ('misses','Misses'), ('evictions','Evictions'),
         ('load_failures','LoadFailures'), ('preload_skipped','PreloadSkipped'))}
     result['room_cache'] = cache
+    if 'g_BgCacheIdleEvictions' in elf.symbols:
+        cache['idle_reuse_evictions'] = word(address('g_BgCacheIdleEvictions'))
     if cache['mode'] != 3:
         return
     heap = address('g_BgCacheHeap')

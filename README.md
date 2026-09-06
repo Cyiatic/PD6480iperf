@@ -2,6 +2,19 @@
 
 ## Current 480i development status (2026-09-06)
 
+**v86f progress:** the same cold AI-co-op Infiltration software sequence now
+has zero room-load failures (v86d43, v86e12), with full640x480 buffers, valid
+room heap and L working. It reuses old room geometry only after an atomic
+graphics-idle ownership check; current-frame geometry remains pinned.
+Fresh four-controller CI and short four-player Skedar setup/movement/menu
+checks also pass. The21-mission solo matrix is running, not yet a complete
+verification. A normal-v86f ED64 upload completed in37.28s, and inspected
+Elgato frames show real-N64 city/rooftop3D intro. That is not interactive
+normal-ROM gameplay or an Analogue pass. A separate labelled gameplay replay
+is being checked. Plug1OFF confirmed and inspected recording deleted.
+See [v86f evidence and limitations](evidence/v86f-quiescent-room-reuse/README.md).
+No v86f bundle is promoted yet; older results below retain their limitations.
+
 **New v86b limitation found:** entering Quick Go with additional controllers
 exhausts CI's lazy menu scratch allocation (153600-byte request). CI has one
 gameplay player but up to four menu contexts, so the prior reserve was too small.

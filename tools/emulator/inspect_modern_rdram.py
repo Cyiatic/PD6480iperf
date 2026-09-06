@@ -116,7 +116,7 @@ def inspect(elf_path, ram_path, layout_path):
     # Explicit resident code checks, including modern optimized subsystems.
     hashes = {}
     for name in ('mainInit', 'mainLoop', 'mainProc', '__scExec', '__scTryDispatch',
-                 '__scFramebufferAvailable', 'schedSubmitGfxTask', '__scHandleRetrace',
+                 '__scFramebufferAvailable', 'schedSubmitGfxTask', 'schedIsGfxIdle', '__scHandleRetrace',
                  '__scHandleRSP', '__scHandleRDP', 'viReset', 'bgPreload',
                  'bgLoadRoom', 'mblurAllocate', 'mblurReset', 'dmaExec',
                  'menuReset', 'menuPushDialog', 'menuRenderModels',

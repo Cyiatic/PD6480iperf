@@ -1,0 +1,38 @@
+{
+  "workspace": "C:/Users/codex/Documents/N64 2",
+  "rom": ".codex-work/PD6480iperf-v86f-quiescent-room-reuse.z64",
+  "rom_sha256": "bf219fa49620be957f366cb2b84ba255d67712bb36faf3e494ddfabfae7fa41e",
+  "elf": ".codex-work/v86f-stage1.elf",
+  "layout": ".codex-work/v86-mode-layout.bin",
+  "host": ".codex-work/host-watch-v4.exe",
+  "core": ".codex-tools/parallel-headless/parallel_n64_libretro.dll",
+  "samples": [
+    {
+      "directory": ".codex-work/headless-v86f-cold-four",
+      "input": ".codex-work/headless-select-dark.txt",
+      "save": ".codex-work/perfect-dark-performance/artifacts/saves/Perfect-Dark-Dark-100-stock-v1.eep",
+      "log": ".codex-work/v86f-cold-four.host.log",
+      "ticks": 4200,
+      "controller_mask": 15,
+      "observation": "Cold CI with four connected controllers; one gameplay player, no OOM. Parent for ordinary-input Combat and solo seed paths."
+    },
+    {
+      "directory": ".codex-work/headless-v86f-combat-combined",
+      "input": ".codex-work/v86f-combat-combined-input.txt",
+      "parent": ".codex-work/headless-v86f-cold-four",
+      "log": ".codex-work/v86f-combat-combined.host.log",
+      "ticks": 5850,
+      "controller_mask": 15,
+      "observation": "Ordinary menu setup and four-player Skedar; movement, Z while unarmed, all four pause/resume, L. Final frame2367, four alive unpaused players, zero OOM/cache faults. Not a whole match or weapon-fire proof."
+    },
+    {
+      "directory": ".codex-work/headless-v86f-solo-seed",
+      "input": ".codex-work/v86f-solo-seed-input.txt",
+      "parent": ".codex-work/headless-v86f-cold-four",
+      "log": ".codex-work/v86f-solo-seed.host.log",
+      "ticks": 1950,
+      "controller_mask": 15,
+      "observation": "Solo Mission Select with Defection highlighted (visually checked). Compiled mission fields prove cooperative=false, counteroperative=false, AI buddies0."
+    }
+  ]
+}

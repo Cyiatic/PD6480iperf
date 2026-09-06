@@ -1,0 +1,12 @@
+2026-09-06T23:07:41.3965870Z ROM C:\Users\codex\Documents\N64 2\.codex-work\PD6480iperf-v86f-quiescent-room-reuse.z64 SHA256 BF219FA49620BE957F366CB2B84BA255D67712BB36FAF3E494DDFABFAE7FA41E
+2026-09-06T23:07:42.6412142Z Plug 1 off: Devicelist expired, retrieving updated list from TP-Link
+Relay: 0
+2026-09-06T23:07:52.2824724Z Exact ED64 FTDI device restarted with Plug 1 OFF
+2026-09-06T23:07:53.2974378Z Plug 1 on: Relay: 1
+2026-09-06T23:08:29.2499305Z Uploader C:\Users\codex\Documents\N64 2\.codex-work\UNFLoader-x86-pre\UNFLoader.exe SHA256 76D28305FE9DDF209E269D7B5F45927D5069DEACAD5C5166B628E7F7D5A5EA88
+2026-09-06T23:08:29.2543485Z Uploading with GameCapture closed; timeout 65 seconds
+2026-09-06T23:08:29.2709726Z Owned upload PID 15324
+2026-09-06T23:09:36.5206070Z Plug 1 off: Token Refresh: Ok
+Relay: 0
+2026-09-06T23:09:37.4965049Z Plug 1 status: Relay: 0
+2026-09-06T23:09:37.4974970Z Trial cleanup ended; retain bounded recordings until inspected

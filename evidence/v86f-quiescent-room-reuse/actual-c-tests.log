@@ -1,0 +1,6 @@
+actual: PASS: actual idle helper,32 ownership states,audio vs unknown,atomic sampling,priority restoration,non-main rejection
+unlocked-negative: FAIL line 52
+PASS: actual C reserves all pending menus, credits prepaid model bytes without unsigned underflow, conserves total late allowance; old one-player reserve rejected
+PASS: actual C preloads/credits only the pending default buddy head once; returns retained file size, excludes solo/Combat/CI/Mr Blonde/alternate cheats; result is passed to room budgeting
+PASS: 400 ring boundaries, prior/next partitions and physical errno preserved; old fake-presence control rejected
+PASS: actual RAM EEPROM routine round trips, rejects overrun/null and preserves guards

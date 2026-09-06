@@ -1,0 +1,29 @@
+# Fresh v86f cold-four parent. Select actual Solo, then Defection. Verify screen and mode before use.
+# 0..450: headless-v86c-multi-enter; source .codex-work/v86c-multi-enter-input.txt
+30 42 8 0 0 0
+110 116 0 0 22000 0
+170 176 0 0 22000 0
+240 252 1 0 0 0
+# 450..750: headless-v86c-menu-back; source .codex-work/v86c-menu-back-input.txt
+480 492 2 0 0 0
+# 750..1050: real-solo-list; source .codex-work/v86c-real-solo-list-input.txt
+780 786 0 0 -22000
+850 856 0 0 -22000
+940 952 1 0 0
+# 1050..1950: solo-first; source .codex-work/v86c-solo-first-input.txt
+1080 1086 0 0 -22000
+1125 1131 0 0 -22000
+1170 1176 0 0 -22000
+1215 1221 0 0 -22000
+1260 1266 0 0 -22000
+1305 1311 0 0 -22000
+1350 1356 0 0 -22000
+1395 1401 0 0 -22000
+1440 1446 0 0 -22000
+1485 1491 0 0 -22000
+1530 1536 0 0 -22000
+1575 1581 0 0 -22000
+1620 1626 0 0 -22000
+1665 1671 0 0 -22000
+1710 1716 0 0 -22000
+1755 1761 0 0 -22000

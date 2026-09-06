@@ -1,0 +1,22 @@
+{
+  "hardware_verified": false,
+  "snapshot_only": true,
+  "graphics_idle": true,
+  "queues": {
+    "rsp": {
+      "address": "0x0"
+    },
+    "rdp": {
+      "address": "0x0"
+    },
+    "next": {
+      "address": "0x0"
+    },
+    "next2": {
+      "address": "0x0"
+    }
+  },
+  "elf_sha256": "716973dc5894b575355334474e5ca98ee6c04bec49b59e99ef0aa088f3d57f09",
+  "rdram_sha256": "358b5bf5a557fd3f669e84e4a4d7b0a2e514ba154ec187ff89b65e8fe86a4cfe",
+  "layout_sha256": "4d8e6bf55b2164b5a301185685ebe9c2ea3c2a90d43874c8f72e0ccf9c17e965"
+}

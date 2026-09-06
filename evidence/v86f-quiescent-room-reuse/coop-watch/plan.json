@@ -1,0 +1,15 @@
+{
+  "workspace": "C:/Users/codex/Documents/N64 2",
+  "rom": ".codex-work/PD6480iperf-v86f-quiescent-room-reuse.z64",
+  "rom_sha256": "bf219fa49620be957f366cb2b84ba255d67712bb36faf3e494ddfabfae7fa41e",
+  "elf": ".codex-work/v86f-stage1.elf",
+  "layout": ".codex-work/v86-mode-layout.bin",
+  "host": ".codex-work/host-watch-v4.exe",
+  "core": ".codex-tools/parallel-headless/parallel_n64_libretro.dll",
+  "directory": ".codex-work/headless-v86f-coop-watch",
+  "input": ".codex-work/v86d-coop-cold-input.txt",
+  "save": ".codex-work/perfect-dark-performance/artifacts/saves/Perfect-Dark-Dark-100-stock-v1.eep",
+  "log": ".codex-work/v86f-coop-watch.host.log",
+  "ticks": 10800,
+  "controller_mask": 1
+}

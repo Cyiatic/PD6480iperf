@@ -1,0 +1,19 @@
+[
+  {
+    "rom": ".codex-work\\PD6480iperf-v86f-quiescent-room-reuse.z64",
+    "sha256": "bf219fa49620be957f366cb2b84ba255d67712bb36faf3e494ddfabfae7fa41e",
+    "data_stream_offset": "0x25050",
+    "file_table_offset_in_data": "0x1d6ec",
+    "compressed_valid": 1403,
+    "compressed_invalid": 0,
+    "raw_unchecked": 608,
+    "empty_aliases": 2,
+    "rare_logo": {
+      "file_id": "0x560",
+      "rom_offset": "0x1bf5340",
+      "rom_bytes": 12336,
+      "header": "1173007000cc5a4d6c2347766e6a340c"
+    },
+    "invalid_examples": []
+  }
+]

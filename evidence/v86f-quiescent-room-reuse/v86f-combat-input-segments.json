@@ -1,0 +1,108 @@
+[
+  {
+    "Name": "headless-v86c-multi-enter",
+    "Ticks": 450,
+    "Input": ".codex-work/v86c-multi-enter-input.txt",
+    "Lines": [
+      "30 42 8 0 0 0",
+      "110 116 0 0 22000 0",
+      "170 176 0 0 22000 0",
+      "240 252 1 0 0 0"
+    ]
+  },
+  {
+    "Name": "headless-v86c-menu-back",
+    "Ticks": 300,
+    "Input": ".codex-work/v86c-menu-back-input.txt",
+    "Lines": [
+      "30 42 2 0 0 0"
+    ]
+  },
+  {
+    "Name": "headless-v86c-combat-up",
+    "Ticks": 300,
+    "Input": ".codex-work/v86c-combat-up-input.txt",
+    "Lines": [
+      "30 36 0 0 -22000 0",
+      "110 122 1 0 0 0"
+    ]
+  },
+  {
+    "Name": "headless-v86c-combat-join",
+    "Ticks": 600,
+    "Input": ".codex-work/v86b-multi-join-input.txt",
+    "Lines": [
+      "30 42 8 0 0 1",
+      "30 42 8 0 0 2",
+      "30 42 8 0 0 3",
+      "110 116 0 0 22000 0",
+      "170 176 0 0 22000 0",
+      "240 252 1 0 0 0"
+    ]
+  },
+  {
+    "Name": "headless-v86c-combat-setup",
+    "Ticks": 300,
+    "Input": ".codex-work/v86b-multi-players-only-input.txt",
+    "Lines": [
+      "30 42 1 0 0 0"
+    ]
+  },
+  {
+    "Name": "headless-v86c-combat-finish",
+    "Ticks": 300,
+    "Input": ".codex-work/v86b-multi-finish-input.txt",
+    "Lines": [
+      "30 42 1 0 0 0"
+    ]
+  },
+  {
+    "Name": "headless-v86c-combat-start",
+    "Ticks": 1800,
+    "Input": ".codex-work/v86c-combat-start-input.txt",
+    "Lines": [
+      "30 42 1 0 0 0",
+      "30 42 1 0 0 1",
+      "30 42 1 0 0 2",
+      "30 42 1 0 0 3"
+    ]
+  },
+  {
+    "Name": "headless-v86c-four-move",
+    "Ticks": 900,
+    "Input": ".codex-work/v86c-four-move-input.txt",
+    "Lines": [
+      "30 100 0 0 -20000 0",
+      "120 190 0 0 -20000 1",
+      "210 280 0 0 -20000 2",
+      "300 370 0 0 -20000 3",
+      "420 480 4096 0 0 0",
+      "500 560 4096 0 0 1",
+      "580 640 4096 0 0 2",
+      "660 720 4096 0 0 3"
+    ]
+  },
+  {
+    "Name": "headless-v86c-four-pause",
+    "Ticks": 300,
+    "Input": ".codex-work/v86c-four-pause-input.txt",
+    "Lines": [
+      "30 42 8 0 0 0",
+      "30 42 8 0 0 1",
+      "30 42 8 0 0 2",
+      "30 42 8 0 0 3"
+    ]
+  },
+  {
+    "Name": "headless-v86c-four-resume",
+    "Ticks": 600,
+    "Input": ".codex-work/v86c-four-resume-input.txt",
+    "Lines": [
+      "30 42 2 0 0 0",
+      "30 42 2 0 0 1",
+      "30 42 2 0 0 2",
+      "30 42 2 0 0 3",
+      "150 162 1024 0 0 0"
+    ]
+  }
+]

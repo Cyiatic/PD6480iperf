@@ -1,0 +1,26 @@
+[
+  {
+    "sample": "headless-v86f-cold-four",
+    "stage": 38,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Cold CI with four connected controllers; one gameplay player, no OOM. Parent for ordinary-input Combat and solo seed paths."
+  },
+  {
+    "sample": "headless-v86f-combat-combined",
+    "stage": 50,
+    "players": 4,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Ordinary menu setup and four-player Skedar; movement, Z while unarmed, all four pause/resume, L. Final frame2367, four alive unpaused players, zero OOM/cache faults. Not a whole match or weapon-fire proof."
+  },
+  {
+    "sample": "headless-v86f-solo-seed",
+    "stage": 38,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Solo Mission Select with Defection highlighted (visually checked). Compiled mission fields prove cooperative=false, counteroperative=false, AI buddies0."
+  }
+]

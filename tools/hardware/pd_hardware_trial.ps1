@@ -10,7 +10,10 @@ param(
     [switch]$ResetEd64Usb,
     [ValidateSet('UNFLoader','Usb64')][string]$LoaderBackend='UNFLoader',
     [switch]$CaptureOnly,
-    [switch]$ExternalUpload
+    [switch]$ExternalUpload,
+    # Run the worker itself in a tool-provided terminal. UNFLoader terminates
+    # with TerminateProcess(0), which can discard redirected CRT stdout.
+    [switch]$UploadInTerminal
 )
 $ErrorActionPreference='Stop'
 $pdWorkspace='C:\Users\codex\Documents\N64 2'
@@ -24,6 +27,9 @@ if ($LoaderBackend -eq 'Usb64') {
 $pdCaptureExe='C:\Program Files\Elgato\GameCapture\GameCapture.exe'
 $pdRomPath=(Resolve-Path -LiteralPath $Rom).ProviderPath
 if ($CaptureOnly -and $ExternalUpload) { throw 'Choose one no-internal-uploader mode' }
+if ($UploadInTerminal -and ($CaptureOnly -or $ExternalUpload -or $LoaderBackend -ne 'UNFLoader')) {
+    throw 'Terminal upload is supported only for an internal UNFLoader trial'
+}
 $pdRunPath=[IO.Path]::GetFullPath($RunDirectory)
 if (-not $pdRomPath.StartsWith($pdWorkspace+'\', [StringComparison]::OrdinalIgnoreCase) -or
     -not $pdRunPath.StartsWith($pdWorkspace+'\', [StringComparison]::OrdinalIgnoreCase)) { throw 'Targets must remain in the PD workspace' }
@@ -116,13 +122,27 @@ try {
             $pdUploadArgs=@((Quote-Pd ('-rom='+$pdRomPath)),'-start')
         }
         Trace-Pd ('Uploading with GameCapture closed; timeout '+$pdUploadSeconds+' seconds')
-        $pdUpload=Start-Process -FilePath $pdLoader -ArgumentList $pdUploadArgs -WindowStyle Hidden -RedirectStandardOutput (Join-Path $pdRunPath 'upload.log') -RedirectStandardError (Join-Path $pdRunPath 'upload.stderr.log') -PassThru
+        if ($UploadInTerminal) {
+            # Inherit the worker's existing terminal: no new interactive window,
+            # no output redirection, and the same bounded owned-process cleanup.
+            # Preserve the terminal transcript separately; no upload.log is made.
+            $pdUpload=[System.Diagnostics.Process]::new()
+            $pdUpload.StartInfo.FileName=$pdLoader
+            $pdUpload.StartInfo.UseShellExecute=$false
+            foreach ($pdArgument in @('-b','-f','3','-r',$pdRomPath)) {
+                $pdUpload.StartInfo.ArgumentList.Add($pdArgument)
+            }
+            if (-not $pdUpload.Start()) { throw 'Terminal uploader did not start' }
+        } else {
+            $pdUpload=Start-Process -FilePath $pdLoader -ArgumentList $pdUploadArgs -WindowStyle Hidden -RedirectStandardOutput (Join-Path $pdRunPath 'upload.log') -RedirectStandardError (Join-Path $pdRunPath 'upload.stderr.log') -PassThru
+        }
         Trace-Pd ('Owned upload PID '+$pdUpload.Id)
         $pdNativeUploadComplete=$false
         try {
             Wait-PdProcess $pdUpload $pdUploadSeconds
             $pdNativeUploadComplete=$true
         } catch {
+            if ($UploadInTerminal) { throw }
             # The legacy serial utility can print Finished then hang closing
             # its port. Wait-PdProcess has stopped only our owned process.
             # Preserve that failure, but inspect video before cutting power.

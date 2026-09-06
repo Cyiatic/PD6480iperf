@@ -4,6 +4,16 @@ Use `pd_hardware_trial.ps1` as a separate hidden process with the verified
 PowerShell 7 runtime. It owns one upload/capture run and powers only **Plug 1**
 off in `finally`. Never target the unrelated N64 outlet or the strip parent.
 
+For UNFLoader diagnosis, run the worker itself in a tool-provided terminal with
+`-UploadInTerminal`. This inherits the existing terminal without opening another
+window, keeps the same owned uploader timeout and power cleanup, and starts
+capture only after the uploader exits. Do not redirect this mode's stdout.
+Preserve its tool transcript/observations separately; there is no upload.log.
+UNFLoader calls Windows TerminateProcess even for errors, so native exit0 can
+mean failure and redirected CRT text may never flush. Look for its actual
+completion message, then inspect video; neither is a full-image readback.
+This option rejects capture-only/external-upload/Usb64 combinations.
+
 Verified runtime on this host:
 `C:/Users/codex/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe`.
 Do not launch the ambiguous `powershell.exe`: a Windows PowerShell 5.1 launch
@@ -27,6 +37,10 @@ This misses earliest game startup; do not claim unrecorded product/logo states.
 Use a longer observation only for a known progressing replay: its frame-based
 movement/Hi-Res checks are slower on real N64. Check disk headroom first and
 delete inspected video after the bounded run. Short bootstrap checks stay short.
+
+Timeshift files can report zero length until GameCapture closes. Inspect the
+final flushed file before declaring that no video was recorded. A black live
+window or failed desktop activation alone is not a ROM boot result.
 
 While the independent worker runs, inspect its logs without launching a second
 trial. When finished verify explicit Relay 0, inspect fresh Elgato segment
