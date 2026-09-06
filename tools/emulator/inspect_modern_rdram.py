@@ -18,6 +18,9 @@ KEYS = ('magic version vars_size level_frame tick_mode in_cutscene current_playe
         'room_count player_size player_pause room_size room_gfx room_gfx_length '
         'vi_size vi_width vi_height vi_framebuffer sched_size sched_rsp sched_rdp '
         'thread_size thread_state thread_flags thread_pc thread_cause thread_badva').split()
+V2_KEYS = ('player_prop player_isdead player_health player_hands hand_size '
+           'hand_loadedammo player_ammoheld prop_size prop_position prop_rooms '
+           'player_trigger').split()
 
 
 def inspect(elf_path, ram_path, layout_path):
@@ -26,8 +29,12 @@ def inspect(elf_path, ram_path, layout_path):
     if len(ram) != 0x800000 or len(layout) < 4 * len(KEYS):
         raise ValueError('Wrong RAM or layout size')
     offsets = dict(zip(KEYS, struct.unpack_from('>' + 'I' * len(KEYS), layout)))
-    if offsets['magic'] != 0x50443831 or offsets['version'] != 1:
+    if offsets['magic'] != 0x50443831 or offsets['version'] not in (1, 2):
         raise ValueError('Wrong layout magic/version')
+    if offsets['version'] == 2:
+        if len(layout) < 4 * (len(KEYS) + len(V2_KEYS)):
+            raise ValueError('Truncated gameplay layout')
+        offsets.update(zip(V2_KEYS, struct.unpack_from('>' + 'I' * len(V2_KEYS), layout, 4 * len(KEYS))))
     for name, key in [('g_Vars', 'vars_size'), ('g_Sched', 'sched_size'),
                       ('g_MainThread', 'thread_size')]:
         if elf.symbols[name][1] != offsets[key]:
@@ -47,6 +54,9 @@ def inspect(elf_path, ram_path, layout_path):
 
     def byte(address):
         return ram[physical(address, 1) ^ 3]
+
+    def floating(address):
+        return struct.unpack_from('<f', ram, physical(address))[0]
 
     def address(name):
         return elf.symbols[name][0]
@@ -91,9 +101,41 @@ def inspect(elf_path, ram_path, layout_path):
         'oom_requested_bytes': word(address('g_LvOomSize')),
         'eeprom_detected': word(address('g_PakHasEeprom')),
     }
+    if 'g_LvShowStats' in elf.symbols:
+        result['fps_graph_enabled'] = byte(address('g_LvShowStats'))
+        result['fps_graph_page'] = byte(address('g_LvStatsPage'))
+    if 'g_JoyConnectedControllers' in elf.symbols:
+        result['connected_controller_mask'] = byte(address('g_JoyConnectedControllers'))
+    if 'g_PdHwPhase' in elf.symbols:
+        result['synthetic_replay_diagnostic'] = {
+            key: word(address(symbol)) for key, symbol in (
+                ('phase', 'g_PdHwPhase'), ('phase_ticks', 'g_PdHwPhaseTicks'),
+                ('toggle_checks', 'g_PdHwToggleChecks'),
+                ('ram_save_reads', 'g_PdHwSaveReads'), ('ram_save_writes', 'g_PdHwSaveWrites'))}
     current = word(variables + offsets['current_player'])
     if current:
         result['player_pause_mode'] = word(current + offsets['player_pause'])
+        if offsets['version'] == 2:
+            physical(current, offsets['player_size'])
+            result['player_dead'] = word(current + offsets['player_isdead'])
+            result['player_health'] = floating(current + offsets['player_health'])
+            result['player_trigger'] = word(current + offsets['player_trigger'])
+            result['loaded_ammo'] = [[word(current + offsets['player_hands']
+                        + i * offsets['hand_size'] + offsets['hand_loadedammo'] + j * 4)
+                        for j in range(2)] for i in range(2)]
+            result['reserve_ammo'] = [word(current + offsets['player_ammoheld'] + i * 4)
+                                      for i in range(33)]
+            prop = word(current + offsets['player_prop'])
+            if prop:
+                physical(prop, offsets['prop_size'])
+                result['player_position'] = [floating(prop + offsets['prop_position'] + i * 4)
+                                              for i in range(3)]
+                result['player_rooms'] = []
+                for index in range(8):
+                    room = half(prop + offsets['prop_rooms'] + index * 2)
+                    if room < 0:
+                        break
+                    result['player_rooms'].append(room)
     count = word(variables + offsets['room_count'])
     rooms = word(address('g_Rooms'))
     if rooms and 0 < count < 4096:

@@ -4,15 +4,22 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 
-from inspect_modern_rdram import inspect, KEYS
+from inspect_modern_rdram import inspect, KEYS, V2_KEYS
 
 
 class ModernRdramTests(unittest.TestCase):
-    def snapshot(self, bad_layout=False, bad_code=False, buffers=3):
+    def snapshot(self, bad_layout=False, bad_code=False, buffers=3, gameplay=False, truncate=False, replay=False):
         offsets = [0x50443831, 1, 0x504, 12, 0x2ac, 0x4bc, 0x284, 0x2bc,
                    0x1c80, 0x1a34, 0x90, 0x18, 0x84, 0x2c, 0x18, 0x1a, 0x28,
                    0xa8, 0x88, 0x8c, 0x238, 0x10, 0x12, 0x11c, 0x120, 0x124]
         self.assertEqual(len(offsets), len(KEYS))
+        if gameplay:
+            offsets[1] = 2
+            extra = [0xbc, 0xd8, 0xdc, 0x640, 0x900, 0x858, 0x17b8,
+                     0x48, 8, 0x28, 0x1614]
+            self.assertEqual(len(extra), len(V2_KEYS))
+            if not truncate:
+                offsets.extend(extra)
         if bad_layout:
             offsets[2] = 0x508
         symbols = {
@@ -27,6 +34,10 @@ class ModernRdramTests(unittest.TestCase):
                                       'g_PakHasEeprom', 'g_Rooms')):
             symbols[name] = (0x80003300 + index * 4, 4)
         symbols['mainLoop'] = (0x80001000, 8)
+        if replay:
+            for index, name in enumerate(('g_PdHwPhase', 'g_PdHwPhaseTicks',
+                    'g_PdHwToggleChecks', 'g_PdHwSaveReads', 'g_PdHwSaveWrites')):
+                symbols[name] = (0x80003400 + index * 4, 4)
 
         class FakeElf:
             def symbol_data(self, name):
@@ -54,6 +65,18 @@ class ModernRdramTests(unittest.TestCase):
         word(0x80002000 + 0x284, 0x80005000)
         word(0x80005000 + 0x1a34, 3)  # new player ABI
         word(0x80005000 + 0x1a24, 99)  # old offset must not be used
+        if replay:
+            for index, value in enumerate((8, 123, 3, 45, 10)):
+                word(0x80003400 + index * 4, value)
+        if gameplay:
+            word(0x800050bc, 0x80007500)
+            for index, value in enumerate((12.5, -20.0, 45.25)):
+                struct.pack_into('<f', ram, 0x7508 + index * 4, value)
+            half(0x80007528, 9)
+            half(0x8000752a, -1)
+            struct.pack_into('<f', ram, 0x50dc, 0.75)
+            word(0x80005000 + 0x640 + 0x858, 7)
+            word(0x80005000 + 0x17b8 + 4, 184)
 
         with tempfile.TemporaryDirectory(prefix='pd-modern-inspect-') as directory:
             directory = Path(directory)
@@ -81,6 +104,25 @@ class ModernRdramTests(unittest.TestCase):
     def test_resident_code_mismatch_rejected(self):
         with self.assertRaisesRegex(ValueError, 'Resident code mismatch'):
             self.snapshot(bad_code=True)
+
+    def test_gameplay_fields_use_compiled_layout(self):
+        result = self.snapshot(gameplay=True)
+        self.assertEqual(result['player_position'], [12.5, -20, 45.25])
+        self.assertEqual(result['player_rooms'], [9])
+        self.assertEqual(result['player_health'], 0.75)
+        self.assertEqual(result['loaded_ammo'][0][0], 7)
+        self.assertEqual(result['reserve_ammo'][1], 184)
+
+    def test_truncated_gameplay_layout_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'Truncated gameplay layout'):
+            self.snapshot(gameplay=True, truncate=True)
+
+    def test_synthetic_replay_is_explicitly_labelled(self):
+        result = self.snapshot(replay=True)
+        self.assertEqual(result['synthetic_replay_diagnostic'], dict(
+            phase=8, phase_ticks=123, toggle_checks=3, ram_save_reads=45, ram_save_writes=10))
+        self.assertFalse(result['hardware_verified'])
+        self.assertNotIn('synthetic_replay_diagnostic', self.snapshot())
 
 
 if __name__ == '__main__':
