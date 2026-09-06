@@ -28,7 +28,11 @@ ROM SHA256 fdb31ec4f4616fedf63b07d3812d5d51bb85e3843b282f8eefe1631acd4357b5.
 ELF SHA256 d6bcb69889226a13c67660296e8a9aa6d0946ca1d084d1a126b95ab3fa4a5d18.
 CRC1/2 bb7f2f35 / 5c015373.
 
-Normal cold Dark-save emulator test and physical/Analogue testing remain
-pending when this source note is created. Physical input automation on a
-separate diagnostic is not an unchanged-ROM interactive console pass. No
-claim of overall completion or performance benchmark follows from this fix.
+Validation follow-up: exact normal ROM cold Dark test reaches CI; matching
+v83 states pass Hi-Res on/off/on, graph toggles and CI movement (640x480,
+no OOM, 331024 expansion heap bytes free). Exact normal ROM renders different
+animated city intro frames on original N64. Separate v82h finishes phase 8,
+movement/L cycles/all three Hi-Res checks on N64, using synthetic inputs and
+RAM save. Analogue, physical save import and unchanged-ROM interactive console
+play remain open; do not conflate that diagnostic's pass with this binary.
+No overall-completion or comparative-performance claim follows from this fix.
