@@ -1,0 +1,7 @@
+2026-09-06T18:48:59.7338242Z ROM C:\Users\codex\Documents\N64 2\.codex-work\PD6480iperf-v86b-budgeted-rooms.z64 SHA256 C33EC1459B3092D89F5A3B00F82F6B4DD8E59C294B479AA7D039DC7471455DF7
+2026-09-06T18:49:00.8653787Z Plug 1 on: Relay: 1
+2026-09-06T18:49:12.9912543Z Uploading with GameCapture closed; timeout 65 seconds
+2026-09-06T18:49:13.0073154Z Owned upload PID 20176
+2026-09-06T18:50:20.3428468Z Plug 1 off: Relay: 0
+2026-09-06T18:50:21.7691988Z Plug 1 status: Relay: 0
+2026-09-06T18:50:21.7705084Z Trial cleanup ended; retain bounded recordings until inspected

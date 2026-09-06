@@ -1,0 +1,10 @@
+{
+  "rom_sha256": "c33ec1459b3092d89f5a3b00f82f6b4dd8e59c294b479aa7d039dc7471455df7",
+  "elf_sha256": "a207b10b49eb024063751c403829e9fcf54416dac0026a8e1b3351ccdd2075f3",
+  "layout_sha256": "d05a0af19e5587eb69c50e67d27fa5350121a8d7545c0335437d9b094463c3e2",
+  "parent": ".codex-work\\v86b-mission-matrix-a",
+  "hardware_verified": false,
+  "instrumented_menu_selection": false,
+  "ticks": 600,
+  "exercise": true
+}

@@ -1,0 +1,10 @@
+2026-09-06T18:59:25.0914132Z ROM C:\Users\codex\Documents\N64 2\.codex-work\PD6480iperf-v86b-budgeted-rooms.z64 SHA256 C33EC1459B3092D89F5A3B00F82F6B4DD8E59C294B479AA7D039DC7471455DF7
+2026-09-06T18:59:26.8522032Z Plug 1 on: Relay: 1
+2026-09-06T18:59:39.1063623Z EXTERNAL UPLOADER: power/capture lease only; separate terminal evidence is required for upload success
+2026-09-06T18:59:39.2638181Z Owned GameCapture PID 11688 start 2026-09-06T11:59:39.2448620-07:00
+2026-09-06T19:00:24.3159700Z Capture startup allowance ended; observing 160 seconds
+2026-09-06T19:03:05.3157866Z Observation ended; recording still needs inspection
+2026-09-06T19:03:07.1639351Z Plug 1 off: Devicelist expired, retrieving updated list from TP-Link
+Relay: 0
+2026-09-06T19:03:08.2540487Z Plug 1 status: Relay: 0
+2026-09-06T19:03:08.2548110Z Trial cleanup ended; retain bounded recordings until inspected

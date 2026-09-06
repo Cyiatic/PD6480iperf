@@ -1,0 +1,10 @@
+2026-09-06T19:11:05.4424980Z ROM C:\Users\codex\Documents\N64 2\.codex-work\PD6480iperf-v86b-budgeted-rooms.z64 SHA256 C33EC1459B3092D89F5A3B00F82F6B4DD8E59C294B479AA7D039DC7471455DF7
+2026-09-06T19:11:07.2004312Z Plug 1 on: Token Refresh: Ok
+Devicelist expired, retrieving updated list from TP-Link
+Relay: 1
+2026-09-06T19:11:19.3219074Z Uploader C:\Users\codex\Documents\N64 2\.codex-work\usb64-build-reconnect2m\usb64-reconnect2m.exe SHA256 9023BF0BFF221CBF63BE818707480F3071A99312DA2F0A7842B1A8E65A7536CF
+2026-09-06T19:11:19.3265318Z Uploading with GameCapture closed; timeout 120 seconds
+2026-09-06T19:11:19.3352936Z Owned upload PID 17880
+2026-09-06T19:13:20.3237902Z Plug 1 off: Relay: 0
+2026-09-06T19:13:21.0746971Z Plug 1 status: Relay: 0
+2026-09-06T19:13:21.0754465Z Trial cleanup ended; retain bounded recordings until inspected

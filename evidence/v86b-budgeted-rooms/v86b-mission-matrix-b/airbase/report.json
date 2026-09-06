@@ -1,0 +1,2685 @@
+{
+  "requested_stage": "AIRBASE",
+  "requested_stage_id": 39,
+  "menu_index": 9,
+  "ticks": 1965,
+  "load_gate_passed": true,
+  "hardware_verified": false,
+  "instrumented_menu_selection": false,
+  "exit_code": 0,
+  "snapshot": {
+    "hardware_verified": false,
+    "elf_sha256": "a207b10b49eb024063751c403829e9fcf54416dac0026a8e1b3351ccdd2075f3",
+    "rdram_sha256": "422cb9f1afc4d7d6d76f289f4fd340c44ec1f826afd1eb95178595cb5af70b57",
+    "layout_sha256": "d05a0af19e5587eb69c50e67d27fa5350121a8d7545c0335437d9b094463c3e2",
+    "resident_code_hashes": {
+      "mainInit": "7654913a863071811d2ff8fbfae23090c902b57411ad661babd53414862723ad",
+      "mainProc": "83c7d52609fae749dee0d2fc6b0d31d69772e1ef176b3e1fcb1af0508ed29dce",
+      "__scExec": "62ddaaed2731205276d20795591a135dded330f85e29d492ed0944a1de748d70",
+      "__scTryDispatch": "b10a7d97c24f18287e59855ca922395904afb5fee17e829c952daa95cdf9afc2",
+      "schedSubmitGfxTask": "7f1d884774af87aab96e50a5ad562070b6079c7c9f8ca89f11db71bddc6045e0",
+      "__scHandleRetrace": "c24930049503d8d3abab07892f6e475c4f6c9d9e5dbbbd5c3727e26a94b5ae4b",
+      "__scHandleRSP": "f3855a10ba63751cf4fb3baa75699dadab597a2b267f0016e54cd79d235440c3",
+      "__scHandleRDP": "f562c8b64edaf92f625d4ae0f016eeea9332682e1b26e62af32f540b2cce0aa6",
+      "viReset": "a54fc4b29b7f251653d09c06370f0164b3486739b5790aa1f1bc5e3e7fb39ad4",
+      "bgPreload": "44347a33a76cd8e1443a0c86ff1b3bdf4b769e1e40d0c08acdd52ed585bcc3af",
+      "bgLoadRoom": "ef5a892e91928a63be26c7243b219026dec81cd004c619e6281f471d9a5a73a7",
+      "mblurReset": "deec05e6c237eebbcfb2775c8d112a73a314e1d86dc3781cb8bad518c2c944f6",
+      "dmaExec": "78d85fcc3aa04db7c5c8d2e6111a3e88ababc6602a038c8840d265dc85c47be7",
+      "menuReset": "735eb43ac71c479d94117cdf87fb106b0d163ecf12d47f242d88cf2d00c65aaf",
+      "menuPushDialog": "44bb4dacb5480b6b8d51970ba6b87ad2b7a57a5a32e0bd74d08082ff28843a84",
+      "menuRenderModels": "a9646ee6613b0fc7fd1b6898143fc07d213e49063cc378a839f8f43ce2077013",
+      "menugfxCreateBlur": "f5be347e448ac3059adaf5fe9486299ec9676d4258f4c03e6be2c1fd239feb76",
+      "menugfxRenderBgBlur": "95e3eb0f53753f541be1dea72eb9571cdc20630cb7b0c56fe94d56b2075301d0",
+      "menuTextFixedResolution": "442c95b5b44c33d83e3d70833b20c43acc259e14ae4216a9314148051edf1c48",
+      "bgCacheAlloc": "ec3e863a57c39cda2483790f91d859b41f3b0a66a9cd9268f81186c90b7de7a5",
+      "bgCacheUnloadRoom": "80b50fc2248fdc346a403de0fca28a852677dd73fae8b00d5495f78161c7922c",
+      "bgRoomCacheNextFrame": "3cca085d5e2a170216c2eacfb6281b602c145d310d83d4fb3b7b50110408d8ad",
+      "bgTestHitInRoom": "9af387270f5d9bffebfd15dfce611558b25e19891aeb108b4fcd5442c341cac1"
+    },
+    "stage": 39,
+    "level_frame_number": 163,
+    "tick_mode": 1,
+    "in_cutscene": 0,
+    "framebuffers": [
+      "0x8036a000",
+      "0x8076a000"
+    ],
+    "depth": "0x80400000",
+    "active_dimensions": [
+      640,
+      480
+    ],
+    "active_framebuffer": "0x8036a000",
+    "hires_option": 0,
+    "oom_marker": 0,
+    "oom_requested_bytes": 0,
+    "eeprom_detected": 1,
+    "fps_graph_enabled": 1,
+    "fps_graph_page": 0,
+    "connected_controller_mask": 1,
+    "player_pause_mode": 0,
+    "player_dead": 0,
+    "player_health": 1.0,
+    "player_trigger": 0,
+    "loaded_ammo": [
+      [
+        5,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "reserve_ammo": [
+      0,
+      0,
+      0,
+      7,
+      30,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "player_position": [
+      -1088.300048828125,
+      77.75469207763672,
+      -877.2000122070312
+    ],
+    "player_rooms": [
+      127,
+      130
+    ],
+    "room_count": 147,
+    "loaded_rooms": [
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      122,
+      123,
+      124,
+      125,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      137,
+      145,
+      146
+    ],
+    "room_allocations": [
+      {
+        "room": 21,
+        "gfxdata": "0x806588c0",
+        "gfx_bytes": 832,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80658c00",
+        "numvtxbatches": 2
+      },
+      {
+        "room": 22,
+        "gfxdata": "0x80658c40",
+        "gfx_bytes": 2224,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806594f0",
+        "numvtxbatches": 8
+      },
+      {
+        "room": 23,
+        "gfxdata": "0x806595f0",
+        "gfx_bytes": 3040,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8065a1d0",
+        "numvtxbatches": 10
+      },
+      {
+        "room": 24,
+        "gfxdata": "0x8065a310",
+        "gfx_bytes": 11344,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x8065cf60",
+        "numvtxbatches": 40
+      },
+      {
+        "room": 25,
+        "gfxdata": "0x8065d460",
+        "gfx_bytes": 2352,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8065dd90",
+        "numvtxbatches": 7
+      },
+      {
+        "room": 26,
+        "gfxdata": "0x8065de70",
+        "gfx_bytes": 864,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8065e1d0",
+        "numvtxbatches": 2
+      },
+      {
+        "room": 27,
+        "gfxdata": "0x8065e210",
+        "gfx_bytes": 22496,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806639f0",
+        "numvtxbatches": 91
+      },
+      {
+        "room": 28,
+        "gfxdata": "0x80664550",
+        "gfx_bytes": 1936,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80664ce0",
+        "numvtxbatches": 7
+      },
+      {
+        "room": 29,
+        "gfxdata": "0x80664dc0",
+        "gfx_bytes": 1888,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80665520",
+        "numvtxbatches": 5
+      },
+      {
+        "room": 30,
+        "gfxdata": "0x806655c0",
+        "gfx_bytes": 688,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80665870",
+        "numvtxbatches": 2
+      },
+      {
+        "room": 31,
+        "gfxdata": "0x806658b0",
+        "gfx_bytes": 2768,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80666380",
+        "numvtxbatches": 10
+      },
+      {
+        "room": 32,
+        "gfxdata": "0x806664c0",
+        "gfx_bytes": 2176,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80666d40",
+        "numvtxbatches": 7
+      },
+      {
+        "room": 33,
+        "gfxdata": "0x80666e20",
+        "gfx_bytes": 832,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80667160",
+        "numvtxbatches": 2
+      },
+      {
+        "room": 34,
+        "gfxdata": "0x806671a0",
+        "gfx_bytes": 5440,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806686e0",
+        "numvtxbatches": 17
+      },
+      {
+        "room": 35,
+        "gfxdata": "0x80668900",
+        "gfx_bytes": 720,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80668bd0",
+        "numvtxbatches": 2
+      },
+      {
+        "room": 36,
+        "gfxdata": "0x80668c10",
+        "gfx_bytes": 3552,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806699f0",
+        "numvtxbatches": 11
+      },
+      {
+        "room": 37,
+        "gfxdata": "0x80669b50",
+        "gfx_bytes": 6528,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8066b4d0",
+        "numvtxbatches": 23
+      },
+      {
+        "room": 38,
+        "gfxdata": "0x8066b7b0",
+        "gfx_bytes": 17856,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8066fd70",
+        "numvtxbatches": 78
+      },
+      {
+        "room": 39,
+        "gfxdata": "0x80670730",
+        "gfx_bytes": 9808,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80672d80",
+        "numvtxbatches": 42
+      },
+      {
+        "room": 40,
+        "gfxdata": "0x806732c0",
+        "gfx_bytes": 1984,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80673a80",
+        "numvtxbatches": 5
+      },
+      {
+        "room": 41,
+        "gfxdata": "0x80673b20",
+        "gfx_bytes": 1232,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80673ff0",
+        "numvtxbatches": 2
+      },
+      {
+        "room": 42,
+        "gfxdata": "0x80674030",
+        "gfx_bytes": 2144,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80674890",
+        "numvtxbatches": 7
+      },
+      {
+        "room": 43,
+        "gfxdata": "0x80674970",
+        "gfx_bytes": 768,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80674c70",
+        "numvtxbatches": 2
+      },
+      {
+        "room": 44,
+        "gfxdata": "0x80674cb0",
+        "gfx_bytes": 1856,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806753f0",
+        "numvtxbatches": 6
+      },
+      {
+        "room": 45,
+        "gfxdata": "0x806754b0",
+        "gfx_bytes": 8768,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806776f0",
+        "numvtxbatches": 33
+      },
+      {
+        "room": 46,
+        "gfxdata": "0x80677b10",
+        "gfx_bytes": 2944,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80678690",
+        "numvtxbatches": 10
+      },
+      {
+        "room": 47,
+        "gfxdata": "0x806787d0",
+        "gfx_bytes": 2224,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80679080",
+        "numvtxbatches": 7
+      },
+      {
+        "room": 48,
+        "gfxdata": "0x80679160",
+        "gfx_bytes": 6320,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8067aa10",
+        "numvtxbatches": 24
+      },
+      {
+        "room": 49,
+        "gfxdata": "0x8067ad10",
+        "gfx_bytes": 7600,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x8067cac0",
+        "numvtxbatches": 29
+      },
+      {
+        "room": 50,
+        "gfxdata": "0x8067ce60",
+        "gfx_bytes": 1440,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x8067d400",
+        "numvtxbatches": 2
+      },
+      {
+        "room": 51,
+        "gfxdata": "0x8067d440",
+        "gfx_bytes": 6208,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x8067ec80",
+        "numvtxbatches": 20
+      },
+      {
+        "room": 52,
+        "gfxdata": "0x8067ef00",
+        "gfx_bytes": 2864,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x8067fa30",
+        "numvtxbatches": 8
+      },
+      {
+        "room": 53,
+        "gfxdata": "0x8067fb30",
+        "gfx_bytes": 3600,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x80680940",
+        "numvtxbatches": 10
+      },
+      {
+        "room": 54,
+        "gfxdata": "0x80680a80",
+        "gfx_bytes": 1520,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x80681070",
+        "numvtxbatches": 3
+      },
+      {
+        "room": 55,
+        "gfxdata": "0x806810d0",
+        "gfx_bytes": 3568,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x80681ec0",
+        "numvtxbatches": 10
+      },
+      {
+        "room": 56,
+        "gfxdata": "0x80682000",
+        "gfx_bytes": 2160,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x80682870",
+        "numvtxbatches": 6
+      },
+      {
+        "room": 57,
+        "gfxdata": "0x80682930",
+        "gfx_bytes": 4384,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80683a50",
+        "numvtxbatches": 16
+      },
+      {
+        "room": 58,
+        "gfxdata": "0x80683c50",
+        "gfx_bytes": 960,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80684010",
+        "numvtxbatches": 2
+      },
+      {
+        "room": 59,
+        "gfxdata": "0x80684050",
+        "gfx_bytes": 2432,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806849d0",
+        "numvtxbatches": 8
+      },
+      {
+        "room": 60,
+        "gfxdata": "0x80684ad0",
+        "gfx_bytes": 2224,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80685380",
+        "numvtxbatches": 8
+      },
+      {
+        "room": 61,
+        "gfxdata": "0x80685480",
+        "gfx_bytes": 3488,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80686220",
+        "numvtxbatches": 13
+      },
+      {
+        "room": 62,
+        "gfxdata": "0x806863c0",
+        "gfx_bytes": 4144,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806873f0",
+        "numvtxbatches": 17
+      },
+      {
+        "room": 63,
+        "gfxdata": "0x80687610",
+        "gfx_bytes": 12400,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8068a680",
+        "numvtxbatches": 50
+      },
+      {
+        "room": 64,
+        "gfxdata": "0x8068acc0",
+        "gfx_bytes": 1584,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8068b2f0",
+        "numvtxbatches": 5
+      },
+      {
+        "room": 65,
+        "gfxdata": "0x8068b390",
+        "gfx_bytes": 2784,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8068be70",
+        "numvtxbatches": 10
+      },
+      {
+        "room": 66,
+        "gfxdata": "0x8068bfb0",
+        "gfx_bytes": 992,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8068c390",
+        "numvtxbatches": 3
+      },
+      {
+        "room": 67,
+        "gfxdata": "0x8068c3f0",
+        "gfx_bytes": 2304,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8068ccf0",
+        "numvtxbatches": 7
+      },
+      {
+        "room": 68,
+        "gfxdata": "0x8068cdd0",
+        "gfx_bytes": 4896,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x8068e0f0",
+        "numvtxbatches": 15
+      },
+      {
+        "room": 69,
+        "gfxdata": "0x8068e2d0",
+        "gfx_bytes": 5184,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x8068f710",
+        "numvtxbatches": 18
+      },
+      {
+        "room": 70,
+        "gfxdata": "0x8068f950",
+        "gfx_bytes": 3072,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x80690550",
+        "numvtxbatches": 7
+      },
+      {
+        "room": 71,
+        "gfxdata": "0x80690630",
+        "gfx_bytes": 3008,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806911f0",
+        "numvtxbatches": 8
+      },
+      {
+        "room": 72,
+        "gfxdata": "0x806912f0",
+        "gfx_bytes": 3440,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80692060",
+        "numvtxbatches": 11
+      },
+      {
+        "room": 73,
+        "gfxdata": "0x806921c0",
+        "gfx_bytes": 1264,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806926b0",
+        "numvtxbatches": 4
+      },
+      {
+        "room": 74,
+        "gfxdata": "0x80692730",
+        "gfx_bytes": 2288,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80693020",
+        "numvtxbatches": 7
+      },
+      {
+        "room": 75,
+        "gfxdata": "0x80693100",
+        "gfx_bytes": 4528,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806942b0",
+        "numvtxbatches": 18
+      },
+      {
+        "room": 76,
+        "gfxdata": "0x806944f0",
+        "gfx_bytes": 4800,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806957b0",
+        "numvtxbatches": 18
+      },
+      {
+        "room": 77,
+        "gfxdata": "0x806959f0",
+        "gfx_bytes": 4272,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80696aa0",
+        "numvtxbatches": 14
+      },
+      {
+        "room": 78,
+        "gfxdata": "0x80696c60",
+        "gfx_bytes": 2976,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80697800",
+        "numvtxbatches": 8
+      },
+      {
+        "room": 79,
+        "gfxdata": "0x80697900",
+        "gfx_bytes": 3680,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80698760",
+        "numvtxbatches": 13
+      },
+      {
+        "room": 80,
+        "gfxdata": "0x80698900",
+        "gfx_bytes": 3248,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806995b0",
+        "numvtxbatches": 11
+      },
+      {
+        "room": 81,
+        "gfxdata": "0x80699710",
+        "gfx_bytes": 2800,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8069a200",
+        "numvtxbatches": 8
+      },
+      {
+        "room": 82,
+        "gfxdata": "0x8069a300",
+        "gfx_bytes": 3552,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8069b0e0",
+        "numvtxbatches": 12
+      },
+      {
+        "room": 83,
+        "gfxdata": "0x8069b260",
+        "gfx_bytes": 2912,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8069bdc0",
+        "numvtxbatches": 8
+      },
+      {
+        "room": 84,
+        "gfxdata": "0x8069bec0",
+        "gfx_bytes": 5248,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8069d340",
+        "numvtxbatches": 17
+      },
+      {
+        "room": 85,
+        "gfxdata": "0x8069d560",
+        "gfx_bytes": 1104,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8069d9b0",
+        "numvtxbatches": 2
+      },
+      {
+        "room": 86,
+        "gfxdata": "0x8069d9f0",
+        "gfx_bytes": 1104,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8069de40",
+        "numvtxbatches": 2
+      },
+      {
+        "room": 87,
+        "gfxdata": "0x8069de80",
+        "gfx_bytes": 1600,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8069e4c0",
+        "numvtxbatches": 4
+      },
+      {
+        "room": 88,
+        "gfxdata": "0x8069e540",
+        "gfx_bytes": 1600,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8069eb80",
+        "numvtxbatches": 4
+      },
+      {
+        "room": 89,
+        "gfxdata": "0x8069ec00",
+        "gfx_bytes": 1424,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x8069f190",
+        "numvtxbatches": 4
+      },
+      {
+        "room": 90,
+        "gfxdata": "0x8069f210",
+        "gfx_bytes": 5536,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806a07b0",
+        "numvtxbatches": 18
+      },
+      {
+        "room": 91,
+        "gfxdata": "0x806a09f0",
+        "gfx_bytes": 4208,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806a1a60",
+        "numvtxbatches": 13
+      },
+      {
+        "room": 92,
+        "gfxdata": "0x806a1c00",
+        "gfx_bytes": 4688,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806a2e50",
+        "numvtxbatches": 14
+      },
+      {
+        "room": 93,
+        "gfxdata": "0x806a3010",
+        "gfx_bytes": 4384,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806a4130",
+        "numvtxbatches": 14
+      },
+      {
+        "room": 94,
+        "gfxdata": "0x806a42f0",
+        "gfx_bytes": 1808,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806a4a00",
+        "numvtxbatches": 4
+      },
+      {
+        "room": 95,
+        "gfxdata": "0x806a4a80",
+        "gfx_bytes": 1952,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806a5220",
+        "numvtxbatches": 5
+      },
+      {
+        "room": 96,
+        "gfxdata": "0x806a52c0",
+        "gfx_bytes": 2208,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806a5b60",
+        "numvtxbatches": 7
+      },
+      {
+        "room": 97,
+        "gfxdata": "0x806a5c40",
+        "gfx_bytes": 2416,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806a65b0",
+        "numvtxbatches": 7
+      },
+      {
+        "room": 98,
+        "gfxdata": "0x806a6690",
+        "gfx_bytes": 3648,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806a74d0",
+        "numvtxbatches": 11
+      },
+      {
+        "room": 99,
+        "gfxdata": "0x806a7630",
+        "gfx_bytes": 2240,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806a7ef0",
+        "numvtxbatches": 7
+      },
+      {
+        "room": 100,
+        "gfxdata": "0x806a7fd0",
+        "gfx_bytes": 3936,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806a8f30",
+        "numvtxbatches": 11
+      },
+      {
+        "room": 101,
+        "gfxdata": "0x806a9090",
+        "gfx_bytes": 2240,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806a9950",
+        "numvtxbatches": 7
+      },
+      {
+        "room": 102,
+        "gfxdata": "0x806a9a30",
+        "gfx_bytes": 3568,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806aa820",
+        "numvtxbatches": 10
+      },
+      {
+        "room": 103,
+        "gfxdata": "0x806aa960",
+        "gfx_bytes": 2240,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806ab220",
+        "numvtxbatches": 7
+      },
+      {
+        "room": 104,
+        "gfxdata": "0x806ab300",
+        "gfx_bytes": 4544,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806ac4c0",
+        "numvtxbatches": 14
+      },
+      {
+        "room": 105,
+        "gfxdata": "0x806ac680",
+        "gfx_bytes": 2704,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806ad110",
+        "numvtxbatches": 9
+      },
+      {
+        "room": 106,
+        "gfxdata": "0x806ad230",
+        "gfx_bytes": 6176,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806aea50",
+        "numvtxbatches": 25
+      },
+      {
+        "room": 107,
+        "gfxdata": "0x806aed70",
+        "gfx_bytes": 2096,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806af5a0",
+        "numvtxbatches": 7
+      },
+      {
+        "room": 108,
+        "gfxdata": "0x806af680",
+        "gfx_bytes": 2320,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806aff90",
+        "numvtxbatches": 7
+      },
+      {
+        "room": 109,
+        "gfxdata": "0x806b0070",
+        "gfx_bytes": 3120,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806b0ca0",
+        "numvtxbatches": 10
+      },
+      {
+        "room": 110,
+        "gfxdata": "0x806b0de0",
+        "gfx_bytes": 18384,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806b55b0",
+        "numvtxbatches": 81
+      },
+      {
+        "room": 111,
+        "gfxdata": "0x806b5fd0",
+        "gfx_bytes": 928,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806b6370",
+        "numvtxbatches": 2
+      },
+      {
+        "room": 112,
+        "gfxdata": "0x806b63b0",
+        "gfx_bytes": 3376,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806b70e0",
+        "numvtxbatches": 12
+      },
+      {
+        "room": 113,
+        "gfxdata": "0x806b7260",
+        "gfx_bytes": 1024,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806b7660",
+        "numvtxbatches": 3
+      },
+      {
+        "room": 114,
+        "gfxdata": "0x806b76c0",
+        "gfx_bytes": 5072,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806b8a90",
+        "numvtxbatches": 20
+      },
+      {
+        "room": 115,
+        "gfxdata": "0x806b8d10",
+        "gfx_bytes": 2160,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806b9580",
+        "numvtxbatches": 7
+      },
+      {
+        "room": 116,
+        "gfxdata": "0x806b9660",
+        "gfx_bytes": 3584,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806ba460",
+        "numvtxbatches": 13
+      },
+      {
+        "room": 122,
+        "gfxdata": "0x8064fd20",
+        "gfx_bytes": 3264,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806509e0",
+        "numvtxbatches": 11
+      },
+      {
+        "room": 123,
+        "gfxdata": "0x80653e30",
+        "gfx_bytes": 3952,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x80654da0",
+        "numvtxbatches": 14
+      },
+      {
+        "room": 124,
+        "gfxdata": "0x80654f60",
+        "gfx_bytes": 1936,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806556f0",
+        "numvtxbatches": 6
+      },
+      {
+        "room": 125,
+        "gfxdata": "0x806557b0",
+        "gfx_bytes": 1664,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80655e30",
+        "numvtxbatches": 5
+      },
+      {
+        "room": 127,
+        "gfxdata": "0x80655ed0",
+        "gfx_bytes": 3248,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x80656b80",
+        "numvtxbatches": 9
+      },
+      {
+        "room": 128,
+        "gfxdata": "0x80652060",
+        "gfx_bytes": 1200,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80652510",
+        "numvtxbatches": 4
+      },
+      {
+        "room": 129,
+        "gfxdata": "0x80656ca0",
+        "gfx_bytes": 944,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x80657050",
+        "numvtxbatches": 2
+      },
+      {
+        "room": 130,
+        "gfxdata": "0x80652590",
+        "gfx_bytes": 4688,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806537e0",
+        "numvtxbatches": 18
+      },
+      {
+        "room": 131,
+        "gfxdata": "0x80653a20",
+        "gfx_bytes": 976,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x80653df0",
+        "numvtxbatches": 2
+      },
+      {
+        "room": 132,
+        "gfxdata": "0x80650b40",
+        "gfx_bytes": 992,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x80650f20",
+        "numvtxbatches": 2
+      },
+      {
+        "room": 133,
+        "gfxdata": "0x80650f60",
+        "gfx_bytes": 1472,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x80651520",
+        "numvtxbatches": 4
+      },
+      {
+        "room": 134,
+        "gfxdata": "0x806515a0",
+        "gfx_bytes": 2496,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x80651f60",
+        "numvtxbatches": 8
+      },
+      {
+        "room": 135,
+        "gfxdata": "0x8064b9f0",
+        "gfx_bytes": 15280,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x8064f5a0",
+        "numvtxbatches": 60
+      },
+      {
+        "room": 137,
+        "gfxdata": "0x80657090",
+        "gfx_bytes": 1952,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x80657830",
+        "numvtxbatches": 6
+      },
+      {
+        "room": 145,
+        "gfxdata": "0x806578f0",
+        "gfx_bytes": 2304,
+        "opaque": true,
+        "translucent": true,
+        "vtxbatches": "0x806581f0",
+        "numvtxbatches": 6
+      },
+      {
+        "room": 146,
+        "gfxdata": "0x806582b0",
+        "gfx_bytes": 512,
+        "opaque": true,
+        "translucent": false,
+        "vtxbatches": "0x806584b0",
+        "numvtxbatches": 1
+      }
+    ],
+    "rooms_missing_vertex_batches": [],
+    "room_cache": {
+      "mode": 3,
+      "epoch": 163,
+      "misses": 16,
+      "evictions": 20,
+      "load_failures": 0,
+      "preload_skipped": 30,
+      "banks": [
+        {
+          "start": "0x8064b9f0",
+          "bytes": 454368
+        }
+      ],
+      "allocator_faults": 0,
+      "rooms": [
+        {
+          "room": 1,
+          "loadsize": 1696,
+          "lastuse": 4294967293,
+          "expected_batches": 4,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 2,
+          "loadsize": 3776,
+          "lastuse": 4294967293,
+          "expected_batches": 14,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 3,
+          "loadsize": 3744,
+          "lastuse": 4294967293,
+          "expected_batches": 14,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 4,
+          "loadsize": 3840,
+          "lastuse": 4294967293,
+          "expected_batches": 14,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 5,
+          "loadsize": 3792,
+          "lastuse": 4294967293,
+          "expected_batches": 10,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 6,
+          "loadsize": 1696,
+          "lastuse": 4294967293,
+          "expected_batches": 4,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 7,
+          "loadsize": 3120,
+          "lastuse": 4294967293,
+          "expected_batches": 10,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 8,
+          "loadsize": 1536,
+          "lastuse": 4294967293,
+          "expected_batches": 3,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 9,
+          "loadsize": 4848,
+          "lastuse": 4294967293,
+          "expected_batches": 19,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 10,
+          "loadsize": 4304,
+          "lastuse": 4294967293,
+          "expected_batches": 16,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 11,
+          "loadsize": 2000,
+          "lastuse": 4294967293,
+          "expected_batches": 4,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 12,
+          "loadsize": 2400,
+          "lastuse": 4294967293,
+          "expected_batches": 6,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 13,
+          "loadsize": 2528,
+          "lastuse": 4294967293,
+          "expected_batches": 6,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 14,
+          "loadsize": 4256,
+          "lastuse": 4294967293,
+          "expected_batches": 13,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 15,
+          "loadsize": 3296,
+          "lastuse": 4294967293,
+          "expected_batches": 8,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 16,
+          "loadsize": 1968,
+          "lastuse": 4294967293,
+          "expected_batches": 4,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 17,
+          "loadsize": 1024,
+          "lastuse": 4294967293,
+          "expected_batches": 2,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 18,
+          "loadsize": 1664,
+          "lastuse": 4294967293,
+          "expected_batches": 3,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 19,
+          "loadsize": 1632,
+          "lastuse": 4294967293,
+          "expected_batches": 3,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 20,
+          "loadsize": 1648,
+          "lastuse": 4294967293,
+          "expected_batches": 3,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 21,
+          "loadsize": 1104,
+          "lastuse": 4294967293,
+          "expected_batches": 2,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 22,
+          "loadsize": 2736,
+          "lastuse": 4294967293,
+          "expected_batches": 8,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 23,
+          "loadsize": 4064,
+          "lastuse": 4294967293,
+          "expected_batches": 10,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 24,
+          "loadsize": 12304,
+          "lastuse": 4294967293,
+          "expected_batches": 40,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 25,
+          "loadsize": 2880,
+          "lastuse": 4294967293,
+          "expected_batches": 7,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 26,
+          "loadsize": 1248,
+          "lastuse": 4294967293,
+          "expected_batches": 2,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 27,
+          "loadsize": 23616,
+          "lastuse": 4294967293,
+          "expected_batches": 91,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 28,
+          "loadsize": 2496,
+          "lastuse": 4294967293,
+          "expected_batches": 7,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 29,
+          "loadsize": 2272,
+          "lastuse": 4294967293,
+          "expected_batches": 5,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 30,
+          "loadsize": 992,
+          "lastuse": 4294967293,
+          "expected_batches": 2,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 31,
+          "loadsize": 3264,
+          "lastuse": 4294967293,
+          "expected_batches": 10,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 32,
+          "loadsize": 2672,
+          "lastuse": 4294967293,
+          "expected_batches": 7,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 33,
+          "loadsize": 1248,
+          "lastuse": 4294967293,
+          "expected_batches": 2,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 34,
+          "loadsize": 6176,
+          "lastuse": 4294967293,
+          "expected_batches": 17,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 35,
+          "loadsize": 1024,
+          "lastuse": 4294967293,
+          "expected_batches": 2,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 36,
+          "loadsize": 4224,
+          "lastuse": 4294967293,
+          "expected_batches": 11,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 37,
+          "loadsize": 7136,
+          "lastuse": 4294967293,
+          "expected_batches": 23,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 38,
+          "loadsize": 18480,
+          "lastuse": 4294967293,
+          "expected_batches": 78,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 39,
+          "loadsize": 10432,
+          "lastuse": 4294967293,
+          "expected_batches": 42,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 40,
+          "loadsize": 2576,
+          "lastuse": 4294967293,
+          "expected_batches": 5,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 41,
+          "loadsize": 1696,
+          "lastuse": 4294967293,
+          "expected_batches": 2,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 42,
+          "loadsize": 2608,
+          "lastuse": 4294967293,
+          "expected_batches": 7,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 43,
+          "loadsize": 1072,
+          "lastuse": 4294967293,
+          "expected_batches": 2,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 44,
+          "loadsize": 2256,
+          "lastuse": 4294967293,
+          "expected_batches": 6,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 45,
+          "loadsize": 9376,
+          "lastuse": 4294967293,
+          "expected_batches": 33,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 46,
+          "loadsize": 3392,
+          "lastuse": 4294967293,
+          "expected_batches": 10,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 47,
+          "loadsize": 2688,
+          "lastuse": 4294967293,
+          "expected_batches": 7,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 48,
+          "loadsize": 6816,
+          "lastuse": 4294967293,
+          "expected_batches": 24,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 49,
+          "loadsize": 8208,
+          "lastuse": 4294967293,
+          "expected_batches": 29,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 50,
+          "loadsize": 1776,
+          "lastuse": 4294967293,
+          "expected_batches": 2,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 51,
+          "loadsize": 6976,
+          "lastuse": 4294967293,
+          "expected_batches": 20,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 52,
+          "loadsize": 3440,
+          "lastuse": 4294967293,
+          "expected_batches": 8,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 53,
+          "loadsize": 4256,
+          "lastuse": 4294967293,
+          "expected_batches": 10,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 54,
+          "loadsize": 1872,
+          "lastuse": 4294967293,
+          "expected_batches": 3,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 55,
+          "loadsize": 4192,
+          "lastuse": 4294967293,
+          "expected_batches": 10,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 56,
+          "loadsize": 2608,
+          "lastuse": 4294967293,
+          "expected_batches": 6,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 57,
+          "loadsize": 4848,
+          "lastuse": 4294967293,
+          "expected_batches": 16,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 58,
+          "loadsize": 1328,
+          "lastuse": 4294967293,
+          "expected_batches": 2,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 59,
+          "loadsize": 2896,
+          "lastuse": 4294967293,
+          "expected_batches": 8,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 60,
+          "loadsize": 2704,
+          "lastuse": 4294967293,
+          "expected_batches": 8,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 61,
+          "loadsize": 4096,
+          "lastuse": 4294967293,
+          "expected_batches": 13,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 62,
+          "loadsize": 4720,
+          "lastuse": 4294967293,
+          "expected_batches": 17,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 63,
+          "loadsize": 13248,
+          "lastuse": 4294967293,
+          "expected_batches": 50,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 64,
+          "loadsize": 1872,
+          "lastuse": 4294967293,
+          "expected_batches": 5,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 65,
+          "loadsize": 3344,
+          "lastuse": 4294967293,
+          "expected_batches": 10,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 66,
+          "loadsize": 1360,
+          "lastuse": 4294967293,
+          "expected_batches": 3,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 67,
+          "loadsize": 2752,
+          "lastuse": 4294967293,
+          "expected_batches": 7,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 68,
+          "loadsize": 5648,
+          "lastuse": 4294967293,
+          "expected_batches": 15,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 69,
+          "loadsize": 5936,
+          "lastuse": 4294967293,
+          "expected_batches": 18,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 70,
+          "loadsize": 3696,
+          "lastuse": 4294967293,
+          "expected_batches": 7,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 71,
+          "loadsize": 3504,
+          "lastuse": 4294967293,
+          "expected_batches": 8,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 72,
+          "loadsize": 3936,
+          "lastuse": 4294967293,
+          "expected_batches": 11,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 73,
+          "loadsize": 1632,
+          "lastuse": 4294967293,
+          "expected_batches": 4,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 74,
+          "loadsize": 2784,
+          "lastuse": 4294967293,
+          "expected_batches": 7,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 75,
+          "loadsize": 5136,
+          "lastuse": 4294967293,
+          "expected_batches": 18,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 76,
+          "loadsize": 5392,
+          "lastuse": 4294967293,
+          "expected_batches": 18,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 77,
+          "loadsize": 4784,
+          "lastuse": 4294967293,
+          "expected_batches": 14,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 78,
+          "loadsize": 3456,
+          "lastuse": 4294967293,
+          "expected_batches": 8,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 79,
+          "loadsize": 4016,
+          "lastuse": 4294967293,
+          "expected_batches": 13,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 80,
+          "loadsize": 3648,
+          "lastuse": 4294967293,
+          "expected_batches": 11,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 81,
+          "loadsize": 3264,
+          "lastuse": 4294967293,
+          "expected_batches": 8,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 82,
+          "loadsize": 3952,
+          "lastuse": 4294967293,
+          "expected_batches": 12,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 83,
+          "loadsize": 3392,
+          "lastuse": 4294967293,
+          "expected_batches": 8,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 84,
+          "loadsize": 5904,
+          "lastuse": 4294967293,
+          "expected_batches": 17,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 85,
+          "loadsize": 1408,
+          "lastuse": 4294967293,
+          "expected_batches": 2,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 86,
+          "loadsize": 1408,
+          "lastuse": 4294967293,
+          "expected_batches": 2,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 87,
+          "loadsize": 2272,
+          "lastuse": 4294967293,
+          "expected_batches": 4,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 88,
+          "loadsize": 2304,
+          "lastuse": 4294967293,
+          "expected_batches": 4,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 89,
+          "loadsize": 2096,
+          "lastuse": 4294967293,
+          "expected_batches": 4,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 90,
+          "loadsize": 6464,
+          "lastuse": 4294967293,
+          "expected_batches": 18,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 91,
+          "loadsize": 4864,
+          "lastuse": 4294967293,
+          "expected_batches": 13,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 92,
+          "loadsize": 5504,
+          "lastuse": 4294967293,
+          "expected_batches": 14,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 93,
+          "loadsize": 5040,
+          "lastuse": 4294967293,
+          "expected_batches": 14,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 94,
+          "loadsize": 2384,
+          "lastuse": 4294967293,
+          "expected_batches": 4,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 95,
+          "loadsize": 2528,
+          "lastuse": 4294967293,
+          "expected_batches": 5,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 96,
+          "loadsize": 2720,
+          "lastuse": 4294967293,
+          "expected_batches": 7,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 97,
+          "loadsize": 2992,
+          "lastuse": 4294967293,
+          "expected_batches": 7,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 98,
+          "loadsize": 4304,
+          "lastuse": 4294967293,
+          "expected_batches": 11,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 99,
+          "loadsize": 2544,
+          "lastuse": 4294967293,
+          "expected_batches": 7,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 100,
+          "loadsize": 4768,
+          "lastuse": 4294967293,
+          "expected_batches": 11,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 101,
+          "loadsize": 2544,
+          "lastuse": 4294967293,
+          "expected_batches": 7,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 102,
+          "loadsize": 4224,
+          "lastuse": 4294967293,
+          "expected_batches": 10,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 103,
+          "loadsize": 2544,
+          "lastuse": 4294967293,
+          "expected_batches": 7,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 104,
+          "loadsize": 5360,
+          "lastuse": 4294967293,
+          "expected_batches": 14,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 105,
+          "loadsize": 3024,
+          "lastuse": 4294967293,
+          "expected_batches": 9,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 106,
+          "loadsize": 6768,
+          "lastuse": 4294967293,
+          "expected_batches": 25,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 107,
+          "loadsize": 2496,
+          "lastuse": 4294967293,
+          "expected_batches": 7,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 108,
+          "loadsize": 2768,
+          "lastuse": 4294967293,
+          "expected_batches": 7,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 109,
+          "loadsize": 3520,
+          "lastuse": 4294967293,
+          "expected_batches": 10,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 110,
+          "loadsize": 18944,
+          "lastuse": 4294967293,
+          "expected_batches": 81,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 111,
+          "loadsize": 1200,
+          "lastuse": 4294967293,
+          "expected_batches": 2,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 112,
+          "loadsize": 4320,
+          "lastuse": 4294967293,
+          "expected_batches": 12,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 113,
+          "loadsize": 1376,
+          "lastuse": 4294967293,
+          "expected_batches": 3,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 114,
+          "loadsize": 5488,
+          "lastuse": 4294967293,
+          "expected_batches": 20,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 115,
+          "loadsize": 2624,
+          "lastuse": 4294967293,
+          "expected_batches": 7,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 116,
+          "loadsize": 4096,
+          "lastuse": 1,
+          "expected_batches": 13,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 117,
+          "loadsize": 1344,
+          "lastuse": 4294967293,
+          "expected_batches": 3,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 118,
+          "loadsize": 3296,
+          "lastuse": 4294967293,
+          "expected_batches": 8,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 119,
+          "loadsize": 2192,
+          "lastuse": 4294967293,
+          "expected_batches": 6,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 120,
+          "loadsize": 1872,
+          "lastuse": 4294967293,
+          "expected_batches": 3,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 121,
+          "loadsize": 2032,
+          "lastuse": 4294967293,
+          "expected_batches": 4,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 122,
+          "loadsize": 3936,
+          "lastuse": 1,
+          "expected_batches": 11,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 123,
+          "loadsize": 4560,
+          "lastuse": 40,
+          "expected_batches": 14,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 124,
+          "loadsize": 2464,
+          "lastuse": 40,
+          "expected_batches": 6,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 125,
+          "loadsize": 2128,
+          "lastuse": 40,
+          "expected_batches": 5,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 126,
+          "loadsize": 1792,
+          "lastuse": 4294967293,
+          "expected_batches": 4,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 127,
+          "loadsize": 3744,
+          "lastuse": 163,
+          "expected_batches": 9,
+          "warmed": 1,
+          "visible": true
+        },
+        {
+          "room": 128,
+          "loadsize": 1456,
+          "lastuse": 40,
+          "expected_batches": 4,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 129,
+          "loadsize": 1376,
+          "lastuse": 40,
+          "expected_batches": 2,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 130,
+          "loadsize": 5296,
+          "lastuse": 163,
+          "expected_batches": 18,
+          "warmed": 1,
+          "visible": true
+        },
+        {
+          "room": 131,
+          "loadsize": 1248,
+          "lastuse": 163,
+          "expected_batches": 2,
+          "warmed": 1,
+          "visible": true
+        },
+        {
+          "room": 132,
+          "loadsize": 1264,
+          "lastuse": 163,
+          "expected_batches": 2,
+          "warmed": 1,
+          "visible": true
+        },
+        {
+          "room": 133,
+          "loadsize": 1760,
+          "lastuse": 40,
+          "expected_batches": 4,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 134,
+          "loadsize": 2880,
+          "lastuse": 163,
+          "expected_batches": 8,
+          "warmed": 1,
+          "visible": true
+        },
+        {
+          "room": 135,
+          "loadsize": 15936,
+          "lastuse": 163,
+          "expected_batches": 60,
+          "warmed": 1,
+          "visible": true
+        },
+        {
+          "room": 136,
+          "loadsize": 18448,
+          "lastuse": 4294967293,
+          "expected_batches": 76,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 137,
+          "loadsize": 2304,
+          "lastuse": 16,
+          "expected_batches": 6,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 138,
+          "loadsize": 3216,
+          "lastuse": 4294967293,
+          "expected_batches": 8,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 139,
+          "loadsize": 1616,
+          "lastuse": 4294967293,
+          "expected_batches": 4,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 140,
+          "loadsize": 3888,
+          "lastuse": 4294967293,
+          "expected_batches": 11,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 141,
+          "loadsize": 2032,
+          "lastuse": 4294967293,
+          "expected_batches": 5,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 142,
+          "loadsize": 3952,
+          "lastuse": 4294967293,
+          "expected_batches": 12,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 143,
+          "loadsize": 1664,
+          "lastuse": 4294967293,
+          "expected_batches": 4,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 144,
+          "loadsize": 1344,
+          "lastuse": 4294967293,
+          "expected_batches": 3,
+          "warmed": 1,
+          "visible": false
+        },
+        {
+          "room": 145,
+          "loadsize": 2656,
+          "lastuse": 163,
+          "expected_batches": 6,
+          "warmed": 1,
+          "visible": true
+        },
+        {
+          "room": 146,
+          "loadsize": 768,
+          "lastuse": 163,
+          "expected_batches": 1,
+          "warmed": 1,
+          "visible": true
+        }
+      ],
+      "missing_visible_rooms": [],
+      "free_bytes": 1728,
+      "partition_valid": true
+    },
+    "g_MempOnboardPools": {
+      "start": "0x8026a960",
+      "left": "0x80345e80",
+      "right": "0x80345e88",
+      "end": "0x8035f3b8",
+      "previous_allocation": "0x80345e70",
+      "free_bytes": 8
+    },
+    "g_MempExpansionPools": {
+      "start": "0x80400000",
+      "left": "0x806ba8d0",
+      "right": "0x806d7f40",
+      "end": "0x8076a000",
+      "previous_allocation": "0x8064b9f0",
+      "free_bytes": 120432
+    },
+    "vm_heap_ceiling": "0x8035f3b8",
+    "threads": {
+      "g_MainThread": {
+        "pc": "0x8008c728",
+        "cause": "0x10008000",
+        "badva": "0x0",
+        "state": 4,
+        "flags": 0
+      },
+      "g_SchedThread": {
+        "pc": "0x80033e44",
+        "cause": "0x10000400",
+        "badva": "0x0",
+        "state": 8,
+        "flags": 0
+      }
+    },
+    "prepared_vi_modes": [
+      {
+        "ctrl": "0x305e",
+        "width": 1280,
+        "v_sync": 524,
+        "x_scale": 1024,
+        "field_origins": [
+          1280,
+          2560
+        ],
+        "field_y_scales": [
+          1024,
+          1024
+        ]
+      },
+      {
+        "ctrl": "0x305e",
+        "width": 1280,
+        "v_sync": 524,
+        "x_scale": 1024,
+        "field_origins": [
+          1280,
+          2560
+        ],
+        "field_y_scales": [
+          1024,
+          1024
+        ]
+      }
+    ]
+  },
+  "expected_preload_rooms": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146
+  ],
+  "missing_preload_rooms": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    117,
+    118,
+    119,
+    120,
+    121,
+    126,
+    136,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144
+  ],
+  "room_policy": "budgeted-retained-cache",
+  "unwarmed_required_rooms": [],
+  "thread_faults": [],
+  "unpaused_snapshot": true
+}

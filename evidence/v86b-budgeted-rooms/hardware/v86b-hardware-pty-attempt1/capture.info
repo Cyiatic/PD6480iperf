@@ -1,0 +1,39 @@
+{
+	"!!! Information":"Information about stream parts",
+	"!!! Version":2,
+	"Parts":
+	[
+		{
+			"BreakPosition":0,
+			"BreakReason":4,
+			"BreakReason.FriendlyName":"End of file",
+			"PartIndex":0,
+			"Streams":
+			[
+				{
+					"Pid":100,
+					"Type":13,
+					"Type.FriendlyName":"H264"
+				},
+				{
+					"Pid":103,
+					"Type":12,
+					"Type.FriendlyName":"AAC"
+				}
+			]
+		}
+	],
+	"Streams":
+	[
+		{
+			"Pid":100,
+			"Type":13,
+			"Type.FriendlyName":"H264"
+		},
+		{
+			"Pid":103,
+			"Type":12,
+			"Type.FriendlyName":"AAC"
+		}
+	]
+}

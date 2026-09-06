@@ -5,20 +5,29 @@
 param(
     [Parameter(Mandatory=$true)][string]$Rom,
     [Parameter(Mandatory=$true)][string]$RunDirectory,
-    [ValidateRange(15,480)][int]$ObservationSeconds=75
+    [ValidateRange(15,480)][int]$ObservationSeconds=75,
+    [ValidateSet('UNFLoader','Usb64')][string]$LoaderBackend='UNFLoader',
+    [switch]$CaptureOnly,
+    [switch]$ExternalUpload
 )
 $ErrorActionPreference='Stop'
 $pdWorkspace='C:\Users\codex\Documents\N64 2'
 $pdKasa='C:\Program Files\WindowsApps\23769rewster.uk.TPLinkKasaControl_1.4.81.0_neutral__a2smztagkyka6\Kasa Smart Control\TPLinkCmd.exe'
-$pdLoader=Join-Path $pdWorkspace 'hardware\unfloader\UNFLoader.exe'
+# The saved hardware workflow identifies the prerelease as the working uploader.
+# Keep the older July-2024 executable intact; do not silently substitute it.
+$pdLoader=Join-Path $pdWorkspace '.codex-work\UNFLoader-x86-pre\UNFLoader.exe'
+if ($LoaderBackend -eq 'Usb64') {
+    $pdLoader=Join-Path $pdWorkspace '.codex-work\usb64-build-reconnect2m\usb64-reconnect2m.exe'
+}
 $pdCaptureExe='C:\Program Files\Elgato\GameCapture\GameCapture.exe'
 $pdRomPath=(Resolve-Path -LiteralPath $Rom).ProviderPath
+if ($CaptureOnly -and $ExternalUpload) { throw 'Choose one no-internal-uploader mode' }
 $pdRunPath=[IO.Path]::GetFullPath($RunDirectory)
 if (-not $pdRomPath.StartsWith($pdWorkspace+'\', [StringComparison]::OrdinalIgnoreCase) -or
     -not $pdRunPath.StartsWith($pdWorkspace+'\', [StringComparison]::OrdinalIgnoreCase)) { throw 'Targets must remain in the PD workspace' }
 if ((Get-Item -LiteralPath $pdRomPath).Length -ne 33554432) { throw 'Expected 32 MiB test ROM' }
 if (Test-Path -LiteralPath $pdRunPath) { throw 'Evidence directory already exists; refusing overwrite' }
-if (Get-Process -Name GameCapture,UNFLoader -ErrorAction SilentlyContinue) { throw 'Capture/uploader already running; refusing to affect unowned processes' }
+if (Get-Process -Name GameCapture,UNFLoader,usb64-reconnect2m -ErrorAction SilentlyContinue | Where-Object { -not $_.HasExited }) { throw 'Capture/uploader already running; refusing to affect unowned processes' }
 New-Item -ItemType Directory -Path $pdRunPath -ErrorAction Stop | Out-Null
 $pdDeadline=[datetime]::UtcNow.AddSeconds(660)
 $pdCapture=$null
@@ -34,7 +43,7 @@ function Quote-Pd([string]$Value) {
 function Stop-PdOwned($Process) {
     if (-not $Process) { return }
     $pdCurrent=Get-Process -Id $Process.Id -ErrorAction SilentlyContinue
-    if ($pdCurrent -and $pdCurrent.StartTime -eq $Process.StartTime -and $pdCurrent.ProcessName -eq $Process.ProcessName) {
+    if ($pdCurrent -and -not $pdCurrent.HasExited -and $pdCurrent.StartTime -eq $Process.StartTime -and $pdCurrent.ProcessName -eq $Process.ProcessName) {
         Stop-Process -Id $Process.Id -ErrorAction Stop
     }
 }
@@ -76,12 +85,47 @@ try {
     $pdPowerOffNeeded=$true
     Invoke-PdKasa 'on'
     Wait-PdSeconds 12
-    Trace-Pd 'Uploading with GameCapture closed; timeout 65 seconds'
-    $pdUpload=Start-Process -FilePath $pdLoader -ArgumentList @('-b','-f','3','-r',(Quote-Pd $pdRomPath)) -WindowStyle Hidden -RedirectStandardOutput (Join-Path $pdRunPath 'upload.log') -RedirectStandardError (Join-Path $pdRunPath 'upload.stderr.log') -PassThru
-    Trace-Pd ('Owned upload PID '+$pdUpload.Id)
-    Wait-PdProcess $pdUpload 65
-    Trace-Pd 'Native upload exit 0; this alone is not a ROM pass'
-    $pdUpload=$null
+    if ($CaptureOnly -or $ExternalUpload) {
+        if ($ExternalUpload) {
+            Trace-Pd 'EXTERNAL UPLOADER: power/capture lease only; separate terminal evidence is required for upload success'
+        } else {
+            Trace-Pd 'CAPTURE-ONLY PREFLIGHT: no ROM upload; inspect the cold console/menu signal'
+        }
+    } else {
+        Trace-Pd ('Uploader '+$pdLoader+' SHA256 '+(Get-FileHash -LiteralPath $pdLoader).Hash)
+        $pdUploadSeconds=65
+        $pdUploadArgs=@('-b','-f','3','-r',(Quote-Pd $pdRomPath))
+        if ($LoaderBackend -eq 'Usb64') {
+            $pdUploadSeconds=120
+            $pdUploadArgs=@((Quote-Pd ('-rom='+$pdRomPath)),'-start')
+        }
+        Trace-Pd ('Uploading with GameCapture closed; timeout '+$pdUploadSeconds+' seconds')
+        $pdUpload=Start-Process -FilePath $pdLoader -ArgumentList $pdUploadArgs -WindowStyle Hidden -RedirectStandardOutput (Join-Path $pdRunPath 'upload.log') -RedirectStandardError (Join-Path $pdRunPath 'upload.stderr.log') -PassThru
+        Trace-Pd ('Owned upload PID '+$pdUpload.Id)
+        $pdNativeUploadComplete=$false
+        try {
+            Wait-PdProcess $pdUpload $pdUploadSeconds
+            $pdNativeUploadComplete=$true
+        } catch {
+            # The legacy serial utility can print Finished then hang closing
+            # its port. Wait-PdProcess has stopped only our owned process.
+            # Preserve that failure, but inspect video before cutting power.
+            [string]$pdCompletedText=Get-Content -LiteralPath (Join-Path $pdRunPath 'upload.log') -Raw
+            if ($LoaderBackend -ne 'Usb64' -or $pdCompletedText -match 'ERROR:' -or
+                    $pdCompletedText -notmatch 'Finished in:') { throw }
+            Trace-Pd ('SERIAL PROCESS FAILURE after completion text: '+$_.Exception.Message)
+            Trace-Pd 'Inspecting capture despite failed process exit; no native-success or ROM-pass claim'
+        }
+        if ($LoaderBackend -eq 'Usb64') {
+            # This existing C# utility catches exceptions without a nonzero exit.
+            [string]$pdUploadText=Get-Content -LiteralPath (Join-Path $pdRunPath 'upload.log') -Raw
+            if ($pdUploadText -match 'ERROR:' -or $pdUploadText -notmatch 'Finished in:') {
+                throw 'Usb64 did not report successful completion'
+            }
+        }
+        if ($pdNativeUploadComplete) { Trace-Pd 'Native upload exit 0; this alone is not a ROM pass' }
+        $pdUpload=$null
+    }
     $pdCapture=Start-Process -FilePath $pdCaptureExe -WindowStyle Hidden -PassThru
     Trace-Pd ('Owned GameCapture PID '+$pdCapture.Id+' start '+$pdCapture.StartTime.ToString('o'))
     Wait-PdSeconds 45

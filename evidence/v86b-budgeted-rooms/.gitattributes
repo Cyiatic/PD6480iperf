@@ -1,0 +1,7 @@
+# Preserve generated evidence bytes across Windows checkouts. ROM-title padding
+# in raw emulator logs is evidence, not source-code whitespace to rewrite.
+*.log -text -whitespace
+*.json -text whitespace=cr-at-eol
+*.txt -text whitespace=cr-at-eol
+*.desc -text whitespace=cr-at-eol
+*.info -text whitespace=cr-at-eol

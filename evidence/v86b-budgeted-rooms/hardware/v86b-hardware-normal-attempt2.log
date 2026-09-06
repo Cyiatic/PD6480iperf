@@ -1,0 +1,8 @@
+2026-09-06T18:45:10.0524236Z ROM C:\Users\codex\Documents\N64 2\.codex-work\PD6480iperf-v86b-budgeted-rooms.z64 SHA256 C33EC1459B3092D89F5A3B00F82F6B4DD8E59C294B479AA7D039DC7471455DF7
+2026-09-06T18:45:11.3361107Z Plug 1 on: Relay: 1
+2026-09-06T18:45:23.4551726Z Uploading with GameCapture closed; timeout 65 seconds
+2026-09-06T18:45:23.4763953Z Owned upload PID 20728
+2026-09-06T18:46:30.9568374Z Plug 1 off: Devicelist expired, retrieving updated list from TP-Link
+Relay: 0
+2026-09-06T18:46:32.0620278Z Plug 1 status: Relay: 0
+2026-09-06T18:46:32.0633389Z Trial cleanup ended; retain bounded recordings until inspected

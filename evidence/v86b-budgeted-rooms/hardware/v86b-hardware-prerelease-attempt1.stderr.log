@@ -1,0 +1,5 @@
+Exception: C:\Users\codex\Documents\N64 2\.codex-work\perfect-dark-performance\tools\hardware\pd_hardware_trial.ps1:49
+Line |
+  49 |              throw ('Process timeout: '+$Process.ProcessName)
+     |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Process timeout: UNFLoader
