@@ -10,6 +10,7 @@ import json
 from pathlib import Path
 import struct
 import sys
+from inspect_bgcache import V4_KEYS, inspect_cache
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from audit_480i_elf import Elf32
@@ -21,6 +22,8 @@ KEYS = ('magic version vars_size level_frame tick_mode in_cutscene current_playe
 V2_KEYS = ('player_prop player_isdead player_health player_hands hand_size '
            'hand_loadedammo player_ammoheld prop_size prop_position prop_rooms '
            'player_trigger').split()
+V3_KEYS = ('room_batches room_batch_count batch_size roomgfx_size '
+           'roomgfx_opa roomgfx_xlu').split()
 
 
 def inspect(elf_path, ram_path, layout_path):
@@ -29,12 +32,26 @@ def inspect(elf_path, ram_path, layout_path):
     if len(ram) != 0x800000 or len(layout) < 4 * len(KEYS):
         raise ValueError('Wrong RAM or layout size')
     offsets = dict(zip(KEYS, struct.unpack_from('>' + 'I' * len(KEYS), layout)))
-    if offsets['magic'] != 0x50443831 or offsets['version'] not in (1, 2):
+    if offsets['magic'] != 0x50443831 or offsets['version'] not in (1, 2, 3, 4):
         raise ValueError('Wrong layout magic/version')
-    if offsets['version'] == 2:
+    if offsets['version'] >= 2:
         if len(layout) < 4 * (len(KEYS) + len(V2_KEYS)):
             raise ValueError('Truncated gameplay layout')
         offsets.update(zip(V2_KEYS, struct.unpack_from('>' + 'I' * len(V2_KEYS), layout, 4 * len(KEYS))))
+    if offsets['version'] >= 3:
+        start = 4 * (len(KEYS) + len(V2_KEYS))
+        if len(layout) < start + 4 * len(V3_KEYS):
+            raise ValueError('Truncated room-batch layout')
+        offsets.update(zip(V3_KEYS, struct.unpack_from('>' + 'I' * len(V3_KEYS), layout, start)))
+        if not 1 <= offsets['batch_size'] <= 4096:
+            raise ValueError('Invalid vertex-batch size')
+    if offsets['version'] >= 4:
+        start = 4 * (len(KEYS) + len(V2_KEYS) + len(V3_KEYS))
+        if len(layout) < start + 4 * len(V4_KEYS):
+            raise ValueError('Truncated room-cache layout')
+        offsets.update(zip(V4_KEYS, struct.unpack_from('>' + 'I' * len(V4_KEYS), layout, start)))
+    if 'g_BgCacheMode' in elf.symbols and offsets['version'] < 4:
+        raise ValueError('Room-cache candidate requires compiled v4 layout')
     for name, key in [('g_Vars', 'vars_size'), ('g_Sched', 'sched_size'),
                       ('g_MainThread', 'thread_size')]:
         if elf.symbols[name][1] != offsets[key]:
@@ -68,7 +85,9 @@ def inspect(elf_path, ram_path, layout_path):
                  '__scHandleRSP', '__scHandleRDP', 'viReset', 'bgPreload',
                  'bgLoadRoom', 'mblurAllocate', 'mblurReset', 'dmaExec',
                  'menuReset', 'menuPushDialog', 'menuRenderModels',
-                 'menugfxCreateBlur', 'menugfxRenderBgBlur', 'menuTextFixedResolution'):
+                 'menugfxCreateBlur', 'menugfxRenderBgBlur', 'menuTextFixedResolution',
+                 'bgCacheAlloc', 'bgCacheUnloadRoom', 'bgRoomCacheNextFrame',
+                 'bgFindRoomVtxBatches', 'bgTestHitInRoom'):
         if name not in elf.symbols:
             continue
         start, size = elf.symbols[name]
@@ -116,7 +135,7 @@ def inspect(elf_path, ram_path, layout_path):
     current = word(variables + offsets['current_player'])
     if current:
         result['player_pause_mode'] = word(current + offsets['player_pause'])
-        if offsets['version'] == 2:
+        if offsets['version'] >= 2:
             physical(current, offsets['player_size'])
             result['player_dead'] = word(current + offsets['player_isdead'])
             result['player_health'] = floating(current + offsets['player_health'])
@@ -144,12 +163,43 @@ def inspect(elf_path, ram_path, layout_path):
         result['room_count'] = count
         result['loaded_rooms'] = [i for i in range(1, count)
                                   if word(rooms + i * offsets['room_size'] + offsets['room_gfx'])]
+        if offsets['version'] >= 3:
+            result['room_allocations'] = []
+            result['rooms_missing_vertex_batches'] = []
+            for i in result['loaded_rooms']:
+                start = rooms + i * offsets['room_size']
+                gfx = word(start + offsets['room_gfx'])
+                physical(gfx, offsets['roomgfx_size'])
+                opa = word(gfx + offsets['roomgfx_opa'])
+                xlu = word(gfx + offsets['roomgfx_xlu'])
+                batches = word(start + offsets['room_batches'])
+                # On failed allocation the count is uninitialized. Never
+                # interpret it unless there is an actual batch buffer.
+                batch_count = word(start + offsets['room_batch_count']) if batches else None
+                if batches:
+                    if batch_count > 100000:
+                        raise ValueError(f'Invalid room {i} vertex-batch count')
+                    physical(batches, max(1, batch_count * offsets['batch_size']))
+                # bgFindRoomVtxBatches allocates only when the opaque layer
+                # exists; pure-empty/translucent rooms must not be false failures.
+                if opa and not batches:
+                    result['rooms_missing_vertex_batches'].append(i)
+                result['room_allocations'].append(dict(room=i, gfxdata=hex(gfx),
+                    gfx_bytes=word(start + offsets['room_gfx_length']),
+                    opaque=bool(opa), translucent=bool(xlu),
+                    vtxbatches=hex(batches) if batches else None, numvtxbatches=batch_count))
+    if 'g_BgCacheMode' in elf.symbols:
+        inspect_cache(result,offsets,elf,address,word,half,physical,count,rooms)
     for name in ('g_MempOnboardPools', 'g_MempExpansionPools'):
         if elf.symbols[name][1] != 9 * 20:
             raise ValueError('Unknown memory pool ABI')
         pool = address(name) + 4 * 20
-        result[name] = {'left': hex(word(pool + 4)), 'right': hex(word(pool + 8)),
+        result[name] = {'start': hex(word(pool)), 'left': hex(word(pool + 4)),
+                        'right': hex(word(pool + 8)), 'end': hex(word(pool + 12)),
+                        'previous_allocation': hex(word(pool + 16)),
                         'free_bytes': word(pool + 8) - word(pool + 4)}
+    if 'g_VmMarker' in elf.symbols:
+        result['vm_heap_ceiling'] = hex(word(address('g_VmMarker')))
     result['threads'] = {}
     for name in ('g_MainThread', 'g_SchedThread'):
         start = address(name)

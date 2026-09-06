@@ -4,11 +4,14 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 
-from inspect_modern_rdram import inspect, KEYS, V2_KEYS
+from inspect_modern_rdram import inspect, KEYS, V2_KEYS, V3_KEYS
 
 
 class ModernRdramTests(unittest.TestCase):
-    def snapshot(self, bad_layout=False, bad_code=False, buffers=3, gameplay=False, truncate=False, replay=False):
+    def snapshot(self, bad_layout=False, bad_code=False, buffers=3, gameplay=False,
+                 truncate=False, replay=False, room_batches=False, missing_batches=False,
+                 opaque=True, bad_batch_count=False, truncate_batches=False):
+        gameplay = gameplay or room_batches
         offsets = [0x50443831, 1, 0x504, 12, 0x2ac, 0x4bc, 0x284, 0x2bc,
                    0x1c80, 0x1a34, 0x90, 0x18, 0x84, 0x2c, 0x18, 0x1a, 0x28,
                    0xa8, 0x88, 0x8c, 0x238, 0x10, 0x12, 0x11c, 0x120, 0x124]
@@ -20,6 +23,12 @@ class ModernRdramTests(unittest.TestCase):
             self.assertEqual(len(extra), len(V2_KEYS))
             if not truncate:
                 offsets.extend(extra)
+        if room_batches:
+            offsets[1] = 3
+            batch_extra = [0x44, 0x40, 32, 0x2c, 8, 12]
+            self.assertEqual(len(batch_extra), len(V3_KEYS))
+            if not truncate_batches:
+                offsets.extend(batch_extra)
         if bad_layout:
             offsets[2] = 0x508
         symbols = {
@@ -77,6 +86,13 @@ class ModernRdramTests(unittest.TestCase):
             struct.pack_into('<f', ram, 0x50dc, 0.75)
             word(0x80005000 + 0x640 + 0x858, 7)
             word(0x80005000 + 0x17b8 + 4, 184)
+        if room_batches:
+            word(symbols['g_Rooms'][0], 0x80008000)
+            word(0x80002000 + 0x2bc, 2)
+            word(0x80008090 + 0x18, 0x80009000)
+            word(0x80009008, 0x80009100 if opaque else 0)
+            word(0x80008090 + 0x44, 0 if missing_batches else 0x80009200)
+            word(0x80008090 + 0x40, 0xffffffff if bad_batch_count or missing_batches else 252)
 
         with tempfile.TemporaryDirectory(prefix='pd-modern-inspect-') as directory:
             directory = Path(directory)
@@ -123,6 +139,29 @@ class ModernRdramTests(unittest.TestCase):
             phase=8, phase_ticks=123, toggle_checks=3, ram_save_reads=45, ram_save_writes=10))
         self.assertFalse(result['hardware_verified'])
         self.assertNotIn('synthetic_replay_diagnostic', self.snapshot())
+
+    def test_room_batch_pointer_and_word_sized_count(self):
+        result = self.snapshot(room_batches=True)
+        self.assertEqual(result['rooms_missing_vertex_batches'], [])
+        self.assertEqual(result['room_allocations'][0]['numvtxbatches'], 252)
+
+    def test_geometry_pointer_is_not_enough(self):
+        result = self.snapshot(room_batches=True, missing_batches=True)
+        self.assertEqual(result['loaded_rooms'], [1])
+        self.assertEqual(result['rooms_missing_vertex_batches'], [1])
+        self.assertIsNone(result['room_allocations'][0]['numvtxbatches'])
+
+    def test_no_opaque_layer_does_not_require_batches(self):
+        result = self.snapshot(room_batches=True, missing_batches=True, opaque=False)
+        self.assertEqual(result['rooms_missing_vertex_batches'], [])
+
+    def test_invalid_batch_count_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'vertex-batch count'):
+            self.snapshot(room_batches=True, bad_batch_count=True)
+
+    def test_truncated_batch_layout_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'Truncated room-batch layout'):
+            self.snapshot(room_batches=True, truncate_batches=True)
 
 
 if __name__ == '__main__':

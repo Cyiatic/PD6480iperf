@@ -1,0 +1,17 @@
+{
+  "rom_sha256": "430f09bbe0b76bfe687881c52ac23ec4cfff0cc4a16b9ba5faecd602ffc037a4",
+  "state_sha256": "22dcc514d5c8cb2176ce3e3f33b888bcc805b6afd534057607715e7b2b44212a",
+  "elf_sha256": "81af590340c372b80d4d9c3bcada0056566505a2ce482de4ec11f618a8d0ad5a",
+  "layout_sha256": "6146563e995a9a3eff3e86af6118ca01341628b2b2382ac523610bbb28f6d200",
+  "hardware_verified": false,
+  "instrumented_menu_selection": false,
+  "eeprom_header_adapter": true,
+  "seed": ".codex-work\\headless-v85-defection-list\\state.bin",
+  "seed_highlight": "DEFECTION, visually verified before this run",
+  "jobs": 2,
+  "source_files_sha256": {
+    "src/game/mainmenu.c": "2268a34231580d51ae9c15cd2a3ffa869e8f866857998e95b4769ded95afcd84",
+    "src/game/bg.c": "e0cb31a510f43c09f201ad5026adf027d205e58d9f8ce13bb5813f3721793d86",
+    "src/include/constants.h": "35742ab890074241f8af7706dc7f849b7f2ebf7a0030e5d4592a51f2e8f5b0f4"
+  }
+}

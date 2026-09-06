@@ -1,5 +1,19 @@
 # Perfect Dark - High Performance (PDHP)
 
+## Current 480i development status (2026-09-06)
+
+v84/v85 fix full-screen pause blur and stale menu/eyepiece fragments during
+horizontal swipes, and label the video mode **Hi-Res: 640x480i (fixed)**.
+However, the broader normal-v85 mission matrix finds **11 of 21 initial
+mission-load failures** from memory exhaustion/missing room data. v85 is not
+a working full-game release. See [the full matrix](evidence/v85-full-mission-matrix/README.md).
+The historical v85 bundle is preserved, not silently replaced.
+
+The active v86 experiment retains the newer performance core, full-size
+colour/depth buffers and L graph, but budgets room residency within the
+existing 8 MiB. Hardware/Analogue and performance validation remain required.
+Older sections below are historical development records, not current claims.
+
 A mod that optimises for runtime performance on console.
 
 No accurate benchmarking has been done.
