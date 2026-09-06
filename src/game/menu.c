@@ -3425,7 +3425,9 @@ void menuReset(void)
 
 	var8009dfc0 = 0;
 
-	g_BlurBuffer = mempAlloc(0x4b00, MEMPOOL_STAGE);
+	/* One 40x30 RGBA16 texture, even at 640x480. The old 0x4b00 allocation
+	 * reserved eight times the required space, wasting 16800 stage-heap bytes. */
+	g_BlurBuffer = mempAlloc(ALIGN16(BLURIMG_BYTES), MEMPOOL_STAGE);
 
 	g_MenuData.unk5d5_01 = false;
 
