@@ -1,4 +1,4 @@
-/* V86B INFILTRATION HARDWARE DIAGNOSTIC, NOT A RELEASE CANDIDATE.
+/* V86F INFILTRATION HARDWARE DIAGNOSTIC, NOT A RELEASE CANDIDATE.
  * Programmatic file selection and opening Video Options are test setup.
  * L and movement then use the ordinary input consumers/handlers.
  * Replace only samples in the main thread's newly acquired partition. The
@@ -129,10 +129,11 @@ void pdHwReplay(struct contsample *samples, s32 first, s32 last)
 	case 12:
 		if (dialog && dialog->definition == &g_AcceptMissionMenuDialog) pdHwPhase(13);
 		else if (tick >= 60 && dialog && dialog->definition == &g_SoloMissionDifficultyMenuDialog) {
-			/* Explicit Perfect Agent through the real menu handler, not config pokes. */
-			struct menuitem *item = &g_SoloMissionDifficultyMenuItems[3];
+			/* Stock Agent gives the unattended menu test more time before combat death.
+			 * Select through the real handler; no health, enemy or difficulty patches. */
+			struct menuitem *item = &g_SoloMissionDifficultyMenuItems[1];
 			union handlerdata data = {0};
-			if (item->type != MENUITEMTYPE_SELECTABLE || item->param != DIFF_PA) pdHwPhase(99);
+			if (item->type != MENUITEMTYPE_SELECTABLE || item->param != DIFF_A) pdHwPhase(99);
 			else item->handler(MENUOP_SET, item, &data);
 		}
 		else if (pdHwPulse(tick % 120, 60)) pad.button = A_BUTTON;
@@ -146,7 +147,7 @@ void pdHwReplay(struct contsample *samples, s32 first, s32 last)
 		else if (pdHwPulse(tick % 120, 60)) pad.button = START_BUTTON;
 		break;
 	case 3:
-		/* Pause before unattended Perfect Agent combat kills the player. */
+		/* Pause before unattended combat kills the player. */
 		if (g_Vars.currentplayer && g_Vars.currentplayer->isdead) { pdHwPhase(99); break; }
 		if (pdHwPulse(tick, 30)) pad.button = L_TRIG;
 		if (tick >= 45 && tick < 105) pad.stick_y = 45;

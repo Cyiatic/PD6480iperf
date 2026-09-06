@@ -1021,7 +1021,7 @@ static Gfx *lvPrint(Gfx *gdl)
 		s32 x = 10;
 		s32 y = 155;
 		gdl = text0f153628(gdl);
-		sprintf(label, "V86B TEST P%d ST%d D%d\nOOM %d BGFAIL %u EVICT %u\nFB %dx%d MISS %u\n",
+		sprintf(label, "V86F TEST P%d ST%d D%d\nOOM %d BGFAIL %u EVICT %u\nFB %dx%d MISS %u\n",
 			g_PdHwPhase, g_Vars.stagenum, g_MissionConfig.difficulty, g_LvOom, g_BgCacheLoadFailures,
 			g_BgCacheEvictions, g_ViBackData->x, g_ViBackData->y, g_BgCacheMisses);
 		gdl = textRender(gdl, &x, &y, label, g_CharsHandelGothicMd,
