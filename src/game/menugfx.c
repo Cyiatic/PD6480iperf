@@ -35,8 +35,9 @@
  * This function reads the framebuffer in blocks of 8x8 pixels. Each block's
  * R/G/B components are averaged and used to set a pixel in the blurred buffer.
  *
- * If hi-res is being used, every second horizontal pixel on the framebuffer is
- * read instead. The blurred image is the same size regardless of hi-res.
+ * Map the 320x240 sampling grid over the entire source framebuffer. At
+ * 640x480 this samples every second pixel in BOTH axes, retaining the same
+ * 8x8 work per output pixel and the same small texture allocation.
  *
  * The transition effect when pausing and unpausing is implemented elsewhere.
  * It's a simple fade between the source framebuffer and the blurred image.
@@ -44,15 +45,12 @@
  */
 void menugfxCreateBlur(void)
 {
-	u8 *fb = (u8 *) g_ViFrontData->fb;
+	u8 *fb = UNCACHED(g_ViFrontData->fb);
 	s32 dstx;
 	s32 dsty;
-#if PAL
-	s32 fbwidthinbytes = g_ViBackData->x * 2;
-	f32 scale = g_ViBackData->x / 320.0f;
-#else
-	s32 fbwidthinbytes = PXTOBYTES(g_ViBackData->x);
-#endif
+	s32 fbwidth = g_ViFrontData->bufx;
+	s32 fbheight = g_ViFrontData->bufy;
+	s32 rowoffsets[SAMPLE_HEIGHT];
 	s32 srcx;
 	s32 srcy;
 	u32 r;
@@ -60,28 +58,21 @@ void menugfxCreateBlur(void)
 	u32 b;
 	u16 colour;
 
-	fb = (u8 *) g_ViFrontData->fb;
-
 	for (dsty = 0; dsty < BLURIMG_HEIGHT; dsty++) {
+		for (srcy = 0; srcy < SAMPLE_HEIGHT; srcy++) {
+			s32 y = (dsty * SAMPLE_HEIGHT + srcy) * fbheight / (BLURIMG_HEIGHT * SAMPLE_HEIGHT);
+			rowoffsets[srcy] = PXTOBYTES(y * fbwidth);
+		}
 
 		for (dstx = 0; dstx < BLURIMG_WIDTH; dstx++) {
 			s32 dstindex = PXTOBYTES(dsty * BLURIMG_WIDTH) + PXTOBYTES(dstx);
 
-#if PAL
-			s32 samplestartindex = (((s32) ((f32) dstx * 2 * 4 * 2 * scale) + (s32) (dsty * fbwidthinbytes * 8)) & 0xfffffffe);
-#else
-			s32 samplestartindex = PXTOBYTES(dstx * SAMPLE_WIDTH) + dsty * fbwidthinbytes * SAMPLE_HEIGHT;
-#endif
-
 			r = g = b = 0;
 
 			for (srcx = 0; srcx < SAMPLE_WIDTH; srcx++) {
+				s32 x = (dstx * SAMPLE_WIDTH + srcx) * fbwidth / (BLURIMG_WIDTH * SAMPLE_WIDTH);
 				for (srcy = 0; srcy < SAMPLE_HEIGHT; srcy++) {
-#if PAL
-					s32 index = (samplestartindex + (s32) (PXTOBYTES((f32) srcx) * scale) + srcy * fbwidthinbytes) & 0xfffffffe;
-#else
-					s32 index = samplestartindex + PXTOBYTES(srcx) + srcy * fbwidthinbytes;
-#endif
+					s32 index = PXTOBYTES(x) + rowoffsets[srcy];
 
 					colour = fb[index] << 8 | fb[index + 1];
 
@@ -128,14 +119,14 @@ Gfx *menugfxRenderBgBlur(Gfx *gdl, u32 colour, s16 arg2, s16 arg3)
 	*(u16 *)&vertices[0].x = arg2;
 	*(u16 *)&vertices[0].y = arg3;
 	vertices[0].z = -10;
-	*(u16 *)&vertices[1].x = arg2 + 320 * 10u + 40;
+	*(u16 *)&vertices[1].x = arg2 + g_ViBackData->x * 10u + 40;
 	*(u16 *)&vertices[1].y = arg3;
 	vertices[1].z = -10;
-	*(u16 *)&vertices[2].x = arg2 + 320 * 10u + 40;
-	*(u16 *)&vertices[2].y = arg3 + 240 * 10u + 50;
+	*(u16 *)&vertices[2].x = arg2 + g_ViBackData->x * 10u + 40;
+	*(u16 *)&vertices[2].y = arg3 + g_ViBackData->y * 10u + 50;
 	vertices[2].z = -10;
 	*(u16 *)&vertices[3].x = arg2;
-	*(u16 *)&vertices[3].y = arg3 + 240 * 10u + 50;
+	*(u16 *)&vertices[3].y = arg3 + g_ViBackData->y * 10u + 50;
 	vertices[3].z = -10;
 
 	vertices[0].s = 0;
