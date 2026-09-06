@@ -33,13 +33,20 @@ bytes free, then Skedar with four living, unpaused players and four independent
 viewports inside640x480. Subsequent per-port forward/Z inputs move all four
 players without OOM. This is a short software sample, not a whole match.
 
-Separate normal Agent-difficulty Infiltration and Deep Sea continuations reach
-unpaused3D but report a52960-byte memp failure. The original fixed-length samples
-ended during stage decompression and were not successful load checks. Waiting
-resolved loading, not the allocation error. Earlier v86b Infiltration evidence
-used Perfect Agent (now checked through the source-declared g_Difficulty scalar),
-so these results must not be represented as an identical-difficulty regression.
-The second allocation failure is still under investigation. No release promoted.
+The first mission-list seed was later proven to be CO-OP, not solo. Compiler-built
+v6 bit-field probes identify cooperative=true and one AI buddy in the failing
+Infiltration/Deep Sea continuations. Their original "solo-matrix" directory name
+is misleading and retained only as provenance. They are not solo regressions.
+Fresh, mode-verified solo Defection/Infiltration/Deep Sea samples pass short
+unpaused initialization checks; Infiltration needed300 additional idle ticks to
+exceed the100-frame threshold. These solo samples use Perfect Agent.
+
+An isolated allocation diagnostic942e6a5ee reproduces the AI-co-op failure after
+skipping Infiltration's intro: fileLoadToNew+0x90, file0x561/FILE_CHEAD_VD,
+request52960, free43120; main thread faults at level-frame849. This is Velvet's
+head model, loaded at buddy spawn after the room banks have been committed.
+The model loader adds32KiB temporary space and later shrinks the allocation.
+v86d tests prewarming this pending head before room budgeting. No release promoted.
 
 Hardware attempts on2026-09-06: exact ED64 reset whileOFF returns1167/not connected.
 Retry with Plug1ON also shows no present FTDI/COM device. Native uploader exits0
