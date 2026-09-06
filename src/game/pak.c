@@ -12,6 +12,7 @@
 #include "bss.h"
 #include "lib/args.h"
 #include "lib/joy.h"
+#include "lib/hwtest.h"
 #include "lib/lib_06440.h"
 #include "lib/main.h"
 #include "lib/memp.h"
@@ -2959,6 +2960,9 @@ void pak0f11df94(s8 device)
 void pakProbeEeprom(void)
 {
 	s32 type;
+	/* DIAGNOSTIC: the complete EEPROM exists only in RAM. */
+	g_PakHasEeprom = true;
+	return;
 
 	joyDisableCyclicPolling(JOYARGS(6199));
 	type = osEepromProbe(&g_PiMesgQueue);
@@ -2978,6 +2982,8 @@ void pakProbeEeprom(void)
 PakErr1 pakReadEeprom(u8 address, u8 *buffer, u32 len)
 {
 	s32 result;
+	return pdHwEeprom(false, address, buffer, len) == 0
+		? PAK_ERR1_OK : PAK_ERR1_EEPROMREADFAILED;
 
 	joyDisableCyclicPolling(JOYARGS(6234));
 	result = osEepromLongRead(&g_PiMesgQueue, address, buffer, len);
@@ -2989,6 +2995,8 @@ PakErr1 pakReadEeprom(u8 address, u8 *buffer, u32 len)
 PakErr1 pakWriteEeprom(u8 address, u8 *buffer, u32 len)
 {
 	s32 result;
+	return pdHwEeprom(true, address, buffer, len) == 0
+		? PAK_ERR1_OK : PAK_ERR1_EEPROMWRITEFAILED;
 
 	joyDisableCyclicPolling(JOYARGS(6269));
 	result = osEepromLongWrite(&g_PiMesgQueue, address, buffer, len);

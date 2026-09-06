@@ -83,6 +83,7 @@
 #include "lib/args.h"
 #include "lib/collision.h"
 #include "lib/joy.h"
+#include "lib/hwtest.h"
 #include "lib/lib_06440.h"
 #include "lib/lib_317f0.h"
 #include "lib/main.h"
@@ -1019,6 +1020,26 @@ Gfx *lvPrint(Gfx *gdl)
 		g_ScaleX = 1;
 	}
 
+	/* Always label this non-release build, including when L hides the graph. */
+	if (mainGetStageNum() < STAGE_TITLE) {
+		char label[100];
+		s32 x = 10;
+		s32 y = 155;
+		gdl = text0f153628(gdl);
+		sprintf(label, "HW REPLAY P%d T%d HR%d CHECK%d F%d\n", g_PdHwPhase,
+			g_PdHwPhaseTicks, g_HiResEnabled, g_PdHwToggleChecks, g_Vars.lvframenum);
+		gdl = textRender(gdl, &x, &y, label, g_CharsHandelGothicSm,
+			g_FontHandelGothicSm, 0xffff00ff, 0x000000a0, viGetWidth(), viGetHeight(), 0, 0);
+		if (g_Vars.currentplayer && g_Vars.currentplayer->prop) {
+			x = 10;
+			sprintf(label, "RAM SAVE R%d W%d POS %d %d\n", g_PdHwSaveReads,
+				g_PdHwSaveWrites, (s32)g_Vars.currentplayer->prop->pos.x,
+				(s32)g_Vars.currentplayer->prop->pos.z);
+			gdl = textRender(gdl, &x, &y, label, g_CharsHandelGothicSm,
+				g_FontHandelGothicSm, 0xffff00ff, 0x000000a0, viGetWidth(), viGetHeight(), 0, 0);
+		}
+		gdl = text0f153780(gdl);
+	}
 	return gdl;
 }
 
