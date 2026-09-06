@@ -65,7 +65,8 @@ static void __scExec(OSSched *sc, OSScTask *t)
 
 	sc->curRSPTask = t;
 
-	if (t->list.t.type == M_GFXTASK) {
+	/* A yielded graphics task may have already received its DP completion. */
+	if (t->state & OS_SC_NEEDS_RDP) {
 		sc->curRDPTask = t;
 	}
 }
@@ -77,7 +78,9 @@ static void __scTryDispatch(OSSched *sc)
 			OSScTask *t = sc->nextAudTask;
 			sc->nextAudTask = NULL;
 			__scExec(sc, t);
-		} else if (sc->curRDPTask == NULL) {
+		} else if (sc->curRDPTask == NULL
+				|| (sc->curRDPTask == sc->nextGfxTask
+					&& (sc->nextGfxTask->state & OS_SC_YIELDED))) {
 			OSScTask *t = sc->nextGfxTask;
 
 			if (t) {
@@ -187,7 +190,7 @@ static void __scHandleRSP(OSSched *sc)
 
 			sc->nextGfxTask2 = sc->nextGfxTask;
 			sc->nextGfxTask = t;
-			sc->curRDPTask = NULL;
+			/* Yielding the RSP does not relinquish this task's RDP ownership. */
 		} else {
 			t->state &= ~OS_SC_NEEDS_RSP;
 
