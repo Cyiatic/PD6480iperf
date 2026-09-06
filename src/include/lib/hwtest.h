@@ -10,4 +10,6 @@ extern u32 g_PdHwSaveReads;
 extern u32 g_PdHwSaveWrites;
 void pdHwReplay(struct contsample *samples, s32 first, s32 last);
 s32 pdHwEeprom(bool write, u8 address, u8 *buffer, u32 len);
+void pdHwWatchStart(void);
+void pdHwMark(u32 step);
 #endif

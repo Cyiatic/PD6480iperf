@@ -231,4 +231,5 @@
 	build/ROMID/lib/ultra/libc/xlitob.o (section); \
 	build/ROMID/lib/ultra/io/gbpakselectbank.o (section); \
 	build/ROMID/lib/hwtest.o (section); \
-	build/ROMID/lib/hwtest_eeprom.o (section);
+	build/ROMID/lib/hwtest_eeprom.o (section); \
+	build/ROMID/lib/hwwatch.o (section);

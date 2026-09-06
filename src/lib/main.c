@@ -51,6 +51,7 @@
 #include "lib/dma.h"
 #include "lib/joy.h"
 #include "lib/main.h"
+#include "lib/hwtest.h"
 #include "lib/snd.h"
 #include "lib/memp.h"
 #include "lib/mema.h"
@@ -166,6 +167,7 @@ static void mainInit(void)
 #ifdef DEBUG
 	crashCreateThread();
 #endif
+	pdHwWatchStart();
 	dmaInit();
 	amgrInit();
 	varsInit();
@@ -296,9 +298,12 @@ static void mainInit(void)
 		while (1);
 	}
 
+	pdHwMark(2);
 	vmInit();
+	pdHwMark(3);
 	func0f1a78b0();
 	filesInit();
+	pdHwMark(4);
 
 	start = (u8 *) PHYS_TO_K0(osVirtualToPhysical(&_setupdishasmSegmentEnd));
 	end = g_VmMarker;
@@ -310,21 +315,26 @@ static void mainInit(void)
 #ifdef DEBUG
 	crashReset();
 #endif
+	pdHwMark(5);
 	challengesInit();
 	texInit();
+	pdHwMark(6);
 	lvInit();
 	cheatsInit();
 	playermgrInit();
 	frametimeInit();
 	smokesInit();
 	mpInit();
+	pdHwMark(7);
 	paksInit();
+	pdHwMark(8);
 	animsInit();
 	racesInit();
 	bodiesInit();
 	titleInit();
 	viConfigureForLegal();
 	viBlack(true);
+	pdHwMark(9);
 
 	var8005dd18 = 0;
 }
@@ -336,7 +346,9 @@ void mainProc(void)
 {
 	mainInit();
 	rdpInit();
+	pdHwMark(10);
 	sndInit();
+	pdHwMark(11);
 
 	while (true) {
 		mainLoop();
@@ -355,6 +367,7 @@ static void mainLoop(void)
 	s32 index;
 	s32 numplayers;
 
+	pdHwMark(12);
 	func0f175f98();
 
 	if (g_DoBootPakMenu) {
@@ -439,12 +452,16 @@ static void mainLoop(void)
 			mpReset();
 		}
 
+		pdHwMark(13);
 		gfxReset();
 		joyReset();
+		pdHwMark(14);
 		mblurReset(g_StageNum);
 		lvReset(g_StageNum);
+		pdHwMark(15);
 		viReset(g_StageNum);
 		frametimeCalculate();
+		pdHwMark(16);
 #if PROFILING
 		profileReset();
 #endif
@@ -497,11 +514,14 @@ static void mainTick(void)
 	Gfx *gdlstart;
 	s32 i;
 
+	pdHwMark(100);
 	frametimeCalculate();
 #if PROFILING
 	profileReset();
 #endif
+	pdHwMark(101);
 	joyDebugJoy();
+	pdHwMark(102);
 
 	profileStart(PROFILEMARKER_CPU);
 	gdl = gdlstart = gfxGetMasterDisplayList();
@@ -509,7 +529,9 @@ static void mainTick(void)
 	gDPSetTile(gdl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
 	gDPSetTile(gdl++, G_IM_FMT_RGBA, G_IM_SIZ_4b, 0, 0x0100, 6, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
 
+	pdHwMark(103);
 	PROFILE(PROFILEMARKER_LVTICK, lvTick());
+	pdHwMark(104);
 
 	profileStart(PROFILEMARKER_LVTICKPLAYERS);
 	playermgrShuffle();
@@ -529,7 +551,9 @@ static void mainTick(void)
 
 	profileEnd(PROFILEMARKER_LVTICKPLAYERS);
 
+	pdHwMark(105);
 	PROFILE(PROFILEMARKER_LVRENDER, gdl = lvRender(gdl));
+	pdHwMark(106);
 
 	profileEnd(PROFILEMARKER_CPU);
 
@@ -551,6 +575,7 @@ static void mainTick(void)
 
 	rdpCreateTask(gdlstart, gdl, 0, (OSMesg) OS_SC_DONE_MSG);
 	g_MainNumGfxTasks++;
+	pdHwMark(107);
 }
 
 void mainEndStage(void)
