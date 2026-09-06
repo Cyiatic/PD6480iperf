@@ -1,0 +1,66 @@
+{
+  "candidate": "PD6480iperf-v80b-rsp-rdp-yield",
+  "release_status": "development candidate; goal incomplete",
+  "source_commit": "c76b706cbba427324698d4bbc65b7fc74d437528",
+  "normal_rom_sha256": "adfe018ce716d168584326c47f16992ef015a3ea91eec46f7ebabe0442a311c0",
+  "normal_elf_sha256": "88f3f59dcc4eda71c097206e25b15458e0827a3fe04a36d4bdd543cea5cddcda",
+  "xdelta_sha256": "42664dd3fe6f3089a970e0bb1165211d937e35f79f940d271cf8cd7d07d42cce",
+  "base_rom_sha256": "4e51142acac686d96861cecc58cf7cb7c3b06b21733b7f8ed609a709dc039a21",
+  "save_sha256": "fa86c003d8cf71cb099c2c55a92cdea3f00b4d482370a48202d7a0d4b0184a7d",
+  "archive": {
+    "name": "PD6480iperf-v80b-candidate-with-Dark-save.zip",
+    "sha256": "60e8527fb3ce4d78e82ec90a283053852d5b0268429e5abaa835873ba1405e5a",
+    "bytes": 31002591,
+    "entries": 5,
+    "all_entries_match_package_source_hashes": true,
+    "xdelta_roundtrip_matches_normal_rom": true,
+    "contains_diagnostic_rom": false
+  },
+  "exact_normal_hardware": {
+    "date": "2026-09-05",
+    "timezone": "America/Phoenix",
+    "console": "original N64",
+    "upload": "ED64 USB; 35.63 seconds; completed exit 0",
+    "capture_process_id": 23156,
+    "capture_started": "23:00:10",
+    "fresh_recording_started": "23:00:45",
+    "observation": "Animated 3D city/rooftop intro and cycling logos; beyond product screen",
+    "interactive_gameplay_verified": false,
+    "save_import_verified": false,
+    "recording_durations_seconds": [156.247333, 78.754622],
+    "recording_sha256": [
+      "a565b1f11fb20dfdfd2b7a70884cb000712d20abdb4343bfeec0881fbcdca94c",
+      "56fea296fa06630ee0ce13f1aabd5f75787c878337fb5e465efb26314fa5ccdb"
+    ],
+    "plug_1_off_confirmed": "23:04:41",
+    "recordings_deleted_at": "23:05:19",
+    "deleted_recordings_and_metadata_bytes": 438074208
+  },
+  "separate_diagnostic_hardware": {
+    "source_commit": "db5fe67c30e6cec862c0feef64b8462e213e613a",
+    "rom_sha256": "4379810d596b620325dd78448125959ad9d368cccaa3ac90547bbc923f0cc377",
+    "elf_sha256": "d6ae2bfb028ce2f094d39d9554413ce3f36e579c67c676f7c56aa39e608c3ef9",
+    "input": "synthetic pad samples; programmatic profile/menu setup",
+    "save": "RAM-only Dark copy; physical pak writes blocked",
+    "observation": "CI motion, Hi-Res checked/unchecked/checked, graph off/on, final phase 8 with 3 checks",
+    "physical_controller_verified": false,
+    "normal_rom_equivalent": false,
+    "recording_durations_seconds": [156.247333, 125.197289],
+    "recording_sha256": [
+      "1952d73e6d03056fbfd87020d8f52398d19041dd67a2f680414966e5804e41ec",
+      "96b87a1ac485358d3a85cd30fd1ab579a7b88b9e428ca963eb61a85d2197b3d2"
+    ],
+    "recordings_deleted": true,
+    "deleted_recordings_and_metadata_bytes": 524233086
+  },
+  "untouched_power_targets": ["N64 outlet", "parent switch"],
+  "open_requirements": [
+    "Analogue 3D verification",
+    "compatible newer pd-perf optimization integration",
+    "performance benchmarks",
+    "broader and extended v80b gameplay",
+    "multiplayer",
+    "normal-ROM interactive console controls",
+    "physical save import"
+  ]
+}

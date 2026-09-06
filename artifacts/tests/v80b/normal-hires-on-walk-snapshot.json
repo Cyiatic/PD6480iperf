@@ -1,0 +1,54 @@
+{
+  "stage": 38,
+  "logical_vi_resolution": 0,
+  "hires_option": 1,
+  "oom_marker": 0,
+  "oom_requested_bytes": 0,
+  "eeprom_detected": 1,
+  "framebuffers": [
+    "0x80400000",
+    "0x80496000"
+  ],
+  "depth": "0x803239c0",
+  "active_dimensions": [
+    640,
+    480
+  ],
+  "active_framebuffer": "0x80496000",
+  "hardware_verified": false,
+  "level_paused": false,
+  "g_MempOnboardPools": {
+    "left": "0x803cd6b0",
+    "right": "0x803cd6b8",
+    "free_bytes": 8
+  },
+  "g_MempExpansionPools": {
+    "left": "0x80761670",
+    "right": "0x80785fa0",
+    "free_bytes": 149808
+  },
+  "level_frame_number": 1303,
+  "tick_mode": 1,
+  "in_cutscene": 0,
+  "player_pause_mode": 0,
+  "room_count": 141,
+  "loaded_rooms": [
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "largest_room_gfx_request": {
+    "room": 84,
+    "bytes": 15744
+  },
+  "mema_free_bytes": 244560,
+  "mema_largest_recorded_free_block": 131072,
+  "mema_reserved_bytes": 262144,
+  "mission_config": {
+    "difficulty": 2,
+    "stage": 42,
+    "index": 16
+  }
+}

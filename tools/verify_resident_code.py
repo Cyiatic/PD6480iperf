@@ -19,6 +19,10 @@ def verify(elf_path, ram_path):
     names = ['mainLoop', 'memaReset', 'memaAlloc', 'func0f004c6c', 'viReset']
     if 'memaAppendBank' in elf.symbols:
         names.append('memaAppendBank')
+    # Later candidates change scheduler code without changing mainLoop's bytes.
+    # Include available scheduler handlers so old states cannot hide that delta.
+    names.extend(name for name in ('__scExec', '__scTryDispatch', '__scHandleRSP',
+                                  '__scHandleRDP', 'mainInit') if name in elf.symbols)
     hashes = {}
     for name in names:
         address, size = elf.symbols[name]
