@@ -42,8 +42,9 @@ falsely enabled. Non-completion mission-route choices retain their default value
 
 The required cartridge save type is **EEPROM 16Kbit**, not 16KB. This file must
 not be byte-swapped or converted into a controller-pak `.mpk`. It is not an
-Analogue Memories save state. The save does not fix the ROM's unresolved
-Hi-Res-toggle freeze; leave that option off in the current candidates.
+Analogue Memories save state. On historical candidates with the unresolved
+Hi-Res-toggle freeze, leave that option off. New fixed-480i candidates instead
+show a resolution label and ignore the stock save's Hi-Res preference.
 
 The [official EverDrive X7 manual](https://krikzz.com/pub/support/everdrive-64/x-series/everdrive-64-manual.pdf)
 documents save-RAM copying and EEPROM16K support. No installed saves were
@@ -64,8 +65,10 @@ Created 2026-09-05. SHA-256:
   thresholds, firing-range gold, challenges, alternate-title state, and MP rank.
 - Unit tests cover deterministic generation, corruption rejection, refusing
   to overwrite an existing save, and timed-cheat definitions from the stock decomp.
-- **Not yet loaded in-game on original N64 or Analogue 3D.** These are format
-  and content checks, not a claim of console validation.
+- The exact bytes load as Dark through normal game save decoding in separate
+  RAM-EEPROM diagnostics on original N64. Physical cartridge save import and
+  Analogue 3D import remain unverified; the diagnostic does not write either
+  the user's cartridge EEPROM or Controller Pak.
 
 The generator is `tools/saves/make_dark_save.py` in the repository. It uses the
 stock [Perfect Dark decomp](https://github.com/n64decomp/perfect_dark), principally

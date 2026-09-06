@@ -2,16 +2,16 @@
 # Single test with independent cleanup; only Plug 1 and owned processes.
 param([Parameter(Mandatory)][string]$Rom,[Parameter(Mandatory)][string]$RunDirectory,
  [ValidateSet('probe','upload-start')][string]$Mode='probe',
- [ValidateRange(12,45)][int]$BootDelaySeconds=12)
+ [ValidateRange(12,45)][int]$BootDelaySeconds=12,[switch]$InspectFailure)
 $ErrorActionPreference='Stop'
 $pdRoot='C:\Users\codex\Documents\N64 2'
 $pdKasa='C:\Program Files\WindowsApps\23769rewster.uk.TPLinkKasaControl_1.4.81.0_neutral__a2smztagkyka6\Kasa Smart Control\TPLinkCmd.exe'
-$pdTool=Join-Path $pdRoot '.codex-work\ed64-verified-v3.exe'
+$pdTool=Join-Path $pdRoot '.codex-work\ed64-verified-v4.exe'
 $pdRom=(Resolve-Path -LiteralPath $Rom).ProviderPath
 $pdOut=[IO.Path]::GetFullPath($RunDirectory)
 if (-not $pdRom.StartsWith($pdRoot+'\') -or -not $pdOut.StartsWith($pdRoot+'\')) { throw 'Outside workspace' }
 if ((Get-Item -LiteralPath $pdRom).Length -ne 33554432) { throw 'Wrong ROM size' }
-if (Get-Process -Name UNFLoader,GameCapture,usb64-reconnect2m,ed64-verified-v1,ed64-verified-v2,ed64-verified-v3 -ErrorAction SilentlyContinue | Where-Object { -not $_.HasExited }) { throw 'Other live hardware process' }
+if (Get-Process -Name UNFLoader,GameCapture,usb64-reconnect2m,ed64-verified-v1,ed64-verified-v2,ed64-verified-v3,ed64-verified-v4 -ErrorAction SilentlyContinue | Where-Object { -not $_.HasExited }) { throw 'Other live hardware process' }
 if (Test-Path -LiteralPath $pdOut) { throw 'Existing evidence output' }
 New-Item -ItemType Directory -Path $pdOut | Out-Null
 $pdUploader=$null; $pdCapture=$null; $pdSequence=0; $pdPowerNeeded=$false
@@ -39,7 +39,7 @@ try {
  Start-Sleep -Seconds $BootDelaySeconds
  $pdUploader=Start-Process -FilePath $pdTool -ArgumentList @($Mode,'COM3',('"'+$pdRom+'"'),(Get-FileHash -LiteralPath $pdRom).Hash) -WindowStyle Hidden -RedirectStandardOutput (Join-Path $pdOut 'transport.log') -RedirectStandardError (Join-Path $pdOut 'transport.stderr.log') -PassThru
  Trace ('Owned transport PID '+$pdUploader.Id+' start '+$pdUploader.StartTime.ToString('o'))
- $pdLimit=[datetime]::UtcNow.AddSeconds($(if ($Mode -eq 'probe') {40} else {310}))
+ $pdLimit=[datetime]::UtcNow.AddSeconds($(if ($Mode -eq 'probe') {40} else {610}))
  while (-not $pdUploader.WaitForExit(1000)) { if ([datetime]::UtcNow -ge $pdLimit) { StopOwned $pdUploader; throw 'External transport timeout' } }
  $pdUploader.WaitForExit()
  if ($pdUploader.ExitCode -ne 0) { throw ('Transport exit '+$pdUploader.ExitCode) }
@@ -55,6 +55,16 @@ try {
   for ($pdSecond=0;$pdSecond -lt 150;$pdSecond++) { Start-Sleep -Seconds 1 }
   Trace 'Capture window ended; inspect recording before any ROM-pass claim'
  }
+} catch {
+ $pdOriginalError=$_
+ if ($InspectFailure -and $Mode -eq 'upload-start' -and $pdUploader -and -not $pdCapture) {
+  StopOwned $pdUploader
+  Trace ('TRANSPORT FAILED; inspecting console state, not claiming a ROM launch: '+$pdOriginalError.Exception.Message)
+  $pdCapture=Start-Process -FilePath 'C:\Program Files\Elgato\GameCapture\GameCapture.exe' -WindowStyle Hidden -PassThru
+  Trace ('Owned failure capture PID '+$pdCapture.Id)
+  for ($pdSecond=0;$pdSecond -lt 95;$pdSecond++) { Start-Sleep -Seconds 1 }
+ }
+ throw $pdOriginalError
 } finally {
  try { StopOwned $pdUploader } finally {
   try { StopOwned $pdCapture } finally {

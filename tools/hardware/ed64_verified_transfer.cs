@@ -87,7 +87,7 @@ internal static class VerifiedEd64
                 || Hash(rom)!=args[3].ToLowerInvariant()) { Console.Error.WriteLine("ROM identity mismatch"); return 2; }
         bool upload=args[0]=="upload-start";
         // Last-resort process bound includes hung SerialPort.Dispose/driver I/O.
-        deadline=new Timer(delegate { Console.Error.WriteLine("DEADLINE: transport/close not complete"); Console.Error.Flush(); Environment.Exit(124); },null,upload?300000:30000,Timeout.Infinite);
+        deadline=new Timer(delegate { Console.Error.WriteLine("DEADLINE: transport/close not complete"); Console.Error.Flush(); Environment.Exit(124); },null,upload?600000:30000,Timeout.Infinite);
         int result=1;
         try {
             Log("ROM SHA256 "+Hash(rom)+" mode="+args[0]);
@@ -108,7 +108,9 @@ internal static class VerifiedEd64
                 CheckBlock(rom,65536,65536); CheckBlock(rom,131072,131072);
                 Log("PROBE_ALL_MATCHED; no start command sent");
             } else {
-                for (int offset=0;offset<rom.Length;offset+=65536) {
+                // One host data-write per verified transaction limits each
+                // unacknowledged window to 4 KiB, not a 64 KiB train of writes.
+                for (int offset=0;offset<rom.Length;offset+=4096) {
                     if (offset>0 && offset%1048576==0) {
                         // Reopen only at an idle boundary: all prior bytes read
                         // back and cmd-t acknowledged. Never resume a failed
@@ -118,7 +120,7 @@ internal static class VerifiedEd64
                         Thread.Sleep(250); port.Open(); Ping();
                         Log("IDLE_RECONNECT ping matched");
                     }
-                    CheckBlock(rom,offset,65536);
+                    CheckBlock(rom,offset,4096);
                 }
                 Log("ALL_33554432_BYTES_READBACK_MATCHED SHA256 "+Hash(rom));
                 // Protocol's zero-argument cmd-s matches saved UNFLoader path;

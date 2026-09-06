@@ -1,0 +1,14 @@
+2026-09-06T20:00:07.8517048Z ROM C:\Users\codex\Documents\N64 2\.codex-work\PD6480iperf-v86b-infiltration-diagnostic.z64 SHA256 39082BC3857E1F1728E3F3DCFE2E733815774061D3B34F5469A617CB2BB09E59
+2026-09-06T20:00:09.1419229Z Plug 1 on: Devicelist expired, retrieving updated list from TP-Link
+Relay: 1
+2026-09-06T20:00:44.4801158Z Uploader C:\Users\codex\Documents\N64 2\.codex-work\UNFLoader-x86-pre\UNFLoader.exe SHA256 76D28305FE9DDF209E269D7B5F45927D5069DEACAD5C5166B628E7F7D5A5EA88
+2026-09-06T20:00:44.4844700Z Uploading with GameCapture closed; timeout 65 seconds
+2026-09-06T20:00:44.4954548Z Owned upload PID 13960
+2026-09-06T20:01:21.0748628Z Native upload exit 0; this alone is not a ROM pass
+2026-09-06T20:01:21.1211009Z Owned GameCapture PID 14424 start 2026-09-06T13:01:21.1120543-07:00
+2026-09-06T20:02:06.5775629Z Capture startup allowance ended; observing 240 seconds
+2026-09-06T20:06:07.0139133Z Observation ended; recording still needs inspection
+2026-09-06T20:06:08.3943698Z Plug 1 off: Devicelist expired, retrieving updated list from TP-Link
+Relay: 0
+2026-09-06T20:06:09.3396690Z Plug 1 status: Relay: 0
+2026-09-06T20:06:09.3403139Z Trial cleanup ended; retain bounded recordings until inspected

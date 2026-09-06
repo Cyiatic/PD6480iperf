@@ -1,0 +1,5 @@
+Exception: C:\Users\codex\Documents\N64 2\.codex-work\perfect-dark-performance\tools\hardware\pd_ed64_verified_trial.ps1:44
+Line |
+  44 |  . er.ExitCode -ne 0) { throw ('Transport exit '+$pdUploader.ExitCode) }
+     |                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Transport exit 1

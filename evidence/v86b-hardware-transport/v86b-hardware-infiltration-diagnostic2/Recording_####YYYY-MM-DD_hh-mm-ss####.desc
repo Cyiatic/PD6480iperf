@@ -1,0 +1,35 @@
+{
+	"!!! Information":"Information about segmented files",
+	"!!! Version":2,
+	"Segments":
+	[
+		{
+			"EndPosition":290981512,
+			"EndTime":14054040,
+			"LogicalPosition":0,
+			"MediaFileName":"Recording_####YYYY-MM-DD_hh-mm-ss####_0001.ts",
+			"MetaFileName":"Recording_####YYYY-MM-DD_hh-mm-ss####_0001.meta",
+			"OffsetPosition":0,
+			"OffsetTime":0,
+			"SegmentNumber":1,
+			"Size":290981512,
+			"StartPosition":0,
+			"StartTime":0,
+			"TimeBase":90000
+		},
+		{
+			"EndPosition":464676216,
+			"EndTime":22438415,
+			"LogicalPosition":290981512,
+			"MediaFileName":"Recording_####YYYY-MM-DD_hh-mm-ss####_0002.ts",
+			"MetaFileName":"Recording_####YYYY-MM-DD_hh-mm-ss####_0002.meta",
+			"OffsetPosition":0,
+			"OffsetTime":0,
+			"SegmentNumber":2,
+			"Size":174188204,
+			"StartPosition":290981512,
+			"StartTime":14054040,
+			"TimeBase":90000
+		}
+	]
+}

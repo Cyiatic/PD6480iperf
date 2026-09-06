@@ -1,0 +1,7 @@
+12419ms FAILED System.TimeoutException: The operation has timed out.
+   at System.IO.Ports.SerialStream.Read(Byte[] array, Int32 offset, Int32 count, Int32 timeout)
+   at System.IO.Ports.SerialStream.Read(Byte[] array, Int32 offset, Int32 count)
+   at System.IO.Ports.SerialPort.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at VerifiedEd64.ReadExactly(Int32 count)
+   at VerifiedEd64.CheckBlock(Byte[] rom, Int32 offset, Int32 length)
+   at VerifiedEd64.Main(String[] args)

@@ -1,0 +1,5 @@
+172330ms FAILED System.TimeoutException: The write timed out.
+   at System.IO.Ports.SerialStream.Write(Byte[] array, Int32 offset, Int32 count, Int32 timeout)
+   at System.IO.Ports.SerialPort.Write(Byte[] buffer, Int32 offset, Int32 count)
+   at VerifiedEd64.CheckBlock(Byte[] rom, Int32 offset, Int32 length)
+   at VerifiedEd64.Main(String[] args)

@@ -6,6 +6,8 @@ param(
     [Parameter(Mandatory=$true)][string]$Rom,
     [Parameter(Mandatory=$true)][string]$RunDirectory,
     [ValidateRange(15,480)][int]$ObservationSeconds=75,
+    [ValidateRange(12,45)][int]$BootDelaySeconds=35,
+    [switch]$ResetEd64Usb,
     [ValidateSet('UNFLoader','Usb64')][string]$LoaderBackend='UNFLoader',
     [switch]$CaptureOnly,
     [switch]$ExternalUpload
@@ -83,8 +85,16 @@ function Invoke-PdKasa([ValidateSet('on','off','status')][string]$Action) {
 try {
     Trace-Pd ('ROM '+$pdRomPath+' SHA256 '+(Get-FileHash -LiteralPath $pdRomPath).Hash)
     $pdPowerOffNeeded=$true
+    if ($ResetEd64Usb) {
+        Invoke-PdKasa 'off'
+        Wait-PdSeconds 3
+        # Exact saved cartridge interface only, never a broad USB reset.
+        $pdReset=Start-Process -FilePath "$env:SystemRoot\System32\pnputil.exe" -ArgumentList @('/restart-device','USB\VID_0403&PID_6001\AB0NWMD3') -WindowStyle Hidden -RedirectStandardOutput (Join-Path $pdRunPath 'ed64-restart.log') -RedirectStandardError (Join-Path $pdRunPath 'ed64-restart.stderr.log') -PassThru
+        Wait-PdProcess $pdReset 20
+        Trace-Pd 'Exact ED64 FTDI device restarted with Plug 1 OFF'
+    }
     Invoke-PdKasa 'on'
-    Wait-PdSeconds 12
+    Wait-PdSeconds $BootDelaySeconds
     if ($CaptureOnly -or $ExternalUpload) {
         if ($ExternalUpload) {
             Trace-Pd 'EXTERNAL UPLOADER: power/capture lease only; separate terminal evidence is required for upload success'

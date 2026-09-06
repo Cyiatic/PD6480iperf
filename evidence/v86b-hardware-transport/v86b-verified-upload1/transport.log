@@ -1,0 +1,283 @@
+297ms ROM SHA256 c33ec1459b3092d89f5a3b00f82f6b4dd8e59c294b479aa7d039dc7471455df7 mode=upload-start
+303ms OPEN COM3
+317ms PING matched attempt=1
+318ms WRITE begin offset=0 bytes=65536
+573ms READBACK begin offset=0
+694ms MATCH offset=0 bytes=65536
+695ms WRITE begin offset=65536 bytes=65536
+949ms READBACK begin offset=65536
+1063ms MATCH offset=65536 bytes=65536
+1065ms WRITE begin offset=131072 bytes=65536
+1326ms READBACK begin offset=131072
+1447ms MATCH offset=131072 bytes=65536
+1448ms WRITE begin offset=196608 bytes=65536
+1702ms READBACK begin offset=196608
+1816ms MATCH offset=196608 bytes=65536
+1817ms WRITE begin offset=262144 bytes=65536
+2075ms READBACK begin offset=262144
+2183ms MATCH offset=262144 bytes=65536
+2183ms WRITE begin offset=327680 bytes=65536
+2448ms READBACK begin offset=327680
+2578ms MATCH offset=327680 bytes=65536
+2579ms WRITE begin offset=393216 bytes=65536
+2843ms READBACK begin offset=393216
+2951ms MATCH offset=393216 bytes=65536
+2951ms WRITE begin offset=458752 bytes=65536
+3214ms READBACK begin offset=458752
+3338ms MATCH offset=458752 bytes=65536
+3338ms WRITE begin offset=524288 bytes=65536
+3588ms READBACK begin offset=524288
+3703ms MATCH offset=524288 bytes=65536
+3704ms WRITE begin offset=589824 bytes=65536
+3966ms READBACK begin offset=589824
+4088ms MATCH offset=589824 bytes=65536
+4089ms WRITE begin offset=655360 bytes=65536
+4349ms READBACK begin offset=655360
+4455ms MATCH offset=655360 bytes=65536
+4455ms WRITE begin offset=720896 bytes=65536
+4713ms READBACK begin offset=720896
+4823ms MATCH offset=720896 bytes=65536
+4824ms WRITE begin offset=786432 bytes=65536
+5099ms READBACK begin offset=786432
+5207ms MATCH offset=786432 bytes=65536
+5207ms WRITE begin offset=851968 bytes=65536
+5463ms READBACK begin offset=851968
+5575ms MATCH offset=851968 bytes=65536
+5576ms WRITE begin offset=917504 bytes=65536
+5839ms READBACK begin offset=917504
+5960ms MATCH offset=917504 bytes=65536
+5960ms WRITE begin offset=983040 bytes=65536
+6214ms READBACK begin offset=983040
+6329ms MATCH offset=983040 bytes=65536
+6329ms WRITE begin offset=1048576 bytes=65536
+6605ms READBACK begin offset=1048576
+6715ms MATCH offset=1048576 bytes=65536
+6715ms WRITE begin offset=1114112 bytes=65536
+6964ms READBACK begin offset=1114112
+7080ms MATCH offset=1114112 bytes=65536
+7080ms WRITE begin offset=1179648 bytes=65536
+7326ms READBACK begin offset=1179648
+7449ms MATCH offset=1179648 bytes=65536
+7449ms WRITE begin offset=1245184 bytes=65536
+7715ms READBACK begin offset=1245184
+7832ms MATCH offset=1245184 bytes=65536
+7832ms WRITE begin offset=1310720 bytes=65536
+8105ms READBACK begin offset=1310720
+8215ms MATCH offset=1310720 bytes=65536
+8216ms WRITE begin offset=1376256 bytes=65536
+8488ms READBACK begin offset=1376256
+8602ms MATCH offset=1376256 bytes=65536
+8602ms WRITE begin offset=1441792 bytes=65536
+8874ms READBACK begin offset=1441792
+8986ms MATCH offset=1441792 bytes=65536
+8986ms WRITE begin offset=1507328 bytes=65536
+9246ms READBACK begin offset=1507328
+9353ms MATCH offset=1507328 bytes=65536
+9354ms WRITE begin offset=1572864 bytes=65536
+9615ms READBACK begin offset=1572864
+9737ms MATCH offset=1572864 bytes=65536
+9737ms WRITE begin offset=1638400 bytes=65536
+9998ms READBACK begin offset=1638400
+10106ms MATCH offset=1638400 bytes=65536
+10107ms WRITE begin offset=1703936 bytes=65536
+10355ms READBACK begin offset=1703936
+10474ms MATCH offset=1703936 bytes=65536
+10475ms WRITE begin offset=1769472 bytes=65536
+10730ms READBACK begin offset=1769472
+10845ms MATCH offset=1769472 bytes=65536
+10846ms WRITE begin offset=1835008 bytes=65536
+11107ms READBACK begin offset=1835008
+11226ms MATCH offset=1835008 bytes=65536
+11226ms WRITE begin offset=1900544 bytes=65536
+11480ms READBACK begin offset=1900544
+11594ms MATCH offset=1900544 bytes=65536
+11594ms WRITE begin offset=1966080 bytes=65536
+11853ms READBACK begin offset=1966080
+11960ms MATCH offset=1966080 bytes=65536
+11960ms WRITE begin offset=2031616 bytes=65536
+12216ms READBACK begin offset=2031616
+12329ms MATCH offset=2031616 bytes=65536
+12330ms WRITE begin offset=2097152 bytes=65536
+12591ms READBACK begin offset=2097152
+12713ms MATCH offset=2097152 bytes=65536
+12714ms WRITE begin offset=2162688 bytes=65536
+12979ms READBACK begin offset=2162688
+13097ms MATCH offset=2162688 bytes=65536
+13097ms WRITE begin offset=2228224 bytes=65536
+13345ms READBACK begin offset=2228224
+13463ms MATCH offset=2228224 bytes=65536
+13464ms WRITE begin offset=2293760 bytes=65536
+13729ms READBACK begin offset=2293760
+13849ms MATCH offset=2293760 bytes=65536
+13849ms WRITE begin offset=2359296 bytes=65536
+14104ms READBACK begin offset=2359296
+14218ms MATCH offset=2359296 bytes=65536
+14218ms WRITE begin offset=2424832 bytes=65536
+14479ms READBACK begin offset=2424832
+14598ms MATCH offset=2424832 bytes=65536
+14599ms WRITE begin offset=2490368 bytes=65536
+14856ms READBACK begin offset=2490368
+14968ms MATCH offset=2490368 bytes=65536
+14968ms WRITE begin offset=2555904 bytes=65536
+15216ms READBACK begin offset=2555904
+15338ms MATCH offset=2555904 bytes=65536
+15338ms WRITE begin offset=2621440 bytes=65536
+15589ms READBACK begin offset=2621440
+15707ms MATCH offset=2621440 bytes=65536
+15707ms WRITE begin offset=2686976 bytes=65536
+15982ms READBACK begin offset=2686976
+16088ms MATCH offset=2686976 bytes=65536
+16089ms WRITE begin offset=2752512 bytes=65536
+16345ms READBACK begin offset=2752512
+16455ms MATCH offset=2752512 bytes=65536
+16456ms WRITE begin offset=2818048 bytes=65536
+16714ms READBACK begin offset=2818048
+16825ms MATCH offset=2818048 bytes=65536
+16825ms WRITE begin offset=2883584 bytes=65536
+17089ms READBACK begin offset=2883584
+17209ms MATCH offset=2883584 bytes=65536
+17209ms WRITE begin offset=2949120 bytes=65536
+17471ms READBACK begin offset=2949120
+17576ms MATCH offset=2949120 bytes=65536
+17576ms WRITE begin offset=3014656 bytes=65536
+17841ms READBACK begin offset=3014656
+17962ms MATCH offset=3014656 bytes=65536
+17962ms WRITE begin offset=3080192 bytes=65536
+18217ms READBACK begin offset=3080192
+18329ms MATCH offset=3080192 bytes=65536
+18329ms WRITE begin offset=3145728 bytes=65536
+18607ms READBACK begin offset=3145728
+18713ms MATCH offset=3145728 bytes=65536
+18714ms WRITE begin offset=3211264 bytes=65536
+18974ms READBACK begin offset=3211264
+19080ms MATCH offset=3211264 bytes=65536
+19080ms WRITE begin offset=3276800 bytes=65536
+19339ms READBACK begin offset=3276800
+19450ms MATCH offset=3276800 bytes=65536
+19450ms WRITE begin offset=3342336 bytes=65536
+19715ms READBACK begin offset=3342336
+19836ms MATCH offset=3342336 bytes=65536
+19836ms WRITE begin offset=3407872 bytes=65536
+20102ms READBACK begin offset=3407872
+20216ms MATCH offset=3407872 bytes=65536
+20217ms WRITE begin offset=3473408 bytes=65536
+20490ms READBACK begin offset=3473408
+20604ms MATCH offset=3473408 bytes=65536
+20604ms WRITE begin offset=3538944 bytes=65536
+20874ms READBACK begin offset=3538944
+20986ms MATCH offset=3538944 bytes=65536
+20986ms WRITE begin offset=3604480 bytes=65536
+21247ms READBACK begin offset=3604480
+21356ms MATCH offset=3604480 bytes=65536
+21356ms WRITE begin offset=3670016 bytes=65536
+21620ms READBACK begin offset=3670016
+21738ms MATCH offset=3670016 bytes=65536
+21738ms WRITE begin offset=3735552 bytes=65536
+21999ms READBACK begin offset=3735552
+22109ms MATCH offset=3735552 bytes=65536
+22109ms WRITE begin offset=3801088 bytes=65536
+22373ms READBACK begin offset=3801088
+22492ms MATCH offset=3801088 bytes=65536
+22493ms WRITE begin offset=3866624 bytes=65536
+22748ms READBACK begin offset=3866624
+22858ms MATCH offset=3866624 bytes=65536
+22859ms WRITE begin offset=3932160 bytes=65536
+23136ms READBACK begin offset=3932160
+23244ms MATCH offset=3932160 bytes=65536
+23245ms WRITE begin offset=3997696 bytes=65536
+23518ms READBACK begin offset=3997696
+23627ms MATCH offset=3997696 bytes=65536
+23627ms WRITE begin offset=4063232 bytes=65536
+23901ms READBACK begin offset=4063232
+24010ms MATCH offset=4063232 bytes=65536
+24010ms WRITE begin offset=4128768 bytes=65536
+24278ms READBACK begin offset=4128768
+24396ms MATCH offset=4128768 bytes=65536
+24397ms WRITE begin offset=4194304 bytes=65536
+24668ms READBACK begin offset=4194304
+24781ms MATCH offset=4194304 bytes=65536
+24782ms WRITE begin offset=4259840 bytes=65536
+25057ms READBACK begin offset=4259840
+25166ms MATCH offset=4259840 bytes=65536
+25166ms WRITE begin offset=4325376 bytes=65536
+25443ms READBACK begin offset=4325376
+25549ms MATCH offset=4325376 bytes=65536
+25549ms WRITE begin offset=4390912 bytes=65536
+25809ms READBACK begin offset=4390912
+25919ms MATCH offset=4390912 bytes=65536
+25919ms WRITE begin offset=4456448 bytes=65536
+26184ms READBACK begin offset=4456448
+26303ms MATCH offset=4456448 bytes=65536
+26304ms WRITE begin offset=4521984 bytes=65536
+26554ms READBACK begin offset=4521984
+26670ms MATCH offset=4521984 bytes=65536
+26671ms WRITE begin offset=4587520 bytes=65536
+26926ms READBACK begin offset=4587520
+27038ms MATCH offset=4587520 bytes=65536
+27038ms WRITE begin offset=4653056 bytes=65536
+27293ms READBACK begin offset=4653056
+27404ms MATCH offset=4653056 bytes=65536
+27404ms WRITE begin offset=4718592 bytes=65536
+27683ms READBACK begin offset=4718592
+27791ms MATCH offset=4718592 bytes=65536
+27792ms WRITE begin offset=4784128 bytes=65536
+28060ms READBACK begin offset=4784128
+28173ms MATCH offset=4784128 bytes=65536
+28174ms WRITE begin offset=4849664 bytes=65536
+28441ms READBACK begin offset=4849664
+28558ms MATCH offset=4849664 bytes=65536
+28558ms WRITE begin offset=4915200 bytes=65536
+28824ms READBACK begin offset=4915200
+28943ms MATCH offset=4915200 bytes=65536
+28944ms WRITE begin offset=4980736 bytes=65536
+29214ms READBACK begin offset=4980736
+29325ms MATCH offset=4980736 bytes=65536
+29325ms WRITE begin offset=5046272 bytes=65536
+29585ms READBACK begin offset=5046272
+29695ms MATCH offset=5046272 bytes=65536
+29695ms WRITE begin offset=5111808 bytes=65536
+29941ms READBACK begin offset=5111808
+30062ms MATCH offset=5111808 bytes=65536
+30062ms WRITE begin offset=5177344 bytes=65536
+30325ms READBACK begin offset=5177344
+30447ms MATCH offset=5177344 bytes=65536
+30447ms WRITE begin offset=5242880 bytes=65536
+30717ms READBACK begin offset=5242880
+30831ms MATCH offset=5242880 bytes=65536
+30832ms WRITE begin offset=5308416 bytes=65536
+31106ms READBACK begin offset=5308416
+31216ms MATCH offset=5308416 bytes=65536
+31216ms WRITE begin offset=5373952 bytes=65536
+31490ms READBACK begin offset=5373952
+31601ms MATCH offset=5373952 bytes=65536
+31601ms WRITE begin offset=5439488 bytes=65536
+31856ms READBACK begin offset=5439488
+31970ms MATCH offset=5439488 bytes=65536
+31970ms WRITE begin offset=5505024 bytes=65536
+32233ms READBACK begin offset=5505024
+32355ms MATCH offset=5505024 bytes=65536
+32356ms WRITE begin offset=5570560 bytes=65536
+32622ms READBACK begin offset=5570560
+32738ms MATCH offset=5570560 bytes=65536
+32738ms WRITE begin offset=5636096 bytes=65536
+33002ms READBACK begin offset=5636096
+33122ms MATCH offset=5636096 bytes=65536
+33123ms WRITE begin offset=5701632 bytes=65536
+33388ms READBACK begin offset=5701632
+33508ms MATCH offset=5701632 bytes=65536
+33508ms WRITE begin offset=5767168 bytes=65536
+33769ms READBACK begin offset=5767168
+33890ms MATCH offset=5767168 bytes=65536
+33891ms WRITE begin offset=5832704 bytes=65536
+34135ms READBACK begin offset=5832704
+34260ms MATCH offset=5832704 bytes=65536
+34260ms WRITE begin offset=5898240 bytes=65536
+34510ms READBACK begin offset=5898240
+34622ms MATCH offset=5898240 bytes=65536
+34623ms WRITE begin offset=5963776 bytes=65536
+34891ms READBACK begin offset=5963776
+35007ms MATCH offset=5963776 bytes=65536
+35008ms WRITE begin offset=6029312 bytes=65536
+47203ms CLOSE begin
+47371ms CLOSE returned
+47372ms EXIT 1

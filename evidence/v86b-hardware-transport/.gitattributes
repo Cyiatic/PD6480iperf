@@ -1,0 +1,7 @@
+# Preserve diagnostic evidence byte identities, including Windows line endings.
+*.log -text -whitespace
+*.stderr -text -whitespace
+*.json -text whitespace=cr-at-eol
+*.txt -text whitespace=cr-at-eol
+*.desc -text whitespace=cr-at-eol
+*.info -text whitespace=cr-at-eol

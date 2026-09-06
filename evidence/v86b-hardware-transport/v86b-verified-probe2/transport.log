@@ -1,0 +1,19 @@
+288ms ROM SHA256 c33ec1459b3092d89f5a3b00f82f6b4dd8e59c294b479aa7d039dc7471455df7 mode=probe
+294ms OPEN COM3
+307ms PING matched attempt=1
+309ms WRITE begin offset=0 bytes=512
+325ms READBACK begin offset=0
+367ms MATCH offset=0 bytes=512
+368ms WRITE begin offset=512 bytes=4096
+404ms READBACK begin offset=512
+454ms MATCH offset=512 bytes=4096
+455ms WRITE begin offset=65536 bytes=65536
+718ms READBACK begin offset=65536
+843ms MATCH offset=65536 bytes=65536
+844ms WRITE begin offset=131072 bytes=131072
+1342ms READBACK begin offset=131072
+1526ms MATCH offset=131072 bytes=131072
+1527ms PROBE_ALL_MATCHED; no start command sent
+1527ms CLOSE begin
+1639ms CLOSE returned
+1639ms EXIT 0

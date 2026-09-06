@@ -1,0 +1,13 @@
+2026-09-06T19:54:03.3010656Z ROM C:\Users\codex\Documents\N64 2\.codex-work\PD6480iperf-v86b-budgeted-rooms.z64 SHA256 C33EC1459B3092D89F5A3B00F82F6B4DD8E59C294B479AA7D039DC7471455DF7
+2026-09-06T19:54:04.9318249Z Plug 1 on: Devicelist expired, retrieving updated list from TP-Link
+Relay: 1
+2026-09-06T19:54:40.2437858Z Uploader C:\Users\codex\Documents\N64 2\.codex-work\UNFLoader-x86-pre\UNFLoader.exe SHA256 76D28305FE9DDF209E269D7B5F45927D5069DEACAD5C5166B628E7F7D5A5EA88
+2026-09-06T19:54:40.2479898Z Uploading with GameCapture closed; timeout 65 seconds
+2026-09-06T19:54:40.2558093Z Owned upload PID 14164
+2026-09-06T19:55:16.8902995Z Native upload exit 0; this alone is not a ROM pass
+2026-09-06T19:55:16.9359293Z Owned GameCapture PID 9132 start 2026-09-06T12:55:16.9276590-07:00
+2026-09-06T19:56:02.2487849Z Capture startup allowance ended; observing 120 seconds
+2026-09-06T19:58:02.4755266Z Observation ended; recording still needs inspection
+2026-09-06T19:58:03.4914658Z Plug 1 off: Relay: 0
+2026-09-06T19:58:04.4727373Z Plug 1 status: Relay: 0
+2026-09-06T19:58:04.4733522Z Trial cleanup ended; retain bounded recordings until inspected

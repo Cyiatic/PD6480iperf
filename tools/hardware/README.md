@@ -11,6 +11,13 @@ failed to load Get-FileHash on 2026-09-06 before power-on.
 
 Arguments: exact 32 MiB ROM path, NEW evidence directory under this workspace,
 observation seconds (15–480). Redirect stdout/stderr to new bounded trial logs.
+Cold boot dwell defaults to 35 seconds. `-ResetEd64Usb` first confirms Plug 1
+OFF, waits three seconds, and restarts ONLY the saved cartridge interface
+`USB\VID_0403&PID_6001\AB0NWMD3` with a bounded pnputil command. This exact
+reset/off/35-second-dwell recipe recovered native uploads on 2026-09-06;
+neither the reset nor the dwell alone is established as the root cause/fix.
+Use the prerelease loader already named by the script. Never reset all USB
+devices or change the unrelated N64 outlet to troubleshoot this cartridge.
 The worker refuses existing GameCapture/UNFLoader processes and existing
 evidence directories. Upload timeout is 65 s; overall deadline 660 s;
 individual Kasa commands get 20 s, with an OFF retry. An empty or contradictory

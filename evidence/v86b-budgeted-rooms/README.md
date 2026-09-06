@@ -2,6 +2,13 @@
 
 Development evidence, 2026-09-06. **Not a hardware-verified release.**
 
+Later continuation: see ../v86b-hardware-transport. Native ED64 uploads recovered;
+normal v86b reaches the 3D intro. A separate labelled Infiltration diagnostic
+verifies bounded gameplay/alive pause/menu/L on original N64, then dies from
+enemy damage after brief resume. The historical transport failures below remain
+valid for their attempts, not the latest overall state. A normal-ROM test
+candidate is packaged with these limits; no full hardware/Analogue release claim.
+
 The Expansion Pak was already enabled: these tests use the real 8 MiB budget.
 Two 614400-byte colour buffers plus 614464 bytes for depth occupy 1843264 bytes,
 1280000 more than upstream's three 320x220 colour buffers plus depth. v85's

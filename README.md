@@ -16,9 +16,18 @@ checks with unpaused final samples and no allocation/cache-load faults. Five
 opening cutscenes required later Start inputs; seven other samples were unpaused
 with B. Original samples and authenticated continuation chains are retained.
 See [v86b evidence and limitations](evidence/v86b-budgeted-rooms/README.md).
-This is not a full playthrough or a release: ED64 transfers stalled, and one
-serial completion message was followed by a process timeout without visual
-handoff verification. Hardware/Analogue and performance validation remain required.
+ED64 uploads subsequently recovered after the exact FTDI reset with Plug1OFF
+and35-second cold dwell. Normal v86b reaches the city/rooftop3D intro. A separate
+labelled Infiltration diagnostic shows alive gameplay, full-screen pause blur,
+menu swipes, fixed-resolution label and L on real N64; it dies from enemy damage
+almost immediately after resuming. This is bounded evidence, not sustained play
+or normal-ROM interactive hardware validation. Earlier failed transfers remain
+documented. See [fresh hardware evidence](evidence/v86b-hardware-transport/README.md).
+
+[v86b patch and stock100%Dark save](artifacts/PD6480iperf-v86b-patch-and-Dark-save.zip)
+is available as a **test candidate**, with [hashes and limits](artifacts/PD6480iperf-v86b-README.md).
+Analogue, long sessions, whole missions, multiplayer and benchmarking remain
+unverified. Plug1OFF confirmed after testing and inspected recordings deleted.
 Older sections below are historical development records, not current claims.
 
 A mod that optimises for runtime performance on console.

@@ -1,0 +1,21 @@
+{
+	"!!! Information":"Information about segmented files",
+	"!!! Version":2,
+	"Segments":
+	[
+		{
+			"EndPosition":113557452,
+			"EndTime":5477472,
+			"LogicalPosition":0,
+			"MediaFileName":"Recording_####YYYY-MM-DD_hh-mm-ss####_0001.ts",
+			"MetaFileName":"Recording_####YYYY-MM-DD_hh-mm-ss####_0001.meta",
+			"OffsetPosition":0,
+			"OffsetTime":0,
+			"SegmentNumber":1,
+			"Size":114052268,
+			"StartPosition":0,
+			"StartTime":0,
+			"TimeBase":90000
+		}
+	]
+}

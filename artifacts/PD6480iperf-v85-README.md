@@ -1,5 +1,10 @@
 # PD6480iperf v85 — full-screen menu blur / allocation candidate
 
+**Historical candidate, superseded for further testing.** The later 21-mission
+matrix found startup allocation/missing-room failures in 11 missions; the narrow
+tests below did not establish general stability. v86b addresses room-memory
+residency separately. Do not distribute v85 as the latest validated candidate.
+
 Normal ROM: PD6480iperf-v85-blur-allocation.z64.
 
 Includes v84's fixes for upper-left-quarter pause blur and the stale
