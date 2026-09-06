@@ -36,3 +36,20 @@ pause offset 0x1a34, scheduler size 0xa8. Older v80b player offsets would be wro
 Inspector tests cover the newer pause offset, triple pointers, ABI rejection and
 resident-code mismatch rejection. No hardware upload was attempted. Plug 1
 remained off while building and testing this failing software experiment.
+
+## v81b: lazy CI preview buffers (also not a release)
+
+Allocation trace d2f6eb171 identified four eagerly allocated 153600-byte menu
+preview buffers in CI. v81b allocates each on first rendering instead; capacity,
+model initialization and the separate 51200-byte global menu buffer are unchanged.
+This retains all three colour buffers and full weapon/room preloading.
+
+- ROM SHA256 `db5b4e708e9063b38269ea7d5f34a882a758a6eaa88882e4afe88cdfee9e5a09`
+- ELF SHA256 `604ca31a6d1ffd4568add5e67894ff6ccdd85bf6950d0f92198be5af5df4b323`
+- Fresh 5100-tick cold test renders CI at 640x480, with Dark visible, but FAILS:
+  only 114 of 140 rooms have gfx pointers (1..113 and 119), OOM marker 112,
+  last failed allocation 2096 bytes, only 992 expansion heap bytes free.
+- Final main thread exception flag 2, PC 80005524, Cause 8, BadVAddr 25040.
+  Reaching the CI menu was not a clean boot/interactive pass.
+- No allocation-trace globals or synthetic controller changes in v81b ROM.
+- No hardware upload; Plug 1 remained off. Preview rendering remains unverified.

@@ -1569,6 +1569,13 @@ Gfx *menuRenderModels(Gfx *gdl, struct menu840 *thing, s32 arg2)
 	s32 bodynum;
 	s32 headnum;
 
+	/* CI has four potential setup-menu previews, usually all unused during
+	 * gameplay. Reserve each model buffer only when that preview is rendered. */
+	if (g_Vars.stagenum == STAGE_CITRAINING && thing->unk004 == NULL
+			&& thing->unk008 != 0) {
+		thing->unk004 = mempAlloc(thing->unk008, MEMPOOL_STAGE);
+	}
+
 	if (g_Vars.stagenum != STAGE_CITRAINING && g_Vars.stagenum != STAGE_CREDITS) {
 		if (g_MenuData.unk5d5_01 && arg2 != 1 && arg2 < 3) {
 			return gdl;
@@ -3458,7 +3465,7 @@ void menuReset(void)
 		}
 
 		for (i = 0; i < max; i++) {
-			func0f0f8bb4(&g_Menus[i].unk840, 0x25800, 1);
+			func0f0f8bb4(&g_Menus[i].unk840, 0x25800, g_Vars.stagenum != STAGE_CITRAINING);
 		}
 
 		func0f0f8bb4(&g_MenuData.unk01c, 0xc800, 1);
