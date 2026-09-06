@@ -78,13 +78,26 @@ Actual C allocator and blur tests pass; 25 Python inspector/input/provenance
 tests pass. Room colours are gfxAllocateColours/per-frame or room-resident,
 not separate mema allocations leaked on eviction.
 
-Original-N64 validation is still pending. Multiple UNFLoader transfers stall;
-fresh Elgato frames show the EverDrive menu, not a ROM handoff. One existing
-serial-utility attempt printed Finished in 112.142 seconds but timed out on
-process exit; no video was captured before power-off. A later serial transfer
-stalled midway. Do not count those messages as a hardware pass. Plug 1 is OFF,
-independently verified; inspected recordings deleted, small stills retained.
-Private distribution branch mods/performance holds the detailed evidence in
-evidence/v86b-budgeted-rooms. No v86 Analogue or benchmark pass is claimed.
+Original-N64 update: exact ED64 FTDI restart while Plug1OFF plus 35-second cold
+boot dwell recovers three consecutive native prerelease uploads (~36.6–36.8s).
+Earlier failed/partial transfers remain documented, not reclassified. Normal
+c33ec145... fresh Elgato frames show title, city flyover and Joanna on rooftop,
+later Nintendo/black. This is 3D intro evidence, not interactive normal-ROM play.
+
+Separate labelled Infiltration/PerfectAgent diagnostic2 (a2009427..., source
+fa662646b) uses the same rendering/cache code plus synthetic input and RAM-only
+stock Dark. Original-N64 footage shows gameplay, alive full-screen pause blur,
+both menu directions, fixed640x480i label and L graph changes. OOM0/BGFAIL0,
+six evictions; no exception screen observed. Menu closes briefly back to3D,
+then normal enemy damage kills the player; phase99 stops replay. Not a sustained
+gameplay or whole-mission pass. The first diagnostic died before its pause test
+and is explicitly rejected as pause evidence. Neither diagnostic is the normal
+candidate or writes a physical save. Matching software replays retain death
+conditions in their final reports, with no allocator/cache/CPU faults.
+
+Plug1OFF verified20:16:59/20:17:00UTC; inspected recordings deleted, small stills
+retained. Private distribution branch mods/performance holds detailed evidence
+in evidence/v86b-budgeted-rooms and evidence/v86b-hardware-transport. No Analogue,
+long-session, full-mission, multiplayer or performance benchmark pass is claimed.
 
 Push source only to the private Cyiatic/PD6480iperf remote, never public origin.
