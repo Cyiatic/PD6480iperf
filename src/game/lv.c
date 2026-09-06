@@ -1020,8 +1020,9 @@ static Gfx *lvPrint(Gfx *gdl)
 		s32 x = 10;
 		s32 y = 155;
 		gdl = text0f153628(gdl);
-		sprintf(label, "V82H TEST P%d\nHI %d CHECK %d\n", g_PdHwPhase,
-			g_HiResEnabled, g_PdHwToggleChecks);
+		sprintf(label, "V85 TEST P%d\nOOM %d ROOM167 %d\n", g_PdHwPhase,
+			g_LvOom, g_Vars.stagenum == STAGE_DEFECTION && g_Vars.roomcount > 167
+				&& g_Rooms[167].gfxdata != NULL);
 		gdl = textRender(gdl, &x, &y, label, g_CharsHandelGothicMd,
 			g_FontHandelGothicMd, 0xffff00ff, 0x000000a0, g_ViBackData->x, g_ViBackData->y, 0, 0);
 		if (g_Vars.currentplayer && g_Vars.currentplayer->prop) {

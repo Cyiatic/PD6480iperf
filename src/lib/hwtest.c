@@ -1,4 +1,4 @@
-/* V84 HARDWARE DIAGNOSTIC, NOT A RELEASE CANDIDATE.
+/* V85 DEFECTION HARDWARE DIAGNOSTIC, NOT A RELEASE CANDIDATE.
  * Programmatic file selection and opening Video Options are test setup.
  * L, Hi-Res and movement then use the ordinary input consumers/handlers.
  * Replace only samples in the main thread's newly acquired partition. The
@@ -19,6 +19,10 @@
 extern struct menudialogdef g_FilemgrFileSelectMenuDialog;
 extern struct menudialogdef g_VideoOptionsMenuDialog;
 extern struct menuitem g_VideoOptionsMenuItems[];
+extern struct menudialogdef g_SelectMissionMenuDialog;
+extern struct menuitem g_SelectMissionMenuItems[];
+extern struct menudialogdef g_SoloMissionDifficultyMenuDialog;
+extern struct menudialogdef g_AcceptMissionMenuDialog;
 extern u8 g_PdHwEeprom[2048];
 s32 g_PdHwPhase = 0;
 u32 g_PdHwPhaseTicks = 0;
@@ -102,8 +106,36 @@ void pdHwReplay(struct contsample *samples, s32 first, s32 last)
 		}
 		break;
 	case 2:
-		if (!dialog && tick > 90 && g_Vars.lvframenum > 100) pdHwPhase(3);
+		if (!dialog && tick > 90 && g_Vars.lvframenum > 100) pdHwPhase(10);
 		else if (pdHwPulse(tick % 90, 30)) pad.button = B_BUTTON;
+		break;
+	case 10:
+		g_MpPlayerNum = 0;
+		if (tick == 1) playerPause(MENUROOT_MAINMENU);
+		if (tick >= 90 && dialog) {
+			menuPushDialog(&g_SelectMissionMenuDialog);
+			pdHwPhase(11);
+		}
+		break;
+	case 11:
+		if (tick >= 90 && dialog && dialog->definition == &g_SelectMissionMenuDialog) {
+			union handlerdata data = {0};
+			data.list.value = 0; /* Defection, through the actual mission handler. */
+			g_SelectMissionMenuItems[0].handler(MENUOP_SET, &g_SelectMissionMenuItems[0], &data);
+			pdHwPhase(12);
+		}
+		break;
+	case 12:
+		if (dialog && dialog->definition == &g_AcceptMissionMenuDialog) pdHwPhase(13);
+		else if (pdHwPulse(tick % 120, 60)) pad.button = A_BUTTON;
+		break;
+	case 13:
+		if (g_Vars.stagenum == STAGE_DEFECTION) pdHwPhase(14);
+		else if (pdHwPulse(tick % 120, 60)) pad.button = A_BUTTON;
+		break;
+	case 14:
+		if (g_Vars.lvframenum > 100 && !g_Vars.in_cutscene) pdHwPhase(3);
+		else if (pdHwPulse(tick % 120, 60)) pad.button = START_BUTTON;
 		break;
 	case 3:
 		if (pdHwPulse(tick, 30)) pad.button = L_TRIG;
