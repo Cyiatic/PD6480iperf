@@ -1028,9 +1028,9 @@ static Gfx *lvPrint(Gfx *gdl)
 			g_FontHandelGothicMd, 0xffff00ff, 0x000000a0, g_ViBackData->x, g_ViBackData->y, 0, 0);
 		if (g_Vars.currentplayer && g_Vars.currentplayer->prop) {
 			x = 10;
-			sprintf(label, "RAM SAVE R%d W%d POS %d %d\n", g_PdHwSaveReads,
+			sprintf(label, "RAM SAVE R%d W%d POS %d %d DEAD %d\n", g_PdHwSaveReads,
 				g_PdHwSaveWrites, (s32)g_Vars.currentplayer->prop->pos.x,
-				(s32)g_Vars.currentplayer->prop->pos.z);
+				(s32)g_Vars.currentplayer->prop->pos.z, g_Vars.currentplayer->isdead);
 			gdl = textRender(gdl, &x, &y, label, g_CharsHandelGothicSm,
 				g_FontHandelGothicSm, 0xffff00ff, 0x000000a0, g_ViBackData->x, g_ViBackData->y, 0, 0);
 		}
