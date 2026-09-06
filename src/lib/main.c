@@ -325,6 +325,12 @@ void mainInit(void)
 			if (*(s16 *) receivedmsg == 1) {
 				viUpdateMode();
 				rdpCreateTask(var8005dcc8, var8005dcf0, 0, (void *) i);
+				/* These boot tasks reuse two descriptors outside mainLoop's
+				 * in-flight limit. A retrace (including the DP wake-up) is not
+				 * task completion: wait for both SP and DP before reusing one. */
+				do {
+					osRecvMesg(&g_SchedMesgQueue, &receivedmsg, OS_MESG_BLOCK);
+				} while (*(s16 *) receivedmsg != OS_SC_DONE_MSG);
 				j++;
 			}
 		}

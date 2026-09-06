@@ -1026,10 +1026,10 @@ Gfx *lvPrint(Gfx *gdl)
 		s32 x = 10;
 		s32 y = 155;
 		gdl = text0f153628(gdl);
-		sprintf(label, "HW REPLAY P%d T%d HR%d CHECK%d F%d\n", g_PdHwPhase,
-			g_PdHwPhaseTicks, g_HiResEnabled, g_PdHwToggleChecks, g_Vars.lvframenum);
-		gdl = textRender(gdl, &x, &y, label, g_CharsHandelGothicSm,
-			g_FontHandelGothicSm, 0xffff00ff, 0x000000a0, viGetWidth(), viGetHeight(), 0, 0);
+		sprintf(label, "V80B TEST P%d\nHI %d CHECK %d\n", g_PdHwPhase,
+			g_HiResEnabled, g_PdHwToggleChecks);
+		gdl = textRender(gdl, &x, &y, label, g_CharsHandelGothicMd,
+			g_FontHandelGothicMd, 0xffff00ff, 0x000000a0, viGetWidth(), viGetHeight(), 0, 0);
 		if (g_Vars.currentplayer && g_Vars.currentplayer->prop) {
 			x = 10;
 			sprintf(label, "RAM SAVE R%d W%d POS %d %d\n", g_PdHwSaveReads,
