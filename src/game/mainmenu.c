@@ -391,18 +391,11 @@ static s32 menuhandlerShowMissionTime(s32 operation, struct menuitem *item, unio
 	return 0;
 }
 
-static s32 menuhandlerHiRes(s32 operation, struct menuitem *item, union handlerdata *data)
+static char *menuTextFixedResolution(struct menuitem *item)
 {
-	/* Never alter VI mode or allocations while a graphics task is live. */
-	switch (operation) {
-	case MENUOP_GET:
-		return g_HiResEnabled;
-	case MENUOP_SET:
-		g_HiResEnabled = data->checkbox.value != 0;
-		g_Vars.modifiedfiles |= MODFILE_GAME;
-		break;
-	}
-	return 0;
+	/* Keep the stock saved preference intact, but do not offer a mode switch
+	 * when both settings use the same full-size framebuffer and VI timing. */
+	return "640x480i (fixed)\n";
 }
 
 static s32 menuhandlerAlwaysShowTarget(s32 operation, struct menuitem *item, union handlerdata *data)
@@ -2277,12 +2270,12 @@ struct menuitem g_VideoOptionsMenuItems[] = {
 		menuhandlerScreenRatio,
 	},
 	{
-		MENUITEMTYPE_CHECKBOX,
+		MENUITEMTYPE_LABEL,
 		0,
 		0,
-		L_OPTIONS_217, // "Hi-Res" (full 480i is fixed either way)
-		0,
-		menuhandlerHiRes,
+		L_OPTIONS_217, // "Hi-Res"
+		(u32)menuTextFixedResolution,
+		NULL,
 	},
 #if PAL
 	{
@@ -2339,12 +2332,12 @@ struct menuitem g_2PMissionVideoOptionsMenuItems[] = {
 		menuhandlerScreenRatio,
 	},
 	{
-		MENUITEMTYPE_CHECKBOX,
+		MENUITEMTYPE_LABEL,
 		0,
 		0,
-		L_OPTIONS_217, // "Hi-Res" (full 480i is fixed either way)
-		0,
-		menuhandlerHiRes,
+		L_OPTIONS_217, // "Hi-Res"
+		(u32)menuTextFixedResolution,
+		NULL,
 	},
 #if PAL
 	{
