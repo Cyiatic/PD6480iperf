@@ -408,6 +408,7 @@ void mainLoop(void)
 	OSMesg msg;
 	s32 index;
 	s32 numplayers;
+	u32 mematarget;
 
 	func0f175f98();
 
@@ -484,10 +485,14 @@ void mainLoop(void)
 			g_MainMemaHeapSize = strtol(argFindByPrefix(1, "-ma"), NULL, 0) * 1024;
 		}
 
-		/* Full-resolution diagnostic: retain a bounded streaming room cache
-		 * instead of the performance branch's unbounded whole-level preload. */
-		if (g_StageNum < STAGE_TITLE && g_MainMemaHeapSize < 256 * 1024) {
-			g_MainMemaHeapSize = 256 * 1024;
+		mematarget = g_MainMemaHeapSize;
+		/* Do not reserve a large empty cache ahead of required stage data.
+		 * Grow it toward the stage target after lvReset has completed. */
+		if (g_StageNum < STAGE_TITLE) {
+			if (mematarget < 256 * 1024) {
+				mematarget = 256 * 1024;
+			}
+			g_MainMemaHeapSize = 128 * 1024;
 		}
 
 		memaReset(mempAlloc(g_MainMemaHeapSize, MEMPOOL_STAGE), g_MainMemaHeapSize);
@@ -558,6 +563,28 @@ void mainLoop(void)
 		mblurReset(g_StageNum);
 		viReset(g_StageNum);
 		lvReset(g_StageNum);
+		if (g_StageNum < STAGE_TITLE && mematarget > g_MainMemaHeapSize) {
+			u32 free = mempGetStageFree();
+			u32 reserve = 128 * 1024; /* Keep room for later texture/model loads. */
+
+			if (free > reserve) {
+				u32 extra = mematarget - g_MainMemaHeapSize;
+				void *bank;
+
+				if (extra > free - reserve) {
+					extra = free - reserve;
+				}
+				extra &= ~15;
+				if (extra) {
+					bank = mempAlloc(extra, MEMPOOL_STAGE);
+					if (memaAppendBank(bank, extra)) {
+						g_MainMemaHeapSize += extra;
+					} else if (bank) {
+						mempRealloc(bank, 0, MEMPOOL_STAGE);
+					}
+				}
+			}
+		}
 		frametimeCalculate();
 #if PROFILING
 		profileReset();

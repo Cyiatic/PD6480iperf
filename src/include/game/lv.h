@@ -4,6 +4,9 @@
 #include "data.h"
 #include "types.h"
 
+extern u8 g_LvOom;
+extern u32 g_LvOomSize;
+
 void lvInit(void);
 void lvResetMiscSfx(void);
 s32 lvGetMiscSfxIndex(u32 arg0);

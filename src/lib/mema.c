@@ -54,6 +54,8 @@ struct memaheap {
 };
 
 s32 g_MemaHeapStart;
+/* Address span used only for estimating free-list indices; may include holes
+ * between banks. The free-list entries, not this span, own allocatable bytes. */
 s32 g_MemaHeapSize;
 struct memaheap g_MemaHeap;
 
@@ -225,6 +227,24 @@ void memaReset(void *heapaddr, u32 heapsize)
 
 	g_MemaHeap.spaces[0].addr = g_MemaHeapStart = (u32)heapaddr;
 	g_MemaHeap.spaces[0].size = g_MemaHeapSize = heapsize;
+}
+
+/* Add a separately owned, higher-address bank without moving live allocations.
+ * mainLoop calls this once after stage setup using a fresh memp allocation. */
+bool memaAppendBank(void *heapaddr, u32 heapsize)
+{
+	u32 start = (u32)heapaddr;
+	u32 oldend = (u32)g_MemaHeapStart + g_MemaHeapSize;
+
+	if (!heapsize || !g_MemaHeapSize || (start & 15) || (heapsize & 15)
+			|| start < oldend || start < 0x80000000 || start >= 0x80800000
+			|| heapsize > 0x80800000 - start) {
+		return false;
+	}
+
+	g_MemaHeapSize = start + heapsize - (u32)g_MemaHeapStart;
+	_memaFree(start, heapsize);
+	return true;
 }
 
 extern u8 g_LvOom;

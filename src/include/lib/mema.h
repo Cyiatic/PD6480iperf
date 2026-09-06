@@ -7,6 +7,7 @@
 void memaDefrag(void);
 void memaInit(void);
 void memaReset(void *ptr, u32 size);
+bool memaAppendBank(void *ptr, u32 size);
 void memaPrint(void);
 void *memaAlloc(u32 size);
 s32 memaGrow(s32 addr, u32 amount);

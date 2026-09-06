@@ -1531,12 +1531,23 @@ void func0f004c6c(void)
 	s32 s4;
 	u8 *ptr;
 	u8 *backupptr;
+	u32 scratchsize;
 
 	sp44 = align16(0x2000);
 	sp40 = align16(g_NumPortals * 4);
 	sp3c = align16(g_NumPortals * 0xc);
 	sp38 = align16(g_NumPortals * 4);
 	sp34 = align16(g_NumPortals * 2);
+	scratchsize = sp44 + sp40 + sp3c + sp38 + g_NumPortals * sp34;
+
+	/* This workspace is temporary and dies before rendering begins. Never
+	 * write into unreserved stage-heap memory, which may contain textures. */
+	if (scratchsize > 640 * 480 * 2 || !mblurGetAllocation()) {
+		g_LvOom = 's';
+		g_LvOomSize = scratchsize;
+		var80061444 = false;
+		return;
+	}
 
 	for (i = 0, s4 = sp38; i < g_NumPortals; i++) {
 		if (i != 0) {
@@ -1546,6 +1557,10 @@ void func0f004c6c(void)
 
 	s4 = align16(s4);
 	ptr = mempAlloc(align16(s4), MEMPOOL_STAGE);
+	if (!ptr) {
+		var80061444 = false;
+		return;
+	}
 	var80061430 = (void *)ptr;
 
 	ptr += sp38;
@@ -1567,7 +1582,7 @@ void func0f004c6c(void)
 
 	align16((s32)s4);
 
-	ptr = mempGetNextStageAllocation();
+	ptr = mblurGetAllocation();
 	var8009cad0 = (void *)ptr;
 	ptr += sp44;
 
