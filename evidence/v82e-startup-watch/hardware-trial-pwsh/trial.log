@@ -1,0 +1,11 @@
+2026-09-06T14:58:23.7013281Z ROM C:\Users\codex\Documents\N64 2\.codex-work\PD6480iperf-v82e-startup-watch-DIAGNOSTIC.z64 SHA256 9E66C964E6E168C28E86D72BAE83EDEB3E3AF63066682FDC173739B828A0DB03
+2026-09-06T14:58:24.5535519Z Plug 1 on: Relay: 1
+2026-09-06T14:58:36.6360742Z Uploading with GameCapture closed; timeout 65 seconds
+2026-09-06T14:58:36.6495519Z Owned upload PID 19052
+2026-09-06T14:59:13.3394107Z Native upload exit 0; this alone is not a ROM pass
+2026-09-06T14:59:13.3876953Z Owned GameCapture PID 16688 start 2026-09-06T07:59:13.3787965-07:00
+2026-09-06T14:59:58.7932251Z Capture startup allowance ended; observing 45 seconds
+2026-09-06T15:00:44.3081961Z Observation ended; recording still needs inspection
+2026-09-06T15:00:45.3164377Z Plug 1 off: Relay: 0
+2026-09-06T15:00:46.1630324Z Plug 1 status: Relay: 0
+2026-09-06T15:00:46.1635645Z Trial cleanup ended; retain bounded recordings until inspected

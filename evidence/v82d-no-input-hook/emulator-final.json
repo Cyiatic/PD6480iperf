@@ -1,0 +1,157 @@
+{
+  "hardware_verified": false,
+  "elf_sha256": "04d86c7e735f579e27cb950efdd972e05d08d32d448802d08b4f5b3f53cc49a9",
+  "rdram_sha256": "01996aca8f976aa14ead8fa8c0d04859fa5e3922036107d0bb9c13e859a50a78",
+  "layout_sha256": "8a48ab7fa3f24dc9b2e9419d01cd150a1485cd8b6f6bb0f2d5b497c279a71d69",
+  "resident_code_hashes": {
+    "mainInit": "edf822415a4b17dce3ec309f9cb4e378179a217a0a4ecb9ba50a17476d0e45ee",
+    "mainProc": "61e21dd6b455d79badcb15742c8f781f2efe9fa639b5c1ce70413758808dfa1e",
+    "__scExec": "0827c269dea57f4ed5f68d2363dbf16276d3bb8c657325f887d45d643d0d848f",
+    "__scTryDispatch": "b10a7d97c24f18287e59855ca922395904afb5fee17e829c952daa95cdf9afc2",
+    "schedSubmitGfxTask": "5970ca7fee81d2129ad75d1c439927717d89c71693691e475b2202724528013f",
+    "__scHandleRetrace": "ae35d191b990268459f369fd6c2af97ed922c4a0423934ae1cf891279025caf9",
+    "__scHandleRSP": "8f52b01facdfb10927835dff9ecce46be66b5d297d71b4839eba3dde34e6a6d8",
+    "__scHandleRDP": "a737d85e897e70a1911b4bae9ea52eb253f9703115e0f53b1505f20b2a3329e1",
+    "viReset": "8597586d705af16fe4fdf47511ad4f606bcb30864df6d85c463b8b8172473c56",
+    "bgPreload": "f035fbc3549d9820725220a01b2852f8ec356ddb86792b84e380ee9e3061b0c8",
+    "bgLoadRoom": "c9cd43cc344f919023d4e4801f4d0ce9724ced182482cd74393045adb28c00e9",
+    "mblurReset": "9d148988083b3a1432fade4765d4d5f19312eb98bb1c2c72bc0390395cc39602",
+    "dmaExec": "09627f14df1839406cc775b9ff4075c99123d1666311f4fcc4bb9c208a82f5e7",
+    "menuReset": "13b83cbd2427c70f76cd4080c5cdde603f98a3933b134891d3d93cd698c11783",
+    "menuPushDialog": "1bd6dfb253b52144e36f784a352bd63b14b02cf24d83d388420d6f7436412b58",
+    "menuRenderModels": "446d6d1752c4681e1dc050d62fd68db2a2049f165b6bc9105494a0cccf0c1a98"
+  },
+  "stage": 90,
+  "level_frame_number": 1181,
+  "tick_mode": 0,
+  "in_cutscene": 0,
+  "framebuffers": [
+    "0x8036a000",
+    "0x8076a000"
+  ],
+  "depth": "0x0",
+  "active_dimensions": [
+    576,
+    480
+  ],
+  "active_framebuffer": "0x8076a000",
+  "hires_option": 0,
+  "oom_marker": 0,
+  "oom_requested_bytes": 0,
+  "eeprom_detected": 1,
+  "fps_graph_enabled": 0,
+  "fps_graph_page": 0,
+  "connected_controller_mask": 1,
+  "synthetic_replay_diagnostic": {
+    "phase": 0,
+    "phase_ticks": 0,
+    "toggle_checks": 0,
+    "ram_save_reads": 25,
+    "ram_save_writes": 0
+  },
+  "player_pause_mode": 0,
+  "player_dead": 0,
+  "player_health": 1.0,
+  "player_trigger": 0,
+  "loaded_ammo": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "reserve_ammo": [
+    4278499919,
+    1014351369,
+    2225319135,
+    2314419276,
+    500847866,
+    1942913491,
+    1379595831,
+    3583775723,
+    733474153,
+    1876090431,
+    159799700,
+    1170169913,
+    20254476,
+    3180522884,
+    2889185914,
+    471569123,
+    3294489368,
+    2271112827,
+    1053334074,
+    2404056562,
+    2885415357,
+    833461138,
+    4007724703,
+    1504720845,
+    1648761919,
+    2168216490,
+    2086582635,
+    587915184,
+    2038884241,
+    387716014,
+    2066013369,
+    2008844270,
+    1781626920
+  ],
+  "g_MempOnboardPools": {
+    "left": "0x80316590",
+    "right": "0x80351248",
+    "free_bytes": 240824
+  },
+  "g_MempExpansionPools": {
+    "left": "0x80400000",
+    "right": "0x8076a000",
+    "free_bytes": 3579904
+  },
+  "threads": {
+    "g_MainThread": {
+      "pc": "0x8000e404",
+      "cause": "0x10000400",
+      "badva": "0x0",
+      "state": 4,
+      "flags": 0
+    },
+    "g_SchedThread": {
+      "pc": "0x80033e24",
+      "cause": "0x10000400",
+      "badva": "0x0",
+      "state": 8,
+      "flags": 0
+    }
+  },
+  "prepared_vi_modes": [
+    {
+      "ctrl": "0x305e",
+      "width": 576,
+      "v_sync": 524,
+      "x_scale": 921,
+      "field_origins": [
+        1152,
+        2304
+      ],
+      "field_y_scales": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "ctrl": "0x305e",
+      "width": 576,
+      "v_sync": 524,
+      "x_scale": 921,
+      "field_origins": [
+        1152,
+        2304
+      ],
+      "field_y_scales": [
+        2048,
+        2048
+      ]
+    }
+  ]
+}
