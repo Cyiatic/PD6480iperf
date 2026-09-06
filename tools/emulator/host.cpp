@@ -13,6 +13,7 @@
 #include <vector>
 #include <chrono>
 #include "controller_input.h"
+#include "ram_counter_watch.h"
 
 static std::map<std::string,std::string> options;
 static std::string directory;
@@ -124,18 +125,23 @@ template<class T> static T symbol(HMODULE lib,const char*name) {
 #define LOAD(name) auto name##_p=symbol<decltype(&name)>(lib,#name)
 int main(int argc,char **argv) try {
   setvbuf(stdout,nullptr,_IONBF,0);
-  if(argc<5) {fprintf(stderr,"host CORE ROM OUTDIR FRAMES [CPU] [INPUT.txt|-] [STATE|-] [SAVE|-] [eeprom-header|-] [WRITES|-] [CONNECTED_MASK]\n");return 2;}
+  if(argc<5) {fprintf(stderr,"host CORE ROM OUTDIR FRAMES [CPU] [INPUT.txt|-] [STATE|-] [SAVE|-] [eeprom-header|-] [WRITES|-] [CONNECTED_MASK] [WATCH_COUNTER:GATE:VALUE|-]\n");return 2;}
   directory=std::filesystem::absolute(argv[3]).string();
   // Existing runners create their input/log files before invoking the host.
   // Accept that setup, but never overwrite an earlier emulation result.
   if(std::filesystem::exists(directory)) for(const auto &entry:std::filesystem::directory_iterator(directory)) {
     auto name=entry.path().filename().string();
     if(name=="state.bin" || name=="rdram-last.bin" || name=="save-memory.bin" ||
-       (name.rfind("frame-",0)==0 && entry.path().extension()==".ppm"))
+       name.rfind("watch-",0)==0 || (name.rfind("frame-",0)==0 && entry.path().extension()==".ppm"))
       throw std::runtime_error("Output directory contains prior emulation results");
   }
   std::filesystem::create_directories(directory);
   unsigned frames=std::stoul(argv[4]);
+  RamCounterWatch watch;
+  if(argc>12 && strcmp(argv[12],"-")) {
+    watch=RamCounterWatch::parse(argv[12]);
+    printf("READ-ONLY WATCH counter=%08x gate=%08x value=%u limit=%u\n",watch.address,watch.gate_address,watch.gate_value,watch.limit);
+  }
   if(argc>11) {
     size_t used=0; unsigned long mask=std::stoul(argv[11],&used,0);
     if(used!=strlen(argv[11]) || mask>15) throw std::runtime_error("Connected controller mask must be 0..15");
@@ -200,6 +206,10 @@ int main(int argc,char **argv) try {
     retro_run_p();
     auto state=read_file(argv[7]);
     if(!retro_unserialize_p(state.data(),state.size())) throw std::runtime_error("State restore failed");
+    if(watch.address) {
+      watch.prime((const uint8_t*)retro_get_memory_data_p(RETRO_MEMORY_SYSTEM_RAM),retro_get_memory_size_p(RETRO_MEMORY_SYSTEM_RAM));
+      printf("WATCH restored baseline=%u (historical counts are not new events)\n",watch.previous);
+    }
   }
   auto start=std::chrono::steady_clock::now();
   for(frame_index=0;frame_index<frames && !shutdown_requested;++frame_index) {
@@ -210,6 +220,20 @@ int main(int argc,char **argv) try {
       printf("TEST RAM WRITE frame=%u address=%08x value=%08x\n",frame_index,op.address,op.value);
     }
     retro_run_p();
+    if(watch.address) {
+      auto *watched_ram=(const uint8_t*)retro_get_memory_data_p(RETRO_MEMORY_SYSTEM_RAM);
+      auto watched_size=retro_get_memory_size_p(RETRO_MEMORY_SYSTEM_RAM);
+      uint32_t before=0,after=0;
+      if(watch.sample(watched_ram,watched_size,before,after)) {
+        auto stem=directory+"/watch-"+std::to_string(watch.captures)+"-frame-"+std::to_string(frame_index+1);
+        write_file(stem+"-rdram.bin",watched_ram,watched_size);
+        std::vector<char> watched_state(retro_serialize_size_p());
+        bool saved=!watched_state.empty() && retro_serialize_p(watched_state.data(),watched_state.size());
+        if(saved) write_file(stem+"-state.bin",watched_state.data(),watched_state.size());
+        snapshot(frame_index+1);
+        printf("WATCH frame=%u event=%u counter=%08x before=%u after=%u state=%d\n",frame_index+1,watch.captures,watch.address,before,after,saved);
+      }
+    }
     if((frame_index+1)%300==0) {
       snapshot(frame_index+1);
       double elapsed=std::chrono::duration<double>(std::chrono::steady_clock::now()-start).count();

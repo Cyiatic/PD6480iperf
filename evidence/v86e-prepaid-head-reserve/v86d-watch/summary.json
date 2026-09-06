@@ -1,0 +1,130 @@
+[
+  {
+    "event": 1,
+    "frontend_tick": 9780,
+    "stage": 47,
+    "level_frame": 305,
+    "epoch": 305,
+    "before": 0,
+    "after": 2,
+    "missing_visible_rooms": [
+      5,
+      6
+    ],
+    "free_bytes": 2160,
+    "largest_free_span": 1088,
+    "partition_valid": true
+  },
+  {
+    "event": 2,
+    "frontend_tick": 9782,
+    "stage": 47,
+    "level_frame": 306,
+    "epoch": 306,
+    "before": 2,
+    "after": 6,
+    "missing_visible_rooms": [
+      5,
+      6
+    ],
+    "free_bytes": 2160,
+    "largest_free_span": 1088,
+    "partition_valid": true
+  },
+  {
+    "event": 3,
+    "frontend_tick": 9783,
+    "stage": 47,
+    "level_frame": 306,
+    "epoch": 306,
+    "before": 6,
+    "after": 11,
+    "missing_visible_rooms": [
+      1,
+      5,
+      6,
+      8
+    ],
+    "free_bytes": 2160,
+    "largest_free_span": 1088,
+    "partition_valid": true
+  },
+  {
+    "event": 4,
+    "frontend_tick": 9785,
+    "stage": 47,
+    "level_frame": 306,
+    "epoch": 306,
+    "before": 11,
+    "after": 19,
+    "missing_visible_rooms": [
+      1,
+      5,
+      6,
+      8
+    ],
+    "free_bytes": 2160,
+    "largest_free_span": 1088,
+    "partition_valid": true
+  },
+  {
+    "event": 5,
+    "frontend_tick": 9788,
+    "stage": 47,
+    "level_frame": 307,
+    "epoch": 307,
+    "before": 19,
+    "after": 20,
+    "missing_visible_rooms": [
+      5
+    ],
+    "free_bytes": 3184,
+    "largest_free_span": 1088,
+    "partition_valid": true
+  },
+  {
+    "event": 6,
+    "frontend_tick": 9791,
+    "stage": 47,
+    "level_frame": 307,
+    "epoch": 307,
+    "before": 20,
+    "after": 21,
+    "missing_visible_rooms": [
+      5
+    ],
+    "free_bytes": 3184,
+    "largest_free_span": 1088,
+    "partition_valid": true
+  },
+  {
+    "event": 7,
+    "frontend_tick": 9792,
+    "stage": 47,
+    "level_frame": 308,
+    "epoch": 308,
+    "before": 21,
+    "after": 23,
+    "missing_visible_rooms": [
+      5
+    ],
+    "free_bytes": 3184,
+    "largest_free_span": 1088,
+    "partition_valid": true
+  },
+  {
+    "event": 8,
+    "frontend_tick": 9795,
+    "stage": 47,
+    "level_frame": 309,
+    "epoch": 309,
+    "before": 23,
+    "after": 25,
+    "missing_visible_rooms": [
+      5
+    ],
+    "free_bytes": 3184,
+    "largest_free_span": 1088,
+    "partition_valid": true
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "workspace": "C:/Users/codex/Documents/N64 2",
+  "rom": ".codex-work/PD6480iperf-v86e-prepaid-head-reserve.z64",
+  "rom_sha256": "a9143f02981b7e44448f70638dd36ef679ad2a0d3ffcfd524f86e9c5e9d73bf3",
+  "elf": ".codex-work/v86e-stage1.elf",
+  "layout": ".codex-work/v86-mode-layout.bin",
+  "host": ".codex-work/host-watch-v4.exe",
+  "core": ".codex-tools/parallel-headless/parallel_n64_libretro.dll",
+  "samples": [
+    {
+      "directory": ".codex-work/headless-v86e-coop-settled",
+      "parent": ".codex-work/headless-v86e-coop-watch",
+      "input": null,
+      "log": ".codex-work/v86e-coop-settled.host.log",
+      "ticks": 600,
+      "controller_mask": 1,
+      "observation": "Normal Agent AI-co-op Infiltration continuation: frame1196, unpaused/alive, health0.93125, graph0, OOM0, no new room-load failures. Historical failure count12 remains; not a clean cache or whole-mission pass. Buddy count1 is configuration evidence, not a claim she is visible in this final still."
+    }
+  ]
+}

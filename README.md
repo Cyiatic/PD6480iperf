@@ -10,7 +10,11 @@ four-player evidence. v86c's pending-menu reserve passes short four-player Skeda
 setup/movement/menu/L checks in software. An additional AI-co-op Velvet head-model
 allocation failure is isolated; v86d's earlier head loading prevents that crash
 in a cold software sample, but logs43 room-cache failures. It is still not a
-clean candidate. See [v86d's remaining limit](evidence/v86d-coop-head-prewarm/README.md).
+clean candidate. v86e credits the already-retained buddy model against the later
+allocation allowance: the same cold AI-co-op software sequence improves from43
+to12 room-load failures, but still omits required visible geometry. Full640x480,
+pause/resume and L continue working in that bounded sample; no new release is
+promoted. See [the read-only failure captures](evidence/v86e-prepaid-head-reserve/README.md).
 Fresh mode-verified solo Defection/Infiltration/Deep Sea checks pass. The initial
 co-op test path was incorrectly labelled solo and is explicitly corrected in
 [the new evidence](evidence/v86c-multiplayer/README.md). No new release promoted.

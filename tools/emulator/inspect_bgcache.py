@@ -93,6 +93,7 @@ def inspect_cache(result, offsets, elf, address, word, half, physical, count, ro
     seen = set()
     previous = 0
     free = 0
+    free_spans = []
     while node:
         if node in seen or len(seen) > count * 2 + 4 or node <= previous:
             raise ValueError('Cyclic/unsorted cache free list')
@@ -100,9 +101,12 @@ def inspect_cache(result, offsets, elf, address, word, half, physical, count, ro
         seen.add(node)
         size = word(node + offsets['cache_block_bytes'])
         spans.append((node,size,'free'))
+        free_spans.append({'start':hex(node),'bytes':size})
         free += size
         previous = node
         node = word(node + offsets['cache_block_next'])
     validate_partition(banks,spans)
     cache['free_bytes'] = free
+    cache['free_spans'] = free_spans
+    cache['largest_free_span'] = max((span['bytes'] for span in free_spans), default=0)
     cache['partition_valid'] = True

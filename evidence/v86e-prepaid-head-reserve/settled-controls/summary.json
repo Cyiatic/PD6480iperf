@@ -1,0 +1,10 @@
+[
+  {
+    "sample": "headless-v86e-coop-settled",
+    "stage": 47,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Normal Agent AI-co-op Infiltration continuation: frame1196, unpaused/alive, health0.93125, graph0, OOM0, no new room-load failures. Historical failure count12 remains; not a clean cache or whole-mission pass. Buddy count1 is configuration evidence, not a claim she is visible in this final still."
+  }
+]

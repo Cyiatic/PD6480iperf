@@ -1,0 +1,19 @@
+[
+  {
+    "rom": ".codex-work\\PD6480iperf-v86e-prepaid-head-reserve.z64",
+    "sha256": "a9143f02981b7e44448f70638dd36ef679ad2a0d3ffcfd524f86e9c5e9d73bf3",
+    "data_stream_offset": "0x25050",
+    "file_table_offset_in_data": "0x1d6ec",
+    "compressed_valid": 1403,
+    "compressed_invalid": 0,
+    "raw_unchecked": 608,
+    "empty_aliases": 2,
+    "rare_logo": {
+      "file_id": "0x560",
+      "rom_offset": "0x1bf5340",
+      "rom_bytes": 12336,
+      "header": "1173007000cc5a4d6c2347766e6a340c"
+    },
+    "invalid_examples": []
+  }
+]

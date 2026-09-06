@@ -1,0 +1,115 @@
+[
+  {
+    "event": 1,
+    "frontend_tick": 9780,
+    "before": 0,
+    "after": 1,
+    "snapshot_validation_error": "Cache hole/overlap before free",
+    "partition_valid": false
+  },
+  {
+    "event": 2,
+    "frontend_tick": 9783,
+    "before": 1,
+    "after": 3,
+    "stage": 47,
+    "level_frame": 299,
+    "epoch": 299,
+    "missing_visible_rooms": [
+      6
+    ],
+    "free_bytes": 11360,
+    "largest_free_span": 10880,
+    "partition_valid": true
+  },
+  {
+    "event": 3,
+    "frontend_tick": 9784,
+    "before": 3,
+    "after": 4,
+    "stage": 47,
+    "level_frame": 300,
+    "epoch": 300,
+    "missing_visible_rooms": [
+      6
+    ],
+    "free_bytes": 11360,
+    "largest_free_span": 10880,
+    "partition_valid": true
+  },
+  {
+    "event": 4,
+    "frontend_tick": 9786,
+    "before": 4,
+    "after": 6,
+    "stage": 47,
+    "level_frame": 301,
+    "epoch": 301,
+    "missing_visible_rooms": [
+      6
+    ],
+    "free_bytes": 11360,
+    "largest_free_span": 10880,
+    "partition_valid": true
+  },
+  {
+    "event": 5,
+    "frontend_tick": 9861,
+    "before": 6,
+    "after": 7,
+    "stage": 47,
+    "level_frame": 307,
+    "epoch": 307,
+    "missing_visible_rooms": [
+      32
+    ],
+    "free_bytes": 12384,
+    "largest_free_span": 10880,
+    "partition_valid": true
+  },
+  {
+    "event": 6,
+    "frontend_tick": 9862,
+    "before": 7,
+    "after": 9,
+    "stage": 47,
+    "level_frame": 308,
+    "epoch": 308,
+    "missing_visible_rooms": [
+      32
+    ],
+    "free_bytes": 12384,
+    "largest_free_span": 10880,
+    "partition_valid": true
+  },
+  {
+    "event": 7,
+    "frontend_tick": 9863,
+    "before": 9,
+    "after": 10,
+    "stage": 47,
+    "level_frame": 308,
+    "epoch": 308,
+    "missing_visible_rooms": [
+      32
+    ],
+    "free_bytes": 12384,
+    "largest_free_span": 10880,
+    "partition_valid": true
+  },
+  {
+    "event": 8,
+    "frontend_tick": 9864,
+    "before": 10,
+    "after": 12,
+    "stage": 47,
+    "level_frame": 308,
+    "epoch": 308,
+    "missing_visible_rooms": [
+      32
+    ],
+    "free_bytes": 12384,
+    "largest_free_span": 10880,
+    "partition_valid": true
+  }
+]
