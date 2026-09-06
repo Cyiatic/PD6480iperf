@@ -54,7 +54,8 @@ internal static class VerifiedEd64
         Send('W',address,length);
         for (int done=0; done<length;) {
             int count=Math.Min(4096,length-done);
-            port.Write(rom,offset+done,count);
+            try { port.Write(rom,offset+done,count); }
+            catch { Log("HOST_WRITE_FAILED offset="+(offset+done)+" request="+count+" (partial write unknown)"); throw; }
             done += count;
             Thread.Sleep(1);
         }
@@ -107,7 +108,18 @@ internal static class VerifiedEd64
                 CheckBlock(rom,65536,65536); CheckBlock(rom,131072,131072);
                 Log("PROBE_ALL_MATCHED; no start command sent");
             } else {
-                for (int offset=0;offset<rom.Length;offset+=65536) CheckBlock(rom,offset,65536);
+                for (int offset=0;offset<rom.Length;offset+=65536) {
+                    if (offset>0 && offset%1048576==0) {
+                        // Reopen only at an idle boundary: all prior bytes read
+                        // back and cmd-t acknowledged. Never resume a failed
+                        // or possibly partial write by sending a fresh command.
+                        Log("IDLE_RECONNECT begin at verified bytes="+offset);
+                        port.Close(); Log("IDLE_RECONNECT close returned");
+                        Thread.Sleep(250); port.Open(); Ping();
+                        Log("IDLE_RECONNECT ping matched");
+                    }
+                    CheckBlock(rom,offset,65536);
+                }
                 Log("ALL_33554432_BYTES_READBACK_MATCHED SHA256 "+Hash(rom));
                 // Protocol's zero-argument cmd-s matches saved UNFLoader path;
                 // no save filename packet or save-type/header modification.

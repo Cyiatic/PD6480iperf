@@ -6,12 +6,12 @@ param([Parameter(Mandatory)][string]$Rom,[Parameter(Mandatory)][string]$RunDirec
 $ErrorActionPreference='Stop'
 $pdRoot='C:\Users\codex\Documents\N64 2'
 $pdKasa='C:\Program Files\WindowsApps\23769rewster.uk.TPLinkKasaControl_1.4.81.0_neutral__a2smztagkyka6\Kasa Smart Control\TPLinkCmd.exe'
-$pdTool=Join-Path $pdRoot '.codex-work\ed64-verified-v2.exe'
+$pdTool=Join-Path $pdRoot '.codex-work\ed64-verified-v3.exe'
 $pdRom=(Resolve-Path -LiteralPath $Rom).ProviderPath
 $pdOut=[IO.Path]::GetFullPath($RunDirectory)
 if (-not $pdRom.StartsWith($pdRoot+'\') -or -not $pdOut.StartsWith($pdRoot+'\')) { throw 'Outside workspace' }
 if ((Get-Item -LiteralPath $pdRom).Length -ne 33554432) { throw 'Wrong ROM size' }
-if (Get-Process -Name UNFLoader,GameCapture,usb64-reconnect2m,ed64-verified-v1,ed64-verified-v2 -ErrorAction SilentlyContinue | Where-Object { -not $_.HasExited }) { throw 'Other live hardware process' }
+if (Get-Process -Name UNFLoader,GameCapture,usb64-reconnect2m,ed64-verified-v1,ed64-verified-v2,ed64-verified-v3 -ErrorAction SilentlyContinue | Where-Object { -not $_.HasExited }) { throw 'Other live hardware process' }
 if (Test-Path -LiteralPath $pdOut) { throw 'Existing evidence output' }
 New-Item -ItemType Directory -Path $pdOut | Out-Null
 $pdUploader=$null; $pdCapture=$null; $pdSequence=0; $pdPowerNeeded=$false
