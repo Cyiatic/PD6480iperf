@@ -27,22 +27,10 @@ Mtx *var80092870;
 u16 g_ViPerspScale;
 u8 g_ViFrontIndex;
 u8 g_ViBackIndex;
-u16 *g_FrameBuffers[3];
+u16 *g_FrameBuffers[PD480_BUFFER_COUNT];
 
 struct rend_vidat g_ViDataArray[] = {
 	{
-		0, 0, 0, 0,
-		640, 480,         // x and y
-		60,               // fovy
-		1.3333333730698f, // aspect
-		30,               // znear
-		10000,            // zfar
-		640, 480,         // bufx and bufy
-		640, 480,         // viewx and viewy
-		0, 0,             // viewleft and viewtop
-		true,             // usezbuf
-		0,
-	}, {
 		0, 0, 0, 0,
 		640, 480,         // x and y
 		60,               // fovy
@@ -99,7 +87,7 @@ void viConfigureForCopyright(u16 *texturedata)
 {
 	s32 i;
 
-	for (i = 0; i < 3; i++) {
+	for (i = 0; i < PD480_BUFFER_COUNT; i++) {
 		g_FrameBuffers[i] = texturedata;
 
 		g_ViDataArray[i].x = 576;
@@ -127,7 +115,7 @@ void viConfigureForLegal(void)
 {
 	s32 i;
 
-	for (i = 0; i < 3; i++) {
+	for (i = 0; i < PD480_BUFFER_COUNT; i++) {
 		g_ViDataArray[i].x = 640;
 		g_ViDataArray[i].bufx = 640;
 		g_ViDataArray[i].viewx = 640;
@@ -166,7 +154,6 @@ void viReset(s32 stagenum)
 	s32 fbsize;
 	u8 *fb0;
 	u8 *fb1;
-	u8 *fb2;
 
 	if (stagenum == STAGE_TITLE) {
 		viSetMode(VIMODE_HI);
@@ -174,24 +161,21 @@ void viReset(s32 stagenum)
 		viSetMode(VIMODE_LO);
 	}
 
-	/* The newer engine reserves these three bank-separated images in boot
-	 * and memp. Use them for titles too instead of allocating another set. */
+	/* Two complete images, one in each 4 MiB half of RDRAM. The scheduler
+	 * waits for VI ownership before reusing either image. */
 	fbsize = FRAMEBUFFER_SIZE;
-	g_FrameBuffers[0] = (void *) (0x80400000 - fbsize);
-	g_FrameBuffers[1] = (void *) (0x80400000);
-	g_FrameBuffers[2] = (void *) (0x80800000 - fbsize);
+	g_FrameBuffers[0] = (void *) PD480_FB0;
+	g_FrameBuffers[1] = (void *) PD480_FB1;
 
 	g_ViFrontData->fb = g_FrameBuffers[g_ViFrontIndex];
 	g_ViBackData->fb = g_FrameBuffers[g_ViBackIndex];
 
 	fb0 = (u8 *) g_FrameBuffers[0];
 	fb1 = (u8 *) g_FrameBuffers[1];
-	fb2 = (u8 *) g_FrameBuffers[2];
 
 	for (i = 0; i < fbsize; i++) {
 		fb0[i] = 0;
 		fb1[i] = 0;
-		fb2[i] = 0;
 	}
 
 	g_ViReconfigured = true;
@@ -368,7 +352,7 @@ void viUpdateMode(void)
 	}
 
 	/* Standalone 640x480i patch's NTSC HAF1 timing. Keep the newer engine's
-	 * logical LO mode and triple-buffer/scheduler contract unchanged. */
+	 * logical LO mode; framebuffer ownership is handled by the scheduler. */
 	if (osTvType == OS_TV_NTSC && g_ViBackData->mode == VIMODE_LO
 			&& g_ViBackData->bufx == PD480_WIDTH && g_ViBackData->bufy == PD480_HEIGHT) {
 		OSViMode *mode = &var8008dcc0[g_ViSlot];
@@ -407,8 +391,8 @@ void viUpdateMode(void)
 	g_ViFrontIndex++;
 	g_ViBackIndex++;
 
-	WRAP(g_ViFrontIndex, 3);
-	WRAP(g_ViBackIndex, 3);
+	WRAP(g_ViFrontIndex, PD480_BUFFER_COUNT);
+	WRAP(g_ViBackIndex, PD480_BUFFER_COUNT);
 
 	g_ViFrontData = g_ViDataArray + g_ViFrontIndex;
 	g_ViBackData = g_ViDataArray + g_ViBackIndex;

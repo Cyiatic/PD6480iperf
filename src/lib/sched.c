@@ -17,6 +17,7 @@
 #include "lib/joy.h"
 #include "data.h"
 #include "types.h"
+#include "pd480_framebuffer.h"
 
 /*
  * OSScTask state
@@ -80,7 +81,7 @@ void schedRenderCrashOnBuffer(void *framebuffer)
 	}
 }
 
-extern u16 *g_FrameBuffers[3];
+extern u16 *g_FrameBuffers[PD480_BUFFER_COUNT];
 
 void schedRenderCrashPeriodically(u32 framecount)
 {
@@ -88,7 +89,6 @@ void schedRenderCrashPeriodically(u32 framecount)
 		if (osGetCount() - g_SchedCrashLastRendered > g_SchedCrashRenderInterval) {
 			crashRenderFrame(g_FrameBuffers[0]);
 			crashRenderFrame(g_FrameBuffers[1]);
-			crashRenderFrame(g_FrameBuffers[2]);
 		}
 	}
 }
@@ -122,6 +122,13 @@ static void __scExec(OSSched *sc, OSScTask *t)
 	}
 }
 
+static bool __scFramebufferAvailable(OSSched *sc, OSScTask *t)
+{
+	return pd480CanRender((u32) t->framebuffer,
+			(u32) osViGetCurrentFramebuffer(), (u32) osViGetNextFramebuffer(),
+			(u32) sc->scheduledFB, (u32) sc->queuedFB);
+}
+
 static void __scTryDispatch(OSSched *sc)
 {
 	if (sc->curRSPTask == NULL) {
@@ -132,7 +139,7 @@ static void __scTryDispatch(OSSched *sc)
 		} else if ((sc->curRDPTask == NULL || sc->curRDPTask == sc->nextGfxTask) && sc->queuedFB == NULL) {
 			OSScTask *t = sc->nextGfxTask;
 
-			if (t) {
+			if (t && __scFramebufferAvailable(sc, t)) {
 				sc->nextGfxTask = sc->nextGfxTask2;
 				sc->nextGfxTask2 = NULL;
 				__scExec(sc, t);
@@ -218,11 +225,14 @@ static void __scHandleRetrace(OSSched *sc)
 			sc->scheduledFB = sc->queuedFB;
 			sc->queuedFB = NULL;
 			__scSwap(sc, sc->scheduledFB);
-			__scTryDispatch(sc);
 		} else {
 			sc->scheduledFB = NULL;
 		}
 	}
+
+	/* A displayed image becomes writable only after the VI has moved on.
+	 * Reconsider waiting graphics even when there was no queued swap. */
+	__scTryDispatch(sc);
 
 	sc->alt ^= 1;
 
@@ -237,7 +247,8 @@ static void __scHandleRetrace(OSSched *sc)
 		osStopTimer(&g_SchedRspTimer);
 		osSetTimer(&g_SchedRspTimer, 280000, 0, &g_AudioManager.audioFrameMsgQ, (OSMesg) OS_SC_RSP_MSG);
 
-		if (sc->nextAudTask && sc->curRSPTask->list.t.type == M_GFXTASK) {
+		if (sc->nextAudTask && sc->curRSPTask
+				&& sc->curRSPTask->list.t.type == M_GFXTASK) {
 			osSpTaskYield();
 			sc->curRSPTask->state |= OS_SC_YIELD;
 		}
@@ -350,11 +361,12 @@ void schedSubmitGfxTask(OSSched *sc, OSScTask *t)
 
 	t->state = OS_SC_NEEDS_RSP | OS_SC_NEEDS_RDP;
 
-	if (sc->curRSPTask == NULL && sc->curRDPTask == NULL && sc->queuedFB == NULL) {
+	if (sc->curRSPTask == NULL && sc->curRDPTask == NULL && sc->queuedFB == NULL
+			&& __scFramebufferAvailable(sc, t)) {
 		g_ScBottleneck = 'C';
 		__scExec(sc, t);
 	} else {
-		g_ScBottleneck = sc->queuedFB ? 'V' : 'R';
+		g_ScBottleneck = sc->queuedFB || !__scFramebufferAvailable(sc, t) ? 'V' : 'R';
 
 		if (sc->nextGfxTask == NULL) {
 			sc->nextGfxTask = t;
