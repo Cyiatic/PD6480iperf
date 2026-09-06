@@ -1,0 +1,13 @@
+2026-09-06T17:17:27.9225882Z ROM C:\Users\codex\Documents\N64 2\.codex-work\PD6480iperf-v85-blur-allocation.z64 SHA256 430F09BBE0B76BFE687881C52AC23EC4CFFF0CC4A16B9BA5FAECD602FFC037A4
+2026-09-06T17:17:30.4216596Z Plug 1 on: Token Refresh: Ok
+Devicelist expired, retrieving updated list from TP-Link
+Relay: 1
+2026-09-06T17:17:42.5711733Z Uploading with GameCapture closed; timeout 65 seconds
+2026-09-06T17:17:42.6055048Z Owned upload PID 408
+2026-09-06T17:18:20.2480164Z Native upload exit 0; this alone is not a ROM pass
+2026-09-06T17:18:20.3187632Z Owned GameCapture PID 10184 start 2026-09-06T10:18:20.3066082-07:00
+2026-09-06T17:19:05.7794330Z Capture startup allowance ended; observing 75 seconds
+2026-09-06T17:20:21.4348507Z Observation ended; recording still needs inspection
+2026-09-06T17:20:22.8849196Z Plug 1 off: Relay: 0
+2026-09-06T17:20:23.7959021Z Plug 1 status: Relay: 0
+2026-09-06T17:20:23.7965677Z Trial cleanup ended; retain bounded recordings until inspected

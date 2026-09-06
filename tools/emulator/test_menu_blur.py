@@ -12,7 +12,11 @@ def check(root):
     begin = source.index('void menugfxCreateBlur(void)')
     end = source.index('Gfx *menugfxRenderDialogBackground', begin)
     code = source[begin:end]
-    defines = source[source.index('#define BLURIMG_WIDTH'):source.index('/**')]
+    header = (root / 'src/include/game/menugfx.h').read_text()
+    defines = '\n'.join(line for line in header.splitlines() if line.startswith('#define BLURIMG_')) + '\n'
+    defines += source[source.index('#define SAMPLE_WIDTH'):source.index('/**')]
+    menu = (root / 'src/game/menu.c').read_text()
+    allocation = re.search(r'g_BlurBuffer = mempAlloc\(([^;]+)\);', menu).group(0)
     prefix = r'''
 #include <stdint.h>
 #include <stdio.h>
@@ -27,11 +31,15 @@ typedef float f32;
 typedef uint64_t Gfx;
 #define PAL 0
 #define UNCACHED(x) ((u8 *)(x))
+#define ALIGN16(x) (((x)+15)&~15)
+#define MEMPOOL_STAGE 4
 #define osVirtualToPhysical(x) (x)
 struct gfxvtx { s16 x, y, z, s, t; u8 colour; };
 struct vidata { void *fb; int x, y, bufx, bufy; } front, back;
 struct vidata *g_ViFrontData = &front, *g_ViBackData = &back;
 u8 storage[2400 + 32], *g_BlurBuffer = storage + 16;
+unsigned allocated_bytes;
+void *mempAlloc(unsigned size, int pool) { allocated_bytes=size; return storage+16; }
 struct gfxvtx captured[4];
 u32 coloursbuffer[1];
 u32 *gfxAllocateColours(int count) { return coloursbuffer; }
@@ -43,6 +51,8 @@ struct gfxvtx *gfxAllocateVertices(int count) { return captured; }
         prefix += f'#define {macro}(pkt, ...) ((void)(pkt))\n'
     tests = r'''
 int main(void) {
+    allocateBlur();
+    CHECK(allocated_bytes == 2400);
     const int sizes[][2] = {{320,240}, {640,480}, {640,240}, {576,432}};
     const u16 quadrant[] = {0xf800,0x07c0,0x003e,0xfffe};
     Gfx commands[128];
@@ -85,15 +95,19 @@ int main(void) {
     env = dict(os.environ)
     env['PATH'] = 'C:/msys64/mingw64/bin;' + env.get('PATH', '')
     with tempfile.TemporaryDirectory(prefix='pd-menu-blur-') as directory:
-        for label, routine, expected in [('actual',code,0), ('quarter-quad',negative_quad,1), ('quarter-sample',negative_sample,1)]:
+        for label, routine, alloc, expected in [
+                ('actual',code,allocation,0),
+                ('quarter-quad',negative_quad,allocation,1),
+                ('quarter-sample',negative_sample,allocation,1),
+                ('oversized-allocation',code,'g_BlurBuffer = mempAlloc(0x4b00, MEMPOOL_STAGE);',1)]:
             cfile = Path(directory) / (label+'.c')
             binary = Path(directory) / (label+'.exe')
-            cfile.write_text(prefix + defines + routine + tests)
+            cfile.write_text(prefix + defines + 'void allocateBlur(void) { ' + alloc + ' }\n' + routine + tests)
             subprocess.run(['C:/msys64/mingw64/bin/gcc.exe','-Wall','-Werror','-Wno-unused-but-set-variable',str(cfile),'-o',str(binary)],env=env,check=True)
             result = subprocess.run([str(binary)],env=env,capture_output=True,text=True)
             if result.returncode != expected:
                 raise AssertionError(f'{label}: {result.returncode}, expected {expected}: {result.stderr}')
-    print('PASS: real C blur, four dimensions/four quadrants, output guards, three full-screen overlay offsets; quarter-screen negative controls rejected')
+    print('PASS: real C blur, 2400-byte allocation, four dimensions/four quadrants, output guards, three full-screen offsets; quarter-screen and oversized-allocation controls rejected')
 
 
 if __name__ == '__main__':

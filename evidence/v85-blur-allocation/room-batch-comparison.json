@@ -1,0 +1,13 @@
+{
+  "test": "Defection emulator RAM, offsets independently compiled from v85 types.h",
+  "hardware_verified": false,
+  "normal_rom_sha256": "430f09bbe0b76bfe687881c52ac23ec4cfff0cc4a16b9ba5faecd602ffc037a4",
+  "normal_elf_sha256": "81af590340c372b80d4d9c3bcada0056566505a2ce482de4ec11f618a8d0ad5a",
+  "normal_ram_source": "headless-v85-defection-resume/rdram-last.bin",
+  "normal_rooms_without_vtxbatches": [],
+  "normal_room167": {"gfxdata": "0x806d9d40", "vtxbatches": "0x806e8320", "numvtxbatches": 252},
+  "heavy_diagnostic_rooms_without_vtxbatches": [167],
+  "lean_diagnostic_rooms_without_vtxbatches": [167],
+  "lean_room167": {"gfxdata": "0x806da6e0", "vtxbatches": null},
+  "note": "Non-NULL room gfxdata alone is not sufficient to call a preload complete. Failed batch-count fields are uninitialized and not interpreted."
+}
