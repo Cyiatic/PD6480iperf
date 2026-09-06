@@ -1,4 +1,4 @@
-/* V82B HARDWARE DIAGNOSTIC, NOT A RELEASE CANDIDATE.
+/* V84 HARDWARE DIAGNOSTIC, NOT A RELEASE CANDIDATE.
  * Programmatic file selection and opening Video Options are test setup.
  * L, Hi-Res and movement then use the ordinary input consumers/handlers.
  * Replace only samples in the main thread's newly acquired partition. The
@@ -84,14 +84,22 @@ void pdHwReplay(struct contsample *samples, s32 first, s32 last)
 	case 1:
 		if (dialog && dialog->definition == &g_FilemgrFileSelectMenuDialog
 				&& g_FileLists[0] && g_FileLists[0]->numfiles == 1) {
-			if (tick > 90) {
+			if (tick > 90) pdHwPhase(9);
+		} else g_PdHwPhaseTicks = 0;
+		break;
+	case 9:
+		/* Exercise both file-menu slide directions before programmatic selection. */
+		if (pdHwPulse(tick, 30) || pdHwPulse(tick, 210)) pad.stick_x = 60;
+		if (pdHwPulse(tick, 120) || pdHwPulse(tick, 300)) pad.stick_x = -60;
+		if (tick > 390) {
+			if (dialog && dialog->definition == &g_FilemgrFileSelectMenuDialog) {
 				union handlerdata data = {0};
 				data.list.value = 0;
 				g_MpPlayerNum = 0;
 				filemgrChooseAgentListMenuHandler(MENUOP_SET, NULL, &data);
 				pdHwPhase(2);
-			}
-		} else g_PdHwPhaseTicks = 0;
+			} else pdHwPhase(99);
+		}
 		break;
 	case 2:
 		if (!dialog && tick > 90 && g_Vars.lvframenum > 100) pdHwPhase(3);
@@ -107,7 +115,10 @@ void pdHwReplay(struct contsample *samples, s32 first, s32 last)
 	case 4:
 		g_MpPlayerNum = 0;
 		if (tick == 1) playerPause(MENUROOT_MAINMENU);
-		if (tick >= 90 && dialog) {
+		/* Repeated ordinary-input swipes over the paused full-screen blur. */
+		if (pdHwPulse(tick, 90) || pdHwPulse(tick, 270)) pad.stick_x = 60;
+		if (pdHwPulse(tick, 180) || pdHwPulse(tick, 360)) pad.stick_x = -60;
+		if (tick >= 450 && dialog) {
 			menuPushDialog(&g_VideoOptionsMenuDialog);
 			pdHwPhase(5);
 		}
@@ -117,19 +128,14 @@ void pdHwReplay(struct contsample *samples, s32 first, s32 last)
 			pdHwPhase(99);
 			break;
 		}
-		if (pdHwPulse(tick, 60) || pdHwPulse(tick, 120)) pad.button = D_CBUTTONS;
-		if (tick == 200 && dialog->focuseditem != &g_VideoOptionsMenuItems[2]) {
+		if (g_VideoOptionsMenuItems[2].type != MENUITEMTYPE_LABEL) {
 			pdHwPhase(99);
 			break;
 		}
-		if (pdHwPulse(tick, 240) || pdHwPulse(tick, 420) || pdHwPulse(tick, 600)) {
-			pad.button = A_BUTTON;
-		}
-		if (tick == 260 || tick == 440 || tick == 620) {
-			if (!!g_HiResEnabled != (tick != 440)) pdHwPhase(99);
-			else g_PdHwToggleChecks++;
-		}
-		if (tick > 720) pdHwPhase(6);
+		if (pdHwPulse(tick, 60) || pdHwPulse(tick, 150)) pad.button = L_TRIG;
+		/* CHECK counts visits with the fixed-mode label, not Hi-Res toggles. */
+		if (tick == 240) g_PdHwToggleChecks++;
+		if (tick > 300) pdHwPhase(6);
 		break;
 	case 6:
 		if (!dialog && tick > 90) pdHwPhase(7);
@@ -139,7 +145,7 @@ void pdHwReplay(struct contsample *samples, s32 first, s32 last)
 		if (pdHwPulse(tick, 60) || pdHwPulse(tick, 150)) pad.button = L_TRIG;
 		if (tick % 600 >= 200 && tick % 600 < 290) pad.stick_x = 35;
 		if (tick % 600 >= 360 && tick % 600 < 450) pad.stick_y = 45;
-		if (tick > 1800) pdHwPhase(8);
+		if (tick > 600) pdHwPhase(8);
 		break;
 	default:
 		break;
