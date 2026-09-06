@@ -1,0 +1,7 @@
+2026-09-06T16:39:35.6662226Z ROM C:\Users\codex\Documents\N64 2\.codex-work\PD6480iperf-v84-menu-blur-DIAGNOSTIC.z64 SHA256 97EAF57D8F59E026B9F7C540F162633D9719B1B0E6EE3ACA539E26B19EC4E175
+2026-09-06T16:39:36.5149123Z Plug 1 on: Relay: 1
+2026-09-06T16:39:48.6001378Z Uploading with GameCapture closed; timeout 65 seconds
+2026-09-06T16:39:48.6147843Z Owned upload PID 13272
+2026-09-06T16:40:55.0102578Z Plug 1 off: Relay: 0
+2026-09-06T16:40:55.8705739Z Plug 1 status: Relay: 0
+2026-09-06T16:40:55.8717059Z Trial cleanup ended; retain bounded recordings until inspected

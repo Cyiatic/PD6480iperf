@@ -67,7 +67,8 @@ def inspect(elf_path, ram_path, layout_path):
                  '__scFramebufferAvailable', 'schedSubmitGfxTask', '__scHandleRetrace',
                  '__scHandleRSP', '__scHandleRDP', 'viReset', 'bgPreload',
                  'bgLoadRoom', 'mblurAllocate', 'mblurReset', 'dmaExec',
-                 'menuReset', 'menuPushDialog', 'menuRenderModels'):
+                 'menuReset', 'menuPushDialog', 'menuRenderModels',
+                 'menugfxCreateBlur', 'menugfxRenderBgBlur', 'menuTextFixedResolution'):
         if name not in elf.symbols:
             continue
         start, size = elf.symbols[name]

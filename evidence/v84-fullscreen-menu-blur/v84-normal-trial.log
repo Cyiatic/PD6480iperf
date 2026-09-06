@@ -1,0 +1,9 @@
+2026-09-06T16:32:39.9518856Z ROM C:\Users\codex\Documents\N64 2\.codex-work\PD6480iperf-v84-fullscreen-menu-blur.z64 SHA256 401D5507968D5A37756DAD280A43D89D481FBBDF21FC79EEAA0EDCCDFB98C6D7
+2026-09-06T16:32:42.4799349Z Plug 1 on: Token Refresh: Ok
+Devicelist expired, retrieving updated list from TP-Link
+Relay: 1
+2026-09-06T16:32:54.6131610Z Uploading with GameCapture closed; timeout 65 seconds
+2026-09-06T16:32:54.6347465Z Owned upload PID 24020
+2026-09-06T16:34:01.2933362Z Plug 1 off: Relay: 0
+2026-09-06T16:34:02.6835206Z Plug 1 status: Relay: 0
+2026-09-06T16:34:02.6847005Z Trial cleanup ended; retain bounded recordings until inspected
