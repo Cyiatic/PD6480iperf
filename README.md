@@ -6,18 +6,20 @@ No accurate benchmarking has been done.
 
 The mod is based off the framerate graph mod, so you can press L to toggle the frame rate graph.
 
-## Latest development candidate: v76 (console intro/3D scene verified)
+## Latest development candidate: v77 (console intro/3D scene verified)
 
-v76 retains full 640x480 colour/depth storage and the L graph/framebuffer
-readout. It reserves video memory before level loading and uses a bounded
-streaming room cache (minimum 256 KiB) instead of whole-level preloading.
-This is a memory-budget diagnostic, not a claim to preserve that preload
-optimization or to complete the requested performance merge.
+v77 retains full 640x480 colour/depth storage, the L graph/framebuffer readout,
+and v76's bounded streaming cache. It shares identical read-only constants and
+retains visited rooms while the cache has at least 64 KiB of contiguous spare
+capacity. Whole-level preloading remains disabled; performance is not benchmarked.
 
 An ED64 upload and fresh Elgato video show the original N64 rendering Defection's
-animated opening scene after the logos. Emulator checks reach Carrington Institute
-and show FB 640x480. Interactive console play, Hi-Res-toggle behaviour, broader
-stage coverage and Analogue 3D remain unverified. See [v76 evidence](docs/PD6480iperf-v76.md).
+animated opening after the logos. Emulator controller-input tests load Dark,
+enter Carrington Institute, toggle the actual Hi-Res checkbox on and off, and
+resume movement with Hi-Res enabled. The active framebuffer stays 640x480 and
+those snapshots report no allocation failure. Interactive console play, console
+Hi-Res toggling, broader stage coverage and Analogue 3D remain unverified.
+See [v77 evidence and limitations](docs/PD6480iperf-v77.md) and [v76 history](docs/PD6480iperf-v76.md).
 
 v74 is rejected: its framebuffer allocation fails after whole-level preloading.
 See [v74 failure evidence](docs/PD6480iperf-v74.md).
