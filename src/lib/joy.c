@@ -4,6 +4,7 @@
 #include "bss.h"
 #include "lib/main.h"
 #include "lib/joy.h"
+#include "lib/hwtest.h"
 #include "data.h"
 #include "types.h"
 
@@ -348,6 +349,7 @@ void joyDebugJoy(void)
 
 	g_JoyData.curstart = g_JoyData.curlast;
 	g_JoyData.curlast = g_JoyData.nextlast;
+	pdHwReplay(g_JoyData.samples, g_JoyData.curstart, g_JoyData.curlast);
 
 	for (i = 0; i < 4; i++) {
 		g_JoyData.buttonspressed[i] = 0;
