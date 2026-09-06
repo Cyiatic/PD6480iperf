@@ -1,0 +1,19 @@
+[
+  {
+    "rom": ".codex-work\\PD6480iperf-v83-logo-buffer-order.z64",
+    "sha256": "fdb31ec4f4616fedf63b07d3812d5d51bb85e3843b282f8eefe1631acd4357b5",
+    "data_stream_offset": "0x25050",
+    "file_table_offset_in_data": "0x1d6ec",
+    "compressed_valid": 1403,
+    "compressed_invalid": 0,
+    "raw_unchecked": 608,
+    "empty_aliases": 2,
+    "rare_logo": {
+      "file_id": "0x560",
+      "rom_offset": "0x1bf5340",
+      "rom_bytes": 12336,
+      "header": "1173007000cc5a4d6c2347766e6a340c"
+    },
+    "invalid_examples": []
+  }
+]

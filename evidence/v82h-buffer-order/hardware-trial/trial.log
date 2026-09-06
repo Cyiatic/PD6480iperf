@@ -1,0 +1,12 @@
+2026-09-06T15:15:48.2917544Z ROM C:\Users\codex\Documents\N64 2\.codex-work\PD6480iperf-v82h-buffer-order-DIAGNOSTIC.z64 SHA256 50EE8E8961375075C12E34728EFA3CBBE693D294B9632E3B9CD2EF1564A71213
+2026-09-06T15:15:49.8017898Z Plug 1 on: Devicelist expired, retrieving updated list from TP-Link
+Relay: 1
+2026-09-06T15:16:01.9393258Z Uploading with GameCapture closed; timeout 65 seconds
+2026-09-06T15:16:01.9517190Z Owned upload PID 24812
+2026-09-06T15:16:38.5740006Z Native upload exit 0; this alone is not a ROM pass
+2026-09-06T15:16:38.6456473Z Owned GameCapture PID 7012 start 2026-09-06T08:16:38.6336667-07:00
+2026-09-06T15:17:23.9905669Z Capture startup allowance ended; observing 90 seconds
+2026-09-06T15:18:54.7146527Z Observation ended; recording still needs inspection
+2026-09-06T15:18:56.1712373Z Plug 1 off: Relay: 0
+2026-09-06T15:18:57.0315289Z Plug 1 status: Relay: 0
+2026-09-06T15:18:57.0321666Z Trial cleanup ended; retain bounded recordings until inspected

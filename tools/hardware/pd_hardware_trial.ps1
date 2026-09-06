@@ -5,7 +5,7 @@
 param(
     [Parameter(Mandatory=$true)][string]$Rom,
     [Parameter(Mandatory=$true)][string]$RunDirectory,
-    [ValidateRange(15,90)][int]$ObservationSeconds=75
+    [ValidateRange(15,480)][int]$ObservationSeconds=75
 )
 $ErrorActionPreference='Stop'
 $pdWorkspace='C:\Users\codex\Documents\N64 2'
@@ -20,7 +20,7 @@ if ((Get-Item -LiteralPath $pdRomPath).Length -ne 33554432) { throw 'Expected 32
 if (Test-Path -LiteralPath $pdRunPath) { throw 'Evidence directory already exists; refusing overwrite' }
 if (Get-Process -Name GameCapture,UNFLoader -ErrorAction SilentlyContinue) { throw 'Capture/uploader already running; refusing to affect unowned processes' }
 New-Item -ItemType Directory -Path $pdRunPath -ErrorAction Stop | Out-Null
-$pdDeadline=[datetime]::UtcNow.AddSeconds(300)
+$pdDeadline=[datetime]::UtcNow.AddSeconds(660)
 $pdCapture=$null
 $pdUpload=$null
 $pdPowerOffNeeded=$false
@@ -97,6 +97,7 @@ try {
             }
             try { Invoke-PdKasa 'status' } catch {
                 Trace-Pd ('First OFF status check failed: '+$_.Exception.Message)
+                Invoke-PdKasa 'off'
                 Invoke-PdKasa 'status'
             }
         }

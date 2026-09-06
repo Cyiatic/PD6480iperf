@@ -1,0 +1,11 @@
+2026-09-06T15:29:07.2995712Z ROM C:\Users\codex\Documents\N64 2\.codex-work\PD6480iperf-v83-logo-buffer-order.z64 SHA256 FDB31EC4F4616FEDF63B07D3812D5D51BB85E3843B282F8EEFE1631ACD4357B5
+2026-09-06T15:29:08.7991079Z Plug 1 on: Relay: 1
+2026-09-06T15:29:20.9323019Z Uploading with GameCapture closed; timeout 65 seconds
+2026-09-06T15:29:20.9448260Z Owned upload PID 14152
+2026-09-06T15:29:57.5633220Z Native upload exit 0; this alone is not a ROM pass
+2026-09-06T15:29:57.6106604Z Owned GameCapture PID 4940 start 2026-09-06T08:29:57.6018880-07:00
+2026-09-06T15:30:43.0715726Z Capture startup allowance ended; observing 75 seconds
+2026-09-06T15:31:58.8212613Z Observation ended; recording still needs inspection
+2026-09-06T15:32:00.1094415Z Plug 1 off: Relay: 0
+2026-09-06T15:32:00.9479829Z Plug 1 status: Relay: 0
+2026-09-06T15:32:00.9486242Z Trial cleanup ended; retain bounded recordings until inspected

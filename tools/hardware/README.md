@@ -10,12 +10,16 @@ Do not launch the ambiguous `powershell.exe`: a Windows PowerShell 5.1 launch
 failed to load Get-FileHash on 2026-09-06 before power-on.
 
 Arguments: exact 32 MiB ROM path, NEW evidence directory under this workspace,
-observation seconds (15–90). Redirect stdout/stderr to new bounded trial logs.
+observation seconds (15–480). Redirect stdout/stderr to new bounded trial logs.
 The worker refuses existing GameCapture/UNFLoader processes and existing
-evidence directories. Upload timeout is 65 s; total normal deadline 300 s;
-individual Kasa commands get 20 s, with an OFF retry. GameCapture starts only
+evidence directories. Upload timeout is 65 s; overall deadline 660 s;
+individual Kasa commands get 20 s, with an OFF retry. An empty or contradictory
+final status triggers another OFF and status attempt. GameCapture starts only
 after upload completes, then gets 45 s startup plus the observation interval.
 This misses earliest game startup; do not claim unrecorded product/logo states.
+Use a longer observation only for a known progressing replay: its frame-based
+movement/Hi-Res checks are slower on real N64. Check disk headroom first and
+delete inspected video after the bounded run. Short bootstrap checks stay short.
 
 While the independent worker runs, inspect its logs without launching a second
 trial. When finished verify explicit Relay 0, inspect fresh Elgato segment
