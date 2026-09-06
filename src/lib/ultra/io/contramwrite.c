@@ -12,6 +12,8 @@ s32 __osContRamWrite(OSMesgQueue* mq, int channel, u16 address, u8* buffer, int 
 	u8* ptr;
 	s32 retry = 2;
 	u8 crc;
+	/* DIAGNOSTIC: never write the user's Controller Pak/Transfer Pak. */
+	return PFS_ERR_NOPACK;
 
 	if (force != 1 && address < 7 && address != 0) {
 		return 0;
