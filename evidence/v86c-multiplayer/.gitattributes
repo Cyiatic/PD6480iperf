@@ -1,0 +1,4 @@
+*.log -text -whitespace
+*.json -text whitespace=cr-at-eol
+*.txt -text whitespace=cr-at-eol
+*.info -text whitespace=cr-at-eol

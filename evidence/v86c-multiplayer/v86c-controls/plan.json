@@ -1,0 +1,174 @@
+{
+  "workspace": "C:/Users/codex/Documents/N64 2",
+  "rom": ".codex-work/PD6480iperf-v86c-four-menu-reserve.z64",
+  "rom_sha256": "5c730fd1470b5fd98e27ea59ebf04d2db7d3716cb6176c8b16d4ff36fb694a2b",
+  "elf": ".codex-work/v86c-stage1.elf",
+  "layout": ".codex-work/v86-mode-layout.bin",
+  "host": ".codex-work/host-multi-v2.exe",
+  "core": ".codex-tools/parallel-headless/parallel_n64_libretro.dll",
+  "samples": [
+    {
+      "directory": ".codex-work/headless-v86c-cold-dark",
+      "host": ".codex-work/host-multi-v1.exe",
+      "save": ".codex-work/perfect-dark-performance/artifacts/saves/Perfect-Dark-Dark-100-stock-v1.eep",
+      "input": ".codex-work/headless-select-dark.txt",
+      "log": ".codex-work/v86c-cold-dark.host.log",
+      "ticks": 4200,
+      "controller_mask": 15,
+      "observation": "Cold external-stock-Dark boot to unpaused CI; four frontend ports, one gameplay player, OOM0."
+    },
+    {
+      "directory": ".codex-work/headless-v86c-multi-enter",
+      "parent": ".codex-work/headless-v86c-cold-dark",
+      "input": ".codex-work/v86c-multi-enter-input.txt",
+      "log": ".codex-work/v86c-multi-enter.host.log",
+      "ticks": 450,
+      "controller_mask": 15,
+      "observation": "Mission Select with Defection highlighted; originally intended Combat navigation, not an arena test."
+    },
+    {
+      "directory": ".codex-work/headless-v86c-menu-back",
+      "parent": ".codex-work/headless-v86c-multi-enter",
+      "input": ".codex-work/v86c-menu-back-input.txt",
+      "log": ".codex-work/v86c-menu-back.host.log",
+      "ticks": 300,
+      "controller_mask": 15,
+      "observation": "B returns to Perfect Menu. Focus differs from the old v86b seed; later corrected with up input."
+    },
+    {
+      "directory": ".codex-work/headless-v86c-combat-up",
+      "parent": ".codex-work/headless-v86c-menu-back",
+      "input": ".codex-work/v86c-combat-up-input.txt",
+      "log": ".codex-work/v86c-combat-up.host.log",
+      "ticks": 300,
+      "controller_mask": 15,
+      "observation": "Combat Simulator reached with ordinary inputs; three additional ports invite Start."
+    },
+    {
+      "directory": ".codex-work/headless-v86c-combat-join",
+      "parent": ".codex-work/headless-v86c-combat-up",
+      "input": ".codex-work/v86b-multi-join-input.txt",
+      "log": ".codex-work/v86c-combat-join.host.log",
+      "ticks": 600,
+      "controller_mask": 15,
+      "observation": "Quick Team/Players Only; additional three controllers show Ready."
+    },
+    {
+      "directory": ".codex-work/headless-v86c-combat-setup",
+      "parent": ".codex-work/headless-v86c-combat-join",
+      "input": ".codex-work/v86b-multi-players-only-input.txt",
+      "log": ".codex-work/v86c-combat-setup.host.log",
+      "ticks": 300,
+      "controller_mask": 15,
+      "observation": "Skedar/Pistols Game Setup; Finished Setup focused."
+    },
+    {
+      "directory": ".codex-work/headless-v86c-combat-finish",
+      "parent": ".codex-work/headless-v86c-combat-setup",
+      "input": ".codex-work/v86b-multi-finish-input.txt",
+      "log": ".codex-work/v86c-combat-finish.host.log",
+      "ticks": 300,
+      "controller_mask": 15,
+      "observation": "Four Quick Go panels, still CI38, OOM0 and124976 bytes free. Passes the v86b failure point."
+    },
+    {
+      "directory": ".codex-work/headless-v86c-combat-start",
+      "parent": ".codex-work/headless-v86c-combat-finish",
+      "input": ".codex-work/v86c-combat-start-input.txt",
+      "log": ".codex-work/v86c-combat-start.host.log",
+      "ticks": 1800,
+      "controller_mask": 15,
+      "observation": "Skedar50, four distinct viewports inside640x480, all four alive/unpaused, OOM0."
+    },
+    {
+      "directory": ".codex-work/headless-v86c-four-move",
+      "parent": ".codex-work/headless-v86c-combat-start",
+      "input": ".codex-work/v86c-four-move-input.txt",
+      "log": ".codex-work/v86c-four-move.host.log",
+      "ticks": 900,
+      "controller_mask": 15,
+      "observation": "Independent forward and Z inputs; all four positions changed, alive/unpaused, OOM0. Starts unarmed; no gunfire or full-match claim."
+    },
+    {
+      "directory": ".codex-work/headless-v86c-four-pause",
+      "parent": ".codex-work/headless-v86c-four-move",
+      "input": ".codex-work/v86c-four-pause-input.txt",
+      "log": ".codex-work/v86c-four-pause.host.log",
+      "ticks": 300,
+      "controller_mask": 15,
+      "observation": "All four Player Ranking panels visible after per-port Start. Multiplayer background remains live, not solo pause-blur evidence."
+    },
+    {
+      "directory": ".codex-work/v86c-solo-matrix/defection",
+      "parent": ".codex-work/headless-v86c-multi-enter",
+      "input": ".codex-work/v86c-solo-matrix/defection/input.txt",
+      "log": ".codex-work/v86c-solo-matrix/defection/host.log",
+      "ticks": 1560,
+      "controller_mask": 1,
+      "observation": "Initial fixed-length Agent sample ends during stage48 loading at level-frame0; not a load pass or established freeze."
+    },
+    {
+      "directory": ".codex-work/v86c-solo-matrix/infiltration",
+      "parent": ".codex-work/headless-v86c-multi-enter",
+      "input": ".codex-work/v86c-solo-matrix/infiltration/input.txt",
+      "log": ".codex-work/v86c-solo-matrix/infiltration/host.log",
+      "ticks": 1830,
+      "controller_mask": 1,
+      "observation": "Initial Agent sample ends during stage47 loading at level-frame0; not a pass."
+    },
+    {
+      "directory": ".codex-work/v86c-solo-matrix/deepsea",
+      "parent": ".codex-work/headless-v86c-multi-enter",
+      "input": ".codex-work/v86c-solo-matrix/deepsea/input.txt",
+      "log": ".codex-work/v86c-solo-matrix/deepsea/host.log",
+      "ticks": 2145,
+      "controller_mask": 1,
+      "observation": "Initial Agent sample ends during stage56 loading at level-frame0; not a pass."
+    },
+    {
+      "directory": ".codex-work/headless-v86c-infiltration-loaded",
+      "parent": ".codex-work/v86c-solo-matrix/infiltration",
+      "input": ".codex-work/v86c-loaded-skip-input.txt",
+      "log": ".codex-work/v86c-infiltration-loaded.host.log",
+      "ticks": 1800,
+      "controller_mask": 1,
+      "observation": "AI CO-OP, not solo: compiled v6 probes prove cooperative=true and one AI buddy. Alive/unpaused Agent gameplay but OOM'p'/52960, free43936. The original runner directory name was misleading; not a solo regression or allocation pass."
+    },
+    {
+      "directory": ".codex-work/headless-v86c-deepsea-loaded",
+      "parent": ".codex-work/v86c-solo-matrix/deepsea",
+      "input": ".codex-work/v86c-loaded-skip-input.txt",
+      "log": ".codex-work/v86c-deepsea-loaded.host.log",
+      "ticks": 1800,
+      "controller_mask": 1,
+      "observation": "AI CO-OP, not solo: cooperative=true and one AI buddy. Alive/unpaused Agent gameplay but OOM'p'/52960, free44608. Mislabelled original runner path preserved; no allocation pass."
+    },
+    {
+      "directory": ".codex-work/headless-v86c-four-resume",
+      "parent": ".codex-work/headless-v86c-four-pause",
+      "input": ".codex-work/v86c-four-resume-input.txt",
+      "log": ".codex-work/v86c-four-resume.host.log",
+      "ticks": 600,
+      "controller_mask": 15,
+      "observation": "All four ranking panels closed; four-player3D continues, L turns graph off, OOM0."
+    },
+    {
+      "directory": ".codex-work/headless-v86c-real-solo-list",
+      "parent": ".codex-work/headless-v86c-menu-back",
+      "input": ".codex-work/v86c-real-solo-list-input.txt",
+      "log": ".codex-work/v86c-real-solo-list.host.log",
+      "ticks": 300,
+      "controller_mask": 1,
+      "observation": "Actual Solo Missions path: compiled cooperative/counteroperative flags false, no AI buddies. Stock Dark initially highlights Skedar Ruins, not Defection."
+    },
+    {
+      "directory": ".codex-work/headless-v86c-solo-first",
+      "parent": ".codex-work/headless-v86c-real-solo-list",
+      "input": ".codex-work/v86c-solo-first-input.txt",
+      "log": ".codex-work/v86c-solo-first.host.log",
+      "ticks": 900,
+      "controller_mask": 1,
+      "observation": "Sixteen ordinary Up presses move from Skedar Ruins to Defection in the verified solo menu."
+    }
+  ]
+}

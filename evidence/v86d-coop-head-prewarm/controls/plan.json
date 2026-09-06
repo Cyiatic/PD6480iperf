@@ -1,0 +1,29 @@
+{
+  "workspace": "C:/Users/codex/Documents/N64 2",
+  "rom": ".codex-work/PD6480iperf-v86d-coop-head-prewarm.z64",
+  "rom_sha256": "b450743aa0284ee25a84f4204c2e0a7de29a9d3319064b6da94f0dee65b65ead",
+  "elf": ".codex-work/v86d-stage1.elf",
+  "layout": ".codex-work/v86-mode-layout.bin",
+  "host": ".codex-work/host-multi-v2.exe",
+  "core": ".codex-tools/parallel-headless/parallel_n64_libretro.dll",
+  "samples": [
+    {
+      "directory": ".codex-work/headless-v86d-coop-cold",
+      "save": ".codex-work/perfect-dark-performance/artifacts/saves/Perfect-Dark-Dark-100-stock-v1.eep",
+      "input": ".codex-work/v86d-coop-cold-input.txt",
+      "log": ".codex-work/v86d-coop-cold.host.log",
+      "ticks": 10800,
+      "controller_mask": 1,
+      "observation": "Normal cold AI-co-op Agent Infiltration: Velvet spawns; pause/menu/L inputs and resume, alive frame631, OOM0. NOT a clean pass:43 room-load failures and38512-byte bank despite no missing visible room at the end."
+    },
+    {
+      "directory": ".codex-work/headless-v86d-coop-settled",
+      "parent": ".codex-work/headless-v86d-coop-cold",
+      "input": null,
+      "log": ".codex-work/v86d-coop-settled.host.log",
+      "ticks": 600,
+      "controller_mask": 1,
+      "observation": "Settled unpaused frame1001, alive, Velvet visibly present, graph off, OOM0. The menu eyepiece has disappeared after teardown. Room-load failures remain43; this is not a cache-gate pass."
+    }
+  ]
+}

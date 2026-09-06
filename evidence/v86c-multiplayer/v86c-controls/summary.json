@@ -1,0 +1,146 @@
+[
+  {
+    "sample": "headless-v86c-cold-dark",
+    "stage": 38,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Cold external-stock-Dark boot to unpaused CI; four frontend ports, one gameplay player, OOM0."
+  },
+  {
+    "sample": "headless-v86c-multi-enter",
+    "stage": 38,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Mission Select with Defection highlighted; originally intended Combat navigation, not an arena test."
+  },
+  {
+    "sample": "headless-v86c-menu-back",
+    "stage": 38,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "B returns to Perfect Menu. Focus differs from the old v86b seed; later corrected with up input."
+  },
+  {
+    "sample": "headless-v86c-combat-up",
+    "stage": 38,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Combat Simulator reached with ordinary inputs; three additional ports invite Start."
+  },
+  {
+    "sample": "headless-v86c-combat-join",
+    "stage": 38,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Quick Team/Players Only; additional three controllers show Ready."
+  },
+  {
+    "sample": "headless-v86c-combat-setup",
+    "stage": 38,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Skedar/Pistols Game Setup; Finished Setup focused."
+  },
+  {
+    "sample": "headless-v86c-combat-finish",
+    "stage": 38,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Four Quick Go panels, still CI38, OOM0 and124976 bytes free. Passes the v86b failure point."
+  },
+  {
+    "sample": "headless-v86c-combat-start",
+    "stage": 50,
+    "players": 4,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Skedar50, four distinct viewports inside640x480, all four alive/unpaused, OOM0."
+  },
+  {
+    "sample": "headless-v86c-four-move",
+    "stage": 50,
+    "players": 4,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Independent forward and Z inputs; all four positions changed, alive/unpaused, OOM0. Starts unarmed; no gunfire or full-match claim."
+  },
+  {
+    "sample": "headless-v86c-four-pause",
+    "stage": 50,
+    "players": 4,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "All four Player Ranking panels visible after per-port Start. Multiplayer background remains live, not solo pause-blur evidence."
+  },
+  {
+    "sample": "defection",
+    "stage": 48,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Initial fixed-length Agent sample ends during stage48 loading at level-frame0; not a load pass or established freeze."
+  },
+  {
+    "sample": "infiltration",
+    "stage": 47,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Initial Agent sample ends during stage47 loading at level-frame0; not a pass."
+  },
+  {
+    "sample": "deepsea",
+    "stage": 56,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Initial Agent sample ends during stage56 loading at level-frame0; not a pass."
+  },
+  {
+    "sample": "headless-v86c-infiltration-loaded",
+    "stage": 47,
+    "players": 1,
+    "oom": 112,
+    "oom_bytes": 52960,
+    "observation": "AI CO-OP, not solo: compiled v6 probes prove cooperative=true and one AI buddy. Alive/unpaused Agent gameplay but OOM'p'/52960, free43936. The original runner directory name was misleading; not a solo regression or allocation pass."
+  },
+  {
+    "sample": "headless-v86c-deepsea-loaded",
+    "stage": 56,
+    "players": 1,
+    "oom": 112,
+    "oom_bytes": 52960,
+    "observation": "AI CO-OP, not solo: cooperative=true and one AI buddy. Alive/unpaused Agent gameplay but OOM'p'/52960, free44608. Mislabelled original runner path preserved; no allocation pass."
+  },
+  {
+    "sample": "headless-v86c-four-resume",
+    "stage": 50,
+    "players": 4,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "All four ranking panels closed; four-player3D continues, L turns graph off, OOM0."
+  },
+  {
+    "sample": "headless-v86c-real-solo-list",
+    "stage": 38,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Actual Solo Missions path: compiled cooperative/counteroperative flags false, no AI buddies. Stock Dark initially highlights Skedar Ruins, not Defection."
+  },
+  {
+    "sample": "headless-v86c-solo-first",
+    "stage": 38,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Sixteen ordinary Up presses move from Skedar Ruins to Defection in the verified solo menu."
+  }
+]

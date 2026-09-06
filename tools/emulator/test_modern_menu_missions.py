@@ -5,6 +5,7 @@ from run_modern_menu_missions import evaluate_snapshot, input_sequence
 class MenuMissionTests(unittest.TestCase):
     def snapshot(self):
         return dict(stage=48, oom_marker=0, active_dimensions=[640,480],
+                    mission_configuration=dict(cooperative=False, counteroperative=False, ai_buddies=0),
                     level_frame_number=200, tick_mode=1, in_cutscene=0,
                     loaded_rooms=[1,2], rooms_missing_vertex_batches=[],
                     player_pause_mode=0, threads={'g_MainThread':{'flags':0},
@@ -37,7 +38,9 @@ class MenuMissionTests(unittest.TestCase):
     def test_every_required_condition(self):
         changes = [{'stage':38}, {'oom_marker':112}, {'active_dimensions':[320,240]},
                    {'level_frame_number':3}, {'tick_mode':2}, {'in_cutscene':1},
-                   {'loaded_rooms':[1]}, {'rooms_missing_vertex_batches':[2]}]
+                   {'loaded_rooms':[1]}, {'rooms_missing_vertex_batches':[2]},
+                   {'mission_configuration':None},
+                   {'mission_configuration':dict(cooperative=True, counteroperative=False, ai_buddies=1)}]
         for change in changes:
             snapshot = self.snapshot()
             snapshot.update(change)

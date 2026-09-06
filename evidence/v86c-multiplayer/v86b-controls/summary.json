@@ -1,0 +1,58 @@
+[
+  {
+    "sample": "headless-v86b-multi-enter",
+    "stage": 38,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Normal inputs enter Combat Simulator; four ports recognized, still one CI gameplay player."
+  },
+  {
+    "sample": "headless-v86b-multi-join",
+    "stage": 38,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Three additional controllers show Ready; Quick Team menu, not four-player gameplay."
+  },
+  {
+    "sample": "headless-v86b-multi-players-only",
+    "stage": 38,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Game Setup: Players Only, Skedar/Pistols. Finished Setup is initially focused."
+  },
+  {
+    "sample": "headless-v86b-multi-start",
+    "stage": 38,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Wrong menu navigation lands in Weapons; no arena launch, retained as unsuccessful test setup."
+  },
+  {
+    "sample": "headless-v86b-multi-finish",
+    "stage": 38,
+    "players": 1,
+    "oom": 112,
+    "oom_bytes": 153600,
+    "observation": "Finished Setup enters Quick Go, still CI38. OOM p/153600 appears before arena load."
+  },
+  {
+    "sample": "headless-v86b-multi-ready",
+    "stage": 50,
+    "players": 1,
+    "oom": 112,
+    "oom_bytes": 153600,
+    "observation": "Skedar arena50 with only one player, inherits CI allocation error. Not four-player or allocation pass; global error was never cleared."
+  },
+  {
+    "sample": "headless-v86b-multi-join-only",
+    "stage": 38,
+    "players": 1,
+    "oom": 112,
+    "oom_bytes": 153600,
+    "observation": "Joining without starting arena remains CI38 with OOM153600. Failed parent retained, no recovery/pass claim."
+  }
+]

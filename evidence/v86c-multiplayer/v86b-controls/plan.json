@@ -1,0 +1,71 @@
+{
+  "workspace": "C:/Users/codex/Documents/N64 2",
+  "rom": ".codex-work/PD6480iperf-v86b-budgeted-rooms.z64",
+  "rom_sha256": "c33ec1459b3092d89f5a3b00f82f6b4dd8e59c294b479aa7d039dc7471455df7",
+  "elf": ".codex-work/v86b-stage1.elf",
+  "layout": ".codex-work/v86-multi-layout.bin",
+  "host": ".codex-work/host-multi-v1.exe",
+  "core": ".codex-tools/parallel-headless/parallel_n64_libretro.dll",
+  "samples": [
+    {
+      "directory": ".codex-work/headless-v86b-multi-enter",
+      "parent": ".codex-work/headless-v86b-defection-list",
+      "input": ".codex-work/v86b-multi-enter-input.txt",
+      "ticks": 600,
+      "controller_mask": 15,
+      "observation": "Normal inputs enter Combat Simulator; four ports recognized, still one CI gameplay player."
+    },
+    {
+      "directory": ".codex-work/headless-v86b-multi-join",
+      "parent": ".codex-work/headless-v86b-multi-enter",
+      "input": ".codex-work/v86b-multi-join-input.txt",
+      "ticks": 600,
+      "controller_mask": 15,
+      "observation": "Three additional controllers show Ready; Quick Team menu, not four-player gameplay."
+    },
+    {
+      "directory": ".codex-work/headless-v86b-multi-players-only",
+      "parent": ".codex-work/headless-v86b-multi-join",
+      "input": ".codex-work/v86b-multi-players-only-input.txt",
+      "ticks": 300,
+      "controller_mask": 15,
+      "observation": "Game Setup: Players Only, Skedar/Pistols. Finished Setup is initially focused."
+    },
+    {
+      "directory": ".codex-work/headless-v86b-multi-start",
+      "parent": ".codex-work/headless-v86b-multi-players-only",
+      "input": ".codex-work/v86b-multi-start-input.txt",
+      "log": ".codex-work/v86b-multi-start.host.log",
+      "ticks": 2400,
+      "controller_mask": 15,
+      "observation": "Wrong menu navigation lands in Weapons; no arena launch, retained as unsuccessful test setup."
+    },
+    {
+      "directory": ".codex-work/headless-v86b-multi-finish",
+      "parent": ".codex-work/headless-v86b-multi-players-only",
+      "input": ".codex-work/v86b-multi-finish-input.txt",
+      "log": ".codex-work/v86b-multi-finish.host.log",
+      "ticks": 300,
+      "controller_mask": 15,
+      "observation": "Finished Setup enters Quick Go, still CI38. OOM p/153600 appears before arena load."
+    },
+    {
+      "directory": ".codex-work/headless-v86b-multi-ready",
+      "parent": ".codex-work/headless-v86b-multi-finish",
+      "input": ".codex-work/v86b-multi-ready-input.txt",
+      "log": ".codex-work/v86b-multi-ready.host.log",
+      "ticks": 1500,
+      "controller_mask": 15,
+      "observation": "Skedar arena50 with only one player, inherits CI allocation error. Not four-player or allocation pass; global error was never cleared."
+    },
+    {
+      "directory": ".codex-work/headless-v86b-multi-join-only",
+      "parent": ".codex-work/headless-v86b-multi-finish",
+      "input": ".codex-work/v86b-multi-join-only-input.txt",
+      "log": ".codex-work/v86b-multi-join-only.host.log",
+      "ticks": 300,
+      "controller_mask": 15,
+      "observation": "Joining without starting arena remains CI38 with OOM153600. Failed parent retained, no recovery/pass claim."
+    }
+  ]
+}

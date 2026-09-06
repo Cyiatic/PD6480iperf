@@ -13,7 +13,7 @@ workspace. No ROM, emulator DLL or third-party header is committed here.
 Invocation:
 
 ```text
-host CORE.dll ROM.z64 OUTDIR TICKS cached_interpreter INPUT|- STATE|- SAVE|- [eeprom-header|-] [WRITES|-]
+host CORE.dll ROM.z64 OUTDIR TICKS cached_interpreter INPUT|- STATE|- SAVE|- [eeprom-header|-] [WRITES|-] [CONNECTED_MASK]
 ```
 
 Inputs are lines of decimal `begin end buttonMask analogX analogY`, with an
@@ -21,6 +21,27 @@ exclusive end tick. Standard libretro mapping: N64 A=1, B=2, Start=8, D-Up=16,
 L=1024. RDRAM writes are decimal tick, hexadecimal KSEG0 address, hex 32-bit value.
 Only aligned writes inside the 8 MiB RDRAM range are accepted. Writes are explicit
 test instrumentation, not normal user input; document their use in test results.
+
+Optional sixth input column selects controller port0–3; legacy five-column
+inputs target port0. CONNECTED_MASK defaults to1, or15 for all four controllers.
+Pass `-` for WRITES when selecting ports without instrumentation. Independent
+port inputs are applied through libretro callbacks, not ROM/RAM modifications.
+Presence still must be verified in the game: attached controllers do not prove
+four players joined. Existing input/log-only output directories are accepted;
+prior frame/RAM/state/save outputs cause refusal rather than overwrite.
+`test_controller_input.cpp` exercises the exact portable input parser/mixer.
+The compiled v5 inspection layout adds all four player pointers, count, gameplay
+mode and individual viewports/health/rooms; v1–v4 evidence remains readable.
+
+The v6 layout additionally distinguishes solo from human/AI co-op and
+counter-op. Active player count alone is insufficient: AI co-op can still have
+one gameplay player. Cross-compile `modern_memory_layout.c` with the candidate
+flags and `PD_BGCACHE_LAYOUT`, extract `.rodata` and `.pdmission` separately,
+then join them with `assemble_modern_layout.py HEADER PROBES OUTPUT`. The two
+mission bit-field masks come from actual compiler-built structures, not guessed
+byte offsets. `run_modern_menu_missions.py` requires this mode proof in both the
+seed and passing final samples. Prior v1–v5 evidence remains readable; do not
+retroactively call an older one-player snapshot solo without checking mode.
 
 The current core's legacy `disable_expmem` option uses `enabled` for 8 MiB.
 Saved memory is a combined 296,960-byte image; a supplied 2,048-byte EEPROM is

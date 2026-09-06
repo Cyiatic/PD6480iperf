@@ -68,7 +68,9 @@ def evaluate_snapshot(snapshot, stage, required):
         room_ready = (cache['mode'] == 3 and cache.get('partition_valid') is True
                       and cache.get('load_failures') == 0 and cache.get('allocator_faults') == 0
                       and not cache.get('missing_visible_rooms') and not unwarmed)
-    passed = bool(required) and (
+    solo = snapshot.get('mission_configuration') == dict(
+        cooperative=False, counteroperative=False, ai_buddies=0)
+    passed = bool(required) and solo and (
         snapshot['stage'] == stage and snapshot['oom_marker'] == 0
         and snapshot['active_dimensions'] == [640, 480]
         and snapshot.get('level_frame_number', 0) > 100
@@ -80,6 +82,12 @@ def evaluate_snapshot(snapshot, stage, required):
                 unwarmed_required_rooms=unwarmed,
                 thread_faults=faults, load_gate_passed=passed,
                 unpaused_snapshot=passed and snapshot.get('player_pause_mode') == 0)
+
+
+def validate_solo_seed(seed):
+    configuration = seed.get('mission_configuration')
+    if configuration != dict(cooperative=False, counteroperative=False, ai_buddies=0):
+        raise ValueError('Compiled v6 solo-mode proof required; co-op/AI-buddy seed rejected')
 
 
 def main():
@@ -96,6 +104,7 @@ def main():
     seed = inspect(args.elf, args.state.parent / 'rdram-last.bin', args.layout)
     if seed['stage'] != 38 or seed.get('synthetic_replay_diagnostic'):
         raise ValueError('Expected normal-ROM CI mission-list seed')
+    validate_solo_seed(seed)
     if 'rooms_missing_vertex_batches' not in seed:
         raise ValueError('Version3 batch-aware compiled layout required')
     stages = source_stages(args.source)

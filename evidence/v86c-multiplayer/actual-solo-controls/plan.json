@@ -1,0 +1,47 @@
+{
+  "workspace": "C:/Users/codex/Documents/N64 2",
+  "rom": ".codex-work/PD6480iperf-v86c-four-menu-reserve.z64",
+  "rom_sha256": "5c730fd1470b5fd98e27ea59ebf04d2db7d3716cb6176c8b16d4ff36fb694a2b",
+  "elf": ".codex-work/v86c-stage1.elf",
+  "layout": ".codex-work/v86-mode-layout.bin",
+  "host": ".codex-work/host-multi-v2.exe",
+  "core": ".codex-tools/parallel-headless/parallel_n64_libretro.dll",
+  "samples": [
+    {
+      "directory": ".codex-work/v86c-verified-solo-matrix/defection",
+      "parent": ".codex-work/headless-v86c-solo-first",
+      "input": ".codex-work/v86c-verified-solo-matrix/defection/input.txt",
+      "log": ".codex-work/v86c-verified-solo-matrix/defection/host.log",
+      "ticks": 1560,
+      "controller_mask": 1,
+      "observation": "Verified SOLO path, mode flags false/no buddies, unpaused load gate passed. Check snapshot for actual difficulty; do not assume Agent."
+    },
+    {
+      "directory": ".codex-work/v86c-verified-solo-matrix/infiltration",
+      "parent": ".codex-work/headless-v86c-solo-first",
+      "input": ".codex-work/v86c-verified-solo-matrix/infiltration/input.txt",
+      "log": ".codex-work/v86c-verified-solo-matrix/infiltration/host.log",
+      "ticks": 1830,
+      "controller_mask": 1,
+      "observation": "Verified SOLO, alive/unpaused, OOM0. Initial frame65 is below the100-frame load gate, so initial runner reports false; continued separately."
+    },
+    {
+      "directory": ".codex-work/v86c-verified-solo-matrix/deepsea",
+      "parent": ".codex-work/headless-v86c-solo-first",
+      "input": ".codex-work/v86c-verified-solo-matrix/deepsea/input.txt",
+      "log": ".codex-work/v86c-verified-solo-matrix/deepsea/host.log",
+      "ticks": 2145,
+      "controller_mask": 1,
+      "observation": "Verified SOLO path, mode flags false/no buddies, unpaused load gate passed."
+    },
+    {
+      "directory": ".codex-work/headless-v86c-verified-solo-infiltration-wait",
+      "parent": ".codex-work/v86c-verified-solo-matrix/infiltration",
+      "input": null,
+      "log": ".codex-work/v86c-verified-solo-infiltration-wait.host.log",
+      "ticks": 300,
+      "controller_mask": 1,
+      "observation": "Ordinary no-input continuation: Perfect Agent SOLO, frame217, alive/unpaused, OOM0. No co-op allocation failure in this sample."
+    }
+  ]
+}

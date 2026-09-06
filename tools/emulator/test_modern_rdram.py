@@ -4,13 +4,18 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 
-from inspect_modern_rdram import inspect, KEYS, V2_KEYS, V3_KEYS
+from inspect_modern_rdram import inspect, KEYS, V2_KEYS, V3_KEYS, V4_KEYS, V5_KEYS
 
 
 class ModernRdramTests(unittest.TestCase):
     def snapshot(self, bad_layout=False, bad_code=False, buffers=3, gameplay=False,
                  truncate=False, replay=False, room_batches=False, missing_batches=False,
-                 opaque=True, bad_batch_count=False, truncate_batches=False):
+                 opaque=True, bad_batch_count=False, truncate_batches=False,
+                 multi=False, truncate_multi=False, bad_playercount=False,
+                 bad_multifield=False, bad_playerpointer=False, difficulty=False,
+                 mission=False, bad_probe=False, duplicate_probe=False, truncate_probe=False):
+        multi = multi or mission
+        room_batches = room_batches or multi
         gameplay = gameplay or room_batches
         offsets = [0x50443831, 1, 0x504, 12, 0x2ac, 0x4bc, 0x284, 0x2bc,
                    0x1c80, 0x1a34, 0x90, 0x18, 0x84, 0x2c, 0x18, 0x1a, 0x28,
@@ -29,6 +34,21 @@ class ModernRdramTests(unittest.TestCase):
             self.assertEqual(len(batch_extra), len(V3_KEYS))
             if not truncate_batches:
                 offsets.extend(batch_extra)
+        if multi:
+            offsets[1] = 5
+            offsets.extend([0] * len(V4_KEYS))  # cache absent in this isolated fixture
+            extra = [0x64, 0x4e6, 0x28c, 0x314, 0x318, 0x298, 0x29c,
+                     0x634, 0x636, 0x630, 0x632]
+            self.assertEqual(len(extra), len(V5_KEYS))
+            if bad_multifield: extra[0] = 0x500
+            if not truncate_multi: offsets.extend(extra)
+        probes = b''
+        if mission:
+            offsets[1] = 6
+            offsets.extend([0x320, 24])
+            probes = bytes([0,0,0,129 if bad_probe else 128]) + bytes(20)
+            probes += bytes([0,0,0,128 if duplicate_probe else 64]) + bytes(20)
+            if truncate_probe: probes = probes[:-1]
         if bad_layout:
             offsets[2] = 0x508
         symbols = {
@@ -43,6 +63,10 @@ class ModernRdramTests(unittest.TestCase):
                                       'g_PakHasEeprom', 'g_Rooms')):
             symbols[name] = (0x80003300 + index * 4, 4)
         symbols['mainLoop'] = (0x80001000, 8)
+        if difficulty:
+            symbols['g_Difficulty'] = (0x80003380, 4)
+        if mission:
+            symbols['g_MissionConfig'] = (0x80003390, 24)
         if replay:
             for index, name in enumerate(('g_PdHwPhase', 'g_PdHwPhaseTicks',
                     'g_PdHwToggleChecks', 'g_PdHwSaveReads', 'g_PdHwSaveWrites')):
@@ -63,6 +87,11 @@ class ModernRdramTests(unittest.TestCase):
             struct.pack_into('<h', ram, (address & 0x7fffff) ^ 2, value)
 
         ram[0x1000:0x1008] = bytes.fromhex('7856341290efcdab')
+        if difficulty:
+            word(0x80003380, 2)
+        if mission:
+            word(0x80003390, 0x80)
+            word(0x80002320, 1)
         if bad_code:
             ram[0x1000] ^= 1
         word(symbols['g_ViBackData'][0], 0x80004000)
@@ -93,13 +122,26 @@ class ModernRdramTests(unittest.TestCase):
             word(0x80009008, 0x80009100 if opaque else 0)
             word(0x80008090 + 0x44, 0 if missing_batches else 0x80009200)
             word(0x80008090 + 0x40, 0xffffffff if bad_batch_count or missing_batches else 252)
+        if multi:
+            ram[(0x2000 + 0x4e6) ^ 3] = 5 if bad_playercount else 4
+            word(0x80002314, 1)
+            word(0x80002318, 1)
+            for index, pointer in enumerate((0x80005000, 0x80010000, 0x80013000, 0x80016000)):
+                word(0x80002064 + index * 4, 0x90000000 if bad_playerpointer and index == 2 else pointer)
+                half(pointer + 0x630, 320)
+                half(pointer + 0x632, 240)
+                half(pointer + 0x634, 320 * (index % 2))
+                half(pointer + 0x636, 240 * (index // 2))
+                if index:
+                    word(pointer + 0x1a34, index)
+                    struct.pack_into('<f', ram, (pointer & 0x7fffff) + 0xdc, index / 4)
 
         with tempfile.TemporaryDirectory(prefix='pd-modern-inspect-') as directory:
             directory = Path(directory)
             elf_path, ram_path, layout_path = [directory / name for name in ('elf', 'ram', 'layout')]
             elf_path.write_bytes(b'fake elf')
             ram_path.write_bytes(ram)
-            layout_path.write_bytes(struct.pack('>' + 'I' * len(offsets), *offsets))
+            layout_path.write_bytes(struct.pack('>' + 'I' * len(offsets), *offsets) + probes)
             with patch('inspect_modern_rdram.Elf32', return_value=elf):
                 return inspect(elf_path, ram_path, layout_path)
 
@@ -162,6 +204,54 @@ class ModernRdramTests(unittest.TestCase):
     def test_truncated_batch_layout_rejected(self):
         with self.assertRaisesRegex(ValueError, 'Truncated room-batch layout'):
             self.snapshot(room_batches=True, truncate_batches=True)
+
+    def test_difficulty_is_read_from_typed_scalar(self):
+        self.assertEqual(self.snapshot(difficulty=True)['difficulty'], 2)
+        self.assertNotIn('difficulty', self.snapshot())
+
+    def test_ai_coop_is_not_misclassified_as_solo(self):
+        result = self.snapshot(mission=True)
+        self.assertEqual(result['mission_configuration'],
+                         dict(cooperative=True, counteroperative=False, ai_buddies=1))
+
+    def test_mission_probe_requires_one_bit(self):
+        with self.assertRaisesRegex(ValueError, 'Invalid mission bit-field probe'):
+            self.snapshot(mission=True, bad_probe=True)
+
+    def test_duplicate_mission_probes_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'Duplicate mission'):
+            self.snapshot(mission=True, duplicate_probe=True)
+
+    def test_truncated_mission_probes_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'mission bit-field probes'):
+            self.snapshot(mission=True, truncate_probe=True)
+
+    def test_four_players_have_independent_compiled_fields(self):
+        result = self.snapshot(multi=True)
+        self.assertEqual(result['active_player_count'], 4)
+        self.assertEqual(result['multiplayer_mode']['combat_simulator'], 1)
+        self.assertEqual([p['slot'] for p in result['players']], [0, 1, 2, 3])
+        self.assertEqual([p['viewport'] for p in result['players']],
+                         [[0,0,320,240],[320,0,320,240],[0,240,320,240],[320,240,320,240]])
+        self.assertEqual([p['pause'] for p in result['players']], [3,1,2,3])
+        self.assertEqual([p['health'] for p in result['players']], [.75,.25,.5,.75])
+        self.assertNotIn('players', self.snapshot(gameplay=True))
+
+    def test_truncated_multiplayer_layout_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'Truncated multiplayer'):
+            self.snapshot(multi=True, truncate_multi=True)
+
+    def test_impossible_player_count_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'Invalid multiplayer player count'):
+            self.snapshot(multi=True, bad_playercount=True)
+
+    def test_multiplayer_field_outside_structure_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'outside compiled structure'):
+            self.snapshot(multi=True, bad_multifield=True)
+
+    def test_nonram_secondary_player_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'Not a RAM pointer'):
+            self.snapshot(multi=True, bad_playerpointer=True)
 
 
 if __name__ == '__main__':

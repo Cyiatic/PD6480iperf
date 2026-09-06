@@ -1,0 +1,5 @@
+Exception: C:\Users\codex\Documents\N64 2\.codex-work\perfect-dark-performance\tools\hardware\pd_hardware_trial.ps1:61
+Line |
+  61 |  . .ExitCode -ne 0) { throw ('Native process exit '+$Process.ExitCode) }
+     |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Native process exit 1167

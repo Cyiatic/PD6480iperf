@@ -1,0 +1,69 @@
+OPTION parallel-n64-cpucore=cached_interpreter
+OPTION parallel-n64-disable_expmem=enabled
+OPTION parallel-n64-gfxplugin=angrylion
+OPTION parallel-n64-rspplugin=cxd4
+OPTION parallel-n64-angrylion-multithread=4
+OPTION parallel-n64-angrylion-overscan=disabled
+OPTION parallel-n64-OverrideSaveType=EEPROM_16KB
+CORE ParaLLEl N64 1.0 2f3bf60 fullpath=1
+TEST ADAPTER: in-memory ED/16K EEPROM header; disk ROM unchanged
+mupen64plus: Using full mem base
+EmuThread: M64CMD_ROM_OPEN
+mupen64plus: Goodname: Perfect Dark (unknown rom)
+mupen64plus: Name: Perfect Dark        
+mupen64plus: MD5: 6F83786820639657548ABF5F4C69B548
+mupen64plus: CRC: 10572896 97B04C89
+mupen64plus: Imagetype: .z64 (native)
+mupen64plus: Rom size: 33554432 bytes (or 32 Mb or 256 Megabits)
+mupen64plus: Version: 1449
+mupen64plus: Manufacturer: Nintendo
+mupen64plus: Country: USA
+CONTROLLERS mask=1 input_ranges=22
+EmuThread: M64CMD_ROM_GET_HEADER
+SAVE available=296960 supplied=2048
+plugin_start_gfx
+EmuThread: M64CMD_EXECUTE.
+mupen64plus: Game controller 0 (Standard controller) has nothing plugged in
+mupen64plus: Game controller 1 (Standard controller) has nothing plugged in
+mupen64plus: Game controller 2 (Standard controller) has nothing plugged in
+mupen64plus: Game controller 3 (Standard controller) has nothing plugged in
+mupen64plus: Using CIC type X105
+mupen64plus: Initializing 4 RDRAM modules for a total of 8 MB
+mupen64plus: Starting R4300 emulator: Cached Interpreter
+FRAME 300 video=144 640x480 seconds=1.8
+FRAME 600 video=415 640x480 seconds=4.6
+FRAME 900 video=709 640x480 seconds=7.9
+FRAME 1200 video=861 640x480 seconds=11.6
+FRAME 1500 video=861 640x480 seconds=13.5
+FRAME 1800 video=861 640x480 seconds=15.4
+FRAME 2100 video=1155 640x480 seconds=34.1
+FRAME 2400 video=1455 640x480 seconds=50.5
+FRAME 2700 video=1755 640x480 seconds=66.2
+FRAME 3000 video=2055 640x480 seconds=93.3
+FRAME 3300 video=2355 640x480 seconds=120.9
+FRAME 3600 video=2655 640x480 seconds=148.2
+FRAME 3900 video=2955 640x480 seconds=174.3
+FRAME 4200 video=3255 640x480 seconds=199.9
+FRAME 4500 video=3555 640x480 seconds=219.9
+FRAME 4800 video=3855 640x480 seconds=237.8
+FRAME 5100 video=4155 640x480 seconds=267.2
+FRAME 5400 video=4455 640x480 seconds=295.3
+FRAME 5700 video=4755 640x480 seconds=322.8
+FRAME 6000 video=5055 640x480 seconds=344.5
+FRAME 6300 video=5355 640x480 seconds=363.1
+FRAME 6600 video=5655 640x480 seconds=380.7
+FRAME 6900 video=5955 640x480 seconds=399.2
+FRAME 7200 video=6255 640x480 seconds=416.9
+FRAME 7500 video=6555 640x480 seconds=444.2
+FRAME 7800 video=6855 640x480 seconds=489.0
+FRAME 8100 video=7155 640x480 seconds=522.3
+FRAME 8400 video=7158 640x480 seconds=525.8
+FRAME 8700 video=7158 640x480 seconds=529.5
+FRAME 9000 video=7158 640x480 seconds=533.3
+FRAME 9300 video=7300 640x480 seconds=550.4
+FRAME 9600 video=7600 640x480 seconds=576.5
+FRAME 9900 video=7900 640x480 seconds=598.2
+FRAME 10200 video=8200 640x480 seconds=621.8
+FRAME 10500 video=8500 640x480 seconds=643.1
+FRAME 10800 video=8800 640x480 seconds=665.8
+DONE frames=11000 ram=8388608 save=296960 state=16790604

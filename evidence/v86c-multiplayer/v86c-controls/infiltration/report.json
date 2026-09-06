@@ -1,0 +1,225 @@
+{
+  "rom_sha256": "5c730fd1470b5fd98e27ea59ebf04d2db7d3716cb6176c8b16d4ff36fb694a2b",
+  "elf_sha256": "ccf19515ea7d7005bef2b49428802959878bd691f2f6a8a601e2a6f2b354c583",
+  "layout_sha256": "a62708d1ec9097dc0688cd43aff0b594513b7b7af92cf6cf6dcd6d590c5aabdd",
+  "host_sha256": "7bbf4ea551832a170ed7e6111acd2ec9f030beccf19567baacae6ef576ac419a",
+  "core_sha256": "4f239ad5ba11887d70e6887b648237f81ab9dfeb6f80f463153abc513e0ebad7",
+  "snapshot": {
+    "hardware_verified": false,
+    "elf_sha256": "ccf19515ea7d7005bef2b49428802959878bd691f2f6a8a601e2a6f2b354c583",
+    "rdram_sha256": "2e09d453e2db56b3fb1d813576a8e4480c8ec4ccd41eb6452529af698543b4e5",
+    "layout_sha256": "a62708d1ec9097dc0688cd43aff0b594513b7b7af92cf6cf6dcd6d590c5aabdd",
+    "resident_code_hashes": {
+      "mainInit": "1cdfa2b4fe4a3b00ac23cea69c8c9f087cfda526333b352428b9e503683b823c",
+      "mainProc": "ee6c725dc1d0ddc3631d2b3bf8aa033d43d2d6278725ee27cd692bf0abce7bf1",
+      "__scExec": "62ddaaed2731205276d20795591a135dded330f85e29d492ed0944a1de748d70",
+      "__scTryDispatch": "b10a7d97c24f18287e59855ca922395904afb5fee17e829c952daa95cdf9afc2",
+      "schedSubmitGfxTask": "7f1d884774af87aab96e50a5ad562070b6079c7c9f8ca89f11db71bddc6045e0",
+      "__scHandleRetrace": "c24930049503d8d3abab07892f6e475c4f6c9d9e5dbbbd5c3727e26a94b5ae4b",
+      "__scHandleRSP": "f3855a10ba63751cf4fb3baa75699dadab597a2b267f0016e54cd79d235440c3",
+      "__scHandleRDP": "f562c8b64edaf92f625d4ae0f016eeea9332682e1b26e62af32f540b2cce0aa6",
+      "viReset": "a54fc4b29b7f251653d09c06370f0164b3486739b5790aa1f1bc5e3e7fb39ad4",
+      "bgPreload": "060b1c8e0f175321988a59820cc50657e16480bc3f3bc394a4a2e107befeabc5",
+      "bgLoadRoom": "595288ae791775c0131d3c8a4439a8a6e88358050ecfde4faf4adc5329a3416d",
+      "mblurReset": "deec05e6c237eebbcfb2775c8d112a73a314e1d86dc3781cb8bad518c2c944f6",
+      "dmaExec": "78d85fcc3aa04db7c5c8d2e6111a3e88ababc6602a038c8840d265dc85c47be7",
+      "menuReset": "e871d3498230c09becaa95948d1c845462cb5743f6f8423ba4bead7010dbf3fa",
+      "menuPushDialog": "44bb4dacb5480b6b8d51970ba6b87ad2b7a57a5a32e0bd74d08082ff28843a84",
+      "menuRenderModels": "db4824c8a45d96c95a816ee6c4383d9546eab92f77629f2e9f0bfc356eb00fa3",
+      "menugfxCreateBlur": "f5be347e448ac3059adaf5fe9486299ec9676d4258f4c03e6be2c1fd239feb76",
+      "menugfxRenderBgBlur": "dd36a533cbbba4a0ae04416e271c98f9773f35323f8d5cf42260c3b911809911",
+      "menuTextFixedResolution": "4526d9c2e842675e8074c056027145cb5897f38f9a9d5b8a506d9dc8d44d9fea",
+      "bgCacheAlloc": "ec3e863a57c39cda2483790f91d859b41f3b0a66a9cd9268f81186c90b7de7a5",
+      "bgCacheUnloadRoom": "80b50fc2248fdc346a403de0fca28a852677dd73fae8b00d5495f78161c7922c",
+      "bgRoomCacheNextFrame": "3cca085d5e2a170216c2eacfb6281b602c145d310d83d4fb3b7b50110408d8ad",
+      "bgTestHitInRoom": "8baa1fd32268df5d269b08242763523adb9e03c35e4e701600dfb8024b97b6ec"
+    },
+    "stage": 47,
+    "level_frame_number": 0,
+    "tick_mode": 1,
+    "in_cutscene": 0,
+    "framebuffers": [
+      "0x8036a000",
+      "0x8076a000"
+    ],
+    "depth": "0x80400000",
+    "active_dimensions": [
+      640,
+      480
+    ],
+    "active_framebuffer": "0x8076a000",
+    "hires_option": 0,
+    "oom_marker": 0,
+    "oom_requested_bytes": 0,
+    "eeprom_detected": 1,
+    "difficulty": 0,
+    "mission_configuration": {
+      "cooperative": true,
+      "counteroperative": false,
+      "ai_buddies": 1
+    },
+    "fps_graph_enabled": 1,
+    "fps_graph_page": 0,
+    "connected_controller_mask": 1,
+    "active_player_count": 1,
+    "multiplayer_mode": {
+      "active": 0,
+      "combat_simulator": 0,
+      "coop_player": 4294967295,
+      "counterop_player": 4294967295,
+      "current_player_number": 0
+    },
+    "players": [
+      {
+        "slot": 0,
+        "address": "0x8029a3e0",
+        "pause": 0,
+        "dead": 0,
+        "health": 1.0,
+        "viewport": [
+          0,
+          0,
+          100,
+          100
+        ]
+      }
+    ],
+    "player_pause_mode": 0,
+    "player_dead": 0,
+    "player_health": 1.0,
+    "player_trigger": 0,
+    "loaded_ammo": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "reserve_ammo": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "room_count": 271,
+    "loaded_rooms": [],
+    "room_allocations": [],
+    "rooms_missing_vertex_batches": [],
+    "room_cache": {
+      "mode": 0,
+      "epoch": 4175,
+      "misses": 0,
+      "evictions": 0,
+      "load_failures": 0,
+      "preload_skipped": 51
+    },
+    "g_MempOnboardPools": {
+      "start": "0x8026a980",
+      "left": "0x8031e310",
+      "right": "0x8031e328",
+      "end": "0x8035f3b8",
+      "previous_allocation": "0x8031e260",
+      "free_bytes": 24
+    },
+    "g_MempExpansionPools": {
+      "start": "0x80400000",
+      "left": "0x8059b980",
+      "right": "0x8075e790",
+      "end": "0x8076a000",
+      "previous_allocation": "0x805915f0",
+      "free_bytes": 1846800
+    },
+    "vm_heap_ceiling": "0x8035f3b8",
+    "threads": {
+      "g_MainThread": {
+        "pc": "0x8003488c",
+        "cause": "0x10000400",
+        "badva": "0x0",
+        "state": 4,
+        "flags": 0
+      },
+      "g_SchedThread": {
+        "pc": "0x80033e44",
+        "cause": "0x10000400",
+        "badva": "0x0",
+        "state": 8,
+        "flags": 0
+      }
+    },
+    "prepared_vi_modes": [
+      {
+        "ctrl": "0x305e",
+        "width": 1280,
+        "v_sync": 524,
+        "x_scale": 1024,
+        "field_origins": [
+          1280,
+          2560
+        ],
+        "field_y_scales": [
+          1024,
+          1024
+        ]
+      },
+      {
+        "ctrl": "0x305e",
+        "width": 1280,
+        "v_sync": 524,
+        "x_scale": 1024,
+        "field_origins": [
+          1280,
+          2560
+        ],
+        "field_y_scales": [
+          1024,
+          1024
+        ]
+      }
+    ]
+  },
+  "hardware_verified": false,
+  "rom_instrumentation": false,
+  "eeprom_header_adapter": true,
+  "controller_mask": 1,
+  "ticks": 1830,
+  "observation": "Initial Agent sample ends during stage47 loading at level-frame0; not a pass.",
+  "state_sha256": "10dfd91349c21dc142b00f2428dfb5661f23b0ea46956b4167066d58695d6c39",
+  "final_ppm_sha256": "25d7ea208cec54e4d3918477c17b2d3446da76a4f082953ab8af24068a2b8ae1",
+  "final_rdram_sha256": "2e09d453e2db56b3fb1d813576a8e4480c8ec4ccd41eb6452529af698543b4e5",
+  "input_sha256": "ce5e968e50b1bf4886f1eb4d631708f0e086079a693e24a08d74fc7df86f9346",
+  "parent": ".codex-work/headless-v86c-multi-enter",
+  "parent_state_sha256": "829b121bda0054d213ab78d10579a89de1432c13f44e3ff2d66b620071d14881",
+  "parent_rdram_sha256": "75406e7ffbe6ea585c87a5c676844b2bfbd132f868056d1a46aa56e151371165"
+}

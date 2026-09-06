@@ -2,6 +2,22 @@
 
 ## Current 480i development status (2026-09-06)
 
+**New v86b limitation found:** entering Quick Go with additional controllers
+exhausts CI's lazy menu scratch allocation (153600-byte request). CI has one
+gameplay player but up to four menu contexts, so the prior reserve was too small.
+The error persists into a subsequently started one-player arena; that is not
+four-player evidence. v86c's pending-menu reserve passes short four-player Skedar
+setup/movement/menu/L checks in software. An additional AI-co-op Velvet head-model
+allocation failure is isolated; v86d's earlier head loading prevents that crash
+in a cold software sample, but logs43 room-cache failures. It is still not a
+clean candidate. See [v86d's remaining limit](evidence/v86d-coop-head-prewarm/README.md).
+Fresh mode-verified solo Defection/Infiltration/Deep Sea checks pass. The initial
+co-op test path was incorrectly labelled solo and is explicitly corrected in
+[the new evidence](evidence/v86c-multiplayer/README.md). No new release promoted.
+ED64 was absent over USB even with Plug1ON on the latest attempt; no console boot
+claim from that attempt. Plug1OFF confirmed, and no new recording remains.
+Do not treat the v86b bundle as verified for Combat Simulator setup.
+
 v84/v85 fix full-screen pause blur and stale menu/eyepiece fragments during
 horizontal swipes, and label the video mode **Hi-Res: 640x480i (fixed)**.
 However, the broader normal-v85 mission matrix finds **11 of 21 initial

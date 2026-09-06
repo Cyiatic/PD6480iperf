@@ -1,0 +1,12 @@
+2026-09-06T21:11:55.1419668Z ROM C:\Users\codex\Documents\N64 2\.codex-work\PD6480iperf-v86c-four-menu-reserve.z64 SHA256 5C730FD1470B5FD98E27EA59EBF04D2DB7D3716CB6176C8B16D4FF36FB694A2B
+2026-09-06T21:11:56.0379178Z Plug 1 on: Relay: 1
+2026-09-06T21:12:31.4094868Z Uploader C:\Users\codex\Documents\N64 2\.codex-work\UNFLoader-x86-pre\UNFLoader.exe SHA256 76D28305FE9DDF209E269D7B5F45927D5069DEACAD5C5166B628E7F7D5A5EA88
+2026-09-06T21:12:31.4140662Z Uploading with GameCapture closed; timeout 65 seconds
+2026-09-06T21:12:31.4228609Z Owned upload PID 25696
+2026-09-06T21:12:31.4656631Z Native upload exit 0; this alone is not a ROM pass
+2026-09-06T21:12:31.5126781Z Owned GameCapture PID 23532 start 2026-09-06T14:12:31.5016694-07:00
+2026-09-06T21:13:16.9382898Z Capture startup allowance ended; observing 75 seconds
+2026-09-06T21:14:32.7522556Z Observation ended; recording still needs inspection
+2026-09-06T21:14:33.6578060Z Plug 1 off: Relay: 0
+2026-09-06T21:14:34.3217784Z Plug 1 status: Relay: 0
+2026-09-06T21:14:34.3223852Z Trial cleanup ended; retain bounded recordings until inspected

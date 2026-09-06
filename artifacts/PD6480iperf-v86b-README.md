@@ -1,5 +1,10 @@
 # PD6480iperf v86b — 640x480i / budgeted room-memory test candidate
 
+**Follow-up known fault:** additional-controller Quick Go setup in CI can fail
+a153600-byte menu allocation. The old reserve covered one gameplay player,
+not all four menu contexts. v86c is under test; v86b is not a full-game release.
+The already-issued ZIP is preserved as its original historical test package.
+
 Normal ROM: **PD6480iperf-v86b-budgeted-rooms.z64**. Expansion Pak required.
 
 Fixed 640x480 colour and depth rendering, interlaced output, newer performance

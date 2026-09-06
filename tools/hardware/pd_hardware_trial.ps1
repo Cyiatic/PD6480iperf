@@ -102,6 +102,12 @@ try {
             Trace-Pd 'CAPTURE-ONLY PREFLIGHT: no ROM upload; inspect the cold console/menu signal'
         }
     } else {
+        # A native zero exit with no connected cartridge is not a transfer.
+        # Check only this workflow's exact ED64 FTDI interface after power-on.
+        $pdEd64Present=Get-PnpDevice -PresentOnly -InstanceId 'USB\VID_0403&PID_6001\AB0NWMD3' -ErrorAction SilentlyContinue
+        if (-not $pdEd64Present -or $pdEd64Present.Status -ne 'OK') {
+            throw 'Exact ED64 FTDI interface is not present/OK after Plug 1 ON; no upload attempted'
+        }
         Trace-Pd ('Uploader '+$pdLoader+' SHA256 '+(Get-FileHash -LiteralPath $pdLoader).Hash)
         $pdUploadSeconds=65
         $pdUploadArgs=@('-b','-f','3','-r',(Quote-Pd $pdRomPath))

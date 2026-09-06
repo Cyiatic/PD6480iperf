@@ -24,6 +24,10 @@ V2_KEYS = ('player_prop player_isdead player_health player_hands hand_size '
            'player_trigger').split()
 V3_KEYS = ('room_batches room_batch_count batch_size roomgfx_size '
            'roomgfx_opa roomgfx_xlu').split()
+V5_KEYS = ('vars_players vars_playercount vars_currentplayernum vars_mplayer '
+           'vars_normalmplayer vars_coop vars_anti player_viewleft player_viewtop '
+           'player_viewwidth player_viewheight').split()
+V6_KEYS = ['vars_ai_buddies', 'mission_config_size']
 
 
 def inspect(elf_path, ram_path, layout_path):
@@ -32,7 +36,7 @@ def inspect(elf_path, ram_path, layout_path):
     if len(ram) != 0x800000 or len(layout) < 4 * len(KEYS):
         raise ValueError('Wrong RAM or layout size')
     offsets = dict(zip(KEYS, struct.unpack_from('>' + 'I' * len(KEYS), layout)))
-    if offsets['magic'] != 0x50443831 or offsets['version'] not in (1, 2, 3, 4):
+    if offsets['magic'] != 0x50443831 or offsets['version'] not in (1, 2, 3, 4, 5, 6):
         raise ValueError('Wrong layout magic/version')
     if offsets['version'] >= 2:
         if len(layout) < 4 * (len(KEYS) + len(V2_KEYS)):
@@ -50,6 +54,37 @@ def inspect(elf_path, ram_path, layout_path):
         if len(layout) < start + 4 * len(V4_KEYS):
             raise ValueError('Truncated room-cache layout')
         offsets.update(zip(V4_KEYS, struct.unpack_from('>' + 'I' * len(V4_KEYS), layout, start)))
+    if offsets['version'] >= 5:
+        start = 4 * (len(KEYS) + len(V2_KEYS) + len(V3_KEYS) + len(V4_KEYS))
+        if len(layout) < start + 4 * len(V5_KEYS):
+            raise ValueError('Truncated multiplayer layout')
+        offsets.update(zip(V5_KEYS, struct.unpack_from('>' + 'I' * len(V5_KEYS), layout, start)))
+        for key in V5_KEYS:
+            limit = offsets['vars_size'] if key.startswith('vars_') else offsets['player_size']
+            width = 1 if key == 'vars_playercount' else (16 if key == 'vars_players' else (2 if key.startswith('player_') else 4))
+            if offsets[key] + width > limit:
+                raise ValueError('Multiplayer layout field outside compiled structure')
+    mission_probes = []
+    if offsets['version'] >= 6:
+        start = 4 * (len(KEYS) + len(V2_KEYS) + len(V3_KEYS) + len(V4_KEYS) + len(V5_KEYS))
+        if len(layout) < start + 8:
+            raise ValueError('Truncated mission configuration layout')
+        offsets.update(zip(V6_KEYS, struct.unpack_from('>2I', layout, start)))
+        size = offsets['mission_config_size']
+        if not 4 <= size <= 128 or offsets['vars_ai_buddies'] + 4 > offsets['vars_size']:
+            raise ValueError('Invalid mission configuration layout')
+        if len(layout) != start + 8 + size * 2:
+            raise ValueError('Truncated or oversized mission bit-field probes')
+        for index in range(2):
+            probe = layout[start + 8 + index * size:start + 8 + (index + 1) * size]
+            set_bytes = [(offset, value) for offset, value in enumerate(probe) if value]
+            if len(set_bytes) != 1 or set_bytes[0][1] & (set_bytes[0][1] - 1):
+                raise ValueError('Invalid mission bit-field probe')
+            mission_probes.append(set_bytes[0])
+        if mission_probes[0] == mission_probes[1]:
+            raise ValueError('Duplicate mission bit-field probes')
+        if elf.symbols.get('g_MissionConfig', (0, 0))[1] != size:
+            raise ValueError('ABI mismatch for mission configuration')
     if 'g_BgCacheMode' in elf.symbols and offsets['version'] < 4:
         raise ValueError('Room-cache candidate requires compiled v4 layout')
     for name, key in [('g_Vars', 'vars_size'), ('g_Sched', 'sched_size'),
@@ -87,7 +122,7 @@ def inspect(elf_path, ram_path, layout_path):
                  'menuReset', 'menuPushDialog', 'menuRenderModels',
                  'menugfxCreateBlur', 'menugfxRenderBgBlur', 'menuTextFixedResolution',
                  'bgCacheAlloc', 'bgCacheUnloadRoom', 'bgRoomCacheNextFrame',
-                 'bgFindRoomVtxBatches', 'bgTestHitInRoom'):
+                 'bgFindRoomVtxBatches', 'bgTestHitInRoom', 'bodyPreloadDefaultBuddyHead'):
         if name not in elf.symbols:
             continue
         start, size = elf.symbols[name]
@@ -121,6 +156,16 @@ def inspect(elf_path, ram_path, layout_path):
         'oom_requested_bytes': word(address('g_LvOomSize')),
         'eeprom_detected': word(address('g_PakHasEeprom')),
     }
+    if 'g_Difficulty' in elf.symbols:
+        if elf.symbols['g_Difficulty'][1] != 4:
+            raise ValueError('Unexpected difficulty scalar size')
+        result['difficulty'] = word(address('g_Difficulty'))
+    if mission_probes:
+        result['mission_configuration'] = {
+            name: bool(byte(address('g_MissionConfig') + offset) & mask)
+            for name, (offset, mask) in zip(('cooperative', 'counteroperative'), mission_probes)
+        }
+        result['mission_configuration']['ai_buddies'] = word(variables + offsets['vars_ai_buddies'])
     if 'g_LvShowStats' in elf.symbols:
         result['fps_graph_enabled'] = byte(address('g_LvShowStats'))
         result['fps_graph_page'] = byte(address('g_LvStatsPage'))
@@ -133,6 +178,37 @@ def inspect(elf_path, ram_path, layout_path):
                 ('toggle_checks', 'g_PdHwToggleChecks'),
                 ('ram_save_reads', 'g_PdHwSaveReads'), ('ram_save_writes', 'g_PdHwSaveWrites'))}
     current = word(variables + offsets['current_player'])
+    if offsets['version'] >= 5:
+        result['active_player_count'] = byte(variables + offsets['vars_playercount'])
+        if result['active_player_count'] > 4:
+            raise ValueError('Invalid multiplayer player count')
+        result['multiplayer_mode'] = {
+            key: word(variables + offsets[field]) for key, field in (
+                ('active', 'vars_mplayer'), ('combat_simulator', 'vars_normalmplayer'),
+                ('coop_player', 'vars_coop'), ('counterop_player', 'vars_anti'),
+                ('current_player_number', 'vars_currentplayernum'))}
+        result['players'] = []
+        for slot in range(4):
+            player = word(variables + offsets['vars_players'] + slot * 4)
+            if not player:
+                continue
+            physical(player, offsets['player_size'])
+            entry = dict(slot=slot, address=hex(player),
+                         pause=word(player + offsets['player_pause']),
+                         dead=word(player + offsets['player_isdead']),
+                         health=floating(player + offsets['player_health']),
+                         viewport=[half(player + offsets[key]) for key in
+                            ('player_viewleft', 'player_viewtop', 'player_viewwidth', 'player_viewheight')])
+            prop = word(player + offsets['player_prop'])
+            if prop:
+                physical(prop, offsets['prop_size'])
+                entry['position'] = [floating(prop + offsets['prop_position'] + i * 4) for i in range(3)]
+                entry['rooms'] = []
+                for index in range(8):
+                    room = half(prop + offsets['prop_rooms'] + index * 2)
+                    if room < 0: break
+                    entry['rooms'].append(room)
+            result['players'].append(entry)
     if current:
         result['player_pause_mode'] = word(current + offsets['player_pause'])
         if offsets['version'] >= 2:
@@ -240,9 +316,9 @@ def inspect(elf_path, ram_path, layout_path):
             result['allocation_trace'].append(dict(caller=caller_name(caller), calls=calls,
                                                    requested_bytes=requested, largest_request=largest))
         start = address('g_PdAllocFirstFailure')
-        result['first_allocation_failure'] = dict(caller=caller_name(word(start)),
+        result['first_allocation_failure'] = (dict(caller=caller_name(word(start)),
                 requested_bytes=word(start + 4), last_file=hex(word(start + 8)),
-                expansion_free_bytes=word(start + 12))
+                expansion_free_bytes=word(start + 12)) if word(start) else None)
     return result
 
 

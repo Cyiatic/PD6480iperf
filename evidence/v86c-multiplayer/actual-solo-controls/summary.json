@@ -1,0 +1,34 @@
+[
+  {
+    "sample": "defection",
+    "stage": 48,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Verified SOLO path, mode flags false/no buddies, unpaused load gate passed. Check snapshot for actual difficulty; do not assume Agent."
+  },
+  {
+    "sample": "infiltration",
+    "stage": 47,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Verified SOLO, alive/unpaused, OOM0. Initial frame65 is below the100-frame load gate, so initial runner reports false; continued separately."
+  },
+  {
+    "sample": "deepsea",
+    "stage": 56,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Verified SOLO path, mode flags false/no buddies, unpaused load gate passed."
+  },
+  {
+    "sample": "headless-v86c-verified-solo-infiltration-wait",
+    "stage": 47,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Ordinary no-input continuation: Perfect Agent SOLO, frame217, alive/unpaused, OOM0. No co-op allocation failure in this sample."
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "sample": "headless-v86d-coop-cold",
+    "stage": 47,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Normal cold AI-co-op Agent Infiltration: Velvet spawns; pause/menu/L inputs and resume, alive frame631, OOM0. NOT a clean pass:43 room-load failures and38512-byte bank despite no missing visible room at the end."
+  },
+  {
+    "sample": "headless-v86d-coop-settled",
+    "stage": 47,
+    "players": 1,
+    "oom": 0,
+    "oom_bytes": 0,
+    "observation": "Settled unpaused frame1001, alive, Velvet visibly present, graph off, OOM0. The menu eyepiece has disappeared after teardown. Room-load failures remain43; this is not a cache-gate pass."
+  }
+]

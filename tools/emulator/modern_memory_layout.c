@@ -11,7 +11,7 @@
 const u32 pdModernLayout[] = {
     0x50443831,
 #ifdef PD_BGCACHE_LAYOUT
-    4,
+    6,
 #else
     3,
 #endif
@@ -44,5 +44,20 @@ const u32 pdModernLayout[] = {
     OFF(struct bgcacheheap, faults), sizeof(struct bgcacheblock),
     OFF(struct bgcacheblock, next), OFF(struct bgcacheblock, size),
     OFF(struct room, flags), OFF(struct room, loaded240), ROOMFLAG_ONSCREEN,
+    OFF(struct g_vars, players), OFF(struct g_vars, playercount),
+    OFF(struct g_vars, currentplayernum), OFF(struct g_vars, mplayerisrunning),
+    OFF(struct g_vars, normmplayerisrunning), OFF(struct g_vars, coopplayernum),
+    OFF(struct g_vars, antiplayernum), OFF(struct player, viewleft),
+    OFF(struct player, viewtop), OFF(struct player, viewwidth),
+    OFF(struct player, viewheight),
+    OFF(struct g_vars, numaibuddies), sizeof(struct missionconfig),
 #endif
 };
+
+#ifdef PD_BGCACHE_LAYOUT
+/* Bit-fields cannot be used with offsetof. Extract this section after .rodata;
+ * the inspector discovers byte positions and masks from compiler-built probes. */
+const struct missionconfig pdMissionProbes[2] __attribute__((section(".pdmission"))) = {
+    { .iscoop = 1 }, { .isanti = 1 },
+};
+#endif

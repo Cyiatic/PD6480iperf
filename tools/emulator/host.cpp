@@ -12,6 +12,7 @@
 #include <map>
 #include <vector>
 #include <chrono>
+#include "controller_input.h"
 
 static std::map<std::string,std::string> options;
 static std::string directory;
@@ -19,8 +20,8 @@ static unsigned pixel_format = RETRO_PIXEL_FORMAT_0RGB1555;
 static bool shutdown_requested = false;
 static unsigned frame_index = 0, video_width = 0, video_height = 0, video_count = 0;
 static std::vector<uint8_t> image;
-struct InputRange { unsigned begin, end, mask; int x, y; };
 static std::vector<InputRange> inputs;
+static unsigned connected_ports = 1;
 struct RamWrite { unsigned frame, address, value; };
 static std::vector<RamWrite> ram_writes;
 
@@ -95,13 +96,9 @@ static void audio(int16_t,int16_t) {}
 static size_t audio_batch(const int16_t*,size_t frames) {return frames;}
 static void input_poll() {}
 static int16_t input_state(unsigned port,unsigned device,unsigned index,unsigned id) {
-  if(port) return 0;
-  unsigned mask=0; int x=0,y=0;
-  for(auto range:inputs) if(frame_index>=range.begin && frame_index<range.end) {
-    mask|=range.mask;x=range.x;y=range.y;
-  }
-  if(device==RETRO_DEVICE_JOYPAD) return id==RETRO_DEVICE_ID_JOYPAD_MASK ? int16_t(mask) : ((mask>>id)&1);
-  if(device==RETRO_DEVICE_ANALOG && index==RETRO_DEVICE_INDEX_ANALOG_LEFT) return id==0 ? x:y;
+  auto value=controller_input(inputs,frame_index,port,connected_ports);
+  if(device==RETRO_DEVICE_JOYPAD) return id==RETRO_DEVICE_ID_JOYPAD_MASK ? int16_t(value.mask) : (id<16 ? ((value.mask>>id)&1) : 0);
+  if(device==RETRO_DEVICE_ANALOG && index==RETRO_DEVICE_INDEX_ANALOG_LEFT) return id==0 ? value.x : (id==1 ? value.y : 0);
   return 0;
 }
 static std::vector<char> read_file(const std::string &path) {
@@ -127,10 +124,23 @@ template<class T> static T symbol(HMODULE lib,const char*name) {
 #define LOAD(name) auto name##_p=symbol<decltype(&name)>(lib,#name)
 int main(int argc,char **argv) try {
   setvbuf(stdout,nullptr,_IONBF,0);
-  if(argc<5) {fprintf(stderr,"host CORE ROM OUTDIR FRAMES [CPU] [INPUT.txt|-] [STATE|-] [SAVE|-]\n");return 2;}
+  if(argc<5) {fprintf(stderr,"host CORE ROM OUTDIR FRAMES [CPU] [INPUT.txt|-] [STATE|-] [SAVE|-] [eeprom-header|-] [WRITES|-] [CONNECTED_MASK]\n");return 2;}
   directory=std::filesystem::absolute(argv[3]).string();
+  // Existing runners create their input/log files before invoking the host.
+  // Accept that setup, but never overwrite an earlier emulation result.
+  if(std::filesystem::exists(directory)) for(const auto &entry:std::filesystem::directory_iterator(directory)) {
+    auto name=entry.path().filename().string();
+    if(name=="state.bin" || name=="rdram-last.bin" || name=="save-memory.bin" ||
+       (name.rfind("frame-",0)==0 && entry.path().extension()==".ppm"))
+      throw std::runtime_error("Output directory contains prior emulation results");
+  }
   std::filesystem::create_directories(directory);
   unsigned frames=std::stoul(argv[4]);
+  if(argc>11) {
+    size_t used=0; unsigned long mask=std::stoul(argv[11],&used,0);
+    if(used!=strlen(argv[11]) || mask>15) throw std::runtime_error("Connected controller mask must be 0..15");
+    connected_ports=unsigned(mask);
+  }
   options["parallel-n64-gfxplugin"]="angrylion";
   options["parallel-n64-rspplugin"]="cxd4";
   options["parallel-n64-cpucore"]=argc>5?argv[5]:"cached_interpreter";
@@ -140,8 +150,9 @@ int main(int argc,char **argv) try {
   options["parallel-n64-angrylion-multithread"]="4";
   options["parallel-n64-angrylion-overscan"]="disabled";
   if(argc>6 && strcmp(argv[6],"-")) {
-    std::ifstream file(argv[6]);InputRange range;
-    while(file>>range.begin>>range.end>>range.mask>>range.x>>range.y) inputs.push_back(range);
+    std::ifstream file(argv[6]);
+    if(!file) throw std::runtime_error("Cannot read controller input");
+    inputs=parse_inputs(file);
   }
   if(argc>10 && strcmp(argv[10],"-")) {
     std::ifstream file(argv[10]);RamWrite op;
@@ -174,7 +185,8 @@ int main(int argc,char **argv) try {
   }
   retro_game_info game{argv[2],rom.data(),rom.size(),nullptr};
   if(!retro_load_game_p(&game)) {fprintf(stderr,"Load game failed\n");return 4;}
-  for(unsigned port=0;port<4;++port) retro_set_controller_port_device_p(port,port?RETRO_DEVICE_NONE:RETRO_DEVICE_JOYPAD);
+  for(unsigned port=0;port<4;++port) retro_set_controller_port_device_p(port,(connected_ports&(1u<<port))?RETRO_DEVICE_JOYPAD:RETRO_DEVICE_NONE);
+  printf("CONTROLLERS mask=%u input_ranges=%zu\n",connected_ports,inputs.size());
   if(argc>8 && strcmp(argv[8],"-")) {
     auto save=read_file(argv[8]);auto size=retro_get_memory_size_p(RETRO_MEMORY_SAVE_RAM);
     // libretro_memory.h: the 2 KiB EEPROM is the first save_memory_data member.
