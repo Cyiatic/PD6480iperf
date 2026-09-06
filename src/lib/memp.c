@@ -54,6 +54,53 @@ struct memorypool {
 struct memorypool g_MempOnboardPools[9];
 struct memorypool g_MempExpansionPools[9];
 
+/* Isolated v86c allocation diagnostic; never package as the normal ROM.
+ * Reuses the reviewed d2f6eb171 trace layout. Counts requested bytes, not live
+ * allocations; shrinking is intentionally not subtracted. */
+struct pdalloctrace {
+	u32 caller;
+	u32 count;
+	u32 requested;
+	u32 largest;
+};
+struct pdalloctrace g_PdAllocTrace[96];
+u32 g_PdAllocTraceUsed;
+u32 g_PdAllocFirstFailure[4];
+extern u32 g_PdAllocLastFile;
+
+static void pdTraceAllocation(u32 caller, u32 length, void *allocation, u8 pool)
+{
+	u32 i;
+	if (pool != MEMPOOL_STAGE) {
+		return;
+	}
+	for (i = 0; i < g_PdAllocTraceUsed; i++) {
+		if (g_PdAllocTrace[i].caller == caller) {
+			break;
+		}
+	}
+	if (i < ARRAYCOUNT(g_PdAllocTrace)) {
+		if (i == g_PdAllocTraceUsed) {
+			g_PdAllocTraceUsed++;
+			g_PdAllocTrace[i].caller = caller;
+			g_PdAllocTrace[i].count = 0;
+			g_PdAllocTrace[i].requested = 0;
+			g_PdAllocTrace[i].largest = 0;
+		}
+		g_PdAllocTrace[i].count++;
+		g_PdAllocTrace[i].requested += length;
+		if (length > g_PdAllocTrace[i].largest) {
+			g_PdAllocTrace[i].largest = length;
+		}
+	}
+	if (!allocation && length && !g_PdAllocFirstFailure[0]) {
+		g_PdAllocFirstFailure[0] = caller;
+		g_PdAllocFirstFailure[1] = length;
+		g_PdAllocFirstFailure[2] = g_PdAllocLastFile;
+		g_PdAllocFirstFailure[3] = g_MempExpansionPools[pool].rightpos - g_MempExpansionPools[pool].leftpos;
+	}
+}
+
 /**
  * Initialise memp by initialising the banks and pools.
  *
@@ -156,10 +203,12 @@ void *mempAlloc(u32 len, u8 pool)
 	void *allocation = mempAllocFromBank(g_MempOnboardPools, len, pool);
 
 	if (allocation) {
+		pdTraceAllocation((u32)__builtin_return_address(0), len, allocation, pool);
 		return allocation;
 	}
 
 	allocation = mempAllocFromBank(g_MempExpansionPools, len, pool);
+	pdTraceAllocation((u32)__builtin_return_address(0), len, allocation, pool);
 
 	if (allocation) {
 		return allocation;
@@ -237,6 +286,8 @@ u32 mempGetPoolFree(u8 poolnum, u32 bank)
 void mempResetPool(u8 pool)
 {
 	if (pool == MEMPOOL_STAGE) {
+		g_PdAllocTraceUsed = 0;
+		g_PdAllocFirstFailure[0] = 0;
 		g_MempOnboardPools[MEMPOOL_STAGE].start = g_MempOnboardPools[MEMPOOL_PERMANENT].leftpos;
 		g_MempOnboardPools[MEMPOOL_PERMANENT].rightpos = g_MempOnboardPools[MEMPOOL_PERMANENT].leftpos;
 		g_MempOnboardPools[MEMPOOL_PERMANENT].end = g_MempOnboardPools[MEMPOOL_PERMANENT].leftpos;

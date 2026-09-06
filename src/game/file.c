@@ -4187,11 +4187,15 @@ u32 fileGetInflatedSize(s32 filenum)
 	return 0;
 }
 
+u32 g_PdAllocLastFile;
+
 void *fileLoadToNew(s32 filenum, u32 method)
 {
 	struct fileinfo *info = &g_FileInfo[filenum];
 	u32 stack;
 	void *ptr;
+
+	g_PdAllocLastFile = filenum;
 
 	if (method == FILELOADMETHOD_EXTRAMEM || method == FILELOADMETHOD_DEFAULT) {
 		if (info->loadedsize == 0) {
