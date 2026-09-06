@@ -36,6 +36,8 @@ static void pdHwWatchProc(void *arg)
 	OSMesg msg;
 	u32 state;
 	u32 schedstate;
+	u32 mainqueue;
+	u32 schedqueue;
 	u32 i;
 	volatile u16 *fb = (volatile u16 *) PHYS_TO_K1(PD480_FB1);
 	osSetTimer(&g_PdHwWatchTimer, OS_USEC_TO_CYCLES(1000000),
@@ -46,6 +48,8 @@ static void pdHwWatchProc(void *arg)
 	}
 	state = g_MainThread.state;
 	schedstate = g_SchedThread.state;
+	mainqueue = (u32)g_MainThread.queue;
+	schedqueue = (u32)g_SchedThread.queue;
 	osStopThread(&g_MainThread);
 	osStopThread(&g_SchedThread);
 	/* Do not depend on the stopped game's display-list/VI ownership path. */
@@ -53,7 +57,7 @@ static void pdHwWatchProc(void *arg)
 	g_ViBackData->x = 320;
 	g_ViBackData->y = 240;
 	crashReset();
-	rmonPrintf("V82F STARTUP TIMEOUT - DIAGNOSTIC\n");
+	rmonPrintf("V82G STARTUP TIMEOUT - DIAGNOSTIC\n");
 	rmonPrintf("STEP %u MAIN STATE %u SCHED STATE %u\n", g_PdHwBootStep, state, schedstate);
 	rmonPrintf("MAIN PC %08x RA %08x\n", g_MainThread.context.pc, (u32)g_MainThread.context.ra);
 	rmonPrintf("MAIN CAUSE %08x BAD %08x\n", g_MainThread.context.cause, g_MainThread.context.badvaddr);
@@ -64,6 +68,19 @@ static void pdHwWatchProc(void *arg)
 	rmonPrintf("GFX %u RSP %08x RDP %08x\n", g_MainNumGfxTasks, g_Sched.curRSPTask, g_Sched.curRDPTask);
 	rmonPrintf("JOY BUSY %u DISABLE %u\n", g_JoyBusy, g_JoyCyclicPollDisableCount);
 	rmonPrintf("RAM SAVE READ %u WRITE %u\n", g_PdHwSaveReads, g_PdHwSaveWrites);
+	rmonPrintf("WAIT MAIN %08x SCHED %08x\n", mainqueue, schedqueue);
+	rmonPrintf("QUEUES SI %08x IRQ %08x GFX %08x\n",
+		&g_PiMesgQueue.mtqueue, &g_Sched.interruptQ.mtqueue, &g_SchedMesgQueue.mtqueue);
+	rmonPrintf("VI CURRENT %08x NEXT %08x\n", osViGetCurrentFramebuffer(), osViGetNextFramebuffer());
+	rmonPrintf("FB SCHEDULED %08x QUEUED %08x\n", g_Sched.scheduledFB, g_Sched.queuedFB);
+	rmonPrintf("TASK1 %08x FB %08x STATE %x\n", g_Sched.nextGfxTask,
+		g_Sched.nextGfxTask ? g_Sched.nextGfxTask->framebuffer : 0,
+		g_Sched.nextGfxTask ? g_Sched.nextGfxTask->state : 0);
+	rmonPrintf("TASK2 %08x FB %08x STATE %x\n", g_Sched.nextGfxTask2,
+		g_Sched.nextGfxTask2 ? g_Sched.nextGfxTask2->framebuffer : 0,
+		g_Sched.nextGfxTask2 ? g_Sched.nextGfxTask2->state : 0);
+	rmonPrintf("STAGE %u LVFRAME %u PHASE %u TICK %u\n", g_Vars.stagenum,
+		g_Vars.lvframenum, g_PdHwPhase, g_PdHwPhaseTicks);
 	for (;;) {
 		for (i = 0; i < 320 * 240; i++) fb[i] = 1;
 		crashRenderFrame((u16 *)fb);
