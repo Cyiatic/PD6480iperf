@@ -6142,10 +6142,20 @@ static void bgPreloadSelectedRooms(void)
 	}
 }
 
-static u32 bgGetLateAllocationReserve(void)
+static u32 bgGetLateAllocationReserve(u32 prepaidlatebytes)
 {
 	u32 reserve = 128 * 1024;
 	s32 i;
+
+	/* The default buddy head used to be allocated after room budgeting.
+	 * Its retained bytes are now already paid before this point. Keep the
+	 * same total allowance (prepaid model + pending allocations), instead of
+	 * withholding that model's bytes twice. Do not credit temporary workspace,
+	 * textures or previously cached heads. Reject oversized credit rather than
+	 * allowing unsigned underflow or consuming the entire pending reserve. */
+	if (prepaidlatebytes < reserve) {
+		reserve -= prepaidlatebytes;
+	}
 
 	/* CI hosts multiplayer setup while PLAYERCOUNT() still equals one.
 	 * menuReset configures all four lazy scratch buffers, and opening a
@@ -6162,7 +6172,7 @@ static u32 bgGetLateAllocationReserve(void)
 	return reserve;
 }
 
-void bgPreload(void)
+void bgPreload(u32 prepaidlatebytes)
 {
 	s32 i;
 	u32 maxsize = 0;
@@ -6214,7 +6224,7 @@ void bgPreload(void)
 	}
 	g_BgCacheScratch = NULL;
 
-	reserve = bgGetLateAllocationReserve();
+	reserve = bgGetLateAllocationReserve(prepaidlatebytes);
 	/* Essential stage, weapon and texture allocations are now complete.
 	 * Leave the reserve in the stage heap for later setup/menu/texture requests;
 	 * mema remains separate and unchanged (file manager and damaged vertices).

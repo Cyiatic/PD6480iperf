@@ -4,6 +4,7 @@
 #include "game/chraction.h"
 #include "game/chr.h"
 #include "game/body.h"
+#include "game/file.h"
 #include "game/prop.h"
 #include "game/atan2f.h"
 #include "game/modelmgr.h"
@@ -278,7 +279,7 @@ static struct model *body0f02d338(s32 bodynum, s32 headnum, struct modelfiledata
 	return body0f02ce8c(bodynum, headnum, bodyfiledata, headfiledata, sunglasses, NULL, false, varyheight);
 }
 
-void bodyPreloadDefaultBuddyHead(void)
+u32 bodyPreloadDefaultBuddyHead(void)
 {
 	/* The default AI buddy spawns after the first gameplay ticks. Loading her
 	 * head then needs an extra 32 KiB of temporary model-decompression space,
@@ -293,7 +294,11 @@ void bodyPreloadDefaultBuddyHead(void)
 				| (1 << CHEAT_HOTSHOT) | (1 << CHEAT_HITANDRUN) | (1 << CHEAT_ALIEN)))
 			&& g_HeadsAndBodies[HEAD_VD].filedata == NULL) {
 		g_HeadsAndBodies[HEAD_VD].filedata = modeldefLoadToNew(g_HeadsAndBodies[HEAD_VD].filenum);
+		/* Charge only the retained model, not temporary EXTRAMEM or textures.
+		 * This allocation was moved out of the later-stage allowance. */
+		return fileGetAllocationSize(g_HeadsAndBodies[HEAD_VD].filenum);
 	}
+	return 0;
 }
 
 struct model *bodyAllocateModel(s32 bodynum, s32 headnum, u32 spawnflags)
