@@ -86,7 +86,9 @@ class App():
 
         output = bytes()
         output += len(self.json['pads']).to_bytes(4, 'big')
-        output += len(self.json['cover']).to_bytes(4, 'big')
+        # make_cover omits special records. Advertise only emitted records,
+        # otherwise setupPrepareCover reads/writes beyond this allocation.
+        output += (len(cover) // 0x1c).to_bytes(4, 'big')
         output += waypoints_start.to_bytes(4, 'big')
         output += waygroups_start.to_bytes(4, 'big')
         output += cover_start.to_bytes(4, 'big')
