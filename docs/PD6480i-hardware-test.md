@@ -1,5 +1,14 @@
 # PD6480i hardware test
 
+## Status correction (2026-09-05)
+
+These are historical session notes, not a current list of passing ROMs.
+The user's latest v7 test reached product identification and then the crash
+handler. Do not treat v7 as known-good despite wording retained in the older
+entries below. Exact binary inspection identifies a failing model-pointer
+read at `0x80019fbc`; see [analysis](v7-boot-crash-analysis.md).
+Previously captured logos or intro scenes are not proof of reliable gameplay.
+
 ## Historical bootstrap candidate
 
 - `artifacts/PD6480iperf-v2-retail-header.z64`

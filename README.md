@@ -6,6 +6,19 @@ No accurate benchmarking has been done.
 
 The mod is based off the framerate graph mod, so you can press L to toggle the frame rate graph.
 
+## Current failure notice — v7 is not a working candidate
+
+The user confirmed that `PD6480iperf-v7-raw-haf-2buf-retail-header.z64`
+displays product identification and then crashes on Analogue 3D. Its SHA-256 is
+`b1e95594dfe7197ba407af0616ad9ab2bb36f841fbfe93983101b7ce91fee19b`.
+Do not use v7 as a known-good control or recommend it for another test.
+Historical claims below and in older test notes do not establish reliable boot
+or playable gameplay. See [the exact-binary crash analysis](docs/v7-boot-crash-analysis.md).
+
+The later candidate that the user could play in Carrington Institute still
+freezes when Hi-Res is enabled. No complete 480i/performance fix is verified.
+The separate [Dark 100% save](artifacts/saves/README.md) does not fix ROM faults.
+
 ## v69 640x480i resolution candidate
 
 v59 is a live-verified performance/high-resolution candidate, but its active gameplay path is the 640x220 framebuffer with the non-interlaced NTSC LAN1 VI mode. It is not equivalent to the supplied 640x480i patch.
@@ -85,7 +98,8 @@ The newer raw-HAF candidate additionally uses the standalone 640x480i patch's NT
 * `artifacts/PD6480iperf-v3-raw-haf-retail-header.z64`
 * `artifacts/PD6480iperf-v3-raw-haf-retail-header.xdelta`
 
-The verified v7 candidate uses the same raw-HAF register set and matches the standalone patch's two-framebuffer layout. It was boot-tested on a real N64 through an EverDrive and reached live 3D gameplay:
+The historical v7 candidate uses the raw-HAF register set and two framebuffers.
+It is now a confirmed failing build, not a verified gameplay candidate:
 
 * `artifacts/PD6480iperf-v7-raw-haf-2buf-retail-header.z64`
 * `artifacts/PD6480iperf-v7-raw-haf-2buf-retail-header.xdelta`
