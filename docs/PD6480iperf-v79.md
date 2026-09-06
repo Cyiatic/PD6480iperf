@@ -140,6 +140,12 @@ successful capture). No existing console save was overwritten.
 
 ## Remaining gates
 
+A subsequent **separate instrumented v79-based ROM** passed a limited
+original-N64 synthetic-input CI movement / Hi-Res on-off-on / L off-on sequence.
+See [the diagnostic report](PD6480iperf-v79-hardware-replay.md). That test uses
+RAM-only saves and programmatic setup, and does not upgrade this unchanged
+candidate to an interactive-console or Analogue pass. Its download is unchanged.
+
 Use a fresh ROM launch, not a v78 emulator/Analogue state: resident code may be
 unchanged while loaded asset contents are old. Long play, multiplayer,
 interactive console controls, console save import and Analogue remain

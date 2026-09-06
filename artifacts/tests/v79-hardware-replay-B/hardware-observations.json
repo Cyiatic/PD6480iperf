@@ -1,0 +1,56 @@
+{
+  "diagnostic_only": true,
+  "date": "2026-09-05",
+  "timezone": "America/Phoenix",
+  "source_commit": "72c02046c9fd042b89baba87d06f2e8132ba0e75",
+  "rom_sha256": "8886703fba772fc96984bf7448e3f16d0221df228a8d08eba37c9604b64a0366",
+  "elf_sha256": "f5c6bccf04a1cab005cede86220e0ddfcf29b47737d26b62e1ca1f3b1d80dc32",
+  "upload_seconds": 36.48,
+  "input_source": "ROM synthetic pad samples; programmatic profile/menu setup",
+  "save_mode": "RAM-only embedded Dark; physical pak write stubbed",
+  "capture_source": "original N64 via Elgato",
+  "fresh_recording_created_local": "2026-09-05T22:07:36",
+  "segments": [
+    {
+      "number": 1,
+      "duration_seconds": 156.247333,
+      "bytes": 290874540,
+      "sha256": "008088f92f61c26c3931652a691fce658dd213a9cd1d6a561e45667d9b4af989"
+    },
+    {
+      "number": 2,
+      "duration_seconds": 113.463956,
+      "bytes": 211322904,
+      "sha256": "17bf482be0dced94f8e16138889d1ab59fcdf149dc1bb559835b33f01fe5aded"
+    }
+  ],
+  "visual_observations": [
+    {"image": "segment1-002s.png", "observed": "CI terminal/ceiling view and yellow diagnostic HUD"},
+    {"image": "segment1-050s.png", "observed": "Different CI camera view after replay stick input"},
+    {"image": "segment1-094s.png", "observed": "Hi-Res checkbox checked"},
+    {"image": "segment1-100s.png", "observed": "Hi-Res checkbox unchecked"},
+    {"image": "segment1-110s.png", "observed": "Hi-Res checkbox checked again"},
+    {"image": "segment1-125s.png", "observed": "Menu closed, FPS graph hidden, yellow HUD remains"},
+    {"image": "segment1-136s.png", "observed": "FPS graph visible again; changed CI camera view"},
+    {"image": "segment2-085s.png", "observed": "CI view and phase-8 replay HUD"},
+    {"image": "final-segment2.png", "observed": "Phase-8 HUD persists; no error screen observed"}
+  ],
+  "limited_synthetic_gameplay_sequence_observed": true,
+  "unchanged_candidate_interactive_hardware_verified": false,
+  "physical_controller_input_verified": false,
+  "analogue_verified": false,
+  "native_render_dimensions_measured_from_hardware": false,
+  "physical_save_import_verified": false,
+  "performance_benchmarked": false,
+  "cleanup": {
+    "plug_1_relay": 0,
+    "status_rechecked_local": "2026-09-05T22:15:37",
+    "unrelated_n64_outlet_operated": false,
+    "parent_switch_operated": false,
+    "capture_process_stopped": true,
+    "recordings_and_metadata_permanently_deleted": true,
+    "files_deleted": 6,
+    "bytes_deleted": 502338088,
+    "small_evidence_stills_retained": true
+  }
+}
