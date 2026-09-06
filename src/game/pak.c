@@ -10,6 +10,7 @@
 #include "game/utils.h"
 #include "bss.h"
 #include "lib/joy.h"
+#include "lib/hwtest.h"
 #include "lib/lib_06440.h"
 #include "lib/main.h"
 #include "lib/memp.h"
@@ -2804,39 +2805,20 @@ static void pak0f11df94(s8 device)
 
 static void pakProbeEeprom(void)
 {
-	s32 type;
-
-	joyDisableCyclicPolling();
-	type = osEepromProbe(&g_PiMesgQueue);
-	joyEnableCyclicPolling();
-
-	if (type == EEPROM_TYPE_16K) {
-		g_PakHasEeprom = true;
-	} else {
-		g_PakHasEeprom = false;
-	}
+	/* DIAGNOSTIC: only the embedded, mutable RAM save is present. */
+	g_PakHasEeprom = true;
 }
 
 static PakErr1 pakReadEeprom(u8 address, u8 *buffer, u32 len)
 {
-	s32 result;
-
-	joyDisableCyclicPolling();
-	result = osEepromLongRead(&g_PiMesgQueue, address, buffer, len);
-	joyEnableCyclicPolling();
-
-	return result == PAK_ERR1_OK ? PAK_ERR1_OK : PAK_ERR1_EEPROMREADFAILED;
+	return pdHwEeprom(false, address, buffer, len) == 0
+		? PAK_ERR1_OK : PAK_ERR1_EEPROMREADFAILED;
 }
 
 static PakErr1 pakWriteEeprom(u8 address, u8 *buffer, u32 len)
 {
-	s32 result;
-
-	joyDisableCyclicPolling();
-	result = osEepromLongWrite(&g_PiMesgQueue, address, buffer, len);
-	joyEnableCyclicPolling();
-
-	return result == PAK_ERR1_OK ? PAK_ERR1_OK : PAK_ERR1_EEPROMWRITEFAILED;
+	return pdHwEeprom(true, address, buffer, len) == 0
+		? PAK_ERR1_OK : PAK_ERR1_EEPROMWRITEFAILED;
 }
 
 void pakSetBitflag(s32 flagnum, u8 *bitstream, bool set)

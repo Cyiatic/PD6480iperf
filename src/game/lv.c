@@ -82,6 +82,8 @@
 #include "lib/anim.h"
 #include "lib/collision.h"
 #include "lib/joy.h"
+#include "lib/hwtest.h"
+extern u32 g_BgCacheLoadFailures, g_BgCacheEvictions, g_BgCacheMisses;
 #include "lib/lib_06440.h"
 #include "lib/lib_317f0.h"
 #include "lib/main.h"
@@ -1011,6 +1013,27 @@ static Gfx *lvPrint(Gfx *gdl)
 		gdl = text0f153628(gdl);
 		gdl = lvPrintRateGraph(gdl);
 		gdl = lvPrintRateText(gdl);
+		gdl = text0f153780(gdl);
+	}
+	/* Always identify synthetic replay, even while L hides the graph. */
+	if (g_Vars.stagenum < STAGE_TITLE) {
+		char label[128];
+		s32 x = 10;
+		s32 y = 155;
+		gdl = text0f153628(gdl);
+		sprintf(label, "V86B TEST P%d ST%d D%d\nOOM %d BGFAIL %u EVICT %u\nFB %dx%d MISS %u\n",
+			g_PdHwPhase, g_Vars.stagenum, g_MissionConfig.difficulty, g_LvOom, g_BgCacheLoadFailures,
+			g_BgCacheEvictions, g_ViBackData->x, g_ViBackData->y, g_BgCacheMisses);
+		gdl = textRender(gdl, &x, &y, label, g_CharsHandelGothicMd,
+			g_FontHandelGothicMd, 0xffff00ff, 0x000000a0, g_ViBackData->x, g_ViBackData->y, 0, 0);
+		if (g_Vars.currentplayer && g_Vars.currentplayer->prop) {
+			x = 10;
+			sprintf(label, "RAM SAVE R%d W%d POS %d %d\n", g_PdHwSaveReads,
+				g_PdHwSaveWrites, (s32)g_Vars.currentplayer->prop->pos.x,
+				(s32)g_Vars.currentplayer->prop->pos.z);
+			gdl = textRender(gdl, &x, &y, label, g_CharsHandelGothicSm,
+				g_FontHandelGothicSm, 0xffff00ff, 0x000000a0, g_ViBackData->x, g_ViBackData->y, 0, 0);
+		}
 		gdl = text0f153780(gdl);
 	}
 
