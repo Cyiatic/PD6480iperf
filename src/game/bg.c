@@ -40,6 +40,7 @@
 #include "data.h"
 #include "gbiex.h"
 #include "types.h"
+#include "bgcache.h"
 
 static bool func0f15d08c(struct coord *a, struct coord *b);
 static void room0f164c64(s32 roomnum);
@@ -128,6 +129,66 @@ s32 var8007fc34 = 0;
 u16 var8007fc3c = 0xfffe;
 s32 g_NumPortalThings = 0;
 
+struct bgcacheheap g_BgCacheHeap;
+struct bgcacheroom *g_BgCacheRooms;
+u8 *g_BgCacheScratch;
+u32 g_BgCacheEpoch;
+u32 g_BgCacheMode; /* 0 disabled, 1 texture warmup, 2 opportunistic preload, 3 live */
+u32 g_BgCacheMisses;
+u32 g_BgCacheEvictions;
+u32 g_BgCacheLoadFailures;
+u32 g_BgCachePreloadSkipped;
+
+void bgRoomCacheNextFrame(void)
+{
+	if (g_BgCacheMode == 3) {
+		g_BgCacheEpoch++;
+	}
+}
+
+static void bgCacheUnloadRoom(s32 roomnum)
+{
+	struct room *room = &g_Rooms[roomnum];
+	if (room->vtxbatches) {
+		bgcacheFree(&g_BgCacheHeap, room->vtxbatches, ALIGN16(room->numvtxbatches * sizeof(struct vtxbatch)));
+	}
+	if (room->gfxdata) {
+		bgcacheFree(&g_BgCacheHeap, room->gfxdata, room->gfxdatalen);
+	}
+	room->vtxbatches = NULL;
+	room->numvtxbatches = 0;
+	room->gfxdata = NULL;
+	room->colours = NULL;
+	room->loaded240 = 0;
+	room->gfxdatalen = g_BgCacheRooms[roomnum].loadsize;
+}
+
+static void *bgCacheAlloc(u32 size, s32 loadingroom)
+{
+	void *ptr = bgcacheAlloc(&g_BgCacheHeap, size);
+	while (!ptr && g_BgCacheMode == 3) {
+		s32 oldest = -1;
+		u32 age = 0;
+		s32 i;
+		for (i = 1; i < g_Vars.roomcount; i++) {
+			u32 elapsed = g_BgCacheEpoch - g_BgCacheRooms[i].lastuse;
+			if (i != loadingroom && g_Rooms[i].loaded240
+					&& bgcacheCanEvict(g_BgCacheEpoch, g_BgCacheRooms[i].lastuse)
+					&& elapsed > age) {
+				oldest = i;
+				age = elapsed;
+			}
+		}
+		if (oldest < 0) {
+			break;
+		}
+		bgCacheUnloadRoom(oldest);
+		g_BgCacheEvictions++;
+		ptr = bgcacheAlloc(&g_BgCacheHeap, size);
+	}
+	return ptr;
+}
+
 static void roomUnpauseProps(u32 roomnum, bool tintedglassonly)
 {
 	struct prop *prop;
@@ -173,6 +234,7 @@ static void roomSetOnscreen(s32 roomnum, s32 draworder, struct screenbox *box)
 
 	if ((g_Rooms[roomnum].flags & ROOMFLAG_DISABLEDBYSCRIPT) == 0) {
 		g_Rooms[roomnum].flags |= ROOMFLAG_ONSCREEN;
+		bgLoadRoom(roomnum);
 
 		if (g_Rooms[roomnum].flags & ROOMFLAG_0800) {
 			box->xmin = var800a4640.unk2d0.box.xmin;
@@ -809,6 +871,7 @@ static Gfx *bgRenderRoomInXray(Gfx *gdl, s32 roomnum)
 		return gdl;
 	}
 
+	bgLoadRoom(roomnum);
 	if (g_Rooms[roomnum].loaded240 == 0) {
 		return gdl;
 	}
@@ -1743,6 +1806,8 @@ void bgBuildTables(s32 stagenum)
 
 void bgStop(void)
 {
+	g_BgCacheMode = 0;
+	g_BgCacheRooms = NULL;
 	var8005ef10[0] = 65536;
 }
 
@@ -2527,15 +2592,28 @@ static void bgLoadRoom(s32 roomnum)
 	s32 prev;
 	s32 v1;
 
-	if (roomnum == 0 || roomnum >= g_Vars.roomcount) {
+	if (roomnum <= 0 || roomnum >= g_Vars.roomcount || !g_BgCacheMode) {
 		return;
+	}
+	if (g_BgCacheMode == 3) {
+		g_BgCacheRooms[roomnum].lastuse = g_BgCacheEpoch;
+	}
+	if (g_Rooms[roomnum].loaded240) {
+		return;
+	}
+	if (g_BgCacheMode == 3) {
+		g_BgCacheMisses++;
 	}
 
 	// Determine how much memory to allocate.
 	// It must be big enough to fit both the inflated and compressed room data.
-	size = g_Rooms[roomnum].gfxdatalen;
+	size = g_BgCacheRooms[roomnum].loadsize;
+	if (size <= 0) {
+		g_BgCacheLoadFailures++;
+		return;
+	}
 
-	allocation = mempAlloc(size, MEMPOOL_STAGE);
+	allocation = g_BgCacheMode == 1 ? g_BgCacheScratch : bgCacheAlloc(size, roomnum);
 
 	if (allocation != NULL) {
 		dyntexSetCurrentRoom(roomnum);
@@ -2548,7 +2626,7 @@ static void bgLoadRoom(s32 roomnum)
 
 		if (size < readlen) {
 			dyntexSetCurrentRoom(-1);
-			return;
+			goto failed;
 		}
 
 		// Load the compressed data to the right side of the allocation
@@ -2558,7 +2636,7 @@ static void bgLoadRoom(s32 roomnum)
 
 		if (rzipIs1173(memaddr) && readlen + 0x20 > size) {
 			dyntexSetCurrentRoom(-1);
-			return;
+			goto failed;
 		}
 
 		// Uncompress the data to the left size of the allocation
@@ -2677,8 +2755,14 @@ static void bgLoadRoom(s32 roomnum)
 
 		g_Rooms[roomnum].loaded240 = 1;
 
-		if (g_Rooms[roomnum].gfxdatalen != size) {
-			mempRealloc(allocation, g_Rooms[roomnum].gfxdatalen, MEMPOOL_STAGE);
+		if (g_Rooms[roomnum].gfxdatalen > size) {
+			/* Never grow past the reserved workspace into another room. */
+			g_Rooms[roomnum].gfxdatalen = size;
+			goto failed;
+		}
+		if (g_BgCacheMode != 1 && g_Rooms[roomnum].gfxdatalen < size) {
+			bgcacheFree(&g_BgCacheHeap, allocation + g_Rooms[roomnum].gfxdatalen,
+					size - g_Rooms[roomnum].gfxdatalen);
 		}
 
 		// Update gdl pointers in the gfxdata so they point to the ones
@@ -2721,6 +2805,10 @@ static void bgLoadRoom(s32 roomnum)
 
 		// Create vertex batches - these are used for hit detection
 		bgFindRoomVtxBatches(roomnum);
+		if (g_BgCacheMode != 1 && g_BgCacheRooms[roomnum].expectedbatches
+				&& !g_Rooms[roomnum].vtxbatches) {
+			goto failed;
+		}
 
 		g_Rooms[roomnum].flags |= ROOMFLAG_DIRTY;
 		g_Rooms[roomnum].flags |= ROOMFLAG_0200;
@@ -2728,6 +2816,31 @@ static void bgLoadRoom(s32 roomnum)
 		g_Rooms[roomnum].colours = NULL;
 
 		dyntexSetCurrentRoom(-1);
+		if (g_BgCacheMode == 1) {
+			g_BgCacheRooms[roomnum].warmed = 1;
+			g_Rooms[roomnum].gfxdata = NULL;
+			g_Rooms[roomnum].loaded240 = 0;
+			g_Rooms[roomnum].gfxdatalen = size;
+		}
+		return;
+	}
+
+failed:
+	dyntexSetCurrentRoom(-1);
+	if (g_BgCacheMode != 1) {
+		if (allocation && !g_Rooms[roomnum].gfxdata) {
+			bgcacheFree(&g_BgCacheHeap, allocation, size);
+		}
+		bgCacheUnloadRoom(roomnum);
+	} else {
+		g_Rooms[roomnum].gfxdata = NULL;
+		g_Rooms[roomnum].loaded240 = 0;
+		g_Rooms[roomnum].gfxdatalen = size;
+	}
+	if (g_BgCacheMode == 2) {
+		g_BgCachePreloadSkipped++;
+	} else {
+		g_BgCacheLoadFailures++;
 	}
 }
 
@@ -2812,6 +2925,10 @@ static Gfx *bgRenderRoomPass(Gfx *gdl, s32 roomnum, struct roomblock *block, boo
  */
 static Gfx *bgRenderRoomOpaque(Gfx *gdl, s32 roomnum)
 {
+	if (roomnum <= 0 || roomnum >= g_Vars.roomcount) {
+		return gdl;
+	}
+	bgLoadRoom(roomnum); /* Includes always-rendered sky/background rooms. */
 	if (g_Rooms[roomnum].loaded240 == 0) {
 		return gdl;
 	}
@@ -2834,6 +2951,7 @@ static Gfx *bgRenderRoomXlu(Gfx *gdl, s32 roomnum)
 		return gdl;
 	}
 
+	bgLoadRoom(roomnum);
 	if (g_Rooms[roomnum].loaded240) {
 		if (g_Rooms[roomnum].gfxdata->xlublocks == NULL) {
 			return gdl;
@@ -2966,7 +3084,11 @@ static void bgFindRoomVtxBatches(s32 roomnum)
 
 			batchindex += xlucount;
 
-			batches = mempAlloc((batchindex * sizeof(struct vtxbatch) + 0xf) & ~0xf, MEMPOOL_STAGE);
+			g_BgCacheRooms[roomnum].expectedbatches = batchindex;
+			if (g_BgCacheMode == 1 || batchindex == 0) {
+				return;
+			}
+			batches = bgCacheAlloc(ALIGN16(batchindex * sizeof(struct vtxbatch)), roomnum);
 
 			if (batches != NULL) {
 				gdl = roomGetNextGdlInLayer(roomnum, NULL, VTXBATCHTYPE_OPA);
@@ -4041,6 +4163,7 @@ bool bgTestHitInRoom(struct coord *frompos, struct coord *topos, s32 roomnum, st
 		return false;
 	}
 
+	bgLoadRoom(roomnum); /* FarSight, bullets, blood and explosion hit geometry. */
 	batch = g_Rooms[roomnum].vtxbatches;
 
 	if (batch == NULL) {
@@ -5980,7 +6103,7 @@ u16 g_BgPreloadMaianSos[][2] = {
 	{0xf2, 0x10e},
 };
 
-void bgPreload(void)
+static void bgPreloadSelectedRooms(void)
 {
 	s32 i;
 	s32 j;
@@ -6014,4 +6137,88 @@ void bgPreload(void)
 			bgLoadRoom(i);
 		}
 	}
+	if (g_BgAlwaysRoom > 0) {
+		bgLoadRoom(g_BgAlwaysRoom);
+	}
+}
+
+void bgPreload(void)
+{
+	s32 i;
+	u32 maxsize = 0;
+	u32 bytes;
+	u32 reserve = 128 * 1024;
+	void *bank;
+
+	bgcacheReset(&g_BgCacheHeap);
+	g_BgCacheEpoch = 0;
+	g_BgCacheMode = 0;
+	g_BgCacheMisses = 0;
+	g_BgCacheEvictions = 0;
+	g_BgCacheLoadFailures = 0;
+	g_BgCachePreloadSkipped = 0;
+	g_BgCacheRooms = mempAlloc(ALIGN16(g_Vars.roomcount * sizeof(struct bgcacheroom)), MEMPOOL_STAGE);
+	if (!g_BgCacheRooms) {
+		g_BgCacheLoadFailures++;
+		return;
+	}
+	for (i = 0; i < g_Vars.roomcount; i++) {
+		g_BgCacheRooms[i].loadsize = i ? g_Rooms[i].gfxdatalen : 0;
+		g_BgCacheRooms[i].lastuse = (u32)-3;
+		g_BgCacheRooms[i].expectedbatches = 0;
+		g_BgCacheRooms[i].warmed = 0;
+		g_Rooms[i].gfxdata = NULL;
+		g_Rooms[i].vtxbatches = NULL;
+		g_Rooms[i].numvtxbatches = 0;
+		g_Rooms[i].loaded240 = 0;
+		if (i && g_Rooms[i].gfxdatalen > 0 && g_Rooms[i].gfxdatalen > maxsize) {
+			maxsize = g_Rooms[i].gfxdatalen;
+		}
+	}
+
+	/* Warm the modern mission-specific texture/dyntex set using ONE temporary
+	 * room workspace. Textures allocate from memp's right side. Doing this
+	 * before assigning room banks avoids taking memory needed by those textures.
+	 * No vertex batches or persistent geometry are allocated in this pass. */
+	g_BgCacheScratch = mempAlloc(maxsize, MEMPOOL_STAGE);
+	if (!g_BgCacheScratch) {
+		g_BgCacheLoadFailures++;
+		return;
+	}
+	g_BgCacheMode = 1;
+	bgPreloadSelectedRooms();
+	if (mempRealloc(g_BgCacheScratch, 0, MEMPOOL_STAGE) != 1) {
+		g_BgCacheLoadFailures++;
+		g_BgCacheMode = 0;
+		return;
+	}
+	g_BgCacheScratch = NULL;
+
+	/* CI's menu model scratch is intentionally lazy in menuRenderModels.
+	 * Reserve its known per-player capacity in addition to general headroom. */
+	if (g_Vars.stagenum == STAGE_CITRAINING) {
+		reserve += 0x25800 * PLAYERCOUNT();
+	}
+	/* Essential stage, weapon and texture allocations are now complete.
+	 * Leave the reserve in the stage heap for later setup/menu/texture requests;
+	 * mema remains separate and unchanged (file manager and damaged vertices).
+	 * Allocate the two actual free banks separately; never claim their gap. */
+	bytes = mempGetPoolFree(MEMPOOL_STAGE, MEMBANK_ONBOARD) & ~15;
+	if (bytes) {
+		bank = mempAlloc(bytes, MEMPOOL_STAGE);
+		if (bank) {
+			bgcacheAddBank(&g_BgCacheHeap, bank, bytes);
+		}
+	}
+	bytes = mempGetPoolFree(MEMPOOL_STAGE, MEMBANK_EXPANSION);
+	bytes = bytes > reserve ? (bytes - reserve) & ~15 : 0;
+	if (bytes) {
+		bank = mempAlloc(bytes, MEMPOOL_STAGE);
+		if (bank) {
+			bgcacheAddBank(&g_BgCacheHeap, bank, bytes);
+		}
+	}
+	g_BgCacheMode = 2;
+	bgPreloadSelectedRooms();
+	g_BgCacheMode = 3;
 }

@@ -18,6 +18,7 @@ f32 func0f15c888(void);
 void currentPlayerSetScaleBg2Gfx(f32 arg0);
 void func0f15c920(void);
 void bgTick(void);
+void bgRoomCacheNextFrame(void);
 Gfx *bgRender(Gfx *gdl);
 Gfx *currentPlayerScissorToViewport(Gfx *gdl);
 Gfx *currentPlayerScissorWithinViewport(Gfx *gdl, s32 viewleft, s32 viewtop, s32 viewright, s32 viewbottom);

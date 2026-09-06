@@ -32,6 +32,7 @@
 #include "game/gfxmemory.h"
 #include "game/lang.h"
 #include "game/lv.h"
+#include "game/bg.h"
 #include "game/timing.h"
 #include "game/music.h"
 #include "game/stubs/game_175f50.h"
@@ -498,6 +499,7 @@ static void mainTick(void)
 	s32 i;
 
 	frametimeCalculate();
+	bgRoomCacheNextFrame();
 #if PROFILING
 	profileReset();
 #endif
