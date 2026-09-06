@@ -981,6 +981,10 @@ Gfx *lvPrintRateText(Gfx *gdl)
 		sprintf(buffer, "memp free %d KB\n", mempGetStageFree() / 1024);
 		gdl = textRender(gdl, &x, &y, buffer, g_CharsHandelGothicXs, g_FontHandelGothicXs, 0x00ff00a0, 0x000000a0, viGetWidth(), viGetHeight(), 0, 0);
 
+		/* Report the active RDP image dimensions, not the capture output mode. */
+		sprintf(buffer, "FB %dx%d\n", viGetBufWidth(), viGetBufHeight());
+		gdl = textRender(gdl, &x, &y, buffer, g_CharsHandelGothicXs, g_FontHandelGothicXs, 0x00ff00a0, 0x000000a0, viGetWidth(), viGetHeight(), 0, 0);
+
 		if (g_LvOom) {
 			sprintf(buffer, "mem%c OOM %x\n", g_LvOom, g_LvOomSize);
 			gdl = textRender(gdl, &x, &y, buffer, g_CharsHandelGothicXs, g_FontHandelGothicXs, 0xff0000a0, 0x000000a0, viGetWidth(), viGetHeight(), 0, 0);

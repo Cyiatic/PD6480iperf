@@ -10,6 +10,7 @@
 #include "lib/memp.h"
 #include "data.h"
 #include "types.h"
+#include "video480i.h"
 
 u32 var800ab7c0;
 u32 var800ab7c4;
@@ -37,13 +38,8 @@ void mblurReset(s32 stagenum)
 
 void mblurAllocate(void)
 {
-	var800ab7c0 = 640;
-
-	if (g_Vars.normmplayerisrunning && PLAYERCOUNT() >= 2) {
-		var800ab7c4 = 220;
-	} else {
-		var800ab7c4 = 220;
-	}
+	var800ab7c0 = PD480_WIDTH;
+	var800ab7c4 = PD480_HEIGHT;
 
 	var800844f0 = mempAlloc(var800ab7c0 * var800ab7c4 * 2 + 0x40, MEMPOOL_STAGE);
 	var800844f0 = (void *)(((u32) var800844f0 + 0x3f) & ~0x3f);
@@ -57,21 +53,11 @@ void mblur0f176298(void)
 
 Gfx *mblur0f1762ac(Gfx *gdl)
 {
-	u32 subamount;
 	u32 addr;
 
-	if (g_Vars.normmplayerisrunning
-			&& (g_Vars.currentplayernum >= 2 || (PLAYERCOUNT() == 2 && g_Vars.currentplayernum == 1))) {
-		subamount = playerGetFbWidth() * playerGetFbHeight();
-
-		if (optionsGetScreenSplit() == SCREENSPLIT_VERTICAL) {
-			subamount = 0;
-		}
-	} else {
-		subamount = 0;
-	}
-
-	addr = (u32)var800844f4 - subamount;
+	/* Full-frame depth storage: all viewports use the same image origin.
+	 * The retail half-screen reuse offset is unnecessary with this capacity. */
+	addr = (u32)var800844f4;
 	addr &= ~0x3f;
 
 	gDPPipeSync(gdl++);

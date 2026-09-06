@@ -113,8 +113,8 @@ struct vimode g_ViModes[] = {
 	//  |    |    |  |                 |    |  |     |  |     cinemaheight
 	//  |    |    |  |                 |    |  |     |  |     |  cinematop
 	//  |    |    |  |                 |    |  |     |  |     |  |
-	{ 320, 220, 320, 1,                1, 220, 0,  180, 20, 136, 42  }, // default
-	{ 640, 220, 640, 0.5,              1, 220, 0,  180, 20, 136, 42  }, // hi-res
+	{ 640, 480, 640, 1,                1, 480, 0,  392, 44, 296, 92  }, // fixed 480i gameplay
+	{ 640, 480, 640, 1,                1, 480, 0,  392, 44, 296, 92  }, // fixed 480i gameplay
 	{ 320, 480, 320, 2,                2, 440, 20, 360, 60, 272, 104 }, // unused
 	{ 440, 330, 440, 1,                1, 330, 0,  330, 0,  330, 0   }, // unused
 	{ 440, 240, 440, 0.72727274894714, 1, 220, 0,  180, 0,  136, 0   }, // unused
@@ -122,7 +122,7 @@ struct vimode g_ViModes[] = {
 };
 
 s32 g_ViRes = VIRES_LO;
-bool g_HiResEnabled = false;
+bool g_HiResEnabled = true;
 u32 var800706d0 = 0x00000000;
 u32 var800706d4 = 0x00000000;
 u32 var800706d8 = 0x00000000;
@@ -2884,7 +2884,11 @@ void playerTick(bool arg0)
 	f32 aspectratio;
 	f32 f20;
 
-	g_ViRes = g_HiResEnabled;
+	/*
+	 * 480i is fixed for this patch. Keep the legacy logical resolution at
+	 * VIRES_LO so the checkbox cannot trigger a live VI/framebuffer switch.
+	 */
+	g_ViRes = VIRES_LO;
 
 	if ((g_Vars.coopplayernum >= 0 || g_Vars.antiplayernum >= 0) && PLAYERCOUNT() > 1) {
 		g_ViRes = VIRES_LO;

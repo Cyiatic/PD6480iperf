@@ -13,6 +13,7 @@
 #include "lib/mtx.h"
 #include "data.h"
 #include "types.h"
+#include "video480i.h"
 
 #define TO_U16_A(x) ((u16)(x))
 #define TO_U16_B(x) ((x) & 0xffff)
@@ -31,25 +32,25 @@ u16 *g_FrameBuffers[2];
 struct rend_vidat g_ViDataArray[] = {
 	{
 		0, 0, 0, 0,
-		320, 220,         // x and y
+		640, 480,         // x and y
 		60,               // fovy
-		1.4545454978943f, // aspect
+		1.3333333730698f, // aspect
 		30,               // znear
 		10000,            // zfar
-		320, 220,         // bufx and bufy
-		320, 220,         // viewx and viewy
+		640, 480,         // bufx and bufy
+		640, 480,         // viewx and viewy
 		0, 0,             // viewleft and viewtop
 		true,             // usezbuf
 		0,
 	}, {
 		0, 0, 0, 0,
-		320, 220,         // x and y
+		640, 480,         // x and y
 		60,               // fovy
-		1.4545454978943f, // aspect
+		1.3333333730698f, // aspect
 		30,               // znear
 		10000,            // zfar
-		320, 220,         // bufx and bufy
-		320, 220,         // viewx and viewy
+		640, 480,         // bufx and bufy
+		640, 480,         // viewx and viewy
 		0, 0,             // viewleft and viewtop
 		true,             // usezbuf
 		0,
@@ -116,13 +117,13 @@ void viConfigureForLegal(void)
 	s32 i;
 
 	for (i = 0; i < 2; i++) {
-		g_ViDataArray[i].x = 320;
-		g_ViDataArray[i].bufx = 320;
-		g_ViDataArray[i].viewx = 320;
+		g_ViDataArray[i].x = 640;
+		g_ViDataArray[i].bufx = 640;
+		g_ViDataArray[i].viewx = 640;
 
-		g_ViDataArray[i].y = 220;
-		g_ViDataArray[i].bufy = 220;
-		g_ViDataArray[i].viewy = 220;
+		g_ViDataArray[i].y = 480;
+		g_ViDataArray[i].bufy = 480;
+		g_ViDataArray[i].viewy = 480;
 	}
 
 #if PAL
@@ -130,12 +131,12 @@ void viConfigureForLegal(void)
 #endif
 }
 
-const s16 g_ViModeWidths[] = {320, 320, 640};
+const s16 g_ViModeWidths[] = {PD480_WIDTH, PD480_WIDTH, PD480_WIDTH};
 
 #if PAL
 const s16 g_ViModeHeights[] = {220, 220, 504};
 #else
-const s16 g_ViModeHeights[] = {220, 220, 440};
+const s16 g_ViModeHeights[] = {PD480_HEIGHT, PD480_HEIGHT, PD480_HEIGHT};
 #endif
 
 /**
@@ -158,17 +159,14 @@ void viReset(s32 stagenum)
 
 	if (stagenum == STAGE_TITLE) {
 		viSetMode(VIMODE_HI);
-		fbsize = g_ViModeWidths[2] * g_ViModeHeights[2] * 2;
+		fbsize = PD480_IMAGE_BYTES;
 	} else {
 		viSetMode(VIMODE_LO);
 
 		if (1);
 
-		fbsize = 640 * 220 * 2;
-
-		if ((g_Vars.coopplayernum >= 0 || g_Vars.antiplayernum >= 0) && PLAYERCOUNT() == 2) {
-			fbsize = 320 * 220 * 2;
-		}
+		/* Co-op uses the same framebuffer dimensions as solo gameplay. */
+		fbsize = PD480_IMAGE_BYTES;
 	}
 
 	ptr = mempAlloc(fbsize * 2 + 0x40, MEMPOOL_STAGE);
@@ -281,39 +279,70 @@ void viUpdateMode(void)
 	if (g_ViBackData->mode == VIMODE_LO) {
 		if (osTvType == OS_TV_MPAL) {
 			var8008dcc0[g_ViSlot] = osViModeTable[OS_VI_MPAL_LAN1];
+
+			var8008dcc0[g_ViSlot].comRegs.width = g_ViBackData->bufx;
+			var8008dcc0[g_ViSlot].comRegs.xScale = g_ViBackData->bufx * 1024 / 640;
+			var8008dcc0[g_ViSlot].fldRegs[0].origin = g_ViBackData->bufx * 2;
+			var8008dcc0[g_ViSlot].fldRegs[1].origin = g_ViBackData->bufx * 2;
+
+			// 324
+			var8008dcc0[g_ViSlot].fldRegs[0].yScale = g_ViBackData->bufy * 2048 / 440;
+			var8008dcc0[g_ViSlot].fldRegs[1].yScale = g_ViBackData->bufy * 2048 / 440;
+
+			// 3ac
+			reg = var8008dcc0[g_ViSlot].comRegs.hStart;
+			reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d588);
+			var8008dcc0[g_ViSlot].comRegs.hStart = reg;
+			var8008dcc0[g_ViSlot].fldRegs[0].vStart = reg;
+			var8008dcc0[g_ViSlot].fldRegs[1].vStart = reg;
+			var8008de08 = reg;
+
+			v1 = g_ViBackData->bufy * 1024 / var8008dcc0[g_ViSlot].fldRegs[0].yScale;
+
+			// 458
+			if (v1 > 300) {
+				v1 >>= 1;
+			}
+
+			tmp = 277 - v1;
+			reg = ((tmp + 2) << 16) | (tmp + ((v1 - 2) * 2) + 2);
+			reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d58c);
+			var8008de0c = reg;
+			var8008de10 = reg;
 		} else {
-			var8008dcc0[g_ViSlot] = osViModeTable[OS_VI_NTSC_LAN1];
+			/*
+			 * Use the standalone patch's NTSC HAF1 register set for the
+			 * 640x480 gameplay buffer, but keep the logical VI mode at LO.
+			 * This avoids switching the scheduler from LAN1 to VIMODE_HI
+			 * when the in-game hi-res option is enabled.
+			 */
+			var8008dcc0[g_ViSlot] = osViModeTable[OS_VI_NTSC_HAF1];
+			var8008dcc0[g_ViSlot].comRegs.ctrl = 0x0000305e;
+			var8008dcc0[g_ViSlot].comRegs.width = 1280;
+			var8008dcc0[g_ViSlot].comRegs.burst = 0x03e52239;
+			var8008dcc0[g_ViSlot].comRegs.vSync = 524;
+			var8008dcc0[g_ViSlot].comRegs.hSync = 0x00000c15;
+			var8008dcc0[g_ViSlot].comRegs.leap = 0x0c150c15;
+			var8008dcc0[g_ViSlot].comRegs.hStart = 0x006c02ec;
+			var8008de08 = var8008dcc0[g_ViSlot].comRegs.hStart;
+			var8008dcc0[g_ViSlot].comRegs.xScale = 1024;
+			var8008dcc0[g_ViSlot].comRegs.vCurrent = 0;
+
+			var8008dcc0[g_ViSlot].fldRegs[0].origin = 1280;
+			var8008dcc0[g_ViSlot].fldRegs[0].yScale = 1024;
+			var8008dcc0[g_ViSlot].fldRegs[0].vStart = 0x002301fd;
+			var8008dcc0[g_ViSlot].fldRegs[0].vBurst = 0x000e0204;
+			var8008dcc0[g_ViSlot].fldRegs[0].vIntr = 2;
+
+			var8008dcc0[g_ViSlot].fldRegs[1].origin = 2560;
+			var8008dcc0[g_ViSlot].fldRegs[1].yScale = 1024;
+			var8008dcc0[g_ViSlot].fldRegs[1].vStart = 0x002501ff;
+			var8008dcc0[g_ViSlot].fldRegs[1].vBurst = 0x000e0204;
+			var8008dcc0[g_ViSlot].fldRegs[1].vIntr = 2;
+
+			var8008de0c = var8008dcc0[g_ViSlot].fldRegs[0].vStart;
+			var8008de10 = var8008dcc0[g_ViSlot].fldRegs[1].vStart;
 		}
-
-		var8008dcc0[g_ViSlot].comRegs.width = g_ViBackData->bufx;
-		var8008dcc0[g_ViSlot].comRegs.xScale = g_ViBackData->bufx * 1024 / 640;
-		var8008dcc0[g_ViSlot].fldRegs[0].origin = g_ViBackData->bufx * 2;
-		var8008dcc0[g_ViSlot].fldRegs[1].origin = g_ViBackData->bufx * 2;
-
-		// 324
-		var8008dcc0[g_ViSlot].fldRegs[0].yScale = g_ViBackData->bufy * 2048 / 440;
-		var8008dcc0[g_ViSlot].fldRegs[1].yScale = g_ViBackData->bufy * 2048 / 440;
-
-		// 3ac
-		reg = var8008dcc0[g_ViSlot].comRegs.hStart;
-		reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d588);
-		var8008dcc0[g_ViSlot].comRegs.hStart = reg;
-		var8008dcc0[g_ViSlot].fldRegs[0].vStart = reg;
-		var8008dcc0[g_ViSlot].fldRegs[1].vStart = reg;
-		var8008de08 = reg;
-
-		v1 = g_ViBackData->bufy * 1024 / var8008dcc0[g_ViSlot].fldRegs[0].yScale;
-
-		// 458
-		if (v1 > 300) {
-			v1 >>= 1;
-		}
-
-		tmp = 277 - v1;
-		reg = ((tmp + 2) << 16) | (tmp + ((v1 - 2) * 2) + 2);
-		reg = ADD_LOW_AND_HI_16_MOD(reg, var8005d58c);
-		var8008de0c = reg;
-		var8008de10 = reg;
 
 		g_SchedViModesPending[g_ViSlot] = true;
 	} else /*534*/ if (g_ViBackData->mode == VIMODE_HI) {
