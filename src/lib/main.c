@@ -484,6 +484,12 @@ void mainLoop(void)
 			g_MainMemaHeapSize = strtol(argFindByPrefix(1, "-ma"), NULL, 0) * 1024;
 		}
 
+		/* Full-resolution diagnostic: retain a bounded streaming room cache
+		 * instead of the performance branch's unbounded whole-level preload. */
+		if (g_StageNum < STAGE_TITLE && g_MainMemaHeapSize < 500 * 1024) {
+			g_MainMemaHeapSize = 500 * 1024;
+		}
+
 		memaReset(mempAlloc(g_MainMemaHeapSize, MEMPOOL_STAGE), g_MainMemaHeapSize);
 		langReset(g_StageNum);
 		playermgrReset();
@@ -550,8 +556,8 @@ void mainLoop(void)
 		gfxReset();
 		joyReset();
 		mblurReset(g_StageNum);
-		lvReset(g_StageNum);
 		viReset(g_StageNum);
+		lvReset(g_StageNum);
 		frametimeCalculate();
 #if PROFILING
 		profileReset();

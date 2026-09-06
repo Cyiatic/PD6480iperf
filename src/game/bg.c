@@ -1291,7 +1291,9 @@ void bgReset(s32 stagenum)
 		g_BgPreload = false;
 		break;
 	default:
-		g_BgPreload = true;
+		/* v75 memory diagnostic: stream through mema, using the existing
+		 * supported path for the four large stages above. */
+		g_BgPreload = false;
 		break;
 	}
 
