@@ -62,7 +62,29 @@ c33ec1459b3092d89f5a3b00f82f6b4dd8e59c294b479aa7d039dc7471455df7;
 ELF a207b10b49eb024063751c403829e9fcf54416dac0026a8e1b3351ccdd2075f3;
 CRC69c42a4a/7729ddf3. Compiled cache layout
 d05a0af19e5587eb69c50e67d27fa5350121a8d7545c0335437d9b094463c3e2.
-Fresh matching-build software tests are in progress. Do not restore a foreign
-build's state. No v86 hardware, Analogue or benchmark pass is claimed yet.
+Fresh matching-build software results now cover all 21 stock solo missions.
+All final samples are unpaused and pass the cache-aware initialization gate:
+no OOM/cache load failure/allocator fault, complete live room data, exact hit
+batches, valid heap partition and correct 640x480 mode. Five initial samples
+were still in opening cutscenes; later ordinary Start inputs reach gameplay.
+Seven other initialized pause samples resume with B. All 33 startup samples
+and direct parent-state/RAM hashes are retained; no failed allocation is
+superseded by a later pass. No foreign-build state or mission RAM poke is used.
+
+Infiltration and Deep Sea additionally move, fire (loaded ammo 8 to 5), pause,
+swipe menus left/right and resume gameplay. Full-screen pause blur is visually
+verified in both. These are short software exercises, not full playthroughs.
+Actual C allocator and blur tests pass; 25 Python inspector/input/provenance
+tests pass. Room colours are gfxAllocateColours/per-frame or room-resident,
+not separate mema allocations leaked on eviction.
+
+Original-N64 validation is still pending. Multiple UNFLoader transfers stall;
+fresh Elgato frames show the EverDrive menu, not a ROM handoff. One existing
+serial-utility attempt printed Finished in 112.142 seconds but timed out on
+process exit; no video was captured before power-off. A later serial transfer
+stalled midway. Do not count those messages as a hardware pass. Plug 1 is OFF,
+independently verified; inspected recordings deleted, small stills retained.
+Private distribution branch mods/performance holds the detailed evidence in
+evidence/v86b-budgeted-rooms. No v86 Analogue or benchmark pass is claimed.
 
 Push source only to the private Cyiatic/PD6480iperf remote, never public origin.
