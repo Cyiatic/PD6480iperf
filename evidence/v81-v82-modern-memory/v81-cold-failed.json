@@ -1,0 +1,71 @@
+{
+  "hardware_verified": false,
+  "elf_sha256": "2acd824977729aa2739dbfec48c43b77e580eb9c6d8d6e8402d80a4aa7d9058a",
+  "rdram_sha256": "ce003ffd88316a5b0451e24fb088e1789fe9f841e2150717ecded86fb5157b14",
+  "layout_sha256": "1e120cec218a3478b32d4e84c996108468ff8d70024a6247f587a2c6a8803589",
+  "resident_code_hashes": {
+    "mainInit": "9dc1012c9e0a81a3dd304eee501ab18771d6c5b3c1d269146551ae25c4758b2c",
+    "mainProc": "a009cf938ce6b0dbda9ee0ffb80f26ca075fef3543b547191dbf7b5bee6c78d4",
+    "__scExec": "53462809f3c2b7584e6a5cb3d82296d3d76a8d1b980fc9e64d78094a66562a60",
+    "__scTryDispatch": "5483d25e1125878893bf2dca95280fc7cbdeb4d0f8762737cc84ae26634fbefb",
+    "schedSubmitGfxTask": "c942c4bee1d3f597181006c2b883a702dafdbe04898b37b1066dfe31d60bd77a",
+    "__scHandleRetrace": "bcc57611356a25f54b75a22009f8d1733748590bf737dd0b73dcb41ab34ac4de",
+    "__scHandleRSP": "68203e002a431d0b97a30ecfd03b715e16ff740c914786fd22c83fa610988eec",
+    "__scHandleRDP": "35851091ba9d8fe7db6481f4e50354e28798de12d62ba7ea36b26d4cf6eb8209",
+    "viReset": "d6d52010d2d8847b5684b71d2e1d3796d8181f1431b31629b4748a2932b7eef8",
+    "bgPreload": "6081d20a343940917380490ce69a826cf4f67ca9ed7c349874cbafce532bb175",
+    "bgLoadRoom": "2adb5923cebf38c3919129d9638281669ae0f1e5b8e5c7055a10d239f0db1cc9",
+    "mblurReset": "417e1f904b41e5845a7714df269a8355814d9e1a96b70026a955adf8ded5d13a",
+    "dmaExec": "f1d2e505d7c5b627eba949ec7cdce75a7b5dc8768f29d6257524a75ae9189ffe",
+    "menuReset": "9dcca4bd4a153a7941573309986b15a5fb9b576c3c9a24b272476061c9c3a179",
+    "menuRenderModels": "8504417bbcc5eed6a03e6dd687b6246153197882ab51d145b4b6745bb9f4670b"
+  },
+  "stage": 38,
+  "level_frame_number": 0,
+  "tick_mode": 1,
+  "in_cutscene": 0,
+  "framebuffers": [
+    "0x8036a000",
+    "0x80400000",
+    "0x8076a000"
+  ],
+  "depth": "0x80496000",
+  "active_dimensions": [
+    576,
+    480
+  ],
+  "active_framebuffer": "0x8036a000",
+  "hires_option": 0,
+  "oom_marker": 112,
+  "oom_requested_bytes": 43888,
+  "eeprom_detected": 1,
+  "player_pause_mode": 0,
+  "room_count": 141,
+  "loaded_rooms": [],
+  "g_MempOnboardPools": {
+    "left": "0x8033be90",
+    "right": "0x8033be98",
+    "free_bytes": 8
+  },
+  "g_MempExpansionPools": {
+    "left": "0x806f5c90",
+    "right": "0x80700690",
+    "free_bytes": 43520
+  },
+  "threads": {
+    "g_MainThread": {
+      "pc": "0x80005524",
+      "cause": "0x8",
+      "badva": "0x9660",
+      "state": 1,
+      "flags": 2
+    },
+    "g_SchedThread": {
+      "pc": "0x80033d54",
+      "cause": "0x400",
+      "badva": "0x0",
+      "state": 8,
+      "flags": 0
+    }
+  }
+}

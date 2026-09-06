@@ -1,0 +1,19 @@
+{
+  "base_revision": "bf3245076d00fbbb29ca1e0906672381f2d43a52",
+  "latest_source_commit": "24995c1c66eaa0e4ac5568f5711f7af7678b5561",
+  "source_branch": "experiments/v82b-menu-scratch",
+  "normal_rom_sha256": "9da54bbde7d42be0441af6031de1711fe647f3a4036e5ca9da381ccc0cea30b1",
+  "normal_elf_sha256": "3f7b1c5165585023087dddfe8b7fb2ee0cb523c520bbeb76f8a8c3b16b902fa8",
+  "crc1": "3387f33c",
+  "crc2": "891c1995",
+  "dark_save_sha256": "fa86c003d8cf71cb099c2c55a92cdea3f00b4d482370a48202d7a0d4b0184a7d",
+  "rom_modified_for_input_or_saves": false,
+  "emulator_uses_save_header_adapter": true,
+  "original_n64_rendered_intro_observed": true,
+  "original_n64_interactive_gameplay_verified": false,
+  "analogue_verified": false,
+  "new_package_published": false,
+  "goal_complete": false,
+  "plug_1_off_confirmed": "2026-09-06T00:09:16-07:00",
+  "recording_and_metadata_deleted_bytes": 166345394
+}
