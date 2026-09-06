@@ -1,6 +1,21 @@
 # v77: retained bounded cache, full 640x480i
 
-Development candidate; not a finished or benchmarked performance release.
+Known mission-load failures; not a working or benchmarked performance release.
+
+## Subsequent broader test: Infiltration and Rescue fail
+
+Perfect Agent mission-load tests on September 5 found stage-pool allocation
+failure before the first rendered level frame. Infiltration requested 44,000
+bytes with 33,376 left; Rescue requested 33,632 with 32,320 left. In both cases,
+the separately reserved 512,000-byte mema cache was completely unused. This
+contradicts any broad claim that v77 is playable throughout the game.
+
+Skedar Ruins was loaded through the actual menus and reached first-person play
+on Perfect Agent, with 640x480 active buffers and no allocation failure. Further
+tests injected only the stage/index/Perfect Agent/solo menu-selection word, then
+used normal A input to invoke Accept Mission. Attack Ship and Duel reached normal
+gameplay; Defection and Crash Site rendered but were still in cutscenes when the
+short test ended. None of those narrower checks cures the Area 51 load failures.
 
 ## Changes from v76
 

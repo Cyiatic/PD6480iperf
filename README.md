@@ -6,7 +6,33 @@ No accurate benchmarking has been done.
 
 The mod is based off the framerate graph mod, so you can press L to toggle the frame rate graph.
 
-## Latest development candidate: v77 (console intro/3D scene verified)
+## v78: known War opening freeze; follow-up fix in progress
+
+The broader 21-mission matrix found a War opening freeze despite 20 initial
+mission-start passes. Its generated pad file advertises 425 cover records but
+contains only 200; setup writes past that data into model tables. Four generated
+pad files have this count mismatch. v78 is not a working full-game release.
+The follow-up fixes the generator count and adds structural bounds checks.
+
+v78 addresses the Infiltration/Rescue startup allocation failures and moves
+temporary portal-distance work into reserved loading-time scratch space.
+It retains fixed full 640x480i colour/depth buffers and the L graph. Both
+positions of the legacy Hi-Res checkbox use the same full-resolution mode.
+
+The exact ROM reaches the animated Defection opening on an original N64 through
+ED64, verified with fresh Elgato frames. Emulator menu-input tests enable and
+disable Hi-Res and resume movement with it enabled; initial Perfect Agent
+mission-load tests include the previously failing Area 51 variants.
+These are limited tests, not an interactive hardware or Analogue 3D pass.
+Whole-level preloading is still disabled, and performance remains unbenchmarked.
+See [v78 evidence, hashes and remaining gates](docs/PD6480iperf-v78.md).
+
+## v77: known Infiltration/Rescue load failures
+
+Broader Perfect Agent tests found stage-allocation failures in Infiltration and
+Rescue before the first gameplay frame. v77 is not a working full-game release;
+the earlier intro/CI passes below are limited evidence. v78 addresses the initial
+failures. See [the failure details](docs/PD6480iperf-v77.md).
 
 v77 retains full 640x480 colour/depth storage, the L graph/framebuffer readout,
 and v76's bounded streaming cache. It shares identical read-only constants and
