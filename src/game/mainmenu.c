@@ -391,6 +391,20 @@ static s32 menuhandlerShowMissionTime(s32 operation, struct menuitem *item, unio
 	return 0;
 }
 
+static s32 menuhandlerHiRes(s32 operation, struct menuitem *item, union handlerdata *data)
+{
+	/* Never alter VI mode or allocations while a graphics task is live. */
+	switch (operation) {
+	case MENUOP_GET:
+		return g_HiResEnabled;
+	case MENUOP_SET:
+		g_HiResEnabled = data->checkbox.value != 0;
+		g_Vars.modifiedfiles |= MODFILE_GAME;
+		break;
+	}
+	return 0;
+}
+
 static s32 menuhandlerAlwaysShowTarget(s32 operation, struct menuitem *item, union handlerdata *data)
 {
 	u32 mpchrnum;
@@ -2262,6 +2276,14 @@ struct menuitem g_VideoOptionsMenuItems[] = {
 		0,
 		menuhandlerScreenRatio,
 	},
+	{
+		MENUITEMTYPE_CHECKBOX,
+		0,
+		0,
+		L_OPTIONS_217, // "Hi-Res" (full 480i is fixed either way)
+		0,
+		menuhandlerHiRes,
+	},
 #if PAL
 	{
 		MENUITEMTYPE_DROPDOWN,
@@ -2315,6 +2337,14 @@ struct menuitem g_2PMissionVideoOptionsMenuItems[] = {
 		L_OPTIONS_216, // "Ratio"
 		0,
 		menuhandlerScreenRatio,
+	},
+	{
+		MENUITEMTYPE_CHECKBOX,
+		0,
+		0,
+		L_OPTIONS_217, // "Hi-Res" (full 480i is fixed either way)
+		0,
+		menuhandlerHiRes,
 	},
 #if PAL
 	{

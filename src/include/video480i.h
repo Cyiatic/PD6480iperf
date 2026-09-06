@@ -1,0 +1,8 @@
+#ifndef _IN_VIDEO480I_H
+#define _IN_VIDEO480I_H
+
+#define PD480_WIDTH 640
+#define PD480_HEIGHT 480
+#define PD480_IMAGE_BYTES (PD480_WIDTH * PD480_HEIGHT * 2)
+
+#endif

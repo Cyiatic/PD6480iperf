@@ -101,6 +101,8 @@ f32 g_CutsceneBarFrac; // 0 when bars across the top and bottom, 1 when fullscre
 s16 g_SpawnPoints[MAX_SPAWNPOINTS];
 s32 g_NumSpawnPoints;
 
+bool g_HiResEnabled = false;
+
 struct vimode g_ViModes[] = {
 	//  fbwidth
 	//  |    fbheight
@@ -114,8 +116,8 @@ struct vimode g_ViModes[] = {
 	//  |    |    |  |                 |    |  |     |  |     cinemaheight
 	//  |    |    |  |                 |    |  |     |  |     |  cinematop
 	//  |    |    |  |                 |    |  |     |  |     |  |
-	{ 320, 220, 320, 1,                1, 220, 0,  180, 20, 136, 42  }, // default
-	{ 640, 220, 640, 0.5,              1, 220, 0,  180, 20, 136, 42  }, // hi-res
+	{ 640, 480, 640, 1,                1, 480, 0,  392, 44, 296, 92  }, // fixed 480i
+	{ 640, 480, 640, 1,                1, 480, 0,  392, 44, 296, 92  }, // legacy option, same buffers
 	{ 320, 480, 320, 2,                2, 440, 20, 360, 60, 272, 104 }, // unused
 	{ 440, 330, 440, 1,                1, 330, 0,  330, 0,  330, 0   }, // unused
 	{ 440, 240, 440, 0.72727274894714, 1, 220, 0,  180, 0,  136, 0   }, // unused

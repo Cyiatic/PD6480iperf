@@ -180,7 +180,7 @@ SECTIONS
 	BEGIN_SEG(lib) SUBALIGN(0x10)
 	{
 		LIBFILES(.text)
-		LIBFILES(.rodata)
+		LIBFILES(.rodata .rodata.*)
 		. = ALIGN(0x10);
 	}
 	END_SEG(lib)
@@ -282,7 +282,7 @@ SECTIONS
 	BEGIN_SEG(game)
 	{
 		GAMEFILES(.text)
-		GAMEFILES(.rodata)
+		GAMEFILES(.rodata .rodata.*)
 		. = ALIGN(0x10);
 	}
 	END_SEG(game)

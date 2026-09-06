@@ -7,6 +7,8 @@
 extern bool g_LvIsPaused;
 extern s32 g_StageTimeElapsed60;
 extern s32 g_Difficulty;
+extern u8 g_LvOom;
+extern u32 g_LvOomSize;
 
 void lvInit(void);
 void lvReset(s32 stagenum);

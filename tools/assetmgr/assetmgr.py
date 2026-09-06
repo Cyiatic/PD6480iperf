@@ -1,5 +1,7 @@
 import os
+import shutil
 import subprocess
+import tempfile
 
 def align4(value):
     return (value + 3 | 3) ^ 3
@@ -107,13 +109,14 @@ def write_object(data, filename):
     fd.close()
 
 def zip(data):
-    filename = '/tmp/pd-assetmgr-%d' % os.getpid()
+    filename = os.path.join(tempfile.gettempdir(), 'pd-assetmgr-%d' % os.getpid())
 
     fd = open(filename, 'wb')
     fd.write(data)
     fd.close()
 
-    stream = subprocess.check_output(['tools/gzip', '-c', '--no-name', '--best', filename])[10:-8]
+    gzip_command = shutil.which('gzip') or 'tools/gzip'
+    stream = subprocess.check_output([gzip_command, '-c', '--no-name', '--best', filename])[10:-8]
     os.remove(filename)
 
     return b'\x11\x73' + len(data).to_bytes(3, 'big') + stream

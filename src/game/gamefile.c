@@ -68,6 +68,7 @@ void gamefileApplyOptions(struct gamefile *file)
 
 	g_InGameSubtitles = pakHasBitflag(GAMEFILEFLAG_INGAMESUBTITLES, file->flags);
 	g_CutsceneSubtitles = pakHasBitflag(GAMEFILEFLAG_CUTSCENESUBTITLES, file->flags);
+	g_HiResEnabled = pakHasBitflag(GAMEFILEFLAG_HIRES, file->flags);
 
 	// Duplicate
 	optionsSetPaintball(player2, pakHasBitflag(GAMEFILEFLAG_P2_PAINTBALL, file->flags));
@@ -340,7 +341,7 @@ s32 gamefileSave(s32 device, s32 fileid, u16 deviceserial)
 	pakSetBitflag(GAMEFILEFLAG_SCREENSIZE_WIDE, g_GameFile.flags, g_ScreenSize == SCREENSIZE_WIDE);
 	pakSetBitflag(GAMEFILEFLAG_SCREENSIZE_CINEMA, g_GameFile.flags, g_ScreenSize == SCREENSIZE_CINEMA);
 
-	pakSetBitflag(GAMEFILEFLAG_HIRES, g_GameFile.flags, 0);
+	pakSetBitflag(GAMEFILEFLAG_HIRES, g_GameFile.flags, g_HiResEnabled);
 	pakSetBitflag(GAMEFILEFLAG_INGAMESUBTITLES, g_GameFile.flags, g_InGameSubtitles);
 	pakSetBitflag(GAMEFILEFLAG_CUTSCENESUBTITLES, g_GameFile.flags, g_CutsceneSubtitles);
 	pakSetBitflag(GAMEFILEFLAG_LANGFILTERON, g_GameFile.flags, g_Vars.langfilteron);

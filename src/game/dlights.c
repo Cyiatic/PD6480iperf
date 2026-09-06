@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "constants.h"
+#include "video480i.h"
 #include "game/cheats.h"
 #include "game/dlights.h"
 #include "game/gfxmemory.h"
@@ -147,6 +148,9 @@ static s32 func0f177c8c(u8 *arg0, s32 *arg1, s32 *arg2)
 
 static u32 func0f000920(s32 portalnum1, s32 portalnum2)
 {
+	if (!var80061430) {
+		return 32767; /* Allocation failure is separately exposed by g_LvOom. */
+	}
 	if (portalnum1 != portalnum2) {
 		s32 upper = (portalnum1 > portalnum2) ? portalnum1 : portalnum2;
 		s32 lower = (portalnum1 < portalnum2) ? portalnum1 : portalnum2;
@@ -1598,12 +1602,21 @@ static void func0f004c6c(void)
 	s32 s4;
 	u8 *ptr;
 	u8 *backupptr;
+	u32 scratchsize;
 
 	sp44 = ALIGN16(0x2000);
 	sp40 = ALIGN16(g_NumPortals * 4);
 	sp3c = ALIGN16(g_NumPortals * 0xc);
 	sp38 = ALIGN16(g_NumPortals * 4);
 	sp34 = ALIGN16(g_NumPortals * 2);
+	scratchsize = sp44 + sp40 + sp3c + sp38 + g_NumPortals * sp34;
+	/* This temporary calculation finishes before the depth image is used. */
+	if (scratchsize > PD480_IMAGE_BYTES || !mblurGetAllocation()) {
+		g_LvOom = 's';
+		g_LvOomSize = scratchsize;
+		var80061430 = NULL;
+		return;
+	}
 
 	for (i = 0, s4 = sp38; i < g_NumPortals; i++) {
 		if (i != 0) {
@@ -1613,6 +1626,10 @@ static void func0f004c6c(void)
 
 	s4 = ALIGN16(s4);
 	ptr = mempAlloc(ALIGN16(s4), MEMPOOL_STAGE);
+	if (!ptr) {
+		var80061430 = NULL;
+		return;
+	}
 	var80061430 = (void *)ptr;
 
 	ptr += sp38;
@@ -1632,7 +1649,7 @@ static void func0f004c6c(void)
 	s4 += sp38;
 	s4 += g_NumPortals * sp34;
 
-	ptr = mempGetNextStageAllocation();
+	ptr = mblurGetAllocation();
 	var8009cad0 = (void *)ptr;
 	ptr += sp44;
 

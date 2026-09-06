@@ -276,6 +276,10 @@ static void mainInit(void)
 			if (receivedmsg == OS_SC_RETRACE_MSG) {
 				viUpdateMode();
 				rdpCreateTask(var8005dcc8, var8005dcf0, 0, (OSMesg) OS_SC_DONE_MSG);
+				/* Boot submissions are outside the main loop's in-flight limit. */
+				do {
+					osRecvMesg(&g_SchedMesgQueue, (OSMesg) &receivedmsg, OS_MESG_BLOCK);
+				} while (receivedmsg != OS_SC_DONE_MSG);
 				j++;
 			}
 		}

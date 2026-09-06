@@ -5,6 +5,8 @@
 #include "types.h"
 
 extern struct vimode g_ViModes[];
+/* Stock save/UI preference only; rendering is fixed at full 480i. */
+extern bool g_HiResEnabled;
 
 f32 playerChooseSpawnLocation(f32 chrradius, struct coord *dstpos, s16 *dstrooms, struct prop *prop, s16 *spawnpads, s32 numspawnpads);
 f32 playerChooseGeneralSpawnLocation(f32 chrradius, struct coord *pos, s16 *rooms, struct prop *prop);

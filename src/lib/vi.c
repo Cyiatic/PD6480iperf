@@ -13,6 +13,7 @@
 #include "lib/mtx.h"
 #include "data.h"
 #include "types.h"
+#include "video480i.h"
 
 #define TO_U16_A(x) ((u16)(x))
 #define TO_U16_B(x) ((x) & 0xffff)
@@ -31,37 +32,37 @@ u16 *g_FrameBuffers[3];
 struct rend_vidat g_ViDataArray[] = {
 	{
 		0, 0, 0, 0,
-		320, 220,         // x and y
+		640, 480,         // x and y
 		60,               // fovy
-		1.4545454978943f, // aspect
+		1.3333333730698f, // aspect
 		30,               // znear
 		10000,            // zfar
-		320, 220,         // bufx and bufy
-		320, 220,         // viewx and viewy
+		640, 480,         // bufx and bufy
+		640, 480,         // viewx and viewy
 		0, 0,             // viewleft and viewtop
 		true,             // usezbuf
 		0,
 	}, {
 		0, 0, 0, 0,
-		320, 220,         // x and y
+		640, 480,         // x and y
 		60,               // fovy
-		1.4545454978943f, // aspect
+		1.3333333730698f, // aspect
 		30,               // znear
 		10000,            // zfar
-		320, 220,         // bufx and bufy
-		320, 220,         // viewx and viewy
+		640, 480,         // bufx and bufy
+		640, 480,         // viewx and viewy
 		0, 0,             // viewleft and viewtop
 		true,             // usezbuf
 		0,
 	}, {
 		0, 0, 0, 0,
-		320, 220,         // x and y
+		640, 480,         // x and y
 		60,               // fovy
-		1.4545454978943f, // aspect
+		1.3333333730698f, // aspect
 		30,               // znear
 		10000,            // zfar
-		320, 220,         // bufx and bufy
-		320, 220,         // viewx and viewy
+		640, 480,         // bufx and bufy
+		640, 480,         // viewx and viewy
 		0, 0,             // viewleft and viewtop
 		true,             // usezbuf
 		0,
@@ -127,13 +128,13 @@ void viConfigureForLegal(void)
 	s32 i;
 
 	for (i = 0; i < 3; i++) {
-		g_ViDataArray[i].x = 320;
-		g_ViDataArray[i].bufx = 320;
-		g_ViDataArray[i].viewx = 320;
+		g_ViDataArray[i].x = 640;
+		g_ViDataArray[i].bufx = 640;
+		g_ViDataArray[i].viewx = 640;
 
-		g_ViDataArray[i].y = 220;
-		g_ViDataArray[i].bufy = 220;
-		g_ViDataArray[i].viewy = 220;
+		g_ViDataArray[i].y = 480;
+		g_ViDataArray[i].bufy = 480;
+		g_ViDataArray[i].viewy = 480;
 	}
 
 #if PAL
@@ -141,12 +142,12 @@ void viConfigureForLegal(void)
 #endif
 }
 
-const s16 g_ViModeWidths[] = {320, 320, 640};
+const s16 g_ViModeWidths[] = {PD480_WIDTH, PD480_WIDTH, PD480_WIDTH};
 
 #if PAL
 const s16 g_ViModeHeights[] = {220, 220, 504};
 #else
-const s16 g_ViModeHeights[] = {220, 220, 440};
+const s16 g_ViModeHeights[] = {PD480_HEIGHT, PD480_HEIGHT, PD480_HEIGHT};
 #endif
 
 /**
@@ -163,29 +164,22 @@ void viReset(s32 stagenum)
 {
 	s32 i;
 	s32 fbsize;
-	u8 *ptr;
 	u8 *fb0;
 	u8 *fb1;
 	u8 *fb2;
 
 	if (stagenum == STAGE_TITLE) {
 		viSetMode(VIMODE_HI);
-		fbsize = g_ViModeWidths[2] * g_ViModeHeights[2] * 2;
-
-		ptr = mempAlloc(fbsize * 3 + 0x40, MEMPOOL_STAGE);
-		ptr = (u8 *)(((u32)ptr + 0x3f) & 0xffffffc0);
-
-		g_FrameBuffers[0] = (u16 *) ptr;
-		g_FrameBuffers[1] = (u16 *) (ptr + fbsize);
-		g_FrameBuffers[2] = (u16 *) (ptr + fbsize * 2);
 	} else {
 		viSetMode(VIMODE_LO);
-		fbsize = FRAMEBUFFER_SIZE;
-
-		g_FrameBuffers[0] = (void *) (0x80400000 - fbsize);
-		g_FrameBuffers[1] = (void *) (0x80400000);
-		g_FrameBuffers[2] = (void *) (0x80800000 - fbsize);
 	}
+
+	/* The newer engine reserves these three bank-separated images in boot
+	 * and memp. Use them for titles too instead of allocating another set. */
+	fbsize = FRAMEBUFFER_SIZE;
+	g_FrameBuffers[0] = (void *) (0x80400000 - fbsize);
+	g_FrameBuffers[1] = (void *) (0x80400000);
+	g_FrameBuffers[2] = (void *) (0x80800000 - fbsize);
 
 	g_ViFrontData->fb = g_FrameBuffers[g_ViFrontIndex];
 	g_ViBackData->fb = g_FrameBuffers[g_ViBackIndex];
@@ -371,6 +365,36 @@ void viUpdateMode(void)
 	} else {
 		// 8f4
 		g_SchedViModesPending[g_ViSlot] = false;
+	}
+
+	/* Standalone 640x480i patch's NTSC HAF1 timing. Keep the newer engine's
+	 * logical LO mode and triple-buffer/scheduler contract unchanged. */
+	if (osTvType == OS_TV_NTSC && g_ViBackData->mode == VIMODE_LO
+			&& g_ViBackData->bufx == PD480_WIDTH && g_ViBackData->bufy == PD480_HEIGHT) {
+		OSViMode *mode = &var8008dcc0[g_ViSlot];
+		*mode = osViModeTable[OS_VI_NTSC_HAF1];
+		mode->comRegs.ctrl = 0x0000305e;
+		mode->comRegs.width = 1280;
+		mode->comRegs.burst = 0x03e52239;
+		mode->comRegs.vSync = 524;
+		mode->comRegs.hSync = 0x00000c15;
+		mode->comRegs.leap = 0x0c150c15;
+		mode->comRegs.hStart = 0x006c02ec;
+		mode->comRegs.xScale = 1024;
+		mode->comRegs.vCurrent = 0;
+		mode->fldRegs[0].origin = 1280;
+		mode->fldRegs[0].yScale = 1024;
+		mode->fldRegs[0].vStart = 0x002301fd;
+		mode->fldRegs[0].vBurst = 0x000e0204;
+		mode->fldRegs[0].vIntr = 2;
+		mode->fldRegs[1].origin = 2560;
+		mode->fldRegs[1].yScale = 1024;
+		mode->fldRegs[1].vStart = 0x002501ff;
+		mode->fldRegs[1].vBurst = 0x000e0204;
+		mode->fldRegs[1].vIntr = 2;
+		var8008de0c = mode->fldRegs[0].vStart;
+		var8008de10 = mode->fldRegs[1].vStart;
+		g_SchedViModesPending[g_ViSlot] = true;
 	}
 
 	// 908

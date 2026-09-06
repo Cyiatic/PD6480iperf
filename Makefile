@@ -15,6 +15,8 @@
 #  * jpn-final
 
 ROMID ?= ntsc-final
+PYTHON ?= python3
+HOST_EXE ?=
 
 # MATCHING - Whether to build a matching ROM (1) or a custom one (0).
 #
@@ -521,7 +523,7 @@ else ifeq ($(COMPILER), gcc)
         -fno-builtin \
         -fno-common \
         -fno-inline-functions \
-        -fno-merge-constants \
+        -fmerge-constants \
         -fno-strict-aliasing \
         -fno-zero-initialized-in-bss \
         -fwrapv \
@@ -608,7 +610,7 @@ build/recomp/%/err.english.cc:
 # Link all objects together with ld to make stage1.elf. In this stage, the game,
 # lib and data segments are uncompressed and placed past the end of the ROM.
 $(B_DIR)/stage1.elf: $(O_FILES) ld/pd.ld
-	cpp -DROMID=$(ROMID) -DVERSION=$(VERSION) -DROMALLOCATION_DATA=$(ROMALLOCATION_DATA) -DROMALLOCATION_LIB=$(ROMALLOCATION_LIB) -DROMALLOCATION_GAME=$(ROMALLOCATION_GAME) -DROM_SIZE=$(ROM_SIZE) -P ld/pd.ld -o $(B_DIR)/pd.ld
+	cpp -Umips -DROMID=$(ROMID) -DVERSION=$(VERSION) -DROMALLOCATION_DATA=$(ROMALLOCATION_DATA) -DROMALLOCATION_LIB=$(ROMALLOCATION_LIB) -DROMALLOCATION_GAME=$(ROMALLOCATION_GAME) -DROM_SIZE=$(ROM_SIZE) -P ld/pd.ld -o $(B_DIR)/pd.ld
 	$(TOOLCHAIN)-ld --no-check-sections -z muldefs -T $(B_DIR)/pd.ld --print-map -o $@ > $(B_DIR)/pd.map
 
 $(B_DIR)/stage1.bin: $(B_DIR)/stage1.elf
@@ -617,11 +619,11 @@ $(B_DIR)/stage1.bin: $(B_DIR)/stage1.elf
 # Build the final ROM from stage1.bin using mkrom
 # mkrom handles calculating the piracy checksums, zipping segments and
 # calculating the ROM checksum.
-$(B_DIR)/pd.z64: $(B_DIR)/stage1.bin tools/mkrom/mkrom
-	tools/mkrom/mkrom $(B_DIR)/stage1.bin $(B_DIR)/pd.map $(PIRACYCHECKS) $(ZIPMAGIC) $(COPYLEN) $@
+$(B_DIR)/pd.z64: $(B_DIR)/stage1.bin tools/mkrom/mkrom$(HOST_EXE)
+	tools/mkrom/mkrom$(HOST_EXE) $(B_DIR)/stage1.bin $(B_DIR)/pd.map $(PIRACYCHECKS) $(ZIPMAGIC) $(COPYLEN) $@
 	@echo -e "\033[0;32mROM written to $@\033[0m"
 
-tools/mkrom/mkrom:
+tools/mkrom/mkrom$(HOST_EXE):
 	$(MAKE) -C tools/mkrom
 
 ################################################################################
@@ -676,53 +678,53 @@ ASSETMGR_O_FILES := \
 
 # Anims
 $(B_DIR)/assets/animations.o: $(A_DIR)/animations.json
-	tools/assetmgr/mkanims
+	$(PYTHON) tools/assetmgr/mkanims
 
 # Lang
 $(B_DIR)/assets/files/L%E.o: $(A_DIR)/lang/%.json
-	tools/assetmgr/mklang $< en
+	$(PYTHON) tools/assetmgr/mklang $< en
 
 $(B_DIR)/assets/files/L%J.o: $(A_DIR)/lang/%.json
-	tools/assetmgr/mklang $< jp
+	$(PYTHON) tools/assetmgr/mklang $< jp
 
 $(B_DIR)/assets/files/L%P.o: $(A_DIR)/lang/%.json
-	tools/assetmgr/mklang $< gb
+	$(PYTHON) tools/assetmgr/mklang $< gb
 
 $(B_DIR)/assets/files/L%_str_f.o: $(A_DIR)/lang/%.json
-	tools/assetmgr/mklang $< fr
+	$(PYTHON) tools/assetmgr/mklang $< fr
 
 $(B_DIR)/assets/files/L%_str_g.o: $(A_DIR)/lang/%.json
-	tools/assetmgr/mklang $< de
+	$(PYTHON) tools/assetmgr/mklang $< de
 
 $(B_DIR)/assets/files/L%_str_i.o: $(A_DIR)/lang/%.json
-	tools/assetmgr/mklang $< it
+	$(PYTHON) tools/assetmgr/mklang $< it
 
 $(B_DIR)/assets/files/L%_str_s.o: $(A_DIR)/lang/%.json
-	tools/assetmgr/mklang $< es
+	$(PYTHON) tools/assetmgr/mklang $< es
 
 # Pads
 $(B_DIR)/assets/files/bgdata/bg_%_padsZ.o: $(A_DIR)/pads/%.json
-	tools/assetmgr/mkpads $<
+	$(PYTHON) tools/assetmgr/mkpads $<
 
 # Pads - but this is the zipped non-obj, for make test
 $(B_DIR)/assets/files/bgdata/bg_%_padsZ: $(A_DIR)/pads/%.json
-	tools/assetmgr/mkpads $<
+	$(PYTHON) tools/assetmgr/mkpads $<
 
 # Sequences
 $(B_DIR)/assets/sequences.o: $(A_DIR)/sequences.json
-	tools/assetmgr/mksequences
+	$(PYTHON) tools/assetmgr/mksequences
 
 # Textures
 $(B_DIR)/assets/textureslist.o: $(A_DIR)/textures.json
-	tools/assetmgr/mktextures
+	$(PYTHON) tools/assetmgr/mktextures
 
 # Tiles
 $(B_DIR)/assets/files/bgdata/bg_%_tilesZ.o: $(A_DIR)/tiles/%.json
-	tools/assetmgr/mktiles $<
+	$(PYTHON) tools/assetmgr/mktiles $<
 
 # Tiles - but this is the zipped non-obj, for make test
 $(B_DIR)/assets/files/bgdata/bg_%_tilesZ: $(A_DIR)/tiles/%.json
-	tools/assetmgr/mktiles $<
+	$(PYTHON) tools/assetmgr/mktiles $<
 
 ################################################################################
 # Files
@@ -797,7 +799,7 @@ $(B_DIR)/ailists/%.bin: $(B_DIR)/ailists/%.elf
 	$(TOOLCHAIN)-objcopy $< $@ -O binary
 
 $(B_DIR)/ailists/%asm.s: $(B_DIR)/ailists/%.bin
-	tools/ai2asm/ai2asm.py $< > $@
+	$(PYTHON) tools/ai2asm/ai2asm.py $< > $@
 
 ################################################################################
 # Miscellaneous
