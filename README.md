@@ -6,6 +6,21 @@ No accurate benchmarking has been done.
 
 The mod is based off the framerate graph mod, so you can press L to toggle the frame rate graph.
 
+## Latest development candidate: v74 (not hardware-verified)
+
+v74 corrects a demonstrated undersized depth allocation: the previous 640x480
+gameplay path still allocated only 640x220 depth pixels. It also corrects the
+co-op colour allocation and adds the active framebuffer dimensions to the L
+graph. Gameplay is fixed at 640x480 independently of the legacy Hi-Res checkbox.
+
+The ROM passes the compressed-asset audit, the linked-ELF buffer-size gate,
+and an exact V1.1 xdelta round-trip. **It has not been uploaded or tested on
+console/Analogue.** Hardware access failed before power control/upload; see
+[v74 details and checks](docs/PD6480iperf-v74.md).
+
+Historical sections below are development records, not recommendations to
+use earlier candidates. The overall 480i/performance goal remains unverified.
+
 ## Current failure notice — v7 is not a working candidate
 
 The user confirmed that `PD6480iperf-v7-raw-haf-2buf-retail-header.z64`
