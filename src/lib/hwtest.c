@@ -146,13 +146,15 @@ void pdHwReplay(struct contsample *samples, s32 first, s32 last)
 		else if (pdHwPulse(tick % 120, 60)) pad.button = START_BUTTON;
 		break;
 	case 3:
+		/* Pause before unattended Perfect Agent combat kills the player. */
+		if (g_Vars.currentplayer && g_Vars.currentplayer->isdead) { pdHwPhase(99); break; }
 		if (pdHwPulse(tick, 30)) pad.button = L_TRIG;
-		if (tick >= 180 && tick < 300) pad.stick_y = 45;
-		if (tick >= 360 && tick < 450) pad.stick_x = 25;
-		if (tick >= 510 && tick < 620) pad.stick_y = 45;
-		if (tick > 720) pdHwPhase(4);
+		if (tick >= 45 && tick < 105) pad.stick_y = 45;
+		if (tick >= 120 && tick < 165) pad.stick_x = 25;
+		if (tick > 180) pdHwPhase(4);
 		break;
 	case 4:
+		if (g_Vars.currentplayer && g_Vars.currentplayer->isdead) { pdHwPhase(99); break; }
 		g_MpPlayerNum = 0;
 		if (tick == 1) playerPause(MENUROOT_MAINMENU);
 		/* Repeated ordinary-input swipes over the paused full-screen blur. */
@@ -164,6 +166,7 @@ void pdHwReplay(struct contsample *samples, s32 first, s32 last)
 		}
 		break;
 	case 5:
+		if (g_Vars.currentplayer && g_Vars.currentplayer->isdead) { pdHwPhase(99); break; }
 		if (!dialog || dialog->definition != &g_VideoOptionsMenuDialog) {
 			pdHwPhase(99);
 			break;
@@ -182,6 +185,7 @@ void pdHwReplay(struct contsample *samples, s32 first, s32 last)
 		else if (pdHwPulse(tick % 90, 30)) pad.button = B_BUTTON;
 		break;
 	case 7:
+		if (g_Vars.currentplayer && g_Vars.currentplayer->isdead) { pdHwPhase(99); break; }
 		if (pdHwPulse(tick, 60) || pdHwPulse(tick, 150)) pad.button = L_TRIG;
 		if (tick % 600 >= 200 && tick % 600 < 290) pad.stick_x = 35;
 		if (tick % 600 >= 360 && tick % 600 < 450) pad.stick_y = 45;
