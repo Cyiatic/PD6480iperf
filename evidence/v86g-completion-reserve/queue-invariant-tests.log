@@ -1,0 +1,3 @@
+actual: PASS:93 slow-consumer queue states,two completions preserved,boot retrace,500000 interleavings
+one-slot-negative: FAIL line 46: osSendMesg(&q,OS_SC_DONE_MSG,0)==0
+no-slot-negative: FAIL line 46: osSendMesg(&q,OS_SC_DONE_MSG,0)==0

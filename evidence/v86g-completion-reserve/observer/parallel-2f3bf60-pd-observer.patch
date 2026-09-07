@@ -1,0 +1,264 @@
+diff --git a/Makefile.common b/Makefile.common
+index 05743ee..3e1ae78 100644
+--- a/Makefile.common
++++ b/Makefile.common
+@@ -132,6 +132,7 @@ SOURCES_C += \
+ 	$(CORE_DIR)/src/device/r4300/cp2.c \
+ 	$(CORE_DIR)/src/device/r4300/idec.c \
+ 	$(CORE_DIR)/src/device/r4300/instr_counters.c \
++	$(CORE_DIR)/src/device/r4300/pd_observer.c \
+ 	$(CORE_DIR)/src/device/r4300/interrupt.c \
+ 	$(CORE_DIR)/src/device/rcp/mi/mi_controller.c \
+ 	$(CORE_DIR)/src/device/r4300/pure_interp.c \
+diff --git a/mupen64plus-core/src/device/r4300/cached_interp.c b/mupen64plus-core/src/device/r4300/cached_interp.c
+index 14a5101..091ec1e 100644
+--- a/mupen64plus-core/src/device/r4300/cached_interp.c
++++ b/mupen64plus-core/src/device/r4300/cached_interp.c
+@@ -985,6 +985,7 @@ void invalidate_cached_code_hacktarux(struct r4300_core* r4300, uint32_t address
+     }
+ }
+ 
++#include "pd_observer.h"
+ void run_cached_interpreter(struct r4300_core* r4300)
+ {
+     while (!*r4300_stop(r4300))
+@@ -997,6 +998,7 @@ void run_cached_interpreter(struct r4300_core* r4300)
+ #ifdef DBG
+         if (g_DebuggerActive) update_debugger((*r4300_pc_struct(r4300))->addr);
+ #endif
++        pd_observe_guest(r4300, (*r4300_pc_struct(r4300))->addr);
+         (*r4300_pc_struct(r4300))->ops();
+     }
+ }
+diff --git a/mupen64plus-core/src/device/r4300/pd_observer.c b/mupen64plus-core/src/device/r4300/pd_observer.c
+new file mode 100644
+index 0000000..565e4de
+--- /dev/null
++++ b/mupen64plus-core/src/device/r4300/pd_observer.c
+@@ -0,0 +1,122 @@
++/* Local diagnostic for the exact normal PD v86f ELF (82d6a0e7...).
++ * The guest ROM, RAM, event queue and CP0 cycle accounting are never modified.
++ * Enable explicitly with PD_OBSERVER=1. Bounded to 8192 lines and the first
++ * eight Extraction frames. Addresses/ABI come from that ELF and its V6 probe.
++ */
++#include "pd_observer.h"
++#include "device/device.h"
++#include "device/r4300/r4300_core.h"
++#include "main/main.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++
++static int enabled = -1;
++static int authenticated;
++static unsigned sequence;
++
++static uint32_t guest_word(uint32_t address)
++{
++    if ((address & 3) || address < 0x80000000u || address > 0x807ffffcu)
++        return 0xdeadbeefu;
++    return g_dev.rdram.dram[(address & 0x7fffffu) >> 2];
++}
++
++static int active(void)
++{
++    static const uint32_t entry[12] = {
++        0x3c0a8007, 0x254a7d80, 0x01445021, 0x8d490000,
++        0x03e09025, 0x11200025, 0x00000000, 0x8d2b0008,
++        0x8d2c0010, 0x016c082a, 0x10200020, 0x00000000
++    };
++    unsigned i;
++    if (enabled == -1) {
++        const char *value = getenv("PD_OBSERVER");
++        enabled = value && !strcmp(value, "1");
++    }
++    if (!enabled || sequence >= 8192 || !g_dev.rdram.dram)
++        return 0;
++    /* Loading stays at frame zero and emits hundreds of audio tasks. */
++    if (guest_word(0x800440d8) != 34 || guest_word(0x800756dc) == 0
++            || guest_word(0x800756dc) > 8)
++        return 0;
++    if (!authenticated) {
++        for (i = 0; i < 12; ++i) {
++            if (guest_word(0x80003208u + 4u * i) != entry[i]) {
++                fprintf(stderr, "PDOBS rejected: normal-v86f send_mesg mismatch\n");
++                enabled = 0;
++                return 0;
++            }
++        }
++        authenticated = 1;
++        fprintf(stderr, "PDOBS authenticated normal-v86f enqueue code; read-only; limit8192\n");
++    }
++    return 1;
++}
++
++void pd_observe(const char *event, uint32_t a, uint32_t b)
++{
++    uint32_t *cp0;
++    uint32_t rsp;
++    uint32_t thread, queue;
++    unsigned int *sp_due;
++    if (!active()) return;
++    cp0 = r4300_cp0_regs(&g_dev.r4300.cp0);
++    rsp = guest_word(0x8006b460); /* g_Sched + compiler-derived curRSP offset0x88 */
++    thread = guest_word(0x8004668c);
++    queue = (!strcmp(event, "guest_sendcall") || !strcmp(event, "guest_recvcall")) ? a :
++        ((!strcmp(event, "guest_send") || !strcmp(event, "guest_fullcheck")) ? b : 0);
++    sp_due = get_event(&g_dev.r4300.cp0.q, SP_INT);
++    fprintf(stderr,
++        "PDOBS {\"n\":%u,\"ev\":\"%s\",\"pc\":\"%08x\",\"count\":\"%08x\","
++        "\"frame\":%u,\"a\":\"%08x\",\"b\":\"%08x\",\"sp\":\"%08x\","
++        "\"mi\":\"%08x\",\"mask\":\"%08x\",\"cause\":\"%08x\",\"sr\":\"%08x\","
++        "\"dp\":\"%08x\",\"type\":%u,\"locked\":%u,\"sp_due\":\"%08x\","
++        "\"rsp\":\"%08x\",\"rs\":\"%08x\",\"rdp\":\"%08x\","
++        "\"next\":\"%08x\",\"qvalid\":%u,\"qcapacity\":%u,"
++        "\"thread\":\"%08x\",\"tasks\":%u,\"priority\":%u,\"ra\":\"%08x\","
++        "\"queue\":\"%08x\",\"argqvalid\":%u,\"argqcapacity\":%u,"
++        "\"intbuf\":[\"%08x\",\"%08x\",\"%08x\",\"%08x\","
++        "\"%08x\",\"%08x\",\"%08x\",\"%08x\"]}\n",
++        ++sequence, event, *r4300_pc(&g_dev.r4300), cp0[CP0_COUNT_REG],
++        guest_word(0x800756dc), a, b, g_dev.sp.regs[SP_STATUS_REG],
++        g_dev.mi.regs[MI_INTR_REG], g_dev.mi.regs[MI_INTR_MASK_REG],
++        cp0[CP0_CAUSE_REG], cp0[CP0_STATUS_REG], g_dev.dp.dpc_regs[DPC_STATUS_REG],
++        g_dev.sp.mem[0xfc0 / 4], g_dev.sp.rsp_task_locked, sp_due ? *sp_due : 0,
++        rsp, rsp ? guest_word(rsp + 4) : 0, guest_word(0x8006b464),
++        guest_word(0x8006b458), guest_word(0x8006b420), guest_word(0x8006b428),
++        thread, guest_word(0x800440d0), guest_word(thread + 4),
++        (uint32_t)r4300_regs(&g_dev.r4300)[31], queue,
++        queue ? guest_word(queue + 8) : 0, queue ? guest_word(queue + 16) : 0,
++        guest_word(0x8006b430), guest_word(0x8006b434), guest_word(0x8006b438), guest_word(0x8006b43c),
++        guest_word(0x8006b440), guest_word(0x8006b444), guest_word(0x8006b448), guest_word(0x8006b44c));
++}
++
++void pd_observe_guest(struct r4300_core *cpu, uint32_t pc)
++{
++    uint32_t a, b;
++    const char *event;
++    switch (pc) {
++    case 0x80003208: event = "guest_send"; break;
++    case 0x80003230: event = "guest_fullcheck"; break;
++    case 0x80001960: event = "guest_exec"; break;
++    case 0x80001f68: event = "guest_sp_handler"; break;
++    case 0x80001ec8: event = "guest_dp_handler"; break;
++    case 0x80001e50: event = "guest_complete"; break;
++    case 0x80033fb0: event = "guest_sendcall"; break;
++    case 0x80033df0: event = "guest_recvcall"; break;
++    case 0x80033b80: event = "guest_priority"; break;
++    default: return;
++    }
++    a = (uint32_t)r4300_regs(cpu)[4];
++    b = (uint32_t)r4300_regs(cpu)[5];
++    if (pc == 0x80033fb0 || pc == 0x80033df0) {
++        if (guest_word(0x8004668c) != 0x80068f90 && a != 0x8006b418) return;
++    }
++    if (pc == 0x80033b80 && guest_word(0x8004668c) != 0x800691c8) return;
++    if (pc == 0x80003208 || pc == 0x80003230) {
++        if (a != 0x20 && a != 0x48) return; /* SP and DP only */
++        b = pc == 0x80003208 ? guest_word(0x80077d80u + a) : (uint32_t)r4300_regs(cpu)[9];
++    }
++    pd_observe(event, a, b);
++}
+diff --git a/mupen64plus-core/src/device/r4300/pd_observer.h b/mupen64plus-core/src/device/r4300/pd_observer.h
+new file mode 100644
+index 0000000..0f4f4ce
+--- /dev/null
++++ b/mupen64plus-core/src/device/r4300/pd_observer.h
+@@ -0,0 +1,8 @@
++/* Diagnostic observation only; no guest writes or emulated-cycle updates. */
++#ifndef PD_OBSERVER_H
++#define PD_OBSERVER_H
++#include <stdint.h>
++struct r4300_core;
++void pd_observe(const char *event, uint32_t a, uint32_t b);
++void pd_observe_guest(struct r4300_core *cpu, uint32_t pc);
++#endif
+diff --git a/mupen64plus-core/src/device/rcp/mi/mi_controller.c b/mupen64plus-core/src/device/rcp/mi/mi_controller.c
+index 05ecdd7..12d739a 100644
+--- a/mupen64plus-core/src/device/rcp/mi/mi_controller.c
++++ b/mupen64plus-core/src/device/rcp/mi/mi_controller.c
+@@ -26,6 +26,7 @@
+ #include "device/r4300/cp0.h"
+ #include "device/r4300/interrupt.h"
+ #include "device/r4300/r4300_core.h"
++#include "device/r4300/pd_observer.h"
+ 
+ static int update_mi_init_mode(uint32_t* mi_init_mode, uint32_t w)
+ {
+@@ -117,6 +118,7 @@ void write_mi_regs(void* opaque, uint32_t address, uint32_t value, uint32_t mask
+  */
+ void raise_rcp_interrupt(struct mi_controller* mi, uint32_t mi_intr)
+ {
++    if (mi_intr & (MI_INTR_SP | MI_INTR_DP)) pd_observe("mi_raise", mi_intr, 0);
+     mi->regs[MI_INTR_REG] |= mi_intr;
+ 
+     if (mi->regs[MI_INTR_REG] & mi->regs[MI_INTR_MASK_REG])
+@@ -126,12 +128,14 @@ void raise_rcp_interrupt(struct mi_controller* mi, uint32_t mi_intr)
+ /* interrupt execution is scheduled (if not masked) */
+ void signal_rcp_interrupt(struct mi_controller* mi, uint32_t mi_intr)
+ {
++    if (mi_intr & (MI_INTR_SP | MI_INTR_DP)) pd_observe("mi_signal", mi_intr, 0);
+     mi->regs[MI_INTR_REG] |= mi_intr;
+     r4300_check_interrupt(mi->r4300, CP0_CAUSE_IP2, mi->regs[MI_INTR_REG] & mi->regs[MI_INTR_MASK_REG]);
+ }
+ 
+ void clear_rcp_interrupt(struct mi_controller* mi, uint32_t mi_intr)
+ {
++    if (mi_intr & (MI_INTR_SP | MI_INTR_DP)) pd_observe("mi_clear", mi_intr, 0);
+     mi->regs[MI_INTR_REG] &= ~mi_intr;
+     r4300_check_interrupt(mi->r4300, CP0_CAUSE_IP2, mi->regs[MI_INTR_REG] & mi->regs[MI_INTR_MASK_REG]);
+ }
+diff --git a/mupen64plus-core/src/device/rcp/rsp/rsp_core.c b/mupen64plus-core/src/device/rcp/rsp/rsp_core.c
+index 116bf23..c4dab19 100644
+--- a/mupen64plus-core/src/device/rcp/rsp/rsp_core.c
++++ b/mupen64plus-core/src/device/rcp/rsp/rsp_core.c
+@@ -25,6 +25,7 @@ int g_rsp_task_consumes_dp;
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include "rsp_core.h"
++#include "device/r4300/pd_observer.h"
+ 
+ #include <string.h>
+ 
+@@ -281,7 +282,9 @@ void write_rsp_regs(void* opaque, uint32_t address, uint32_t value, uint32_t mas
+     switch(reg)
+     {
+     case SP_STATUS_REG:
++        pd_observe("sp_write_before", value, mask);
+         update_sp_status(sp, value & mask);
++        pd_observe("sp_write_after", value, mask);
+     case SP_DMA_FULL_REG:
+     case SP_DMA_BUSY_REG:
+         return;
+@@ -335,6 +338,7 @@ void do_SP_Task(struct rsp_core* sp)
+     uint32_t save_pc = sp->regs2[SP_PC_REG] & ~0xfff;
+ 
+     uint32_t sp_delay_time;
++    pd_observe("rsp_begin", sp->mem[0xfc0 / 4], sp->regs2[SP_PC_REG]);
+ 
+     if (sp->mem[0xfc0/4] == 1)
+     {
+@@ -450,6 +454,7 @@ void do_SP_Task(struct rsp_core* sp)
+         sp_delay_time = 0;
+     }
+ 
++    pd_observe("rsp_return", sp->mem[0xfc0 / 4], sp->regs2[SP_PC_REG]);
+     sp->rsp_task_locked = 0;
+     sp->mi->r4300->cp0.interrupt_unsafe_state &= ~INTR_UNSAFE_RSP;
+     if ((sp->regs[SP_STATUS_REG] & (SP_STATUS_HALT | SP_STATUS_BROKE)) == 0)
+@@ -543,13 +548,16 @@ void do_SP_Task(struct rsp_core* sp)
+         l_zb_shadow_armed = 1;
+     }
+ 
++    pd_observe("rsp_deferred", sp_delay_time, 0);
+     sp->regs[SP_STATUS_REG] &=
+         ~(SP_STATUS_TASKDONE | SP_STATUS_BROKE | SP_STATUS_HALT);
++    pd_observe("rsp_exit", sp_delay_time, 0);
+ }
+ 
+ void rsp_interrupt_event(void* opaque)
+ {
+     struct rsp_core* sp = (struct rsp_core*)opaque;
++    pd_observe("sp_event", 0, 0);
+ 
+     if (sp->rsp_task_locked)
+     {

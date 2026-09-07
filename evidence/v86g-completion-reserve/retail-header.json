@@ -1,0 +1,10 @@
+{
+  "source_sha256": "0474d95e44bb7dd1a47683e4f8bf484a2b1c54c8f4d4746566059ec0a0961e46",
+  "output_sha256": "79a8f9698190aa76c8600b22f2f35de49abe62b8be2b5ce8dcd84bb834815e40",
+  "changed_offsets": [
+    "0x3c",
+    "0x3f"
+  ],
+  "body_identical": true,
+  "hardware_verified": false
+}

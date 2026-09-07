@@ -2,6 +2,18 @@
 
 ## Current 480i development status (2026-09-06)
 
+**v86g progress (September 7 UTC):** a read-only emulator trace identifies the
+Extraction failure: retrace traffic blocks the scheduler's completion delivery,
+then its interrupt queue fills and discards the next SP completion. The new
+notifier reserves two main-queue slots for graphics completions, with no extra
+memory or resolution reduction. Actual-C invariant/negative tests pass, and the
+previously failing continuous four-controller cold-boot sequence now reaches
+Extraction gameplay alive/unpaused at frame1436, full640x480, graph on and no
+allocation/cache/CPU faults. Normal v86g also renders the city/ship intro on N64;
+this is not physical interactive-gameplay proof. Plug1OFF verified; recording
+deleted after inspection. Still held for broader regression/gameplay checks.
+See [v86g evidence and limits](evidence/v86g-completion-reserve/README.md).
+
 **v86f progress:** the same cold AI-co-op Infiltration software sequence now
 has zero room-load failures (v86d43, v86e12), with full640x480 buffers, valid
 room heap and L working. It reuses old room geometry only after an atomic

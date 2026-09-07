@@ -10,7 +10,11 @@ software test from a saved menu state and on a continuous four-controller cold
 boot. A continuous one-controller cold boot does reach Extraction alive/unpaused.
 Restoring a fresh one-controller menu seed then using either one or four
 controllers also passes. Restoration is not required for the failure; the
-boot/menu-history-dependent cause remains unexplained. An older v86b continuous
+boot/menu-history dependence is preserved in the failure record. A subsequent
+read-only observer identifies a scheduler completion lost behind full retrace
+queues; the separate v86g fix passes the cold-four software regression. See
+[v86g evidence](../evidence/v86g-completion-reserve/README.md). This does not
+repair or promote the unchanged v86f binary. An older v86b continuous
 four-controller control passes. No new ZIP or user-ready ROM is issued here.
 
 Positive bounded results: AI-co-op room failures43→12→0 across v86d/e/f;
