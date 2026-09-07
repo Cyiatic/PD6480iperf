@@ -30,6 +30,14 @@ Analogue, long sessions, broader v86g co-op/multiplayer, physical save import
 and controlled performance comparison remain unverified. No full-game release
 claim. Plug 1 OFF verified again at 2026-09-07 02:52:10 UTC.
 
+**Additional checks on the unchanged v86g ROM:** the cold Agent AI-co-op
+Infiltration fixture has zero room-load failures and ends alive/unpaused;
+fresh four-player Skedar setup/movement/pause/resume/L also passes with all
+four players alive and no memory/cache/CPU faults. These are short software
+checks, not all multiplayer/co-op modes or a hardware/Analogue pass. Evidence:
+[co-op](evidence/v86g-completion-reserve/coop-watch/README.md),
+[four-player](evidence/v86g-completion-reserve/four-player/README.md).
+
 **v86f progress:** the same cold AI-co-op Infiltration software sequence now
 has zero room-load failures (v86d43, v86e12), with full640x480 buffers, valid
 room heap and L working. It reuses old room geometry only after an atomic

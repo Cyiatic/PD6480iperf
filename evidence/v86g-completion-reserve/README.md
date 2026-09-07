@@ -186,7 +186,8 @@ The normal-ROM [Deep Sea exercise](deepsea-exercise/README.md) additionally
 moves, fires(ammo8to5), pauses/swipes with full-screen blur, resumes, and hides/
 shows the L graph. Finalframe1007, aliveHP1/unpaused, full640x480, no allocation/
 cache/CPU faults. This is short software gameplay, not an Analogue or benchmark
-result. Broader g co-op/multiplayer and sustained-play checks remain outstanding.
+result. Sustained-play and broader mode coverage remain outstanding; the
+subsequent bounded co-op and four-player results are recorded below.
 
 The expanded tool suite passes 52 unit tests, including rejecting changed save
 images/controller identities and distinguishing initialized, alive and unpaused
@@ -208,3 +209,18 @@ Plug1 was explicitly switched OFF and status returned Relay0 again at
 No owned uploader/capture/emulator test process remains. Timeshift contains only
 the307-byte OverlayTimeline.json; inspected recordings were already deleted.
 The unrelated N64 switch was not controlled.
+
+## Additional checks on the same delivered ROM
+
+The unchanged v86g ROM now passes the earlier
+[AI-co-op Infiltration memory-pressure fixture](coop-watch/README.md):
+finalframe635, Agent, one AI buddy, aliveHP1/unpaused,640x480, zero OOM/cache/
+heap/CPU faults.17evictions,8idle reuses, no read-only failure-watch events.
+The paused full-screen blur and final graph-hidden gameplay images were inspected.
+
+A fresh same-ROM cold seed also passes a short
+[four-player Skedar setup/movement/pause/resume/L check](four-player/README.md).
+All four final players are alive/unpaused, with distinct viewports/positions,
+full640x480 output buffers and no allocation/cache/CPU faults. These results
+do not establish every arena, weapon, human co-op mode or sustained play.
+No ROM or delivered ZIP was changed to obtain these additional results.

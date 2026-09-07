@@ -1,0 +1,8 @@
+# Ordinary cold boot, Dark file, close menu, graph, walk; no ROM/RAM edits.
+950 965 8 0 0
+1500 1515 8 0 0
+2400 2410 16 0 0
+2600 2615 1 0 0
+2950 2965 2 0 0
+3200 3215 1024 0 0
+3500 3610 0 0 -20000

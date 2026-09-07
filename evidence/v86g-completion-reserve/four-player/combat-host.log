@@ -1,0 +1,52 @@
+OPTION parallel-n64-cpucore=cached_interpreter
+OPTION parallel-n64-disable_expmem=enabled
+OPTION parallel-n64-gfxplugin=angrylion
+OPTION parallel-n64-rspplugin=cxd4
+OPTION parallel-n64-angrylion-multithread=4
+OPTION parallel-n64-angrylion-overscan=disabled
+OPTION parallel-n64-OverrideSaveType=EEPROM_16KB
+CORE ParaLLEl N64 1.0 2f3bf60 fullpath=1
+TEST ADAPTER: in-memory ED/16K EEPROM header; disk ROM unchanged
+mupen64plus: Using full mem base
+EmuThread: M64CMD_ROM_OPEN
+mupen64plus: Goodname: Perfect Dark (unknown rom)
+mupen64plus: Name: Perfect Dark        
+mupen64plus: MD5: D070F47E11615C7E6A335A9FDC54F7C2
+mupen64plus: CRC: 8BB09394 097DC777
+mupen64plus: Imagetype: .z64 (native)
+mupen64plus: Rom size: 33554432 bytes (or 32 Mb or 256 Megabits)
+mupen64plus: Version: 1449
+mupen64plus: Manufacturer: Nintendo
+mupen64plus: Country: USA
+EmuThread: M64CMD_ROM_GET_HEADER
+CONTROLLERS mask=15 input_ranges=36
+SAVE available=296960 supplied=296960
+plugin_start_gfx
+EmuThread: M64CMD_EXECUTE.
+mupen64plus: Game controller 0 (Standard controller) has nothing plugged in
+mupen64plus: Game controller 1 (Standard controller) has nothing plugged in
+mupen64plus: Game controller 2 (Standard controller) has nothing plugged in
+mupen64plus: Game controller 3 (Standard controller) has nothing plugged in
+mupen64plus: Using CIC type X105
+mupen64plus: Initializing 4 RDRAM modules for a total of 8 MB
+mupen64plus: Starting R4300 emulator: Cached Interpreter
+FRAME 300 video=300 640x480 seconds=31.7
+FRAME 600 video=600 640x480 seconds=64.4
+FRAME 900 video=900 640x480 seconds=97.3
+FRAME 1200 video=1200 640x480 seconds=125.6
+FRAME 1500 video=1500 640x480 seconds=151.1
+FRAME 1800 video=1800 640x480 seconds=176.3
+FRAME 2100 video=2100 640x480 seconds=201.7
+FRAME 2400 video=2296 640x480 seconds=219.4
+FRAME 2700 video=2308 640x480 seconds=223.6
+FRAME 3000 video=2608 640x480 seconds=252.2
+FRAME 3300 video=2908 640x480 seconds=281.5
+FRAME 3600 video=3208 640x480 seconds=303.8
+FRAME 3900 video=3508 640x480 seconds=329.6
+FRAME 4200 video=3808 640x480 seconds=350.0
+FRAME 4500 video=4108 640x480 seconds=369.0
+FRAME 4800 video=4408 640x480 seconds=394.7
+FRAME 5100 video=4708 640x480 seconds=419.2
+FRAME 5400 video=5008 640x480 seconds=443.3
+FRAME 5700 video=5308 640x480 seconds=463.5
+DONE frames=5850 ram=8388608 save=296960 state=16790604
