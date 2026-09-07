@@ -29,6 +29,12 @@ labelled replay branch is distinct from this ROM and redirects save writes to
 RAM. Only Plug1 was targeted and OFF was verified; inspected recording deleted.
 
 Small evidence and test tools live on private PD6480iperf's mods/performance
-branch at evidence/v86f-quiescent-room-reuse. The21-mission software matrix and
-separate hardware replay are in progress; no new Analogue result is asserted.
+branch at evidence/v86f-quiescent-room-reuse. The21-mission software matrix finds
+20load-gate passes but an Extraction stall at gameframe3, reproduced in an
+uninterrupted run.19final snapshots are alive and unpaused; Duel ends dead from
+unattended combat. A labelled Agent hardware replay shows alive Infiltration
+pause/navigation/L then short resume/combat death. The candidate is held.
+An older v86b control reaches Extraction while v86f also stalls under pure
+interpreter; different seed histories still need isolation.
+No new Analogue result is asserted.
 The normal ROM retains fixed640x480i, full-screen menu blur and the L graph.
