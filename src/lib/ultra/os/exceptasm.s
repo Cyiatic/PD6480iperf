@@ -482,7 +482,7 @@ glabel send_mesg
 	lw    $t3, 0x8($t1)
 	lw    $t4, 0x10($t1)
 	slt   $at, $t3, $t4
-	beqz  $at, .L00003b64
+	beqz  $at, pdTraceDroppedEvent
  	nop
 	lw    $t5, 0xc($t1)
 	addu  $t5, $t5, $t3
@@ -775,3 +775,29 @@ glabel __osDispatchThread
 glabel __osCleanupThread
  	jal	 osDestroyThread
  	move $a0, $zero
+
+/* Diagnostic only. Preserve the existing drop, with no calls or retries.
+ * a0 is the event-table byte offset (event * 8). t1 is the full queue,
+ * k0 the interrupted thread. Only send_mesg scratch registers are touched.
+ * No extra instruction is executed on the normal enqueue path. */
+glabel pdTraceDroppedEvent
+	sltiu $t5, $a0, 0x80
+	beqz  $t5, .L00003b64
+	 nop
+	lui   $t5, %hi(g_PdEventDropTrace)
+	addiu $t5, $t5, %lo(g_PdEventDropTrace)
+	srl   $t6, $a0, 1
+	addu  $t6, $t5, $t6
+	lw    $t7, 0($t6)
+	addiu $t7, $t7, 1
+	sw    $t7, 0($t6)
+	srl   $t6, $a0, 3
+	sw    $t6, 64($t5)
+	sw    $t1, 68($t5)
+	sw    $k0, 72($t5)
+	mfc0  $t6, C0_COUNT
+	 nop
+	sw    $t6, 76($t5)
+	b     .L00003b64
+	 nop
+glabel pdTraceDroppedEventEnd
