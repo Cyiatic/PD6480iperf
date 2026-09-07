@@ -1,4 +1,4 @@
-/* V86F INFILTRATION HARDWARE DIAGNOSTIC, NOT A RELEASE CANDIDATE.
+/* V86G INFILTRATION HARDWARE DIAGNOSTIC, NOT A RELEASE CANDIDATE.
  * Programmatic file selection and opening Video Options are test setup.
  * L and movement then use the ordinary input consumers/handlers.
  * Replace only samples in the main thread's newly acquired partition. The
