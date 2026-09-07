@@ -219,6 +219,19 @@ static void __scTaskComplete(OSSched *sc, OSScTask *t)
 //-- Event handlers -----------------------------------------------------------/
 //----------------------------------------------------------------------------/
 
+static void __scNotifyMainRetrace(OSSched *sc)
+{
+	/* Main can have two graphics tasks outstanding. Retraces are advisory:
+	 * reserve both completion slots so __scTaskComplete cannot block behind
+	 * retrace traffic while main builds a slow frame. A blocked scheduler
+	 * lets interruptQ fill and can lose an irreplaceable SP/DP completion.
+	 * Scheduler is the sole producer; main only removes messages, so an
+	 * intervening main-thread receive can only make this check conservative. */
+	if (sc->gfxmq && sc->gfxmq->validCount < sc->gfxmq->msgCount - 2) {
+		osSendMesg(sc->gfxmq, (OSMesg) OS_SC_RETRACE_MSG, OS_MESG_NOBLOCK);
+	}
+}
+
 static void __scHandleRetrace(OSSched *sc)
 {
 	if (sc->scheduledFB && osViGetCurrentFramebuffer() == sc->scheduledFB) {
@@ -266,9 +279,7 @@ static void __scHandleRetrace(OSSched *sc)
 	schedRenderCrashPeriodically(sc->frameCount);
 #endif
 
-	if (sc->gfxmq) {
-		osSendMesg(sc->gfxmq, (OSMesg) OS_SC_RETRACE_MSG, OS_MESG_NOBLOCK);
-	}
+	__scNotifyMainRetrace(sc);
 }
 
 static void __scHandleRSP(OSSched *sc)
