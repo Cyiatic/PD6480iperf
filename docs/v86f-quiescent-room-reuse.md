@@ -35,6 +35,9 @@ uninterrupted run.19final snapshots are alive and unpaused; Duel ends dead from
 unattended combat. A labelled Agent hardware replay shows alive Infiltration
 pause/navigation/L then short resume/combat death. The candidate is held.
 An older v86b control reaches Extraction while v86f also stalls under pure
-interpreter; different seed histories still need isolation.
+interpreter. Continuous cold v86f one-controller9150ticks reaches Extraction
+frame1434 alive/unpaused640x480 with no faults; keeping four controllers on the
+original restored-menu path still stalls. Thus this is state/setup-dependent,
+not a demonstrated unconditional mission failure. Its cause is not yet isolated.
 No new Analogue result is asserted.
 The normal ROM retains fixed640x480i, full-screen menu blur and the L graph.
