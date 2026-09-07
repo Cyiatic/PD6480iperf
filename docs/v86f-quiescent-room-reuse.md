@@ -41,3 +41,17 @@ original restored-menu path still stalls. Thus this is state/setup-dependent,
 not a demonstrated unconditional mission failure. Its cause is not yet isolated.
 No new Analogue result is asserted.
 The normal ROM retains fixed640x480i, full-screen menu blur and the L graph.
+
+Follow-up controls: continuous cold v86f with four controllers also stalls at
+Extraction frame3; restoration is not required. The analogous cold v86b control
+reaches frame1437 alive/unpaused. Restoring a fresh cold-one-controller v86f
+menu seed with matching save memory reaches frame1434 with either one or four
+controllers (game-verified masks1/15). Boot/menu history is implicated, not an
+unconditional failure or simple controller-presence rule. A separate diagnostic
+branch counts existing full interrupt-queue discards without retrying them;
+it does not change this normal ROM. Normal ELF rebuild matches the prior hash.
+That diagnostic cold-four run reaches Extraction frame1434 alive/unpaused,
+with all16 drop counters zero, but does not reproduce the normal failure.
+Its changed layout/startup timing means this does not exclude queue overflow
+in the normal failed run or establish any fix. Evidence is on mods/performance
+under evidence/v86f-quiescent-room-reuse/event-drop-diagnostic.
