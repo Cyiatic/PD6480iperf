@@ -1,6 +1,10 @@
 # Perfect Dark - High Performance (PDHP)
 
-## Current 480i development status (2026-09-06)
+## Current 480i development status (2026-09-07)
+
+**Analogue user feedback:** in response to the v86g test request, pause blur
+and menu navigation now look good; the non-interactive Hi-Res option is approved.
+The ROM is unchanged. See [the report and its scope](evidence/v86g-completion-reserve/analogue-user-feedback.md).
 
 **v86g progress (September 7 UTC):** a read-only emulator trace identifies the
 Extraction failure: retrace traffic blocks the scheduler's completion delivery,
@@ -26,7 +30,7 @@ See [v86g evidence and limits](evidence/v86g-completion-reserve/README.md).
 is now available as a **test candidate**, with
 [instructions and limits](artifacts/PD6480iperf-v86g-README.md).
 It uses fixed 640x480i and the full 8 MiB; no Hi-Res checkbox needs enabling.
-Analogue, long sessions, broader v86g co-op/multiplayer, physical save import
+Beyond the user-confirmed Analogue blur/menu checks, long sessions, broader v86g co-op/multiplayer, physical save import
 and controlled performance comparison remain unverified. No full-game release
 claim. Plug 1 OFF verified again at 2026-09-07 02:52:10 UTC.
 

@@ -3,6 +3,12 @@
 Rechecked September 7, 2026 UTC. This is an audit of the unchanged delivered
 candidate, not a new version or declaration of completion.
 
+**Subsequent feedback:** the user has now confirmed Analogue blur and menu
+navigation look good and approves skipping the Hi-Res option. See
+[the report](analogue-user-feedback.md). The audit below is the earlier
+snapshot: its missing-feedback condition is superseded for those visual
+checks, not for unreported L behavior, performance or sustained play.
+
 Runtime HEAD is `26cb92ae9d0ae2cba172999c0d5c1762f32d5a50`.
 Tracked runtime files are clean. The two untracked native build tools remain
 untouched. Distribution source has unrelated dirty files; they are not part
