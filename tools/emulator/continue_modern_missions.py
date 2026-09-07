@@ -47,6 +47,9 @@ def main():
     args.out.mkdir(parents=True,exist_ok=False)
     newmeta = dict(identities, parent=str(args.root), hardware_verified=False,
                    instrumented_menu_selection=False,ticks=args.ticks,exercise=args.exercise)
+    preserve_save=metadata.get('save_policy')=='preserve-matching'
+    connected_mask=metadata.get('connected_mask',1)
+    newmeta.update(save_policy='preserve-matching' if preserve_save else 'legacy-erased',connected_mask=connected_mask)
     (args.out/'run-metadata.json').write_text(json.dumps(newmeta,indent=2)+'\n')
     environment = dict(os.environ,PATH='C:/msys64/mingw64/bin;'+os.environ.get('PATH',''))
     def run(name):
@@ -61,6 +64,9 @@ def main():
         if any(t['flags'] for t in snap['threads'].values()): raise ValueError('Faulted prior CPU')
         output = args.out/name.lower()
         output.mkdir()
+        save=original/'save-memory.bin'
+        if preserve_save and (save.stat().st_size!=296960 or digest(save)!=prior.get('save_memory_sha256')):
+            raise ValueError('Missing/changed matching parent save-memory')
         text = continuation_input(snap,args.exercise)
         (output/'input.txt').write_text(text)
         report = dict(requested_stage=prior['requested_stage'],requested_stage_id=prior['requested_stage_id'],
@@ -68,7 +74,8 @@ def main():
             parent_cutscene=snap['in_cutscene'],hardware_verified=False,instrumented_menu_selection=False,
             ticks=args.ticks,load_gate_passed=False,exercise=args.exercise)
         command = [str(args.host.resolve()),str(args.core.resolve()),str(args.rom.resolve()),str(output.resolve()),
-            str(args.ticks),'cached_interpreter',str((output/'input.txt').resolve()),str((original/'state.bin').resolve()),'-','eeprom-header']
+            str(args.ticks),'cached_interpreter',str((output/'input.txt').resolve()),str((original/'state.bin').resolve()),
+            str(save.resolve()) if preserve_save else '-','eeprom-header','-',str(connected_mask)]
         print('START',name,'bounded late ordinary input',text.strip(),flush=True)
         try:
             with (output/'host.log').open('x') as log:
@@ -80,6 +87,8 @@ def main():
                             '-frames:v','1',str(output/'final.png')],check=True,env=environment)
             final = inspect(args.elf,output/'rdram-last.bin',args.layout)
             report['snapshot'] = final
+            report['save_memory_sha256']=digest(output/'save-memory.bin')
+            report['connected_mask']=connected_mask
             report.update(evaluate_snapshot(final,report['requested_stage_id'],expected_rooms(args.source,name,final['room_count'])))
         except (ValueError, subprocess.CalledProcessError, subprocess.TimeoutExpired) as error:
             # Retain the failed run too; do not abort collection of other futures

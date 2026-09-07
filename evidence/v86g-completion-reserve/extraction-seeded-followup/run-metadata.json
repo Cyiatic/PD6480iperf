@@ -1,0 +1,12 @@
+{
+  "rom_sha256": "79a8f9698190aa76c8600b22f2f35de49abe62b8be2b5ce8dcd84bb834815e40",
+  "elf_sha256": "07595b1d4c7466bf3ac53f1df29bc21779c8d494eb41978a2c47d735e84ac010",
+  "layout_sha256": "a62708d1ec9097dc0688cd43aff0b594513b7b7af92cf6cf6dcd6d590c5aabdd",
+  "parent": ".codex-work\\headless-v86g-solo-matrix",
+  "hardware_verified": false,
+  "instrumented_menu_selection": false,
+  "ticks": 1500,
+  "exercise": false,
+  "save_policy": "preserve-matching",
+  "connected_mask": 15
+}

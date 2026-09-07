@@ -1,0 +1,11 @@
+{
+  "diagnostic_only": true,
+  "hardware_verified": false,
+  "elf_sha256": "a27f4cceddddaf40296fecb4fc406968d330a50302c4193044c88f798b62005a",
+  "seed_sha256": "fa86c003d8cf71cb099c2c55a92cdea3f00b4d482370a48202d7a0d4b0184a7d",
+  "physical_controller_pak_writes_blocked": true,
+  "game_eeprom_access_redirected_to_ram": true,
+  "retained_library_internal_eeprom_calls": 2,
+  "label": "V86G TEST",
+  "limits": "Code guards only; gameplay/input-partition/physical video require separate checks."
+}

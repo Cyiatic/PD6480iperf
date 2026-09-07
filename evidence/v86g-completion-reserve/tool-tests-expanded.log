@@ -1,0 +1,57 @@
+test_adjacent_and_disjoint_bank_rules (test_bgcache_inspection.CacheInspectionTests.test_adjacent_and_disjoint_bank_rules) ... ok
+test_never_accept_missing_overlap_gap_or_unowned (test_bgcache_inspection.CacheInspectionTests.test_never_accept_missing_overlap_gap_or_unowned) ... ok
+test_two_banks_exact_coverage (test_bgcache_inspection.CacheInspectionTests.test_two_banks_exact_coverage) ... ok
+test_reject_foreign_or_malformed_evidence (test_event_drops.DropTests.test_reject_foreign_or_malformed_evidence) ... ok
+test_zero_and_all_event_indices (test_event_drops.DropTests.test_zero_and_all_event_indices) ... ok
+test_all_queue_combinations (test_gfx_ownership.OwnershipTests.test_all_queue_combinations) ... ok
+test_reject_invalid_or_mismatched_data (test_gfx_ownership.OwnershipTests.test_reject_invalid_or_mismatched_data) ... ok
+test_assembly (test_mission_mode_gate.MissionModeGateTests.test_assembly) ... ok
+test_solo (test_mission_mode_gate.MissionModeGateTests.test_solo) ... ok
+test_unknown_coop_counterop_and_ai_are_rejected (test_mission_mode_gate.MissionModeGateTests.test_unknown_coop_counterop_and_ai_are_rejected) ... ok
+test_budgeted_cache_requires_warmup_and_complete_live_geometry (test_modern_menu_missions.MenuMissionTests.test_budgeted_cache_requires_warmup_and_complete_live_geometry) ... ok
+test_every_required_condition (test_modern_menu_missions.MenuMissionTests.test_every_required_condition) ... ok
+test_fault_after_initialization_is_not_a_pass (test_modern_menu_missions.MenuMissionTests.test_fault_after_initialization_is_not_a_pass) ... ok
+test_healthy_cutscene_is_not_gameplay (test_modern_menu_missions.MenuMissionTests.test_healthy_cutscene_is_not_gameplay) ... ok
+test_initialized_does_not_imply_alive (test_modern_menu_missions.MenuMissionTests.test_initialized_does_not_imply_alive) ... ok
+test_ordinary_inputs_all_indices (test_modern_menu_missions.MenuMissionTests.test_ordinary_inputs_all_indices) ... ok
+test_ready_but_paused_is_not_unpaused (test_modern_menu_missions.MenuMissionTests.test_ready_but_paused_is_not_unpaused) ... ok
+test_bounded_ordinary_continuation_input (test_modern_mission_chains.MissionChainTests.test_bounded_ordinary_continuation_input) ... ok
+test_cannot_hide_prior_failures (test_modern_mission_chains.MissionChainTests.test_cannot_hide_prior_failures) ... ok
+test_foreign_ram_or_state_rejected (test_modern_mission_chains.MissionChainTests.test_foreign_ram_or_state_rejected) ... ok
+test_matching_chain (test_modern_mission_chains.MissionChainTests.test_matching_chain) ... ok
+test_mission_change_rejected (test_modern_mission_chains.MissionChainTests.test_mission_change_rejected) ... ok
+test_native_zero_without_video_is_not_completion (test_modern_mission_chains.MissionChainTests.test_native_zero_without_video_is_not_completion) ... ok
+test_abi_mismatch_rejected (test_modern_rdram.ModernRdramTests.test_abi_mismatch_rejected) ... ok
+test_ai_coop_is_not_misclassified_as_solo (test_modern_rdram.ModernRdramTests.test_ai_coop_is_not_misclassified_as_solo) ... ok
+test_buffer_count_comes_from_candidate_elf (test_modern_rdram.ModernRdramTests.test_buffer_count_comes_from_candidate_elf) ... ok
+test_candidate_layout_and_three_buffers (test_modern_rdram.ModernRdramTests.test_candidate_layout_and_three_buffers) ... ok
+test_difficulty_is_read_from_typed_scalar (test_modern_rdram.ModernRdramTests.test_difficulty_is_read_from_typed_scalar) ... ok
+test_duplicate_mission_probes_rejected (test_modern_rdram.ModernRdramTests.test_duplicate_mission_probes_rejected) ... ok
+test_four_players_have_independent_compiled_fields (test_modern_rdram.ModernRdramTests.test_four_players_have_independent_compiled_fields) ... ok
+test_gameplay_fields_use_compiled_layout (test_modern_rdram.ModernRdramTests.test_gameplay_fields_use_compiled_layout) ... ok
+test_geometry_pointer_is_not_enough (test_modern_rdram.ModernRdramTests.test_geometry_pointer_is_not_enough) ... ok
+test_impossible_player_count_rejected (test_modern_rdram.ModernRdramTests.test_impossible_player_count_rejected) ... ok
+test_invalid_batch_count_rejected (test_modern_rdram.ModernRdramTests.test_invalid_batch_count_rejected) ... ok
+test_mission_probe_requires_one_bit (test_modern_rdram.ModernRdramTests.test_mission_probe_requires_one_bit) ... ok
+test_multiplayer_field_outside_structure_rejected (test_modern_rdram.ModernRdramTests.test_multiplayer_field_outside_structure_rejected) ... ok
+test_no_opaque_layer_does_not_require_batches (test_modern_rdram.ModernRdramTests.test_no_opaque_layer_does_not_require_batches) ... ok
+test_nonram_secondary_player_rejected (test_modern_rdram.ModernRdramTests.test_nonram_secondary_player_rejected) ... ok
+test_resident_code_mismatch_rejected (test_modern_rdram.ModernRdramTests.test_resident_code_mismatch_rejected) ... ok
+test_room_batch_pointer_and_word_sized_count (test_modern_rdram.ModernRdramTests.test_room_batch_pointer_and_word_sized_count) ... ok
+test_synthetic_replay_is_explicitly_labelled (test_modern_rdram.ModernRdramTests.test_synthetic_replay_is_explicitly_labelled) ... ok
+test_truncated_batch_layout_rejected (test_modern_rdram.ModernRdramTests.test_truncated_batch_layout_rejected) ... ok
+test_truncated_gameplay_layout_rejected (test_modern_rdram.ModernRdramTests.test_truncated_gameplay_layout_rejected) ... ok
+test_truncated_mission_probes_rejected (test_modern_rdram.ModernRdramTests.test_truncated_mission_probes_rejected) ... ok
+test_truncated_multiplayer_layout_rejected (test_modern_rdram.ModernRdramTests.test_truncated_multiplayer_layout_rejected) ... ok
+test_rejected_partition_is_preserved_not_promoted (test_room_watch.WatchEvidenceTests.test_rejected_partition_is_preserved_not_promoted) ... ok
+test_success_retains_actual_result (test_room_watch.WatchEvidenceTests.test_success_retains_actual_result) ... ok
+test_unexpected_errors_still_stop_collection (test_room_watch.WatchEvidenceTests.test_unexpected_errors_still_stop_collection) ... ok
+test_collector_checks_save_and_controller_identity (test_seed_save_identity.SeedSaveIdentity.test_collector_checks_save_and_controller_identity) ... ok
+test_eeprom_only_not_a_full_restored_save (test_seed_save_identity.SeedSaveIdentity.test_eeprom_only_not_a_full_restored_save) ... ok
+test_full_matching_save (test_seed_save_identity.SeedSaveIdentity.test_full_matching_save) ... ok
+test_legacy_is_explicit (test_seed_save_identity.SeedSaveIdentity.test_legacy_is_explicit) ... ok
+
+----------------------------------------------------------------------
+Ran 52 tests in 11.107s
+
+OK

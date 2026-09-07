@@ -1,0 +1,12 @@
+{
+  "diagnostic_only": true,
+  "negative_control": true,
+  "layout_identical": true,
+  "instruction_address": "0x800021e8",
+  "before": "2463fffe",
+  "after": "24630000",
+  "original_bin_sha256": "d504ad6e768ba07789e23603c0593b92d785a2ff58963c6340d223f4d6822770",
+  "control_bin_sha256": "cfa1d7f5a6bee7a00c4d36a4767a6f8651fc98ec4eaaf07fa95c4ef76bf03bd1",
+  "control_elf_sha256": "07674181904a2e8418b5d6e00c510304aea6a3a33697d3acb7ee11e062807079",
+  "hardware_verified": false
+}

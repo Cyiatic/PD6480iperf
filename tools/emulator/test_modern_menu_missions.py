@@ -28,6 +28,22 @@ class MenuMissionTests(unittest.TestCase):
         self.assertTrue(report['load_gate_passed'])
         self.assertFalse(report['unpaused_snapshot'])
 
+    def test_initialized_does_not_imply_alive(self):
+        snapshot = self.snapshot()
+        for changes in ({}, {'player_dead': 1, 'player_health': 0.0},
+                        {'player_dead': 0, 'player_health': 0.0}):
+            report = evaluate_snapshot(dict(snapshot, **changes), 48, {1, 2})
+            self.assertTrue(report['load_gate_passed'])
+            self.assertFalse(report['alive_snapshot'])
+        report = evaluate_snapshot(dict(snapshot, player_dead=0, player_health=0.5), 48, {1, 2})
+        self.assertTrue(report['alive_snapshot'])
+
+    def test_healthy_cutscene_is_not_gameplay(self):
+        snapshot = dict(self.snapshot(), player_dead=0, player_health=1.0, in_cutscene=1)
+        report = evaluate_snapshot(snapshot, 48, {1, 2})
+        self.assertFalse(report['load_gate_passed'])
+        self.assertFalse(report['alive_snapshot'])
+
     def test_fault_after_initialization_is_not_a_pass(self):
         snapshot = self.snapshot()
         snapshot['threads']['g_MainThread']['flags'] = 2

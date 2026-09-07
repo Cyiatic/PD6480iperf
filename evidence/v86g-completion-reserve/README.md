@@ -147,6 +147,38 @@ and logs remain. No unrelated switch was controlled.
 
 No release or new user-ready bundle is promoted by this document. Broader
 regressions, sustained play, physical gameplay and performance checks remain
-required. A same-layout negative control would further separate the new
-runtime's code-layout shift from the tested queue policy. The existing generated
+required. A same-layout zero-reserve control also passes this cold sequence;
+see [the result and limitation](noreserve-control/README.md). Thus its pass
+alone does not isolate the queue policy's effect; direct old-ROM queue-loss
+evidence and actual-C saturation tests remain the basis of the change. The existing generated
 stock 100% Dark EEPROM is unchanged.
+
+## Labelled console replay and save-preserving regressions
+
+A separate `V86G TEST` Agent replay was uploaded to the original N64. Inspected
+Elgato footage shows alive Infiltration pause/navigation, full-screen blur,
+the fixed-resolution label, L graph hiding/reappearing, and resumed 3D. Ordinary
+enemy damage then kills the unattended player. This is a short labelled test,
+not sustained play or uninstrumented physical-controller validation. The first
+upload timed out; the successful retry is recorded separately. See
+[hardware observations and cleanup](hardware-infiltration-agent-retry/inspection.md)
+and [the software replay and static safety audit](replay-software/README.md).
+Physical EEPROM is redirected to RAM and Controller Pak writes are blocked
+only in that diagnostic; four deliberately unsafe audit controls are rejected.
+Plug1OFF was verified and 403,517,894 bytes of inspected recording/sidecars
+deleted. No recording is retained here, only small stills and logs.
+
+A fresh normal-v86g four-controller cold boot produces an authenticated Solo
+Mission Select seed with Defection visibly selected. The new matrix preserves
+that seed's full 296,960-byte save image and connected-controller mask, rather
+than silently substituting erased save memory. See
+[seed provenance](solo-cold-four-seed/README.md). The ordinary-input Extraction
+continuation reaches frame1586, alive/full-health, unpaused, no cutscene, full
+640x480, graph on, no allocation/cache/CPU faults. Its initial frame106 sample
+was still an opening cutscene, not the old frame3 stall. The initial sample is
+retained. The wider matrix is still running; no 21-mission result is claimed yet.
+
+The expanded tool suite passes 52 unit tests, including rejecting changed save
+images/controller identities and distinguishing initialized, alive and unpaused
+samples. Actual-source C blur/reservation/scheduler checks pass again, and four
+stock-Dark save tests pass. None of these substitutes for gameplay evidence.

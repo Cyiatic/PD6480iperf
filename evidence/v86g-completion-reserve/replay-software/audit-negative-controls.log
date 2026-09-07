@@ -1,0 +1,5 @@
+write-blocker negative rejected: Physical Controller Pak write blocker changed
+physical-eeprom-call negative rejected: Unexpected inlined pakReadWriteBlock call graph
+seed negative rejected: Wrong stock Dark save
+label negative rejected: Diagnostic identifier is missing
+PASS: actual ELF and four independent unsafe controls; a27f4cceddddaf40296fecb4fc406968d330a50302c4193044c88f798b62005a

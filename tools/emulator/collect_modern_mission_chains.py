@@ -8,7 +8,8 @@ import argparse
 import json
 from pathlib import Path
 from inspect_modern_rdram import inspect
-from run_modern_menu_missions import digest, evaluate_snapshot, expected_rooms, source_stages
+from run_modern_menu_missions import (digest, evaluate_snapshot, expected_rooms,
+                                     source_stages, validate_seed_save)
 
 
 def verify_continuation(parent, child, parent_state_sha256):
@@ -25,6 +26,16 @@ def verify_continuation(parent, child, parent_state_sha256):
             or cache.get('allocator_faults', 0)
             or any(t['flags'] for t in snapshot['threads'].values())):
         raise ValueError('Cannot supersede a failed allocation or CPU fault')
+
+
+def verify_save_policy(metadata, report, directory):
+    if metadata.get('save_policy') != 'preserve-matching':
+        return
+    validate_seed_save(directory / 'save-memory.bin', report.get('save_memory_sha256'))
+    mask = metadata.get('connected_mask')
+    if (mask not in range(1, 16, 2) or report.get('connected_mask') != mask
+            or report['snapshot'].get('connected_controller_mask') != mask):
+        raise ValueError('Preserved-save sample controller identity mismatch')
 
 
 def main():
@@ -52,6 +63,7 @@ def main():
                 raise ValueError('Unfinished/unsuccessful host')
             if report.get('instrumented_menu_selection') is not False:
                 raise ValueError('Not ordinary-input report')
+            verify_save_policy(metadata, report, path.parent)
             if name in latest:
                 parent, parent_path = latest[name]
                 if Path(metadata.get('parent', '')).resolve() != parent_path.parent.parent.resolve():
@@ -80,6 +92,8 @@ def main():
         initial_load_passes=sum(h[0]['load_gate_passed'] for h in histories.values()),
         final_load_passes=sum(r['load_gate_passed'] for r in missions),
         final_unpaused_samples=sum(r['unpaused_snapshot'] for r in missions),
+        final_alive_samples=sum(r['alive_snapshot'] for r in missions),
+        final_alive_unpaused_samples=sum(r['alive_snapshot'] and r['unpaused_snapshot'] for r in missions),
         missions=missions, history=histories)
     with args.out.open('x') as stream:
         stream.write(json.dumps(result, indent=2) + '\n')

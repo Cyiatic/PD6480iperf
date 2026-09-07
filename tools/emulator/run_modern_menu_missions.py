@@ -22,6 +22,17 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def validate_seed_save(path, expected_hash):
+    if path is None:
+        if expected_hash is not None:raise ValueError('Save hash without a save file')
+        return None
+    if not expected_hash or path.stat().st_size != 296960:
+        raise ValueError('Preserving a seed requires its full 296960-byte save-memory and SHA256')
+    actual=digest(path)
+    if actual!=expected_hash.lower():raise ValueError('Seed save-memory hash mismatch')
+    return actual
+
+
 def source_stages(source):
     menu = (source / 'src/game/mainmenu.c').read_text()
     body = re.search(r'g_StageNames\[NUM_SOLOSTAGES\]\s*=\s*\{(.*?)\n\};', menu, re.S).group(1)
@@ -81,7 +92,8 @@ def evaluate_snapshot(snapshot, stage, required):
                 room_policy='budgeted-retained-cache' if cache else 'full-preload',
                 unwarmed_required_rooms=unwarmed,
                 thread_faults=faults, load_gate_passed=passed,
-                unpaused_snapshot=passed and snapshot.get('player_pause_mode') == 0)
+                unpaused_snapshot=passed and snapshot.get('player_pause_mode') == 0,
+                alive_snapshot=passed and snapshot.get('player_dead') == 0 and snapshot.get('player_health',0)>0)
 
 
 def validate_solo_seed(seed):
@@ -96,11 +108,15 @@ def main():
         parser.add_argument('--' + name, type=Path, required=True)
     parser.add_argument('--rom-sha256', required=True)
     parser.add_argument('--state-sha256', required=True)
+    parser.add_argument('--save', type=Path, help='Matching seed full save-memory; omit only for legacy erased-save controls')
+    parser.add_argument('--save-sha256', help='Required with --save')
+    parser.add_argument('--connected-mask', type=int, choices=range(1,16,2), default=1)
     parser.add_argument('--stages', nargs='+', required=True)
     parser.add_argument('--jobs', type=int, choices=range(1, 5), default=2)
     args = parser.parse_args()
     if digest(args.rom) != args.rom_sha256 or digest(args.state) != args.state_sha256:
         raise ValueError('ROM/state identity mismatch')
+    save_hash=validate_seed_save(args.save,args.save_sha256)
     seed = inspect(args.elf, args.state.parent / 'rdram-last.bin', args.layout)
     if seed['stage'] != 38 or seed.get('synthetic_replay_diagnostic'):
         raise ValueError('Expected normal-ROM CI mission-list seed')
@@ -119,6 +135,8 @@ def main():
                 'seed_highlight': 'DEFECTION, visually verified before this run',
                 'jobs': args.jobs, 'source_files_sha256': {name: digest(args.source / name)
                     for name in ('src/game/mainmenu.c', 'src/game/bg.c', 'src/include/constants.h')}}
+    metadata.update(seed_save_sha256=save_hash,connected_mask=args.connected_mask,
+                    save_policy='preserve-matching' if args.save else 'legacy-erased')
     (args.out / 'run-metadata.json').write_text(json.dumps(metadata, indent=2) + '\n')
     environment = dict(os.environ)
     environment['PATH'] = 'C:/msys64/mingw64/bin;' + environment.get('PATH', '')
@@ -134,7 +152,8 @@ def main():
                       instrumented_menu_selection=False)
         command = [str(args.host.resolve()), str(args.core.resolve()), str(args.rom.resolve()),
                    str(output.resolve()), str(ticks), 'cached_interpreter', str(inputs.resolve()),
-                   str(args.state.resolve()), '-', 'eeprom-header']
+                   str(args.state.resolve()), str(args.save.resolve()) if args.save else '-',
+                   'eeprom-header', '-', str(args.connected_mask)]
         print('START', name, 'ordinary-input ticks', ticks, flush=True)
         try:
             with (output / 'host.log').open('x') as log:
@@ -147,6 +166,8 @@ def main():
                             '-frames:v', '1', str(output / 'final.png')], check=True, env=environment)
             snapshot = inspect(args.elf, output / 'rdram-last.bin', args.layout)
             report['snapshot'] = snapshot
+            report['save_memory_sha256']=digest(output/'save-memory.bin')
+            report['connected_mask']=args.connected_mask
             required = expected_rooms(args.source, name, snapshot.get('room_count', 0))
             report.update(evaluate_snapshot(snapshot, stage, required))
         except (ValueError, subprocess.CalledProcessError, subprocess.TimeoutExpired) as error:
@@ -155,7 +176,7 @@ def main():
         snap = report.get('snapshot', {})
         print('DONE', name, json.dumps(dict(gate=report['load_gate_passed'],
             stage=snap.get('stage'), frame=snap.get('level_frame_number'),
-            pause=snap.get('player_pause_mode'), oom=snap.get('oom_marker'),
+            pause=snap.get('player_pause_mode'), dead=snap.get('player_dead'), health=snap.get('player_health'), oom=snap.get('oom_marker'),
             oom_bytes=snap.get('oom_requested_bytes'),
             free=snap.get('g_MempExpansionPools', {}).get('free_bytes'),
             missing=report.get('missing_preload_rooms'),

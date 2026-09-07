@@ -10,8 +10,14 @@ memory or resolution reduction. Actual-C invariant/negative tests pass, and the
 previously failing continuous four-controller cold-boot sequence now reaches
 Extraction gameplay alive/unpaused at frame1436, full640x480, graph on and no
 allocation/cache/CPU faults. Normal v86g also renders the city/ship intro on N64;
-this is not physical interactive-gameplay proof. Plug1OFF verified; recording
-deleted after inspection. Still held for broader regression/gameplay checks.
+this is not physical interactive-gameplay proof. A separately labelled Agent
+replay now shows alive pause/menu navigation, full-screen blur, L hidden/shown,
+and short resumed Infiltration gameplay on N64, followed by ordinary combat
+death. Plug1OFF verified; recordings deleted after inspection. A same-layout
+zero-reserve control also passes the cold Extraction script, so that script
+alone does not isolate the scheduler policy; direct old-ROM trace and actual-C
+capacity tests support the fix. A fresh save-preserving mission matrix is still
+running. Still held for broader regression/gameplay checks.
 See [v86g evidence and limits](evidence/v86g-completion-reserve/README.md).
 
 **v86f progress:** the same cold AI-co-op Infiltration software sequence now
