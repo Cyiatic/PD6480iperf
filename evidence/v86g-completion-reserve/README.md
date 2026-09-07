@@ -145,9 +145,10 @@ Plug 1 OFF/status Relay 0 verified. The inspected recording and its two
 sidecars were permanently deleted, reclaiming 157,349,816 bytes; small stills
 and logs remain. No unrelated switch was controlled.
 
-No release or new user-ready bundle is promoted by this document. Broader
-regressions, sustained play, physical gameplay and performance checks remain
-required. A same-layout zero-reserve control also passes this cold sequence;
+A v86g patch-and-Dark-save test bundle is now packaged after the later checks
+below; this is not a full-game release. Sustained play, broader co-op/multiplayer,
+normal-ROM physical gameplay and performance checks remain outstanding.
+A same-layout zero-reserve control also passes this cold sequence;
 see [the result and limitation](noreserve-control/README.md). Thus its pass
 alone does not isolate the queue policy's effect; direct old-ROM queue-loss
 evidence and actual-C saturation tests remain the basis of the change. The existing generated
@@ -176,9 +177,34 @@ than silently substituting erased save memory. See
 continuation reaches frame1586, alive/full-health, unpaused, no cutscene, full
 640x480, graph on, no allocation/cache/CPU faults. Its initial frame106 sample
 was still an opening cutscene, not the old frame3 stall. The initial sample is
-retained. The wider matrix is still running; no 21-mission result is claimed yet.
+retained. The completed [33-sample mission matrix](mission-matrix/README.md)
+now has21/21 final initialization gates and unpaused samples,19/21 alive.
+G5Building and Duel end in ordinary unattended combat death, retained as such.
+All21 final images were inspected. This is startup coverage, not playthroughs.
+
+The normal-ROM [Deep Sea exercise](deepsea-exercise/README.md) additionally
+moves, fires(ammo8to5), pauses/swipes with full-screen blur, resumes, and hides/
+shows the L graph. Finalframe1007, aliveHP1/unpaused, full640x480, no allocation/
+cache/CPU faults. This is short software gameplay, not an Analogue or benchmark
+result. Broader g co-op/multiplayer and sustained-play checks remain outstanding.
 
 The expanded tool suite passes 52 unit tests, including rejecting changed save
 images/controller identities and distinguishing initialized, alive and unpaused
 samples. Actual-source C blur/reservation/scheduler checks pass again, and four
 stock-Dark save tests pass. None of these substitutes for gameplay evidence.
+
+## Candidate package and final shutdown
+
+See [candidate instructions](../../artifacts/PD6480iperf-v86g-README.md).
+The1,447,194-byte xdelta decodes against the user's clean USA1.1 ROM to exactly
+the normal retail-ID v86g hash above. The normal `.z64` stays local; the ZIP
+contains only xdelta, matching-name stock Dark EEPROM, README and manifest.
+All four ZIP entries were read back and hash-compared with their source files.
+ZIP size1,451,933bytes; SHA256
+`f831a1335a425a62b5cdf89e6482a6b4f5bd903ebe89e3cbb73fdb8610417b93`.
+
+Plug1 was explicitly switched OFF and status returned Relay0 again at
+2026-09-07 02:52:10UTC. The exact action/status logs are in `candidate-power-off/`.
+No owned uploader/capture/emulator test process remains. Timeshift contains only
+the307-byte OverlayTimeline.json; inspected recordings were already deleted.
+The unrelated N64 switch was not controlled.

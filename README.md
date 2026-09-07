@@ -16,9 +16,19 @@ and short resumed Infiltration gameplay on N64, followed by ordinary combat
 death. Plug1OFF verified; recordings deleted after inspection. A same-layout
 zero-reserve control also passes the cold Extraction script, so that script
 alone does not isolate the scheduler policy; direct old-ROM trace and actual-C
-capacity tests support the fix. A fresh save-preserving mission matrix is still
-running. Still held for broader regression/gameplay checks.
+capacity tests support the fix. The fresh save-preserving matrix now reaches
+21/21 initialization gates with unpaused final samples (19 alive; G5 Building
+and Duel end in ordinary combat death). Normal-ROM Deep Sea additionally
+passes short movement/fire/pause/swipe/resume/L checks, with full-screen blur.
 See [v86g evidence and limits](evidence/v86g-completion-reserve/README.md).
+
+[v86g patch + stock 100% Dark save](artifacts/PD6480iperf-v86g-patch-and-Dark-save.zip)
+is now available as a **test candidate**, with
+[instructions and limits](artifacts/PD6480iperf-v86g-README.md).
+It uses fixed 640x480i and the full 8 MiB; no Hi-Res checkbox needs enabling.
+Analogue, long sessions, broader v86g co-op/multiplayer, physical save import
+and controlled performance comparison remain unverified. No full-game release
+claim. Plug 1 OFF verified again at 2026-09-07 02:52:10 UTC.
 
 **v86f progress:** the same cold AI-co-op Infiltration software sequence now
 has zero room-load failures (v86d43, v86e12), with full640x480 buffers, valid

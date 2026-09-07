@@ -1,0 +1,5 @@
+# Ordinary B resume, L hidden at capture300, L shown at capture600, movement.
+30 42 2 0 0
+120 132 1024 0 0
+360 430 0 0 -18000
+450 462 1024 0 0
