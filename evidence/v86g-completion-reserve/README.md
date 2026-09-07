@@ -1,9 +1,10 @@
 # v86g completion-message reserve — development evidence
 
-**Later user confirmation:** Analogue pause blur and menu navigation look good
-on the candidate linked for testing; the fixed/non-interactive Hi-Res option
-is approved. See [the exact feedback and limits](analogue-user-feedback.md).
-This updates the earlier pending-Analogue notes without changing the ROM.
+**Final user confirmation:** Analogue pause blur, menu navigation and L-toggle
+work on the candidate linked for testing; the fixed/non-interactive Hi-Res
+option is approved. See [the exact feedback](analogue-user-feedback.md) and
+[completion evidence and limits](completion-result.md). This closes the earlier
+pending-feedback checks without changing the ROM.
 
 The v86f Extraction stall has an observed software failure chain. This is not
 an Expansion Pak allocation failure. v86g changes only the scheduler's advisory

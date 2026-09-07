@@ -2,9 +2,12 @@
 
 ## Current 480i development status (2026-09-07)
 
-**Analogue user feedback:** in response to the v86g test request, pause blur
-and menu navigation now look good; the non-interactive Hi-Res option is approved.
-The ROM is unchanged. See [the report and its scope](evidence/v86g-completion-reserve/analogue-user-feedback.md).
+**v86g final handoff:** the user confirms pause blur, menu navigation and the
+L-toggle FPS graph on Analogue; the non-interactive Hi-Res option is approved.
+The tested ROM is unchanged. [Final patch + stock 100% Dark save](artifacts/PD6480iperf-v86g-final-patch-and-Dark-save.zip)
+includes updated [instructions](artifacts/PD6480iperf-v86g-final-README.md).
+See [the user report](evidence/v86g-completion-reserve/analogue-user-feedback.md)
+and [completion evidence and limits](evidence/v86g-completion-reserve/completion-result.md).
 
 **v86g progress (September 7 UTC):** a read-only emulator trace identifies the
 Extraction failure: retrace traffic blocks the scheduler's completion delivery,

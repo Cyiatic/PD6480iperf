@@ -15,13 +15,17 @@ the user did not provide a new filename, ROM hash, photograph or recording.
 The linked local candidate remains SHA256
 `79a8f9698190aa76c8600b22f2f35de49abe62b8be2b5ce8dcd84bb834815e40`.
 
+The follow-up question was: "Does L still toggle the FPS graph correctly on
+this build?" The user answered **Yes**. This independently records the current
+build's L-toggle confirmation; it does not relabel an earlier candidate's result.
+
 This is user-reported hardware evidence, not a new assistant capture. It
-supersedes the earlier statement that no current Analogue feedback exists for
-these two visual checks. It does not independently establish L-toggle behavior
-on this candidate, a controlled performance comparison, sustained gameplay,
-all modes, or physical Dark save import. Earlier reports of L working belong
-to earlier candidates and are not silently relabelled v86g.
+supersedes the earlier pending-feedback state for blur, menu navigation and L.
+It does not establish a controlled performance comparison, sustained gameplay,
+all modes, or physical Dark save import.
 
 No console power, capture, upload or EEPROM write was performed for this
 feedback. The previously delivered ROM/patch/save/ZIP are unchanged; their
 bundled manifest remains a dated snapshot of the original test-candidate handoff.
+A separate final handoff bundle uses the identical patch/save with updated
+notes and a manifest reflecting these user confirmations.
