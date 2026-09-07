@@ -224,3 +224,10 @@ All four final players are alive/unpaused, with distinct viewports/positions,
 full640x480 output buffers and no allocation/cache/CPU faults. These results
 do not establish every arena, weapon, human co-op mode or sustained play.
 No ROM or delivered ZIP was changed to obtain these additional results.
+
+The subsequent [completion audit](completion-audit.md) checks the original
+requirements and confirms from normal source that the unattended title demo
+returns to logos rather than normal gameplay. Another idle hardware capture
+would not close the current-build interactive/Analogue verification gap.
+The candidate is unchanged; exact Plug1OFF/status was verified again at
+03:36:05/06 UTC. Both ED64 and Elgato enumerate normally.
