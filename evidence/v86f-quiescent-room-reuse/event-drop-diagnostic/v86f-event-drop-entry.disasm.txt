@@ -1,0 +1,19 @@
+
+.codex-work/v86f-event-drop-stage1.elf:     file format elf32-bigmips
+
+
+Disassembly of section .lib:
+
+80003208 <send_mesg>:
+80003208:	3c0a8007 	lui	t2,0x8007
+8000320c:	254a7e20 	addiu	t2,t2,32288
+80003210:	01445021 	addu	t2,t2,a0
+80003214:	8d490000 	lw	t1,0(t2)
+80003218:	03e09025 	move	s2,ra
+8000321c:	11200025 	beqz	t1,800032b4 <send_mesg+0xac>
+80003220:	00000000 	nop
+80003224:	8d2b0008 	lw	t3,8(t1)
+80003228:	8d2c0010 	lw	t4,16(t1)
+8000322c:	016c082a 	slt	at,t3,t4
+80003230:	10200106 	beqz	at,8000364c <pdTraceDroppedEvent>
+80003234:	00000000 	nop

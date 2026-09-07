@@ -27,7 +27,7 @@ atomic. The independent48-byte layout hash is
 Actual MIPS disassembly is retained. Actual-C tests cover32 owner combinations,
 priority entry/restoration/non-main rejection, plus the negative unlocked case.
 The real allocator/epoch test covers100000 fragmentation operations and
-512x512x2 busy/idle/wrap combinations. The43 Python tool/inspection tests pass.
+512x512x2 busy/idle/wrap combinations. The latest46 Python tool/inspection tests pass.
 
 ## Completed ordinary-input software samples
 
@@ -88,6 +88,14 @@ still stalls atframe3, so controller removal is not required. This is a
 state/setup-dependent failure, not a proven unconditional ROM mission failure.
 The original failed samples remain held as failures, not retroactively replaced.
 
+Follow-up: a **continuous four-controller cold v86f run also stalls at frame3**,
+with the same pending-RSP ownership and no allocation failures. Thus a restored
+state is not required. The older v86b continuous four-controller control reaches
+Extraction frame1437 alive/unpaused. A fresh cold-one-controller menu seed,
+restored with its matching save memory, reaches frame1434 with either one or
+four controllers (the game confirms masks1/15). See
+[the control provenance and limits](extraction-controls/README.md).
+
 A read-only state-register probe uses the exact core revision2f3bf60's published
 v1.6 format. All embedded RAM hashes agree with their separately captured RAM.
 Failed and good states both have rsp_task_locked0 and deferred-DP flag0; these
@@ -123,6 +131,6 @@ hash is the user's verified4e51142a... baseline; no matching decomp state is
 assumed for that retail run.
 
 The xdelta roundtrip matches the exact normal v86f ROM, but no ZIP/candidate
-is promoted while the saved-menu Extraction path remains unexplained. Remaining gates include resolving that
+is promoted while the boot/menu-history-dependent Extraction stall remains unexplained. Remaining gates include resolving that
 stall, sustained play/menu behavior, further multiplayer/co-op paths and an
 accurate performance comparison.

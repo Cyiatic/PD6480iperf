@@ -1,0 +1,25 @@
+process_begin: CreateProcess(C:\Users\codex\Documents\N64, C:/Users/codex/Documents/N64 2/.codex-tools/mips-tools-chain/payload/mingw64/bin/busybox.exe sh -c "find src/assets/ntsc-final -path '*/files/audio/*.mp3'", ...) failed.
+Makefile:226: pipe: No error
+process_begin: CreateProcess(C:\Users\codex\Documents\N64, C:/Users/codex/Documents/N64 2/.codex-tools/mips-tools-chain/payload/mingw64/bin/busybox.exe sh -c "find src/assets/ntsc-final -path '*/files/chrs/*.bin'", ...) failed.
+Makefile:226: pipe: No error
+process_begin: CreateProcess(C:\Users\codex\Documents\N64, C:/Users/codex/Documents/N64 2/.codex-tools/mips-tools-chain/payload/mingw64/bin/busybox.exe sh -c "find src/assets/ntsc-final -path '*/files/guns/*.bin'", ...) failed.
+Makefile:226: pipe: No error
+process_begin: CreateProcess(C:\Users\codex\Documents\N64, C:/Users/codex/Documents/N64 2/.codex-tools/mips-tools-chain/payload/mingw64/bin/busybox.exe sh -c "find src/assets/ntsc-final -path '*/files/props/*.bin'", ...) failed.
+Makefile:226: pipe: No error
+process_begin: CreateProcess(C:\Users\codex\Documents\N64, C:/Users/codex/Documents/N64 2/.codex-tools/mips-tools-chain/payload/mingw64/bin/busybox.exe sh -c "find src/setups -name '*.c'", ...) failed.
+Makefile:226: pipe: No error
+process_begin: CreateProcess(C:\Users\codex\Documents\N64, C:/Users/codex/Documents/N64 2/.codex-tools/mips-tools-chain/payload/mingw64/bin/busybox.exe sh -c "find src/assets/ntsc-final -path '*/files/bgdata/*.seg'", ...) failed.
+Makefile:226: pipe: No error
+process_begin: CreateProcess(C:\Users\codex\Documents\N64, C:/Users/codex/Documents/N64 2/.codex-tools/mips-tools-chain/payload/mingw64/bin/busybox.exe sh -c "find src/assets/ntsc-final -path '*/lang/*.json'", ...) failed.
+Makefile:235: pipe: No error
+process_begin: CreateProcess(C:\Users\codex\Documents\N64, C:/Users/codex/Documents/N64 2/.codex-tools/mips-tools-chain/payload/mingw64/bin/busybox.exe sh -c "find src/assets/ntsc-final -path '*/pads/*.json'", ...) failed.
+Makefile:236: pipe: No error
+process_begin: CreateProcess(C:\Users\codex\Documents\N64, C:/Users/codex/Documents/N64 2/.codex-tools/mips-tools-chain/payload/mingw64/bin/busybox.exe sh -c "find src/assets/ntsc-final -path '*/tiles/*.json'", ...) failed.
+Makefile:237: pipe: No error
+process_begin: CreateProcess(C:\Users\codex\Documents\N64, C:/Users/codex/Documents/N64 2/.codex-tools/mips-tools-chain/payload/mingw64/bin/busybox.exe sh -c "find src/lib src/game src/inflate -name '*.c'", ...) failed.
+Makefile:251: pipe: No error
+process_begin: CreateProcess(C:\Users\codex\Documents\N64, C:/Users/codex/Documents/N64 2/.codex-tools/mips-tools-chain/payload/mingw64/bin/busybox.exe sh -c "find src/lib src/game src/preamble -name '*.s'", ...) failed.
+Makefile:252: pipe: No error
+process_begin: CreateProcess(C:\Users\codex\Documents\N64, C:/Users/codex/Documents/N64 2/.codex-tools/mips-tools-chain/payload/mingw64/bin/busybox.exe sh -c "awk '{print $2}' checksums.ntsc-final.md5", ...) failed.
+Makefile:635: pipe: No error
+make: Nothing to be done for 'default'.

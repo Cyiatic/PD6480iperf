@@ -1,0 +1,29 @@
+{
+  "hardware_verified": false,
+  "instrumented": true,
+  "behavior": "records existing full-queue discards only",
+  "rdram_sha256": "437a84372315cb2d5d8e54037099aa667b9a6f798a46fd8a16e3c23028c0f377",
+  "elf_sha256": "b410daf78dbb61ccb4925939a71119830958e31672912fb3b5f7de8d7df1cfdf",
+  "counters": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "sp_drops": 0,
+  "vi_drops": 0,
+  "dp_drops": 0,
+  "last_drop": null
+}

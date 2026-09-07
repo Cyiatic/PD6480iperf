@@ -6,10 +6,12 @@ from the verified USA1.1 base. Patch SHA256
 `ac016dbba00ae8faf36d66f01b3b318834fc276cbc33de6d79984f5ca701d795`,1447105bytes.
 
 Do not promote this patch: Extraction stalls at gameframe3 in the current
-software test from a saved menu state, even without a later mid-intro restore.
-A continuous cold boot does reach Extraction alive/unpaused; preserving four
-controllers on the failing restored path does not cure it. The state-dependent
-cause remains unexplained. No new ZIP or user-ready ROM is issued by this record.
+software test from a saved menu state and on a continuous four-controller cold
+boot. A continuous one-controller cold boot does reach Extraction alive/unpaused.
+Restoring a fresh one-controller menu seed then using either one or four
+controllers also passes. Restoration is not required for the failure; the
+boot/menu-history-dependent cause remains unexplained. An older v86b continuous
+four-controller control passes. No new ZIP or user-ready ROM is issued here.
 
 Positive bounded results: AI-co-op room failures43→12→0 across v86d/e/f;
 four-controller CI/four-player Skedar; full640x480 colour/depth and L;
