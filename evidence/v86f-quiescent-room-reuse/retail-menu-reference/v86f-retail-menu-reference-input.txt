@@ -1,0 +1,10 @@
+# Ordinary inputs, unmodified user-supplied USA1.1 ROM plus external stock Dark save.
+950 965 8 0 0
+1500 1515 8 0 0
+2400 2410 16 0 0
+2600 2615 1 0 0
+2950 2965 2 0 0
+3500 3610 0 0 -20000
+4260 4272 8 0 0
+4620 4626 0 22000 0
+4920 4926 0 -22000 0

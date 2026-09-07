@@ -1,0 +1,17 @@
+{
+  "rom_sha256": "bf219fa49620be957f366cb2b84ba255d67712bb36faf3e494ddfabfae7fa41e",
+  "state_sha256": "9b6e2347ffc3b67e62e8bea7f1e4b6268b9cac71b86811ba000aa8f3f85aec82",
+  "elf_sha256": "82d6a0e7ffe479c2eb2e2b11efa9b992c0493d58ca4688dbf9be5804328d2511",
+  "layout_sha256": "a62708d1ec9097dc0688cd43aff0b594513b7b7af92cf6cf6dcd6d590c5aabdd",
+  "hardware_verified": false,
+  "instrumented_menu_selection": false,
+  "eeprom_header_adapter": true,
+  "seed": "..\\headless-v86f-solo-seed\\state.bin",
+  "seed_highlight": "DEFECTION, visually verified before this run",
+  "jobs": 2,
+  "source_files_sha256": {
+    "src/game/mainmenu.c": "2268a34231580d51ae9c15cd2a3ffa869e8f866857998e95b4769ded95afcd84",
+    "src/game/bg.c": "b553af89610058dcfeaefaa73f62a1cda4e889927246591905b13bda3911ce66",
+    "src/include/constants.h": "35742ab890074241f8af7706dc7f849b7f2ebf7a0030e5d4592a51f2e8f5b0f4"
+  }
+}

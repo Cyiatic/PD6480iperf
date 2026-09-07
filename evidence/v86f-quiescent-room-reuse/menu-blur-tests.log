@@ -1,0 +1,1 @@
+PASS: real C blur, 2400-byte allocation, four dimensions/four quadrants, output guards, three full-screen offsets; quarter-screen and oversized-allocation controls rejected

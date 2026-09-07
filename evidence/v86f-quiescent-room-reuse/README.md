@@ -1,4 +1,4 @@
-# v86f: quiescent graphics reuse, bounded verification in progress
+# v86f: co-op improvement, candidate held for Extraction stall
 
 Normal source `87952368964433608af2171e742c4e664e205a67` on
 `experiments/v86f-quiescent-room-reuse`. Normal ROM SHA256
@@ -47,7 +47,54 @@ Plans retain ROM/ELF/core/host/input/save/state hashes and parent relationships.
   or whole-match coverage is claimed.
 - Fresh Solo Mission Select: compiled fields prove no co-op/counter-op/AI buddy;
   Defection highlighted was visually verified before the21-mission matrix.
-  The matrix is not yet recorded as complete here.
+  The complete matrix plus11ordinary-input continuations yields20of21 unpaused
+  load-gate passes with unpaused snapshots.19final players are alive; Duel is
+  already dead from unattended combat, so it is not an alive-gameplay sample.
+  The remaining Extraction sample is stuck, not merely
+  an unfinished opening cutscene; see below.
+
+## Extraction stall: candidate not promoted
+
+The initial Extraction run ends at gameframe3. Its600tick state continuation
+returns native0 but never emits a video frame; ffmpeg correctly rejects the
+missing image, and the continuation runner ultimately exits1 after finishing
+the other11runs. Those completed reports remain; no fabricated Extraction
+success report is inserted. The32-sample authenticated chain collection keeps
+all21initial samples and11successful continuations, with20final passes.
+
+An independent3000tick uninterrupted run starts from the matching Solo menu
+seed and replays the exact initial1650tick input prefix plus a later Start.
+It also stops at gameframe3. After frontend600 the video counter stays453,
+and later frontend calls return almost immediately. Zero OOM/cache failures,
+zero evictions (including idle-rule use), valid room partition, no CPU exception.
+Read-only ownership shows currentRSP gfxstate0x12 (needsSP+yieldrequested), no
+currentRDP owner, and another queued graphics taskstate3. Main and scheduler
+are waiting, not exception-flagged. This is not yet a proven root cause.
+The pure-interpreter control on the same v86f menu state also stops at frame3
+(its log repeatedly prints interpreter startup, retained as a limitation).
+The older v86b ROM with its own mode-verified Solo menu state reaches frame1436,
+alive/unpaused health1 without faults. Neither control uses a foreign-ROM state.
+Their seed histories differ, so this does not yet isolate the change responsible.
+A continuous cold v86f one-controller9150tick path **passes**: Extraction
+frame1434, alive/unpaused health1, no OOM/cache/allocator/CPU faults,640x480.
+Its menu at frontend6000 was visually checked with Defection highlighted;
+it reuses the same ordinary input segments on one timeline, no restored state.
+Final state `1333e8b4846b34cabc3d754ec5b6ad30575344b8408138b398c56a463c4c659f`,
+RAM `3a5bbed2a7c5e2a01029e9a97a22e45b3d182e6e43e3cff17857067441519736`.
+The cold final image is very dark with HUD/scope visible, matching the v86b
+control's appearance; neither alone proves all Extraction visual effects correct.
+Restoring the original f menu state while keeping all four controllers connected
+still stalls atframe3, so controller removal is not required. This is a
+state/setup-dependent failure, not a proven unconditional ROM mission failure.
+The original failed samples remain held as failures, not retroactively replaced.
+
+A read-only state-register probe uses the exact core revision2f3bf60's published
+v1.6 format. All embedded RAM hashes agree with their separately captured RAM.
+Failed and good states both have rsp_task_locked0 and deferred-DP flag0; these
+simple missing-handshake candidates do not explain the failure. SPstatus differs
+(0x243 good/seed,0x2c3 stalled), with SPpc0x040017bc and no DMA busy/full.
+These are observations, not a diagnosed core defect. The probe records its
+primary source URL and makes no state/ROM/RAM changes.
 
 ## Hardware
 
@@ -56,14 +103,26 @@ started. The next bounded worker inherited a tool-provided terminal, exposing
 UNFLoader's completed37.28s upload. Captured real-N64 city flyover and Joanna's
 rooftop prove3D intro past boot, **not interactive normal-ROM gameplay**.
 See [the exact observation and limitations](hardware-normal/inspection.md).
-UNFLoader has no full-image readback proof. A separate labelled gameplay replay
-is being tested and cannot retroactively prove uninstrumented gameplay.
+UNFLoader has no full-image readback proof. A separate labelled Agent gameplay
+replay uploaded in39.19s and shows alive Infiltration, full-screen pause blur,
+horizontal menus, fixed video label, L hidden/shown and a short resumed3D view.
+The unattended player then dies normally; later frames are death menus, not a
+sustained-play pass. See [its exact observations](hardware-infiltration-agent/inspection.md).
+It cannot retroactively prove uninstrumented interactive gameplay.
 
-Only Plug1 was controlled. OFF/statusRelay0 confirmed23:25:51/23:25:52UTC.
-The inspected154321868-byte recording and its sidecars were deleted; stills,
-descriptor and logs remain. Live-window activation failed with access denied,
+Only Plug1 was controlled. Latest OFF/statusRelay0 confirmed23:50:26/23:50:27UTC.
+The normal154321868-byte recording and diagnostic677442584bytes of recordings,
+plus their exact sidecars, were deleted; stills, descriptors and logs remain.
+Live-window activation failed with access denied in the normal trial,
 but the completed recording was inspectable. No new Analogue result is claimed.
 
-No v86f release bundle is promoted by this evidence yet. Remaining gates include
-the complete bounded mission matrix, gameplay hardware observation, sustained
-play/menu behavior, further multiplayer/co-op paths and accurate benchmarking.
+Stock USA1.1 plus the same Dark save was also booted without ROM edits for a
+menu appearance reference. The original eyepiece has the same device structure;
+this does not by itself prove all menu-motion artifacts fixed. Its source ROM
+hash is the user's verified4e51142a... baseline; no matching decomp state is
+assumed for that retail run.
+
+The xdelta roundtrip matches the exact normal v86f ROM, but no ZIP/candidate
+is promoted while the saved-menu Extraction path remains unexplained. Remaining gates include resolving that
+stall, sustained play/menu behavior, further multiplayer/co-op paths and an
+accurate performance comparison.

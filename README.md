@@ -7,11 +7,18 @@ has zero room-load failures (v86d43, v86e12), with full640x480 buffers, valid
 room heap and L working. It reuses old room geometry only after an atomic
 graphics-idle ownership check; current-frame geometry remains pinned.
 Fresh four-controller CI and short four-player Skedar setup/movement/menu
-checks also pass. The21-mission solo matrix is running, not yet a complete
-verification. A normal-v86f ED64 upload completed in37.28s, and inspected
+checks also pass. **The broader solo matrix finds an Extraction stall at
+gameframe3**, reproduced without restoring a mid-intro state.20of21 missions
+reach unpaused initialization; no memory failure or CPU exception accompanies
+the stalled graphics task. The candidate is held while this is isolated.
+Continuous cold-boot v86f subsequently reaches Extraction alive/unpaused too;
+the stall still reproduces from the earlier menu state with or without a
+controller-count change. Its root cause remains unresolved, not an unconditional
+mission failure. A normal-v86f ED64 upload completed in37.28s, and inspected
 Elgato frames show real-N64 city/rooftop3D intro. That is not interactive
-normal-ROM gameplay or an Analogue pass. A separate labelled gameplay replay
-is being checked. Plug1OFF confirmed and inspected recording deleted.
+normal-ROM gameplay or an Analogue pass. A separate labelled Agent replay shows
+alive Infiltration pause/navigation/L and a short resume on realN64, then normal
+combat death. Plug1OFF confirmed and all inspected recordings deleted.
 See [v86f evidence and limitations](evidence/v86f-quiescent-room-reuse/README.md).
 No v86f bundle is promoted yet; older results below retain their limitations.
 

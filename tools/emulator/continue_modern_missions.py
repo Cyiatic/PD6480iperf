@@ -13,6 +13,12 @@ import subprocess
 from inspect_modern_rdram import inspect
 from run_modern_menu_missions import digest, expected_rooms, evaluate_snapshot
 
+def final_video_frame(output, ticks):
+    frame = output / f'frame-{ticks}.ppm'
+    if not frame.is_file() or frame.stat().st_size == 0:
+        raise ValueError('Completed run produced no final video frame; native exit0 is not a pass')
+    return frame
+
 def continuation_input(snapshot, exercise=False):
     if exercise:
         if snapshot['in_cutscene'] or snapshot['player_pause_mode']:
@@ -64,20 +70,28 @@ def main():
         command = [str(args.host.resolve()),str(args.core.resolve()),str(args.rom.resolve()),str(output.resolve()),
             str(args.ticks),'cached_interpreter',str((output/'input.txt').resolve()),str((original/'state.bin').resolve()),'-','eeprom-header']
         print('START',name,'bounded late ordinary input',text.strip(),flush=True)
-        with (output/'host.log').open('x') as log:
-            completed = subprocess.run(command,stdout=log,stderr=subprocess.STDOUT,env=environment,timeout=600)
-        report['exit_code'] = completed.returncode
-        if completed.returncode: raise ValueError('Continuation host failed')
-        subprocess.run(['ffmpeg','-v','error','-i',str(output/f'frame-{args.ticks}.ppm'),
-                        '-frames:v','1',str(output/'final.png')],check=True,env=environment)
-        final = inspect(args.elf,output/'rdram-last.bin',args.layout)
-        report['snapshot'] = final
-        report.update(evaluate_snapshot(final,report['requested_stage_id'],expected_rooms(args.source,name,final['room_count'])))
+        try:
+            with (output/'host.log').open('x') as log:
+                completed = subprocess.run(command,stdout=log,stderr=subprocess.STDOUT,env=environment,timeout=600)
+            report['exit_code'] = completed.returncode
+            if completed.returncode: raise ValueError('Continuation host failed')
+            frame = final_video_frame(output,args.ticks)
+            subprocess.run(['ffmpeg','-v','error','-i',str(frame),
+                            '-frames:v','1',str(output/'final.png')],check=True,env=environment)
+            final = inspect(args.elf,output/'rdram-last.bin',args.layout)
+            report['snapshot'] = final
+            report.update(evaluate_snapshot(final,report['requested_stage_id'],expected_rooms(args.source,name,final['room_count'])))
+        except (ValueError, subprocess.CalledProcessError, subprocess.TimeoutExpired) as error:
+            # Retain the failed run too; do not abort collection of other futures
+            # or synthesize a successful snapshot from native exit0 alone.
+            report['error'] = str(error)
         (output/'report.json').write_text(json.dumps(report,indent=2)+'\n')
-        print('DONE',name,json.dumps(dict(gate=report['load_gate_passed'],stage=final['stage'],
-            frame=final['level_frame_number'],cutscene=final['in_cutscene'],pause=final['player_pause_mode'],
-            oom=final['oom_marker'],cache_failures=final.get('room_cache',{}).get('load_failures'),
-            evictions=final.get('room_cache',{}).get('evictions'),faults=report['thread_faults'])),flush=True)
+        final = report.get('snapshot',{})
+        print('DONE',name,json.dumps(dict(gate=report['load_gate_passed'],stage=final.get('stage'),
+            frame=final.get('level_frame_number'),cutscene=final.get('in_cutscene'),pause=final.get('player_pause_mode'),
+            oom=final.get('oom_marker'),cache_failures=final.get('room_cache',{}).get('load_failures'),
+            evictions=final.get('room_cache',{}).get('evictions'),faults=report.get('thread_faults'),
+            error=report.get('error'))),flush=True)
         return report
     reports = []
     with ThreadPoolExecutor(max_workers=args.jobs) as workers:

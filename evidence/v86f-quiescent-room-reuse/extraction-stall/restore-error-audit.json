@@ -1,0 +1,14 @@
+{
+  "requested_stage": "EXTRACTION",
+  "requested_stage_id": 34,
+  "parent_rdram_sha256": "7a2d577a93152465dd6be7675e7202abde4a095ddf244730cc1dadb0b0965998",
+  "parent_state_sha256": "e9bed3ea6c7948c064de47695850de56146fa9a3885726ef32f4235e66d61721",
+  "parent_cutscene": 1,
+  "hardware_verified": false,
+  "instrumented_menu_selection": false,
+  "ticks": 600,
+  "load_gate_passed": false,
+  "exercise": false,
+  "exit_code": 0,
+  "error": "Completed run produced no final video frame; native exit0 is not a pass"
+}

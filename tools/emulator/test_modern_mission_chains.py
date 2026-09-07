@@ -1,10 +1,24 @@
 import copy
+from pathlib import Path
+import tempfile
 import unittest
 from collect_modern_mission_chains import verify_continuation
-from continue_modern_missions import continuation_input
+from continue_modern_missions import continuation_input, final_video_frame
 
 
 class MissionChainTests(unittest.TestCase):
+    def test_native_zero_without_video_is_not_completion(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = Path(temporary)
+            with self.assertRaisesRegex(ValueError, 'no final video frame'):
+                final_video_frame(directory,600)
+            frame = directory/'frame-600.ppm'
+            frame.touch()
+            with self.assertRaisesRegex(ValueError, 'no final video frame'):
+                final_video_frame(directory,600)
+            frame.write_bytes(b'P6\n1 1\n255\n\x00\x00\x00')
+            self.assertEqual(final_video_frame(directory,600),frame)
+
     def test_bounded_ordinary_continuation_input(self):
         for cutscene, pause, button in ((1,0,8),(0,3,2),(0,0,None)):
             text = continuation_input(dict(in_cutscene=cutscene,player_pause_mode=pause))
