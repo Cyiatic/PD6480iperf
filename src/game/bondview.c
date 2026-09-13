@@ -104,8 +104,74 @@ static Gfx *bviewCopyPixels(Gfx *gdl, u16 *fb, s32 top, u32 tile, s32 arg4, f32 
 	return gdl;
 }
 
+/**
+ * Resample a complete fisheye scanline before writing back into that scanline.
+ * A 640-pixel RGBA16 row occupies only 1280 bytes of TMEM. Loading two halves
+ * independently (as bviewCopyPixels does) breaks the sampling at the centre
+ * whenever the lens scale is not one.
+ */
+static Gfx *bviewCopyFisheyeRow(Gfx *gdl, u16 *fb, s32 y, f32 scale, s32 left, s32 width)
+{
+	f32 centre = left + width * 0.5f;
+	s32 radius = width * scale * 0.5f;
+	s32 x1 = centre - radius;
+	s32 x2 = centre + radius;
+	s32 dsdx;
+	s32 s;
+	u32 image;
+
+	if (scale <= 0.0f || width <= 0 || width > 640
+			|| y < 0 || y >= g_ViBackData->y) {
+		return gdl;
+	}
+
+	if (x1 < left) {
+		x1 = left;
+	}
+
+	if (x2 > left + width) {
+		x2 = left + width;
+	}
+
+	if (x2 <= x1) {
+		return gdl;
+	}
+
+	if (scale < 1024.0f / 32767.0f) {
+		// At the poles/startup, show the centre texel in the tiny aperture.
+		// A reciprocal step here would overflow the RDP's signed 5.10 field.
+		dsdx = 0;
+		s = (width / 2) << 5;
+	} else {
+		dsdx = 1024.0f / scale;
+		s = (width * 0.5f + (x1 - centre) / scale) * 32.0f;
+	}
+
+	image = (u32) &fb[g_ViBackData->x * y + left] & 0x00ffffff;
+
+	gDPPipeSync(gdl++);
+	gDPSetTextureImage(gdl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, width, image);
+	gDPLoadSync(gdl++);
+	gDPLoadBlock(gdl++, 5, 0, 0, width - 1, 0);
+	gDPPipeSync(gdl++);
+	gDPSetTile(gdl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, (width * 2 + 7) / 8, 0,
+			G_TX_RENDERTILE, 0,
+			G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD,
+			G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
+	gDPSetTileSize(gdl++, G_TX_RENDERTILE, 0, 0, (width - 1) << 2, 0);
+	gSPTextureRectangle(gdl++, x1 << 2, y << 2, x2 << 2, (y + 1) << 2,
+			G_TX_RENDERTILE, s, 0, dsdx, 1024);
+
+	return gdl;
+}
+
 static Gfx *bviewDrawFisheyeRect(Gfx *gdl, s32 arg1, f32 arg2, s32 arg3, s32 arg4)
 {
+	if (arg1 < g_ViBackData->viewtop
+			|| arg1 >= g_ViBackData->viewtop + g_ViBackData->viewy) {
+		return gdl;
+	}
+
 	if (arg2 < 1) {
 		f32 tmp = arg4 * 0.5f;
 		f32 fVar4 = arg3 + tmp;
@@ -375,16 +441,18 @@ static f32 bview0f142d74(s32 arg0, f32 arg1, f32 arg2, f32 arg3)
 	f32 result;
 	f32 value = arg2;
 
-	if (arg0 < 0 || arg0 >= 0x80) {
-		return 0.01f;
+	if (arg0 < 0 || arg0 > arg2) {
+		return 0.0f;
 	}
 
 	value += arg0 * arg1;
 
 	if (arg3 > value * value) {
-		result = sqrtf(arg3 - value * value) * 0.00625f;
+		// The original radius was expressed in a 240-line framebuffer.
+		// Normalize physical rows here, including the full 480-line centre.
+		result = sqrtf(arg3 - value * value) * (1.5f / g_ViBackData->y);
 	} else {
-		result = 0.01f;
+		result = 0.0f;
 	}
 
 	return result;
@@ -467,7 +535,7 @@ Gfx *bviewDrawFisheye(Gfx *gdl, u32 colour, u32 alpha, s32 shuttertime60, s8 sta
 					gDPSetEnvColorViaWord(gdl++, (colour & 0xffffff00) | (spec & 0xff));
 
 					tmp = bview0f142d74(s2, f26, halfheight, sqhalfheight) * startupfrac;
-					gdl = bviewCopyPixels(gdl, fb, i, 5, i, tmp, viewleft, viewwidth);
+					gdl = bviewCopyFisheyeRow(gdl, fb, i, tmp, viewleft, viewwidth);
 				}
 			}
 
@@ -493,13 +561,13 @@ Gfx *bviewDrawFisheye(Gfx *gdl, u32 colour, u32 alpha, s32 shuttertime60, s8 sta
 			}
 
 			tmp = bview0f142d74(s2, f26, halfheight, sqhalfheight) * f22;
-			gdl = bviewCopyPixels(gdl, fb, i, 5, i, tmp, viewleft, viewwidth);
+			gdl = bviewCopyFisheyeRow(gdl, fb, i, tmp, viewleft, viewwidth);
 
 			if (hit == EYESPYHIT_DAMAGE) {
 				gDPSetEnvColorViaWord(gdl++, 0xddaaaa99);
 
 				tmp = bview0f142d74(s2, f26, halfheight, sqhalfheight) * 1.03f;
-				gdl = bviewCopyPixels(gdl, fb, i, 5, i, tmp, viewleft, viewwidth);
+				gdl = bviewCopyFisheyeRow(gdl, fb, i, tmp, viewleft, viewwidth);
 			}
 
 			s2 += s3;
@@ -555,12 +623,14 @@ Gfx *bviewDrawFisheye(Gfx *gdl, u32 colour, u32 alpha, s32 shuttertime60, s8 sta
 			f32 f2;
 
 			if (sqhalfheight > f20 * f20) {
-				f2 = sqrtf(sqhalfheight - f20 * f20) * (1.0f / 160.0f);
+				f2 = sqrtf(sqhalfheight - f20 * f20) * (1.5f / g_ViBackData->y);
 			} else {
-				f2 = 0.01f;
+				f2 = 0.0f;
 			}
 
-			f20 += -tmp / s7;
+			if (s7 > 0) {
+				f20 += -tmp / s7;
+			}
 
 			gdl = bviewDrawFisheyeRect(gdl, i, f2 * startupfrac, viewleft, viewwidth);
 
@@ -674,9 +744,9 @@ Gfx *bviewDrawEyespyMetrics(Gfx *gdl)
 	u32 colourtextbright;
 	u32 colourtextdull;
 	u32 colourglow;
+	f32 lensscale = viewwidth * 0.75f / g_ViBackData->y;
 #if PAL
 	s32 scale = 1;
-	f32 palscale = viewwidth > 320 ? 1.4f : 1.0f;
 #else
 	s32 scale = viewwidth > 320 ? 2 : 1;
 #endif
@@ -1472,20 +1542,12 @@ Gfx *bviewDrawEyespyMetrics(Gfx *gdl)
 				points[1] = y;
 				points[2] = x = viewleft + 34;
 				points[3] = y + barheight;
-#if PAL
-				points[6] = x = viewwidth / 2.0f - sqrtf(sqcentrey - (ypos - yoffset) * (ypos - yoffset)) * palscale - 5.0f;
-#else
-				points[6] = x = viewwidth / 2.0f - sqrtf(sqcentrey - (ypos - yoffset) * (ypos - yoffset)) * scale - 5.0f;
-#endif
+				points[6] = x = viewleft + viewwidth / 2.0f - sqrtf(sqcentrey - (ypos - yoffset) * (ypos - yoffset)) * lensscale - 5.0f;
 				points[5] = y + barheight;
 
 				ypos -= barheight;
 
-#if PAL
-				points[4] = x = viewwidth / 2.0f - sqrtf(sqcentrey - (ypos - yoffset) * (ypos - yoffset)) * palscale - 5.0f;
-#else
-				points[4] = x = viewwidth / 2.0f - sqrtf(sqcentrey - (ypos - yoffset) * (ypos - yoffset)) * scale - 5.0f;
-#endif
+				points[4] = x = viewleft + viewwidth / 2.0f - sqrtf(sqcentrey - (ypos - yoffset) * (ypos - yoffset)) * lensscale - 5.0f;
 				points[7] = y;
 
 				ypos -= 2;
@@ -1527,20 +1589,12 @@ Gfx *bviewDrawEyespyMetrics(Gfx *gdl)
 				points[1] = y;
 				points[3] = y + barheight;
 				points[2] = x = viewright - 34;
-#if PAL
-				points[6] = x = viewwidth / 2.0f + sqrtf(sqcentrey - (ypos - yoffset) * (ypos - yoffset)) * palscale + 5.0f;
-#else
-				points[6] = x = viewwidth / 2.0f + sqrtf(sqcentrey - (ypos - yoffset) * (ypos - yoffset)) * scale + 5.0f;
-#endif
+				points[6] = x = viewleft + viewwidth / 2.0f + sqrtf(sqcentrey - (ypos - yoffset) * (ypos - yoffset)) * lensscale + 5.0f;
 				points[5] = y + barheight;
 
 				ypos -= barheight;
 
-#if PAL
-				points[4] = x = viewwidth / 2.0f + sqrtf(sqcentrey - (ypos - yoffset) * (ypos - yoffset)) * palscale + 5.0f;
-#else
-				points[4] = x = viewwidth / 2.0f + sqrtf(sqcentrey - (ypos - yoffset) * (ypos - yoffset)) * scale + 5.0f;
-#endif
+				points[4] = x = viewleft + viewwidth / 2.0f + sqrtf(sqcentrey - (ypos - yoffset) * (ypos - yoffset)) * lensscale + 5.0f;
 				points[7] = y;
 
 				ypos -= 2;
