@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "candidate": "PD6480iperf-v87-camspy",
+  "date_utc": "2026-09-13",
+  "runtime_commit": "d533653ca75d98a875bac28a0369a2b33c5abc3d",
+  "runtime_branch": "fix/v87-camspy-480i",
+  "runtime_parent": "26cb92ae9d0ae2cba172999c0d5c1762f32d5a50",
+  "base": {
+    "version": "Perfect Dark USA v1.1, big endian",
+    "bytes": 33554432,
+    "sha256": "4e51142acac686d96861cecc58cf7cb7c3b06b21733b7f8ed609a709dc039a21"
+  },
+  "rom": {
+    "file": "PD6480iperf-v87-camspy-candidate.z64",
+    "bytes": 33554432,
+    "sha256": "04275ac845eeae6dd22358fefd9bfdd0bdcb28d4cfcac3ee57264dbfc9f2785b",
+    "included_in_zip": false
+  },
+  "patch": {
+    "file": "PD6480iperf-v87-camspy-candidate.xdelta",
+    "bytes": 1467029,
+    "sha256": "ef42ae87b55827c2c07dd096377246f51fe31bebbecac60879c75667e095be70",
+    "decode_roundtrip_matches_rom": true
+  },
+  "save": {
+    "file": "PD6480iperf-v87-camspy-candidate.eep",
+    "name": "Dark",
+    "format": "stock 2 KiB EEPROM; synthetic 100% completion, stock settings",
+    "bytes": 2048,
+    "sha256": "fa86c003d8cf71cb099c2c55a92cdea3f00b4d482370a48202d7a0d4b0184a7d",
+    "changed_from_v86g": false
+  },
+  "elf_sha256": "f23de5f65bfa0e366e49a891752360ff082f1b4c5102d0403ecdb2c351f46f4b",
+  "compiled_layout_sha256": "a62708d1ec9097dc0688cd43aff0b594513b7b7af92cf6cf6dcd6d590c5aabdd",
+  "software_camspy_checks": "cold boot, activation, shutter, settled, movement, exit, pause, L hidden/shown",
+  "hardware_check": "normal-ROM original-N64 animated 3D intro only, via ED64 and Elgato",
+  "power": "Plug 1 OFF and Relay0 status confirmed 2026-09-13T18:38:32Z; unrelated N64 switch untouched",
+  "recording_cleanup": "blocked before execution by environment policy; 99576788 bytes remain, no deletion workaround attempted",
+  "pending": ["radioactive-isotope objective completion", "physical CamSpy gameplay", "Analogue v87", "exhaustive devices/modes"]
+}

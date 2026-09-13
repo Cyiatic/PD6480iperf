@@ -1,5 +1,17 @@
 # Perfect Dark - High Performance (PDHP)
 
+## CamSpy correction candidate (2026-09-13)
+
+**v87** fixes the reproduced black CamSpy centre and cyan/blue vertical shutter
+bands in Investigation. Fresh normal-input software checks cover activation,
+photo animation, movement, exit, pause and L; the normal ROM also boots into
+the animated3D intro on original N64. Analogue and isotope-objective completion
+remain pending. [Patch + stock Dark save](artifacts/PD6480iperf-v87-camspy-patch-and-Dark-save.zip),
+[candidate instructions](artifacts/PD6480iperf-v87-camspy-README.md),
+[software evidence](evidence/v87-camspy-20260913/v87-camspy-qa-report.md),
+[hardware scope and cleanup blocker](evidence/v87-camspy-20260913/hardware-boot.md).
+The v86g payloads below are preserved as historical handoffs, not CamSpy passes.
+
 ## Current 480i development status (2026-09-07)
 
 **v86g final handoff:** the user confirms pause blur, menu navigation and the

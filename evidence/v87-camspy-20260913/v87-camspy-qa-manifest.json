@@ -1,0 +1,186 @@
+{
+  "report": "v87-camspy-qa-report.md",
+  "date": "2026-09-13",
+  "scope": "candidate-only Mission 2 Investigation CamSpy QA",
+  "hardware_operated": false,
+  "candidate_source_scope": ["src/game/bondview.c"],
+  "candidate": {
+    "rom": ".codex-work/PD6480iperf-v87-camspy-candidate.z64",
+    "rom_sha256": "04275ac845eeae6dd22358fefd9bfdd0bdcb28d4cfcac3ee57264dbfc9f2785b",
+    "elf": ".codex-work/v87-stage1.elf",
+    "elf_sha256": "f23de5f65bfa0e366e49a891752360ff082f1b4c5102d0403ecdb2c351f46f4b",
+    "layout": ".codex-work/v87-mode-layout.bin",
+    "layout_sha256": "a62708d1ec9097dc0688cd43aff0b594513b7b7af92cf6cf6dcd6d590c5aabdd",
+    "core": ".codex-tools/parallel-headless/parallel_n64_libretro.dll",
+    "core_sha256": "4f239ad5ba11887d70e6887b648237f81ab9dfeb6f80f463153abc513e0ebad7",
+    "host": ".codex-work/host-watch-v4.exe",
+    "host_sha256": "38999d88cc858389ecb6095563018f18427d92e067cb056bfa3f1c326b74c805"
+  },
+  "cold_seed": {
+    "output": ".codex-work/v87-cold-investigation-select-seed",
+    "input": ".codex-work/v86f-extraction-cold-one-input.txt",
+    "input_sha256": "7f6e87ef409672360b908244c43ded7b0777ea1b08036aa6d496eb031cef763d",
+    "stock_eeprom": ".codex-work/perfect-dark-performance/artifacts/saves/Perfect-Dark-Dark-100-stock-v1.eep",
+    "stock_eeprom_sha256": "fa86c003d8cf71cb099c2c55a92cdea3f00b4d482370a48202d7a0d4b0184a7d",
+    "ticks": 6150,
+    "state_input": "-",
+    "writes_input": "-",
+    "connected_mask": 15,
+    "save_size": 296960,
+    "state_sha256": "eab54fa4e6a9ff08a2de7f0fa2a3ece0d7d8bb161bc92dfa45781505715f3ece",
+    "rdram_sha256": "41afa33d4ffab84e427ad546df753e34d62b1486680207b01e8de289760e4df1",
+    "save_sha256": "ad1791c4ea908b7c3c069696672f7dbda31493cb49656d71c037593dd939bd1e",
+    "final": {
+      "stage": 38,
+      "pause": 3,
+      "mission_select_highlight": "Defection",
+      "mission_configuration": "Solo/no AI",
+      "dimensions": [640, 480],
+      "oom": 0,
+      "visual": "v87-cold-investigation-select-seed/frame-6150.png",
+      "inspection": "v87-cold-investigation-select-seed/inspection.json"
+    }
+  },
+  "controls": {
+    "A": 1,
+    "B": 2,
+    "Start": 8,
+    "D_up": 16,
+    "L": 1024,
+    "R": 2048,
+    "Z": 4096,
+    "format": "begin end buttonMask analogX analogY [port]",
+    "activation": [
+      "30 150 1 0 0 0",
+      "60 100 1 0 20000 0",
+      "100 112 4097 0 0 0"
+    ],
+    "shutter": "30 42 4096 0 0 0",
+    "exit": "30 42 1 0 0 0",
+    "pause": "30 42 8 0 0 0",
+    "L_check": "30 42 1024 0 0 0"
+  },
+  "candidate_chain": [
+    {
+      "name": "investigation_selection",
+      "output": ".codex-work/v87-camspy-qa/v87-investigation-candidate",
+      "stage": 51,
+      "frame": 242,
+      "pause": 3,
+      "state_sha256": "d8cb56210bc7d0c6404c7533e4a8b7c4f99f01166e82f41004f75e6404d5551f",
+      "rdram_sha256": "2fa555b44ce0c9c8f3134643a5a83d18f36b11a07429e419be83a3aa853f0af8"
+    },
+    {
+      "name": "live_investigation",
+      "output": ".codex-work/v87-camspy-qa/v87-investigation-live2",
+      "stage": 51,
+      "frame": 485,
+      "pause": 0,
+      "state_sha256": "ef1b76d2669724fc466728b84795d20a66ea987fe7ab5ddaeb07576ceb96152b",
+      "rdram_sha256": "848d2fb7d6a9e30eeb3b5522d5709899d394bb1c484aabb4bed4ef433b46f2eb"
+    },
+    {
+      "name": "activation",
+      "output": ".codex-work/v87-camspy-qa/v87-activation-live",
+      "stage": 51,
+      "frame": 685,
+      "pause": 0,
+      "devicesactive": "0x4",
+      "cameramode": 2,
+      "eyespy": {"active": 1, "deployed": 1, "held": 0, "startup": 50, "shutter": 0, "mode": 0},
+      "visual": "v87-camspy-qa/v87-activation-live/frame-300.png",
+      "state_sha256": "9d0ee9fe28e1ed4423d72408b6240b1967b54e0ea916df8232981a4dc5d9049b"
+    },
+    {
+      "name": "shutter_window",
+      "output": ".codex-work/v87-camspy-qa/v87-shutter-window",
+      "stage": 51,
+      "frame": 712,
+      "pause": 0,
+      "devicesactive": "0x4",
+      "cameramode": 2,
+      "eyespy": {"active": 1, "deployed": 1, "held": 0, "shutter": 10, "mode": 0},
+      "visual": "v87-camspy-qa/v87-shutter-window/frame-45.png",
+      "state_sha256": "f7b4a9934011cc00be2590c3d81fa2053eaf6a208f871b841c69d6898c606dfc",
+      "rdram_sha256": "2310f72b6cd5a16dba70a8dfd7a4764390e1281fa78fedb00309ecfbc02c2bb4"
+    },
+    {
+      "name": "settled",
+      "output": ".codex-work/v87-camspy-qa/v87-shutter-settled",
+      "stage": 51,
+      "frame": 739,
+      "pause": 0,
+      "devicesactive": "0x4",
+      "cameramode": 2,
+      "eyespy": {"active": 1, "deployed": 1, "held": 0, "shutter": 0, "mode": 0},
+      "visual": "v87-camspy-qa/v87-shutter-settled/frame-90.png",
+      "state_sha256": "d5cc198713f058fc4d53ad87f70a41ec7a60c3d1a0e339310ef96481bd65123c"
+    },
+    {
+      "name": "movement",
+      "output": ".codex-work/v87-camspy-qa/v87-move",
+      "stage": 51,
+      "frame": 798,
+      "pause": 0,
+      "devicesactive": "0x4",
+      "cameramode": 2,
+      "eyespy_prop_z": {"before": 1551.5001, "after": 1148.7813},
+      "visual": "v87-camspy-qa/v87-move/frame-90.png",
+      "state_sha256": "9c2445b5e4d52b5ce85504c03676cf1dcf31be3197640724d02b43a8e3d9afb7"
+    },
+    {
+      "name": "exit",
+      "output": ".codex-work/v87-camspy-qa/v87-exit",
+      "stage": 51,
+      "frame": 875,
+      "pause": 0,
+      "devicesactive": "0x0",
+      "cameramode": 0,
+      "eyespy": {"active": 0, "deployed": 1, "shutter": 0, "mode": 0},
+      "visual": "v87-camspy-qa/v87-exit/frame-90.png",
+      "state_sha256": "a32f617eb97ee12b1c7d65ed07e6b8845d3f2a6c94357552e2d4df3662ddf102"
+    }
+  ],
+  "l_hidden_shown": {
+    "parent_output": ".codex-work/v87-camspy-qa/v87-exit",
+    "shown": {
+      "visual": "v87-camspy-qa/v87-exit/frame-90.png",
+      "stage": 51,
+      "frame": 875,
+      "pause": 0,
+      "fps_graph_enabled": 1,
+      "description": "normal Joanna/Falcon2 view with graph shown"
+    },
+    "hidden": {
+      "visual": "v87-camspy-qa/v87-l-check/frame-90.png",
+      "stage": 51,
+      "frame": 963,
+      "pause": 0,
+      "fps_graph_enabled": 0,
+      "input": "L mask 1024",
+      "description": "same ordinary view after one L press with graph hidden"
+    }
+  },
+  "pause_check": {
+    "visual": "v87-camspy-qa/v87-pause/frame-90.png",
+    "stage": 51,
+    "frame": 905,
+    "pause": 3,
+    "input": "Start mask 8"
+  },
+  "validation": {
+    "connected_mask": 15,
+    "dimensions": [640, 480],
+    "oom_marker": 0,
+    "cheats": false,
+    "ram_teleport": false,
+    "all_candidate_branches": "run_checked_host pass"
+  },
+  "photo_objective": {
+    "description": "Holograph radioactive isotope",
+    "tag": "0x39",
+    "status": "pending normal-input route",
+    "teleport_or_cheat_used": false
+  },
+  "immutable_v86g_comparator": ".codex-work/v86g-screen-menu-qa-20260912/camspy-20260913/strict-m15/camspy-15-shutter-window/frame-45.png"
+}

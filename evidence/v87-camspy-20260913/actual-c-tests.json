@@ -1,0 +1,14 @@
+{
+  "source_sha256": "2cf067e2a75aff3f21059b03c3888bd737f9390a1d61bc3842476ebbe9a58b92",
+  "functions": [
+    "bviewCopyFisheyeRow",
+    "bviewDrawFisheyeRect",
+    "bview0f142d74"
+  ],
+  "result": 0,
+  "stdout": "PASS 193800 actual-C row/startup/damage cases; six viewport layouts; bounded masks/texture fields\n",
+  "stderr": "",
+  "negative_control_exit": 17,
+  "negative_control_stdout": "Original centre scale: 0.010000 (expected 0.75)\n",
+  "scope": "Actual source math and GBI arguments; not RDP/gameplay/hardware proof"
+}
