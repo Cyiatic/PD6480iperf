@@ -19,3 +19,32 @@ src/assets/*/sequences/*.seq
 src/assets/*/textures/*.bin
 src/generated
 tools/mkrom/mkrom
+
+# Local ROMs, build/scratch output and host tools are not release payloads.
+*.z64
+*.n64
+*.v64
+*.Z64
+*.N64
+*.V64
+*.elf
+*.exe
+*.dll
+.codex-work/
+__pycache__/
+/build*.log
+
+# Keep concise evidence, not full captures or emulator memory/state dumps.
+*.ts
+*.m2ts
+*.mp4
+*.mkv
+*.mov
+*.avi
+*.webm
+*.wmv
+state*.bin
+rdram*.bin
+save-memory.bin
+
+# .xdelta patches and intentional .eep release saves remain trackable.

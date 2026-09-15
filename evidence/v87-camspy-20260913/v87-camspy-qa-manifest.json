@@ -168,6 +168,50 @@
     "pause": 3,
     "input": "Start mask 8"
   },
+  "normal_input_route": {
+    "status": "Route stopped; EyeSpy deactivated after damage-state event; obstacle identity unresolved; objective unverified",
+    "parent_checkpoint": {
+      "output": ".codex-work/v87-camspy-qa/v87-camspy-001d-west-tiny-nob",
+      "stage": 51,
+      "frame": 1452,
+      "eyespy_position": [665.2543, 106.8486, 1322.8522],
+      "theta": 279.018,
+      "devicesactive": "0x4",
+      "eyespy_active": 1,
+      "eyespy_hit": 0,
+      "normal_input_only": true
+    },
+    "barrier_probes": [
+      {
+        "output": ".codex-work/v87-camspy-qa/v87-camspy-001d-west-probe3-nob",
+        "stage": 51,
+        "frame": 1482,
+        "forward_ticks": 5,
+        "eyespy_position": [598.8335, 104.1658, 1312.3116],
+        "devicesactive": "0x0",
+        "eyespy_active": 0,
+        "eyespy_hit": 4,
+        "hit_meaning": "EYESPYHIT_DAMAGE; source permits damage-on-contact door or ordinary damage, but post-event pointer is null",
+        "joanna_health": 1.0,
+        "joanna_dead": 0
+      },
+      {
+        "output": ".codex-work/v87-camspy-qa/v87-camspy-001d-west-probe2-nob",
+        "stage": 51,
+        "frame": 1486,
+        "forward_ticks": 10,
+        "eyespy_position": [598.8335, 104.1658, 1312.3116],
+        "devicesactive": "0x0",
+        "eyespy_active": 0,
+        "eyespy_hit": 4,
+        "joanna_health": 1.0,
+        "joanna_dead": 0
+      }
+    ],
+    "photo_objective": "unverified; isotope tag 0x39 was not holographed",
+    "cheats": false,
+    "ram_teleport": false
+  },
   "validation": {
     "connected_mask": 15,
     "dimensions": [640, 480],
@@ -179,8 +223,16 @@
   "photo_objective": {
     "description": "Holograph radioactive isotope",
     "tag": "0x39",
-    "status": "pending normal-input route",
+    "status": "unverified; extended normal-input route stopped after first-person reproduction scope was clarified",
     "teleport_or_cheat_used": false
   },
-  "immutable_v86g_comparator": ".codex-work/v86g-screen-menu-qa-20260912/camspy-20260913/strict-m15/camspy-15-shutter-window/frame-45.png"
+  "immutable_v86g_comparator": ".codex-work/v86g-screen-menu-qa-20260912/camspy-20260913/strict-m15/camspy-15-shutter-window/frame-45.png",
+  "acceptance_update": {
+    "recorded_date": "2026-09-15",
+    "source": "analogue-user-feedback.md",
+    "platform": "Analogue 3D",
+    "user_report": "camspy works good",
+    "rom_sha256": "04275ac845eeae6dd22358fefd9bfdd0bdcb28d4cfcac3ee57264dbfc9f2785b",
+    "scope": "User-confirmed CamSpy rendering; not isotope completion, original-N64 CamSpy gameplay or exhaustive device coverage"
+  }
 }

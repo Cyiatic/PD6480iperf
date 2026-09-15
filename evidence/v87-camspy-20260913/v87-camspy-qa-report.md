@@ -62,9 +62,35 @@ The separate v86g comparator is retained only as an immutable visual reference
 under `.codex-work/v86g-screen-menu-qa-20260912/`; no v86g state participates
 in this v87 chain.
 
+## Normal-input route outcome
+
+The follow-on Investigation route was tested from the authenticated CamSpy
+activation with the same candidate ROM/ELF, connected mask 15, and ordinary
+controller input only. It crossed the initial door and reached the westward
+corridor checkpoint in
+`v87-camspy-qa/v87-camspy-001d-west-tiny-nob/` at approximately
+`[665.25, 106.85, 1322.85]`, heading `279.018`, with the camera active and
+`hit=0` (stage 51, frame 1452). A further five-to-ten normal forward ticks
+from that checkpoint reached approximately `[598.83, 104.17, 1312.31]` and
+cleared the player’s EyeSpy pointer: `devicesactive=0`, EyeSpy `active=0`, and
+`hit=4` (`EYESPYHIT_DAMAGE`). The source uses this value for both
+damage-on-contact door handling and ordinary damage handling, and the final
+snapshot has a null EyeSpy pointer, so the retained post-event RAM does not
+identify the obstacle as a laser door. Joanna remained alive at full recorded
+health, so this is a verified damage/deactivation event rather than a player
+death or renderer failure; obstacle identity remains unresolved. Evidence is retained in
+`v87-camspy-qa/v87-camspy-001d-west-probe3-nob/` and the corroborating
+ten-tick probe `v87-camspy-qa/v87-camspy-001d-west-probe2-nob/`.
+
 ## Objective status
 
-The radioactive-isotope photo objective has not yet been claimed by this
-report. The next bounded run continues ordinary Investigation movement toward
-the isotope and must record the actual photo/objective state, not just a
-CamSpy render.
+The radioactive-isotope photo objective (tag `0x39`, “Holograph radioactive
+isotope”) remains unverified. No photo success is claimed, and no cheats, RAM
+writes, or teleportation were used. The route evidence above records the
+actual ordinary-input damage/deactivation event reached in this run.
+
+September 15 status addendum: extended routing was stopped after the reported
+first-person rendering defect was made the primary acceptance target. This is
+not an ongoing navigation task. The user subsequently reported CamSpy working
+on Analogue; see [dated feedback](analogue-user-feedback.md). That confirmation
+does not establish isotope-objective completion.

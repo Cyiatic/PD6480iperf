@@ -1,5 +1,10 @@
 # Newer pd-perf lineage gap audit
 
+> Historical scope: this September 5 audit describes v79/v80b, not v87.
+> v81 and later start from the newer bf3245076 source directly. The missing-
+> commit statuses and proposed Hi-Res UI below are superseded; see the
+> [current findings](FINDINGS.md) and [runtime source guide](BUILD.md).
+
 Working audit, 2026-09-05. The v79/v80b development-candidate source is based on
 `f96d9ff901fc96a0c42b7010dd2cdf89ac5b16c2` (May 2, 2023). The local source used
 for the supplied newer pd-perf comparison ends at
