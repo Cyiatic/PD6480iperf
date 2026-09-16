@@ -21,6 +21,8 @@
 
 ## Maintainer references
 
+- [Public-release audit, commit mapping and clone migration](PUBLIC_RELEASE.md)
+
 - [Input patch provenance](input-patch-analysis.md)
 - [Bounded hardware workflow](../tools/hardware/README.md)
 - [Software inspection tools](../tools/emulator/README.md)

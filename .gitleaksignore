@@ -1,0 +1,4 @@
+# Reviewed false positive: game assembly macro, not a credential:
+# It is an assembly instruction setting a game character's hidden flag.
+# Exact sanitized commit/file/rule/line only; no broad rule suppression.
+83aeca173aa63c8a1e494ed857c4c0a1d264d432:asm/setup/setupame.s:generic-api-key:2751

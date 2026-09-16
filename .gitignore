@@ -48,3 +48,5 @@ rdram*.bin
 save-memory.bin
 
 # .xdelta patches and intentional .eep release saves remain trackable.
+tools/gzip
+tools/irix/

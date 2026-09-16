@@ -26,4 +26,6 @@ The default `mods/performance` branch retains historical source alongside releas
 
 Current patch/save payloads were not regenerated during the documentation cleanup. Later acceptance is recorded separately from their packaging-time README/manifest.
 
-Old full ROMs were removed from the current Git index, **not deleted from the local workspace**. Existing Git history was not rewritten and still contains older ROM blobs. Ignore rules prevent routine re-addition of ROMs, large captures, local scratch/build outputs and host binaries. This is distribution hygiene, not a claim that the repository's complete history is ROM-free or small.
+The initial documentation cleanup only untracked old ROMs, leaving them in private history. The subsequent public-release cleanup removed full ROMs and bundled host/IRIX binaries across all published history, while retaining an independent private backup. Local ROMs and pre-existing work were not deleted.
+
+Publication preserves the branch names and source contents but changes affected commit IDs. See the [public-release audit and mapping](PUBLIC_RELEASE.md). Old IDs inside dated notes and immutable release manifests are historical provenance, not instructions to fetch the private history.

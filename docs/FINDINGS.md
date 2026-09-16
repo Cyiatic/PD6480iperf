@@ -29,7 +29,7 @@ Source definitions plus matching-build runtime inspection establish the configur
 
 The full **8 MiB** is already in use. There is no unused Expansion Pak switch to enable. Two colour buffers are necessary to make this configuration fit alongside the game; upstream triple buffering plus unrestricted preload exceeded the budget.
 
-Evidence: [pinned framebuffer constants](https://github.com/Cyiatic/PD6480iperf/blob/d533653ca75d98a875bac28a0369a2b33c5abc3d/src/include/video480i.h), [v82b buffer integration](PD6480iperf-v82b.md), [v87 runtime inspection](../evidence/v87-camspy-20260913/v87-camspy-qa-report.md).
+Evidence: [pinned framebuffer constants](https://github.com/Cyiatic/PD6480iperf/blob/802059812519fef5d08c8f8e4ba86ff033c296ac/src/include/video480i.h), [v82b buffer integration](PD6480iperf-v82b.md), [v87 runtime inspection](../evidence/v87-camspy-20260913/v87-camspy-qa-report.md).
 
 ## 3. Buffer ownership matters as much as allocation
 
@@ -37,7 +37,7 @@ A framebuffer must not be reused while VI scanout or an outstanding graphics tas
 
 This explains why adding larger buffers is not sufficient: the scheduler, VI slots, title transitions and memory layout must agree. Early black screens and crash photos were not all proven to have one common cause. In particular, v82's reproduced briefing failure came from making shared menu scratch lazy without allocating it before briefing callbacks; v82b corrected that regression.
 
-Evidence: [pinned ownership helper](https://github.com/Cyiatic/PD6480iperf/blob/d533653ca75d98a875bac28a0369a2b33c5abc3d/src/include/pd480_framebuffer.h), [v82b briefing diagnosis](PD6480iperf-v82b.md).
+Evidence: [pinned ownership helper](https://github.com/Cyiatic/PD6480iperf/blob/802059812519fef5d08c8f8e4ba86ff033c296ac/src/include/pd480_framebuffer.h), [v82b briefing diagnosis](PD6480iperf-v82b.md).
 
 ## 4. Menus and pause blur contained 320×240 assumptions
 
@@ -91,7 +91,7 @@ v87 changes only `src/game/bondview.c` at runtime relative to v86g:
 
 The actual-C harness passes **193,800** row/startup/damage cases across six viewport layouts; the old radius fails its negative control. This checks math and generated graphics arguments, not physical RDP behavior by itself. A cold-boot software comparison shows the original bands and their absence in v87. The user subsequently reports **“camspy works good” on Analogue 3D**.
 
-Evidence: [v87 comparison](../evidence/v87-camspy-20260913/README.md), [source diff](https://github.com/Cyiatic/PD6480iperf/commit/d533653ca75d98a875bac28a0369a2b33c5abc3d), [user confirmation](../evidence/v87-camspy-20260913/analogue-user-feedback.md).
+Evidence: [v87 comparison](../evidence/v87-camspy-20260913/README.md), [source diff](https://github.com/Cyiatic/PD6480iperf/commit/802059812519fef5d08c8f8e4ba86ff033c296ac), [user confirmation](../evidence/v87-camspy-20260913/analogue-user-feedback.md).
 
 ## What these findings do not establish
 

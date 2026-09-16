@@ -8,22 +8,24 @@ The default `mods/performance` branch is the distribution/evidence branch. Its h
 
 | Source checkpoint | Commit |
 | --- | --- |
-| Newer upstream performance base | `bf3245076d00fbbb29ca1e0906672381f2d43a52` |
-| v86g parent runtime | `26cb92ae9d0ae2cba172999c0d5c1762f32d5a50` |
-| Exact v87 runtime, branch `fix/v87-camspy-480i` | `d533653ca75d98a875bac28a0369a2b33c5abc3d` |
+| Newer performance base in public history | `d88dc100ef00e11d3c633cb384d4c51169b17b7d` |
+| v86g parent runtime in public history | `9bce9e60addc08b3b658fb0224621f32a99f1bdd` |
+| Maintained v87 source, branch `fix/v87-camspy-480i` | `82d704d0154ea86f9e5d0fb98541907806f31960` |
 
-v87 changes only `src/game/bondview.c` at runtime relative to v86g; its additional documentation and source-test harness are not runtime changes. [Pinned source](https://github.com/Cyiatic/PD6480iperf/tree/d533653ca75d98a875bac28a0369a2b33c5abc3d).
+v87 changes only `src/game/bondview.c` at runtime relative to v86g; its additional documentation and source-test harness are not runtime changes. [Pinned source](https://github.com/Cyiatic/PD6480iperf/tree/82d704d0154ea86f9e5d0fb98541907806f31960).
+
+The original release commit `d533653ca...` maps to sanitized commit `802059812519fef5d08c8f8e4ba86ff033c296ac`. The maintained pin above adds documentation, ignore rules and a corrected negative-control parent lookup only. Game-source blobs are identical. The unchanged release manifests retain their original IDs; use the [commit map](PUBLIC_RELEASE.md#source-identity).
 
 Use a separate checkout instead of switching a dirty distribution checkout:
 
 ```powershell
 git clone --branch fix/v87-camspy-480i --single-branch https://github.com/Cyiatic/PD6480iperf.git PD6480iperf-runtime-v87
 Set-Location PD6480iperf-runtime-v87
-git checkout --detach d533653ca75d98a875bac28a0369a2b33c5abc3d
+git checkout --detach 82d704d0154ea86f9e5d0fb98541907806f31960
 git status --short
 ```
 
-Private-repository access is required. Detaching pins the released source; create your own branch before making new work.
+No private-repository access is required. Detaching pins the documented source; create your own branch before making new work.
 
 ## Known Windows build environment
 
@@ -72,6 +74,8 @@ if ($LASTEXITCODE -ne 0) { throw 'ROM build failed' }
 
 The Makefile defaults to nonmatching GCC (`MATCHING=0`, `COMPILER=gcc`, `-Os`). The host `mkrom` helper is built from `tools/mkrom/`; keep its runtime dependencies available. A historical packaging failure was a missing `msys-2.0.dll`; adding the correct MSYS `usr/bin` resolved it.
 
+The public repository does not bundle `tools/gzip` or the legacy `tools/irix/` binaries. Install gzip on PATH and obtain your build dependencies separately. The current asset tool already prefers gzip on PATH. This publication pass re-ran the CamSpy source regression test, not a clean-room ROM rebuild.
+
 Outputs include `build/ntsc-final/pd.z64`, `stage1.elf` and `pd.map`. Extracted assets and full ROMs remain local. Do not commit them.
 
 ## Header normalization and exact identity
@@ -113,6 +117,8 @@ For patch verification, decode onto the clean base and compare the output to the
 
 ## Repository maintenance
 
-In the existing distribution workspace, `github` is the private **Cyiatic/PD6480iperf** remote; `origin` is the public Ryan Dwyer upstream. **Never push project artifacts to that public origin.** A fresh clone may name the private remote `origin`, so inspect `git remote -v` rather than trusting a remote name.
+Use a fresh clone of **https://github.com/Cyiatic/PD6480iperf.git**. Old development checkouts contain pre-cleanup history and may have an `origin` pointing at Ryan Dwyer's upstream; inspect `git remote -v` and do not push project artifacts upstream.
 
-Stage only reviewed paths, leave unrelated source edits alone, and use a normal fast-forward push. Preserve provenance and failed controls. Keep ROMs, extracted assets, states, recordings, host binaries and credentials out of new commits. Current ignore rules do not remove previously committed blobs from history.
+Do not merge or force-push an old private branch into the public repository. Transfer reviewed changes as patches or cherry-pick isolated commits onto the cleaned history. The original working folders and private backup were not erased.
+
+Stage only reviewed paths and use normal fast-forward pushes. Preserve provenance and failed controls. Keep ROMs, extracted assets, states, recordings, host binaries and credentials out of new commits; ignore rules alone are not a history audit.

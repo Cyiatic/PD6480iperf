@@ -44,7 +44,7 @@ This remains a **test candidate**, not a claim of exhaustive compatibility. Isot
 | Branch | Purpose |
 | --- | --- |
 | `mods/performance` (this default branch) | Patch/save distribution, documentation, evidence and historical integration source. **Its `src/` does not reproduce v87.** |
-| [`fix/v87-camspy-480i`](https://github.com/Cyiatic/PD6480iperf/tree/fix/v87-camspy-480i) | Buildable v87 runtime; pinned release commit [`d533653ca`](https://github.com/Cyiatic/PD6480iperf/commit/d533653ca75d98a875bac28a0369a2b33c5abc3d). |
+| [`fix/v87-camspy-480i`](https://github.com/Cyiatic/PD6480iperf/tree/fix/v87-camspy-480i) | Buildable v87 runtime; public source pin [`82d704d01`](https://github.com/Cyiatic/PD6480iperf/commit/82d704d0154ea86f9e5d0fb98541907806f31960). |
 
 The release payloads are unchanged. Their September 13 README/manifest are packaging-time snapshots; this front page and [dated acceptance update](evidence/v87-camspy-20260913/analogue-user-feedback.md) include the later user confirmation.
 
@@ -52,7 +52,9 @@ The release payloads are unchanged. Their September 13 README/manifest are packa
 
 Based on **Ryan Dwyer's Perfect Dark decompilation, performance work and 640×480i work**. Thanks to the user and Graslu00 for test feedback and the CamSpy report.
 
-Source licensing is in [LICENSE](LICENSE). The code license does not grant rights to distribute the original game's ROM or extracted assets. Current repository hygiene excludes ROMs, captures, local build outputs and host executables. Older ROM blobs still exist in Git history; that history has not been rewritten, and this repository remains private.
+Source licensing is in [LICENSE](LICENSE). The code license does not grant rights to distribute the original game's ROM or extracted assets. Full ROMs and bundled host/IRIX binaries have been removed from the published history; local backups remain private. Patches, saves, source and small verification artifacts are retained.
+
+The public history uses new commit IDs, but the v87 ROM/patch/save bytes and game source are unchanged. See [public-release audit and migration notes](docs/PUBLIC_RELEASE.md) for the cleanup scope and original-to-public commit map. If you have an old private clone, start with a fresh public clone rather than merging or force-pushing its history.
 
 ## AI Assistance Disclosure
 
