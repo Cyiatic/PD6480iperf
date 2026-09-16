@@ -1,3 +1,5 @@
+<img src="images/pd6480iperf-logo.png" alt="PD6480iPerf" width="483">
+
 # PD6480iperf
 
 Perfect Dark for N64: fixed **640×480 interlaced rendering** combined with the newer performance source, an **L-toggle FPS graph**, and fixes for the higher-resolution menus and camera effects.
@@ -51,4 +53,19 @@ The release payloads are unchanged. Their September 13 README/manifest are packa
 Based on **Ryan Dwyer's Perfect Dark decompilation, performance work and 640×480i work**. Thanks to the user and Graslu00 for test feedback and the CamSpy report.
 
 Source licensing is in [LICENSE](LICENSE). The code license does not grant rights to distribute the original game's ROM or extracted assets. Current repository hygiene excludes ROMs, captures, local build outputs and host executables. Older ROM blobs still exist in Git history; that history has not been rewritten, and this repository remains private.
+
+## AI Assistance Disclosure
+
+This project was developed with AI assistance from OpenAI Codex for reverse
+engineering support, scripting, documentation, visual comparison workflows, and
+candidate iteration. The repository owner directed the work, reviewed the
+resulting changes, and remains responsible for the project's technical claims
+and final decisions. Hardware setup, real-console testing, and subjective visual
+evaluation were performed by the repository owner.
+
+The README logo was also generated with AI from the supplied Perfect Dark
+lettering reference; see [logo provenance and prompt](images/README.md).
+For this project's automated original-N64 checks, Codex operated the ED64,
+Kasa and Elgato workflow under the owner's direction; the platform-specific
+results remain distinguished in the [testing ledger](docs/TESTING.md).
 
