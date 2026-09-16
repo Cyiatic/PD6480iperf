@@ -12,7 +12,7 @@ Do not apply this to a previously patched ROM. The two supplied performance patc
 
 ## Patch
 
-1. Download the [patch-and-save ZIP](../artifacts/PD6480iperf-v87-camspy-patch-and-Dark-save.zip), or the [xdelta alone](../artifacts/PD6480iperf-v87-camspy-candidate.xdelta).
+1. Download the [patch-and-save ZIP](https://github.com/Cyiatic/PD6480iperf/releases/download/v87-camspy/PD6480iperf-v87-camspy-patch-and-Dark-save.zip), or the [xdelta alone](https://github.com/Cyiatic/PD6480iperf/releases/download/v87-camspy/PD6480iperf-v87-camspy-candidate.xdelta), from the [v87 prerelease](https://github.com/Cyiatic/PD6480iperf/releases/tag/v87-camspy).
 2. Verify the clean ROM against the base SHA-256 below.
 3. Apply the patch to a **new output file**.
 4. Verify the patched ROM hash, then copy that output to your cartridge.
@@ -29,7 +29,7 @@ Do not force a patch through a source-checksum error. A different region, revisi
 
 ## Optional 100% Dark save
 
-The [Dark EEPROM](../artifacts/PD6480iperf-v87-camspy-candidate.eep) is a 2,048-byte, stock-format save with the profile named **Dark**, stock controls/settings, and cheats unlocked but not active.
+The [Dark EEPROM](https://github.com/Cyiatic/PD6480iperf/releases/download/v87-camspy/PD6480iperf-v87-camspy-candidate.eep) is a 2,048-byte, stock-format save with the profile named **Dark**, stock controls/settings, and cheats unlocked but not active.
 
 Back up existing progress first. Follow your device's EEPROM-import procedure and use a matching ROM/save basename:
 

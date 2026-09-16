@@ -4,6 +4,7 @@
 
 ## Current v87 guide
 
+- [GitHub prerelease and downloads](https://github.com/Cyiatic/PD6480iperf/releases/tag/v87-camspy) · [Release notes](releases/v87-camspy.md)
 - [Install the patch and optional Dark save](INSTALL.md)
 - [Technical findings: rendering, memory, scheduling and CamSpy](FINDINGS.md)
 - [Testing matrix and bug-report checklist](TESTING.md)

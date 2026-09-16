@@ -1,4 +1,4 @@
-<img src="images/pd6480iperf-logo.png" alt="PD6480iPerf" width="483">
+<img src="images/pd6480iperf-banner.svg" alt="PD6480iPerf" width="483">
 
 # PD6480iperf
 
@@ -8,8 +8,9 @@ Perfect Dark for N64: fixed **640×480 interlaced rendering** combined with the 
 
 **The user reports that CamSpy now works on Analogue 3D.** v87 fixes the broken lens and vertical blue/cyan lines seen during photography in Investigation. It retains the earlier menu-navigation and full-screen pause-blur fixes.
 
-- [Download patch + optional 100% Dark save](artifacts/PD6480iperf-v87-camspy-patch-and-Dark-save.zip)
-- [Patch only](artifacts/PD6480iperf-v87-camspy-candidate.xdelta)
+- [Download patch + optional 100% Dark save](https://github.com/Cyiatic/PD6480iperf/releases/download/v87-camspy/PD6480iperf-v87-camspy-patch-and-Dark-save.zip)
+- [Patch only](https://github.com/Cyiatic/PD6480iperf/releases/download/v87-camspy/PD6480iperf-v87-camspy-candidate.xdelta)
+- [v87 prerelease, notes and all downloads](https://github.com/Cyiatic/PD6480iperf/releases/tag/v87-camspy)
 - [Installation, base-ROM hash and save instructions](docs/INSTALL.md)
 - [CamSpy comparison and validation evidence](evidence/v87-camspy-20260913/README.md)
 
