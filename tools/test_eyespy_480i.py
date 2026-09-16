@@ -128,7 +128,7 @@ def main():
     result = subprocess.run([str(binary)], capture_output=True, text=True)
     # The original function must fail the new full-height centre assertion.
     old = subprocess.check_output(['git', '-C', str(args.source), 'show',
-                                  '26cb92ae9d0ae2cba172999c0d5c1762f32d5a50:src/game/bondview.c'], text=True)
+                                  '9bce9e60addc08b3b658fb0224621f32a99f1bdd:src/game/bondview.c'], text=True)
     negativefile = args.out / 'old-radius-negative.c'
     negativefile.write_text(SHIM + function(old, 'bview0f142d74') + r'''
 int main(void) { view.y=480; float scale=bview0f142d74(240,-1,240,240*240);

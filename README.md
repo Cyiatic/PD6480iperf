@@ -1,3 +1,17 @@
+# v87 public runtime source
+
+This branch contains the v87 CamSpy runtime. Start with the
+[project README](https://github.com/Cyiatic/PD6480iperf/tree/mods/performance)
+and [current build guide](https://github.com/Cyiatic/PD6480iperf/blob/mods/performance/docs/BUILD.md).
+
+Public-history cleanup removed full ROMs and bundled host/IRIX binaries.
+Install the documented external compiler, gzip and runtime dependencies.
+The game source and distributed v87 patch/save bytes are unchanged.
+Original v87 commit `d533653ca75d98a875bac28a0369a2b33c5abc3d` maps to
+`802059812519fef5d08c8f8e4ba86ff033c296ac`. The newer branch tip changes
+only documentation, ignore rules and the source test's parent lookup.
+The upstream README below is historical context, not the current release guide.
+
 # Perfect Dark - High Performance (PDHP)
 
 A mod that optimises for runtime performance on console.
@@ -117,4 +131,3 @@ The retail game uses a `PLAYERCOUNT()` macro which expands to:
     ((g_Vars.players[0] ? 1 : 0) + (g_Vars.players[1] ? 1 : 0) + (g_Vars.players[2] ? 1 : 0) + (g_Vars.players[3] ? 1 : 0))
 
 This creates a great deal of memory reads, branching and register usage, especially when used in loop conditions. By creating a `playercount` property in the `g_Vars` struct, the excessive checking is reduced.
-

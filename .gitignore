@@ -19,3 +19,20 @@ src/assets/*/sequences/*.seq
 src/assets/*/textures/*.bin
 src/generated
 tools/mkrom/mkrom
+
+# Public repository: supply your own ROM and installed host toolchain.
+*.z64
+*.n64
+*.v64
+*.Z64
+*.N64
+*.V64
+*.exe
+*.dll
+*.elf
+*.mp4
+*.ts
+*.mkv
+.codex-work/
+tools/gzip
+tools/irix/
