@@ -1,0 +1,45 @@
+{
+  "stock_input_lines_restored": 84,
+  "input_files": {
+    "src/game/activemenutick.c": {
+      "restored": 10,
+      "absent_legacy_lines": []
+    },
+    "src/game/bondbike.c": {
+      "restored": 2,
+      "absent_legacy_lines": []
+    },
+    "src/game/bondeyespy.c": {
+      "restored": 5,
+      "absent_legacy_lines": []
+    },
+    "src/game/bondmove.c": {
+      "restored": 22,
+      "absent_legacy_lines": []
+    },
+    "src/game/bondview.c": {
+      "restored": 30,
+      "absent_legacy_lines": []
+    },
+    "src/game/credits.c": {
+      "restored": 4,
+      "absent_legacy_lines": []
+    },
+    "src/game/menu.c": {
+      "restored": 9,
+      "absent_legacy_lines": [
+        "if (joyGetButtons(0, 0)) {"
+      ]
+    },
+    "src/game/player.c": {
+      "restored": 2,
+      "absent_legacy_lines": [
+        "&& joyGetButtonsPressedThisFrame(contpad1, A_BUTTON | B_BUTTON | Z_TRIG | START_BUTTON | 0 | R_TRIG)) {"
+      ]
+    }
+  },
+  "exact_inverse_of_graph_input_changes": true,
+  "graph_entry_point_inert": true,
+  "negative_controls_rejected": 2,
+  "hardware_test": false
+}

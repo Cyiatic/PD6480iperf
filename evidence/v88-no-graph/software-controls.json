@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "hardware_verified": false,
+  "emulator_eeprom_header_adapter": true,
+  "settings_only_ram_writes": true,
+  "controller_style": "1.2",
+  "controller_ports_tested": [
+    1
+  ],
+  "dpad_movement": {
+    "up": [
+      -1.838775634765625,
+      -11.716064453125,
+      3.49993896484375
+    ],
+    "down": [
+      -2.967254638671875,
+      -11.716064453125,
+      -214.49679565429688
+    ],
+    "left": [
+      370.4461669921875,
+      -10.878204345703125,
+      -0.62921142578125
+    ],
+    "right": [
+      -332.0950508117676,
+      -9.5069580078125,
+      0.61212158203125
+    ]
+  },
+  "l_hold_and_release": true,
+  "r_hold": true,
+  "l_toggle_on_and_off": true,
+  "analog_camera_both_axes": true,
+  "graph_remained_off": true
+}

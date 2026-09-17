@@ -3078,7 +3078,7 @@ void playerTick(bool arg0)
 								explode = true;
 							}
 
-							if (joyGetButtons(contpad1, B_BUTTON | Z_TRIG | 0 | R_TRIG)) {
+							if (joyGetButtons(contpad1, B_BUTTON | Z_TRIG | L_TRIG | R_TRIG)) {
 								slow = true;
 							}
 						} else {
@@ -3086,7 +3086,7 @@ void playerTick(bool arg0)
 								explode = true;
 							}
 
-							if (joyGetButtons(contpad1, A_BUTTON | B_BUTTON | 0 | R_TRIG)) {
+							if (joyGetButtons(contpad1, A_BUTTON | B_BUTTON | L_TRIG | R_TRIG)) {
 								slow = true;
 							}
 						}

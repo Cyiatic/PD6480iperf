@@ -1,4 +1,16 @@
-# v87 public runtime source
+# v88 no-graph / stock-controls candidate
+
+This branch adds a separate, optional no-graph edition to the working v87
+480i/CamSpy runtime. It restores stock L and D-pad bindings, including mirrored
+1.2 play: D-pad movement, analogue-stick camera, L aiming. It removes the graph
+hotkey and renderer. The existing v87 graph edition is unchanged.
+
+See [candidate notes and verification](docs/V88_NO_GRAPH.md). Select 1.2 in the
+normal controller options; levels are not mirrored. Apply the candidate xdelta
+to a clean USA v1.1 ROM, not on top of v87. This branch is candidate source,
+not a declaration of a new tested Analogue release.
+
+# v87 source baseline
 
 This branch contains the v87 CamSpy runtime. Start with the
 [project README](https://github.com/Cyiatic/PD6480iperf/tree/mods/performance)
