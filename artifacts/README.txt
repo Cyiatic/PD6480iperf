@@ -42,4 +42,5 @@ TEST STATUS - 2026-09-16
   not establish v88 compatibility. Multiplayer and long sessions not retested.
 
 Original project: https://github.com/Cyiatic/PD6480iperf
-Original v87 release remains unchanged. No ROM is included in the patch ZIP.
+Release: https://github.com/Cyiatic/PD6480iperf/releases/tag/v88-no-graph
+Original v87 patch/save bytes remain unchanged. No ROM is included in this ZIP.

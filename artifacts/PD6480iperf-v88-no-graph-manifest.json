@@ -44,6 +44,6 @@
     "plug_1_off_confirmed": true,
     "temporary_hardware_recording_deleted": true
   },
-  "existing_v87_release_changed": false,
-  "published_to_github": false
+  "existing_v87_artifacts_changed": false,
+  "release_url": "https://github.com/Cyiatic/PD6480iperf/releases/tag/v88-no-graph"
 }

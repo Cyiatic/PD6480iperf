@@ -5,6 +5,8 @@ This branch adds a separate, optional no-graph edition to the working v87
 1.2 play: D-pad movement, analogue-stick camera, L aiming. It removes the graph
 hotkey and renderer. The existing v87 graph edition is unchanged.
 
+Download the [v88 no-graph prerelease](https://github.com/Cyiatic/PD6480iperf/releases/tag/v88-no-graph),
+or choose the original [v87 L-graph edition](https://github.com/Cyiatic/PD6480iperf/releases/tag/v87-camspy).
 See [candidate notes and verification](docs/V88_NO_GRAPH.md). Select 1.2 in the
 normal controller options; levels are not mirrored. Apply the candidate xdelta
 to a clean USA v1.1 ROM, not on top of v87. This branch is candidate source,
@@ -12,16 +14,18 @@ not a declaration of a new tested Analogue release.
 
 # v87 source baseline
 
-This branch contains the v87 CamSpy runtime. Start with the
+This branch is based on the v87 CamSpy runtime. Start with the
 [project README](https://github.com/Cyiatic/PD6480iperf/tree/mods/performance)
 and [current build guide](https://github.com/Cyiatic/PD6480iperf/blob/mods/performance/docs/BUILD.md).
 
 Public-history cleanup removed full ROMs and bundled host/IRIX binaries.
 Install the documented external compiler, gzip and runtime dependencies.
-The game source and distributed v87 patch/save bytes are unchanged.
+The public-history cleanup did not change v87 game source or patch/save bytes.
 Original v87 commit `d533653ca75d98a875bac28a0369a2b33c5abc3d` maps to
-`802059812519fef5d08c8f8e4ba86ff033c296ac`. The newer branch tip changes
-only documentation, ignore rules and the source test's parent lookup.
+`802059812519fef5d08c8f8e4ba86ff033c296ac`. The v87 baseline pin
+`82d704d0154ea86f9e5d0fb98541907806f31960` adds only documentation, ignore
+rules and the source test's parent lookup; v88 then makes the input/graph
+changes described above.
 The upstream README below is historical context, not the current release guide.
 
 # Perfect Dark - High Performance (PDHP)

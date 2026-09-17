@@ -1,5 +1,14 @@
 # v88: no graph, stock L and D-pad controls
 
+[Download this alternative](https://github.com/Cyiatic/PD6480iperf/releases/tag/v88-no-graph)
+· [Installation and edition chooser](https://github.com/Cyiatic/PD6480iperf/blob/mods/performance/docs/INSTALL.md)
+· [Verification evidence](../evidence/v88-no-graph/README.md)
+
+Runtime source: [`cb4e30de6433bbd4cc47e4f0b739700db15efb96`](https://github.com/Cyiatic/PD6480iperf/commit/cb4e30de6433bbd4cc47e4f0b739700db15efb96)
+on [`fix/v88-stock-controls-480i`](https://github.com/Cyiatic/PD6480iperf/tree/fix/v88-stock-controls-480i).
+Later commits package the candidate and documentation without changing runtime code.
+This is a prerelease alternative: **Analogue 3D testing is still pending**.
+
 ## Why
 
 Players holding the D-pad and analogue-stick grips can use scheme 1.2 with
