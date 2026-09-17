@@ -1,0 +1,19 @@
+[
+  {
+    "rom": "artifacts\\PD6480iperf-v88-no-graph-candidate.z64",
+    "sha256": "7971eb42e66ba1d5773e7a5c557f4ea578e7800e862f350b2ce5908b21223891",
+    "data_stream_offset": "0x25050",
+    "file_table_offset_in_data": "0x1d6ec",
+    "compressed_valid": 1403,
+    "compressed_invalid": 0,
+    "raw_unchecked": 608,
+    "empty_aliases": 2,
+    "rare_logo": {
+      "file_id": "0x560",
+      "rom_offset": "0x1bf5340",
+      "rom_bytes": 12336,
+      "header": "1173007000cc5a4d6c2347766e6a340c"
+    },
+    "invalid_examples": []
+  }
+]

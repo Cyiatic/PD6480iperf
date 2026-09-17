@@ -67,3 +67,11 @@ private-history commit IDs and then-pending Analogue testing. This release body
 and the current documentation include the later user confirmation. See the
 [public-history migration notes](https://github.com/Cyiatic/PD6480iperf/blob/mods/performance/docs/PUBLIC_RELEASE.md)
 for commit mapping. No patch/save bytes changed during publication.
+
+## Alternative: no graph / stock controls
+
+For D-pad movement and L aiming (including mirrored-grip controller style 1.2),
+choose the separate [v88 no-graph prerelease](https://github.com/Cyiatic/PD6480iperf/releases/tag/v88-no-graph).
+It removes the graph/hotkey and restores stock L/D-pad inputs. Hiding v87's graph
+does not restore them. **v88 Analogue 3D testing is still pending**; see its own
+verification notes. This v87 tag and all four download assets remain unchanged.

@@ -4,13 +4,14 @@
 
 ## Choose the right branch
 
-The default `mods/performance` branch is the distribution/evidence branch. Its historical `src/` tree is **not the source of v87**.
+The default `mods/performance` branch is the distribution/evidence branch. Its historical `src/` tree is **not the source of either current edition**.
 
 | Source checkpoint | Commit |
 | --- | --- |
 | Newer performance base in public history | `d88dc100ef00e11d3c633cb384d4c51169b17b7d` |
 | v86g parent runtime in public history | `9bce9e60addc08b3b658fb0224621f32a99f1bdd` |
 | Maintained v87 source, branch `fix/v87-camspy-480i` | `82d704d0154ea86f9e5d0fb98541907806f31960` |
+| v88 no-graph source, branch `fix/v88-stock-controls-480i` | `cb4e30de6433bbd4cc47e4f0b739700db15efb96` |
 
 v87 changes only `src/game/bondview.c` at runtime relative to v86g; its additional documentation and source-test harness are not runtime changes. [Pinned source](https://github.com/Cyiatic/PD6480iperf/tree/82d704d0154ea86f9e5d0fb98541907806f31960).
 
@@ -27,9 +28,54 @@ git status --short
 
 No private-repository access is required. Detaching pins the documented source; create your own branch before making new work.
 
-## Known Windows build environment
+## v88 no-graph alternative
 
-The release was built with native MIPS GCC/binutils, native make using BusyBox `sh`, Python 3, a host GCC/`cpp`, gzip and the MSYS runtime on PATH.
+v88 restores stock L/D-pad inputs and removes graph processing. Its branch
+contains the source, focused input tests, evidence and release packaging.
+The `v88-no-graph` release tag points to its packaging commit; runtime source
+is pinned above. Later packaging commits do not change `src/`.
+
+```powershell
+git clone --branch fix/v88-stock-controls-480i --single-branch https://github.com/Cyiatic/PD6480iperf.git PD6480iperf-runtime-v88
+Set-Location PD6480iperf-runtime-v88
+git checkout --detach cb4e30de6433bbd4cc47e4f0b739700db15efb96
+```
+
+For a linked worktree, disable inherited sparse checkout before extracting.
+Supply the same clean USA v1.1 base and run `tools/extract`. The successful
+v88 host used MIPS GCC 12.2.0 with native make, **MSYS bash rather than the old
+BusyBox shell**, and MSYS utilities ahead of stale BusyBox aliases:
+
+```powershell
+# Set $pdPython and your compiler/PATH locations as described below first.
+& $pdPython tools/extract
+if ($LASTEXITCODE -ne 0) { throw 'Asset extraction failed' }
+make.exe -j4 SHELL=C:/msys64/usr/bin/bash.exe MAKE=make.exe HOST_EXE=.exe MIPS_BINUTILS_PREFIX=mips64-elf "PYTHON=$pdPython" ROMID=ntsc-final rom
+if ($LASTEXITCODE -ne 0) { throw 'ROM build failed' }
+& $pdPython tools/test_stock_controls.py --source .
+```
+
+**Reproduction limit:** this build reused the archived original `mkrom.exe`;
+the unmodified helper's `crypt.h` dependency remains a clean-toolchain gap.
+It is not distributed. The preliminary v87 rebuild matched all 8,443 readable
+matching symbols but differed in two compressed asset streams that decompressed
+identically. Neither that rebuild nor v88 should be assigned v87's release hash.
+See [v88 build provenance and tests](V88_NO_GRAPH.md) for details.
+
+| v88 output | Recorded SHA-256 |
+| --- | --- |
+| Source-header ROM | `2d418f2a010eb99d3d36cf1d28df6494236f70dd89c7562d8b13b3fa51ea0cc9` |
+| Retail-header candidate | `7971eb42e66ba1d5773e7a5c557f4ea578e7800e862f350b2ce5908b21223891` |
+| `stage1.elf` | `7a8873ebae5626c6e02ea76c64c4bc45a4d80055991728da8638bc947bb40e8b` |
+
+Use the same header-normalization helper described below with **v88's**
+source-header hash and a new output filename. Decode the released xdelta onto
+the clean base to verify the exact retail-header candidate. Patch/save/ZIP
+hashes are in [Install](INSTALL.md); v88's Analogue testing is pending.
+
+## Recorded v87 Windows build environment
+
+The v87 release was built with native MIPS GCC/binutils, native make using BusyBox `sh`, Python 3, a host GCC/`cpp`, gzip and the MSYS runtime on PATH. The following historical recipe and output hashes refer to v87; use the v88 adjustments above for that edition.
 
 Tools inspected on the development host for this guide:
 
@@ -54,7 +100,7 @@ $env:ROMID = 'ntsc-final'
 
 Keep the native MIPS bundle first so `make.exe` resolves to the intended native make. Verify `mips64-elf-gcc`, `make.exe`, `busybox.exe`, `gcc`, `cpp` and `gzip` resolve before building. Do not substitute an unrelated compiler simply because it has the same executable name.
 
-## Extract and build
+## v87: extract and build
 
 In the fresh runtime checkout, place your verified clean USA v1.1 big-endian ROM at `pd.ntsc-final.z64`. Its SHA-256 must be:
 
@@ -78,7 +124,7 @@ The public repository does not bundle `tools/gzip` or the legacy `tools/irix/` b
 
 Outputs include `build/ntsc-final/pd.z64`, `stage1.elf` and `pd.map`. Extracted assets and full ROMs remain local. Do not commit them.
 
-## Header normalization and exact identity
+## v87: header normalization and exact identity
 
 The build's source header uses the upstream ED/save identifier. The released candidate instead uses the USA1.1 retail identifier. [The normalization helper](../tools/normalize_pd_retail_header.py), on the **distribution branch**, changes only offsets `0x3c` and `0x3f`; the ROM body and N64 CRC fields are unchanged.
 
@@ -113,7 +159,7 @@ The distribution branch's [compressed-asset auditor](../tools/audit_rom_assets.p
 
 For emulator provenance use the matching ELF and freshly compiled layout with the [modern inspection tools](../tools/emulator/README.md). Some old generic auditors assume symbols or dynamic-buffer layouts absent from the modern runtime; do not treat those incompatibilities as passed checks.
 
-For patch verification, decode onto the clean base and compare the output to the retail-header hash in [Install](INSTALL.md). Keep the existing v87 patch, save, manifest and ZIP immutable. A documentation edit requires link/hash checks, not a new console run.
+For patch verification, decode onto the clean base and compare the output to the edition's retail-header hash in [Install](INSTALL.md). Keep published patch/save/manifest/ZIP assets immutable. A documentation edit requires link/hash checks, not a new console run.
 
 ## Repository maintenance
 

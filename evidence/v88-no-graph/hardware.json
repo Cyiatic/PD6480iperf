@@ -1,0 +1,20 @@
+{
+  "rom_sha256": "7971eb42e66ba1d5773e7a5c557f4ea578e7800e862f350b2ce5908b21223891",
+  "test": "original N64 bounded cold boot via ED64 and Elgato",
+  "upload_completed": true,
+  "upload_seconds": 36.48,
+  "intro_progress_visually_confirmed": true,
+  "physical_controller_gameplay_verified": false,
+  "analogue_3d_verified": false,
+  "capture_duration_seconds": 80.962,
+  "capture_resolution": [640, 480],
+  "capture_framerate": "30000/1001",
+  "evidence": "hardware-intro.png",
+  "capture_dimensions_are_not_render_resolution_proof": true,
+  "preview_inspection": "computer-use skill; screenshot unreadable, activation failed; decoded recording used for visual proof",
+  "plug_1_off_confirmed_utc": "2026-09-17T03:13:04.4250043Z",
+  "separate_n64_outlet_touched": false,
+  "capture_directory_restored": true,
+  "temporary_capture_and_metadata_files_deleted": 5,
+  "temporary_capture_and_metadata_bytes_deleted": 150809852
+}

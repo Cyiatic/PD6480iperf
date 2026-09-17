@@ -4,6 +4,12 @@
 
 Cleanup performed September 15, 2026 (America/Phoenix). This is a repository-publication change, **not a new game candidate**. The v87 patch, Dark save, release ZIP and game-source blobs remain unchanged.
 
+This page records that original cleanup. The subsequent **September 17 v88
+no-graph publication** is a separate source candidate based on the sanitized
+v87 history, not another history rewrite. Its new source branch, patch and
+test limits are documented in [v88 notes](V88_NO_GRAPH.md). The v87 release
+assets and tag remain unchanged; only its release notes gain a cross-link.
+
 ## What was removed
 
 The complete history of all **41 branches** was inspected, not just the default branch's latest files.

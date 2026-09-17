@@ -2,9 +2,10 @@
 
 [Project home](../README.md)
 
-## Current v87 guide
+## Current editions: v87 L graph / v88 stock controls
 
-- [GitHub prerelease and downloads](https://github.com/Cyiatic/PD6480iperf/releases/tag/v87-camspy) · [Release notes](releases/v87-camspy.md)
+- [v87 L-graph prerelease and downloads](https://github.com/Cyiatic/PD6480iperf/releases/tag/v87-camspy) · [Release notes](releases/v87-camspy.md)
+- [v88 no-graph prerelease and downloads](https://github.com/Cyiatic/PD6480iperf/releases/tag/v88-no-graph) · [Release notes](releases/v88-no-graph.md)
 - [Install the patch and optional Dark save](INSTALL.md)
 - [Technical findings: rendering, memory, scheduling and CamSpy](FINDINGS.md)
 - [Testing matrix and bug-report checklist](TESTING.md)
@@ -13,6 +14,8 @@
 
 ## Evidence worth reading first
 
+- [v88 stock controls: findings, source scope and build provenance](V88_NO_GRAPH.md)
+- [v88 input checks and original-N64 intro evidence](../evidence/v88-no-graph/README.md)
 - [v87 CamSpy comparison, software tests and user acceptance](../evidence/v87-camspy-20260913/README.md)
 - [Analogue user feedback](../evidence/v87-camspy-20260913/analogue-user-feedback.md)
 - [Original-N64 v87 reconnect retry](../evidence/v87-camspy-20260913/hardware-retry-20260914/README.md)

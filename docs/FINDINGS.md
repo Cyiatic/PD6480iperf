@@ -2,7 +2,7 @@
 
 [Project home](../README.md) · [Testing](TESTING.md) · [Runtime source](BUILD.md)
 
-This is the current synthesis as of September 15, 2026. Historical experiments are linked as evidence, not presented as current candidates. Findings below distinguish observed failures, source-level explanations and remaining uncertainty.
+This is the current synthesis as of September 17, 2026. Historical experiments are linked as evidence, not presented as current candidates. Findings below distinguish observed failures, source-level explanations and remaining uncertainty.
 
 ## 1. This is source integration, not two stacked patches
 
@@ -93,10 +93,32 @@ The actual-C harness passes **193,800** row/startup/damage cases across six view
 
 Evidence: [v87 comparison](../evidence/v87-camspy-20260913/README.md), [source diff](https://github.com/Cyiatic/PD6480iperf/commit/802059812519fef5d08c8f8e4ba86ff033c296ac), [user confirmation](../evidence/v87-camspy-20260913/analogue-user-feedback.md).
 
+## 8. Hiding the graph is not the same as restoring stock controls
+
+The original graph modification reserved L for its toggle and zeroed stock
+L/D-pad masks across gameplay and menus. That prevents mirrored-grip 1.2 play:
+D-pad movement with the left hand, analogue-stick look with the right, and L aim.
+The issue is not solved by toggling the graph invisible.
+
+v88 is a separate no-graph alternative to v87. It reverses all **84 surviving
+input-mask edits** across eight files and removes graph sampling, drawing and
+hotkey handling in `lv.c`. Two already-removed legacy paths are not reintroduced.
+The `bondview.c` changes here concern input masks, not the CamSpy geometry fix.
+Framebuffer, scheduling and room-cache code remain unchanged.
+
+Source checks and focused software 1.2 movement/aim tests pass. Original-N64
+intro boot is verified; Analogue 3D and physical-controller gameplay are still
+pending for this variant. The Dark save is unchanged and does not force 1.2.
+
+Evidence: [v88 findings and provenance](V88_NO_GRAPH.md),
+[test reports](../evidence/v88-no-graph/README.md),
+[runtime changes](https://github.com/Cyiatic/PD6480iperf/commit/cb4e30de6433bbd4cc47e4f0b739700db15efb96).
+
 ## What these findings do not establish
 
 - Completion of the radioactive-isotope objective.
-- Every EyeSpy variant, multiplayer layout, stage or menu on v87.
+- Every EyeSpy variant, multiplayer layout, stage or menu on either edition.
+- Analogue compatibility or a complete live-input matrix for v88.
 - Interactive CamSpy gameplay on original N64.
 - A quantitative FPS improvement over retail or the standalone patches.
 - One universal cause for every historical crash.

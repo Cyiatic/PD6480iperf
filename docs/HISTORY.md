@@ -2,7 +2,7 @@
 
 [Project home](../README.md) · [Current findings](FINDINGS.md)
 
-This is a milestone index, not a list of interchangeable releases. **Use v87 for current testing.** Older documents preserve what was known at their date; words such as “current,” “final” and “pending” inside them are historical.
+This is a milestone index, not a list of interchangeable releases. **Choose v87 for the L graph or v88 for no graph / stock controls**; see [Install](INSTALL.md) and the edition-specific [testing limits](TESTING.md). Older documents preserve what was known at their date; words such as “current,” “final” and “pending” inside them are historical.
 
 | Milestone | What changed / what was learned | Record |
 | --- | --- | --- |
@@ -17,14 +17,15 @@ This is a milestone index, not a list of interchangeable releases. **Use v87 for
 | v87, September 13 | CamSpy lens/texture-step fix; cold software comparison, source tests and normal-N64 intro check; immutable patch/save bundle. | [Evidence](../evidence/v87-camspy-20260913/README.md) |
 | v87, September 14 UTC | ED64 reconnect retry confirmed transfer and animated original-N64 intro. | [Retry record](../evidence/v87-camspy-20260913/hardware-retry-20260914/README.md) |
 | v87, confirmation recorded September 15 | User reports CamSpy working on Analogue; candidate and patch bytes unchanged. | [User feedback](../evidence/v87-camspy-20260913/analogue-user-feedback.md) |
+| v88, September 16–17 | Optional no-graph edition restores stock L/D-pad bindings. Focused software 1.2 inputs and original-N64 intro pass; Analogue testing pending. Published alongside, not over, v87. | [Findings](V88_NO_GRAPH.md) · [Release](https://github.com/Cyiatic/PD6480iperf/releases/tag/v88-no-graph) |
 
 ## Archive and repository layout
 
 The [previous long README](archive/README-through-v87-packaging.txt) is preserved as plain text. It contains upstream descriptions, chronological experiments and now-superseded recommendations. It is not an installation guide.
 
-The default `mods/performance` branch retains historical source alongside release docs and evidence. Current v87 runtime lives on `fix/v87-camspy-480i`; see the [build guide](BUILD.md). This split is explicit rather than silently replacing the historical source tree.
+The default `mods/performance` branch retains historical source alongside release docs and evidence. v87 runtime lives on `fix/v87-camspy-480i`; v88 lives on `fix/v88-stock-controls-480i`. See the [build guide](BUILD.md). The default branch's historical source is not either release's runtime.
 
-Current patch/save payloads were not regenerated during the documentation cleanup. Later acceptance is recorded separately from their packaging-time README/manifest.
+v87 patch/save payloads were not regenerated during the documentation cleanup or v88 publication. Later acceptance is recorded separately from their packaging-time README/manifest. v88 has a separate patch/manifest; its optional Dark save is byte-identical to v87's.
 
 The initial documentation cleanup only untracked old ROMs, leaving them in private history. The subsequent public-release cleanup removed full ROMs and bundled host/IRIX binaries across all published history, while retaining an independent private backup. Local ROMs and pre-existing work were not deleted.
 

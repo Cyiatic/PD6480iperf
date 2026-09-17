@@ -1,0 +1,49 @@
+{
+  "name": "PD6480iPerf v88 No Graph / Stock Controls",
+  "status": "candidate; Analogue 3D validation pending",
+  "source_commit": "cb4e30de6433bbd4cc47e4f0b739700db15efb96",
+  "source_branch": "fix/v88-stock-controls-480i",
+  "base_runtime_commit": "82d704d0154ea86f9e5d0fb98541907806f31960",
+  "patch_source": "clean big-endian Perfect Dark USA v1.1",
+  "base_rom_sha256": "4e51142acac686d96861cecc58cf7cb7c3b06b21733b7f8ed609a709dc039a21",
+  "candidate_rom_sha256": "7971eb42e66ba1d5773e7a5c557f4ea578e7800e862f350b2ce5908b21223891",
+  "source_header_rom_sha256": "2d418f2a010eb99d3d36cf1d28df6494236f70dd89c7562d8b13b3fa51ea0cc9",
+  "stage1_elf_sha256": "7a8873ebae5626c6e02ea76c64c4bc45a4d80055991728da8638bc947bb40e8b",
+  "patch": {
+    "file": "PD6480iperf-v88-no-graph-candidate.xdelta",
+    "bytes": 1465615,
+    "sha256": "5c9754322c26d4e1b5782b946a1cbb47df6f5f7f949ff57304669fb9da17cfa2",
+    "clean_base_decode_verified": true
+  },
+  "save": {
+    "file": "PD6480iperf-v88-no-graph-candidate.eep",
+    "bytes": 2048,
+    "sha256": "fa86c003d8cf71cb099c2c55a92cdea3f00b4d482370a48202d7a0d4b0184a7d",
+    "description": "unchanged v87 stock-format 100% Dark EEPROM"
+  },
+  "features": {
+    "render_dimensions": [640, 480],
+    "expansion_pak_required": true,
+    "fps_graph": false,
+    "stock_l_and_dpad_bindings": true,
+    "v87_camspy_aperture_fix_retained": true
+  },
+  "verification": {
+    "emulator_cold_boot_carrington_institute": true,
+    "emulator_1_2_dpad_four_directions": true,
+    "emulator_1_2_l_aim_hold_release_toggle": true,
+    "emulator_r_aim_and_stick_camera": true,
+    "emulator_only_settings_ram_writes": true,
+    "emulator_only_eeprom_header_adapter": true,
+    "camspy_source_cases_passed": 193800,
+    "compressed_assets_valid": 1403,
+    "compressed_assets_invalid": 0,
+    "original_n64_intro_boot": true,
+    "original_n64_physical_controller_gameplay": false,
+    "analogue_3d": false,
+    "plug_1_off_confirmed": true,
+    "temporary_hardware_recording_deleted": true
+  },
+  "existing_v87_artifacts_changed": false,
+  "release_url": "https://github.com/Cyiatic/PD6480iperf/releases/tag/v88-no-graph"
+}
